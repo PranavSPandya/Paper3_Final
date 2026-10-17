@@ -1,0 +1,7 @@
+"metric","value","outcome"
+"cor_ucm_UTCI_ucm_SND_dBA",-0.00580258008455644,"empatica_heart_rate"
+"cor_interaction_ucm_UTCI",0.0279150840856212,"empatica_heart_rate"
+"cor_interaction_ucm_SND_dBA",0.0837332880756893,"empatica_heart_rate"
+"cor_ucm_UTCI_ucm_SND_dBA",-0.00580258008455644,"empatica_skin_temperature"
+"cor_interaction_ucm_UTCI",0.0279150840856212,"empatica_skin_temperature"
+"cor_interaction_ucm_SND_dBA",0.0837332880756893,"empatica_skin_temperature"

@@ -1,0 +1,5 @@
+Current working manuscript outline:
+  Paper3_outline2.docx (documents/)
+  Markdown companion: Paper3_outline_ml.md (documents/)
+Archived older DOCX versions: archive/documents/_archive/legacy_outlines/
+

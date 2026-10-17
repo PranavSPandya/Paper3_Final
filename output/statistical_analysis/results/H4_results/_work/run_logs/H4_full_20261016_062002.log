@@ -1,0 +1,47 @@
+==============================================================================
+Running H4: Multivariate Models of Noise Amplification on Thermal Discomfort
+==============================================================================
+Participants (11): P4, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17
+Outcomes     (26): 13 empatica + 13 eyetracker (physiological vector)
+Equations    (7): 1 Primary, 1 Sound (fit=FALSE), 3 Heat, 2 PM
+
+Archived 8 previous output(s) to C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/results/H4_results/_work/_archive/run_20261016_062005
+[1/6] Loading canonical 8-minute analysis dataset...
+Loaded 5077 observations across 11 participants (2156 core outdoor epochs).
+[2/6] Step 1: Auditing full schema and partitioning analytical roles...
+[3/6] Step 2: Checking explicit replacements, measurement type and within-person availability...
+[4/6] Step 3: Auditing every Step-2 eligible measurement; no domain shortlist...
+Step 3: Tracing measurement sources and within-person dependencies; no predictor elimination...
+
+H4 screening-path counts and domain counts
+  Stage Entering Retained Not_Advanced
+ Step 1      230      124          106
+ Step 2      124       16          108
+ Step 3       16       16            0
+                                     Stage                    Category
+ Step 3 - Within-person design diagnostics                    Acoustic
+ Step 3 - Within-person design diagnostics               Air Pollution
+ Step 3 - Within-person design diagnostics                    Greenery
+ Step 3 - Within-person design diagnostics Sky View / Urban Morphology
+ Step 3 - Within-person design diagnostics                     Thermal
+ Step 3 - Within-person design diagnostics                Visual Light
+ Total_Entering_Category Retained_to_Next_Stage Not_Advanced_from_Stage
+                       1                      1                       0
+                       3                      3                       0
+                       1                      1                       0
+                       1                      1                       0
+                       8                      8                       0
+                       2                      2                       0
+                                       Scope
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+SUCCESS: Exported H4 multivariate audit CSV with 230 variables to:
+  C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/results/H4_results/_work/H4_Multivariate_Filtration_Results.csv
+Archived 14 previous output(s) to C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/results/H4_results/_work/H4_models/_archive_20261016_062014
+[Step 5] GVIF diagnostic (design outcome empatica_heart_rate): C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/results/H4_results/_work/H4_models/H4_gvif_diagnostic.csv 
+[Step 5] Fitting 6 equations across 26 outcomes in parallel...
+[Parallel] 6 workers; 156 individual outcome-equation jobs; one job per dispatch.

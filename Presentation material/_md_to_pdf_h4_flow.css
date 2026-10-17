@@ -1,0 +1,73 @@
+/* H4 Selection Flow print layout (use with _md_to_pdf_compact.css). */
+
+@page portrait-flow {
+  size: A4 portrait;
+  margin: 6mm 7mm;
+}
+
+@page landscape-flow {
+  size: A4 landscape;
+  margin: 5mm 6mm;
+}
+
+html {
+  page: portrait-flow;
+}
+
+.landscape.step1-inventory {
+  page: landscape-flow;
+  page-break-before: always;
+  page-break-after: always;
+  break-before: page;
+  break-after: page;
+}
+
+.portrait-start.step1-description {
+  page: portrait-flow;
+  page-break-before: always;
+  break-before: page;
+}
+
+/* Step 1 inventory table: allow shrink on landscape sheet */
+.step1-inventory table {
+  font-size: 0.72em;
+  line-height: 1.15;
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+.step1-inventory tr {
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+.step1-inventory th,
+.step1-inventory td {
+  padding: 1px 3px;
+}
+
+.step1-inventory mark {
+  background: #fff3a8;
+  padding: 0 1px;
+}
+
+/* Section 9 Sound — reviewer highlight */
+.highlight-sound {
+  background: #fff8c5;
+  border: 1px solid #e6c200;
+  border-left: 4px solid #c9a000;
+  padding: 0.45em 0.55em;
+  margin: 0.5em 0;
+  page-break-inside: avoid;
+  break-inside: avoid-page;
+}
+
+.highlight-sound > p:first-child,
+.highlight-sound > ul:first-child {
+  margin-top: 0;
+}
+
+.highlight-sound > p:last-child,
+.highlight-sound > ul:last-child {
+  margin-bottom: 0;
+}

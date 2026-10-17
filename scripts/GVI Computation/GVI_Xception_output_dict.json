@@ -1,0 +1,254 @@
+{
+    "COM205_summer_may2025.jpg": {
+        "Tree_Proportion": "59.2672%",
+        "Grass_Proportion": "15.5784%",
+        "Plant_Proportion": "0.0023%",
+        "Combined_GVI": "74.8479%",
+        "Classification": "Green"
+    },
+    "COM205_winter_dec2024.jpg": {
+        "Tree_Proportion": "11.4517%",
+        "Grass_Proportion": "9.5772%",
+        "Plant_Proportion": "0.0992%",
+        "Combined_GVI": "21.1281%",
+        "Classification": "Green"
+    },
+    "CVT387_summer_may2025.jpg": {
+        "Tree_Proportion": "16.9106%",
+        "Grass_Proportion": "4.0421%",
+        "Plant_Proportion": "0.3922%",
+        "Combined_GVI": "21.3448%",
+        "Classification": "Green"
+    },
+    "CVT387_winter_dec2024.jpg": {
+        "Tree_Proportion": "10.3157%",
+        "Grass_Proportion": "5.2094%",
+        "Plant_Proportion": "0.5424%",
+        "Combined_GVI": "16.0675%",
+        "Classification": "Green"
+    },
+    "CAT17_winter_dec2024.jpg": {
+        "Tree_Proportion": "1.1505%",
+        "Grass_Proportion": "0.0000%",
+        "Plant_Proportion": "8.8188%",
+        "Combined_GVI": "9.9693%",
+        "Classification": "No-Green"
+    },
+    "CB02411_winter_dec2024.jpg": {
+        "Tree_Proportion": "35.7445%",
+        "Grass_Proportion": "1.0887%",
+        "Plant_Proportion": "0.8553%",
+        "Combined_GVI": "37.6884%",
+        "Classification": "Green"
+    },
+    "CB1101_winter_dec2024.jpg": {
+        "Tree_Proportion": "0.1053%",
+        "Grass_Proportion": "8.0902%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "8.1955%",
+        "Classification": "No-Green"
+    },
+    "CB1142_winter_dec2024.jpg": {
+        "Tree_Proportion": "11.3663%",
+        "Grass_Proportion": "0.0000%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "11.3663%",
+        "Classification": "Green"
+    },
+    "CB1143_winter_dec2024.jpg": {
+        "Tree_Proportion": "0.5058%",
+        "Grass_Proportion": "0.0412%",
+        "Plant_Proportion": "0.0061%",
+        "Combined_GVI": "0.5531%",
+        "Classification": "No-Green"
+    },
+    "CB1599_winter_dec2024.jpg": {
+        "Tree_Proportion": "12.4546%",
+        "Grass_Proportion": "1.6515%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "14.1061%",
+        "Classification": "Green"
+    },
+    "CB1699_winter_dec2024.jpg": {
+        "Tree_Proportion": "15.6960%",
+        "Grass_Proportion": "7.7049%",
+        "Plant_Proportion": "1.3535%",
+        "Combined_GVI": "24.7543%",
+        "Classification": "Green"
+    },
+    "CB2105_winter_dec2024.jpg": {
+        "Tree_Proportion": "0.1297%",
+        "Grass_Proportion": "0.0000%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "0.1297%",
+        "Classification": "No-Green"
+    },
+    "CEE016_winter_dec2024.jpg": {
+        "Tree_Proportion": "0.6683%",
+        "Grass_Proportion": "0.0000%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "0.6683%",
+        "Classification": "No-Green"
+    },
+    "CEK049_winter_dec2024.jpg": {
+        "Tree_Proportion": "15.1535%",
+        "Grass_Proportion": "0.7843%",
+        "Plant_Proportion": "1.5709%",
+        "Combined_GVI": "17.5087%",
+        "Classification": "Green"
+    },
+    "CEK18_winter_dec2024.jpg": {
+        "Tree_Proportion": "5.2612%",
+        "Grass_Proportion": "0.7652%",
+        "Plant_Proportion": "0.3571%",
+        "Combined_GVI": "6.3835%",
+        "Classification": "No-Green"
+    },
+    "CEK31_winter_dec2024.jpg": {
+        "Tree_Proportion": "17.7994%",
+        "Grass_Proportion": "2.9747%",
+        "Plant_Proportion": "1.2695%",
+        "Combined_GVI": "22.0436%",
+        "Classification": "Green"
+    },
+    "CEV011_winter_dec2024.jpg": {
+        "Tree_Proportion": "1.3565%",
+        "Grass_Proportion": "6.5079%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "7.8644%",
+        "Classification": "No-Green"
+    },
+    "CJE181_winter_dec2024.jpg": {
+        "Tree_Proportion": "32.4371%",
+        "Grass_Proportion": "1.3985%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "33.8356%",
+        "Classification": "Green"
+    },
+    "CJM90_winter_dec2024.jpg": {
+        "Tree_Proportion": "2.4750%",
+        "Grass_Proportion": "0.0282%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "2.5032%",
+        "Classification": "No-Green"
+    },
+    "CLW239_winter_dec2024.jpg": {
+        "Tree_Proportion": "7.1304%",
+        "Grass_Proportion": "17.0288%",
+        "Plant_Proportion": "0.0069%",
+        "Combined_GVI": "24.1661%",
+        "Classification": "Green"
+    },
+    "CAT17_summer_may2025.jpg": {
+        "Tree_Proportion": "2.9259%",
+        "Grass_Proportion": "0.0771%",
+        "Plant_Proportion": "4.9934%",
+        "Combined_GVI": "7.9964%",
+        "Classification": "No-Green"
+    },
+    "CB02411_summer_may2025.jpg": {
+        "Tree_Proportion": "28.9261%",
+        "Grass_Proportion": "4.2664%",
+        "Plant_Proportion": "15.8264%",
+        "Combined_GVI": "49.0189%",
+        "Classification": "Green"
+    },
+    "CB1101_summer_may2025.jpg": {
+        "Tree_Proportion": "2.0237%",
+        "Grass_Proportion": "6.2016%",
+        "Plant_Proportion": "0.0161%",
+        "Combined_GVI": "8.2414%",
+        "Classification": "No-Green"
+    },
+    "CB1142_summer_may2025.jpg": {
+        "Tree_Proportion": "24.8695%",
+        "Grass_Proportion": "0.0000%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "24.8695%",
+        "Classification": "Green"
+    },
+    "CB1143_summer_may2025.jpg": {
+        "Tree_Proportion": "6.7642%",
+        "Grass_Proportion": "0.0000%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "6.7642%",
+        "Classification": "No-Green"
+    },
+    "CB1599_summer_may2025.jpg": {
+        "Tree_Proportion": "19.0430%",
+        "Grass_Proportion": "5.0681%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "24.1111%",
+        "Classification": "Green"
+    },
+    "CB1699_summer_may2025.jpg": {
+        "Tree_Proportion": "26.8494%",
+        "Grass_Proportion": "6.5697%",
+        "Plant_Proportion": "2.0172%",
+        "Combined_GVI": "35.4362%",
+        "Classification": "Green"
+    },
+    "CB2105_summer_may2025.jpg": {
+        "Tree_Proportion": "2.9144%",
+        "Grass_Proportion": "0.0000%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "2.9144%",
+        "Classification": "No-Green"
+    },
+    "CEE016_summer_may2025.jpg": {
+        "Tree_Proportion": "1.3954%",
+        "Grass_Proportion": "0.6927%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "2.0882%",
+        "Classification": "No-Green"
+    },
+    "CEK049_summer_may2025.jpg": {
+        "Tree_Proportion": "37.3032%",
+        "Grass_Proportion": "5.3535%",
+        "Plant_Proportion": "2.2903%",
+        "Combined_GVI": "44.9471%",
+        "Classification": "Green"
+    },
+    "CEK18_summer_may2025.jpg": {
+        "Tree_Proportion": "8.6235%",
+        "Grass_Proportion": "0.2899%",
+        "Plant_Proportion": "2.0332%",
+        "Combined_GVI": "10.9467%",
+        "Classification": "Green"
+    },
+    "CEK31_summer_may2025.jpg": {
+        "Tree_Proportion": "43.7759%",
+        "Grass_Proportion": "5.8540%",
+        "Plant_Proportion": "5.4886%",
+        "Combined_GVI": "55.1186%",
+        "Classification": "Green"
+    },
+    "CEV011_summer_may2025.jpg": {
+        "Tree_Proportion": "3.9963%",
+        "Grass_Proportion": "5.3551%",
+        "Plant_Proportion": "0.0000%",
+        "Combined_GVI": "9.3513%",
+        "Classification": "No-Green"
+    },
+    "CJE181_summer_may2025.jpg": {
+        "Tree_Proportion": "42.8909%",
+        "Grass_Proportion": "1.1032%",
+        "Plant_Proportion": "6.1348%",
+        "Combined_GVI": "50.1289%",
+        "Classification": "Green"
+    },
+    "CJM90_summer_may2025.jpg": {
+        "Tree_Proportion": "11.6318%",
+        "Grass_Proportion": "0.0092%",
+        "Plant_Proportion": "0.0534%",
+        "Combined_GVI": "11.6943%",
+        "Classification": "Green"
+    },
+    "CLW239_summer_may2025.jpg": {
+        "Tree_Proportion": "9.6375%",
+        "Grass_Proportion": "5.5611%",
+        "Plant_Proportion": "0.8827%",
+        "Combined_GVI": "16.0812%",
+        "Classification": "Green"
+    }
+}

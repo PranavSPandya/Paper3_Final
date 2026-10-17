@@ -1,0 +1,46 @@
+args <- commandArgs(trailingOnly = TRUE)
+root <- normalizePath(args[1], winslash = "/", mustWork = TRUE)
+setwd(root)
+cat("=== Parse check ===\n")
+parse(file.path(root, "scripts/H4_multivariate.R"))
+parse(file.path(root, "scripts/H4_core.R"))
+cat("OK: both scripts parse\n")
+
+load_h4_spec <- function() {
+  SCRIPT_DIR <- file.path(root, "scripts")
+  suppressPackageStartupMessages({
+    library(ggplot2)
+    library(gridExtra)
+  })
+  required_packages <- c("ggplot2", "gridExtra", "car", "nlme", "clubSandwich")
+  missing_packages <- required_packages[!vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)]
+  if (length(missing_packages)) stop("Required R packages missing: ", paste(missing_packages, collapse = ", "))
+  grDevices::pdf(file = NULL)
+  source(file.path(SCRIPT_DIR, "Paper3_common.R"), local = FALSE)
+  PROJECT_ROOT <<- resolve_project_root()
+  H4_SCRIPT_PATH <<- file.path(PROJECT_ROOT, "scripts/H4_multivariate.R")
+  RAW_DATA_PATH <<- paper3_merged_8min_path(PROJECT_ROOT)
+  H4_START_MD5 <<- unname(tools::md5sum(c(H4_SCRIPT_PATH, RAW_DATA_PATH)))
+  body <- readLines(H4_SCRIPT_PATH, warn = FALSE, encoding = "UTF-8")
+  start <- grep("^H4_SPEC <- list\\(", body)[1L]
+  stop <- grep("^run_h4 <- function\\(\\)", body)[1L] - 1L
+  if (!is.finite(start) || !is.finite(stop) || stop <= start) stop("Could not slice H4_multivariate spec block")
+  eval(parse(text = paste(body[start:stop], collapse = "\n")), envir = .GlobalEnv)
+  invisible(NULL)
+}
+
+cat("=== Load H4 spec (6-eq default) ===\n")
+load_h4_spec()
+stopifnot(length(H4_EQUATION_FIXED) == 7L)
+stopifnot(identical(H4_SPEC$fit_sound_sensitivity, FALSE))
+stopifnot("dominant_frequency_hz" %in% H4_EQ2_SOUND_MAIN_TERMS)
+cat("Eq2 extra terms vs Eq1:", length(setdiff(H4_EQUATION_FIXED[["2"]], H4_EQUATION_FIXED[["1"]])), "\n")
+if (!file.exists(RAW_DATA_PATH)) stop("Missing merged data: ", RAW_DATA_PATH)
+hdr <- names(read.csv(RAW_DATA_PATH, nrows = 1, stringsAsFactors = FALSE, check.names = FALSE))
+need <- unique(c(H4_EQ2_SOUND_MAIN_TERMS, "ucm_UTCI", "ucm_SND_dBA", H4_SPEC$all_outcomes[1:3]))
+miss <- setdiff(need, hdr)
+if (length(miss)) stop("Missing columns in merged CSV: ", paste(miss, collapse = ", "))
+cat("OK: merged CSV has Eq2 sound terms and sample outcomes\n")
+source(file.path(root, "scripts/H4_core.R"), local = FALSE)
+cat("OK: H4_core sourced\n")
+cat("PREFLIGHT_PASS\n")

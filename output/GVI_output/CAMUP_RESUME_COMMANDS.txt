@@ -1,0 +1,12 @@
+CamUp SVF jobs paused 2026-10-17 to free CPU for GVI Mapillary (parallel workers).
+PARTIAL CSVs were left intact for resume.
+
+Resume P4 (full / all phases):
+  "C:\Users\pandya\Documents\Github\docker\.venv\Scripts\python.exe" "C:\Users\pandya\Documents\Github\docker\Paper3_Final\scripts\SVF Computation\compute_svf_camup.py" --participant P4 --phase all --batch-size 4 --no-save-images --allow-partial
+
+Resume P9 WalkG:
+  "C:\Users\pandya\Documents\Github\docker\.venv\Scripts\python.exe" "C:\Users\pandya\Documents\Github\docker\Paper3_Final\scripts\SVF Computation\compute_svf_camup.py" --participant P9 --phase WalkG --batch-size 4 --no-save-images --allow-partial --output-root "C:\Users\pandya\Documents\Github\docker\Paper3_Final\output\SVF Output\column_order_P9_WalkG"
+
+Notes:
+- Stopped PIDs (approx): P4 43172/46760 then 41108/48300; P9 43988/38112; GVI 42956/42080.
+- Native Windows TensorFlow 2.21 in .venv has NO GPU (gpus=[]). GVI speedup is 3 CPU process workers + no overlay.

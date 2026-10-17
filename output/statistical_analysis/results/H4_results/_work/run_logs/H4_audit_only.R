@@ -1,0 +1,25 @@
+args <- commandArgs(trailingOnly = TRUE)
+root <- normalizePath(args[1], winslash = "/", mustWork = TRUE)
+setwd(root)
+SCRIPT_DIR <- file.path(root, "scripts")
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(gridExtra)
+})
+required_packages <- c("ggplot2", "gridExtra", "car", "nlme", "clubSandwich")
+missing_packages <- required_packages[!vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)]
+if (length(missing_packages)) stop("Required R packages missing: ", paste(missing_packages, collapse = ", "))
+grDevices::pdf(file = NULL)
+source(file.path(SCRIPT_DIR, "Paper3_common.R"), local = FALSE)
+PROJECT_ROOT <- resolve_project_root()
+H4_SCRIPT_PATH <- file.path(PROJECT_ROOT, "scripts/H4_multivariate.R")
+RAW_DATA_PATH <- paper3_merged_8min_path(PROJECT_ROOT)
+H4_START_MD5 <- unname(tools::md5sum(c(H4_SCRIPT_PATH, RAW_DATA_PATH)))
+body <- readLines(H4_SCRIPT_PATH, warn = FALSE, encoding = "UTF-8")
+start <- grep("^H4_SPEC <- list\\(", body)[1L]
+stop <- grep("^run_h4 <- function\\(\\)", body)[1L] - 1L
+eval(parse(text = paste(body[start:stop], collapse = "\n")), envir = .GlobalEnv)
+source(file.path(SCRIPT_DIR, "H4_core.R"), local = FALSE)
+cat("=== Steps 1-4 audit (no Step 5 fits) ===\n")
+res <- h4_run_audit()
+cat("AUDIT_ONLY_PASS rows=", nrow(res$audit_df), "\n", sep = "")

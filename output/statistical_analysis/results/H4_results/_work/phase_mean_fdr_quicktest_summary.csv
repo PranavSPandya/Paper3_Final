@@ -1,0 +1,3 @@
+"analysis","n_models_attempted","n_models_success","n_models_failed","n_thermal_test_rows","n_raw_p_lt_0.05","n_q_lt_0.05","median_n_obs","notes"
+"time_series_10s_LME",156,156,0,572,27,1,1809,"Published H4_hypothesis.csv / H4_fit_status.csv (6 eq, Eq2 off)"
+"phase_mean_lmer_quicktest",156,156,0,572,22,0,41.5,"Phase means of raw X/Y; within-person center+scale exposures; random intercept ParticipantID only; no AR(1)"
