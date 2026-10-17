@@ -1,49 +1,18 @@
-# Temporary files and caches
-*.tmp
-_temp/
-/temp/
-/archive/
-_tmp_edge_pdf_profile/
-md2pdf_*/
+# Machine-local caches
 %SystemDrive%/
-.cursor/
-Figures/_temp/
 .Rhistory
 .RData
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 
-# Large model weights / binary files exceeding GitHub 100MB limit
-*.h5
-*.ai
-
 # Office lock files
 ~$*
-
-# Large raw & segmented image directories
-output/GVI_output/images/
-output/GVI_output/Segmented images/
-output/GVI_output_old/images/
-output/GVI_output_old/Segmented images/
-output/SVF Output/**/*_SVF/
-output/SVF Output/*/*/*_SVF/
-
-# Local historical outputs and unreviewed H4 figures
-output/H4_multivariate/H4_Variable_Taxonomy_PRISMA.html
-output/H4_multivariate/PRISMA_H4_*.png
-
-
-
-# Ignore SVF output folder to prevent large pushes
-output/SVF Output/
-output/SVF Output_old/
-
-# H4 local snapshots/backups (not tracked)
-output/statistical_analysis/H4_multivariate/H4_models/_checkpoints/
-output/statistical_analysis/_work/
 
 # Secrets / local env
 .env
 .env.*
 *.pem
+
+# A temporary Edge profile contains cookies and session tokens.
+temp/_tmp_edge_pdf_profile/
