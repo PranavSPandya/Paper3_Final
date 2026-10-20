@@ -148,7 +148,7 @@ The common-SD-scaled coefficients are changes in outcome units per common SD of 
 
 **FDR:** Benjamini–Hochberg adjustment is applied per fixed-effect term within each equation across the 26 outcomes (`h4_1_publish_fits` in `scripts/H4_core.R`). Primary q-values cover thermal main effects and thermal × sound interaction terms. Eq2-only sound main effects, when fitted, form a separate exploratory BH family across outcomes. Lag-60 s heat (and heat × sound) sensitivity uses exposures shifted one epoch earlier and has its own BH family (`H4_lag60_sensitivity.csv`).
 
-**Deliverables:** `H4_Heat_Noise_Exposures.csv` and `H4_Covariates_and_Phases.csv` (H4.1 hypothesis terms); full coefficient and status tables under `H4_results/_work/H4_models/`. See `H4_Report.md` for sample sizes, fit counts, and diagnostic summaries.
+**Deliverables:** `H4_Heat_Noise_Exposures.csv` and `H4_Covariates_and_Phases.csv`; full coefficient and status tables under `H4_results/timeseries/`. The phase-average sensitivity has corresponding outputs under `H4_results/phaseavg/`. Each folder has its own `H4_Report.md` with sample sizes, fit counts and diagnostics.
 
 **Pending specification checks:** Confirm whether H4 targets within-bout fluctuations, between-bout exposure differences, or both; review the treatment of interaction components accordingly. Also check the complete-case filter, which currently requires all selected exposures, including Eq2-only sound fields, for other equations — this can exclude observations unnecessarily. These issues have not been resolved or tested by refitting models as part of this diagram update.
 

@@ -1,0 +1,92 @@
+[1/6] Loading canonical 8-minute analysis dataset...
+Loaded 5077 observations across 11 participants (2156 core outdoor epochs).
+[2/6] Step 1: Auditing full schema and partitioning analytical roles...
+[3/6] Step 2: Checking explicit replacements, measurement type and within-person availability...
+[4/6] Step 3: Auditing every Step-2 eligible measurement; no domain shortlist...
+Step 3: Tracing measurement sources and within-person dependencies; no predictor elimination...
+
+H4 screening-path counts and domain counts
+  Stage Entering Retained Not_Advanced
+ Step 1      208      107          101
+ Step 2      107       16           91
+ Step 3       16       16            0
+                                     Stage      Category
+ Step 3 - Within-person design diagnostics      Acoustic
+ Step 3 - Within-person design diagnostics Air Pollution
+ Step 3 - Within-person design diagnostics      Greenery
+ Step 3 - Within-person design diagnostics       Thermal
+ Step 3 - Within-person design diagnostics  Visual Light
+ Total_Entering_Category Retained_to_Next_Stage Not_Advanced_from_Stage
+                       1                      1                       0
+                       3                      3                       0
+                       1                      1                       0
+                       9                      9                       0
+                       2                      2                       0
+                                       Scope
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+Acoustic selected: ucm_SND_dBA 
+Thermal selected: ucm_AIR_temp, ucm_AIR_RH, ucm_WIND_AWS 
+Index selected: ucm_HUMIDEX, ucm_PET, ucm_UTCI 
+Radiation selected: ucm_MRT, ucm_SUN_Gh 
+Pollution selected: NONE 
+Light selected: lys_lux_avg 
+Greenery selected: gvi_50m 
+Acoustic selected: ucm_SND_dBA 
+Thermal selected: ucm_AIR_temp, ucm_WIND_AWS 
+Index selected: ucm_HUMIDEX, ucm_PET, ucm_UTCI 
+Radiation selected: ucm_MRT, ucm_SUN_Gh 
+Pollution selected: NONE 
+Light selected: lys_lux_avg 
+Greenery selected: gvi_50m 
+Acoustic selected: ucm_SND_dBA 
+Thermal selected: ucm_AIR_temp, ucm_WIND_AWS 
+Index selected: ucm_HUMIDEX, ucm_PET, ucm_UTCI 
+Radiation selected: ucm_MRT, ucm_SUN_Gh 
+Pollution selected: NONE 
+Light selected: lys_kelvin_avg 
+Greenery selected: gvi_50m 
+
+RESPONSE FAMILY: Empatica
+
+Acoustic: minimum-error ratio 0.703814 (MSE 1.30517; SE 0.227568); one-SE ratio 1 (MSE 1.30574; SE 0.227593). SE is a fold-based tuning heuristic, not an inferential CI.
+Thermal: minimum-error ratio 0.172698 (MSE 1.26582; SE 0.21809); one-SE ratio 1 (MSE 1.30574; SE 0.227593). SE is a fold-based tuning heuristic, not an inferential CI.
+Index: minimum-error ratio 0.0186718 (MSE 1.27361; SE 0.226453); one-SE ratio 1 (MSE 1.30574; SE 0.227591). SE is a fold-based tuning heuristic, not an inferential CI.
+Radiation: minimum-error ratio 0.136645 (MSE 1.27955; SE 0.224802); one-SE ratio 1 (MSE 1.30574; SE 0.227593). SE is a fold-based tuning heuristic, not an inferential CI.
+Pollution: minimum-error ratio 1 (MSE 1.30574; SE 0.227591); one-SE ratio 1 (MSE 1.30574; SE 0.227591). SE is a fold-based tuning heuristic, not an inferential CI.
+Light: minimum-error ratio 1 (MSE 1.30574; SE 0.227591); one-SE ratio 1 (MSE 1.30574; SE 0.227591). SE is a fold-based tuning heuristic, not an inferential CI.
+Greenery: minimum-error ratio 1 (MSE 1.3055; SE 0.227377); one-SE ratio 1 (MSE 1.3055; SE 0.227377). SE is a fold-based tuning heuristic, not an inferential CI.
+
+RESPONSE FAMILY: Eyetracker
+
+Acoustic: minimum-error ratio 0.310117 (MSE 1.04125; SE 0.113629); one-SE ratio 1 (MSE 1.04278; SE 0.11383). SE is a fold-based tuning heuristic, not an inferential CI.
+Thermal: minimum-error ratio 0.556881 (MSE 1.0413; SE 0.112391); one-SE ratio 1 (MSE 1.04278; SE 0.113831). SE is a fold-based tuning heuristic, not an inferential CI.
+Index: minimum-error ratio 0.194149 (MSE 1.03349; SE 0.108738); one-SE ratio 1 (MSE 1.04276; SE 0.113825). SE is a fold-based tuning heuristic, not an inferential CI.
+Radiation: minimum-error ratio 0.172698 (MSE 1.02833; SE 0.109577); one-SE ratio 1 (MSE 1.04277; SE 0.113827). SE is a fold-based tuning heuristic, not an inferential CI.
+Pollution: minimum-error ratio 1 (MSE 1.04148; SE 0.112706); one-SE ratio 1 (MSE 1.04148; SE 0.112706). SE is a fold-based tuning heuristic, not an inferential CI.
+Light: minimum-error ratio 0.703814 (MSE 1.04084; SE 0.112664); one-SE ratio 1 (MSE 1.04148; SE 0.112706). SE is a fold-based tuning heuristic, not an inferential CI.
+Greenery: minimum-error ratio 0.556881 (MSE 1.04102; SE 0.114366); one-SE ratio 1 (MSE 1.04165; SE 0.114673). SE is a fold-based tuning heuristic, not an inferential CI.
+
+RESPONSE FAMILY: Combined
+
+Acoustic: minimum-error ratio 0.391941 (MSE 1.13304; SE 0.116589); one-SE ratio 1 (MSE 1.13535; SE 0.117357). SE is a fold-based tuning heuristic, not an inferential CI.
+Thermal: minimum-error ratio 0.391941 (MSE 1.11585; SE 0.111478); one-SE ratio 1 (MSE 1.13528; SE 0.117336). SE is a fold-based tuning heuristic, not an inferential CI.
+Index: minimum-error ratio 0.172698 (MSE 1.11127; SE 0.11369); one-SE ratio 1 (MSE 1.13534; SE 0.117357). SE is a fold-based tuning heuristic, not an inferential CI.
+Radiation: minimum-error ratio 0.153617 (MSE 1.11136; SE 0.114217); one-SE ratio 1 (MSE 1.13535; SE 0.117357). SE is a fold-based tuning heuristic, not an inferential CI.
+Pollution: minimum-error ratio 1 (MSE 1.13536; SE 0.117357); one-SE ratio 1 (MSE 1.13536; SE 0.117357). SE is a fold-based tuning heuristic, not an inferential CI.
+Light: minimum-error ratio 0.791234 (MSE 1.13508; SE 0.117736); one-SE ratio 1 (MSE 1.13536; SE 0.117357). SE is a fold-based tuning heuristic, not an inferential CI.
+Greenery: minimum-error ratio 0.703814 (MSE 1.13474; SE 0.116358); one-SE ratio 1 (MSE 1.13535; SE 0.117351). SE is a fold-based tuning heuristic, not an inferential CI.
+SUCCESS: Exported H4 multivariate audit CSV with 208 variables to:
+  C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/H4/H4_Multivariate_Filtration_Results.csv
+[Step 5] GVIF diagnostic (design outcome empatica_heart_rate): C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/H4/H4_models/H4_gvif_diagnostic.csv
+[Step 5] VIF summary (design outcome empatica_heart_rate, n=2101 rows): wrote C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/H4/H4_models/H4_vif_5equations.csv
+[Step 5] Fitting 5 equations across 26 outcomes in parallel...
+[Step 5] Bundle published to C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/H4/H4_models. Total fitted models: 130, Succeeded: 130, Failed: 0
+[Step 5] Thermal rows: 364, p < 0.05: 24, q < 0.05: 6 (per-term BH; m = 26 per term)
+Verified stage counts: 208 -> 16 -> 16 -> 12 . Fixed horizontal positions; zero connectors.
+Saved figure (1 page): C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/H4/H4_Faceted_Vertical_Flow_final.pdf 
+[Results] Wrote 5 files to C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/results/H4_results 
+H4 multivariate full pipeline completed successfully.

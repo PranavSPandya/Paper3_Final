@@ -8,7 +8,7 @@ This script executes the DeepLabV3+ model with Xception-65 backbone on ADE20K:
 - Target model: deeplabv3_xception65_ade20k.h5
 - Target categories: 'tree', 'grass', 'plant' (+ sky/built-up metrics)
 - Computes Tree %, Grass %, Plant %, and Combined GVI %
-- Optional: --save-segmented PNGs, full 151-class CSV, ProcessPool --workers
+- Saves segmented PNGs and a full 151-class CSV; ProcessPool --workers
 - Compatible with TensorFlow 2.x via automatic Keras layer patching
 """
 
@@ -383,7 +383,7 @@ def _collect_files(args, input_dir):
 
 def main():
     parser = argparse.ArgumentParser(description="Run DeepLabV3+ Xception-65 GVI computation.")
-    parser.add_argument("--save-segmented", action="store_true", help="Save side-by-side original and segmented images.")
+    parser.add_argument("--save-segmented", action="store_true", default=True, help="Save side-by-side original and segmented images (always enabled).")
     parser.add_argument("--single-image", type=str, default=None, help="Process only a single image filename.")
     parser.add_argument("--stations", type=str, default=None, help="Comma-separated station IDs to process and merge into CSV.")
     parser.add_argument("--season", type=str, default=None, choices=["summer", "winter"], help="Filter processing by season (summer or winter).")

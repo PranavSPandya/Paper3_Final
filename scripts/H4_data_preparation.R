@@ -10,13 +10,13 @@ H4_SPEC$bilateral_sources <- list(
   lys_lux_avg = c("atmo_lys_LYS1__lys_lux", "atmo_lys_LYS2__lys_lux")
 )
 
-# --- output paths (audit/_work and published H4_results; not part of meeting spec) ---
+# --- output paths (flat analysis-specific H4 result folders; not part of meeting spec) ---
 if (!exists("PROJECT_ROOT", envir = .GlobalEnv, inherits = FALSE)) {
   stop("PROJECT_ROOT must be set before sourcing H4_core.R (source scripts/H4_multivariate.R).", call. = FALSE)
 }
 H4_OUT_PATHS <- local({
-  result_dir <- file.path(PROJECT_ROOT, "output/statistical_analysis/results/H4_results")
-  work_dir <- file.path(result_dir, "_work")
+  result_dir <- file.path(PROJECT_ROOT, "output/statistical_analysis/results/H4_results/timeseries")
+  work_dir <- result_dir
   dir.create(work_dir, recursive = TRUE, showWarnings = FALSE)
   list(
     result_dir = result_dir,
@@ -46,7 +46,7 @@ FORMULA_TXT <- H4_OUT_PATHS$formula_txt
 # --- Configuration ---
 H4_DOMAINS <- list(
   Acoustic = "ucm_SND_dBA",
-  Thermal = c("ucm_AIR_temp", "ucm_AIR_RH", "ucm_WIND_AWS"),
+  Thermal = c("ucm_AIR_T_mid", "ucm_AIR_RH", "ucm_WIND_AWS"),
   Index = c("ucm_HUMIDEX", "ucm_PET", "ucm_UTCI", "ucm_OPT"),
   Radiation = c("ucm_MRT", "ucm_SUN_Gh", "SVF"),
   Pollution = c("atmo_pm1_avg", "atmo_pm2.5_avg", "atmo_pm10_avg"),
@@ -78,8 +78,7 @@ SVF_EXPOSURE_COLUMNS <- c(
 SVF_QC_COLUMNS <- c(
   "Filename", "Timestamp", "Camera", "Calibration", "Calibration_Table", "Run_Config_Signature", "Calibration_QC",
   "Calibration_Ref_Radius_px", "Raw_Lens_Radius_px", "Rectified_Lens_Radius_px", "Square_Hemisphere_Crop", "SVF_Method",
-  "SVF_Rings", "Pitch_Roll_Correction", "Model", "Image_Path", "Segmented_Image_Path", "telemetry_matched", "Manual_Mask_Path",
-  "Manual_Sky_IoU", "Manual_Sky_Dice", "Manual_Pixel_Accuracy", "Manual_SVF", "SVF_Abs_Error_vs_Manual",
+  "SVF_Rings", "Pitch_Roll_Correction", "Model", "Image_Path", "Segmented_Image_Path", "telemetry_matched",
   "SVF_Frames_In_Window", "SVF_Status")
 EXPECTED_SOUND_FREQUENCY_COLUMNS <- c(
   "dominant_frequency_hz", "spectral_centroid_hz", "spectral_rolloff85_hz", "freq_prop_20_125", "freq_prop_125_1000",
@@ -213,7 +212,7 @@ h4_step2_representation <- function(col) {
   if (col %in% c("ucm_SUN_alt", "ucm_SUN_az")) return("Declared Step 2 exclusion: solar altitude and solar azimuth are outside the selected exposure set")
   # Atmotube T/RH sensors are worn-device housekeeping channels; UCM T/RH are the reference instruments [CityFeel17].
   if (grepl("^atmo_lys_atmotube_(left|right)__atmotube_humidity$", col)) return("Raw-source inventory only: UCM ucm_AIR_RH is the declared relative-humidity measure")
-  if (grepl("^atmo_lys_atmotube_(left|right)__atmotube_temperature$", col)) return("Raw-source inventory only: UCM ucm_AIR_temp is the declared ambient-temperature measure")
+  if (grepl("^atmo_lys_atmotube_(left|right)__atmotube_temperature$", col)) return("Raw-source inventory only: UCM ucm_AIR_T_mid is the declared ambient-temperature measure")
   # WEAK: _SR/_S suffix meaning (alternative formulation) not documented locally; verify in UCM manual [CityFeel17].
   if (grepl("^ucm_.*_(SR|S)$", col)) return("Derived alternate UCM formulations (_SR/_S suffix); use the corresponding unsuffixed UCM measure")
   # Derived relation: IR radiometer channels are the inputs used to compute ucm_MRT [CityFeel17]; co-entry duplicates MRT.
@@ -221,10 +220,10 @@ h4_step2_representation <- function(col) {
   # Wind representative = apparent wind speed AWS (airflow at the body incl. own movement; convective-cooling exposure; complete in core phases).
   if (col == "ucm_WIND_TWS") return("Derived true-wind speed (device correction from AWS and related fields); wind representative: ucm_WIND_AWS")
   if (col %in% c("ucm_WIND_AWA", "ucm_WIND_TWD")) return("Derived wind direction/angle from ucm_WIND_AWS; wind speed representative is ucm_WIND_AWS. Circular direction coding is outside the current linear wind-speed specification.")
-  # AH is a deterministic function of T and RH -> redundant with ucm_AIR_temp + ucm_AIR_RH [Zhu24 p.3].
+  # AH is a deterministic function of T and RH -> redundant with ucm_AIR_T_mid + ucm_AIR_RH [Zhu24 p.3].
   if (col == "ucm_AH") return("Humidity representative: ucm_AIR_RH; AH is an alternative formulation")
   # Height tiers of the same air-temperature measurement; highly collinear [Zhu24 p.3].
-  if (col %in% c("ucm_AIR_T_bot", "ucm_AIR_T_mid", "ucm_AIR_T_top")) return("Air-temperature representative: ucm_AIR_temp; tier channels not co-entered")
+  if (col %in% c("ucm_AIR_temp", "ucm_AIR_T_bot", "ucm_AIR_T_top")) return("Air-temperature representative: ucm_AIR_T_mid; alternate height/aggregate channels not co-entered")
   # gvi_50m is the original GVI scale value; other buffers, components (grass/plant/tree) and phase means are derived alternatives.
   if (grepl("^gvi_|^(plant|grass|tree)_phase_mean$", col) && col != "gvi_50m") return("Vegetation representative: gvi_50m; alternative scales/components not co-entered")
   # Scene % (sky/building/tree...) are segmentation components behind SVF [Qiu17 p.1]; SVF is the standard index.
@@ -388,7 +387,7 @@ h4_run_audit <- function() {
       MoreArgs = list(raw = df_core, availability = audit_availability, n_phase_cells = nrow(h4_prepared_for_vif$data)), USE.NAMES = FALSE))
     cat("[4/6] Step 3: Auditing every Step-2 eligible measurement; no domain shortlist...\n")
     h4_measurement_sources <- data.frame(
-        Variable_Name = c("ucm_AIR_temp", "ucm_AIR_RH", "ucm_SND_dBA", "ucm_SUN_Gh", "atmo_pm1_avg",
+        Variable_Name = c("ucm_AIR_T_mid", "ucm_AIR_RH", "ucm_SND_dBA", "ucm_SUN_Gh", "atmo_pm1_avg",
             "atmo_pm2.5_avg", "atmo_pm10_avg", "lys_lux_avg", "lys_medi_avg", "lys_kelvin_avg", "ucm_MRT", "ucm_PET", "ucm_UTCI",
             "ucm_HUMIDEX", "Clearness_Index", "Clearness_Index_G0", "gvi_50m", "ucm_WIND_AWS", "ucm_fp", "SVF"),
         Measurement_Code = c(rep("M", 4), rep("A", 4), rep("D", 9), "M", "U", "D"),
@@ -508,11 +507,11 @@ h4_run_audit <- function() {
         sub(".csv$", "_latest.csv", OUT_CSV), row.names = FALSE, na = ""))
     cat(sprintf("SUCCESS: Exported H4 multivariate audit CSV with %d variables to:\n  %s\n", nrow(final_filtration_df), OUT_CSV))
     selected_step2 <- final_filtration_df$Variable_Name[final_filtration_df$Step2_Decision == "Retained"]
-    stopifnot(!any(grepl("^ucm_IR_|^ucm_.*_(SR|S)$|^ucm_AH$|^ucm_AIR_T_(bot|mid|top)$|IO_flag", selected_step2)),
+    stopifnot(!any(grepl("^ucm_IR_|^ucm_.*_(SR|S)$|^ucm_AH$|^ucm_AIR_T_(bot|top)$|^ucm_AIR_temp$|IO_flag", selected_step2)),
               identical(grep("^ucm_WIND_", selected_step2, value = TRUE), "ucm_WIND_AWS"),
               identical(grep("^gvi_|^(plant|grass|tree)_phase_mean$", selected_step2, value = TRUE), "gvi_50m"),
               !any(is_acoustic_frequency(selected_step2)),
-              all(c("ucm_AIR_temp", "ucm_AIR_RH", "ucm_UTCI", "ucm_SND_dBA") %in% selected_step2))
+              all(c("ucm_AIR_T_mid", "ucm_AIR_RH", "ucm_UTCI", "ucm_SND_dBA") %in% selected_step2))
 
     writeLines(c("Step 3: measurement categories.", "Step 4: retain 16 candidates; specify 7 equations (primary UTCI + PM2.5; Eq 2 sound sensitivity); check full-design rank and VIF on heat x sound terms.",
         "Step 5: mixed-model fitting (6 equations by default; Eq 2 when H4_SPEC$fit_sound_sensitivity is TRUE); new equations require a new verified fit."), FORMULA_TXT)
@@ -543,7 +542,7 @@ h4_step4_exposure_prep <- function(audit_df, raw_df) {
   reps <- audit_df$Variable_Name[audit_df$Step4_Category_Role %in% "covariate candidate"]
   nonthermal <- unique(reps)
   rep_tab <- audit_df[!is.na(audit_df$Step4_Domain), c("Step4_Domain", "Variable_Name", "Step4_Category_Role", "Step4_Decision", "Step4_Restriction")]
-  base_heat <- list(`AIR_temp + AIR_RH + WIND_AWS` = c("ucm_AIR_temp", "ucm_AIR_RH", "ucm_WIND_AWS"), HUMIDEX = "ucm_HUMIDEX", PET = "ucm_PET", UTCI = "ucm_UTCI")
+  base_heat <- list(`AIR_T_mid + AIR_RH + WIND_AWS` = c("ucm_AIR_T_mid", "ucm_AIR_RH", "ucm_WIND_AWS"), HUMIDEX = "ucm_HUMIDEX", PET = "ucm_PET", UTCI = "ucm_UTCI")
   pm <- intersect(H4_DOMAINS$Pollution, reps)
   if (length(pm) != 3L || !all(c("ucm_MRT", "ucm_SND_dBA") %in% reps)) stop("Step 4 requires three PM alternatives, MRT and sound")
   # equation_spec is the seven-row table in the specification block (same ids, heat keys, PM, roles).
@@ -790,9 +789,9 @@ h4_run_gvif_diagnostic <- function(prep, design_outcome = "empatica_heart_rate",
   }
   term_df <- do.call(rbind, term_rows)
   by_equation <- do.call(rbind, eq_rows)
-  csv_path <- file.path(OUT_DIR, "H4_models", "H4_gvif_diagnostic.csv")
+  csv_path <- file.path(OUT_DIR, "H4_gvif_diagnostic.csv")
   if (write) {
-    dir.create(file.path(OUT_DIR, "H4_models"), recursive = TRUE, showWarnings = FALSE)
+    dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
     utils::write.csv(term_df, csv_path, row.names = FALSE, na = "")
   }
   list(terms = term_df, by_equation = by_equation, paths = c(csv = csv_path))

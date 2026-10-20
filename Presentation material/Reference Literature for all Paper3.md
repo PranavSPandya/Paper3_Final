@@ -283,8 +283,8 @@ From `output/statistical_analysis/Normalization & Parameter Screening/Normalizat
 | `scripts/Normalization & Parameter Screening/Normalization_H1toH4.ipynb` | Per-column reference index → PDF paths; `PHYSIO_LITERATURE_VOTES` and environment roll-ups |
 | `Presentation material/Sound_screening_pca_vif.md` | Sound PCA candidate selection and separate VIF screening |
 | `Presentation material/H4_Selection_Flow.md` | H4 retention narrative, Eq1–6 labels, SVF/GVI rules |
-| `output/statistical_analysis/results/H4_results/_work/H4_models/H4_gvif_diagnostic.md` | Fox & Monette GVIF diagnostic |
-| `output/statistical_analysis/results/H4_results/_work/H4_Transparency_Report.md` | CityFeel, Stevenson, Beiglary/Ishihara evidence |
+| `output/statistical_analysis/results/H4_results/timeseries/H4_gvif_diagnostic.md` | Fox & Monette GVIF diagnostic |
+| `output/statistical_analysis/results/H4_results/timeseries/H4_Transparency_Report.md` | CityFeel, Stevenson, Beiglary/Ishihara evidence |
 | `documents/Statistical_Analysis_Reference.html` | Method cards (EDA, HRV window, Cuve, Chrisinger, Enders, …) |
 | `documents/Paper3_outline_ml.md` | Manuscript-level refs (Kaplan, Nikolopoulou, Stuyck, Quigley, …) |
 | `Paper3_Github/Experiment papers/H1 to H4/H4_Screening_Literature_Guide.md` | Screening policy, PCA/VIF/mixtures DOIs |

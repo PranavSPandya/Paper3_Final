@@ -15,7 +15,7 @@ count_fdr <- function(path) {
   sum(is.finite(h$q) & h$q < 0.05, na.rm = TRUE)
 }
 
-baseline_path <- file.path(PROJECT_ROOT, "output/statistical_analysis/results/H4_results/_work/H4_models/H4_hypothesis.csv")
+baseline_path <- file.path(PROJECT_ROOT, "output/statistical_analysis/results/H4_results/timeseries/H4_hypothesis.csv")
 rows <- data.frame(profile = character(), fdr_q05 = integer(), hypothesis_rows = integer(), stringsAsFactors = FALSE)
 if (file.exists(baseline_path)) {
   h0 <- read.csv(baseline_path, stringsAsFactors = FALSE)
@@ -27,13 +27,13 @@ for (profile in profiles) {
   Sys.setenv(H4_OUTCOME_NORMALIZATION = profile)
   message("\n=== Outcome normalization profile: ", profile, " ===")
   invisible(run_h4())
-  hyp_path <- file.path(OUT_DIR, "H4_models", "H4_hypothesis.csv")
+  hyp_path <- file.path(OUT_DIR, "H4_hypothesis.csv")
   h <- read.csv(hyp_path, stringsAsFactors = FALSE)
   rows <- rbind(rows, data.frame(profile = profile, fdr_q05 = count_fdr(hyp_path),
     hypothesis_rows = nrow(h), stringsAsFactors = FALSE))
 }
 
-out_csv <- file.path(PROJECT_ROOT, "output/statistical_analysis/results/H4_results/_work/H4_normalization_fdr_comparison.csv")
+out_csv <- file.path(PROJECT_ROOT, "output/statistical_analysis/results/H4_results/timeseries/H4_normalization_fdr_comparison.csv")
 write.csv(rows, out_csv, row.names = FALSE)
 print(rows)
 cat("\nWrote:", out_csv, "\n")

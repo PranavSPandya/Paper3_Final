@@ -32,8 +32,8 @@ H4_SPEC <- list(
   outcomes = list(physiological = paper3_physiological_outcomes()),
   vif_threshold = 5,
   expected_epochs = 49L,
-  # Eq 2 (sound sensitivity) is in the design/VIF catalog; Step 5 fits it only when TRUE.
-  fit_sound_sensitivity = FALSE
+  # Eq 2 (sound sensitivity) is in the design/VIF catalog; Step 5 fits it when TRUE (default).
+  fit_sound_sensitivity = TRUE
 )
 
 stopifnot(length(H4_SPEC$outcomes$physiological) == 26L)
@@ -50,17 +50,16 @@ hrv_fd_outcomes <- function() attr(H4_SPEC$outcomes$physiological, "hrv_fd")
 # SEVEN EXPLICIT MULTIVARIATE LME MODELS (PRIMARY & SENSITIVITY)
 # ==============================================================================
 
-# PCA-informed sound mains for proposed Eq 2 (Sound_screening_pca_vif.md); Eq 1 structure unchanged.
+# Family-wise PCA sound mains for Eq 2 (Sound_screening_pca_vif.md); Eq 1 structure unchanged.
+# ucm_SND_dBA stays in heat × sound; MRT × sound is Eq 3 only; these five are additional mains only.
 H4_EQ2_SOUND_MAIN_TERMS <- c(
-  "freq_prop_20_125", "urban_manmade_positive_prop", "vehicle_prop", "wind_prop",
-  "freq_prop_8000_20000", "mechanisms_prop", "octave_prop_125_0_hz",
-  "urban_manmade_neutral_prop", "freq_prop_4000_8000", "dominant_frequency_hz"
+  "vehicle_prop", "freq_prop_20_125", "wind_prop", "spectral_centroid_hz", "mechanisms_prop"
 )
 
 # UTCI in rows 1–2, 6–7: Eq1 primary; Eq2 sound sensitivity on UTCI+PM2.5; Eqs 6–7 PM size on UTCI.
 equation_spec <- data.frame(
   equation_id = 1:7,
-  heat_key = c("UTCI", "UTCI", "AIR_temp + AIR_RH + WIND_AWS", "HUMIDEX", "PET", "UTCI", "UTCI"),
+  heat_key = c("UTCI", "UTCI", "AIR_T_mid + AIR_RH + WIND_AWS", "HUMIDEX", "PET", "UTCI", "UTCI"),
   pm = c("atmo_pm2.5_avg", "atmo_pm2.5_avg", rep("atmo_pm2.5_avg", 3), "atmo_pm1_avg", "atmo_pm10_avg"),
   role = c("primary", "sound_sensitivity", "heat_sensitivity", "heat_sensitivity", "heat_sensitivity",
     "pm_size_sensitivity", "pm_size_sensitivity"),
@@ -69,9 +68,9 @@ equation_spec <- data.frame(
 
 # Nested random intercepts: participant, then phase within participant (random effects, not fixed).
 # AR(1) on residuals within bout (correlation structure, not a fixed effect).
-# Eq 1 (Primary Model): UTCI * Sound + MRT * Sound + solar irradiance + SVF (sky view) + PM2.5 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
+# Eq 1 (Primary Model): UTCI * Sound + solar irradiance + SVF (sky view) + PM2.5 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
 Eq1 <- quote(nlme::lme(
-  Y ~ ucm_UTCI * ucm_SND_dBA + ucm_MRT * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_UTCI * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -79,9 +78,9 @@ Eq1 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq 2 (Sound sensitivity): Eq 1 + ten PCA-screened sound main effects (freq/semantic props + dominant frequency)
+# Eq 2 (Sound sensitivity): Eq 1 + five family-wise PCA-screened sound mains (traffic, low-freq band, wind, spectral centroid, mechanisms)
 Eq2 <- quote(nlme::lme(
-  Y ~ ucm_UTCI * ucm_SND_dBA + ucm_MRT * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + freq_prop_20_125 + urban_manmade_positive_prop + vehicle_prop + wind_prop + freq_prop_8000_20000 + mechanisms_prop + octave_prop_125_0_hz + urban_manmade_neutral_prop + freq_prop_4000_8000 + dominant_frequency_hz + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_UTCI * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + vehicle_prop + freq_prop_20_125 + wind_prop + spectral_centroid_hz + mechanisms_prop + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -89,9 +88,9 @@ Eq2 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq 3 (Heat sensitivity — air temp, RH, wind): air temp * Sound + RH * Sound + wind * Sound + MRT * Sound + solar irradiance + SVF (sky view) + PM2.5 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
+# Eq 3 (Heat sensitivity — mid air temp, RH, wind): AIR_T_mid * Sound + RH * Sound + wind * Sound + MRT * Sound + solar irradiance + SVF (sky view) + PM2.5 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
 Eq3 <- quote(nlme::lme(
-  Y ~ ucm_AIR_temp * ucm_SND_dBA + ucm_AIR_RH * ucm_SND_dBA + ucm_WIND_AWS * ucm_SND_dBA + ucm_MRT * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_AIR_T_mid * ucm_SND_dBA + ucm_AIR_RH * ucm_SND_dBA + ucm_WIND_AWS * ucm_SND_dBA + ucm_MRT * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -99,9 +98,9 @@ Eq3 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq 4 (Heat sensitivity — HUMIDEX): HUMIDEX * Sound + MRT * Sound + solar irradiance + SVF (sky view) + PM2.5 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
+# Eq 4 (Heat sensitivity — HUMIDEX): HUMIDEX * Sound + solar irradiance + SVF (sky view) + PM2.5 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
 Eq4 <- quote(nlme::lme(
-  Y ~ ucm_HUMIDEX * ucm_SND_dBA + ucm_MRT * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_HUMIDEX * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -109,9 +108,9 @@ Eq4 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq 5 (Heat sensitivity — PET): PET * Sound + MRT * Sound + solar irradiance + SVF (sky view) + PM2.5 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
+# Eq 5 (Heat sensitivity — PET): PET * Sound + solar irradiance + SVF (sky view) + PM2.5 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
 Eq5 <- quote(nlme::lme(
-  Y ~ ucm_PET * ucm_SND_dBA + ucm_MRT * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_PET * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -119,9 +118,9 @@ Eq5 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq 6 (PM size sensitivity — PM1): UTCI * Sound + MRT * Sound + solar irradiance + SVF (sky view) + PM1 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
+# Eq 6 (PM size sensitivity — PM1): UTCI * Sound + solar irradiance + SVF (sky view) + PM1 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
 Eq6 <- quote(nlme::lme(
-  Y ~ ucm_UTCI * ucm_SND_dBA + ucm_MRT * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm1_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_UTCI * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm1_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -129,9 +128,9 @@ Eq6 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq 7 (PM size sensitivity — PM10): UTCI * Sound + MRT * Sound + solar irradiance + SVF (sky view) + PM10 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
+# Eq 7 (PM size sensitivity — PM10): UTCI * Sound + solar irradiance + SVF (sky view) + PM10 + lux + kelvin (light) + GVI (greenery) + phase WalkG + WalkU + BikeG (sum-to-zero contrasts)
 Eq7 <- quote(nlme::lme(
-  Y ~ ucm_UTCI * ucm_SND_dBA + ucm_MRT * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm10_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_UTCI * ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm10_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -154,6 +153,15 @@ H4_EQUATION_FIXED <- list(
   `7` = h4_fixed_terms_from_lme_quote(Eq7)
 )
 stopifnot(identical(H4_EQ2_SOUND_MAIN_TERMS, setdiff(H4_EQUATION_FIXED[["2"]], H4_EQUATION_FIXED[["1"]])))
+# MRT × SND_dBA interaction is Eq 3 only; Eq 3 heat air term is mid-height temperature.
+stopifnot(
+  identical(
+    vapply(H4_EQUATION_FIXED, function(terms) any(terms %in% c("ucm_MRT:ucm_SND_dBA", "ucm_SND_dBA:ucm_MRT")), logical(1)),
+    c(`1` = FALSE, `2` = FALSE, `3` = TRUE, `4` = FALSE, `5` = FALSE, `6` = FALSE, `7` = FALSE)
+  ),
+  any(grepl("^ucm_AIR_T_mid", H4_EQUATION_FIXED[["3"]], fixed = FALSE)),
+  !any(grepl("ucm_AIR_temp", unlist(H4_EQUATION_FIXED), fixed = TRUE))
+)
 
 # ==============================================================================
 # WORKFLOW

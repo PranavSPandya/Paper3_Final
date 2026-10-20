@@ -78,8 +78,7 @@ SVF_EXPOSURE_COLUMNS <- c(
 SVF_QC_COLUMNS <- c(
   "Filename", "Timestamp", "Camera", "Calibration", "Calibration_Table", "Run_Config_Signature", "Calibration_QC",
   "Calibration_Ref_Radius_px", "Raw_Lens_Radius_px", "Rectified_Lens_Radius_px", "Square_Hemisphere_Crop", "SVF_Method",
-  "SVF_Rings", "Pitch_Roll_Correction", "Model", "Image_Path", "Segmented_Image_Path", "telemetry_matched", "Manual_Mask_Path",
-  "Manual_Sky_IoU", "Manual_Sky_Dice", "Manual_Pixel_Accuracy", "Manual_SVF", "SVF_Abs_Error_vs_Manual",
+  "SVF_Rings", "Pitch_Roll_Correction", "Model", "Image_Path", "Segmented_Image_Path", "telemetry_matched",
   "SVF_Frames_In_Window", "SVF_Aggregation_Method", "SVF_Selection_Method", "SVF_Status")
 EXPECTED_SOUND_FREQUENCY_COLUMNS <- c(
   "dominant_frequency_hz", "spectral_centroid_hz", "spectral_rolloff85_hz", "freq_prop_20_125", "freq_prop_125_1000",

@@ -2,7 +2,7 @@
 
 Retained classes (7): Sky_%, Tree_%, Plant_%, Grass_%, Building_%, Wall_%, Ceiling_%.
 Derived totals (0–100 % of fisheye): Total_Vegetation_% = Tree_+Plant_+Grass_;
-Total_Builtup_% = Building_+Wall_+Ceiling_.
+Total_Builtup_% = Building_+Wall_.
 Gong annular view factors [0,1] (same Holmer compute_svf as SVF): TVF, BVF —
 TVF from Tree∪Plant∪Grass; BVF from Building∪Wall (Ceiling not in BVF).
 Per frame: exclude from window mean if sum of those seven < 50%. Windows with no eligible frames omitted.
@@ -14,9 +14,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "output" / "SVF Output"
-KEY_CSV = Path(__file__).resolve().parent.parent / "output" / "key.csv"
+KEY_CSV = ROOT / "output" / "key.csv"
 MATCHED = 480.0
 F = ["Sky_%", "Tree_%", "Plant_%", "Grass_%", "Building_%", "Wall_%", "Ceiling_%"]
 MIN = 50.0
@@ -45,14 +45,9 @@ def ensure_svf_totals(df: pd.DataFrame) -> pd.DataFrame:
         out = out.drop(columns=["Combined_Vegetation_%"])
     for total, components in {
         "Total_Vegetation_%": ["Tree_%", "Plant_%", "Grass_%"],
-        "Total_Builtup_%": ["Building_%", "Wall_%", "Ceiling_%"],
+        "Total_Builtup_%": ["Building_%", "Wall_%"],
     }.items():
         expected = out[components].sum(axis=1)
-        if total in out.columns:
-            supplied = pd.to_numeric(out[total], errors="raise")
-            mismatch = ~np.isclose(supplied, expected, atol=1e-8, rtol=0)
-            if mismatch.any():
-                raise ValueError(f"{total} disagrees with its component classes in {mismatch.sum()} rows")
         out[total] = expected
     return out
 

@@ -1,0 +1,2 @@
+block,method,PC,column,coefficient,squared_coefficient_pct,corr_transformed_variable_PC,corr_original_within_bout_variable_PC,PC_retained,candidate_representative
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),1,ucm_AIR_T_mid,0.510378126600132,26.048583211186045,0.9616427890144388,0.9616427890144382,True,True

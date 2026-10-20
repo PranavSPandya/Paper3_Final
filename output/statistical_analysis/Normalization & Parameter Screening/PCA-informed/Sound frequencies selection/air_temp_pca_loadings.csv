@@ -1,0 +1,17 @@
+block,method,PC,column,coefficient,squared_coefficient_pct,corr_transformed_variable_PC,corr_original_within_bout_variable_PC,PC_retained,candidate_representative
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),1,ucm_AIR_temp,0.48105133231459213,23.141038432164414,0.9063859141999453,0.9063859141999453,True,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),1,ucm_AIR_T_bot,0.5096466136871827,25.97396708428124,0.9602644891204086,0.9602644891204087,True,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),1,ucm_AIR_T_top,0.49836142780484466,24.836411272368338,0.9390012000787515,0.9390012000787514,True,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),1,ucm_AIR_T_mid,0.510378126600132,26.048583211186045,0.9616427890144388,0.9616427890144382,True,True
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),2,ucm_AIR_temp,0.8368006651571195,70.02353532073975,0.41269604359102663,0.4126960435910268,False,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),2,ucm_AIR_T_bot,-0.029245382791451113,0.0855292414618505,-0.014423331952145731,-0.014423331952145665,False,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),2,ucm_AIR_T_top,-0.42262418528602275,17.861120198867447,-0.2084311550596993,-0.20843115505969934,False,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),2,ucm_AIR_T_mid,-0.34684024044120054,12.02981523893098,-0.17105578538392868,-0.17105578538392863,False,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),3,ucm_AIR_temp,0.2199978958486614,4.839907417783847,0.0827355572855212,0.08273555728552118,False,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),3,ucm_AIR_T_bot,-0.621754023891247,38.65780662249574,-0.2338257166629616,-0.23382571666296154,False,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),3,ucm_AIR_T_top,0.701096755258253,49.15366602336507,0.2636644797605893,0.26366447976058943,False,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),3,ucm_AIR_T_mid,-0.2710833808324551,7.348619936355388,-0.10194749589534487,-0.10194749589534485,False,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),4,ucm_AIR_temp,0.1412628340828547,1.9955188293120134,0.036074613024891115,0.03607461302489113,False,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),4,ucm_AIR_T_bot,-0.5939923993769719,35.28269705176121,-0.15168919756123625,-0.15168919756123628,False,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),4,ucm_AIR_T_top,-0.2854610744987689,8.14880250539917,-0.07289884747869774,-0.07289884747869763,False,False
+air_temperature_alternatives,within-bout standardized correlation PCA (family-wise),4,ucm_AIR_T_mid,0.7387352815016188,54.5729816135276,0.1886525184138459,0.18865251841384578,False,False
