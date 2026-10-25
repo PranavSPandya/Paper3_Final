@@ -1,0 +1,264 @@
+Alain:
+Dear Pranav,
+
+You cannot use the same analysis on the different outcomes because the model assumptions are not satisfied for all of them. For example, you need to transform eda_tonic with a square root and you cannot use current_comfort_1_7 in a linear model (it is true for ANOVA and LMM). 
+I don't understand what you do : 
+::	You run a repeated measures ANOVA,
+::	You fit a linear mixed models. 
+One can get the same answer with repeated-mesures ANOVA and LMM so why do you do both ? Note that the syntax you used for the former analysis works only when the design is perfectly balanced (I think it is the cas after your filter). When the design is unbalanced (I imagine you are in this case since you filter your data on the number of observations for each participant), it is recommended to use an LMM. 
+The effect size you compute only works for balanced data in case of valid normality and homoscedasticity assumptions. If not, it is biased. You should certainly use the following definition : 
+\eta_2 = SS_effect / SS_total
+
+I really think you should stop using AI that much. It makes your code impossible to read and as said above you cannot repeat the same analyses without looking at assumptions. And don't suppress warnings because it can prevent you from finding something wrong in your model. 
+Another advice is to chose some of the outcomes because a reviewer will ask you to take into account the risk of type I error if you do so many models. 
+
+
+ May you remind me how to determine which participant to keep? I am thinking if we publish urban part and greenery part as two subsets to keep as many measurements as possible. If so, we don't need to give up the greenery part due to the route change in the urban part, vice versa.
+ I have currently included the 11 participants who completed the same predefined routes. I had previously discussed this with Maider, and she advised focusing on within-participant comparisons rather than increasing the sample size. Her suggestion was to analyse the contrasts for Mode (Bike vs Walk) and Environment (Urban vs Green), that way each participant is compared with itself. I am not sure whether there is a strong justification for including additional participants, but I am happy to discuss this further if needed.
+ In the file 11_empatica_quality_report.html I notice there are some phases look "smoother" than others. I notice it is because you forward-fill the values in _align_index.py (line 44): g.ffill(limit=18).bfill(limit=1)
+   Also, in 01_empatica_build.py itself, there's already an interpolate(method='linear', limit=6) applied specifically to HR, which means it is double filled. Given that skin temperature is less temporal-sensitive/dynamic, this method should be fine. But for EDA, heart rate, and HRV, I don't think it makes sense. Please check previous studies on how they preprocess data.
+ Also for 01_empatica_build.py, so far there are no frequency-domain results for HRV. However, previous work from Dr. Anna Laura Pisello [HYPERLINK: https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS0360132322006187&data=05%7C02%7Cpranav.pandya%40uclouvain.be%7C58adae5ee9d74ad4d74308dec660312a%7C7ab090d4fa2e4ecfbc7c4127b4d582ec%7C1%7C0%7C639166313594499966%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=Tk57p665WTQppKALNzKOfs3FLJ27hMtEwdQkaCk1niw%3D&reserved=0] emphasized the importance of these variables on thermal sensation. Noted that these variables are very sensitive to sampling frequency and duration (Low Frequency: 0.04 - 0.15 Hz, High Frequency: 0.15 - 0.4 Hz, and both requires a minimum of 2 - 5 minutes of continuous, artefact-free sequences), which means they cannot be computed after resampled to 0.1 hz (10 sec interval). Please check which variables are emphasized in previous studies and output them accordingly (if I remember correctly, I offered you codes that can do this task).
+ You are right, I updated code to use your snippet which generates this.
+  In 02_ucm_build.py, the function flag_bad_gps_points() checks if HDOP > 5 and IO_flag == 9. If not, the gps are fine and the values are saved. You computed lat, lon, time_v, and valid_coord but never used in gps drifting check. However, the trajectories look ok compared it used to be in 1-min interval. May you confirm if the gps drifting we used to believe does exist, or it was simply due to the curve of the route causing the centroid of 60 points fell out of it? 
+ The gps problems are in the raw data, but this time I added this HDOP and IO_flag filters, this gives the stable trajectories seen in ucm validate html.
+ I have updated the method to compute median for each 10-sec window. Please find attached ucm
+ Following the previous comment, could it be better to use the medium lat&lon, or the 5[th] recording in each 10-sec window?
+ The median approach improves it even more (ucm_gps_quality_comparison.ipynb notebook as attached) I will add this in ucm_build. 
+ ​For 03_atom_lys_build.py, the same problem as 01_empatica_build.py, _align_index.py is called to fill in the gaps. I suggest you report the before-after difference so that we can evaluate the gap filling scheme.
+ Check previous studies, such as Daylight affects human thermal perception [HYPERLINK: https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdoi.org%2F10.1038%2Fs41598-019-48963-y&data=05%7C02%7Cpranav.pandya%40uclouvain.be%7C58adae5ee9d74ad4d74308dec660312a%7C7ab090d4fa2e4ecfbc7c4127b4d582ec%7C1%7C0%7C639166313594511987%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=Tcf0t3dfbnZtdUtZTfaZ6bwQqSytdENYA4bLloSWqC0%3D&reserved=0], Influence of indoor temperature and daylight illuminance on visual perception [HYPERLINK: https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdoi.org%2F10.1177%2F1477153519859609&data=05%7C02%7Cpranav.pandya%40uclouvain.be%7C58adae5ee9d74ad4d74308dec660312a%7C7ab090d4fa2e4ecfbc7c4127b4d582ec%7C1%7C0%7C639166313594528102%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=MYVNjJcPnzo7%2BOBJzPnbTuSS7SVc0gnKEdC8CVzQFA8%3D&reserved=0], Effect of Indoor Temperature and Glazing with Saturated Color on Visual Perception of Daylight [HYPERLINK: https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdoi.org%2F10.1080%2F15502724.2020.1726182&data=05%7C02%7Cpranav.pandya%40uclouvain.be%7C58adae5ee9d74ad4d74308dec660312a%7C7ab090d4fa2e4ecfbc7c4127b4d582ec%7C1%7C0%7C639166313594542616%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=eOo3XEsgAb5i%2F0xLkpYgdENlDbjwCGKK0aZex%2FOCJD8%3D&reserved=0], to learn which LYS/light variables they used in research. I already sent these paper in the group last September when Dr. Marilyne Andersen in EPFL presented these works.
+ Thank you, I looked into these papers and added columns for 
+ Same for 04_eyetracker_build.py, the gap filling scheme is potentially problematic. Also, if I understand the code correctly, there is no 10-sec resample (.resample('10s').mean()). May I ask how do you do quality control to each row, and how do you select which row to keep in the 10 second window? So far the code doesn't have quality control to the recording and selects only 1 row in the 10-sec window. 
+ I checked the process of selecting 10sec value, it is based on vote > 50% in 120 Hz file. 
+ Review the papers and find which study used measurements for less than 8 minutes. The papers I found so far had at least 15 minutes for each phase. We need to find some way to utilize the 7-min measurements. 
+ 
+ In the file 05_questionnaires_merged_scored.csv, there are multiple rows for P4 'Indoor'.
+ Thank you for pointing this, it was an artifact of P4 since it was redone there were two questionnaires. I have removed the old one.
+
+
+05 May 2026: Pranav
+The data had extended phase boundaries beyond the real activity end, absorbing reststop transition periods into the active phase label. This inflated phase durations to an artificial minimum of ~20 minutes and introduced non-activity data (stationary GPS, lower EDA, lower HR consistent with resting) into what should be clean active-phase signals.
+The corrected approach is to rebuild from the original key file timestamps
+
+04 May 2026: Yen-Shuo
+NO. No matter how much I help you I can only be listed as second author max. That is to say, I have no incentive to help you more. I am a researcher, not a babysitter. The doctor appointment on Wednesday is for the mental doctor because of the stress working with you. I wrote so many codes for you in the biking paper. I helped you accelerated the whole project for more than one year, and lying is how you treat me back! You have a Master degree in GIS, with the number of recordings on the backpack and the recording of cell phone. You definitely know the green rotes are much shorter than the urban ones, and of course every route didn't carry out according to the plan. I don't know what you were thinking when I walked 3 km and biked 6 km in the first few participants, while you only did less than a half. You probably thought you are smart to take advantage of me in both projects. You did make in the first one, and I won't let you make it in the second. 
+From now on, you need to provide a detailed process of every step. You need to show me the raw data, explain what problem the data has, and what you will do to tackle the problem. Repeat this process until the end of the project. I will not let you manipulate the data and fool me again.
+
+
+1 May 2026: Yen-Shuo 
+This afternoon I went to the park to identify the green path issues. 
+For the walking path, I started earlier/shorter than the final path and got 1.43 km from the app recording. However, the final path you gave me on April 19[th] says the length is 1.23 km (column "Length"). I used the calculator the compute the real length and got 1.427 km (column "length"). It looks accurate but indicates another issue-- the given path is wrong. The true path should be 1.6 km something (because my recorded path is shorter). You must add more points on the path to achieve accurate length. 
+
+Regards of the biking part, I got a recording of 1.43 + 2.04 = 3.47 km. The given path says 3.229 km, which is also shorter than the recording. You should also re-draw the path to get accurate length. 
+
+So here comes the question: Are these paths make sense? Considering the case of the urban part, 2 km for walking and 4.5 km for biking (you provided wrong length again), both paths are shorter than they should be!
+
+But why cannot we identify this problem from the csv file? Every green phase in the file "ExperimentData_20Apr.csv" is ~20 mins. Take participant 2 for example, the first time stamp for biking green in 16:38, but the first dot on the map is 16:39 (BTW, it started way earlier than the plan, which again shortens the route). It turns out that 16:38 is on the other side of the map.
+
+And it also happened in the end of the route. The last dot on the map is 16:55, and the last time stamp 16:57 is in the middle of the route. In the end, participant 2 only have 16 mins in biking green, 20% shorter than it should be!
+
+As for the walking green part, participant 2 is honest, takes 30 mins to finish. But since participant 3, the same story happens, the last point on the map (stopped early) is 15:18, while the last time stamp in the csv file is 15:20. 
+
+For the early stopping problem, I just noticed you already knew that from the file "map_BikeG_gps.png" you attached in this conversation. For the walking green part, the last person finished the full path is participant 7 (red). As for biking green, none of the participants finished the planned path (gray). 
+
+Long story short @Maider Llaguno [HYPERLINK: mailto:maider.llaguno@uclouvain.be] the green part was poorly planned and didn't conduct as planned. Based on my recording on these planned paths, walking green is not longer than 17 mins and the biking green is not longer than 18 mins ( a half of 36 mins walking). In the experiments, the early stopped routes with ~15 durations make sense without the hypothesis of gps drifting.  
+@Pranav Pandya [HYPERLINK: mailto:pranav.pandya@uclouvain.be] please come up with the remedial plan and share it with us on Monday. Is there any common additional recording before and after the route to make up with the data?
+
+
+30-Apr-2026 Yen-Shuo
+Make sure you can answer the following questions in the next meeting:
+1.	How do you make sure the starting and the end point of each phase are correct?
+2.	How do you process each column, including GPS recording?
+3.	How do you evaluate the recording against each other? e.g. eyetracker sound level vs. ucm sound level.
+Feel free to ask me questions if you encounter technical problems. We cannot analyze the data before we finish preprocessing.
+
+From: Maider Llaguno <maider.llaguno@uclouvain.be>
+Sent: Tuesday, April 21, 2026 2:26:29 PM
+To: Pranav Pandya <pranav.pandya@uclouvain.be>; Yen-Shuo Huang <yen-shuo.huang@uclouvain.be>
+Subject: ExperimentalCampaignData 
+ 
+Dear both
+I hope this email finds you well.
+I am getting in touch following the conversation we had yesterday.
+As I mentioned to you separately, it is very important that you both verify, organize, and validate the data of the experimental campaign. 
+The complete data package of the experiment will need to be shareable alongside the papers, as we may be asked to provide it to other researchers. For this reason -- and to be 100% sure that our analyses are based on a solid dataset -- it is essential that you both carefully review everything so that we are fully confident it is reliable and shareable.
+Please coordinate with each other and that both of you go through the data thoroughly and verify all elements, ensuring that we have a complete database for all environmental and physiological variables at 15-second resolution, as discussed, including the eye-tracking data. For the qualitative questionnaires and background questionnaire, please keep them at the resolution at which they were collected, and this should also be part of the data package.
+I propose that we meet on Friday at noon to go through the package. Can you prepare this by friday?
+
+21-Apr-26 Yen-Shuo
+Hi Pranav,
+Attached are the codes for sound processing and physiological data processing. I cannot give you the sound processing results, because the audio files for P02 and P03 are not clipped and the rest green phases have wrong time spans (less than 15 mins). The physiological code using neurokit2 package can be run after you finish preparing the aggregated data. It can analyze the data for each participant and phase automatically. 
+
+ Also, I noticed you kind of randomized the participants. e.g., P04 in on 8/25/2025, P10 in 8/12/2025, P11 in 8/9/2025. It is not a problem but please make sure you keep all the time series happened at the same day. When you share the 15-sec data, please offer a brief explanation for each column. e.g., how do you process GPS data. replace ucm package GPS by cellphone GPS or what. It would be a nice draft for the first monitoring campaign paper. Sincerely thank you for the efforts to this project.
+Kind regards,
+Yen-Shuo Huang, MSc 
+PhD candidate
+
+
+
+20 Apr 2026: Pranav
+Hi Yen-Shuo,
+Please find the updated path and the data file attached.
+
+Thanks for both emails. Here are my responses and the updated dataset is attached.
+1. Data Cleaning
+The raw dataset had missing values mainly in Atmotube Left (this we bought after participant 3, so it is blank). Short gaps were filled using interpolation. Regarding the Atmotube PM10 jumping (e.g. P5 BikeU)  --  this is normal behaviour for atmotube as it has an accuracy of +-5 ug/m³ at concentrations below 100 ug/m³ (Atmotube PRO 2 Technical Specifications | ATMO Support Center), which is the case for us:
+Metric	Green mean	Urban mean
+PM10 (Atmotube L)	3.7 ug/m³	6.0 ug/m³
+PM10 (Atmotube R)	3.4 ug/m³	7.1 ug/m³
+
+2. GPS & Route
+All GPS coordinates are mapped to the updated route file (ExperimentPath_19Apr.gpkg). Each point shows the nearest point on the route which is more realistic because participants always had a fixed route.
+
+3. Phase Completion
+Two columns have been added:
+::	PhaseCompletion_pct  --  0 to 100 within each phase
+::	ExperimentCompletion_pct  --  0 to 100 across the full experiment per participant
+This allows comparison across participants at equivalent stages of each phase, avoiding the time-averaging issue you mentioned.
+
+Please find the updated route and data attached.
+Thank you.
+Kind Regards,
+Pranav.
+
+17-Apr-2026 Yen-Shuo
+From: Yen-Shuo Huang <yen-shuo.huang@uclouvain.be [HYPERLINK: mailto:yen-shuo.huang@uclouvain.be]>
+Sent: Friday, April 17, 2026 2:23 PM
+To: Pranav Pandya <pranav.pandya@uclouvain.be [HYPERLINK: mailto:pranav.pandya@uclouvain.be]>
+Cc: Maider Llaguno <maider.llaguno@uclouvain.be [HYPERLINK: mailto:maider.llaguno@uclouvain.be]>
+Subject: Re: Slides for the monitoring campaign 
+ Hi Pranav,
+I found a Exploratory Data Analysis (EDA) toolkit for data cleaning, visualization, and more. https://datasciencedynamics.com/eda_toolkit_docs/getting_started.html. Hope it helps you processing the data.
+
+Hi Pranav,
+Thanks for the slides. Regards of the data, I have three requests.
+ First is the data cleaning. I noticed there are some Autotube or eyetracker data are missing. Please let me know how you fill the null values. Also, I noticed Autotube data sometimes jumping around in a small range, e.g., PM10 for P5 bikingU. Please let me know your diagnose to this phenomenon.
+   
+ In the old version of data I am using, there is a drift of GPS (points are not in the segments). Also, the planned route is different from the final experiment. May you provide an updated route vector file of the experiment? 
+   
+ I suggest adding a column of the proportion of accomplishment for each phase. If a phase is accomplished in 25 minutes, 20-min time step can be labeled as 80% or 0.8. Therefore, we can compare the condition of each participant at similar stages. I suppose in the slides you send me, the EDA are averaged by time, which causes problem especially in the last few minutes.
+If it is possible, please send me the up-to-date dataset before Monday since I am still using the old version of data. 
+
+
+19-Apr-2026 Yen-Shuo
+I found a Exploratory Data Analysis (EDA) toolkit for data cleaning, visualization, and more. https://datasciencedynamics.com
+
+Response to Comments  --  Pranav
+20-Apr-2026
+
+Comment 1  --  Data Cleaning & Descriptive Statistics
+Status: Done.
+The raw dataset had some missing values  --  mainly in Atmotube Left (~12% of rows) and Eyetracker (~19%, with P13 fully absent). Short gaps (up to 3 consecutive missing values) were filled using cubic spline interpolation, which preserves the smooth shape of the underlying signal. Longer gaps were filled with the within-participant phase median (median used instead of mean because the distributions are right-skewed). After cleaning, the dataset has zero missing values.
+Descriptive statistics  --  Green (BikeG + WalkG) vs Urban (BikeU + WalkU):
+Metric
+Green mean
+Urban mean
+G / U
+PM2.5 (Atmotube L)
+3.3 ug/m³
+5.7 ug/m³
+0.58
+PM2.5 (Atmotube R)
+2.6 ug/m³
+4.0 ug/m³
+0.64
+VOC (Atmotube L)
+0.22 ppm
+0.32 ppm
+0.69
+Pulse rate
+95 bpm
+102 bpm
+0.93
+EDA
+5.9 uS
+6.7 uS
+0.89
+MET
+4.4
+4.8
+0.92
+Skin temperature
+31.1 °C
+31.6 °C
+0.98
+LYS lux
+3 910
+9 263
+0.42
+AQS (higher = better)
+94
+87
+1.08
+
+All pollution metrics are lower in Green than Urban, physiological stress is lower in Green, and light exposure is lower under tree canopy  --  all consistent with expected directions.
+
+Figure 1  --  Per-participant sensor overview (P2):
+                                       
+
+Figure 2  --  Pulse rate boxplot by phase and participant:
+                                       
+
+Comment 2  --  GPS Drift & Updated Route
+Status: Done.
+All GPS coordinates have been snapped to the nearest point on the updated route file (ExperimentPath_19Apr.gpkg). Each raw UCM GPS reading was projected onto its phase route segment and replaced with the on-route coordinate. After correction, average speed is 1.93 m/s (max 5.83 m/s), consistent with walking, cycling, and tram speeds.
+Figure 3  --  BikeG GPS tracks (all 17 participants):
+                                       
+
+Figure 4  --  BikeU GPS tracks:
+
+                                       
+
+Figure 5  --  WalkU GPS tracks:
+                                       
+
+Figure 6  --  WalkG GPS tracks:
+                                       
+
+Figure 7  --  Tram GPS tracks:
+                                       
+
+Comment 3  --  Proportion of Accomplishment
+Status: Done.
+Two columns added:
+PhaseCompletion_pct  --  0 to 100 within each phase.
+ExperimentCompletion_pct  --  0 to 100 across the full experiment per participant.
+
+Figure 8  --  P7 experiment timeline showing phase transitions:
+                                       
+
+Comment 4  --  EDA Toolkit
+Not used  --  requires pandas <= 2.2.3 (we have 3.0.0). Analysis done with matplotlib and seaborn.
+
+Updated Dataset
+File: ExperimentData_20Apr.csv
+2,323 rows x 268 columns
+17 participants (P2 - P18), 7 phases
+Zero missing values in sensor columns
+GPS updated to ExperimentPath_19Apr.gpkg
+PhaseCompletion_pct and ExperimentCompletion_pct added
+
+17 Nov 2025: Pranav
+I hope you had a nice weekend.
+
+In the file I sent earlier, I noticed that in csv the timestamp had some issue, and I have updated the data file. Please use this csv file for data.
+And here is the route map and the ethics document with details of experiment.
+
+If you have any questions, feel free to call. We can meet anytime.
+
+Kind Regards,
+Pranav Pandya
+
+26 Nov 2025: Yen-Shuo
+Hi Pranav,
+I noticed there is an inconsistence in the weight of participant 9. In the file "Participation Form (Responses).xlsx" it says 76 kg, but in the file "Final complete data2.csv" it says 66 kg. May you help me check which is correct? 
+Thank you again for the data. I attached a primary analysis result with "local_maxima_indices" and "local_minima_indices" in python index (start with 0) of some of the "Variable" such as "ucm__mrt", "ucm__utci", "ucm__pet", "empatica__eda_scl_usiemens", "empatica__pulse_rate_bpm", "empatica__temperature_celsius". Please check what did they see or hear at these peaks.
+
+13 Nov 2025: Pranav
+Hi Yen-Shuo,
+Sorry for the delay, I was able to use the plugin and fix all the eyetracker recordings.
+We updated the routes, I haven't made update in route maps, I will update you it soon and send it by today evening.
+And I will send you the remaining files also by evening, I hope that is ok.
+
+Kind Regards,
+Pranav
+

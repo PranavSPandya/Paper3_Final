@@ -1,0 +1,6 @@
+Hi Pranav,
+Many thanks for your nice work. I have two comments.
+1.	For sound classification, in the column "yamnet_dominant_class" there are sound of "Fire" or "Rodents, rats, mice", but in the code you kept the "RESEARCHER_CATEGORIES" from my code.  I classify sound in categories rather than classes to avoid these weird classifications show up in the results. I summed up the probability (maybe the score in your code, not sure if you know what the score means) of every class in each category to identify if the sound is dominated by "wind", "Mechanisms", or "Rural/Natural", etc. However, I don't see the category result in the csv file. Please let me know if you are not convinced by the category method.
+2.	Will you integrate sound and SVF analysis in the merged csv file? If so, please let me know when the file is ready.
+I am available for discussion in person this week. Feel free to schedule a meeting before the group meeting on Friday.
+Kind regards,

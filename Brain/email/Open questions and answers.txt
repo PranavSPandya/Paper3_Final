@@ -1,0 +1,73 @@
+PAPER 3 - OPEN QUESTIONS AND ANSWERS
+Sources: ./Paper3 Maider Yen Shuo_01Oct2026.txt and ../meeting transcript/Paper3 Maider Yen Shuo_30Sep2026.txt (emails from Yen-Shuo Huang, Maider in copy)
+Results as of 12 Oct 2026: C:\Users\pandya\Documents\Github\docker\Paper3_Analysis\output\statistical_analysis\results\ (GitHub Paper3_Analysis commit 32289d8)
+
+------------------------------------------------------------
+Q1. "Which normalization method did you use, and why?"
+STATUS: Answered
+ANSWER: Within-person z-score (column prefix wpz__): each participant's values are standardized using that participant's own mean and SD over the 4 PhaseIDs (BikeU, BikeG, WalkU, WalkG), excluding Indoor and Tram. Why: it removes stable between-person differences (e.g. one person always has higher EDA) so the models compare each person with themselves (Ben-Shakhar 1985, Psychophysiology 22(3):292-299). Used in all H1/H3 models: lme(wpz__<outcome> ~ PhaseID, random = ~1 | ParticipantID). Effect sizes are computed on raw means with the paired SMD of Bonett (2008).
+
+------------------------------------------------------------
+Q2. "Whether you are predicting psychological responses from physiological variables or the other way around"
+STATUS: Answered
+ANSWER: Neither. H2 tests association, not prediction. It uses repeated-measures correlation (rmcorr; Bakdash & Marusich 2017): lm(questionnaire ~ ParticipantID + physio) on each person's 4 PhaseID means. It asks: within the same person, in PhaseIDs where they rated a questionnaire higher, was a physio measure also higher/lower? 4 questionnaires x 26 physio = 104 pairs, BH-FDR. Result: 5/104 pass FDR (questionnaire_prs11_total and pleasantness with shorter eyetracker_blink_duration_s, cooler empatica_skin_temperature, larger eyetracker_pupil_diameter_avg, longer fixation duration). File: H2_Physio_Psycho_Concordance.csv.
+Limits to state: rmcorr assumes one common slope for everyone, and part of the association comes from PhaseID affecting both questionnaire and physio.
+
+------------------------------------------------------------
+Q3. "How solar radiation was processed (Gh/Go)"
+STATUS: Answered (update the old reply)
+ANSWER: Clearness index k_t = G_H / G_0 (measured global horizontal over extraterrestrial radiation), following Moreno-Tejera et al. 2017. Update vs the 1 Oct reply: k_t was removed in H4 screening for collinearity (VIF 603.5); SUN_Gh is kept as a covariate in H4.
+
+------------------------------------------------------------
+Q4. "How are the metabolic rate and the stress composite computed?"
+STATUS: Partially answered
+ANSWER: Metabolic rate = Empatica MET estimate. Stress composite = built from fixation count and inverted fixation duration (mapped to 0.001-0.999; 0.5 when input constant). Neither is among the 26 physio outcomes currently tested in H1-H4.
+NEEDED: Decide whether they are still used. If not, say they were dropped and why.
+
+------------------------------------------------------------
+Q5. "For each hypothesis: What did previous studies do? What did you notice while reproducing their approach? How did you make sure your results are reliable and robust?"
+STATUS: Partially answered (robustness yes; literature comparison per hypothesis not yet written)
+ANSWER (robustness):
+ - Same matched 8 min per PhaseID for every participant (merged_all_11participants_8min.csv).
+ - All 26 planned physio outcomes tested; BH-FDR with the planned family size (Benjamini & Hochberg 1995), so no cherry-picking.
+ - Mixed models with participant random intercept (nlme; Pinheiro & Bates 2000), contrasts with emmeans (Lenth 2023).
+ - Paired SMD with analytic 95% CI (Bonett 2008).
+ - Time-series check: AR(1) models on 10-s epochs, 26/26 fitted, 18 FDR-significant terms; 6 hold in a 60-s sensitivity (skin temperature over time, and blink duration, fixation duration, gaze velocity, gaze dispersion in WalkU). Models with autocorrelation > 0.95 flagged.
+ - LF/HF treated as context-dependent (Billman 2013).
+RESULTS:
+ - H1 (environment): BikeU_BikeG 5/26, WalkU_WalkG 7/26 FDR-significant. In BikeG/WalkG: shorter blinks, larger pupils, cooler skin. Shade and cooler air are part of the green route; which feature drives the effect is H4's question.
+ - H2: 5/104 (see Q2).
+ - H3 (mode): BikeU_WalkU 6/26, BikeG_WalkG 5/26.
+NEEDED: Short table per hypothesis: what earlier studies did, what we did the same/different.
+
+------------------------------------------------------------
+Q6. "Checking whether other studies have predicted a physiological variable from a single environmental factor. If none have, it's probably not the standard approach"
+STATUS: Partially answered
+ANSWER: Single-factor models were replaced by a multi-exposure model in H4 (co-exposure approach, Hamra & Buckley 2018). Predictors go through correlation/VIF screening and one representative per group (PC1 rule, Jolliffe). Current H4: 130/130 models fit, 6 FDR-significant thermal terms.
+NEEDED: Literature table of single-factor vs multi-factor studies; final H4 primary thermal index (UTCI vs PET) - H4 is still being finalized.
+
+------------------------------------------------------------
+Q7. "Report if it is possible to compute the sky view factor from the fisheye camera (https://github.com/neginja/MSE-SkyViewFactor)"
+STATUS: Partially answered
+ANSWER: Yes, feasible. The repo's model weights are not published, so it was piloted on P9 WalkG with DeepLabV3+. Full run for all participants not done yet; SVF is not in H4 yet.
+NEEDED: Supervisor approval of the method, then full run.
+
+------------------------------------------------------------
+Q8. "Please implement the sound frequency analysis as well" (Bluyssen papers; email 1 Oct 2026 9:19 AM)
+STATUS: Answered (tested in a temporary H4 run, 12 Oct 2026)
+ANSWER:
+ - Current code produces 17 frequency features (not 75 as the old reply said; full octave bands, not one-third octave): spectral shape (dominant frequency, centroid, rolloff), 5 broad-band energy shares, 9 octave-band shares. Shares come from an uncalibrated, unweighted spectrum, so they describe the shape of the spectrum, not loudness.
+ - Reduced without looking at outcomes, same PC1 rule as H4: kept freq_prop_20_125 (low frequency, Leventhall 2004) and freq_prop_4000_8000 (high). Mid band and centroid dropped (rho -0.99 / -0.94 with low band). Both add information beyond loudness (VIF <= 1.3 with ucm_SND_dBA).
+ - Caveat: freq_prop_20_125 correlates 0.51 with wind_prop and is much higher on BikeG, so part of it is probably wind on the microphone.
+ - YAMNet: recommended vehicle_prop (traffic), rural_natural_prop (nature), urban_manmade_positive_prop (actually speech/music) - technological / natural / human sources (Axelsson et al. 2010). A keyword-matching bug was found (e.g. "Train" counted as natural because it contains "rain"); fixing it needs a YAMNet rerun on the audio.
+ - Effect on H4: adding these 5 columns barely changes H4. Only urban_manmade_positive_prop is kept as a covariate and has no significant effect. Thermal hypothesis terms stay at 6 (one swap: ucm_UTCI -> pupil drops to q 0.081; ucm_WIND_AWS x ucm_SND_dBA -> SDNN enters, q 0.029). No sign changes.
+ - Conclusion: sound frequency does not add explanation beyond the current H4 predictors.
+NEEDED: Fix YAMNet matching and rerun before final use; decide whether to include sound columns in the final H4.
+
+------------------------------------------------------------
+Q9. "Only once those points are clear, we can go through the results together and build a storyline"
+STATUS: Not yet
+ANSWER: Depends on Q4-Q7 and final H4. Proposed order for the meeting: open questions first, then literature and method per hypothesis, then results.
+
+------------------------------------------------------------
+NOTE: The draft reply .\Reply_Paper3 Maider Yen Shuo_01Oct2026.txt is out of date (H2 described as Spearman + LMM, H3 as paired contrasts, old H4 formula, "75 features", one-third octave bands). Update it before sending.

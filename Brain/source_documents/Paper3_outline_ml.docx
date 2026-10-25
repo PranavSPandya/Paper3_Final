@@ -1,0 +1,322 @@
+Psychophysiological comfort during active urban mobility: Environment and activity modulated physiological and perceived responses across diverse urban contexts 
+1 Introduction
+Background and gap
+
+-Active mobility is being promoted in cities... 
+-To enhance active mobility, cities have invested in xxx... 
+-However, the mobility comfort conditions that active commuters experience are still to be understood. This is particularly relevant today in the face of climate change, overheating... 
+-Prior papers that have done experimental campaigns have studied comfort when walking or biking (you need to go through a few). 
+-For example, a paper looked at how biking comfort is xxx... 
+-For example, a paper looked at perceived thermal comfort while walking through xxx... 
+-Probably there is no paper comparing walking and biking results, and going through different urban environments. Or are there? 
+-And from these studies, NONE have combined physiology, psychology, environmental sensing, and different active modes in the same field protocol and urban environment. 
+  -Such an experimental study is necessary to better understand how physiological and perceived comfort vary based on: i) active mobility (walking or cycling); ii) the urban context  --  for example, green versus very impervious urban areas, calm vs. noisy, pedestrianized vs. trafficked.
+  -Such understanding can contribute to more strategic urban planning investment and to the future planning of cycling routes and pedestrian areas in cities, at a time when environmental stressors are only becoming more acute.
+
+This research presents the results of an experimental campaign performed in xxxx and xxxx. [description of it]
+The hypotheses on which the campaign was based were:
+ H1: Participants will show better physiological and perceived comfort in green than in impervious areas.
+ H2: Physiological and perceived responses will be concordant (i.e., they correlate in direction).
+ H3: Psychophysiological comfort will be more compromised during cycling than during walking.
+ H4: The presence of noise and traffic will amplify thermal discomfort.
+In the following sections, the methodology [xx] is described, followed by [xxx].
+
+ 
+
+
+
+
+
+
+
+
+2 Methodology
+Data collection process
+Within-subject field campaign in Brussels; each participant completed repeated exposure phases across urban, green and tram environments.
+Surveys were administered before/after exposure phases; sensors were checked during breaks; researcher followed participant with environmental backpack.
+Experiment plan and phases
+Main contrasts: green vs impervious urban; bike vs walk vs seated tram.
+Phases to explain in paper: Biking in Urban (BikeU), Walking in Urban (WalkU), Biking in Green (BikeG), Walking in Green (WalkG) and Tram; include trajectory map and timeline figure.
+Sensors and questionnaires
+urban Climate Monitor (uCM) backpack: air temperature, humidity, radiation, wind, sound level, Global Positioning System (GPS) and comfort indices that include Universal Thermal Climate Index (UTCI)/Physiological Equivalent Temperature (PET).
+Empatica Embrace Plus: electrodermal activity (EDA) tonic/phasic, photoplethysmography (PPG) heart rate, heart rate variability (HRV) root mean square of successive differences (rMSSD) and wrist temperature; physiological stream averaged to 10-sec epochs.
+Questionnaires: State-Trait Anxiety Inventory (STAI-6), Perceived Restorativeness Scale (PRS-11), comfort, pleasantness, thermal comfort/perception; these operationalise psychological well-being and thermal perception.
+Data analysis and correction
+Sensor streams synchronised, path-matched, quality-checked and aggregated by participant/phase; final valid sample after filtering. [N = 11]
+Hypothesis testing strategy
+H1 and mobility contrasts: paired comparisons with effect sizes for green vs urban and bike vs walk.
+H2: repeated-measures phase analysis across BikeU, WalkU, BikeG, WalkG and Tram.
+H3-H4: Spearman correlations for physio-psychology alignment and environmental drivers such as temperature/noise.
+3 Results
+Hypothesis-level findings
+H1 partly supported: green improved psychological outcomes, but not physiological outcomes. [Comfort d=-0.92, p=0.0119; pleasantness d=-1.45, p<0.001; PRS d=-2.58, p<0.001; STAI d=0.91, p=0.0127; EDA/HR/HRV p>0.22]
+H2 partly supported only for psychological phase progression; physiological phase/acclimatisation effects were not significant. [Comfort eta2p=0.383, p<0.001; pleasantness eta2p=0.384, p<0.001; PRS eta2p=0.703, p<0.001; HR p=0.6003; HRV p=0.3637]
+H3 weakly supported: physiology and psychology did not align consistently in the valid sample. [Most correlations non-significant at N=10-11]
+H4 supported for environmental stressors: heat and noise were linked to poorer comfort. [Air temperature vs thermal comfort rho=-0.64, p=0.0170; sound level vs comfort rho=-0.55, p=0.0282]
+H5 supported: mobility type affected physiological load and subjective comfort. [Bike lower HR d=-0.87, p=0.0164; lower EDA d=-0.77, p=0.0287; higher comfort d=0.87, p=0.0162; higher pleasantness d=1.02, p=0.0068]
+Tables to report in Results
+Table 1 reports hypothesis tests and effect sizes; Table 2 reports descriptive statistics by environment and mobility mode.
+Table 1. Hypothesis testing summary from effect-size analysis.
+H
+Variable
+Contrast
+N
+Test
+p
+Effect
+Size
+H1
+EDA tonic
+Urban vs Green
+11
+t(10)=-0.16
+0.8719
+d=-0.05
+Negligible
+
+Heart rate
+Urban vs Green
+11
+t(10)=0.35
+0.7317
+d=0.11
+Negligible
+
+HRV RMSSD
+Urban vs Green
+11
+t(10)=1.30
+0.2214
+d=0.39
+Small
+
+Comfort
+Urban vs Green
+11
+t(10)=-3.07
+0.0119
+d=-0.92
+Large
+
+Pleasantness
+Urban vs Green
+11
+t(10)=-4.80
+<0.001
+d=-1.45
+Large
+
+PRS total
+Urban vs Green
+11
+t(10)=-8.54
+<0.001
+d=-2.58
+Large
+
+STAI
+Urban vs Green
+11
+t(10)=3.03
+0.0127
+d=0.91
+Large
+H2
+EDA tonic
+Bike vs Walk
+11
+t(10)=-2.55
+0.0287
+d=-0.77
+Medium
+
+Heart rate
+Bike vs Walk
+11
+t(10)=-2.88
+0.0164
+d=-0.87
+Large
+
+HRV RMSSD
+Bike vs Walk
+11
+t(10)=1.25
+0.2396
+d=0.38
+Small
+
+Comfort
+Bike vs Walk
+11
+t(10)=2.89
+0.0162
+d=0.87
+Large
+
+Pleasantness
+Bike vs Walk
+11
+t(10)=3.40
+0.0068
+d=1.02
+Large
+
+STAI
+Bike vs Walk
+11
+t(10)=-2.59
+0.0270
+d=-0.78
+Medium
+H3
+Heart rate
+5 Phases
+6
+F=0.74
+0.6003
+eta2p=0.129
+Medium
+
+HRV RMSSD
+5 Phases
+5
+F=1.16
+0.3637
+eta2p=0.224
+Large
+
+Comfort
+5 Phases
+10
+F=5.58
+<0.001
+eta2p=0.383
+Large
+
+Pleasantness
+5 Phases
+10
+F=5.61
+<0.001
+eta2p=0.384
+Large
+
+PRS total
+5 Phases
+10
+F=21.30
+<0.001
+eta2p=0.703
+Large
+H4
+EDA tonic vs comfort
+eda_tonic vs comfort
+10
+rho=-0.38
+0.1787
+rho=-0.38
+Medium
+
+EDA tonic vs STAI
+eda_tonic vs stai
+11
+rho=0.96
+0.2787
+rho=0.96
+Large
+
+Heart rate vs STAI
+heart_rate vs stai
+11
+rho=0.97
+0.2388
+rho=0.97
+Large
+H5
+Air temp vs EDA tonic
+AIR_temp vs eda_tonic
+11
+rho=0.26
+0.2552
+rho=0.26
+Small
+
+Air temp vs thermal comfort
+AIR_temp vs tcomfort
+9
+rho=-0.64
+0.0170
+rho=-0.64
+Large
+
+Sound level vs comfort
+SND_dBA vs comfort
+10
+rho=-0.55
+0.0282
+rho=-0.55
+Large
+
+Table 2. Descriptive statistics by condition, mean +/- SD.
+Variable
+Urban
+Green
+Bike
+Walk
+EDA Tonic
+5.07 +/- 6.82
+4.57 +/- 6.88
+3.90 +/- 5.28
+5.73 +/- 8.02
+EDA Phasic
+0.00 +/- 0.00
+-0.00 +/- 0.00
+-0.00 +/- 0.00
+0.00 +/- 0.00
+Heart Rate
+57.55 +/- 10.21
+57.86 +/- 9.12
+54.52 +/- 9.27
+60.88 +/- 8.96
+HRV RMSSD
+416.13 +/- 91.67
+405.45 +/- 80.40
+423.86 +/- 97.78
+397.73 +/- 70.76
+STAI
+2.22 +/- 0.79
+1.83 +/- 0.58
+1.87 +/- 0.70
+2.17 +/- 0.70
+Comfort
+5.05 +/- 1.24
+5.73 +/- 1.39
+5.86 +/- 1.06
+4.95 +/- 1.46
+Pleasantness
+3.00 +/- 0.89
+4.00 +/- 0.98
+3.90 +/- 1.09
+3.14 +/- 0.89
+PRS Total
+2.50 +/- 0.54
+3.55 +/- 0.57
+3.35 +/- 0.73
+2.74 +/- 0.69
+
+I would do one participant plot at least where in x you have the time, and then you have in y the main env (including utci or pet whichever we sayd we would include) and main physio parametes. The x would have one after another the blocks, so that we have the full panorama of one participant. You may want to clean the part between blocks to show a gap so that we read the 4 blocks. 
+
+And overall how different are the results between participants? You may want to show a box plot, with one box per block. Like that we visually understand the variability. This could be for the main indicators you identify. One could be for utci, a second one for EDA, a third one for comfort  -  that is one from env, one from physio, and one from psy.
+
+4 Discussion
+Green/impervious contrast: psychological benefit is strong, physiological restoration should be stated cautiously.
+Mobility contrast: walking vs biking changes physiological load and comfort, so the choice of transport mode can affect environmental comfort
+Heat/noise interpretation: green space helps, but thermal and acoustic stressors still structure discomfort.
+What about EDA etc? which are the ones to underline? And are they mode specific?
+What is the role of movement air flow/wind? I thought it would help biking to feel more comfortable.
+What about the interactions?
+Limitations: N = 11, single city/season, wearable field-data uncertainty, and limited power for small effects.
+5 Conclusion
+Active mobility comfort should be framed as an interaction between environment, mobility type and stressors, rather than as green vs grey alone.
+Core claim: green improves perceived comfort/restoration; mobility mode shapes physiological load; heat and noise remain key constraints.

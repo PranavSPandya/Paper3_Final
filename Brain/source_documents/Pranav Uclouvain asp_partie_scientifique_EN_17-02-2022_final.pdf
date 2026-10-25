@@ -1,0 +1,702 @@
+                            F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                          'Research Fellow' (ASP - Aspirant)
+
+Full name of the applicant  Pranav Shailesh Pandya
+Reference e-space           40011852
+
+SCIENTIFIC SECTION OF THE PROPOSAL
+
+                         MAIN LANGUAGE CHOSEN = ENGLISH
+
+ This part includes the following elements:
+
+      1. Report on past research (optional)
+      2. Description of the research project
+      3. Comments on changes made in the research project in case
+
+           of resubmission (optional)
+      4. Potential interdisciplinary approach of the research project
+
+           (optional)
+      5. Description of the work environment
+      6. Summary of the master’s thesis or equivalent
+      7. Additionnal comments (optional)
+
+The applicant must fill in the sections below and convert the file
+into an unprotected PDF before appending it to the online
+application form.
+
+The F.R.S.-FNRS insists on strict compliance with the instructions
+given for each part of the proposal (scientific section relevant to the
+instrument selected, number of pages allowed for documents to be
+enclosed with the application form…) and stresses again the
+sovereign consideration of the Scientific Commissions assessing the
+application file.
+
+                            1
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+1. REPORT ON PAST RESEARCH (OPTIONAL)
+
+I graduated with distinction (program topper) from Symbiosis International University with a
+MTech (Master of Technology) degree in Geoinformatics & Surveying Technology. I successfully
+completed my master thesis under the TREES (Training and Research in Earth Eco-System)
+program organized by Space Application Center (SAC), Indian Space Research Organization
+(ISRO), under the supervision of Dr. Gaurav Jain. My thesis was focused on determining optimal
+solar power plant locations for supplementing electrical vehicle charging using remote sensing
+inputs and environmental parameters. We identified a network of EV charging stations that met
+the governmental regulations, and we developed a balancing algorithm to better estimate the area
+of solar panels needed to supply energy demands while optimizing the use of barren/empty lands
+in the vicinity. The final output of this research methodology was the ability to develop a map
+containing the suitable optimized charging network that incorporates the placement solar panels
+in identified barren lands, while considering the optimization of solar radiant energy received by
+surfaces through Global Horizontal Irradiance (GHI) parameter. This GHI data was confidential
+and was made available due to special nature of TREES internship, making this research truly
+unique within the organization only, and making an important new addition to the state of art.
+
+In my final year, I was hired as a Junior Research Fellow in Department of Science & Technology
+(DST) & IC-IMPACT’s Indo Canada Building Energy Optimization under landscape characteristics
+project, which involved the use of a LoRa sensor network for hyperlocal sensing of thermal
+comfort across different land surfaces in different configurations. Working in this project gave me
+opportunity to use LoRaWAN technology to setup in-situ sensors that collected data for modeling
+urban thermal comfort, which shares similarities and demonstrated my expertise for the present
+doctoral project. After acquiring the hyperlocal data, satellite-based observations were used for
+ground validation of Building Energy models. Additionally, I was exposed to work with the
+integrating IoT sensors on Amazon Web Services (AWS). In this project we submitted a paper in
+Urban Climate Journal (Q1) which is under review, and presented a paper in Flame Conference
+on Climate Change which was held in Dec 2021, that will be published in conference proceedings
+in 2022.
+
+In my senior year, my team won Global Nasa Space Apps Challenge due to our crowdsource
+data fusion application for critical disaster assessment, which is currently under communication
+with the WALMI center in Gujarat, India. This project involved the use of crowdsourced data from
+volunteers in flood regions, where they can take pictures using an app that applied an auto geotag
+to photos and added them to the SQL Database, which we could retrieve and apply a time-space
+comparison allowing visualization over pre and post-flood scenarios. Authorities could use this
+app to get a live visualization of pre & post-flood scenarios, and reduce disaster rescue action
+delays due to lack of information. This project involved the use of near real-time data under cloud-
+free and image quality filters.
+
+My undergrad final year project received an AICTE fund of ₹1.67 million and facilitated purchasing
+Ideaforge’s Ninja Nano UAV with Night Vision surveillance, live human tracking, and time-based
+crime surveillance. This project was my final year thesis in B. Tech work on Smart Crime
+Management in Smart Cities, which used past data scrapping from news articles and geocoding
+their locations in space and time to understand crime patterns, predict crime possibilities, evaluate
+crime vulnerability, and subsidize those vulnerabilities by adding patrolling routes and placing
+more police stations and patrol vehicles in such neighborhoods.
+
+In 2021 during my final year of M. Tech, we received approval from AICTE and got the Ideaforge’s
+Ninja Nano UAV with 3 payloads (thermal Infrared, Photogrammetry and TCC video imagery)
+delivered to the Birla Vishwakarma Mahavidyalaya (B. Tech) university, and a personal was
+authorized to conduct training for the drone flight by manufacturer. I received that training in
+December 2021, and each member of my team got a chance to perform VTOL, orientation and
+create mission plan in Ideaforge’s software, and to independently deploy drones.
+
+                                                               2
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+In December 2019, I presented two papers in Symbiosis National Conference SYMGI-2019.
+During this time I met with Prof. Sharvari Shukla who is the director of Symbiosis Statistical
+Institute (SSI), and she gave me an opportunity to contribute a Springer Book Chapter, on
+Geointelligence. During the Covid19 crisis, the use of Public Health, Mass Safety and Geography
+became important, demanding an intelligence hub containing information from land features and
+geophysical properties to human altercations, mobility, and resource utilization. In the Covid19
+crisis, I got involved in drafting paper on the application of Geointelligence for healthcare,
+especially in a developing country such as India. This book is published this year in 2022.
+
+While working on this springer book chapter, I got the change to collaborate with Prof. Prasad
+Pathak, who is Research Dean at Flame University. He had received the DST-ICIMPACT grant
+for Indo-Canada Building Energy Optimization project, and he allowed me to begin working in this
+project as a Junior Research Fellow, during my final year of M. Tech since April 2021. Within the
+bounds of JRF at Flame University, I also got the opportunity to order experimental sensors and
+camera lens such as fish eye lenses and a thermal imager, which were designed for gathering
+spectral imagery across inter-building distances to analyze the radial extent to which a surface
+warms its neighborhood within Urban Heat Island Effect. The use of a fish eye lens facilitated
+gathering 130-degree images which were useful in gathering Sky View Factor (SVF) values by
+orienting the camera towards Zenith and taking pictures of sky, and later digitizing the surrounding
+features that would limit sky view. This was also useful in linking the inbound solar radiation
+(Global Horizontal Irradiance) values towards the open to sky surface areas that receive solar
+energy for major part of day, especially when the sun is at maximum inclination. This research
+explored the understanding of radiation interactivity and cross-heating which warmed the air
+temperature registered in LoRa sensors across different surface nature & configurations.
+
+In 2021, towards my final year of M. Tech I participated with a team of students in Mapathon
+competition organized by Indian Institute of Technology, Bombay, for which my team became the
+Mapathon Champion by competing again 9300 entries, where we had designed an Electrical
+Vehicle Charging Network Plan based on excess surplus energy generated at power stations,
+residential energy usage, and the proximity of nearby charging infrastructure using Resourcesat
+Satellite’s LISS-III data and the algorithm of Maximum Likelihood Classifier. Petrol Stations within
+the range of Power Lines (to avoid transmission loss) were identified for the Electrical Vehicle
+Charging Network, and the areas selected where those areas requested by the Ministry of Power
+(2018) (https://www.youtube.com/watch?v=ubGp76LAhmE).
+
+In final semester of my M. Tech, I won Varanasi Smart Hackathon. With this event government
+of Varanasi was planning to get Smart City status and they were inviting students with tech ideas
+for innovation to build smart solutions for many industrial problems such as transportation,
+pollution, etc. My team’s idea was to subsidize renewable energy and use electric mobility
+technology. The network planning was done using satellite data and spatial city attributes taken
+from Open Streets Map. Existing electric infrastructure with the existing residential mapping was
+done for identifying the supportive locations where charging station can be established. This idea
+facilitated us in winning 1st place and a reward of iPad Air. The government is presently deciding
+their funding priorities, but they requested us to assist them in developing EV Infrastructure using
+our optimization solution.
+
+I have been interested in immersive reality since 2016, when VR technology became accessible
+to public, with YouTube launching the first 360 immersive videos and with the release of the app
+VR box. I received a student license for the VR Max software by Autodesk and Open-Source
+software called Blender in order to learn how 3D movies can be made for VR. Further, I did
+Certified Training Courses on Campus during my undergrad on Quantum GIS (QGIS), IDRISI,
+DGPS (Differential GPS), AutoCAD, and 3D Laser Scanning. I also enrolled in Personality
+Development Program (PDP) organized by Globarena Pvt. Ltd. In 2017.
+
+                                                               3
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+2. DESCRIPTION OF THE RESEARCH PROJECT
+
+Urban GIST - Green Infrastructure for Stress reduction and Thermal comfort:
+
+2.1 Goals of the research
+
+The project focuses on the exploration of the role Urban Green Infrastructure (UGI) design plays
+in citizen well-being, with a focus on Thermal Comfort (TC) and Stress Level Reduction
+(SLR). While the positive role of nature on general well-being is widely recognized, the UGI
+implementation characteristics that most effectively contribute to the improvement of TC and SLR
+are yet to be identified. To address this research gap, this thesis will implement a novel
+pedestrian-centered research methodology combining environmental and biometric sensing, eye-
+tracking and immersive media technologies, and participant surveys, through the deployment of
+off-site and on-site experimental campaigns.
+
+Prior literature that has focused on ‘macro’ or city scale studies, have highlighted the beneficial
+role of Nature-based Solutions (NbS) for heat island, noise or air pollution mitigation (Johnson et
+al. 2020; Llaguno-Munitxa and Bou-Zeid 2020a; Manoli et al. 2019). Making use of hybrid physics
+and data-driven models, urban fabric, microclimate and air quality, health reports, and socio-
+demographic metrics have been studied, and the positive role of NbS for urban health have also
+been reported (Sowińska-Świerkosz et al. 2021). At the ‘micro’ or neighborhood scale, local
+sensing approaches using carry-on sensing kits have enabled the study of the local environmental
+gradients to high spatiotemporal resolutions (Apte et al. 2017; Pigliautile and Pisello 2018) and
+have reported the benefits of local UGI to lower air temperature and enhancement of thermal
+comfort. Publications focusing on the study of the Physiological Equivalent Temperature (PET) -
+the complete heat budget of the human body- have combined biometric and environmental
+sensing approaches aiming to obtain quantifiable metrics of urban thermal comfort (Villadiego
+and Dabat 2014; Piselli et al. 2018). However, despite the extensive literature, research focused
+on i) the study the role small to medium scale UGI plays in thermal and psychological stress, and
+the ii) study of local UGI characteristics that are most effective to enhance thermal comfort and
+SLR are yet to be developed.
+
+With the aim to address these research gaps, this thesis will focus on the development of a
+pedestrian-centered research methodology where objective metrics on the UGI infrastructure
+quantification (computed using datasets collected through LiDAR scanning, remote sensing and
+GIS databases), urban microclimate data (collected through a carry on sensing kit containing
+sensors for temperature, relative humidity, and solar radiation amongst others), and biometric
+data (collected through immersive media, eye-tracking, and wearable sensing technologies), will
+be combined with subjective metrics acquired through pedestrian survey campaigns. That is, a
+pedestrian-centered research methodology is proposed whereby not only environmental and
+physiological metrics, but also psychological aspects will be evaluated to identify small to medium
+scale UGI and their characteristics that most effectively contribute towards thermal comfort and
+stress level reduction.
+
+The thesis will address the following research questions:
+   i) What is the role small to medium scale urban GI implementations and their characteristics -
+       ratio, geometry, type, forest biodiversity- play in thermal comfort and stress level reduction?
+   ii) Can we through the deployment of a pedestrian-centered research methodology better
+       report the pedestrian level multi-domain perception associated to thermal comfort?
+   iii) Are environmental stressors and especially so thermal stress a main driver of psychological
+       stress?
+
+                                                               4
+                      F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                    'Research Fellow' (ASP - Aspirant)
+
+2.2 State of the art
+
+One third of adult’s report suffering from high physiological stress levels, and these numbers are
+escalating, driven by global trends towards urbanization and increased socioeconomic and
+environmental pressures such as those recently induced by the COVID-19 pandemic (Cole et al.
+2020; Sharifi and Khavarian-Garmsir 2020). Similarly, the incidence of reported urban heat stress
+cases is expected to worsen with global warming and urban densification, leading to synergies
+between Urban Heat Island (UHI) and heat waves which can cause mortality and severe heat-
+related illnesses. UHI phenomena is caused by the urban morphology and impervious materials
+-with thermal properties different to those of green areas- which lead to the modification of the
+energy budget and the evapotranspiration potential affecting both air UHI and surface UHI and
+causing thermal discomfort (Manoli et al. 2019; Founda and Santamouris 2017). Furthermore,
+environmental stressors such as increased temperatures have also been identified as critical
+drivers of psychological stress (Tawatsupa et al. 2012). The beneficial role of UGI for citizen
+comfort is undeniable. The possibilities of nature-based restoration approaches for SLR are
+already being discussed (Orchard and Schiel 2021), and UGI implementations have already
+proved to be very beneficial to lower air temperatures up to 6°C (Jayasooriya et al. 2017; Imran
+et al. 2019). However, prior studies have not yet focused on the study of the role small to medium
+scale UGI implementations and their spatial characteristics, also called ‘nature quality’, play in
+pedestrian level comfort. The presence of GI however in cities is very heterogeneous, and so is
+the case in the Brussels Capital Region (BCR) (Van de Voorde 2017). Urban GI implementations
+vary in -ratio, geometry, type (trees, bushes, green patches), and forest biodiversity.
+
+Through the increasing accessibility to mobile environmental sensing technologies, pedestrian
+level environmental sensing campaigns are becoming progressively more popular contributing to
+the understanding of the strong spatial environmental gradients we are exposed to in cities, with
+potentially up to 8 times higher scalar concentrations within an urban block distance (Apte et al.
+2017). However, while such studies are starting to report reductions in air temperature and
+improvements in urban comfort to be associated to the local presence of UGI, high spatial
+resolution direct sensing campaigns are yet limited, and further studies are required to
+characterize urban environmental gradients to high spatio-temporal resolutions as they relate to
+the local UGI characteristics. On the other hand, through the increasing access to Extended
+Reality (XR), eye tracking, and wearable biometric sensing technologies, the study of nature and
+urban scene preferences and their impact on psychological stress levels or overall comfort, are
+starting to be studied (Liszio and Masuch 2019; Lu et al. 2020). However, prior literature that has
+made use of XR, and biometric sensing technologies, have generally focused on the study of
+dichotomic immersion comparisons -such as green vs not green or urban vs rural-. Furthermore,
+amongst them, the studies that evaluated the restorative effect of nature for SLR for example,
+solely focused on laboratory - off-site experiments. However, these studies have already shown
+the benefits of combining XR and eye-tracking technologies, with biometric sensing and
+subjective participant feedback questionnaires, to evaluate the multi-domain perception and
+impact of the visualized scenes on the participant stress levels. The research methodologies to
+aim for a holistic study for the evaluation of thermal comfort and stress are yet to be further
+defined, however prior studies that have made use of the above-mentioned methodologies, have
+proved efficient to capture pedestrian level microclimate gradients at high spatial resolutions, and
+to combine biometric and eye tracking datasets with participant feedback questionnaires to reveal
+heat stress exposure indicators, or visual exploration patterns and heart rate variability associated
+to high stress levels.
+
+2.3 Research project
+
+This thesis is based on the working hypothesis that not only large scale, but also small to medium
+scale UGI that is integrated within the urban fabric, will modulate pedestrian level comfort (thermal
+comfort and stress particularly). Thus, it will be the objective of this research to identify the role
+
+                      5
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+distinct GI characteristics (e.g., the ratio, geometry, type - trees, bushes, green patches, forest
+biodiversity) play in the enhancement of TC and SLR.
+
+The second working hypothesis is that there will be significant correlations between SLR and
+PET. Thus, the objective will be to highlight the role environmental stressors, such as the
+exposure to increased temperatures, play in urban comfort, at physiological and psychological
+levels.
+
+Designing an urban square to promote thermal comfort, emotional wellness, and reduce
+physiological stress levels is a challenging task given that pedestrian level physiological and
+psychological reactions are triggered by numerous environmental factors. The third working
+hypothesis of this research is that for the study of thermal comfort and stress, it is necessary to
+adopt a multi-domain (including visual, thermal and acoustic parameters) and pedestrian-
+centered research methodology. This research will not only include quantitative metrics, but also
+subjective measures to account for the participant’s perception of environmental, physiological
+and psychological dimensions of urban comfort.
+
+To our knowledge no comprehensive study focusing on urban comfort evaluation and particularly
+thermal comfort and stress has been developed to date where i) microclimate sensing, ii) high
+spatial resolution urban GI documentation, iii) biometric and eye-tracking measurements, and iii)
+subjective participant assessment, have been combined (see Fig.1). This research will build on
+the work developed through the one-year long Louvain4City grant obtained in 2021 “Brussels
+Street Greenery and Citizen Comfort Evaluation” by Prof. Llaguno-Munitxa (promoter) and
+developed in collaboration with Prof. Edwards (co-promoter), where virtual reality and biometric
+sensing based ‘off-site’ -or in laboratory- participant testing protocols were explored (see Fig. 2 &
+3). This research will further develop the UGI quantification and participant testing strategies
+proposed for the Louvain4City grant, and will aim at the formulation of not only off-site but also
+on-site urban participant testing protocols.
+
+With the ambition to test this working methodology, the research will start with a systematic review
+and city level UGI analysis, and will follow with the preparation of the experimental campaigns.
+The final year of the research will be focused to the data analysis and finalization of the thesis
+writing.
+
+2.4 Work plan
+
+The thesis will be organized in 4 main stages that will be developed during the 4 years of the
+proposed research. The research will adopt the Brussels Capital Region (BCR) as the case study.
+
+1) Systematic Review (4 months):
+
+A systematic review on urban GI for improved PET and SLR will be developed. This will form the
+first paper of the PhD. At the same time, we will apply for an ethics agreement for human
+participants testing.
+
+2) UGI documentation: (8 months):
+
+Remote sensing data to compute the Land Surface Temperature (LST) and the Normalized
+Difference Vegetation Index (NDVI), and UrBIS LiDAR aerial point cloud datasets will be used to
+quantify the UGI in BCR squares. For a selection of squares, a high spatial-resolution pedestrian
+level UGI characterization through segmentation analysis and semantic classification – using a
+LiDAR Faro-M70 scanner and an Insta-Pro 360° camera (available in LOCI-MiiL) - will be
+developed. The proposed GI quantification methodology will be published as a technical paper.
+Aside from the UGI quantification and characterization, the collected 360° videos and 3D scans,
+
+                                                               6
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+will enable the projection of the recorded urban square scenes in a VR environment for the
+development of the off-site experimental campaign as per phase 4.1.
+
+3) Experimental campaign preparation; (12 months)
+
+The PET will be computed using a sensing-kit including: sound, temperature, relative-humidity,
+wind speed, wind direction, barometric pressure, and solar radiation sensors. Wearable sensors
+for Heart Rate Variability (HRV) and Skin Conductance (SC) will be used to identify the Stress
+Level Reduction (SLR) (Dalmeida and Masala 2021; Edwards et al. 2015). Through the XR
+headsets -VivePro HTC and Pupil core-, eye-tracking data will be collected - gaze, pupil diameter,
+blinks and head position-, and visual fixations and Areas of Interest (AoI) will be computed. These
+metrics will be used as indicators to identify UGI interest zones, and associate them with PET
+reduction and SLR. Participant feedback questionnaires such as the state Trait Anxiety Inventory
+(STAI) (Spielberger 1983), the Positive and Negative Affect Schedule (PANAS) (Watson et al.
+1988), the Perceived Restorativeness Scale (PRS) (Hartig et al. 1997), and Connectedness to
+Nature Scale (CNS) (Navarro et al. 2017) will be included in the experimental campaign. The
+biometric and survey variables will be studied as the dependent variables and the root mean
+square of the successive differences and ANOVA for the repeated measures will be studied for
+the selected squares with distinct UGI characteristics. A methods paper describing the planning
+of the experimental campaigns will be published.
+
+4) Experimental campaigns:
+Following the approval of the ethics committee, the experimental campaigns will be initiated by
+by an intensive participant recruiting process.
+
+4.1. Experimental campaign Off-site (8 months):
+The participants will be tested in the XR OpenHub in LLN using biometric sensors for HRV and
+SC, and feedback questionnaires to report the SLR. Using the 360° videos and scans captured
+during phase 2, the urban scenes will be visualized in a VR headset - VivePro HTC, and through
+its implemented eye-tracking technologies, the gaze behavior will be analyzed to identify the AoI
+and fixations (Edwards et al. 2003). The sounds of the recorded urban scenes will also be
+preserved, and situations where very intrusive objects dominate the urban scene will be avoided.
+The questionnaires will need to be filled in prior, during and after the experiment. The off-site
+protocol will enable a controlled environment to identify the percentage of time spent in the UGI
+AoI and fixations, and their relation with SLR. A paper describing the off-site experimental protocol
+and the research findings will be prepared.
+
+4.2. Experimental campaign On-site (8 months):
+The recruited participants will be transported to the selected squares in BCR (selection of ~12
+squares made in phase 2), where they will carry a wearable sensing kit including the microclimate
+and biometric sensors (see list in 3) to measure the PET reduction and SLR associated to the
+quantified UGI characteristics (as per phase 2). The Pupil AR headset will be used to study the
+on-site UGI fixations and AoI. On-site pedestrian surveys will also be filled in. Through regression
+analysis, the UGI metrics and PET reduction, PET and SLR, and off-site and on-site
+measurements will be studied. The experimental campaign will be developed two times per day
+for all squares. Days with clear weather conditions, and with low urban occupancy will be selected
+for all studied sites. A paper describing the on-site experimental protocol and the research findings
+will be prepared.
+
+Finally, in the last 8 months of thesis, the final data analysis protocols, and the comparison
+between the tested participant testing approaches will be evaluated. The papers initiated during
+the phases 4.1 and 4.2 will be concluded. The last months of the research will be dedicated to
+the thesis formatting and deposition.
+
+                                                               7
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+Bibliography
+Apte JS, Messier KP, Gani S, et al (2017) High-Resolution Air Pollution Mapping with Google Street View
+
+         Cars: Exploiting Big Data. Environ Sci Technol 51:6999–7008.
+         https://doi.org/10.1021/acs.est.7b00891
+Cole MA, Ozgen C, Strobl E (2020) Air Pollution Exposure and Covid-19 in Dutch Municipalities. Environ
+         Resour Econ 76:581–610. https://doi.org/10.1007/s10640-020-00491-4
+Dalmeida KM, Masala GL (2021) HRV Features as Viable Physiological Markers for Stress Detection
+         Using Wearable Devices. Sensors 21:2873. https://doi.org/10.3390/s21082873
+Edwards MG, Humphreys GW, Castiello U (2003) Motor facilitation following action observation: A
+         behavioural study in prehensile action. Brain Cogn 53:495–502
+Edwards MG, Jiang D, Mullins P, Callow N (2015) The neural substrates for the different modalities of
+         movement imagery. Brain Cogn 97:22–31
+Founda D, Santamouris M (2017) Synergies between Urban Heat Island and Heat Waves in Athens
+         (Greece), during an extremely hot summer (2012). Sci Rep 7:1–11
+Hartig T, Korpela K, Evans GW, Gärling T (1997) A measure of restorative quality in environments. Scand
+         Hous Plan Res 14:175–194
+Imran HM, Kala J, Ng AWM, Muthukumaran S (2019) Effectiveness of vegetated patches as Green
+         Infrastructure in mitigating Urban Heat Island effects during a heatwave event in the city of
+         Melbourne. Weather Clim Extrem 25:100217
+Jayasooriya VM, Ng AWM, Muthukumaran S, Perera BJC (2017) Green infrastructure practices for
+         improvement of urban air quality. Urban For Urban Green 21:34–47
+Johnson S, Ross Z, Kheirbek I, Ito K (2020) Characterization of intra-urban spatial variation in observed
+         summer ambient temperature from the New York City Community Air Survey. Urban Clim
+         31:100583. https://doi.org/10.1016/j.uclim.2020.100583
+Liszio S, Masuch M (2019) Interactive immersive virtual environments cause relaxation and enhance
+         resistance to acute stress. Annu Rev Cyberther Telemed 17:65–71
+Llaguno-Munitxa M, Bou-Zeid E (2020) The environmental neighborhoods of cities and their spatial extent.
+         Environ Res Lett 15:074034
+Lu S, Sanchez Perdomo YP, Jiang X, Zheng B (2020) Integrating eye-tracking to augmented reality system
+         for surgical training. J Med Syst 44:1–7
+Manoli G, Fatichi S, Schläpfer M, et al (2019) Magnitude of urban heat islands largely explained by climate
+         and population. Nature 573:55–60
+Navarro O, Olivos P, Fleury-Bahi G (2017) “Connectedness to nature scale”: Validity and reliability in the
+         French context. Front Psychol 8:2180
+Orchard S, Schiel DR (2021) Enabling nature-based solutions for climate change on a peri-urban sandspit
+         in Christchurch, New Zealand. Reg Environ Change 21:1–18
+Pigliautile I, Pisello AL (2018) A new wearable monitoring system for investigating pedestrians’
+         environmental conditions: Development of the experimental tool and start-up findings. Sci Total
+         Environ 630:690–706
+Piselli C, Castaldo VL, Pigliautile I, et al (2018) Outdoor comfort conditions in urban areas: On citizens’
+         perspective about microclimate mitigation of urban transit areas. Sustain Cities Soc 39:16–36
+Sharifi A, Khavarian-Garmsir AR (2020) The COVID-19 pandemic: Impacts on cities and major lessons
+         for urban planning, design, and management. Sci Total Environ 749:142391.
+         https://doi.org/10.1016/j.scitotenv.2020.142391
+Sowińska-Świerkosz B, Wójcik-Madej J, Michalik-Śnieżek M (2021) An Assessment of the Ecological
+         Landscape Quality (ELQ) of Nature-Based Solutions (NBS) Based on Existing Elements of Green
+         and Blue Infrastructure (GBI). Sustainability 13:11674
+Spielberger CD (1983) State-trait anxiety inventory for adults
+Tawatsupa B, Yiengprugsawan V, Kjellstrom T, et al (2012) Heat stress, health and well-being: findings
+         from a large national cohort of Thai adults. BMJ Open 2:e001396. https://doi.org/10.1136/bmjopen-
+         2012-001396
+Van de Voorde T (2017) Spatially explicit urban green indicators for characterizing vegetation cover and
+         public green space proximity: a case study on Brussels, Belgium. Int J Digit Earth 10:798–813.
+         https://doi.org/10.1080/17538947.2016.1252434
+Villadiego K, Dabat M-A (2014) Outdoor Thermal Comfort in a Hot and Humid Climate of Colombia: A
+         Field Study in Barranquilla. Build Environ 75:. https://doi.org/10.1016/j.buildenv.2014.01.017
+Watson D, Clark LA, Tellegen A (1988) Development and validation of brief measures of positive and
+         negative affect: the PANAS scales. J Pers Soc Psychol 54:1063
+
+                                                               8
+                                Working Plan                                               Year 2022-23  Year 2023-24  Year 2024-25             Year 2025-26
+
+Work Package Description                                                          O N D J F MA MJ J A S O N D J F MA MJ J A S O N D J F MA MJ J A S O N D J F MA MJ J A S
+
+First Phase: State-of-the-art
+
+Systematic Publication of systematic review - Paper #1
+
+Review Ethics application to UCLouvain
+
+                   Remote Sensing Analysis - MODIS and Landsat
+
+Second Phase:      Remote Sensing Aerosol index and wind data collection
+       UGI         UrBIS LiDAR dat | Faro Scanning + 360 imagery
+                   Segmentation analysis and semantic classification for UGI
+documentation      Publication on UGI characterization methodology - Paper
+
+                   #2
+
+                   Gathering sensor communication network setup
+
+                   Microclimate sensing
+
+Third Phase:       Biometric sensing
+Experimental       Devising Immersive media protocol
+                   Participant feedback documentation and protocol
+  Campaign         generation
+  planning         Experimental Methodology paper - Paper #3
+                                                                                                                                                                                                                                                    F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                                                                                                                                                                 'Research Fellow' (ASP - Aspirant)Sensitive Data storage server and authentication
+
+              Gantt Chartdevelopment
+9
+                   Campaign advertisment and signup protocols
+
+Fourth Phase:      OpenHub XR lab Setup + Instrument preparation
+Experiemental      Off-site: Participant experience one on one
+                   Campaign feedback and cataloging user experience
+  Campaign         Sensing kart final preparation for on-site experience
+  execution        On-site: Participant experience -urban immersion
+
+                   Campaign feedback and cataloging user experience
+
+                   Data Assessment
+
+Fifth Phase: Data  Data testing (e.g RMSSD & ANOVA)
+Analysis & Thesis  SLR and Comfort Indicators research
+
+Writing            Research findings and On-site and Off-site results - Paper
+                   #4 & Paper #5
+
+                   Thesis writing and completion
+
+                   * Publications marked in bold and italic                       Stage 1  Stage 2       Stage 3       Stage 4.1     Stage 4.2  Stage 5
+
+                   * In red the time at the EPFL Prof. Manoli's Lab is indicated
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+Figure 1: Research workflow diagram
+
+Figure 2: (left) video & point cloud semantic classification of 16 sites in BCR with distinct green index
+ratios for characterizing green infrastructure (right) eye tracking data visualization (AOI & fixations)
+
+Figure 3: (left) Participant recruitment announcement launched in December 2021. (right) participant
+testing within the openHub in Louvain-La Neuve
+
+                                                              10
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+3. COMMENTS ON CHANGES MADE IN THE RESEARCH PROJECT IN CASE OF
+   RESUBMISSION (OPTIONAL)
+
+                                                              NA
+
+                                                              11
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+4. POTENTIAL INTERDISCIPLINARY APPROACH OF THE RESEARCH PROJECT
+   (OPTIONAL)
+
+The proposed research focuses on the study of the role urban green infrastructure characteristics
+play on urban comfort - stress level reduction and thermal comfort in particular. This research
+requires the development of quantitative and qualitative, interdisciplinary research methodologies
+that combine: urban science, environmental science, experimental psychology and cognitive
+neuroscience perspectives.
+
+         My research experience is focused on the study of environmental sciences (focusing on
+thermal comfort and environmental sustainability), resource allocation, cloud computing and
+landscape planning, classification and prediction maps for forecasted years, data fusion research
+and multi-criteria decision analysis. Given the interdisciplinarity of the research proposal, my
+research expertise will be complemented with the environmental and urban science background
+of promoter Prof. Llaguno-Munitxa from UCLouvain - Louvain Landscape, Architecture and Built
+(LAB) institute, and with the expertise on experimental psychology and cognitive neuroscience
+provided by the co-promoter, Prof Edwards president of the UCLouvain Psychological Sciences
+Research Institute (IPSY). An international collaboration with Prof. Manoli from the University
+College London - Department of Civil, Environmental & Geomatic Engineering has also been
+established. Prof. Manoli is specialized in environmental sciences and urban forestry.
+
+         My research background will be complemented by that of Prof. Llaguno-Munitxa and the
+research group, Architecture et Climat group of LAB at UCLouvain. The Architecture et Climat
+group fundamental and applied research interests include, amongst others, the study of urban
+science, climate and health as well as the study of environmental quality and human comfort
+factors. The urban analysis workflows for the quantification and characterization of the urban
+green infrastructure, and the environmental sensing campaign preparation (sensor testing and
+calibration), will be developed within the Architecture et Climat lab and under the supervision of
+Prof. Llaguno-Munitxa. The expertise of Prof. Manoli and his collaborators from the Urban
+Ecohydrology Lab at the University College London, will also be instrumental to the development
+of the sensing protocol. Prof Manoli will be joining the School of Architecture, Civil and
+Environmental Engineering at EPFL as professor in September 2022, where he will be hosting
+me in his lab during a stay of 90 days during the phase 3 of the research.
+
+         The preparation of the biometric sensing protocol and participant questionnaire
+methodology and testing will be developed in collaboration with (co-promoter) Prof. Edwards and
+his collaborators from the Psy-NAPS lab from IPSY- UCLouvain, (associated with the Institute of
+Neuroscience and Louvain Bionics). The contribution of Prof. Edwards will focus on the guidance
+of the VR experimental approaches, the biometric sensing protocol and the use of participant
+questionnaire methodology, as well as providing support equipment from his Psy-NAPS group.
+
+    The research that I will be working on, will benefit from the interdisciplinary project developed
+as part of the grant Louvain4City 2021 “Brussels Street Greenery and Citizen Comfort Evaluation”
+PI- Asst Prof. Llaguno-Munitxa. Within UCLouvain, this work was performed in collaboration with
+Prof. Edwards (president of IPSY at UCLouvain) and the Media Innovation & Intelligibility Lab
+(MiiL) through the contribution of Prof. Sebastien Nahon, as well as through the collaboration with
+the OpenHub XR team led by Dr. Sonneville. Aside from the internal UCLouvain collaborations,
+the Louvain4City grant initiated an international collaboration I would like to build on with Prof.
+Tzyy Ping, co-Director of the Center for Advanced Neurological Engineering, Institute for Neural
+Computation (INC) and Institute of Engineering in Medicine (IEM), in the University of California,
+San Diego. Furthermore, a collaboration with distinguished Prof. Eduardo Macagno from the
+department of Developmental Biology at UCSanDiego and specialized in the novel
+interdisciplinary area: Architecture and Neuroscience was established. Prof. Eduardo Macagno
+is also co-Director of the Academy of Neuroscience for Architecture.
+
+                                                              12
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+5. DESCRIPTION OF THE WORK ENVIRONMENT
+
+The promoter Prof. Llaguno-Munitxa is a professor at UCLouvain where she is a member of the
+faculty LOCI (Architecture, Architectural Engineering, Urbanism), and the Louvain Landscape,
+Architecture and Built environment (LAB) research institute (created in January 2021 to sustain,
+coordinate, nurture and manage all research activities at UCLouvain in the fields of architecture,
+architectural engineering, urban and landscape design, and territorial development). Within LAB,
+the research group Prof. Llaguno-Munitxa is part of, the Architecture et Climat group - founded in
+1980, is one of the most recognized and longest-standing entities within UCLouvain.
+
+         As PhD candidate, I will be part of the Louvain research Institute LAB and within it, the
+Architecture et Climat research group. The group focuses its fundamental and applied research
+interests on four interrelated areas of 1) urban science, climate and health; 2) life cycle
+performance and parametric modelling at urban and building scale; 3) building performance
+simulation and energy flows predictions 4) environmental quality and human factors. The
+research of Prof Maider Llaguno-Munitxa is focused on the first pilar of research within the group,
+that is the study of urban science, comfort and health. The research methodologies she uses in
+her work include direct sensing, environmental modeling, and data-driven approaches. Working
+alongside several national and international partners, the architecture et climat group has
+developed significant expertise in the development of energy performance simulation modelling
+and analysis of dynamic climate-based phenomena including the thermal comfort and ventilation.
+The group regularly publishes papers in peer-reviewed international journals and is invited at
+national and international conferences. Within Architecture et Climat, over 30 PhD theses have
+been completed since its creation, including several FNRS-funded scholarships. Furthermore,
+through the collaboration with the co-promoter Prof. Edwards, and his lab members at Psy-NAPS,
+I will engage with biometric sensing technologies for the heart rate variability, skin conductance
+as well as the potential usage of Electroencephalography. This collaboration will also be critical
+for the analysis and rationalization of the collected datasets, and development of the participant
+survey protocols. My stay during 3 months at the EPFL lab of Prof. Manoli (currently at the
+University College London) will enable the further testing and evaluation of the microclimate
+sensing protocol and the computation of the Perceived Equivalent Temperature (PET).
+
+Selected list of publications of the promoter and collaborators (related to this project):
+Llaguno-Munitxa M., Bou-Zeid E. Sensing the Environmental Neighborhoods. (2021).
+Proceedings of the DigitalFUTURES. CDRF 2020. Springer, Singapore.
+Llaguno-Munitxa M, Bou-Zeid E. (2020). The environmental neighbourhoods of cities and their
+spatial extent. Environmental Research Letters, 15.
+laguno-Munitxa M, Bou-Zeid E, Hultmark M. (2017). The influence of building geometry on street
+canyon air flow: validation of large eddy simulations against wind tunnel experiments. J. Wind
+Eng. Ind. Aerod., 165.
+Callow, N, Edwards, M. G, Jones, A. L., Hardy, L., & Connell, S. (2019). Action dual tasks reveal
+differential effects of visual imagery perspectives on motor performance. Quarterly Journal of
+Experimental Psychology, 72(6).
+Grade S, Pesenti M and Edwards MG. (2015). Evidence for the embodiment of space perception:
+concurrent hand but not arm action moderates reachability and egocentric distance
+perception. Front. Psychol. 6:862.
+Manoli, G, Fatichi, S, Schläpfer, M. et al. (2019). Magnitude of urban heat islands largely
+explained by climate and population. Nature 573.
+Meili, N, Manoli, G, Burlando, P, Carmeliet, J, Chow, W, Coutts, A, Roth, M, Velasco, E, Vivoni,
+E, Fatichi, S (2021). Tree effects on urban microclimate: Diurnal, seasonal, and climatic
+temperature differences explained by separating radiation, evapotranspiration, and roughness
+effects. Urban Forestry & Urban Greening, 58.
+
+                                                              13
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+6. SUMMARY OF THE MASTER’S THESIS OR EQUIVALENT
+
+Urban Heat Environment is subjective to various phenological & anthropogenic changes
+throughout the day. However, satellites have always faced gain and loss bias towards prioritizing
+spatial resolution vs temporal resolution, which has accounted for various time gaps between
+consecutive observations. Gaining higher spatial resolution would require satellite to be placed in
+near-earth orbit, which takes longer time for instrument to circle back around the world to initial
+position for a secondary observation. Additionally, detailed observations require higher
+radiometric capability, which requires more ground controls to receive data, which makes the
+entire enterprise expensive. And near-earth satellites have historically used extensive fuel to
+maintain orbital position, resulting in a lower lifespan. Such problems prevent satellite data to give
+a complete overview of the Earth phenomenon, and to compensate for such gaps in satellite
+sensing, ground sensors were developed to sense any desired parameter and store locally or
+transmit data under private radio frequencies. Such sensing is referred to as hyper-local sensing
+and accounts for sensing phenomena irrespective of daylight and can help fill voids in satellite
+sensing.
+
+But as the sensors act as a proxy of satellite sensing, the location of placing the sensor has been
+of great debate especially since the exact location to place sensor is subjective to individual
+observers. A standard approach, if it were to be developed, would require a holistic observation
+of the entire region to pinpoint location based on environment.
+
+The use of this study will provide an aggregated framework for carrying out sensor placement,
+which will be focused on the phenomenon being perceived and unbiased from human perception
+and will be more efficient technologically.
+
+Spatiotemporal data fusion was useful in prioritizing the grid cells that have more influence to the
+urban heat gains, and sensor placement strategy which was based on these priorities were
+carried out. Further, the varieties of existing LCZ within grids were considered and estimate of the
+overall sensors required for monitoring these features were mathematically established. And
+further the authorities that have a set budget for purchasing the sensors, can use the proposed
+method for understanding the minimum number of sensors needed for a city-wide sensing and
+along with locations that can be prioritized.
+
+This prioritization scheme was purely dependent on the measured heat intensities over surfaces
+and the network source (LoRa Gateway) placement was based on the maximum coverage
+potential under the terrain considerations of study area, and thereby optimization of network
+sources was also carried out. These network serves have to be placed in secure locations, and
+therefore the government buildings and public pre-existing infrastructure was mapped with OSM
+data, where sufficient range can be achieved for end sensor placement.
+
+Finally with the established variability at the end device, gateway, terrain consideration and public
+infrastructure availability, the sensor placement map was proposed which would be optimal and
+unbiased towards the Local Climate Zones being studied, and would be based on the
+phenomenon of Urban Heat being sensed.
+
+                                                              14
+                                                                             F.R.S.-FNRS GRANTS AND FELLOWSHIPS CALL 2022
+                                                                                                            'Research Fellow' (ASP - Aspirant)
+
+7. ADDITIONAL COMMENTS (OPTIONAL)
+
+NA
+
+                                                              15
+

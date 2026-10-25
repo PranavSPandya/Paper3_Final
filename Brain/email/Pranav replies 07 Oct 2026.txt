@@ -1,0 +1,35 @@
+Hi Yen-Shuo, 
+I have updated the sound-analysis outputs in the GitHub repository. The previous version contained many YAMNet class-level columns that were not needed. I have restored the category classification from your original notebook and added the corresponding category proportions for each 10-second window.
+The updated outputs are available here for pilot test of P9 WalkG:
+https://github.com/PranavSPandya7/Analysis 
+
+Please use these current GitHub outputs instead of the previously shared files. 
+Kind regards,
+Pranav
+From: Pranav Pandya 
+Sent: Tuesday, October 6, 2026 2:32 PM
+To: Yen-Shuo Huang <yen-shuo.huang@uclouvain.be>; Maider Llaguno <maider.llaguno@uclouvain.be>
+Subject: RE: Comments about the codes
+
+Hi Yen-Shuo,
+Please find response to some of the questions. 
+Regarding empatica__met, it is obtained directly from the Empatica cloud Biomarkers export and was not recalculated in our processing pipeline. The raw AVRO files do not contain this MET biomarker.
+ 
+The study-derived stress composite (eyetracker_stress_composite) combines Pupil Labs Neon fixation count (FC) and fixation duration (FD). These are min-max scaled per participant across all phases, with fixation duration inverted so that higher values in both components indicate higher visual stress: FC_scaled = (FC - min FC) / (max FC - min FC), FD_scaled = 1 - [(FD - min FD) / (max FD - min FD)], and Stress Composite = (FC_scaled + FD_scaled) / 2.
+
+The Clearness Index was calculated as: k_t(t) = G_H(t) / G_0(t)
+where G_H is ucm_SUN_Gh, the measured global horizontal irradiance, and:
+G_0(t) = G_sc × E_0(n) × sin(α(t))
+with G_sc = 1367 W/m², E_0(n) = 1 + 0.033 × cos(2πn/365), and α(t) taken from ucm_SUN_alt and converted from degrees to radians.
+The formula reference for the clearness-index method described by https://www.mdpi.com/1996-1073/17/10/2328
+
+For SVF this github repo is useful, and given its directed by Peter, and uses fisheye photos its useful. But they used a Keras SegNet architecture based on pradyu1993/segnet (Cambridge SegNet), the repository does not include the trained weights for its specific SegNet model. I checked for Segnet model but couldn’t find trained weights for their model. If you come across this, please let me know. 
+I noticed the Xception model also has sky label, based on that I have worked on this script " SVF Computation\compute_svf_camup.py". I have pilot tested it for P9 WalkG. If this looks acceptable then I will proceed to running it for all other participant phase. 
+
+Regarding sound classification, following the two Bluyssen papers, I treated sound level, frequency characteristics, and sound type as separate acoustic characteristics. For the frequency component, I implemented a frequency-analysis pipeline including 5 broad-band energy proportions (20–125 Hz, 125–1000 Hz, 1000–4000 Hz, 4000–8000 Hz, and 8000–20000 Hz), 9 octave-band relative-energy descriptors centred at 31.5, 63, 125, 250, 500, 1000, 2000, 4000, and 8000 Hz.
+I have completed the sound-processing pipeline for all 11 participants and pilot-tested the SVF pipeline for P9 WalkG. 
+
+If the SVF approach looks acceptable, I will proceed with the remaining participant-phase runs and then update you on the remaining questions using the complete dataset. The sound, clearness-index, and SVF scripts are available here: Analysis. The Empatica and eye-tracker preprocessing scripts are available here: ExpData.
+
+Kind Regards,
+Pranav
