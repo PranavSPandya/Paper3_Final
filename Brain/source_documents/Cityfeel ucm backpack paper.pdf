@@ -1,0 +1,270 @@
+     Available online at www.sciencedirect.com                                                                                                                                                                                                                                                    www.elsevier.com/locate/procedia
+                                                                                                                                                                                                                                                                                                  www.elsevier.com/locate/procedia
+         SScciieenncceeDDiirreecctt
+                                                                                                                                                                                                                                                                                                   www.elsevier.com/locate/procedia
+               Energy Procedia 00 (2017) 000–000
+     AvAavialailbaElbenleeorgnoylninPlirenoecaetdaiwtaw00w(w.2s0.cs1i7ce)ine0cn0e0cd–e0idr0ei0rcetc.ct.ocmom
+
+         SScciieenncceeDDirierctect
+
+                EEnneergrgyyPProrocceeddiaia10202 ((22001177)) 030901––030906
+
+CISBAT 2017 International Conference – Future Buildings & Districts – Energy Efficiency from
+CISBATN2a0n1o7toInUterrbnaantiSocnaalleC, ConISfeBreAnTce2–01F7u6tu-r8eSBeupitledminbgesr&20D17is,tLriacutssa–nEnne,erSgwyitEzfefrilcainedncy from
+
+SmaCCriitttNAyyCaFFisntsoeeieeeetsosll(sUT--Uihrnbmmeragb1nii5acctStnhhrrcooaeISlneitfccm,eellrCniiuaImmaSlstaiBioaatbAnittoiaeeTlnli2Suumm,ty0yBrr1moobbi7ogpnnaa6fonniiD-sttu8iooauddsSmtrreeieaiinpnnsso)tgiineggggmDtnnffbhiooseetrrrri2chcc0te1llHii7amme,taLtaadianttuegeesmaanmmnandeiinC,ttdiiSoggw-oaaoliitnttuziigeootrdlnnaonaadonnr dd
+  temperature fPuentecrtGioalnlinfeollri*a, RloetnogC-atmerpmonodvios,trViicctohr eGautildloet mand forecast
+
+                       Peter Gallinelli*, Reto Camponovo, Victor Guillot
+         I. Andrića,b,c*, A. PHHiEEnSSa--SSaOO, //Phhee.ppFiiaa,,e44rrrruuãee oddeeall,aaJpp.rraaFiirriioee,,u1122r00n22iGGeeernnbee.vv,aa,,BSSww. iittLzzeearrllcaannaddrrièrec, O. Le Correc
+
+AbstarIaNc+t Center for Innovation, Technology and Policy Research - Instituto Superior Técnico, Av. Rovisco Pais 1, 1049-001 Lisbon, Portugal
+AWbhsitlreaactsignicfDicéapnatrtpemaretnot Sf ytbshVtèeemopleiosapÉRuneleacrhtgieoértnciqhiuese&scoeItnnEnconevvnaitrrtoiaontnen,de2m9ien1nAtuvr-beInaMuneTaDArertleaaysnf,otiutqhsueeD,ia4nnfrileuule,e7An8lcf5er2e0dofLKicamistatylyes,rc,Fa4rp4ae3n0cpe0aNraamnteetse,rFsraonncehuman heat
+
+sWtrheislse raemsiaginnifpicoaonrtlypaurnt doefrsthtoeopdo. pYuelat tiwoen aisgrceoenctoendtreavtedlopinuurrbbaann sapraecaess, t(hsetreinetf,luseqnucaereo,fdciisttyrsictap..e.)pianraamwetaeyrs tonphrouvmidane hbeast
+
+pstoressisblreemquaianlitpyoofrlylifue.ndInersotrodoedr. tYo edtowseo,aqgureaenttiotatdiveevealnodp quurbaalintatsipvaeceresfe(sretrneceet,s saqrueareq, udiirsetdri.cTt o...)fililnthaiswgaayptotheprHovEiSde-SbOe†st-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                aHnEdSi-nSdOo††or-
+hhepneoeAppvsbsiiraaisobt//llrnleeeameecaaqet‡‡‡unhhatslaai.sstyTddhoeeevvf eemlllioofoeppn.eeitddIonraaionnnrgdiinneennrqooutvvoiaapttdmiivvoeeenstoppoo,isrrqtteaaumbballnbeeteitmmdadtooiennvdiiettioonarrntiionndggaqssubyyaasslcttikeetammptaivctthhekaatrtheccfaeaatrnniesnbbcceeaerseeraaiaessriidellyydrddueqeerippunlligooreyy‘deec.ddliTmiionnatfvviicaallrruiitoorhbuuiassnoogwuuattpaddlookthoose’rr                                                                                                tahnadt icnadnoboer
+
+erenDpvirisortodrinucmcteehdnetaastt.indTgihffeneermetwnotnoitrtikomsreinasrgeoefcqtouhmiepmmdoaeynnltyoirsasdeemdarsbeoesnsdseddesodinitnotthoyeiaellidbteaarcakdtpueartecakilaetsdhaoatnneids ocdfayrntrhiaeemdmicdoudsrteinsegcfrfi‘epcctltiiomvneatoiscfoltuuhrtebioacnnlismwfaoltrkicsd’ceotchrneatatesxcitannogfbtaehe
+rpeogprrrteoieodnnuhcooefudtsheaetgcadistiyfefefmroeisnmstiothinmesepfsreodomefsttrhhieeandbapuyoilidonirtnogsfesavesicoetwnosr..sTohteoseyiseylsdteamdserteaqilueidreanhdigdhyinnavmesitcmdeenstcsrwiphtiiocnh aorfethreetucrlnimedattihcrocuognhtexthteohf eaat
+p©osar2tl0ieo1sn.7 oDTfhuteeheAtocuitthtyhoefrrsoc.mhPautnbhgleiespdheedcdleibsmtyraiEatenlspecvooinendrtitLoifotdnv.siewan.d building renovation policies, heat demand in the future could decrease,
+©CPCPDP©pfTeeeooio2eerse2hnnortrrr00effer---lee1i1rrocrcmrreee77anteevvvsagnnTTiitiiiee.–eccnhhnwwweeTeegEs––chAnuuAuthoennnFFuueprddduuttgdehheeeittyinuurroroosvrrrtErrfreerseseeeift..sssscBBfhtPppiPptmicuuoosouuioiiennenbbllpfddnnsssllaiiiiictsApsbbbnnyhrheiiiggelllleervfssiiitddrtttuaiyyyo&&srlbbmanoootyydoDDfffpeNEEiittaet,sshhhllasrttsseeielsnrrooeeeiiosssccvvdcscccttaiis.tssiieeioteeeterr––hnnnUdLLetttEEiiirttfffifbddnniiineccca.ee.anrrcLccsggoiooSiyybsmmmcibEElammmoilfftneyffiiiiitttccttto(eeeiiPfeeeeonnuooorccstfffiyyuntttghffhhgrraeeeootlh)mmCss,eccIiiwNNSheeBennaaaattsnnAiitffooTuiidccttse2ooeccm0dooUU1ammrr7nabbmmsdIaan–iinnattttteSSoeecrueeccnaaatsaoodlleteeffoio..ottshhntrueeatdleCCyCmII.oSSpTnBBefrhAAeaertTTeudnr22eics00etf11ru–i77ncFtcIInntuiittosteeunrrrcnnefoaaonBttriisoouihsnnieltaadeallidtndgoesfm&6an6d5
+Kbeyuwilodridnsg:scltihmaattevmariytigiantiobno;tmh iccrooncsltirmuactteiomnonpietoriroindg;aunrdbatnydpeoslioggny; .opTehnrdeaetaweather scenarios (low, medium, high) and three district
+Kreeynwoovrdasti:ocnlimscaetenmariitoigsatwioenr;emdicervoeclloimpeadte (mshonailtloorwin,g;inutrebramn eddesiiagtne;, odpeeenpd)a.taTo estimate the error, obtained heat demand values were
+
+     compared with results from a dynamic heat demand model, previously developed and validated by the authors.
+
+     The results showed that when only weather change is considered, the margin of error could be acceptable for some applications
+
+     (the error in annual demand was lower than 20% for all weather scenarios considered). However, after introducing renovation
+
+     scenarios, the error value increased up to 59.5% (depending on the weather and renovation scenarios combination considered).
+
+     The value of slope coefficient increased on average within the range of 3.8% up to 8% per decade, that corresponds to the
+
+     decrease in the number of heating hours of 22-139h during the heating season (depending on the combination of weather and
+
+     renovation scenarios considered). On the other hand, function intercept increased for 7.8-12.7% per decade (depending on the
+
+     coupled scenarios). The values suggested could be used to modify the function parameters for the scenarios considered, and
+
+     i*mCporrorveseptohnediancgcauurtahcoyr.oTfehl.:ea+t4d1e(m0)2a2nd54e6st2im6 9a3ti;ofnaxs.: +41 (0)22 546 26 91.
+
+†    * CE-omrraeislpaodnddriensgs:auptehteor.gTaellli.n: e+ll4i1@(h0e)2sg2e5.c4h6 26 93; fax: +41 (0)22 546 26 91.
+‡††  HHUUP©enaanEe2uuiivv-rtt0meeee-1rrraééess7cciivlttooTyyialleeehdoowdeffddruuAAAueppppsnusaappd:tyyllheiipsseeroaaeddggrtreseeeSSr.,,scc.gpPddiieeao''uiinnlnnnlbcciggsnleeééiissesbnnlhaaliiiieelnne@irrdddtiiyeehAAbeeeorrysttttfgssddEet''oohaa.lcffrrsehcceWWhhSviieecitteeessiccttereettnuurrLnntrriteefdSSidd.wwceeiiCttGGzzoeeemrrnnllèèaamvvnneeddit//teLLeaabbooofrraaTtthoorreyy1ff5oorrtheennIeenrrtggeyyr,,neeanntivvoiirrnooannlmmSeeynnmtt aapnnoddsaaiurrccmhhiittoeenccttuuDrreeistrict
+‡‡                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           Heating  and
+
+18C7o6o-6li1n0g2. © 2017 The Authors. Published by Elsevier Ltd.
+
+P1PE8eeKnee7eerr6ry--g-rrw6yeeo1vvEr0iieedf2fwwsi:©cuuiHenn2nedd0acee1tyrr7dfrreTreeomsshmppeaoonANnndssua;iitnbbFhoiioolliirtrtteosyyc.UaooPsffrutb;ttbhhaCleenislisshSmcceciidaaeetlnnbeetty.iicffhiiEccalsnccegoovemmiemmr iiLtttteedee.  of  the  CISBAT  2017  International  Conference  –  Future  Buildings                                                                                                                                                                                          &  Districts  –
+                                                                                                                                                                                                                                             of  the  CISBAT  2017  International  Conference  –  Future  Buildings                                                                                                                                                                                          &  Districts  –
+
+Energy Efficiency from Nano to Urban Scale.
+
+ 1876-6102 © 2017 The Authors. Published by Elsevier Ltd.
+
+18P7e6er--6r1e0v2iew© u2n0d1e7r TrehspeoAnsuibthiloitrys.oPf tuhbelSischieedntibfiyc EClosmevmieirtteLetodf. The 15th International Symposium on District Heating and Cooling.
+Peer-review under responsibility of the scientific committee of the CISBAT 2017 International Conference – Future Buildings &
+Districts – Energy Efficiency from Nano to Urban Scale
+10.1016/j.egypro.2017.07.427
+3292                   Peter GPaeltleinreGllai lelitnaell.li/ eEtnaelr.g/yEPnerorgcyedPirao0ce0d(i2a011272) (020001–70)03091–396
+
+1. Main text
+
+1.1. Introduction
+
+   75% of the European population is concentrated in rapidly growing urban areas. While adaptation to climate
+change in cities is a major challenge, “well-being” in terms of hygrothermal comfort and air quality of residents and
+pedestrians and the contributing effects are still poorly understood. Ongoing urban developments (streets, squares,
+plazas, parks, crossroads, and neighborhoods) claim to offer the best possible experience to their users (inhabitants,
+pedestrians). Yet, development policies are often based on subjective knowledge and lack quantitative and
+qualitative reference data.
+
+   Hence, climate warming and urban heat island effect have direct impact on inhabitants’ health (specially the
+elderly and weak), on pollution levels, on energy consumption (e.g. air conditioning), on biodiversity, etc… Due to
+these issues, growing attention is being paid to the management of urban spaces of all kinds. Design (ergonomics,
+aesthetics) is not enough; climate resilient planning will be a challenge for the next decade and will help to mitigate
+adverse effects of climate change. Local authorities will adapt urban planning in ways that take into account climatic
+and sanitary constraints, meaning that urban planners and local governments require reliable reference data to make
+best choices with a limited budget and time.
+
+   CityFeel aims to provide a toolbox to urban planners for climate-adapted city development. This toolbox
+comprises a methodology, physical tools and open data that are made available to planners and the scientific
+community. In-depth knowledge of the dynamics of “comfort and air quality at a pedestrian level” will have many
+purposes, including but not limited to urban surfaces, vegetation, traffic control, health monitoring, etc.
+
+1.2. State of the art
+
+   Unlike reference climate stations (physical parameters) and air quality stations (chemical parameters) that are
+commonly used for conventional meteorological purposes or the monitoring of pollution levels, CityFeel measures
+the human perception of the immediate environment in terms of response to hygrothermics and air quality. This is
+why the protocol must be tied to the human metabolism and measurements must take place at pedestrian level.
+
+   Most commonly, when climate or air quality data are available for a given city, these are derived from static
+measurement stations. Their aim is to qualify the urban climate according to conventional classifications such as city
+center, suburbs, countryside. For example Geneva has three WMO grade measuring stations, (maintained by the
+University of Geneva and by hepia / climacity) in addition to the historical station of the Swiss Office of
+Meteorology at Cointrin (Geneva airport). The size and complexity of these conventional stations do not allow for
+extensive coverage over a given territory or even a district. Furthermore, measurements from conventional weather
+stations do not describe what is “felt” at pedestrian level.
+
+   Other methods consist of making use of numerical simulation models; whilst the complexity of these algorithms
+can be managed with increase of computing power, limitations are mainly due to the capability of physical model
+input description and limited resolution of the city model, as well as the scarcity of reliable data for model
+calibration. These models tend to have limited resolution and reliability at pedestrian level, where the feedback is
+most critical and also is most complex to simulate.
+
+   Drive- or walkthroughs with sensors attached to vehicles have been demonstrated over the past decades and have
+produced parameter profiles trough many city sections. The observation that for example ‘green’ or ‘blue’ do not
+always have measurable effect shows that there still is a lack of knowledge on how these indicators should be
+interpreted into robust ‘climatic bricks’ for urban developers and planners.
+
+   Due to the previous points we have not yet found a city with a network of long-term quality climate
+measurements at pedestrian level with a high density of measurement points and who’s monitoring considers human
+metabolism.
+                  Peter   Peter Gallinelli    Eetnaerl.g/yEPnreorcgeydPiaro0c0e(d2ia01172)20(0200–1070)0391–396  393
+                         Gallinelli et al. /                                                                      3
+
+1.3. Methodology
+
+   The first step was to define an investigation methodology and the qualitative criteria based on the multiple senses
+that affect the complex and multisensory perception of pedestrians while roaming through the city (e.g. the human
+body is sensitive to radiant temperature from surrounding surfaces, to air turbulence, to noise, to odors, to visual and
+acoustic perception, and so on…).
+
+   Then, knowing that the deployment of a fixed monitoring network with as many data collection points as
+necessary would be too restrictive, too expensive and difficult to achieve, we changed the paradigm by developing a
+portable and affordable measuring device in the form of a backpack. In this way, the sensors are attached to a
+pedestrian operator and move along a free or predefined path through the city. This provides great flexibility of use,
+anywhere and at any given time. The data is collected at a rate of 1 Hz and is made available for display and analysis
+by the means of a dedicated graphical interface or more traditional analysis tools.
+
+   Hemispherical and ground images complete the sensor array. They are used for analysis, such as sky view factor
+or vegetation index, but also allow for ‘reverse engineering’ of acquired data: in a way they give eyes to the sensors
+and allow better understanding of cause and effect. Data collected from the sensors feed a human body heat balance
+model to evaluate physiological equivalent temperature (PET), which is defined as equivalent temperature having
+comparable heat sensation in controlled environmental conditions without radiation, wind, etc. PET is easily
+understandable and is closest to the actual heat sensation.
+
+         Fig. 1. (left) operator during a climate walk, carrying the microclimate-meter, (right) sample of data displayed in the ad-hoc viewer
+
+2. Description
+
+2.1. Investigation and measurement equipment
+
+   The specifically designed ‘microclimate-meter’, further referred to as uCM, is the core part of CityFeel. The goal
+is to deploy an array of environmental sensors within a mobile and light-weight system.
+
+   Thus, beyond the conventional parameters (ambient temperature and humidity), the uCM also logs multi-
+directional radiation temperatures, vertical temperature profiles at pedestrian level, thermal turbulence, wind speed,
+direction and turbulence, noise level and records the soundtrack and hemispherical images (sky and ground camera).
+A GPS receiver and an inertial reference platform make it possible to locate the measured data in time and in space.
+In the latest version we added additional sensors to measure air quality such as CO2, NOx, Ozone and micro
+particles.
+3494  Peter GPaeltleinreGllai leltinaell.li/ eEtnaelr.g/yEPnreorgceydPiaro0c0ed(i2a01272) 0(20001–70)03091–396
+
+      Table 1. Table of physical sensors:                 Resolution  Absolute error
+            Sensor                                        0.1°C       0.2°C
+            Ambient temperature                           0.1°C       0.4°C
+            High speed temperature                        0.1%        1%
+            Relative humidity                             0.1°C       0.5°C
+            Radiant temperature (left, right … up, down)  1W/m2       1.5%
+            Solar radiation                               0.01m/s     1%
+            Wind speed                                    1dB         3%
+            Sound pressure                                0.1m        <10m
+            Position (GPS)
+
+2.2. The uCM on-board equipment
+
+   The sensor array is connected to a dedicated logging equipment consisting of a Campbell Scientific CR-6 data
+logger, an ATmega328 based micro-controller board and a nano-PC for image handling and on-the-fly data quality
+assessment and synchronization. Ongoing development includes a real-time graphical operator interface.
+
+   The approximate data flux is 7MB/second. The autonomy is about three hours of continuous sensor streaming,
+limited only to LiPo battery and memory stick capacity and capacity of the operator to carry the 5kg equipment.
+
+2.3. Data processing and results
+
+   During the development process, calibration test walks followed a fixed reference sequence, characterized by a
+sufficiently contrasting "urban scape" (avenue, square, park, street). At present, the operator simply puts on the uCM
+and starts monitoring according to specific interests.
+
+                        Fig. 2. Overview of the process of data analysis: crude data visualization, sectorization, statistical analysis
+
+   Once the campaign is finished, the operator transfers the collected data to a desktop PC where a script aggregates
+all collected data, converts it to a suitable format for post-treatment and calculates derived indicators related to
+outdoor human heat stress, such as mean radiant and operative temperatures, PET (Physiologically Equivalent
+Temperature), UTCI (Universal Thermal Climate Index), HUMIDEX (Humidity index), WBGT (Wet Bulb Globe
+Temperature), etc.
+A Java™ program allows for first observation and interpretation of the collected data by the means of a dedicated
+graphical user interface. In depth analysis is done by traditional environments, such as e.g. ArcGIS mapping and
+Peter   Peter Gallinelli    Eetnaelr.g/yEPnreorcgeydPiaro0c0ed(2ia01172)20(0200–1070)0391–396                                 395
+       Gallinelli et al. /                                                                                                     5
+
+analytics software, Mathlab®, Statistica® or R, typically used to sectorise, analyze and visualize data. Machine
+learning algorithms take care of related image analysis, such as sky view factor (SVF) or vegetation indexes.
+
+2.4. Case-studies
+
+   The interaction of city and climate is a very complex process and is determined by many influencing factors.
+Added to this are weather conditions, time of day, use (differences between works and holidays) and much more.
+Never less, assuming that variations over a short period of time are small, a close look into measurements data give
+clues to comprehension of the urban metabolism.
+
+   How efficient are climate strategies in the real-world and what are the best options can be identified by the
+observation of comparative solutions at different periods and times of the day. For example evaporation from water
+effectively acts as a cooling strategy, as can be seen on the illustration hereafter.
+
+             Fig. 3. Example effect of water as urban climatic design feature decreasing temperature whilst increasing air water content.
+
+   Climate walks are also useful to identify places where heat stress and pollution are least. This knowledge can be
+used to inform the population and to identify local adaptation and mitigation strategies. Charts showing parameters
+such as PET, UTCI, humidity, wind, etc… show a strong correlation between urban morphology and parameters
+affecting human outdoor comfort and health.
+
+Fig. 4. PET profile of a climate walk in Geneva center indicating cold- and hot spots on a summer morning and sectors (right)
+396  Peter   Peter Gallinelli    et al. / Energy Procedia 122  0(20001–70)00391–396
+6           Gallinelli et al. /  Energy Procedia 00 (2017)
+
+   It has been shown that already a single climate walk can be meaningful. The following comparison of trends for a
+series of thirteen sectors (A to M, see figure 4 right side) on different days is very good. This means that even
+though the absolute temperature may not be known in advance, the data of a single walk can be extrapolated to
+predict thermal behavior of the city and give objective indications to questions such as: what are the best places to
+rest, which are the most comfortable and healthiest ways to travel from one place to another depending on the time
+of day, and so on.
+
+                               Fig. 5. Comparison of temperature and PET profiles for different days; sectors refer to figure 4
+
+2.5. Discussion and outlook
+
+   The uCM monitoring and logging backpack has contributed in research projects related to effects of vegetation
+and water in the city and urban morphology. Numerous climatic walkthroughs have been completed over the last
+year revealing interesting insight into climatic metabolism of cities.
+
+   The uCM is readily available for research in the field of city climate, city- and soundscapes (well-being) and air
+quality (health). On the basis of ‘crowdsharing’ the uCM is made available for free to public and academic partners
+who are interested in investigating, contributing and sharing studies through an open-data structure containing
+monitored situations relating to climatic urban design of public spaces and air quality. The collected data will be
+shared amongst the scientific community by the means of an open data structure. This knowledge will be useful in
+applications such as urban planning, choice of urban surfaces, design of the “green city” and uses such as traffic
+control, pollution prediction, health assessment as well as general urban management.
+
+   The uCM is now in version 2.0 and ongoing hard- and software development aim to make the uCM ever more
+immersive, easier and intuitive to use.
+
+3. References
+
+[1] Urban design and people, M. Dobbins, John Wiley & Sons, 2009
+[2] Ensuring quality of life in Europe's cities and towns, EEA Report, EEA Copenhagen, 2009
+[3] Environmental site layout planning, P.J. Littlefair, M. Santamouris & all, BRE London, 2000
+[4] Urban Street design guide, NACTO Publication, Islandpress New York, 2013
+[5] Convivial Urban Spaces. Creating effective public places, H. Shaftoe, Earthscan, 2008
+[6] Rediscovering the Urban Relam Open Spaces, Report EU 5th FP key 4, CRES Greece, 2004
+[7] Urban remote sensing. Monitoring, synthesis and modeling in the urban environment, X. Yang, Wiley-Blackwell, 2011
+[8] Human Thermal Comfort and Heat Stress in an Outdoor Urban Arid Environment, A. M. Abdel-Ghany ans all, 2013
+[9] Sustainable Urban Planning, R. Riddell, Blackwell, 2004
+[10] UrbNat. La nature comme outil d’urbanisme. Projet Ra&D Hepia/Hes-so, Genève, 2004
+[11] On the Urban Heat Island Effect Dependence on Temperature Trends, Camilloni – Barros, University Buenos Aires - Argentine, 1997
+
