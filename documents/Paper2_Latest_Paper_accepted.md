@@ -8,7 +8,7 @@ The methodology addresses two critical data limitations in bike count analysis: 
 
 The proposed methodology demonstrates the benefits of using bike counter data and enables cities with different urban contexts to quantify local environmental barriers to biking, predict usage at potential counter locations.
 
-Applied to the Brussels Capital Region (BCR) using data from 18 bike counters (2022-2024), the study focuses on weekend biking to isolate environmental comfort effects from commuting patterns. Statistical analysis reveals that rain and wind conditions suppress biking by (−7.40% to −15.38%), while combined rain and wind conditions suppress biking (−2.18% to −16.15%), cold stress showed stronger reductions in biking activity than heat stress (−6.19% to −8.49% vs. −3.35% to −3.66%), while greenness alone shows small independent effects (−6.23% to +8.02%). Shade was not reportable due to insufficient exposed observations, while during heat stress periods greenness shows small effects (−5.53% to +2.11%).
+Applied to the Brussels Capital Region (BCR) using data from 18 bike counters (2022-2024), the study focuses on weekend biking to isolate environmental comfort effects from commuting patterns. Statistical analysis reveals that rain and wind conditions suppress biking by (−7.40% to −15.38%), while combined rain and wind conditions suppress biking (−12.27% to −16.15%), cold stress showed stronger reductions in biking activity than heat stress (−6.19% to −8.49% vs. −3.35% to −3.66%), while greenness alone shows small independent effects (−6.23% to +8.02%). Shade was not reportable due to insufficient exposed observations, while during heat stress periods greenness shows small effects (−5.53% to +2.11%).
 
 Keywords: Urban Thermal Comfort, Automated Bike Counters, Micrometeorological Modeling, Sustainable Urban Mobility, Predictive Modeling, Environmental Comfort
 
@@ -120,13 +120,13 @@ UTCI=fTa;Tmrt;v;vp=Ta+OffsetTa;Tmrt;v;vp#3
 
 where UTCI is expressed in equivalent temperature (°C); Ta is air temperature (°C); Tmrt is mean radiant temperature (°C); v is wind speed at 10 m height (m s⁻¹); vp is vapour pressure (hPa); and Offset represents the dynamic physiological response of a standing person based on a multi-node human energy balance and thermoregulation model, calculated from the combined effects of all input parameters. Vapor pressure (vp) is derived internally from Ta and RH using standard psychrometric conversion formula implemented in the pythermalcomfort package [33].
 
-Strong heat stress is defined as UTCI > 32°C, moderate heat stress as 26°C < UTCI ≤ 32°C, strong cold stress as UTCI < -13°C, and moderate cold stress as -13°C < UTCI ≤ 0°C, based on standard UTCI classifications [22]. In this study strong heat stress is referred to as hot, and strong cold stress is referred to as cold, moderate cold stress and moderate heat stress are referred as moderate.
+Strong heat stress is defined as UTCI ≥ 32°C, moderate heat stress as 26°C ≤ UTCI < 32°C, strong cold stress as UTCI < -13°C, and moderate cold stress as -13°C < UTCI ≤ 0°C, based on standard UTCI classifications [22]. In this study strong heat stress is referred to as hot, and strong cold stress is referred to as cold, moderate cold stress and moderate heat stress are referred as moderate.
 
 Shading, rainfall, and wind conditions are represented using categorical indicators. Shading effects on bike ridership is derived from the shadow output of SOLWEIG [31], which is used to characterize solar exposure at each counter location. In this paper it is referred to as shade indicator (1 = shade; 0 = unshaded). Rain is treated as a categorical indicator, with each hour classified as rain or non-rain according to an hourly precipitation threshold (rain > 0.01 mm/h). Wind conditions are also represented categorically, with hours classified as wind or no-wind based on hourly wind speeds exceeding 7 m/s. Rain and wind conditions together are represented with categorical variable (rain_wind), having four distinct levels: no wind no-rain, wind with no-rain, no-wind and rain, and wind and rain.
 
 ## Prediction Models
 
-Two prediction models are developed: one for filling the missing data (for periods < 6 hours) using historic data, and another for predicting counts at locations without bike counters.
+Two prediction models are developed: one for filling the missing data (for periods ≥ 6 hours) using historic data, and another for predicting counts at locations without bike counters.
 
 ### Temporal Count Prediction Model
 
@@ -193,7 +193,7 @@ BuildingDensity125mi,GVIi)+εi,t#8
 
 Model 6: New station count prediction model with location-specific meteorological data
 
-Counti,t=f(Montht,Hourt,Holidayt, IsWeekendt, Tai,t, RHi,t, Windt, Tmrti,t, UTCIi,t,
+Counti,t=f(Montht,Hourt,Holidayt, IsWeekendt, Tai,t, RHi,t, Windi,t, Tmrti,t, UTCIi,t,
 
 Raini,t,Hoti,t, Coldi,t,Shadei,t,DistanceFromCenteri,RoadTypei,Directionalityi
 
@@ -293,7 +293,7 @@ As shown in Figure 6(e), bike counts along stations classified as “green” we
 
 ### H6 - Effect of Shade (Urban Morphology) on Bike Ridership
 
-As shown in Figure 6(f), the shade contrast under strong heat conditions was not sufficiently supported by the available data. In Q2, no Shade=1 observations were available, so the contrast was not estimated. In Q3, only five Shade=1 observations were available; the resulting point estimate of +15.91% was treated as insufficiently supported and was not interpreted as evidence of a shade effect, while Q1 and Q4 had no hot days (as reported in Table 1).
+As shown in Figure 6(f), the shade contrast under strong heat conditions was not sufficiently supported by the available data. In Q2, no Shade=1 observations were available, so the contrast was not estimated. In Q3, only five Shade=1 observations were available; the resulting point estimate of +15.95% was treated as insufficiently supported and was not interpreted as evidence of a shade effect, while Q1 and Q4 had no hot days (as reported in Table 1).
 
 ### H7 - Combined Effect of Summer GVI and Heat Stress
 
@@ -329,7 +329,7 @@ Table 1: Percentage Change in Bike ridership
 | H5 (Q4) | 6400 | 5120 | 0.94 ( 0.49 - 1.78) | -6.23 | 0.96 | 0.84 | 1.00 |
 | H6 (Q1) |  |  | No hot days |  |  |  |  |
 | H6 (Q2) | 0 | 233 | Insufficient data |  |  |  |  |
-| H6 (Q3) | 5 | 550 | 1.16 ( 0.96 - 1.4) | 15.91 | 1.00 | 0.12 |  |
+| H6 (Q3) | 5 | 550 | 1.16 ( 0.96 - 1.4) | 15.95 | 1.00 | 0.12 |  |
 | H6 (Q4) |  |  | No hot days |  |  |  |  |
 | H7 (Q1) |  |  | No hot days |  |  |  |  |
 | H7 (Q2) | 71 | 162 | 0.94 ( 0.84 - 1.06) | -5.53 | 0.95 | 0.33 | 1.00 |
@@ -339,7 +339,7 @@ Table 1: Percentage Change in Bike ridership
 
 ### Sensitivity Analysis
 
-Summer GVI is the primary greenness classifier (Table 1). Substituting winter GVI for the H5 and H7 green/no-green (and Green×heat) contrast flipped only CJM90 as No-Green (17 of 18 stations unchanged). Under that alternative, green stations exhibited non-significant count differences relative to no-green stations in Q1 (−42.64%), Q2 (−34.26%), Q3 (−33.18%), and Q4 (−42.89%), with wide confidence intervals spanning values below and above unity; H7 was not significant after Holm in Q2 (−7.85%) and Q3 (+0.78%). Sensitivity analysis is shown in Appendix Table A.4.
+Summer GVI is the primary greenness classifier (Table 1). Substituting winter GVI for the H5 and H7 green/no-green (and Green×heat) contrast flipped only CJM90 as No-Green (17 of 18 stations unchanged). Under that alternative, green stations exhibited non-significant count differences relative to no-green stations in Q1 (−42.66%), Q2 (−33.74%), Q3 (−33.11%), and Q4 (−42.91%), with wide confidence intervals spanning values below and above unity; H7 was not significant after Holm in Q2 (−7.85%) and Q3 (+0.78%). Sensitivity analysis is shown in Appendix Table A.4.
 
 ## Data completion with the temporal count prediction model
 
@@ -365,14 +365,14 @@ Table 2: Station-wise results for 2024 at 18 BCR bike-counting stations with the
 | CEK31 | 0.91 | 0.91 | 0.93 | 28.35 | 27.82 | 25.93 |
 | CEV011 | 0.88 | 0.88 | 0.89 | 11.00 | 10.86 | 10.34 |
 | CJE181 | 0.80 | 0.81 | 0.83 | 5.64 | 5.58 | 5.32 |
-| CJM90 | 0.92 | 0.93 | 0.94 | 45.58 | 44.26 | 40.11 |
-| CLW239 | 0.83 | 0.83 | 0.86 | 11.31 | 11.09 | 10.12 |
-| COM205 | 0.73 | 0.74 | 0.76 | 24.21 | 23.90 | 22.62 |
+| CJM90 | 0.92 | 0.93 | 0.94 | 45.58 | 44.26 | 40.03 |
+| CLW239 | 0.83 | 0.83 | 0.86 | 11.31 | 11.09 | 10.13 |
+| COM205 | 0.73 | 0.74 | 0.77 | 24.21 | 23.90 | 22.58 |
 | CVT387 | 0.85 | 0.85 | 0.87 | 9.89 | 9.74 | 9.15 |
-| Average | 0.85 | 0.86 | 0.87 | 27.24 | 26.85 | 25.25 |
+| Average | 0.85 | 0.86 | 0.87 | 27.24 | 26.85 | 25.24 |
 
 
-The baseline model (Model 1), using only temporal features, achieved an overall R² = 0.85 and RMSE = 27.24 bikes/hour. Adding meteorological variables (Model 2) improved overall performance to R² = 0.86 and RMSE = 26.85 bikes/hour. The further inclusion of micro-meteorological data (Model 3) improved performance to R² = 0.87 and RMSE = 25.25 bikes/hour. The highest R² values with micro-meteorological data were recorded at CJM90 (R²=0.94 | RMSE = 40.1 bikes/hour), while the lowest were at COM205 (R²=0.76 | RMSE=22.6 bikes/hour), shown in Appendix Figure A.1. Since Model 1 provides strong generalizability without requiring meteorological inputs, it is used as the imputation model for missing data.
+The baseline model (Model 1), using only temporal features, achieved an overall R² = 0.85 and RMSE = 27.24 bikes/hour. Adding meteorological variables (Model 2) improved overall performance to R² = 0.86 and RMSE = 26.85 bikes/hour. The further inclusion of micro-meteorological data (Model 3) improved performance to R² = 0.87 and RMSE = 25.24 bikes/hour. The highest R² values with micro-meteorological data were recorded at CJM90 (R²=0.94 | RMSE = 40.03 bikes/hour), while the lowest were at COM205 (R²=0.77 | RMSE=22.58 bikes/hour), shown in Appendix Figure A.1. Since Model 1 provides strong generalizability without requiring meteorological inputs, it is used as the imputation model for missing data.
 
 ## New station count prediction model
 
@@ -407,15 +407,15 @@ Table 3: 18-fold leave-one-station-out results across the available 2022–2024 
 | RF Model 6 (Micro-meteo) | 33.12 (21.47–44.78) | 53.52 (36.41–70.63) | 58.07 (50.19–65.94)% | −8.99 (−25.55–7.58) | 0.258 (−0.224–0.740) |
 
 
-The highest R² values with micro-meteorological data were recorded at CLW239 (R²=0.85 | RMSE=11.45 bikes/hour), while the lowest were at CJE181 (R²=-3.97 | RMSE=28.43 bikes/hour), shown in Appendix Figure A.4.
+The highest R² values with micro-meteorological data were recorded at CLW239 (R²=0.83 | RMSE=11.27 bikes/hour), while the lowest were at CJE181 (R²=-4.12 | RMSE=28.85 bikes/hour), shown in Appendix Figure A.4.
 
-Compared with the city-hour baseline (RMSE =91.57 bikes/hour), Model 4 had RMSE = 64.94 bikes/hour, Model 5 had RMSE = 65.71 bikes/hour, and Model 6 RMSE = 60.96 bikes/hour.
+Compared with the city-hour baseline (RMSE =80.96 bikes/hour), Model 4 had RMSE = 53.16 bikes/hour, Model 5 had RMSE = 55.08 bikes/hour, and Model 6 RMSE = 53.52 bikes/hour.
 
 ### Observations from new station count prediction model
 
-Station-level individual patterns: CB2105 (Cluster 4, near city center at distance 1137 m) showed lower cross-station fit in the new station count prediction model with micro-meteorological data (R² = 0.61). This is due to proximity to railway station and transport hub [47], where a large share of trips terminate at rail, metro, tram, and bus connections rather than continuing by bike, depressing observed counts relative to cluster peers and leading to over-prediction. CJE181 (R² = 0.65, Cluster 1, northwestern periphery at 5,140 m from center, mean 13.8 bikes/hr) records persistently low counts due to its location in a low-density municipality, with its surroundings include the expositions and cultural institutions, neither of which generate regular bike ridership, leading cluster peers in more urbanized neighborhoods to systematically overpredict this station [48]. CJM90 (R² = 0.57, Cluster 4, 1,143 m from center, mean 194.2 bikes/hr) is located near a river, which is a public attraction. This bike path broke 1 million count record, and displays the highest mean count in the network, driven by mixed commuter and recreational flows [49]. Cluster peers with more typical bike ridership therefore systematically underpredict at this high-volume location.
+Station-level individual patterns: CB2105 (Cluster 4, near city center at distance 1137 m) showed lower cross-station fit in the new station count prediction model with micro-meteorological data (R² = -0.57). This is due to proximity to railway station and transport hub [47], where a large share of trips terminate at rail, metro, tram, and bus connections rather than continuing by bike, depressing observed counts relative to cluster peers and leading to over-prediction. CJE181 (R² = -3.40, Cluster 2, northwestern periphery at 5,140 m from center, mean 12.7 bikes/hr) records persistently low counts due to its location in a low-density municipality, with its surroundings include the expositions and cultural institutions, neither of which generate regular bike ridership, leading cluster peers in more urbanized neighborhoods to systematically overpredict this station [48]. CJM90 (R² = 0.37, Cluster 4, 1,143 m from center, mean 194.2 bikes/hr) is located near a river, which is a public attraction. This bike path broke 1 million count record, and displays the highest mean count in the network, driven by mixed commuter and recreational flows [49]. Cluster peers with more typical bike ridership therefore systematically underpredict at this high-volume location.
 
-Morning and evening peaks: The model tended to underestimate afternoon return peaks at CAT17 (local access road, 4597 m from center, R² = 0.69) and CB1101 (outer urban ring, 1139 m, R² = 0.80). At profile level, CEK18 showed lower-than-expected evening peaks, while CB1143, CEE016, and CJM90 showed evening peaks higher than morning peaks. It was observed that multiple route alternatives redistribute bikers away from counters and is not represented by current station-level predictors, which contributes lower bike counts for CAT17.
+Morning and evening peaks: The model tended to underestimate afternoon return peaks at CAT17 (local access road, 4597 m from center, R² = 0.61) and CB1101 (outer urban ring, 1139 m, R² = 0.51). At profile level, CEK18 showed lower-than-expected evening peaks, while CB1143, CEE016, and CJM90 showed evening peaks higher than morning peaks. It was observed that multiple route alternatives redistribute bikers away from counters and is not represented by current station-level predictors, which contributes lower bike counts for CAT17.
 
 Station-level disruptions: The proportion of missing data on average per station was 1.09% for the 3 year study period (2022-24), individually CVT387 recorded 53.6% zero counts in September 2024 (vs typical 5–15%), with zero counts in February 2024 (19.6%) and October 2022 (21%), due to temporary closure or counter malfunction. CB1143 experienced a prolonged shutdown (73% zeros in July 2024, 100% in August, 72% in September) linked to road works. These periods led to uncaptured bike ridership, which resulted in underprediction of bike counts.
 
@@ -439,11 +439,11 @@ In contrast, the new-station prediction model performed lower (as reported in Ta
 
 ### Improvement in model performance with micrometeorological data
 
-For the temporal count prediction model, adding meteorological data improved the fitted-series output by ΔR² = +0.004 and ΔRMSE = −0.39 bikes/hour over Model 1; adding micro-meteorological data improved it by ΔR² = +0.021 and ΔRMSE = −1.99 bikes/hour over Model 1. For the new-station count-prediction model, adding meteorological data increased LOSO RMSE by 1.92 bikes/hour (ΔMAE +0.96) relative to Model 4, whereas adding micro-meteorological data increased LOSO RMSE by 0.36 bikes/hour (ΔMAE −0.12). Mean R² was 0.305 in Model 4, 0.244 in Model 5, and 0.258 in Model 6, remaining positive in all three configurations.
+For the temporal count prediction model, adding meteorological data improved the fitted-series output by ΔR² = +0.004 and ΔRMSE = −0.39 bikes/hour over Model 1; adding micro-meteorological data improved it by ΔR² = +0.021 and ΔRMSE = −2.00 bikes/hour over Model 1. For the new-station count-prediction model, adding meteorological data increased LOSO RMSE by 1.92 bikes/hour (ΔMAE +0.96) relative to Model 4, whereas adding micro-meteorological data increased LOSO RMSE by 0.36 bikes/hour (ΔMAE −0.12). Mean R² was 0.305 in Model 4, 0.244 in Model 5, and 0.258 in Model 6, remaining positive in all three configurations.
 
 The RMSE reduction observed in the new station count prediction model when using micro-meteorological data can be attributed to its reliance on cross-station transfer, as it does not use station-specific historical count data. In this context, incorporating micro-meteorological variables—particularly those capturing local exposure—introduces additional relevant information which enhance predictive performance. In contrast, the temporal count prediction model already captures strong station-specific temporal patterns through historical bike count data and associated temporal features. As a result, the incremental benefit of adding micro-meteorological data is comparatively smaller.
 
-Based on literature, automated bike counters are well-calibrated, established instruments producing reliable hourly counts; a RMSE 2.99 bikes/hour reduction attributable to micro-meteorology represents a non-negligible benefit to bike ridership prediction. For city planners evaluating infrastructure investments or environmental comfort along bike corridors, this added precision can be useful in long-term decision making.
+Based on literature, automated bike counters are well-calibrated, established instruments producing reliable hourly counts; a RMSE 2.00 bikes/hour reduction attributable to micro-meteorology represents a non-negligible benefit to bike ridership prediction. For city planners evaluating infrastructure investments or environmental comfort along bike corridors, this added precision can be useful in long-term decision making.
 
 ### Extension of clustering indicators with broader urban context
 
@@ -489,7 +489,7 @@ This paper introduced an integrated methodology that combines bike count data wi
 
 Using automated bike count data from 18 counting stations across the BCR for the period 2022–2024, this study evaluated how environmental conditions and urban design characteristics influence bike ridership. Rainfall, wind, temperature extremes, and street-level urban characteristics were examined, with rainfall and wind showing the clearest reductions in biking activity. Rain and wind were consistently associated with reduced bike use, with the strongest declines observed during typical peak hours. Thermal discomfort exhibited asymmetric effects: cold conditions suppressed bike ridership more strongly and persistently than heat. Statistical analysis revealed that the proportional effect of summer GVI alone is very small, indicating that it is secondary to the primary weather-related stressors. A robust mitigating shade effect was not established.
 
-Two complementary predictive models were developed. The temporal count prediction model demonstrated strong performance in imputing missing bike count data at existing stations, ensuring continuity of time series even during extended data gaps. The new station count prediction model, based on a four-cluster typology derived from PCA of urban design characteristics and operationalized through decision tree classification rules, enabled the transfer of information across behaviorally similar locations to estimate counts at unmonitored sites. While new station count prediction model performance was constrained by the limited number of available stations (18 total), with only 3-6 stations per cluster, it nevertheless illustrated the potential for spatial generalization when behavioral similarity is explicitly accounted for through principled clustering and rule-based assignment. The effect of incorporating meteorological and urban micro-meteorological data was evaluated for both models. In the temporal fitted-series output, RMSE decreased from 27.24 to 25.25 bikes/hour between Models 1 and 3. In the LOSO new-station evaluation, Model 6 had the lowest MAE (33.12 bikes/hour), whereas Model 4 had the lowest RMSE (53.16 bikes/hour). Adding city-wide meteorological inputs (Model 5) increased MAE to 34.20 and RMSE to 55.08 bikes/hour. Adding station-specific micro-meteorological inputs (Model 6) gave an MAE of 33.12 and RMSE of 53.52 bikes/hour. Mean R² was positive in all three configurations (0.305, 0.244, and 0.258, respectively).
+Two complementary predictive models were developed. The temporal count prediction model demonstrated strong performance in imputing missing bike count data at existing stations, ensuring continuity of time series even during extended data gaps. The new station count prediction model, based on a four-cluster typology derived from PCA of urban design characteristics and operationalized through decision tree classification rules, enabled the transfer of information across behaviorally similar locations to estimate counts at unmonitored sites. While new station count prediction model performance was constrained by the limited number of available stations (18 total), with only 3-6 stations per cluster, it nevertheless illustrated the potential for spatial generalization when behavioral similarity is explicitly accounted for through principled clustering and rule-based assignment. The effect of incorporating meteorological and urban micro-meteorological data was evaluated for both models. In the temporal fitted-series output, RMSE decreased from 27.24 to 25.24 bikes/hour between Models 1 and 3. In the LOSO new-station evaluation, Model 6 had the lowest MAE (33.12 bikes/hour), whereas Model 4 had the lowest RMSE (53.16 bikes/hour). Adding city-wide meteorological inputs (Model 5) increased MAE to 34.20 and RMSE to 55.08 bikes/hour. Adding station-specific micro-meteorological inputs (Model 6) gave an MAE of 33.12 and RMSE of 53.52 bikes/hour. Mean R² was positive in all three configurations (0.305, 0.244, and 0.258, respectively).
 
 The results can be useful for cities such that cold, rain, and wind dominate ridership suppression, pointing to covered infrastructure and winter-cycling interventions as potential investments; shading along high-use corridors can mitigate heat-stress effects. The station typology and decision tree allows transport authorities to benchmark a candidate counter site — using only distance from center, greenness, and building density — without prior deployment. The temporal model ensures uninterrupted monitoring during data gaps. The methodology is transferable: any city with automated counters and urban data can apply this framework to guide counter placement, estimate demand at unmonitored sites, and evaluate environmental interventions.
 
