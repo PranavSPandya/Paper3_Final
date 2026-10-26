@@ -49,23 +49,24 @@ YAMNET_STEMS = [
     "urban_manmade_positive", "urban_manmade_negative", "mechanisms",
 ]
 SCORES = [f"{c}_score" for c in YAMNET_STEMS]
-PROPORTIONS = [f"{c}_prop" for c in YAMNET_STEMS]
+PROPORTIONS = [f"{c}_proportion" for c in YAMNET_STEMS]
 BANDS = [
-    "freq_prop_20_125", "freq_prop_125_1000", "freq_prop_1000_4000",
-    "freq_prop_4000_8000", "freq_prop_8000_20000",
+    "freq_proportion_20_to_200Hz",
+    "freq_proportion_200_to_2000Hz",
+    "freq_proportion_2000_to_20000Hz",
 ]
 OCTAVES = [
-    f"octave_prop_{c}_hz"
-    for c in ["31_5", "63_0", "125_0", "250_0", "500_0", "1000_0", "2000_0", "4000_0", "8000_0"]
+    f"octave_proportion_{c}Hz"
+    for c in ["31.25", "62.5", "125", "250", "500", "1000", "2000", "4000", "8000"]
 ]
 SPECTRAL = ["dominant_frequency_hz", "spectral_centroid_hz", "spectral_rolloff85_hz"]
-SOUND_COLUMNS = ["ucm_SND_dBA"] + SPECTRAL + BANDS + OCTAVES + SCORES + PROPORTIONS + ["unidentify_prop"]
+SOUND_COLUMNS = ["ucm_SND_dBA"] + SPECTRAL + BANDS + OCTAVES + SCORES + PROPORTIONS + ["unidentify_proportion"]
 
 TEXT_OR_NOMINAL_SOUND_FIELDS = {
     "category": "Nominal classifier text label; audit field, not a PCA input.",
 }
 DIAGNOSTIC_COLUMNS = {
-    "unidentify_prop": "Unidentified-classification residue; diagnostic only.",
+    "unidentify_proportion": "Unidentified-classification residue; diagnostic only.",
 }
 OUTSIDE_PCA = {
     "ucm_SND_dBA": "Calibrated level; kept outside PCA and retained in Equation 2 via Eq1 heat × sound.",
@@ -162,7 +163,7 @@ def load_analysis_frame(path: Path) -> tuple[pd.DataFrame, str]:
         values = sub[c].dropna()
         if not np.isfinite(values).all():
             raise ValueError(f"Nonfinite air-temperature values: {c}")
-    prop_like = BANDS + OCTAVES + PROPORTIONS + ["unidentify_prop"]
+    prop_like = BANDS + OCTAVES + PROPORTIONS + ["unidentify_proportion"]
     if (sub[prop_like] > 1 + 1e-10).any().any():
         raise ValueError("A reported proportion exceeds one")
     complete_bands = sub[BANDS].dropna()
@@ -240,7 +241,7 @@ def sound_set_vif_screen(frame: pd.DataFrame, columns: list[str]) -> dict:
         remove = float(vifs.max()) > VIF_THRESHOLD
         history.append({
             "Iteration": len(history), "Terms": len(names),
-            "Maximum_VIF": float(vifs.max()), "Highest_term": worst,
+                        "Maximum_VIF": float(vifs.max()), "Highest_term": worst,
             "Action": f"Remove {worst}" if remove else "Retain set",
         })
         if not remove:
@@ -457,7 +458,7 @@ def fit_family_pca(frame: pd.DataFrame, family_id: str, target: float) -> dict:
 
 def construct_stem(name: str) -> str | None:
     for stem in YAMNET_STEMS:
-        if name in {f"{stem}_prop", f"{stem}_score"}:
+        if name in {f"{stem}_proportion", f"{stem}_score"}:
             return stem
     return None
 
@@ -467,22 +468,22 @@ def construct_stem(name: str) -> str | None:
 SCIENCE_SLOTS = [
     {
         "name": "traffic",
-        "prefer": ["vehicle_prop", "vehicle_score"],
+        "prefer": ["vehicle_proportion", "vehicle_score"],
     },
     {
         "name": "low_frequency",
         "prefer": [
-            "freq_prop_20_125", "octave_prop_63_0_hz", "octave_prop_125_0_hz",
-            "freq_prop_125_1000", "octave_prop_31_5_hz",
+            "freq_proportion_20_to_200Hz", "freq_proportion_200_to_2000Hz", "octave_proportion_62.5Hz",
+            "octave_proportion_125Hz", "octave_proportion_31.25Hz",
         ],
     },
     {
         "name": "semantic_other",
         "prefer": [
-            "wind_prop", "wind_score", "urban_manmade_positive_prop",
-            "urban_manmade_positive_score", "urban_manmade_negative_prop",
-            "urban_manmade_negative_score", "mechanisms_prop", "mechanisms_score",
-            "rural_natural_prop", "rural_natural_score", "urban_manmade_neutral_prop",
+            "wind_proportion", "wind_score", "urban_manmade_positive_proportion",
+            "urban_manmade_positive_score", "urban_manmade_negative_proportion",
+            "urban_manmade_negative_score", "mechanisms_proportion", "mechanisms_score",
+            "rural_natural_proportion", "rural_natural_score", "urban_manmade_neutral_proportion",
             "urban_manmade_neutral_score",
         ],
     },
@@ -558,7 +559,7 @@ def combine_family_representatives(frame: pd.DataFrame, family_results: list[dic
     if pool.empty:
         raise ValueError("No family representatives available")
     # Within a YAMNet stem, prefer proportion over score for prevalence interpretation.
-    pool["prop_preference"] = pool["column"].str.endswith("_prop").astype(int)
+    pool["prop_preference"] = pool["column"].str.endswith("_proportion").astype(int)
     pool = pool.sort_values(
         ["LOPO_selection_fraction", "prop_preference", "abs_assoc", "family", "PC"],
         ascending=[False, False, False, True, True],
@@ -663,7 +664,7 @@ def full_eq2_vif(frame: pd.DataFrame, sound_extras: list[str]) -> dict:
 def self_check() -> None:
     frame = pd.DataFrame({
         "ParticipantID": ["A"] * 4 + ["B"] * 4,
-        "PhaseID": ["WalkG"] * 8,
+                          "PhaseID": ["WalkG"] * 8,
         "x": [1., 2., 4., 8.] * 2,
         "y": [3., 1., 5., 2.] * 2,
     })
@@ -748,8 +749,8 @@ def make_combined_scree(family_results: list[dict]) -> plt.Figure:
 def _short_biplot_label(name: str) -> str:
     """Display label only; every original column is still drawn exactly once."""
     return (
-        name.replace("freq_prop_", "f")
-        .replace("octave_prop_", "oct")
+        name.replace("freq_proportion_", "f")
+        .replace("octave_proportion_", "oct")
         .replace("_hz", "")
         .replace("urban_manmade_", "um_")
         .replace("rural_natural", "rural")
@@ -1098,7 +1099,7 @@ def make_air_temp_figures(result: dict) -> tuple[plt.Figure, plt.Figure]:
     rows = np.arange(len(result["columns"]))
     lax.barh(rows - 0.18, pca.components_[0], height=0.36, color="slategray", label="PC1")
     if rank > 1:
-        lax.barh(rows + 0.18, pca.components_[1], height=0.36, color="black", label="PC2")
+    lax.barh(rows + 0.18, pca.components_[1], height=0.36, color="black", label="PC2")
     lax.set_yticks(rows, result["columns"])
     lax.set_title("Air-temperature PCA weights")
     lax.legend(fontsize=8)
@@ -1177,7 +1178,7 @@ def build_report(frame, family_results, combined, eq2_vif, target, digest,
         "# Sound screening: family-wise PCA and VIF",
         "",
         "**Status: done.** Family-wise PCA screening finished; Eq2 sound mains locked in "
-        "`scripts/H4_multivariate.R`. H4 already refit with these terms.",
+        "`scripts/H4_time_series.R`. H4 already refit with these terms.",
         "",
         "**Read these only** (live PCA folder is wiped each run):",
         f"1. This report - `Presentation material/{REPORT_NAME}`",
@@ -1208,7 +1209,7 @@ def build_report(frame, family_results, combined, eq2_vif, target, digest,
         f"Broad bands use ILR when closed and positive; octave composition checked. "
         f"Retain PCs >={target:.0%} variance (no minimum-PC floor). One original representative "
         f"per PC; LOPO stability; then scientific slots + |r|>={CORR_THRESHOLD:g} / VIF prune "
-        f"to {TARGET_N_MIN}-{TARGET_N_MAX} terms. Excluded from PCA: `category`, `unidentify_prop`, "
+        f"to {TARGET_N_MIN}-{TARGET_N_MAX} terms. Excluded from PCA: `category`, `unidentify_proportion`, "
         f"`ucm_SND_dBA`.",
         "",
         "## Family summary",

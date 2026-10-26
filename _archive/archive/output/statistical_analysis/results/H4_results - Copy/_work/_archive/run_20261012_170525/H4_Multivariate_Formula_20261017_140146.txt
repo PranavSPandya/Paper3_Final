@@ -1,0 +1,4 @@
+Step 3: measurement categories; no analyst-selected model combinations.
+Step 4: outcome-blind PC1 representative per measurement category (Jolliffe 1972 B4; Chavent et al. 2012); covariate-category representatives + forced exertion are the Step 5 covariates.
+PC1 representatives (covariate categories): atmo_pm2.5_avg, gvi_50m, lys_lux_avg, ucm_SND_dBA, ucm_SUN_Gh
+Step 5: four thermal x sound equations (AIR_temp + AIR_RH + WIND_AWS, HUMIDEX, PET, UTCI) with bout-centered exposures, sum-to-zero PhaseID, AR(1), nested random intercepts and CR2 Satterthwaite df; see H4_models/H4_equations.csv.

@@ -1,0 +1,22 @@
+================================================================================
+UCM CAMUP SVF PIPELINE | Participant: P13 | Phase: all | Calib QC: REFERENCE_OR_CUSTOM_TABLE_NOT_MARKED_LENS_VERIFIED
+================================================================================
+MSE rectification geometry: virtual=480x480, real=640x480, center=(320.0,240.0), radius=240px
+Loading DeepLabV3+ Xception-65 ADE20K...
+Resuming from 4806 rows saved in P13_SVF_PARTIAL.csv.
+
+Phase BikeG: 474 total frames | 474 complete/current | 0 to process.
+
+Phase BikeU: 1259 total frames | 1259 complete/current | 0 to process.
+
+Phase WalkG: 886 total frames | 886 complete/current | 0 to process.
+
+Phase WalkU: 1754 total frames | 1752 complete/current | 2 to process.
+
+Phase Tram: 435 total frames | 435 complete/current | 0 to process.
+
+================================================================================
+SVF Execution Complete | Expected: 4808 | Success rows: 4806 | Failures: 2
+Completeness | duplicate success rows: 0 | missing: 2 | unexpected: 0
+Output File: C:\Users\pandya\Documents\Github\docker\Paper3_Final\output\SVF Output\P13\P13_SVF_PARTIAL.csv
+================================================================================

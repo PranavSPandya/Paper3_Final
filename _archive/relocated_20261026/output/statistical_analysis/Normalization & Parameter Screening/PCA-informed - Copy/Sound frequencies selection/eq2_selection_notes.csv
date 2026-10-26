@@ -1,0 +1,22 @@
+note
+Slot traffic: keep vehicle_prop from YAMNet proportions PC2 (LOPO=0.91; scientific priority).
+Slot low_frequency: keep freq_prop_20_125 from Broad frequency bands PC1 (LOPO=1.00; scientific priority).
+Slot semantic_other: keep wind_prop from YAMNet proportions PC3 (LOPO=1.00; scientific priority).
+Slot spectral_shape: keep spectral_centroid_hz from Spectral descriptors PC1 (LOPO=1.00; scientific priority).
+Fill keep mechanisms_prop from YAMNet proportions PC4 (LOPO=1.00).
+Skip wind_prop: already at target maximum 5.
+Skip urban_manmade_positive_prop: already at target maximum 5.
+Skip dominant_frequency_hz: already at target maximum 5.
+Skip wind_score: already at target maximum 5.
+Skip mechanisms_score: already at target maximum 5.
+Skip spectral_centroid_hz: already at target maximum 5.
+Skip octave_prop_63_0_hz: already at target maximum 5.
+Skip freq_prop_125_1000: already at target maximum 5.
+Skip freq_prop_20_125: already at target maximum 5.
+Skip urban_manmade_positive_score: already at target maximum 5.
+Skip urban_manmade_negative_score: already at target maximum 5.
+Skip octave_prop_2000_0_hz: already at target maximum 5.
+Skip vehicle_prop: already at target maximum 5.
+Skip rural_natural_prop: already at target maximum 5.
+Skip octave_prop_8000_0_hz: already at target maximum 5.
+Skip octave_prop_125_0_hz: already at target maximum 5.

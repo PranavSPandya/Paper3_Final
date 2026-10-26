@@ -1,0 +1,4 @@
+Comparison of domain-wise within-person LASSO unions. Both use participant-mean centering. The preserved file does not z-score the centered predictors. The new audit z-scores them inside each training fold (see H4_Step4_scaling_rule.txt).
+Unstandardized within-person audit: C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/_work/H4/H4_Step4_within_person_unstandardized_PRESERVED.csv
+Standardized-within-person audit: C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/statistical_analysis/_work/H4/H4_Multivariate_Filtration_Results.csv
+Label: domain-wise selection. This is not a list of the best overall predictors.

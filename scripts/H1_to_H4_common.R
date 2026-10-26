@@ -1,4 +1,4 @@
-# H1_to_H4_common.R — minimal shared cohort/outcome/path helpers (H1–H3 meeting file, H4_multivariate.R).
+# H1_to_H4_common.R — minimal shared cohort/outcome/path helpers (H1–H3 meeting file, H4_time_series.R).
 # Not sourced by H4_core.R (H4-only audit/engine stays decoupled).
 
 resolve_project_root <- function() {
@@ -13,7 +13,7 @@ paper3_merged_8min_path <- function(root = resolve_project_root()) {
   file.path(root, "output", "merged_all_11participants_8min.csv")
 }
 
-# 26 physiological outcomes (indices 1–13 empatica, 14–26 eyetracker); attrs match H4_multivariate.R.
+# 26 physiological outcomes (indices 1–13 empatica, 14–26 eyetracker); attrs match H4_time_series.R.
 paper3_physiological_outcomes <- function() {
   p <- c(
     "empatica_heart_rate", "empatica_eda_tonic", "empatica_eda_phasic", "empatica_skin_temperature",

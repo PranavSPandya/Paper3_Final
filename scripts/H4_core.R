@@ -1,5 +1,5 @@
-# H4_core.R â€” audit (Steps 1-4), reports, dispatch; sourced by H4_multivariate.R.
-# H4_SPEC cohort/outcomes and equation quotes live in H4_multivariate.R.
+# H4_core.R — audit (Steps 1-4), reports, dispatch; sourced by H4_time_series.R.
+# H4_SPEC cohort/outcomes and equation quotes live in H4_time_series.R.
 
 # --- data prep metadata (not part of equation spec) ---
 # outcome_transform: CSV/report labels ("natural log" vs "native"); ln(x) applied in fit_one_outcome for hrv_log outcomes.
@@ -15,25 +15,31 @@ H4_SPEC$bilateral_sources <- list(
 
 # --- output paths (flat analysis-specific H4 result folders; not part of meeting spec) ---
 if (!exists("PROJECT_ROOT", envir = .GlobalEnv, inherits = FALSE)) {
-  stop("PROJECT_ROOT must be set before sourcing H4_core.R (source scripts/H4_multivariate.R).", call. = FALSE)
+  stop("PROJECT_ROOT must be set before sourcing H4_core.R (source scripts/H4_time_series.R).", call. = FALSE)
 }
+# Variant folders (like H1_to_H3_time_series): results/H4_time_series/ or results/H4_phase_average/.
+# Every file carries the variant prefix, e.g. H4_time_series_coefficients.csv (h4_file() maps "H4_x" -> "<prefix>_x").
+# H4_ANALYSIS_MODE is set by H4_phase_average.R before sourcing this file; default is time series.
+H4_VARIANT <- if (identical(get0("H4_ANALYSIS_MODE", ifnotfound = "time_series"), "phase_average")) "phase_average" else "time_series"
+H4_FILE_PREFIX <- paste0("H4_", H4_VARIANT)
+h4_file <- function(filename) sub("^H4_", paste0(H4_FILE_PREFIX, "_"), filename)
+H4_RESULTS_ROOT <- file.path(PROJECT_ROOT, "output/statistical_analysis/results")
 H4_OUT_PATHS <- local({
-  result_dir <- file.path(PROJECT_ROOT, "output/statistical_analysis/results/H4_results",
-    get0("H4_ANALYSIS_MODE", ifnotfound = "timeseries"))
+  result_dir <- file.path(H4_RESULTS_ROOT, H4_FILE_PREFIX)
   work_dir <- result_dir
   dir.create(work_dir, recursive = TRUE, showWarnings = FALSE)
   list(
     result_dir = result_dir,
     work_dir = work_dir,
-    filtration_csv = file.path(work_dir, "H4_Multivariate_Filtration_Results.csv"),
-    audit_pdf = file.path(work_dir, "H4_All_Variables_Audit.pdf"),
-    stage_summary_csv = file.path(work_dir, "H4_Audit_Stage_Summary.csv"),
-    integration_csv = file.path(work_dir, "H4_Integration_Readiness.csv"),
-    step_category_csv = file.path(work_dir, "H4_Step_Category_Counts.csv"),
-    final_outcome_counts_csv = file.path(work_dir, "H4_Final_Outcome_Counts.csv"),
-    transparency_md = file.path(work_dir, "H4_Transparency_Report.md"),
-    formula_txt = file.path(work_dir, "H4_Multivariate_Formula.txt"),
-    phase_coverage_csv = file.path(work_dir, "H4_Phase_Coverage.csv")
+    filtration_csv = file.path(work_dir, h4_file("H4_Multivariate_Filtration_Results.csv")),
+    audit_pdf = file.path(work_dir, h4_file("H4_All_Variables_Audit.pdf")),
+    stage_summary_csv = file.path(work_dir, h4_file("H4_Audit_Stage_Summary.csv")),
+    integration_csv = file.path(work_dir, h4_file("H4_Integration_Readiness.csv")),
+    step_category_csv = file.path(work_dir, h4_file("H4_Step_Category_Counts.csv")),
+    final_outcome_counts_csv = file.path(work_dir, h4_file("H4_Final_Outcome_Counts.csv")),
+    transparency_md = file.path(work_dir, h4_file("H4_Transparency_Report.md")),
+    formula_txt = file.path(work_dir, h4_file("H4_Multivariate_Formula.txt")),
+    phase_coverage_csv = file.path(work_dir, h4_file("H4_Phase_Coverage.csv"))
   )
 })
 RESULT_DIR <- H4_OUT_PATHS$result_dir
@@ -72,10 +78,10 @@ SOUND_QC_COLUMNS <- c(
   "yamnet_threshold", "original_sample_rate_hz", "frequency_analysis_min_hz", "frequency_analysis_max_hz",
   "frequency_analysis_full_20khz_coverage")
 SOUND_CATEGORY_PROP_COLUMNS <- c(
-  "wind_prop", "rural_natural_prop", "vehicle_prop", "urban_manmade_neutral_prop", "urban_manmade_positive_prop",
-  "urban_manmade_negative_prop", "mechanisms_prop", "unidentify_prop")
+  "wind_proportion", "rural_natural_proportion", "vehicle_proportion", "urban_manmade_neutral_proportion", "urban_manmade_positive_proportion",
+  "urban_manmade_negative_proportion", "mechanisms_proportion", "unidentify_proportion")
 # Scene shares and totals are percent of the fisheye circle (0â€“100).
-# Total_Vegetation_% = Tree_% + Plant_% + Grass_%; Total_Builtup_% = Building_% + Wall_% + Ceiling_%.
+# Total_Vegetation_% = Tree_% + Plant_% + Grass_%; Total_Builtup_% = Building_% + Wall_% (ceiling separate).
 # Combined_Vegetation_% is the current merge's vegetation aggregate (secondary to SVF).
 SVF_EXPOSURE_COLUMNS <- c(
   "Sky_%", "SVF", "Tree_%", "Plant_%", "Grass_%", "Total_Vegetation_%", "Combined_Vegetation_%",
@@ -86,15 +92,15 @@ SVF_QC_COLUMNS <- c(
   "SVF_Rings", "Pitch_Roll_Correction", "Model", "Image_Path", "Segmented_Image_Path", "telemetry_matched",
   "SVF_Frames_In_Window", "SVF_Status")
 EXPECTED_SOUND_FREQUENCY_COLUMNS <- c(
-  "dominant_frequency_hz", "spectral_centroid_hz", "spectral_rolloff85_hz", "freq_prop_20_125", "freq_prop_125_1000",
-  "freq_prop_1000_4000", "freq_prop_4000_8000", "freq_prop_8000_20000", "octave_prop_31_5_hz", "octave_prop_63_0_hz",
-  "octave_prop_125_0_hz", "octave_prop_250_0_hz", "octave_prop_500_0_hz", "octave_prop_1000_0_hz", "octave_prop_2000_0_hz",
-  "octave_prop_4000_0_hz", "octave_prop_8000_0_hz")
+  "dominant_frequency_hz", "spectral_centroid_hz", "spectral_rolloff85_hz", "freq_proportion_20_to_200Hz",
+  "freq_proportion_200_to_2000Hz", "freq_proportion_2000_to_20000Hz", "octave_proportion_31.25Hz", "octave_proportion_62.5Hz",
+  "octave_proportion_125Hz", "octave_proportion_250Hz", "octave_proportion_500Hz", "octave_proportion_1000Hz", "octave_proportion_2000Hz",
+  "octave_proportion_4000Hz", "octave_proportion_8000Hz")
 H4_PHASE_SUM_COLS <- c("PhaseSumWalkG", "PhaseSumWalkU", "PhaseSumBikeG")
 
 h4_equation_term_order <- function(eq_id) {
   if (!exists("H4_EQUATION_FIXED", envir = .GlobalEnv, inherits = FALSE)) {
-    stop("H4_EQUATION_FIXED not defined; source scripts/H4_multivariate.R first.", call. = FALSE)
+    stop("H4_EQUATION_FIXED not defined; source scripts/H4_time_series.R first.", call. = FALSE)
   }
   get("H4_EQUATION_FIXED", envir = .GlobalEnv)[[as.character(eq_id)]]
 }
@@ -249,9 +255,9 @@ h4_prepare_data <- function(raw) {
     list(data = grid, coverage = coverage)
 }
 
-is_sound_semantic <- function(x) x %in% c("category", SOUND_CATEGORY_PROP_COLUMNS, sub("_prop$", "_score", setdiff(SOUND_CATEGORY_PROP_COLUMNS, "unidentify_prop"))) | grepl("^(sound_(prop|score)_|yamnet_class_[0-9]{3}_.+_(mean_score|prop)$)", x)
+is_sound_semantic <- function(x) x %in% c("category", SOUND_CATEGORY_PROP_COLUMNS, sub("_proportion$", "_score", setdiff(SOUND_CATEGORY_PROP_COLUMNS, "unidentify_proportion"))) | grepl("^(sound_(proportion|score)_|yamnet_class_[0-9]{3}_.+_(mean_score|proportion)$)", x)
 
-is_acoustic_frequency <- function(x) grepl("^(dominant_frequency_hz|spectral_centroid_hz|spectral_rolloff85_hz|freq_prop_|octave_prop_)", x)
+is_acoustic_frequency <- function(x) grepl("^(dominant_frequency_hz|spectral_centroid_hz|spectral_rolloff85_hz|freq_proportion_|octave_proportion_)", x)
 
 is_svf_exposure <- function(x) x %in% SVF_EXPOSURE_COLUMNS
 
@@ -303,7 +309,7 @@ classify_col_role <- function(c) {
   unit <- if(grepl("temp|UTCI|PET|MRT|T_bot|T_top|T_mid|HUMIDEX",c)) "\u00b0C" else if(grepl("SND|dBA",c)) "dBA" else
     if(grepl("pm",c)) "\u00b5g/m\u00b3" else if(grepl("lux",c)) "lux" else if(grepl("medi",c)) "medi" else if(grepl("kelvin",c)) "K" else
     if(grepl("gvi|tree|grass|plant|RH",c)) "%" else if(grepl("WIND",c)) "m/s" else if(grepl("_hz$",c)) "Hz" else
-    if(is_sound_semantic(c)||grepl("^freq_prop_|^octave_prop_",c)) "proportion / score" else if(c=="SVF") "0-1" else if(grepl("_%$",c)) "%" else "Physical unit"
+    if(is_sound_semantic(c)||grepl("^freq_proportion_|^octave_proportion_",c)) "proportion / score" else if(c=="SVF") "0-1" else if(grepl("_%$",c)) "%" else "Physical unit"
   info("Environmental Stressor Candidates (X_env)",source,unit,"Retained for Step 2 technical sensor consolidation","RETAINED FOR FILTRATION")
 }
 
@@ -513,7 +519,7 @@ h4_step4_equation_lines <- function(audit_df, raw_df = NULL, prep = NULL) {
     nrow(checks), sum(checks$full_rank), nrow(checks), H4_SPEC$vif_threshold, sum(checks$max_vif_equivalent >= H4_SPEC$vif_threshold),
     min(checks$n_design_rows), max(checks$n_design_rows)))
   print(gvif_hr[, c("equation_id", "max_vif_equivalent", "min_rows", "max_rows")], row.names = FALSE)
-  equation_comments <- readLines(file.path(PROJECT_ROOT, "scripts/H4_multivariate.R"), warn = FALSE, encoding = "UTF-8")
+  equation_comments <- readLines(file.path(PROJECT_ROOT, "scripts/H4_time_series.R"), warn = FALSE, encoding = "UTF-8")
   lines <- vapply(catalog$equation_id, function(eq_id) {
     pattern <- paste0("^# Eq ", eq_id, " \\(")
     comment <- grep(pattern, equation_comments, value = TRUE)
@@ -602,8 +608,8 @@ h4_run_gvif_diagnostic <- function(prep, design_outcome = "empatica_heart_rate",
   }
   term_df <- do.call(rbind, term_rows)
   by_equation <- do.call(rbind, eq_rows)
-  md_path <- file.path(OUT_DIR, "H4_gvif_diagnostic.md")
-  md <- c("# H4 design-only GVIF / VIF diagnostic", "", sprintf("Reference complete-case outcome: **%s** (n = %d). Other outcomes use different row sets; see `H4_design_redundancy_by_outcome.csv`.", design_outcome, n_rows),
+  md_path <- file.path(OUT_DIR, h4_file("H4_gvif_diagnostic.md"))
+  md <- c("# H4 design-only GVIF / VIF diagnostic", "", sprintf("Reference complete-case outcome: **%s** (n = %d). Other outcomes use different row sets; see `%s`.", design_outcome, n_rows, h4_file("H4_design_redundancy_by_outcome.csv")),
     "", "## PhaseID vs single continuous predictors", "", "PhaseID enters as **three** sum-to-zero contrasts (`PhaseSumWalkG`, `PhaseSumWalkU`, `PhaseSumBikeG`; BikeU implicit).",
     "In `car::vif`, that span is one **Df = 3** term with a generalized VIF (GVIF).",
     paste0("- **GVIF^(1/(2*Df))** is what `car::vif` prints for multi-df terms (Fox & Monette 1992; [car::vif](https://rdrr.io/cran/car/man/vif.html))."),
@@ -613,7 +619,7 @@ h4_run_gvif_diagnostic <- function(prep, design_outcome = "empatica_heart_rate",
     "|----|-----------|-------|---|---------------|------------|------------|-----------------|",
     with(by_equation, sprintf("| %d | %s | %s | %d | %.3f | %s | %.3f | %.3f |", equation_id, heat_form, block, n_design_rows,
       max_vif_equivalent, worst_grouped_term, phase_GVIF, phase_vif_equivalent)), "", sprintf("Generated UTC: %s", format(Sys.time(), tz = "UTC", format = "%Y-%m-%d %H:%M:%S")))
-  csv_path <- file.path(OUT_DIR, "H4_gvif_diagnostic.csv")
+  csv_path <- file.path(OUT_DIR, h4_file("H4_gvif_diagnostic.csv"))
   if (write) {
     dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
     utils::write.csv(term_df, csv_path, row.names = FALSE, na = "")
@@ -655,10 +661,10 @@ h4_write_results <- function(audit_df, step5_result) {
     stop("H4 fitting incomplete; refusing to publish final report")
   if (!identical(unname(tools::md5sum(c(H4_SCRIPT_PATH, RAW_DATA_PATH))), H4_START_MD5)) stop("Script or input changed; refusing final publication")
   res_dir <- RESULT_DIR
-  md <- OUT_DIR; rd <- function(f) read.csv(file.path(md, f), stringsAsFactors = FALSE, check.names = FALSE)
-  manifest_path <- file.path(md, "H4_run_complete.csv")
+  md <- OUT_DIR; rd <- function(f) read.csv(file.path(md, h4_file(f)), stringsAsFactors = FALSE, check.names = FALSE)
+  manifest_path <- file.path(md, h4_file("H4_run_complete.csv"))
   recorded_sources <- unname(tools::md5sum(c(H4_SCRIPT_PATH, RAW_DATA_PATH, OUT_CSV)))
-  if (!file.exists(manifest_path)) stop("Missing H4_run_complete.csv; run Step 5 before publishing")
+  if (!file.exists(manifest_path)) stop("Missing ", h4_file("H4_run_complete.csv"), "; run Step 5 before publishing")
   man <- read.csv(manifest_path, stringsAsFactors = FALSE)
   if (!identical(recorded_sources, unname(unlist(man[1L, c("code_md5", "input_md5", "audit_md5")], use.names = FALSE))))
     stop("Fitted bundle sources no longer match; refusing report publication")
@@ -679,8 +685,8 @@ h4_write_results <- function(audit_df, step5_result) {
   co$q_note[co$low_df_flag %in% TRUE] <- trimws(paste(co$q_note[co$low_df_flag %in% TRUE], "low df (<4); interpret with caution"))
   is_th <- co$term_type %in% c("thermal exposure", "sound exposure")
   heat_table <- co[is_th, ]
-  write.csv(heat_table, file.path(res_dir, "H4_Heat_Noise_Exposures.csv"), row.names = FALSE, na = "NA")
-  write.csv(co[!is_th, ], file.path(res_dir, "H4_Covariates_and_Phases.csv"), row.names = FALSE, na = "NA")
+  write.csv(heat_table, file.path(res_dir, h4_file("H4_Heat_Noise_Exposures.csv")), row.names = FALSE, na = "NA")
+  write.csv(co[!is_th, ], file.path(res_dir, h4_file("H4_Covariates_and_Phases.csv")), row.names = FALSE, na = "NA")
   }
   th <- if (nrow(co)) unique(co[co$term_type == "thermal exposure" & !grepl(":", co$term), c("term", "equation")]) else data.frame()
   cov <- if (nrow(co)) unique(co$term[co$term_type == "covariate"]) else character()
@@ -692,22 +698,22 @@ h4_write_results <- function(audit_df, step5_result) {
     "not used" }, character(1))
   keep <- c("Variable_Name", "Platform_Source", "Native_Unit", "Scientific_Domain", "Step1_Decision", "Step2_Rule", "Step2_Decision",
             "Step3_Decision", "Scientific_Filtration_Rationale", "Step4_Domain", "Step4_Category_Role", "Step4_Decision", "Step4_Restriction")
-  write.csv(cbind(audit_df[, keep], Step5_Role = role), file.path(res_dir, "H4_Variable_Selection.csv"), row.names = FALSE, na = "")
+  write.csv(cbind(audit_df[, keep], Step5_Role = role), file.path(res_dir, h4_file("H4_Variable_Selection.csv")), row.names = FALSE, na = "")
   ex <- audit_df[audit_df$Step1_Decision == "Retained" & audit_df$Step2_Decision != "Retained", ]
   ex_tab <- aggregate(Variable_Name ~ Scientific_Filtration_Rationale, ex, function(x) paste(x, collapse = ", "))
   n_tab <- if (nrow(st)) unique(st[, c("outcome", "n", "n_participants")][st$equation_id == 1, ]) else data.frame()
   h41_md <- c("## Physiological sensor models (10-second time series)",
     "Outcomes: 26 empatica + eyetracker columns (see H4_SPEC$outcomes$physiological). Nested (1 | ParticipantID / PhaseID) with AR(1) within bout.",
-    if (nrow(n_tab)) sprintf("Sample sizes (Eq 1): see H4_hypothesis_readme.txt and %d-%d rows per outcome.", min(n_tab$n), max(n_tab$n)) else "")
+    if (nrow(n_tab)) sprintf("Sample sizes (Eq 1): see %s and %d-%d rows per outcome.", h4_file("H4_hypothesis_readme.txt"), min(n_tab$n), max(n_tab$n)) else "")
   rep_md <- c("# H4 results report", "", h41_md, "",
     "## Files",
-    "- H4_Heat_Noise_Exposures.csv / H4_Covariates_and_Phases.csv: H4.1 only",
-    sprintf("- H4_Variable_Selection.csv, H4_Selection_Flow.pdf; working fits under H4_results/%s/", basename(RESULT_DIR)), "",
-    if (file.exists(file.path(md, "H4_hypothesis_readme.txt"))) readLines(file.path(md, "H4_hypothesis_readme.txt")) else character(),
-    if (file.exists(file.path(md, "H4_gvif_diagnostic.md"))) c("", readLines(file.path(md, "H4_gvif_diagnostic.md"))) else character())
-  writeLines(rep_md, file.path(res_dir, "H4_Report.md"))
-  f <- file.path(res_dir, c("H4_Report.md", "H4_Selection_Flow.pdf", "H4_Variable_Selection.csv"))
-  for (nm in c("H4_Covariates_and_Phases.csv", "H4_Heat_Noise_Exposures.csv"))
+    sprintf("- %s / %s: H4.1 only", h4_file("H4_Heat_Noise_Exposures.csv"), h4_file("H4_Covariates_and_Phases.csv")),
+    sprintf("- %s, %s; working fits in results/%s/", h4_file("H4_Variable_Selection.csv"), h4_file("H4_Selection_Flow.pdf"), basename(RESULT_DIR)), "",
+    if (file.exists(file.path(md, h4_file("H4_hypothesis_readme.txt")))) readLines(file.path(md, h4_file("H4_hypothesis_readme.txt"))) else character(),
+    if (file.exists(file.path(md, h4_file("H4_gvif_diagnostic.md")))) c("", readLines(file.path(md, h4_file("H4_gvif_diagnostic.md")))) else character())
+  writeLines(rep_md, file.path(res_dir, h4_file("H4_Report.md")))
+  f <- file.path(res_dir, h4_file(c("H4_Report.md", "H4_Selection_Flow.pdf", "H4_Variable_Selection.csv")))
+  for (nm in h4_file(c("H4_Covariates_and_Phases.csv", "H4_Heat_Noise_Exposures.csv")))
     if (file.exists(file.path(res_dir, nm))) f <- c(f, file.path(res_dir, nm))
   stopifnot(all(file.exists(f)))
   add <- if (nrow(man)) man[rep(1L, length(f)), , drop = FALSE] else
@@ -721,12 +727,12 @@ h4_write_results <- function(audit_df, step5_result) {
   completed$completed_utc <- format(Sys.time(), tz = "UTC", format = "%Y-%m-%dT%H:%M:%SZ")
   completed$run_complete <- TRUE
   completed$run_scope <- "FULL"
-  write.csv(completed, file.path(md, "H4_run_complete.csv"), row.names = FALSE)
+  write.csv(completed, file.path(md, h4_file("H4_run_complete.csv")), row.names = FALSE)
   cat("[Results] Wrote", length(f), "files to", res_dir, "\n")
 }
 
 render_h4_faceted_flow <- function(audit_all = NULL, prep = NULL) {
-  PDF_PATH <- file.path(RESULT_DIR, "H4_Selection_Flow.pdf")
+  PDF_PATH <- file.path(RESULT_DIR, h4_file("H4_Selection_Flow.pdf"))
   library(grid)
   # Font size in points for every label on this page.
   FONT_SIZE <- 15
@@ -754,8 +760,8 @@ render_h4_faceted_flow <- function(audit_all = NULL, prep = NULL) {
   sensor[grepl("Metadata|Demographics|QC|Provenance|Signal Quality", audit$Step1_Role)] <- "Metadata / QC"
   label_rules <- rbind(c("^atmo_lys_atmotube_(left|right)__atmotube_", "\\1 "), c("^atmo_lys_LYS([12])__lys_", "LYS\\1 "),
     c("^dominant_frequency_hz$", "dominant frequency (Hz)"), c("^spectral_centroid_hz$", "spectral centroid (Hz)"),
-    c("^spectral_rolloff85_hz$", "spectral rolloff 85% (Hz)"), c("^freq_prop_([0-9]+)_([0-9]+)$", "band proportion \\1-\\2 Hz"),
-    c("^octave_prop_([0-9]+)_([0-9]+)_hz$", "octave proportion \\1.\\2 Hz"), c("([0-9]+)\\.0 Hz$", "\\1 Hz"),
+    c("^spectral_rolloff85_hz$", "spectral rolloff 85% (Hz)"), c("^freq_proportion_([0-9]+)_to_([0-9]+)Hz$", "band proportion \\1-\\2 Hz"),
+    c("^octave_proportion_([0-9.]+)Hz$", "octave proportion \\1 Hz"), c("([0-9]+)\\.0 Hz$", "\\1 Hz"),
     c("(?i)^log_lys_", "log "), c("(?i)^ucm_", ""), c("(?i)^atmo_", ""), c("(?i)^lys_", ""), c("(?i)^gvi_", "GVI "),
     c("(?i)^tree_", "Tree "), c("(?i)^grass_", "Grass "), c("(?i)^plant_", "Plant "),
     c("^lys_atmotube_(left|right)__atmotube_", "\\1 "), c("^lys_LYS([12])__lys_", "LYS\\1 "),
@@ -938,7 +944,7 @@ render_h4_faceted_flow <- function(audit_all = NULL, prep = NULL) {
   grid.lines(x = c(.06 / page_width, .985), y = rep((band_top[3L] + 8) / page_height, 2L), gp = gpar(col = "#222222"))
   dev.off()
   # Refresh only the figure hash and label its scope; fitted tables still identify their original run.
-  manifest_path <- file.path(OUT_DIR, "H4_run_complete.csv")
+  manifest_path <- file.path(OUT_DIR, h4_file("H4_run_complete.csv"))
   if (file.exists(manifest_path)) {
     manifest <- read.csv(manifest_path, stringsAsFactors = FALSE)
     figure_row <- basename(manifest$file) == basename(PDF_PATH)
@@ -961,7 +967,7 @@ render_audit_pdf <- function(audit_df, output_path, preview_path = NULL) {
         df[!(mask & seq_len(nrow(df)) != which(mask)[1]), ]
     }
     audit_df <- collapse_group(audit_df, grepl("yamnet_class", audit_df$Variable_Name), "YAMNet Audio Classes")
-    audit_df <- collapse_group(audit_df, grepl("^octave_prop", audit_df$Variable_Name), "Octave Frequency Bands")
+    audit_df <- collapse_group(audit_df, grepl("^octave_proportion_", audit_df$Variable_Name), "Octave Frequency Bands")
     is_environment <- audit_df$Step1_Role == "Environmental Stressor Candidates (X_env)"
     is_physio <- grepl("Physiological Sensor Outcomes", audit_df$Step1_Role)
     is_outcome <- is_physio
@@ -1172,7 +1178,8 @@ h4_step4_exposure_prep <- function(audit_df, raw_df) {
     x
   }
   catalog <- h4_equation_catalog(nonthermal, thermal, equation_spec)
-  if (exists("H4_EQUATION_FIXED", envir = .GlobalEnv, inherits = FALSE)) {
+  # Phase-average models validate their aggregated model matrix in fit_h4_phase_mean.
+  if (exists("H4_EQUATION_FIXED", envir = .GlobalEnv, inherits = FALSE) && H4_VARIANT != "phase_average") {
     fixed <- get("H4_EQUATION_FIXED", envir = .GlobalEnv)
     for (i in seq_len(nrow(equation_spec))) {
       heat_label <- names(thermal)[i]
@@ -1239,7 +1246,7 @@ h4_fit <- function(audit_df = NULL, raw_df = NULL, prep = NULL) {
   }
   h4_model_dir <- OUT_DIR
   dir.create(h4_model_dir, recursive = TRUE, showWarnings = FALSE)
-  old_items <- list.files(h4_model_dir, pattern = "^H4_(coefficients|covariance_sensitivity|design_redundancy_by_outcome|equations|fit_records|fit_status|gvif_diagnostic|hypothesis|phase_contrasts|run_complete|session_info|lag60_sensitivity)")
+  old_items <- list.files(h4_model_dir, pattern = paste0("^", H4_FILE_PREFIX, "_(coefficients|covariance_sensitivity|design_redundancy_by_outcome|equations|fit_records|fit_status|gvif_diagnostic|hypothesis|phase_contrasts|run_complete|session_info|lag60_sensitivity)"))
   h4_archive(file.path(h4_model_dir, old_items))
   spec_rds <- tempfile(fileext = ".rds")
   saveRDS(H4_SPEC, spec_rds, version = 2L, compress = FALSE)
@@ -1328,7 +1335,7 @@ h4_fit <- function(audit_df = NULL, raw_df = NULL, prep = NULL) {
   }
   # Outcome-specific redundancy audit before fitting; a rank-deficient design blocks fitting (no predictor removal).
   preflight_df <- h4_design_preflight(raw_df, centered, selected, catalog, thermal, make_design, fit_equation_ids, outcomes, hrv_log)
-  preflight_csv <- file.path(h4_model_dir, "H4_design_redundancy_by_outcome.csv")
+  preflight_csv <- file.path(h4_model_dir, h4_file("H4_design_redundancy_by_outcome.csv"))
   utils::write.csv(preflight_df, preflight_csv, row.names = FALSE, na = "")
   if (any(!preflight_df$passes_check)) stop(sprintf("Step 5 rank-deficiency blocked fitting for %d outcome-equation designs. Review %s; GVIF/VIF flags alone do not remove predictors.",
     sum(!preflight_df$passes_check), preflight_csv), call. = FALSE)
@@ -1380,7 +1387,7 @@ h4_fit <- function(audit_df = NULL, raw_df = NULL, prep = NULL) {
   parallel::stopCluster(cl)
   cl <- NULL
   attr(fit_results, "fingerprints") <- fingerprints
-  saveRDS(fit_results, file.path(h4_model_dir, "H4_fit_records.rds"))
+  saveRDS(fit_results, file.path(h4_model_dir, h4_file("H4_fit_records.rds")))
   h4_publish_fits(fit_results, fingerprints, h4_model_dir, outcomes, fit_equation_ids,
     catalog, prep, nonthermal, agreed_common, preflight_df, raw_df)
 }
@@ -1556,7 +1563,7 @@ h4_write_phase_results <- function(results, coefficients, status, report, audit,
   names(coverage)[names(coverage) == "epochs"] <- "N_valid_epochs"
   coverage$N_expected_epochs <- H4_SPEC$expected_epochs
   coverage$Coverage_pct <- 100 * coverage$N_valid_epochs / coverage$N_expected_epochs
-  write_table(coverage, file.path(OUT_DIR, "H4_Phase_Coverage.csv"))
+  write_table(coverage, file.path(OUT_DIR, h4_file("H4_Phase_Coverage.csv")))
   status$heat_form <- prepared$catalog$heat_form[match(status$equation_id, prepared$catalog$equation_id)]
   status$residual_structure <- "phase_random_intercept"
   index <- match(paste(coefficients$equation_id, coefficients$outcome), paste(status$equation_id, status$outcome))
@@ -1564,12 +1571,12 @@ h4_write_phase_results <- function(results, coefficients, status, report, audit,
   coefficients$covariance_robust <- "Not applicable: no temporal covariance comparison"
   coefficients$model_note <- paste(status$note[index], ifelse(status$high_VIF[index], "High VIF;", ""),
     ifelse(status$boundary_variance[index], "Boundary random-intercept variance;", ""))
-  coefficients$analysis_role <- "Phase-mean sensitivity; 10-11 independent participant clusters"
+  coefficients$analysis_role <- "Exploratory VIF-screened phase-mean models; participant-cluster inference"
   coefficients$independent_unit <- "Participant cluster; repeated phase means"
   coefficients$p_method <- "participant-cluster CR2 / Satterthwaite"
   exposures <- coefficients$term_type %in% c("thermal exposure", "sound exposure")
-  write_table(coefficients[exposures, ], file.path(RESULT_DIR, "H4_Heat_Noise_Exposures.csv"))
-  write_table(coefficients[!exposures, ], file.path(RESULT_DIR, "H4_Covariates_and_Phases.csv"))
+  write_table(coefficients[exposures, ], file.path(RESULT_DIR, h4_file("H4_Heat_Noise_Exposures.csv")))
+  write_table(coefficients[!exposures, ], file.path(RESULT_DIR, h4_file("H4_Covariates_and_Phases.csv")))
   catalog <- prepared$catalog
   catalog$analysis_role <- paste("Phase-mean sensitivity:", catalog$analysis_role)
   catalog$attempted <- vapply(catalog$equation_id, function(id) sum(status$equation_id == id), integer(1))
@@ -1587,6 +1594,12 @@ h4_write_phase_results <- function(results, coefficients, status, report, audit,
   } else comparisons <- merge(grid, comparisons, by = c("outcome", "equation_id", "contrast"), all.x = TRUE)
   comparisons <- h4_coefficient_fdr(comparisons, comparisons$equation_id, comparisons$contrast,
     comparisons$p_value, is.finite(comparisons$p_value), H4_SPEC$all_outcomes)
+  phase_included <- vapply(equation_spec$equation_id, function(id)
+    all(H4_PHASE_SUM_COLS %in% h4_equation_term_order(id)), logical(1))
+  no_phase <- !phase_included[match(comparisons$equation_id, equation_spec$equation_id)]
+  comparisons$inference_status[no_phase] <- "Not applicable: phase adjustment not included in the retained model"
+  comparisons$FDR_significant[no_phase] <- comparisons$FDR_equation_significant[no_phase] <- "Not applicable"
+  comparisons$FDR_scope[no_phase] <- "Not applicable: no phase contrasts fitted"
   report <- c(report, sprintf("Separate exploratory phase contrasts: %d per-contrast q<.05 and %d equation-wide contrast q<.05; these are phase comparisons, not heat/sound exposure findings.",
     sum(comparisons$q < .05, na.rm = TRUE), sum(comparisons$q_equation < .05, na.rm = TRUE)))
   design <- status
@@ -1597,23 +1610,24 @@ h4_write_phase_results <- function(results, coefficients, status, report, audit,
   bundle <- list(H4_coefficients.csv = coefficients, H4_fit_status.csv = status,
     H4_equations.csv = catalog, H4_phase_contrasts.csv = comparisons,
     H4_design_redundancy_by_outcome.csv = design)
+  names(bundle) <- h4_file(names(bundle))
   for (name in names(bundle)) if (is.data.frame(bundle[[name]])) write_table(bundle[[name]], file.path(model_dir, name)) else
     writeLines(bundle[[name]], file.path(model_dir, name))
   vif_lines <- vapply(equation_spec$equation_id, function(id) sprintf("Eq%d: maximum phase-mean VIF %.2f; %d-%d phase observations.",
     id, max(status$max_VIF[status$equation_id == id]), min(status$n[status$equation_id == id]), max(status$n[status$equation_id == id])), character(1))
-  saveRDS(results, file.path(model_dir, "H4_fit_records.rds"))
+  saveRDS(results, file.path(model_dir, h4_file("H4_fit_records.rds")))
   prepared$phase_checks <- data.frame(equation_id = status$equation_id, max_vif_equivalent = status$max_VIF,
     n_design_rows = status$n, full_rank = status$full_rank)
   render_h4_faceted_flow(audit_all = audit, prep = prepared)
-  writeLines(c(report, "", vif_lines), file.path(RESULT_DIR, "H4_Report.md"))
+  writeLines(c(report, "", vif_lines), file.path(RESULT_DIR, h4_file("H4_Report.md")))
   paths <- list.files(RESULT_DIR, recursive = TRUE, full.names = TRUE)
-  paths <- paths[!dir.exists(paths) & basename(paths) != "H4_run_complete.csv"]
+  paths <- paths[!dir.exists(paths) & basename(paths) != h4_file("H4_run_complete.csv")]
   manifest <- data.frame(file = normalizePath(paths, winslash = "/"), md5 = unname(tools::md5sum(paths)),
-    code_md5 = unname(tools::md5sum(file.path(SCRIPT_DIR, "h4_multi_phaseavg.R"))),
-    equation_code_md5 = unname(tools::md5sum(file.path(SCRIPT_DIR, "H4_multivariate.R"))),
+    code_md5 = unname(tools::md5sum(file.path(SCRIPT_DIR, "H4_phase_average.R"))),
+    equation_code_md5 = unname(tools::md5sum(file.path(SCRIPT_DIR, "H4_time_series.R"))),
     core_md5 = unname(tools::md5sum(file.path(SCRIPT_DIR, "H4_core.R"))), input_md5 = unname(tools::md5sum(RAW_DATA_PATH)),
     completed_utc = format(Sys.time(), tz = "UTC", format = "%Y-%m-%dT%H:%M:%SZ"), run_complete = TRUE, run_scope = "PHASE_AVERAGE")
-  write_table(manifest, file.path(model_dir, "H4_run_complete.csv"))
+  write_table(manifest, file.path(model_dir, h4_file("H4_run_complete.csv")))
   cat("Phase-average output package:", RESULT_DIR, "\n", nrow(manifest), "tracked artifacts plus completion manifest\n")
 }
 
@@ -1630,7 +1644,7 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
   if (is.null(contrast_all)) stop("No phase-contrast records returned")
   stopifnot(!anyDuplicated(contrast_all[, c("outcome", "equation_id", "contrast")]))
   contrast_all <- merge(contrast_grid, contrast_all, by = c("outcome", "equation_id", "contrast"), all.x = TRUE)
-  contrast_all$note[is.na(contrast_all$note)] <- "Model failed; contrast not estimable (see H4_fit_status.csv)"
+  contrast_all$note[is.na(contrast_all$note)] <- paste0("Model failed; contrast not estimable (see ", h4_file("H4_fit_status.csv"), ")")
   # Phase contrasts have their own declared per-contrast/outcome correction, separate from exposure tests.
   contrast_all$fdr_note <- "BH per contrast within equation across planned outcomes; exploratory phase comparison"
   contrast_all$q_value <- NA_real_
@@ -1646,7 +1660,7 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
     lag_all$FDR_significant <- ifelse(is.finite(lag_all$q_lag60), ifelse(lag_all$q_lag60 < .05, "TRUE", "FALSE"), "Not estimable")
     lag_all$FDR_scope <- "Exploratory lag sensitivity: BH per term/equation across planned outcomes"
     lag_all$inference_status <- ifelse(is.finite(lag_all$q_lag60), "Tested", paste("Not estimable:", lag_all$note))
-    utils::write.csv(lag_all, file.path(h4_model_dir, "H4_lag60_sensitivity.csv"), row.names = FALSE, na = "NA")
+    utils::write.csv(lag_all, file.path(h4_model_dir, h4_file("H4_lag60_sensitivity.csv")), row.names = FALSE, na = "NA")
   }
   if (is.null(sens_all)) stop("No covariance sensitivity records returned")
   # Report every non-intercept term; preserve invalid inference as explicitly unavailable.
@@ -1724,8 +1738,9 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
     H4_hypothesis_readme.txt = readme_lines,
     H4_session_info.txt = session_lines
   )
+  names(bundle) <- h4_file(names(bundle))
   # Sequential publication; the completion manifest is invalidated first (readers must reject a missing manifest).
-  manifest_path <- file.path(h4_model_dir, "H4_run_complete.csv")
+  manifest_path <- file.path(h4_model_dir, h4_file("H4_run_complete.csv"))
   if (!identical(unname(tools::md5sum(c(H4_SCRIPT_PATH, RAW_DATA_PATH, OUT_CSV))), unname(fingerprints[c("code_md5", "input_md5", "audit_md5")])))
     stop("Script, input or audit changed during fitting; checkpoint retained, inconsistent results not published")
   if (file.exists(manifest_path) && !file.remove(manifest_path)) stop("Cannot invalidate old completion manifest")
@@ -1733,8 +1748,8 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
     target_path <- file.path(h4_model_dir, nm)
     if (is.data.frame(bundle[[nm]])) write.csv(bundle[[nm]], target_path, row.names = FALSE, na = "NA") else writeLines(bundle[[nm]], target_path)
   }
-  extra_files <- c("H4_fit_records.rds", "H4_gvif_diagnostic.csv", "H4_gvif_diagnostic.md",
-                   "H4_design_redundancy_by_outcome.csv", "H4_covariance_sensitivity.csv", "H4_lag60_sensitivity.csv", "H4_session_info.txt")
+  extra_files <- h4_file(c("H4_fit_records.rds", "H4_gvif_diagnostic.csv", "H4_gvif_diagnostic.md",
+                   "H4_design_redundancy_by_outcome.csv", "H4_covariance_sensitivity.csv", "H4_lag60_sensitivity.csv", "H4_session_info.txt"))
   man_files <- unique(c(names(bundle), extra_files[file.exists(file.path(h4_model_dir, extra_files))]))
   write.csv(data.frame(file = man_files, md5 = unname(tools::md5sum(file.path(h4_model_dir, man_files))), as.list(fingerprints),
     completed_utc = format(Sys.time(), tz = "UTC", format = "%Y-%m-%dT%H:%M:%SZ"), run_complete = FALSE,
@@ -1998,8 +2013,8 @@ h4_run_audit <- function() {
     h4_regenerated <- c(OUT_CSV, sub(".csv$", "_latest.csv", OUT_CSV), AUDIT_PDF, STAGE_SUMMARY_CSV, INTEGRATION_CSV,
                         STEP_CATEGORY_CSV, FINAL_OUTCOME_COUNTS_CSV, TRANSPARENCY_MD, FORMULA_TXT,
                         H4_OUT_PATHS$phase_coverage_csv,
-                        file.path(RESULT_DIR, c("H4_Heat_Noise_Exposures.csv", "H4_Covariates_and_Phases.csv", "H4_Report.md",
-                          "H4_Selection_Flow.pdf", "H4_Variable_Selection.csv")))
+                        file.path(RESULT_DIR, h4_file(c("H4_Heat_Noise_Exposures.csv", "H4_Covariates_and_Phases.csv", "H4_Report.md",
+                          "H4_Selection_Flow.pdf", "H4_Variable_Selection.csv"))))
     h4_archive(h4_regenerated)
     cat("[1/6] Loading canonical 8-minute analysis dataset...\n")
     df <- read.csv(RAW_DATA_PATH, stringsAsFactors = FALSE, check.names = FALSE)
@@ -2081,7 +2096,7 @@ h4_run_audit <- function() {
     step3_criterion <<- "Measurement provenance and dependencies; within-person correlations and full-design rank are descriptive. All Step-2 candidates remain; no final exposure equation selected"
     role_outcomes <<- rbind(
       c("Derived Light Category (not an independent continuous exposure)", "DERIVED LIGHT CATEGORY", NA),
-      c("Physiological Sensor Outcomes (Y_physio)", "PHYSIOLOGICAL OUTCOME (Y)", "Objective physiological outcome; Step 4 uses 10-second summaries with declared HRV logs. Step 5 handles its outcome transformations separately."),
+      c("Physiological Sensor Outcomes (Y_physio)", "PHYSIOLOGICAL OUTCOME (Y)", "Objective physiological outcome; Step 4 uses 10-second summaries with declared natural logs (HRV, EDA tonic). Step 5 handles its outcome transformations separately."),
       c("Movement Covariates (Z)", "MOVEMENT COVARIATE (Z)", NA),
       c("Study Metadata & Spatiotemporal Tracking", "STUDY METADATA", "Spatiotemporal tracking, GPS positioning, or phase grouping metadata."),
       c("Participant Demographics & Clothing Metadata", "DEMOGRAPHIC METADATA", "Baseline participant demographic characteristics or clothing insulation metadata."),
@@ -2212,7 +2227,7 @@ h4_dispatch_run <- function() {
     quit(save = "no", status = 0)
   }
   if (identical(Sys.getenv("H4_GVIF_ONLY"), "1")) {
-    if (file.exists(file.path(OUT_DIR, "H4_run_complete.csv")))
+    if (file.exists(file.path(OUT_DIR, h4_file("H4_run_complete.csv"))))
       stop("A completed model bundle exists; rerun Step 5 instead of rewriting GVIF files after hashing.")
     raw_df <- read.csv(RAW_DATA_PATH, check.names = FALSE)
     for (v in setdiff(names(average_sources), names(raw_df))) raw_df[[v]] <- rowMeans(raw_df[, average_sources[[v]], drop = FALSE], na.rm = TRUE)
@@ -2221,7 +2236,7 @@ h4_dispatch_run <- function() {
     quit(save = "no", status = 0)
   }
   if (identical(Sys.getenv("H4_FACET_REFRESH"), "1")) {
-    if (!file.exists(file.path(OUT_DIR, "H4_run_complete.csv"))) {
+    if (!file.exists(file.path(OUT_DIR, h4_file("H4_run_complete.csv")))) {
       raw_df <- read.csv(RAW_DATA_PATH, check.names = FALSE)
       for (v in setdiff(names(average_sources), names(raw_df))) raw_df[[v]] <- rowMeans(raw_df[, average_sources[[v]], drop = FALSE], na.rm = TRUE)
       h4_run_gvif_diagnostic(h4_step4_exposure_prep(read.csv(OUT_CSV, stringsAsFactors = FALSE, check.names = FALSE), raw_df))

@@ -1,0 +1,31 @@
+family,family_label,transform,PC,variance_explained_pct,cumulative_pct,retained
+yamnet_proportions,YAMNet proportions,identity,1,26.45836285080533,26.45836285080533,True
+yamnet_proportions,YAMNet proportions,identity,2,21.84388255719308,48.302245407998406,True
+yamnet_proportions,YAMNet proportions,identity,3,14.99469264144274,63.296938049441145,True
+yamnet_proportions,YAMNet proportions,identity,4,14.123656287451421,77.42059433689256,True
+yamnet_proportions,YAMNet proportions,identity,5,11.140339071955886,88.56093340884846,True
+yamnet_proportions,YAMNet proportions,identity,6,8.388218727605352,96.9491521364538,False
+yamnet_proportions,YAMNet proportions,identity,7,3.050847863546215,100.00000000000003,False
+yamnet_scores,YAMNet scores,identity,1,34.56630981775447,34.56630981775447,True
+yamnet_scores,YAMNet scores,identity,2,23.890620452558377,58.456930270312846,True
+yamnet_scores,YAMNet scores,identity,3,14.790893949711142,73.24782422002399,True
+yamnet_scores,YAMNet scores,identity,4,12.008653507055813,85.2564777270798,True
+yamnet_scores,YAMNet scores,identity,5,8.316567401360121,93.57304512843992,False
+yamnet_scores,YAMNet scores,identity,6,4.823489799283916,98.39653492772383,False
+yamnet_scores,YAMNet scores,identity,7,1.603465072276145,99.99999999999997,False
+broad_bands,Broad frequency bands,ILR,1,58.15751394007817,58.15751394007817,True
+broad_bands,Broad frequency bands,ILR,2,26.226040259541843,84.38355419962001,True
+broad_bands,Broad frequency bands,ILR,3,10.432155983412606,94.8157101830326,False
+broad_bands,Broad frequency bands,ILR,4,5.1842898169673814,99.99999999999999,False
+octave_bands,Octave bands,identity,1,40.520126647587404,40.520126647587404,True
+octave_bands,Octave bands,identity,2,17.800973365395777,58.32110001298319,True
+octave_bands,Octave bands,identity,3,14.073661130032406,72.3947611430156,True
+octave_bands,Octave bands,identity,4,8.672566149772123,81.06732729278772,True
+octave_bands,Octave bands,identity,5,6.64706717332518,87.71439446611289,False
+octave_bands,Octave bands,identity,6,5.161845855297885,92.87624032141079,False
+octave_bands,Octave bands,identity,7,4.093947944210539,96.97018826562133,False
+octave_bands,Octave bands,identity,8,2.945362110270748,99.91555037589207,False
+octave_bands,Octave bands,identity,9,0.08444962410796547,100.00000000000004,False
+spectral_descriptors,Spectral descriptors,identity,1,62.85105990145225,62.85105990145225,True
+spectral_descriptors,Spectral descriptors,identity,2,32.10568613948728,94.95674604093954,True
+spectral_descriptors,Spectral descriptors,identity,3,5.04325395906046,99.99999999999999,False

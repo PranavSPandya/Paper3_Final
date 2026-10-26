@@ -13,6 +13,7 @@
 - **Field Sensing Limitations in Prior Work:** Existing outdoor comfort studies focus primarily on stationary pedestrians or campus transects; cycling studies focus on kinematic/vibrational safety or dedicated cardiac readouts without synchronous environmental exposure (Rupi & Krizek, 2019).
 - **Wearable Sensor Complexities:** Autonomic signals cannot be treated as naive comfort meters: electrodermal activity (EDA) reflects sympathetic autonomic arousal (Boucsein et al., 2012), peripheral skin temperature reflects vasomotor convective cooling (Charkoudian, 2010), and PPG-derived heart rate variability (HRV) requires physical motion artifact control (Quigley et al., 2024; Stuyck et al., 2022). Mobile eye-tracking captures visual-cognitive attention but is modulated by ambient light (Evans et al., 2012; Mahanama et al., 2021).
 - **Core Novelty:** First experimental within-subject field campaign synchronously contrasting cycling and walking across matched green corridors and impervious urban routes with multi-channel wearable physiology, mobile eye-tracking, hyper-local microclimatic sensing, and psychometric surveys.
+- **Spatial Noise Repeatability Gap:** To our knowledge, no prior study has tested whether environmental noise hotspots recur at the same locations across multiple participants travelling a shared route while recording physiology (HRV) at those locations. Aumond et al. (2017) mapped acoustic levels at fixed points along a shared Paris walking path across repeated group walks but measured no physiology; personal-exposure panels linked noise to HRV in daily life (Kraus et al., 2013; El Aarbaoui et al., 2017; El Aarbaoui & Chaix, 2020) but did not map noise along a fixed, repeated route.
 
 ## 1.2 Study Hypotheses
 
@@ -273,12 +274,16 @@ Table 2. Descriptive statistics across conditions (Mean +/- SD in 8-minute match
 
 # References
 
+- Aumond, P., Can, A., De Coensel, B., Botteldooren, D., Ribeiro, C., & Lavandier, C. (2017). Modeling soundscape pleasantness using perceptual assessments and acoustic measurements along paths in urban context. *Acta Acustica united with Acustica*, 103(3), 430–443.
 - Boucsein, W., et al. (2012). Publication recommendations for electrodermal measurements. *Psychophysiology*, 49(8), 1017–1034.
 - Charkoudian, N. (2010). Mechanisms and modifiers of reflex sympathoneural control in humans. *Autonomic Neuroscience*, 196, 68–75.
 - Chinazzo, G., Wienold, J., & Andersen, M. (2019). Daylight affects human thermal perception. *Scientific Reports*, 9(1), 13690.
 - Cuve, H. C., et al. (2023). Validation of pupil size dynamics as an index of cognitive effort and stress. *Psychophysiology*, 60(4), e14205.
+- El Aarbaoui, T., & Chaix, B. (2020). The short-term association between exposure to noise and heart rate variability in daily locations and mobility contexts. *Journal of Exposure Science & Environmental Epidemiology*, 30(2), 383–393.
+- El Aarbaoui, T., Méline, J., Brondeel, R., & Chaix, B. (2017). Short-term association between personal exposure to noise and heart rate variability: The RECORD MultiSensor Study. *Environmental Pollution*, 231, 703–711.
 - Evans, K. M., et al. (2012). Collecting and analyzing eye-tracking data in outdoor environments. *Journal of Eye Movement Research*, 5(2), 1–19.
 - Kaplan, S. (1995). The restorative benefits of nature: Toward an integrative framework. *Journal of Environmental Psychology*, 15(3), 169–182.
+- Kraus, U., et al. (2013). Individual daytime noise exposure during routine activities and heart rate variability in adults: A repeated measures study. *Environmental Health Perspectives*, 121(5), 607–612.
 - Mahanama, B., et al. (2021). Eye movement and pupil measures: A review. *Frontiers in Computer Science*, 3, 733531.
 - Mansi, S. A., et al. (2022). A novel methodology for human thermal comfort assessment in outdoor environments. *Building and Environment*, 211, 108729.
 - Nikolopoulou, M., Baker, N., & Steemers, K. (2001). Thermal comfort in outdoor urban spaces. *Solar Energy*, 70(3), 227–235.

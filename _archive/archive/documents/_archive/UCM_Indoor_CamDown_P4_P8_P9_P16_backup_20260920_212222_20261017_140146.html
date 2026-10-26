@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indoor CamUp Photo Evidence (Every 10 Seconds): P4, P8 to P17</title>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #17202a;
+  --muted: #52606d;
+  --line: #d9e2ec;
+  --panel: #f7f9fb;
+  --indoor: #b42318;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 24px;
+  color: var(--ink);
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.45;
+}
+main { max-width: 1600px; margin: auto; }
+h1 { margin: 0 0 8px; color: #102a43; font-size: 24px; }
+h2 { margin: 0; color: #102a43; border-left: 6px solid var(--indoor); padding-left: 12px; font-size: 20px; }
+.subtitle { color: var(--muted); margin: 0 0 16px; font-size: 14px; }
+.note {
+  background: #fff8e1;
+  border: 1px solid #f0c36d;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 14px 0;
+  font-size: 13px;
+}
+.note strong { color: #7a4b00; }
+.table-wrap { overflow-x: auto; margin: 16px 0 28px; }
+table { border-collapse: collapse; width: 100%; min-width: 860px; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #eaf2f8; color: #243b53; font-weight: 700; }
+tr:nth-child(even) { background: #f8fafc; }
+.participant {
+  margin: 32px 0 40px;
+  padding-top: 18px;
+  border-top: 3px solid #bcccdc;
+}
+.window {
+  margin: 8px 0 14px;
+  font-size: 13px;
+  color: #334e68;
+  background: #f0f4f8;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+}
+.photo-card {
+  margin: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  background: #111;
+}
+.photo-card figcaption {
+  padding: 6px 8px;
+  font-size: 11px;
+}
+.photo-card figcaption strong {
+  color: #102a43;
+  font-size: 12px;
+}
+.photo-card figcaption span {
+  display: block;
+  color: var(--muted);
+  margin-top: 2px;
+  font-size: 10px;
+}
+.footer {
+  margin-top: 40px;
+  color: var(--muted);
+  font-size: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+</style>
+</head>
+<body>
+<main>
+<h1>Indoor CamUp Photo Evidence (Every 10 Seconds): P4, P8 to P17</h1>
+<p class="subtitle">Upward-facing camera (CamUp) photos sampled at 10-second intervals across the strict Indoor key window for each participant to verify indoor ceiling/lighting conditions.</p>
+
+<div class="note">
+  <strong>Inspection Protocol:</strong> CamUp photos only, strictly filtered inside each participant's scheduled <code>Indoor_start</code> to <code>Indoor_end</code> window. For dense periods (continuous recording), images are sampled at 10-second clock intervals. For P4, the outdoor BikeU pre-trip photos (12:40:33&ndash;35) have been removed, ending Indoor strictly at 12:37:31. For P16, the outdoor pre-departure photos (13:49:30&ndash;33) have been removed, ending Indoor strictly at 13:49:29.
+</div>
+
+<h2>Summary Table</h2>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Participant</th>
+      <th>Date</th>
+      <th>Scheduled Indoor Window</th>
+      <th>Key Duration</th>
+      <th>Total CamUp In-Window</th>
+      <th>Sampled Images (Every 10s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#P4"><strong>P4</strong></a></td>
+      <td>25-Aug</td>
+      <td>12:35:45 &ndash; 12:37:31</td>
+      <td>0:01:46 (106 s)</td>
+      <td>107 photos</td>
+      <td><strong>11 images</strong></td>
+    </tr>    <tr>
+      <td><a href="#P8"><strong>P8</strong></a></td>
+      <td>03-Aug</td>
+      <td>12:44:22 &ndash; 13:00:04</td>
+      <td>0:15:42 (942 s)</td>
+      <td>938 photos</td>
+      <td><strong>95 images</strong></td>
+    </tr>    <tr>
+      <td><a href="#P9"><strong>P9</strong></a></td>
+      <td>06-Aug</td>
+      <td>10:39:17 &ndash; 10:43:27</td>
+      <td>0:04:10 (250 s)</td>
+      <td>52 photos</td>
+      <td><strong>7 images</strong></td>
+    </tr>    <tr>
+      <td><a href="#P10"><strong>P10</strong></a></td>
+      <td>12-Aug</td>
+      <td>12:12:45 &ndash; 12:16:38</td>
+      <td>0:03:53 (233 s)</td>
+      <td>3 photos</td>
+      <td><strong>2 images</strong></td>
+    </tr>    <tr>
+      <td><a href="#P11"><strong>P11</strong></a></td>
+      <td>09-Aug</td>
+      <td>13:13:10 &ndash; 13:19:11</td>
+      <td>0:06:01 (361 s)</td>
+      <td>24 photos</td>
+      <td><strong>4 images</strong></td>
+    </tr>    <tr>
+      <td><a href="#P12"><strong>P12</strong></a></td>
+      <td>10-Aug</td>
+      <td>13:08:34 &ndash; 13:12:55</td>
+      <td>0:04:21 (261 s)</td>
+      <td>13 photos</td>
+      <td><strong>3 images</strong></td>
+    </tr>    <tr>
+      <td><a href="#P13"><strong>P13</strong></a></td>
+      <td>13-Aug</td>
+      <td>13:10:29 &ndash; 13:16:59</td>
+      <td>0:06:30 (390 s)</td>
+      <td>36 photos</td>
+      <td><strong>6 images</strong></td>
+    </tr>    <tr>
+      <td><a href="#P14"><strong>P14</strong></a></td>
+      <td>14-Aug</td>
+      <td>12:19:25 &ndash; 12:23:46</td>
+      <td>0:04:21 (261 s)</td>
+      <td>12 photos</td>
+      <td><strong>3 images</strong></td>
+    </tr>    <tr>
+      <td><a href="#P15"><strong>P15</strong></a></td>
+      <td>15-Aug</td>
+      <td>13:26:30 &ndash; 13:28:50</td>
+      <td>0:02:20 (140 s)</td>
+      <td>3 photos</td>
+      <td><strong>1 images</strong></td>
+    </tr>    <tr>
+      <td><a href="#P16"><strong>P16</strong></a></td>
+      <td>17-Aug</td>
+      <td>13:47:15 &ndash; 13:49:29</td>
+      <td>0:02:14 (134 s)</td>
+      <td>3 photos</td>
+      <td><strong>1 images</strong></td>
+    </tr>    <tr>
+      <td><a href="#P17"><strong>P17</strong></a></td>
+      <td>26-Aug</td>
+      <td>12:21:24 &ndash; 12:36:02</td>
+      <td>0:14:38 (878 s)</td>
+      <td>13 photos</td>
+      <td><strong>2 images</strong></td>
+    </tr>  </tbody>
+</table>
+</div>
+
+<!-- P4 -->
+<section id="P4" class="participant">
+  <h2>P4</h2>
+  <p class="window"><strong>Scheduled Indoor window:</strong> 12:35:45 to 12:37:31 &nbsp;|&nbsp; <strong>Duration:</strong> 0:01:46 (106 s) &nbsp;|&nbsp; <strong>Total CamUp photos:</strong> 107 &nbsp;|&nbsp; <strong>Displayed (10-s sampling):</strong> 11 images</p>
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img alt="P4 CamUp at 12:35:45" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P4/Tram/ucm/20250825_122140/CamUp/cam_20250825_123545.jpg"/>
+      <figcaption><strong>12:35:45</strong><span>+0 s | #1/11</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P4 CamUp at 12:35:55" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P4/Tram/ucm/20250825_122140/CamUp/cam_20250825_123555.jpg"/>
+      <figcaption><strong>12:35:55</strong><span>+10 s | #2/11</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P4 CamUp at 12:36:05" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P4/Tram/ucm/20250825_122140/CamUp/cam_20250825_123605.jpg"/>
+      <figcaption><strong>12:36:05</strong><span>+20 s | #3/11</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P4 CamUp at 12:36:15" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P4/Tram/ucm/20250825_122140/CamUp/cam_20250825_123615.jpg"/>
+      <figcaption><strong>12:36:15</strong><span>+30 s | #4/11</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P4 CamUp at 12:36:25" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P4/Tram/ucm/20250825_122140/CamUp/cam_20250825_123625.jpg"/>
+      <figcaption><strong>12:36:25</strong><span>+40 s | #5/11</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P4 CamUp at 12:36:35" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P4/Tram/ucm/20250825_122140/CamUp/cam_20250825_123635.jpg"/>
+      <figcaption><strong>12:36:35</strong><span>+50 s | #6/11</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P4 CamUp at 12:36:45" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P4/Tram/ucm/20250825_122140/CamUp/cam_20250825_123645.jpg"/>
+      <figcaption><strong>12:36:45</strong><span>+60 s | #7/11</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P4 CamUp at 12:36:55" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P4/Tram/ucm/20250825_122140/CamUp/cam_20250825_123655.jpg"/>
+      <figcaption><strong>12:36:55</strong><span>+70 s | #8/11</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P4 CamUp at 12:37:05" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P4/Tram/ucm/20250825_122140/CamUp/cam_20250825_123705.jpg"/>
+      <figcaption><strong>12:37:05</strong><span>+80 s | #9/11</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P4 CamUp at 12:37:15" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P4/Tram/ucm/20250825_122140/CamUp/cam_20250825_123715.jpg"/>
+      <figcaption><strong>12:37:15</strong><span>+90 s | #10/11</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P4 CamUp at 12:37:25" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P4/Tram/ucm/20250825_122140/CamUp/cam_20250825_123725.jpg"/>
+      <figcaption><strong>12:37:25</strong><span>+100 s | #11/11</span></figcaption>
+    </figure>  </div>
+</section>
+
+<!-- P8 -->
+<section id="P8" class="participant">
+  <h2>P8</h2>
+  <p class="window"><strong>Scheduled Indoor window:</strong> 12:44:22 to 13:00:04 &nbsp;|&nbsp; <strong>Duration:</strong> 0:15:42 (942 s) &nbsp;|&nbsp; <strong>Total CamUp photos:</strong> 938 &nbsp;|&nbsp; <strong>Displayed (10-s sampling):</strong> 95 images</p>
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:44:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkU/ucm/CamUp/cam_20250803_124422.jpg"/>
+      <figcaption><strong>12:44:22</strong><span>+0 s | #1/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:44:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124432.jpg"/>
+      <figcaption><strong>12:44:32</strong><span>+10 s | #2/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:44:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124442.jpg"/>
+      <figcaption><strong>12:44:42</strong><span>+20 s | #3/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:44:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124452.jpg"/>
+      <figcaption><strong>12:44:52</strong><span>+30 s | #4/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:45:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124502.jpg"/>
+      <figcaption><strong>12:45:02</strong><span>+40 s | #5/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:45:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124512.jpg"/>
+      <figcaption><strong>12:45:12</strong><span>+50 s | #6/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:45:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124522.jpg"/>
+      <figcaption><strong>12:45:22</strong><span>+60 s | #7/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:45:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124532.jpg"/>
+      <figcaption><strong>12:45:32</strong><span>+70 s | #8/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:45:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124542.jpg"/>
+      <figcaption><strong>12:45:42</strong><span>+80 s | #9/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:45:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124552.jpg"/>
+      <figcaption><strong>12:45:52</strong><span>+90 s | #10/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:46:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124602.jpg"/>
+      <figcaption><strong>12:46:02</strong><span>+100 s | #11/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:46:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124612.jpg"/>
+      <figcaption><strong>12:46:12</strong><span>+110 s | #12/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:46:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124622.jpg"/>
+      <figcaption><strong>12:46:22</strong><span>+120 s | #13/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:46:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124632.jpg"/>
+      <figcaption><strong>12:46:32</strong><span>+130 s | #14/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:46:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124642.jpg"/>
+      <figcaption><strong>12:46:42</strong><span>+140 s | #15/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:46:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124652.jpg"/>
+      <figcaption><strong>12:46:52</strong><span>+150 s | #16/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:47:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124702.jpg"/>
+      <figcaption><strong>12:47:02</strong><span>+160 s | #17/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:47:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124712.jpg"/>
+      <figcaption><strong>12:47:12</strong><span>+170 s | #18/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:47:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124722.jpg"/>
+      <figcaption><strong>12:47:22</strong><span>+180 s | #19/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:47:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124732.jpg"/>
+      <figcaption><strong>12:47:32</strong><span>+190 s | #20/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:47:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124742.jpg"/>
+      <figcaption><strong>12:47:42</strong><span>+200 s | #21/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:47:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124752.jpg"/>
+      <figcaption><strong>12:47:52</strong><span>+210 s | #22/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:48:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124802.jpg"/>
+      <figcaption><strong>12:48:02</strong><span>+220 s | #23/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:48:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124812.jpg"/>
+      <figcaption><strong>12:48:12</strong><span>+230 s | #24/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:48:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124822.jpg"/>
+      <figcaption><strong>12:48:22</strong><span>+240 s | #25/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:48:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124832.jpg"/>
+      <figcaption><strong>12:48:32</strong><span>+250 s | #26/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:48:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124842.jpg"/>
+      <figcaption><strong>12:48:42</strong><span>+260 s | #27/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:48:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124852.jpg"/>
+      <figcaption><strong>12:48:52</strong><span>+270 s | #28/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:49:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124902.jpg"/>
+      <figcaption><strong>12:49:02</strong><span>+280 s | #29/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:49:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124912.jpg"/>
+      <figcaption><strong>12:49:12</strong><span>+290 s | #30/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:49:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124922.jpg"/>
+      <figcaption><strong>12:49:22</strong><span>+300 s | #31/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:49:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124932.jpg"/>
+      <figcaption><strong>12:49:32</strong><span>+310 s | #32/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:49:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124942.jpg"/>
+      <figcaption><strong>12:49:42</strong><span>+320 s | #33/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:49:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_124952.jpg"/>
+      <figcaption><strong>12:49:52</strong><span>+330 s | #34/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:50:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125002.jpg"/>
+      <figcaption><strong>12:50:02</strong><span>+340 s | #35/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:50:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125012.jpg"/>
+      <figcaption><strong>12:50:12</strong><span>+350 s | #36/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:50:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125022.jpg"/>
+      <figcaption><strong>12:50:22</strong><span>+360 s | #37/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:50:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125032.jpg"/>
+      <figcaption><strong>12:50:32</strong><span>+370 s | #38/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:50:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125042.jpg"/>
+      <figcaption><strong>12:50:42</strong><span>+380 s | #39/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:50:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125052.jpg"/>
+      <figcaption><strong>12:50:52</strong><span>+390 s | #40/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:51:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125102.jpg"/>
+      <figcaption><strong>12:51:02</strong><span>+400 s | #41/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:51:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125112.jpg"/>
+      <figcaption><strong>12:51:12</strong><span>+410 s | #42/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:51:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125122.jpg"/>
+      <figcaption><strong>12:51:22</strong><span>+420 s | #43/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:51:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125132.jpg"/>
+      <figcaption><strong>12:51:32</strong><span>+430 s | #44/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:51:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125142.jpg"/>
+      <figcaption><strong>12:51:42</strong><span>+440 s | #45/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:51:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125152.jpg"/>
+      <figcaption><strong>12:51:52</strong><span>+450 s | #46/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:52:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125202.jpg"/>
+      <figcaption><strong>12:52:02</strong><span>+460 s | #47/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:52:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125212.jpg"/>
+      <figcaption><strong>12:52:12</strong><span>+470 s | #48/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:52:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125222.jpg"/>
+      <figcaption><strong>12:52:22</strong><span>+480 s | #49/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:52:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125232.jpg"/>
+      <figcaption><strong>12:52:32</strong><span>+490 s | #50/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:52:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125242.jpg"/>
+      <figcaption><strong>12:52:42</strong><span>+500 s | #51/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:52:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125252.jpg"/>
+      <figcaption><strong>12:52:52</strong><span>+510 s | #52/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:53:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125302.jpg"/>
+      <figcaption><strong>12:53:02</strong><span>+520 s | #53/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:53:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125312.jpg"/>
+      <figcaption><strong>12:53:12</strong><span>+530 s | #54/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:53:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125322.jpg"/>
+      <figcaption><strong>12:53:22</strong><span>+540 s | #55/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:53:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125332.jpg"/>
+      <figcaption><strong>12:53:32</strong><span>+550 s | #56/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:53:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125342.jpg"/>
+      <figcaption><strong>12:53:42</strong><span>+560 s | #57/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:53:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125352.jpg"/>
+      <figcaption><strong>12:53:52</strong><span>+570 s | #58/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:54:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125402.jpg"/>
+      <figcaption><strong>12:54:02</strong><span>+580 s | #59/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:54:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125412.jpg"/>
+      <figcaption><strong>12:54:12</strong><span>+590 s | #60/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:54:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125422.jpg"/>
+      <figcaption><strong>12:54:22</strong><span>+600 s | #61/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:54:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125432.jpg"/>
+      <figcaption><strong>12:54:32</strong><span>+610 s | #62/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:54:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125442.jpg"/>
+      <figcaption><strong>12:54:42</strong><span>+620 s | #63/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:54:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125452.jpg"/>
+      <figcaption><strong>12:54:52</strong><span>+630 s | #64/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:55:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125502.jpg"/>
+      <figcaption><strong>12:55:02</strong><span>+640 s | #65/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:55:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125512.jpg"/>
+      <figcaption><strong>12:55:12</strong><span>+650 s | #66/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:55:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125522.jpg"/>
+      <figcaption><strong>12:55:22</strong><span>+660 s | #67/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:55:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125532.jpg"/>
+      <figcaption><strong>12:55:32</strong><span>+670 s | #68/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:55:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125542.jpg"/>
+      <figcaption><strong>12:55:42</strong><span>+680 s | #69/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:55:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125552.jpg"/>
+      <figcaption><strong>12:55:52</strong><span>+690 s | #70/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:56:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125602.jpg"/>
+      <figcaption><strong>12:56:02</strong><span>+700 s | #71/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:56:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125612.jpg"/>
+      <figcaption><strong>12:56:12</strong><span>+710 s | #72/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:56:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125622.jpg"/>
+      <figcaption><strong>12:56:22</strong><span>+720 s | #73/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:56:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125632.jpg"/>
+      <figcaption><strong>12:56:32</strong><span>+730 s | #74/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:56:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125642.jpg"/>
+      <figcaption><strong>12:56:42</strong><span>+740 s | #75/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:56:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125652.jpg"/>
+      <figcaption><strong>12:56:52</strong><span>+750 s | #76/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:57:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125702.jpg"/>
+      <figcaption><strong>12:57:02</strong><span>+760 s | #77/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:57:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125712.jpg"/>
+      <figcaption><strong>12:57:12</strong><span>+770 s | #78/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:57:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125722.jpg"/>
+      <figcaption><strong>12:57:22</strong><span>+780 s | #79/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:57:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125732.jpg"/>
+      <figcaption><strong>12:57:32</strong><span>+790 s | #80/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:57:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125742.jpg"/>
+      <figcaption><strong>12:57:42</strong><span>+800 s | #81/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:57:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125752.jpg"/>
+      <figcaption><strong>12:57:52</strong><span>+810 s | #82/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:58:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125802.jpg"/>
+      <figcaption><strong>12:58:02</strong><span>+820 s | #83/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:58:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125812.jpg"/>
+      <figcaption><strong>12:58:12</strong><span>+830 s | #84/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:58:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125822.jpg"/>
+      <figcaption><strong>12:58:22</strong><span>+840 s | #85/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:58:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125832.jpg"/>
+      <figcaption><strong>12:58:32</strong><span>+850 s | #86/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:58:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125842.jpg"/>
+      <figcaption><strong>12:58:42</strong><span>+860 s | #87/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:58:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125852.jpg"/>
+      <figcaption><strong>12:58:52</strong><span>+870 s | #88/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:59:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125902.jpg"/>
+      <figcaption><strong>12:59:02</strong><span>+880 s | #89/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:59:12" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125912.jpg"/>
+      <figcaption><strong>12:59:12</strong><span>+890 s | #90/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:59:22" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125922.jpg"/>
+      <figcaption><strong>12:59:22</strong><span>+900 s | #91/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:59:32" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125932.jpg"/>
+      <figcaption><strong>12:59:32</strong><span>+910 s | #92/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:59:42" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125942.jpg"/>
+      <figcaption><strong>12:59:42</strong><span>+920 s | #93/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 12:59:52" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_125952.jpg"/>
+      <figcaption><strong>12:59:52</strong><span>+930 s | #94/95</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P8 CamUp at 13:00:02" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P8/WalkG/ucm/CamUp/cam_20250803_130002.jpg"/>
+      <figcaption><strong>13:00:02</strong><span>+940 s | #95/95</span></figcaption>
+    </figure>  </div>
+</section>
+
+<!-- P9 -->
+<section id="P9" class="participant">
+  <h2>P9</h2>
+  <p class="window"><strong>Scheduled Indoor window:</strong> 10:39:17 to 10:43:27 &nbsp;|&nbsp; <strong>Duration:</strong> 0:04:10 (250 s) &nbsp;|&nbsp; <strong>Total CamUp photos:</strong> 52 &nbsp;|&nbsp; <strong>Displayed (10-s sampling):</strong> 7 images</p>
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img alt="P9 CamUp at 10:39:17" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P9/BikeU/ucm/CamUp/cam_20250806_103917.jpg"/>
+      <figcaption><strong>10:39:17</strong><span>+0 s | #1/7</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P9 CamUp at 10:39:27" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P9/BikeU/ucm/CamUp/cam_20250806_103927.jpg"/>
+      <figcaption><strong>10:39:27</strong><span>+10 s | #2/7</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P9 CamUp at 10:39:37" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P9/BikeU/ucm/CamUp/cam_20250806_103937.jpg"/>
+      <figcaption><strong>10:39:37</strong><span>+20 s | #3/7</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P9 CamUp at 10:39:47" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P9/BikeU/ucm/CamUp/cam_20250806_103947.jpg"/>
+      <figcaption><strong>10:39:47</strong><span>+30 s | #4/7</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P9 CamUp at 10:39:57" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P9/BikeU/ucm/CamUp/cam_20250806_103957.jpg"/>
+      <figcaption><strong>10:39:57</strong><span>+40 s | #5/7</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P9 CamUp at 10:43:24" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P9/WalkU/ucm/CamUp/cam_20250806_104324.jpg"/>
+      <figcaption><strong>10:43:24</strong><span>+247 s | #6/7</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P9 CamUp at 10:43:27" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P9/WalkU/ucm/CamUp/cam_20250806_104327.jpg"/>
+      <figcaption><strong>10:43:27</strong><span>+250 s | #7/7</span></figcaption>
+    </figure>  </div>
+</section>
+
+<!-- P10 -->
+<section id="P10" class="participant">
+  <h2>P10</h2>
+  <p class="window"><strong>Scheduled Indoor window:</strong> 12:12:45 to 12:16:38 &nbsp;|&nbsp; <strong>Duration:</strong> 0:03:53 (233 s) &nbsp;|&nbsp; <strong>Total CamUp photos:</strong> 3 &nbsp;|&nbsp; <strong>Displayed (10-s sampling):</strong> 2 images</p>
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img alt="P10 CamUp at 12:12:45" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P10/BikeU/ucm/CamUp/cam_20250812_121245.jpg"/>
+      <figcaption><strong>12:12:45</strong><span>+0 s | #1/2</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P10 CamUp at 12:16:38" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P10/WalkU/ucm/CamUp/cam_20250812_121638.jpg"/>
+      <figcaption><strong>12:16:38</strong><span>+233 s | #2/2</span></figcaption>
+    </figure>  </div>
+</section>
+
+<!-- P11 -->
+<section id="P11" class="participant">
+  <h2>P11</h2>
+  <p class="window"><strong>Scheduled Indoor window:</strong> 13:13:10 to 13:19:11 &nbsp;|&nbsp; <strong>Duration:</strong> 0:06:01 (361 s) &nbsp;|&nbsp; <strong>Total CamUp photos:</strong> 24 &nbsp;|&nbsp; <strong>Displayed (10-s sampling):</strong> 4 images</p>
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img alt="P11 CamUp at 13:13:10" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P11/WalkU/ucm/CamUp/cam_20250809_131310.jpg"/>
+      <figcaption><strong>13:13:10</strong><span>+0 s | #1/4</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P11 CamUp at 13:18:58" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P11/BikeU/ucm/CamUp/cam_20250809_131858.jpg"/>
+      <figcaption><strong>13:18:58</strong><span>+348 s | #2/4</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P11 CamUp at 13:19:00" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P11/BikeU/ucm/CamUp/cam_20250809_131900.jpg"/>
+      <figcaption><strong>13:19:00</strong><span>+350 s | #3/4</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P11 CamUp at 13:19:10" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P11/BikeU/ucm/CamUp/cam_20250809_131910.jpg"/>
+      <figcaption><strong>13:19:10</strong><span>+360 s | #4/4</span></figcaption>
+    </figure>  </div>
+</section>
+
+<!-- P12 -->
+<section id="P12" class="participant">
+  <h2>P12</h2>
+  <p class="window"><strong>Scheduled Indoor window:</strong> 13:08:34 to 13:12:55 &nbsp;|&nbsp; <strong>Duration:</strong> 0:04:21 (261 s) &nbsp;|&nbsp; <strong>Total CamUp photos:</strong> 13 &nbsp;|&nbsp; <strong>Displayed (10-s sampling):</strong> 3 images</p>
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img alt="P12 CamUp at 13:08:34" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P12/BikeU/ucm/CamUp/cam_20250810_130834.jpg"/>
+      <figcaption><strong>13:08:34</strong><span>+0 s | #1/3</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P12 CamUp at 13:08:44" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P12/BikeU/ucm/CamUp/cam_20250810_130844.jpg"/>
+      <figcaption><strong>13:08:44</strong><span>+10 s | #2/3</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P12 CamUp at 13:12:55" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P12/WalkU/ucm/CamUp/cam_20250810_131255.jpg"/>
+      <figcaption><strong>13:12:55</strong><span>+261 s | #3/3</span></figcaption>
+    </figure>  </div>
+</section>
+
+<!-- P13 -->
+<section id="P13" class="participant">
+  <h2>P13</h2>
+  <p class="window"><strong>Scheduled Indoor window:</strong> 13:10:29 to 13:16:59 &nbsp;|&nbsp; <strong>Duration:</strong> 0:06:30 (390 s) &nbsp;|&nbsp; <strong>Total CamUp photos:</strong> 36 &nbsp;|&nbsp; <strong>Displayed (10-s sampling):</strong> 6 images</p>
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img alt="P13 CamUp at 13:10:29" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P13/BikeU/ucm/CamUp/cam_20250813_131029.jpg"/>
+      <figcaption><strong>13:10:29</strong><span>+0 s | #1/6</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P13 CamUp at 13:16:25" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P13/WalkU/ucm/CamUp/cam_20250813_131625.jpg"/>
+      <figcaption><strong>13:16:25</strong><span>+356 s | #2/6</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P13 CamUp at 13:16:29" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P13/WalkU/ucm/CamUp/cam_20250813_131629.jpg"/>
+      <figcaption><strong>13:16:29</strong><span>+360 s | #3/6</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P13 CamUp at 13:16:39" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P13/WalkU/ucm/CamUp/cam_20250813_131639.jpg"/>
+      <figcaption><strong>13:16:39</strong><span>+370 s | #4/6</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P13 CamUp at 13:16:49" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P13/WalkU/ucm/CamUp/cam_20250813_131649.jpg"/>
+      <figcaption><strong>13:16:49</strong><span>+380 s | #5/6</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P13 CamUp at 13:16:59" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P13/WalkU/ucm/CamUp/cam_20250813_131659.jpg"/>
+      <figcaption><strong>13:16:59</strong><span>+390 s | #6/6</span></figcaption>
+    </figure>  </div>
+</section>
+
+<!-- P14 -->
+<section id="P14" class="participant">
+  <h2>P14</h2>
+  <p class="window"><strong>Scheduled Indoor window:</strong> 12:19:25 to 12:23:46 &nbsp;|&nbsp; <strong>Duration:</strong> 0:04:21 (261 s) &nbsp;|&nbsp; <strong>Total CamUp photos:</strong> 12 &nbsp;|&nbsp; <strong>Displayed (10-s sampling):</strong> 3 images</p>
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img alt="P14 CamUp at 12:19:25" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P14/BikeU/ucm/CamUp/cam_20250814_121925.jpg"/>
+      <figcaption><strong>12:19:25</strong><span>+0 s | #1/3</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P14 CamUp at 12:19:35" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P14/BikeU/ucm/CamUp/cam_20250814_121935.jpg"/>
+      <figcaption><strong>12:19:35</strong><span>+10 s | #2/3</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P14 CamUp at 12:23:46" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P14/WalkU/ucm/CamUp/cam_20250814_122346.jpg"/>
+      <figcaption><strong>12:23:46</strong><span>+261 s | #3/3</span></figcaption>
+    </figure>  </div>
+</section>
+
+<!-- P15 -->
+<section id="P15" class="participant">
+  <h2>P15</h2>
+  <p class="window"><strong>Scheduled Indoor window:</strong> 13:26:30 to 13:28:50 &nbsp;|&nbsp; <strong>Duration:</strong> 0:02:20 (140 s) &nbsp;|&nbsp; <strong>Total CamUp photos:</strong> 3 &nbsp;|&nbsp; <strong>Displayed (10-s sampling):</strong> 1 images</p>
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img alt="P15 CamUp at 13:26:30" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P15/WalkU/ucm/CamUp/cam_20250815_132630.jpg"/>
+      <figcaption><strong>13:26:30</strong><span>+0 s | #1/1</span></figcaption>
+    </figure>  </div>
+</section>
+
+<!-- P16 -->
+<section id="P16" class="participant">
+  <h2>P16</h2>
+  <p class="window"><strong>Scheduled Indoor window:</strong> 13:47:15 to 13:49:29 &nbsp;|&nbsp; <strong>Duration:</strong> 0:02:14 (134 s) &nbsp;|&nbsp; <strong>Total CamUp photos:</strong> 3 &nbsp;|&nbsp; <strong>Displayed (10-s sampling):</strong> 1 images</p>
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img alt="P16 CamUp at 13:47:15" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P16/BikeU/ucm/CamUp/cam_20250817_134715.jpg"/>
+      <figcaption><strong>13:47:15</strong><span>+0 s | #1/1</span></figcaption>
+    </figure>  </div>
+</section>
+
+<!-- P17 -->
+<section id="P17" class="participant">
+  <h2>P17</h2>
+  <p class="window"><strong>Scheduled Indoor window:</strong> 12:21:24 to 12:36:02 &nbsp;|&nbsp; <strong>Duration:</strong> 0:14:38 (878 s) &nbsp;|&nbsp; <strong>Total CamUp photos:</strong> 13 &nbsp;|&nbsp; <strong>Displayed (10-s sampling):</strong> 2 images</p>
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img alt="P17 CamUp at 12:21:24" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P17/Tram/ucm/20250826_121005/CamUp/cam_20250826_122124.jpg"/>
+      <figcaption><strong>12:21:24</strong><span>+0 s | #1/2</span></figcaption>
+    </figure>    <figure class="photo-card">
+      <img alt="P17 CamUp at 12:35:59" loading="lazy" src="file:///C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P17/WalkU/ucm/20250826_123558/CamUp/cam_20250826_123559.jpg"/>
+      <figcaption><strong>12:35:59</strong><span>+875 s | #2/2</span></figcaption>
+    </figure>  </div>
+</section>
+
+<p class="footer">Sources: <code>C:/Users/pandya/Documents/Github/docker/Paper3_Github/output/key.csv</code>; raw UCM directories under <code>C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm</code>. Read-only verification report.</p>
+</main>
+</body>
+</html>

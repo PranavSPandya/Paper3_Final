@@ -1,0 +1,7 @@
+H4 Step 4 exposure centering (domain-wise multi-response LASSO).
+Exposures are participant-mean centered, then z-scored inside the training fold as written in H4_Step4_scaling_rule.txt. They are not global z-scores of the raw values.
+Training rows: subtract each training participant's mean of that exposure, computed only on that participant's training rows in the domain's complete-case sample.
+Held-out rows: the held-out participant has no training rows, so subtract that participant's mean computed only on their held-out rows. Training person means are not copied onto a different person, and held-out rows do not enter any training person mean.
+Final refit on all complete-case rows: subtract each participant's mean computed on those complete-case rows. This matches the estimation centering (Enders & Tofighi): value minus that person's mean.
+Three sum-to-zero PhaseID contrasts stay unpenalised and unscaled. Outcomes are standardized with the training-fold mean and SD so the multi-response loss is not dominated by outcome units.
+Lambda path, penalty factors, domains, participants (including P4), and the minimum participant-held-out MSE rule are unchanged. PM1 remains eligible inside the pollution domain.

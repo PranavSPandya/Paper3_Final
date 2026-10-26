@@ -1,0 +1,18 @@
+family,family_label,PC,column,assoc,abs_assoc,LOPO_selection_fraction,LOPO_min_abs_component_cosine,transform,prop_preference,selected_for_eq2
+yamnet_proportions,YAMNet proportions,4,mechanisms_prop,0.8056831902542677,0.8056831902542677,1.0,0.8631879209439627,identity,1,True
+yamnet_proportions,YAMNet proportions,3,wind_prop,0.7461341149770305,0.7461341149770305,1.0,0.8682084570941206,identity,1,True
+yamnet_proportions,YAMNet proportions,1,urban_manmade_positive_prop,0.6665027034537059,0.6665027034537059,1.0,0.9971320267263212,identity,1,False
+spectral_descriptors,Spectral descriptors,2,dominant_frequency_hz,0.9745270100258474,0.9745270100258474,1.0,0.9998641156764184,identity,0,False
+yamnet_scores,YAMNet scores,3,wind_score,0.8380292466938476,0.8380292466938476,1.0,0.9961554717618426,identity,0,False
+yamnet_scores,YAMNet scores,4,mechanisms_score,0.7346317061361362,0.7346317061361362,1.0,0.9967871731280327,identity,0,False
+spectral_descriptors,Spectral descriptors,1,spectral_centroid_hz,0.6964000064429021,0.6964000064429021,1.0,0.9998723823048092,identity,0,True
+octave_bands,Octave bands,4,octave_prop_63_0_hz,0.6835121351856601,0.6835121351856601,1.0,0.9934785677655407,identity,0,False
+broad_bands,Broad frequency bands,2,freq_prop_125_1000,0.6771096524313145,0.6771096524313145,1.0,0.9996982087429966,ILR,0,False
+broad_bands,Broad frequency bands,1,freq_prop_20_125,0.630327208669103,0.630327208669103,1.0,0.9999356063488494,ILR,0,True
+yamnet_scores,YAMNet scores,1,urban_manmade_positive_score,0.589048024777155,0.589048024777155,1.0,0.998285485859285,identity,0,False
+yamnet_scores,YAMNet scores,2,urban_manmade_negative_score,0.5748584886398753,0.5748584886398753,1.0,0.997783563485325,identity,0,False
+octave_bands,Octave bands,1,octave_prop_2000_0_hz,0.4321721036501576,0.4321721036501576,1.0,0.9987686907684469,identity,0,False
+yamnet_proportions,YAMNet proportions,2,vehicle_prop,0.5637684455743106,0.5637684455743106,0.9090909090909091,0.9946013218498814,identity,1,True
+yamnet_proportions,YAMNet proportions,5,rural_natural_prop,0.5579953077068603,0.5579953077068603,0.9090909090909091,0.9879359776351228,identity,1,False
+octave_bands,Octave bands,3,octave_prop_8000_0_hz,0.5599000260760226,0.5599000260760226,0.9090909090909091,0.9825036981088886,identity,0,False
+octave_bands,Octave bands,2,octave_prop_125_0_hz,0.5078243575816646,0.5078243575816646,0.9090909090909091,0.9847129548650929,identity,0,False

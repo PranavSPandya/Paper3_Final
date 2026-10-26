@@ -1,0 +1,116 @@
+Family,PC,PC_kept,Pct_variance,Term,Measure,Loading_or_corr,Is_representative,LOPO_how_often_this_term_won
+YAMNet proportions,1,Yes,26.45836285080533,wind_prop,Loading,-0.2326609527139139,No,0.0
+YAMNet proportions,1,Yes,26.45836285080533,rural_natural_prop,Loading,-0.2233100142664748,No,0.0
+YAMNet proportions,1,Yes,26.45836285080533,vehicle_prop,Loading,-0.39193041028069586,No,0.0
+YAMNet proportions,1,Yes,26.45836285080533,urban_manmade_neutral_prop,Loading,-0.37561944645827056,No,0.0
+YAMNet proportions,1,Yes,26.45836285080533,urban_manmade_positive_prop,Loading,0.6665027034537059,Yes,1.0
+YAMNet proportions,1,Yes,26.45836285080533,urban_manmade_negative_prop,Loading,-0.22180308622021078,No,0.0
+YAMNet proportions,1,Yes,26.45836285080533,mechanisms_prop,Loading,-0.3284503627372648,No,0.0
+YAMNet proportions,2,Yes,21.84388255719308,wind_prop,Loading,-0.3277903843543223,No,0.0
+YAMNet proportions,2,Yes,21.84388255719308,rural_natural_prop,Loading,-0.48741862502807376,No,0.0
+YAMNet proportions,2,Yes,21.84388255719308,vehicle_prop,Loading,0.5637684455743106,Yes,0.9090909090909091
+YAMNet proportions,2,Yes,21.84388255719308,urban_manmade_neutral_prop,Loading,-0.12054076222280738,No,0.0
+YAMNet proportions,2,Yes,21.84388255719308,urban_manmade_positive_prop,Loading,0.10333676101452383,No,0.0
+YAMNet proportions,2,Yes,21.84388255719308,urban_manmade_negative_prop,Loading,0.5434972872090128,No,0.09090909090909091
+YAMNet proportions,2,Yes,21.84388255719308,mechanisms_prop,Loading,-0.12862280100172938,No,0.0
+YAMNet proportions,3,Yes,14.99469264144274,wind_prop,Loading,0.7461341149770305,Yes,1.0
+YAMNet proportions,3,Yes,14.99469264144274,rural_natural_prop,Loading,-0.11169337073013534,No,0.0
+YAMNet proportions,3,Yes,14.99469264144274,vehicle_prop,Loading,0.017914099388423015,No,0.0
+YAMNet proportions,3,Yes,14.99469264144274,urban_manmade_neutral_prop,Loading,-0.5880235764189832,No,0.0
+YAMNet proportions,3,Yes,14.99469264144274,urban_manmade_positive_prop,Loading,-0.1297644336711285,No,0.0
+YAMNet proportions,3,Yes,14.99469264144274,urban_manmade_negative_prop,Loading,0.18120852661732248,No,0.0
+YAMNet proportions,3,Yes,14.99469264144274,mechanisms_prop,Loading,-0.18719106190228724,No,0.0
+YAMNet proportions,4,Yes,14.123656287451421,wind_prop,Loading,-0.006302141992272727,No,0.0
+YAMNet proportions,4,Yes,14.123656287451421,rural_natural_prop,Loading,-0.5003494120930723,No,0.0
+YAMNet proportions,4,Yes,14.123656287451421,vehicle_prop,Loading,-0.11112457238630859,No,0.0
+YAMNet proportions,4,Yes,14.123656287451421,urban_manmade_neutral_prop,Loading,-0.2253678792184623,No,0.0
+YAMNet proportions,4,Yes,14.123656287451421,urban_manmade_positive_prop,Loading,-0.028753948739572432,No,0.0
+YAMNet proportions,4,Yes,14.123656287451421,urban_manmade_negative_prop,Loading,-0.1910999859407289,No,0.0
+YAMNet proportions,4,Yes,14.123656287451421,mechanisms_prop,Loading,0.8056831902542677,Yes,1.0
+YAMNet proportions,5,Yes,11.140339071955886,wind_prop,Loading,-0.3226288849389369,No,0.0
+YAMNet proportions,5,Yes,11.140339071955886,rural_natural_prop,Loading,0.5579953077068603,Yes,0.9090909090909091
+YAMNet proportions,5,Yes,11.140339071955886,vehicle_prop,Loading,-0.20344296114691374,No,0.0
+YAMNet proportions,5,Yes,11.140339071955886,urban_manmade_neutral_prop,Loading,-0.46783953844153253,No,0.0
+YAMNet proportions,5,Yes,11.140339071955886,urban_manmade_positive_prop,Loading,-6.903992733198194e-05,No,0.0
+YAMNet proportions,5,Yes,11.140339071955886,urban_manmade_negative_prop,Loading,0.4840958664933683,No,0.09090909090909091
+YAMNet proportions,5,Yes,11.140339071955886,mechanisms_prop,Loading,0.2999002405605859,No,0.0
+YAMNet scores,1,Yes,34.56630981775447,wind_score,Loading,-0.13462339801325288,No,0.0
+YAMNet scores,1,Yes,34.56630981775447,rural_natural_score,Loading,-0.2618320162556338,No,0.0
+YAMNet scores,1,Yes,34.56630981775447,vehicle_score,Loading,-0.4195989474045284,No,0.0
+YAMNet scores,1,Yes,34.56630981775447,urban_manmade_neutral_score,Loading,-0.4616385597984197,No,0.0
+YAMNet scores,1,Yes,34.56630981775447,urban_manmade_positive_score,Loading,0.589048024777155,Yes,1.0
+YAMNet scores,1,Yes,34.56630981775447,urban_manmade_negative_score,Loading,-0.2897768473851478,No,0.0
+YAMNet scores,1,Yes,34.56630981775447,mechanisms_score,Loading,-0.30528495318437243,No,0.0
+YAMNet scores,2,Yes,23.890620452558377,wind_score,Loading,-0.28472779159514605,No,0.0
+YAMNet scores,2,Yes,23.890620452558377,rural_natural_score,Loading,-0.5136881342246711,No,0.0
+YAMNet scores,2,Yes,23.890620452558377,vehicle_score,Loading,0.501277214911483,No,0.0
+YAMNet scores,2,Yes,23.890620452558377,urban_manmade_neutral_score,Loading,-0.0942362204803145,No,0.0
+YAMNet scores,2,Yes,23.890620452558377,urban_manmade_positive_score,Loading,0.17969616491269802,No,0.0
+YAMNet scores,2,Yes,23.890620452558377,urban_manmade_negative_score,Loading,0.5748584886398753,Yes,1.0
+YAMNet scores,2,Yes,23.890620452558377,mechanisms_score,Loading,-0.17928268283536913,No,0.0
+YAMNet scores,3,Yes,14.790893949711142,wind_score,Loading,0.8380292466938476,Yes,1.0
+YAMNet scores,3,Yes,14.790893949711142,rural_natural_score,Loading,-0.14627806275370075,No,0.0
+YAMNet scores,3,Yes,14.790893949711142,vehicle_score,Loading,0.04349051882761962,No,0.0
+YAMNet scores,3,Yes,14.790893949711142,urban_manmade_neutral_score,Loading,-0.09151868928340753,No,0.0
+YAMNet scores,3,Yes,14.790893949711142,urban_manmade_positive_score,Loading,-0.11247340134415212,No,0.0
+YAMNet scores,3,Yes,14.790893949711142,urban_manmade_negative_score,Loading,0.11365904408100963,No,0.0
+YAMNet scores,3,Yes,14.790893949711142,mechanisms_score,Loading,-0.49038145358015656,No,0.0
+YAMNet scores,4,Yes,12.008653507055813,wind_score,Loading,0.3026172031231699,No,0.0
+YAMNet scores,4,Yes,12.008653507055813,rural_natural_score,Loading,-0.442476789423495,No,0.0
+YAMNet scores,4,Yes,12.008653507055813,vehicle_score,Loading,-0.012769378192369674,No,0.0
+YAMNet scores,4,Yes,12.008653507055813,urban_manmade_neutral_score,Loading,-0.4030174129079348,No,0.0
+YAMNet scores,4,Yes,12.008653507055813,urban_manmade_positive_score,Loading,-0.0925774271613764,No,0.0
+YAMNet scores,4,Yes,12.008653507055813,urban_manmade_negative_score,Loading,-0.04238753812916715,No,0.0
+YAMNet scores,4,Yes,12.008653507055813,mechanisms_score,Loading,0.7346317061361362,Yes,1.0
+Broad frequency bands,1,Yes,58.15751394007817,freq_prop_20_125,Correlation,0.630327208669103,Yes,1.0
+Broad frequency bands,1,Yes,58.15751394007817,freq_prop_125_1000,Correlation,-0.5534771394884449,No,0.0
+Broad frequency bands,1,Yes,58.15751394007817,freq_prop_1000_4000,Correlation,-0.5605537735999083,No,0.0
+Broad frequency bands,1,Yes,58.15751394007817,freq_prop_4000_8000,Correlation,-0.3986201649955859,No,0.0
+Broad frequency bands,1,Yes,58.15751394007817,freq_prop_8000_20000,Correlation,-0.22663153223084853,No,0.0
+Broad frequency bands,2,Yes,26.226040259541843,freq_prop_20_125,Correlation,0.6572268401020066,No,0.0
+Broad frequency bands,2,Yes,26.226040259541843,freq_prop_125_1000,Correlation,-0.6771096524313145,Yes,1.0
+Broad frequency bands,2,Yes,26.226040259541843,freq_prop_1000_4000,Correlation,-0.49968420105617567,No,0.0
+Broad frequency bands,2,Yes,26.226040259541843,freq_prop_4000_8000,Correlation,0.17029897145243977,No,0.0
+Broad frequency bands,2,Yes,26.226040259541843,freq_prop_8000_20000,Correlation,0.26403469974647886,No,0.0
+Octave bands,1,Yes,40.520126647587404,octave_prop_31_5_hz,Loading,-0.33623645480084674,No,0.0
+Octave bands,1,Yes,40.520126647587404,octave_prop_63_0_hz,Loading,-0.37660537069660616,No,0.0
+Octave bands,1,Yes,40.520126647587404,octave_prop_125_0_hz,Loading,-0.09966513136996918,No,0.0
+Octave bands,1,Yes,40.520126647587404,octave_prop_250_0_hz,Loading,0.29215086023905035,No,0.0
+Octave bands,1,Yes,40.520126647587404,octave_prop_500_0_hz,Loading,0.4196157552246638,No,0.0
+Octave bands,1,Yes,40.520126647587404,octave_prop_1000_0_hz,Loading,0.415798535479834,No,0.0
+Octave bands,1,Yes,40.520126647587404,octave_prop_2000_0_hz,Loading,0.4321721036501576,Yes,1.0
+Octave bands,1,Yes,40.520126647587404,octave_prop_4000_0_hz,Loading,0.3022436723588777,No,0.0
+Octave bands,1,Yes,40.520126647587404,octave_prop_8000_0_hz,Loading,0.15079260221143329,No,0.0
+Octave bands,2,Yes,17.800973365395777,octave_prop_31_5_hz,Loading,-0.3980548714183119,No,0.0
+Octave bands,2,Yes,17.800973365395777,octave_prop_63_0_hz,Loading,-0.038035482368965895,No,0.0
+Octave bands,2,Yes,17.800973365395777,octave_prop_125_0_hz,Loading,0.5078243575816646,Yes,0.9090909090909091
+Octave bands,2,Yes,17.800973365395777,octave_prop_250_0_hz,Loading,0.433836718608149,No,0.0
+Octave bands,2,Yes,17.800973365395777,octave_prop_500_0_hz,Loading,0.09251190608233642,No,0.0
+Octave bands,2,Yes,17.800973365395777,octave_prop_1000_0_hz,Loading,-0.07825044525328949,No,0.0
+Octave bands,2,Yes,17.800973365395777,octave_prop_2000_0_hz,Loading,-0.09213551510196236,No,0.0
+Octave bands,2,Yes,17.800973365395777,octave_prop_4000_0_hz,Loading,-0.40368854706325064,No,0.0
+Octave bands,2,Yes,17.800973365395777,octave_prop_8000_0_hz,Loading,-0.4559284633939039,No,0.09090909090909091
+Octave bands,3,Yes,14.073661130032406,octave_prop_31_5_hz,Loading,-0.3040345260793338,No,0.0
+Octave bands,3,Yes,14.073661130032406,octave_prop_63_0_hz,Loading,0.1603391382733237,No,0.0
+Octave bands,3,Yes,14.073661130032406,octave_prop_125_0_hz,Loading,0.5399065565504559,No,0.09090909090909091
+Octave bands,3,Yes,14.073661130032406,octave_prop_250_0_hz,Loading,0.05778312464040491,No,0.0
+Octave bands,3,Yes,14.073661130032406,octave_prop_500_0_hz,Loading,-0.19476714137964674,No,0.0
+Octave bands,3,Yes,14.073661130032406,octave_prop_1000_0_hz,Loading,-0.246288759019782,No,0.0
+Octave bands,3,Yes,14.073661130032406,octave_prop_2000_0_hz,Loading,-0.06914882618724016,No,0.0
+Octave bands,3,Yes,14.073661130032406,octave_prop_4000_0_hz,Loading,0.41249775374709235,No,0.0
+Octave bands,3,Yes,14.073661130032406,octave_prop_8000_0_hz,Loading,0.5599000260760226,Yes,0.9090909090909091
+Octave bands,4,Yes,8.672566149772123,octave_prop_31_5_hz,Loading,-0.4840158670645157,No,0.0
+Octave bands,4,Yes,8.672566149772123,octave_prop_63_0_hz,Loading,0.6835121351856601,Yes,1.0
+Octave bands,4,Yes,8.672566149772123,octave_prop_125_0_hz,Loading,-0.13060433849617303,No,0.0
+Octave bands,4,Yes,8.672566149772123,octave_prop_250_0_hz,Loading,-0.29489052688893386,No,0.0
+Octave bands,4,Yes,8.672566149772123,octave_prop_500_0_hz,Loading,-0.09163284084044473,No,0.0
+Octave bands,4,Yes,8.672566149772123,octave_prop_1000_0_hz,Loading,0.2638970005728014,No,0.0
+Octave bands,4,Yes,8.672566149772123,octave_prop_2000_0_hz,Loading,0.28208593398994486,No,0.0
+Octave bands,4,Yes,8.672566149772123,octave_prop_4000_0_hz,Loading,0.011699999523062304,No,0.0
+Octave bands,4,Yes,8.672566149772123,octave_prop_8000_0_hz,Loading,-0.19176630784691417,No,0.0
+Spectral descriptors,1,Yes,62.85105990145225,dominant_frequency_hz,Loading,0.21162003472377025,No,0.0
+Spectral descriptors,1,Yes,62.85105990145225,spectral_centroid_hz,Loading,0.6964000064429021,Yes,1.0
+Spectral descriptors,1,Yes,62.85105990145225,spectral_rolloff85_hz,Loading,0.6857433863551554,No,0.0
+Spectral descriptors,2,Yes,32.10568613948728,dominant_frequency_hz,Loading,0.9745270100258474,Yes,1.0
+Spectral descriptors,2,Yes,32.10568613948728,spectral_centroid_hz,Loading,-0.09704297473627399,No,0.0
+Spectral descriptors,2,Yes,32.10568613948728,spectral_rolloff85_hz,Loading,-0.20218745704028457,No,0.0

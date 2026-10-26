@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indoor Photo Evidence: P16</title>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #17202a;
+  --muted: #52606d;
+  --line: #d9e2ec;
+  --panel: #f7f9fb;
+  --indoor: #b42318;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 24px;
+  color: var(--ink);
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.45;
+}
+main { max-width: 1200px; margin: auto; }
+h1 { margin: 0 0 8px; color: #102a43; font-size: 25px; }
+h2 { margin: 0; color: #102a43; border-left: 6px solid var(--indoor); padding-left: 12px; font-size: 20px; }
+.subtitle { color: var(--muted); margin: 0 0 18px; font-size: 14px; }
+.note {
+  background: #fff8e1;
+  border: 1px solid #f0c36d;
+  padding: 13px 16px;
+  border-radius: 8px;
+  margin: 16px 0;
+  font-size: 13px;
+}
+.note strong { color: #7a4b00; }
+.table-wrap { overflow-x: auto; margin: 18px 0 24px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 9px 11px; text-align: left; vertical-align: top; }
+th { background: #eaf2f8; color: #243b53; font-weight: 700; }
+.participant {
+  margin: 24px 0;
+  padding-top: 18px;
+}
+.window {
+  margin: 8px 0 16px;
+  font-size: 13px;
+  color: #334e68;
+  background: #f0f4f8;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+.status-box {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 18px 0;
+}
+.status-box h3 {
+  margin: 0 0 10px 0;
+  color: #102a43;
+  font-size: 16px;
+}
+.status-box ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+  color: #334e68;
+  line-height: 1.6;
+}
+.footer {
+  margin-top: 36px;
+  color: var(--muted);
+  font-size: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+</style>
+</head>
+<body>
+<main>
+<h1>Indoor Photo Evidence: P16</h1>
+<p class="subtitle">Strict Indoor window evidence evaluation for participant P16 based on key schedule and raw camera logs.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Participant</th>
+      <th>Date</th>
+      <th>Scheduled Indoor Key Window</th>
+      <th>Key Duration</th>
+      <th>10-s Index Bins</th>
+      <th>UCM Signal Logged</th>
+      <th>Indoor Photos Qualified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>P16</strong></td>
+      <td>17-Aug-2025</td>
+      <td>13:47:18 &ndash; 13:49:33</td>
+      <td>0:02:15 (135 s)</td>
+      <td>15 rows (150 s)</td>
+      <td>1 row (10 s at 13:47:10 raw)</td>
+      <td><strong>0 photos</strong> (camera logging paused during indoor reststop)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<section id="P16" class="participant">
+  <h2>P16 Indoor Status</h2>
+  <p class="window"><strong>Exact Scheduled Indoor Window:</strong> <code>13:47:18 &ndash; 13:49:33</code> (2 minutes 15 seconds / 135 s)</p>
+
+  <div class="status-box">
+    <h3>Strict Indoor Photo Qualification</h3>
+    <ul>
+      <li><strong>CamDown Photos during Indoor (13:47:18 &ndash; 13:49:33):</strong> <strong>0 photos exist</strong>. The camera was paused while the participant was seated inside completing the questionnaire.</li>
+      <li><strong>CamUp Photos during Indoor (13:47:18 &ndash; 13:49:33):</strong> <strong>0 indoor photos qualify</strong>. The 4 photos logged right at the boundary (13:49:30 &ndash; 13:49:33) are looking straight up outside at the sky/building facade as the participant prepared to start WalkU. They do not show an indoor environment.</li>
+      <li><strong>Conclusion:</strong> For P16, exactly <strong>0 photos qualify as Indoor</strong>.</li>
+    </ul>
+  </div>
+</section>
+
+<p class="footer">Sources: <code>C:/Users/pandya/Documents/Github/docker/Paper3_Github/output/key.csv</code>; raw UCM directories under <code>C:/Users/pandya/OneDrive - UCL/Field experiment raw data/Complete Participantwise data/Final Data/ucm/P16</code>.</p>
+</main>
+</body>
+</html>

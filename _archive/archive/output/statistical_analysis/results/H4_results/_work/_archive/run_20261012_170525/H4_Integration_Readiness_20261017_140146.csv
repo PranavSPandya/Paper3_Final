@@ -1,0 +1,4 @@
+"Family","Expected_N","Present_N","Missing_N","Status","Minimum_Available_Phase_Cells","Expected_Phase_Cells","Missing_Columns"
+"Sound category frame proportions",8,0,8,"ABSENT",0,44,"wind_prop; rural_natural_prop; vehicle_prop; urban_manmade_neutral_prop; urban_manmade_positive_prop; urban_manmade_negative_prop; mechanisms_prop; unidentify_prop"
+"Acoustic frequency descriptors",17,17,0,"SCHEMA_COMPLETE_CHECK_COVERAGE",44,44,""
+"SVF / urban morphology",8,8,0,"PLANNED_CANDIDATES_PENDING_PROCESSING_MERGE",1,44,""

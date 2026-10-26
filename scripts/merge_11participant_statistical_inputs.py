@@ -2,6 +2,7 @@
 
 from datetime import datetime, timedelta
 from pathlib import Path
+import argparse
 import warnings
 
 import numpy as np
@@ -17,7 +18,7 @@ ROUTE_PHASES = {"BikeU", "WalkU", "BikeG", "WalkG", "Tram"}
 GVI_FIELDS = [
     "gvi_50m", "gvi_tree_50m", "gvi_grass_50m", "gvi_plant_50m",
     "gvi_match_dist_m", "gvi_phase_mean", "tree_phase_mean",
-    "grass_phase_mean", "plant_phase_mean",
+    "grass_phase_mean", "plant_phase_mean", "gvi_image_capture_date",
 ]
 GVI_SOURCE_ALIASES = {
     "gvi_50m": ("gvi_50m", "gvi_point_gvi"),
@@ -41,9 +42,9 @@ CI_FIELDS = ["Clearness_Index_G0", "Clearness_Index", "Clearness_Index_Infer"]
 # ten-second window, exported by CamUp; the merger does not average them again.
 # Class shares and Total_* columns are percent of the fisheye circle (0–100).
 # Total_Vegetation_% = Tree_% + Plant_% + Grass_%.
-# Total_Builtup_% = Building_% + Wall_% + Ceiling_%.
+# Total_Builtup_% = Building_% + Wall_%; ceiling only contributes to seven-class coverage.
 # Gong annular TVF/BVF [0,1]: same Holmer compute_svf as SVF (Tree∪Plant∪Grass;
-# Building∪Wall; Ceiling stays in Total_Builtup_% only, not in BVF).
+# Building∪Wall; Ceiling stays separate from built-up percentage and BVF).
 SVF_FIELDS = [
     "Sky_%", "Tree_%", "Plant_%", "Grass_%", "Total_Vegetation_%",
     "Building_%", "Wall_%", "Ceiling_%", "Total_Builtup_%",
@@ -52,6 +53,7 @@ SVF_FIELDS = [
 SVF_SOURCE_MODES = {"full", "matched_8min"}
 SVF_PENDING_PHASES = set()  # Completed Tram rerun is present in canonical inputs.
 MATCHED_SVF_SECONDS = 480.0
+UCM_LOCAL_TIME_OFFSET = timedelta(hours=2)  # Same conversion as the sound notebook / UCM builder.
 
 # Sound join matches Updated_JOS_Environmental_sound_classification_with_YAMNet_yenshuo
 # FINAL_ANALYSIS_COLUMNS (reduced export written to all_participants_sound_analysis*.csv).
@@ -63,26 +65,28 @@ SOUND_CATEGORY_SCORE_FIELDS = [
     "urban_manmade_negative_score", "mechanisms_score",
 ]
 SOUND_CATEGORY_PROP_FIELDS = [
-    "wind_prop", "rural_natural_prop", "vehicle_prop",
-    "urban_manmade_neutral_prop", "urban_manmade_positive_prop",
-    "urban_manmade_negative_prop", "mechanisms_prop", "unidentify_prop",
+    "wind_proportion", "rural_natural_proportion", "vehicle_proportion",
+    "urban_manmade_neutral_proportion", "urban_manmade_positive_proportion",
+    "urban_manmade_negative_proportion", "mechanisms_proportion", "unidentify_proportion",
 ]
 SOUND_FREQUENCY_FIELDS = [
-    "dominant_frequency_hz", "spectral_centroid_hz", "spectral_rolloff85_hz",
-    "freq_prop_20_125", "freq_prop_125_1000", "freq_prop_1000_4000",
-    "freq_prop_4000_8000", "freq_prop_8000_20000",
-    "octave_prop_31_5_hz", "octave_prop_63_0_hz", "octave_prop_125_0_hz",
-    "octave_prop_250_0_hz", "octave_prop_500_0_hz", "octave_prop_1000_0_hz",
-    "octave_prop_2000_0_hz", "octave_prop_4000_0_hz", "octave_prop_8000_0_hz",
+    "dominant_frequency_Hz", "spectral_centroid_Hz", "spectral_rolloff85_Hz",
+    "freq_proportion_20_to_200Hz", "freq_proportion_200_to_2000Hz", "freq_proportion_2000_to_20000Hz",
+    "octave_proportion_31_5_Hz", "octave_proportion_63_0_Hz", "octave_proportion_125_0_Hz",
+    "octave_proportion_250_0_Hz", "octave_proportion_500_0_Hz", "octave_proportion_1000_0_Hz",
+    "octave_proportion_2000_0_Hz", "octave_proportion_4000_0_Hz", "octave_proportion_8000_0_Hz",
 ]
 SOUND_MERGE_FIELDS = [
-    "segment", "end_time_s", "phase_start_offset_s", "category",
+    "segment", "end_time_s", "category",
     *SOUND_CATEGORY_SCORE_FIELDS,
     *SOUND_CATEGORY_PROP_FIELDS,
     *SOUND_FREQUENCY_FIELDS,
 ]
 
 LEGACY_SOUND_FIELDS = [
+    'octave_proportion_31.5Hz', 'octave_proportion_63Hz', 'octave_proportion_125Hz', 'octave_proportion_250Hz', 'octave_proportion_500Hz', 'octave_proportion_1000Hz', 'octave_proportion_2000Hz', 'octave_proportion_4000Hz', 'octave_proportion_8000Hz',
+    "octave_proportion_31.25Hz", "octave_proportion_62.5Hz",
+    "phase_start_offset_s",
     "sound_level_dbfs", "sound_class_id", "sound_category_label",
     "sound_prop_human_activity", "sound_prop_urban_manmade",
     "sound_prop_urban_manmade_positive", "sound_prop_urban_manmade_neutral",
@@ -98,8 +102,8 @@ LEGACY_SOUND_FIELDS = [
     "original_channel_count", "channel_strategy",
     "yamnet_dominant_class", "yamnet_dominant_class_index",
     "yamnet_frame_count", "yamnet_threshold",
-    "original_sample_rate_hz", "frequency_analysis_min_hz",
-    "frequency_analysis_max_hz", "frequency_analysis_full_20khz_coverage",
+    "original_sample_rate_Hz", "frequency_analysis_min_Hz",
+    "frequency_analysis_max_Hz", "frequency_analysis_full_20khz_coverage",
 ]
 
 REMOVE_UCM_AIR_QUALITY_FIELDS = [
@@ -201,7 +205,7 @@ def load_svf_windows(
     if not path.is_file():
         raise FileNotFoundError(
             f"Average SVF input missing: {path}. Generate it with "
-            "write_merged_svf_10sec(); do not substitute clock-aligned archive CSVs."
+            "analysis_scripts/SVF Computation/SVF_10sec.py; do not substitute clock-aligned archive CSVs."
         )
     print(f"SVF ten-second average input: {path}")
     svf = pd.read_csv(path)
@@ -221,8 +225,7 @@ def load_svf_windows(
             svf[c] = pd.to_numeric(svf[c], errors="raise")
     if "Total_Vegetation_%" not in svf.columns:
         svf["Total_Vegetation_%"] = svf["Tree_%"] + svf["Plant_%"] + svf["Grass_%"]
-    if "Total_Builtup_%" not in svf.columns:
-        svf["Total_Builtup_%"] = svf["Building_%"] + svf["Wall_%"] + svf["Ceiling_%"]
+    svf["Total_Builtup_%"] = svf["Building_%"] + svf["Wall_%"]
     required = {"ParticipantID", "PhaseID", "SVF_Window_Start_s",
                 "SVF_Frames_In_Window", *SVF_FIELDS}
     missing = required - set(svf.columns)
@@ -231,8 +234,8 @@ def load_svf_windows(
     if svf[["ParticipantID", "PhaseID", "SVF_Window_Start_s"]].isna().any().any():
         raise ValueError("Selected SVF table has missing keys")
     counts = pd.to_numeric(svf["SVF_Frames_In_Window"], errors="raise")
-    if not np.isfinite(counts).all() or not (counts.ge(1) & counts.eq(counts.round())).all():
-        raise ValueError("Average SVF frame counts must be positive integers")
+    if not np.isfinite(counts).all() or not (counts.ge(0) & counts.eq(counts.round())).all():
+        raise ValueError("Average SVF frame counts must be nonnegative integers")
     svf["SVF_Window_Start_s"] = pd.to_numeric(svf["SVF_Window_Start_s"], errors="raise")
     if not np.isfinite(svf["SVF_Window_Start_s"]).all():
         raise ValueError("SVF_Window_Start_s must be finite")
@@ -256,7 +259,10 @@ def load_svf_windows(
     fields = list(SVF_FIELDS)
     svf[fields] = svf[fields].apply(pd.to_numeric, errors="raise")
     pending = svf["PhaseID"].isin(SVF_PENDING_PHASES)
-    if not np.isfinite(svf.loc[~pending, SVF_FIELDS].to_numpy()).all():
+    empty = counts.eq(0)
+    if not svf.loc[empty, SVF_FIELDS].isna().all().all():
+        raise ValueError("Zero-frame SVF windows must have blank measurements")
+    if not np.isfinite(svf.loc[~pending & ~empty, SVF_FIELDS].to_numpy()).all():
         raise ValueError("Selected non-pending SVF measurements must be finite")
     svf.loc[pending, fields] = np.nan
     print(f"SVF pending phases blanked: {sorted(SVF_PENDING_PHASES)}; rows: {int(pending.sum())}")
@@ -308,7 +314,7 @@ def prepare_sound(sound: pd.DataFrame) -> pd.DataFrame:
     unknown = [
         column for column in sound.columns
         if column not in SOUND_JOIN_KEYS
-        and column != "ucm_SND_dBA"
+        and column not in {"ucm_SND_dBA", "phase_start_offset_s"}
         and column not in SOUND_MERGE_FIELDS
     ]
     if unknown:
@@ -347,6 +353,35 @@ def prepare_sound(sound: pd.DataFrame) -> pd.DataFrame:
     return sound[key + payload_fields + ["__sound_matched"]]
 
 
+def phase_grid_elapsed(base: pd.DataFrame, key_csv: Path) -> pd.Series:
+    """Map sensor clock-grid labels to window sequence anchored by the phase key."""
+    datetimes = pd.to_datetime(base["Datetime"], errors="raise")
+    if datetimes.isna().any():
+        raise ValueError("Base table contains missing Datetime values")
+    phase_key = load_phase_key(key_csv)
+    elapsed = pd.Series(np.nan, index=base.index)
+    for (pid, phase), group in base.loc[base["PhaseID"].isin(ROUTE_PHASES)].groupby(["ParticipantID", "PhaseID"]):
+        date_text, start_text, _ = phase_key[(_participant_id(pid), phase)]
+        first = datetimes.loc[group.index].min()
+        anchor = pd.Timestamp(datetime.strptime(f"{first.year}-{date_text} {start_text}", "%Y-%d-%b %H:%M:%S"))
+        # shortcut: exact phase intervals are paired to floored sensor labels; offsets are 0–9 s, reaggregate upstream for identical intervals.
+        grid_start = (anchor + UCM_LOCAL_TIME_OFFSET).floor("10s")
+        seconds = (datetimes.loc[group.index] - grid_start).dt.total_seconds()
+        if not (seconds.ge(0) & seconds.mod(10).eq(0)).all():
+            raise ValueError(f"Base rows do not follow the key-anchored ten-second grid: {pid}/{phase}")
+        elapsed.loc[group.index] = seconds
+    return elapsed
+
+
+def matched_phase_rows(data: pd.DataFrame, mode: str) -> pd.DataFrame:
+    """Keep route windows 0..470 s in matched exports; preserve non-route rows."""
+    if mode != "matched_8min":
+        return data
+    elapsed = phase_grid_elapsed(data, OUTPUT_DIR / "key.csv")
+    keep = ~data["PhaseID"].isin(ROUTE_PHASES) | elapsed.lt(MATCHED_SVF_SECONDS)
+    return data.loc[keep].reset_index(drop=True)
+
+
 def add_sound(base: pd.DataFrame, sound: pd.DataFrame) -> tuple[pd.DataFrame, int, int]:
     if "ucm_SND_dBA" not in base.columns:
         raise ValueError("Base table is missing calibrated UCM sound level ucm_SND_dBA")
@@ -354,19 +389,7 @@ def add_sound(base: pd.DataFrame, sound: pd.DataFrame) -> tuple[pd.DataFrame, in
     working = base.copy()
     working["__sound_start_time_s"] = np.nan
 
-    datetimes = pd.to_datetime(working["Datetime"], errors="coerce")
-    if datetimes.isna().any():
-        raise ValueError("Base table contains unparseable Datetime values")
-
-    elapsed = (
-        datetimes
-        - datetimes.groupby(
-            [working["ParticipantID"], working["PhaseID"]]
-        ).transform("min")
-    )
-    working.loc[route, "__sound_start_time_s"] = (
-        elapsed.loc[route].dt.total_seconds().round().astype(int)
-    )
+    working.loc[route, "__sound_start_time_s"] = phase_grid_elapsed(working, OUTPUT_DIR / "key.csv").loc[route]
 
     # Remove stale/legacy sound columns before inserting the finalized stream.
     stale_sound_fields = list(dict.fromkeys(
@@ -404,23 +427,12 @@ def add_svf(
     working = base.copy()
     working["__svf_start_time_s"] = np.nan
 
-    datetimes = pd.to_datetime(working["Datetime"], errors="coerce")
-    if datetimes.isna().any():
-        raise ValueError("Base table contains unparseable Datetime values")
-
     route = working["PhaseID"].isin(ROUTE_PHASES)
-    elapsed = (
-        datetimes
-        - datetimes.groupby(
-            [working["ParticipantID"], working["PhaseID"]]
-        ).transform("min")
-    )
-    working.loc[route, "__svf_start_time_s"] = (
-        elapsed.loc[route].dt.total_seconds().round().astype(int) // 10
-    ) * 10
+    working.loc[route, "__svf_start_time_s"] = phase_grid_elapsed(working, key_csv).loc[route]
 
     dynamic_svf_fields = [c for c in svf.columns if c not in ("ParticipantID", "PhaseID", "__svf_start_time_s")]
-    working = working.drop(columns=[field for field in dynamic_svf_fields if field in working.columns])
+    replaced_fields = dynamic_svf_fields + ["Combined_Vegetation_%", "SVF_Aggregation_Method", "SVF_Selection_Method"]
+    working = working.drop(columns=[field for field in replaced_fields if field in working.columns])
     merged = working.merge(
         svf,
         on=["ParticipantID", "PhaseID", "__svf_start_time_s"],
@@ -431,20 +443,23 @@ def add_svf(
     route_rows = int(route.sum())
     route_mask = merged["PhaseID"].isin(ROUTE_PHASES)
     missing = route_mask & merged["SVF"].isna()
-    merged["SVF_Status"] = "not_applicable"
+    merged["SVF_Status"] = "outside PhaseID"
     merged.loc[route_mask & ~missing, "SVF_Status"] = "available"
-    merged.loc[missing, "SVF_Status"] = "no_source_window"
-    last = svf.groupby(["ParticipantID", "PhaseID"])["__svf_start_time_s"].max()
-    last_for_rows = last.reindex(pd.MultiIndex.from_frame(
-        merged[["ParticipantID", "PhaseID"]])).to_numpy()
-    merged.loc[missing & merged["__svf_start_time_s"].gt(last_for_rows),
-               "SVF_Status"] = "after_last_available_svf_window"
+    merged.loc[missing, "SVF_Status"] = "not_applicable"
+    merged.loc[missing & merged["SVF_Frames_In_Window"].eq(0),
+               "SVF_Status"] = "no_frames_with_coverage_≥50%"
     if source_mode == "matched_8min":
         merged.loc[missing & merged["__svf_start_time_s"].ge(MATCHED_SVF_SECONDS),
-                   "SVF_Status"] = "outside_matched_8min"
+                   "SVF_Status"] = "not_applicable"
     print(f"SVF availability: {merged.loc[route_mask, 'SVF_Status'].value_counts().to_dict()}")
     merged = merged.drop(columns="__svf_start_time_s")
     return merged, matched, route_rows
+
+
+def preserve_column_order(data: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
+    """Retain published positions; append genuinely new fields in pipeline order."""
+    ordered = [c for c in columns if c in data.columns]
+    return data[ordered + [c for c in data.columns if c not in columns]]
 
 
 def build(
@@ -456,8 +471,10 @@ def build(
     output_path: Path,
     svf_source_mode: str,
 ) -> None:
-    base = read_table(base_path)
+    base = matched_phase_rows(read_table(base_path), svf_source_mode)
     base_row_count = len(base)
+    published_columns = (pd.read_csv(output_path, nrows=0).columns.tolist()
+                         if output_path.is_file() else base.columns.tolist())
     gvi = prepare_gvi(read_table(gvi_path))
     sound = prepare_sound(read_table(sound_path))
     ci = read_table(ci_path)
@@ -467,10 +484,8 @@ def build(
     assert_unique_keys(ci, "Clearness Index table")
 
     base = base.drop(columns=[field for field in LEGACY_GVI_FIELDS if field in base.columns])
-    dynamic_gvi_fields = list(set(GVI_FIELDS + [col for col in gvi.columns if col not in base.columns and col not in KEY]))
-    base = replace_from_source(base, gvi, dynamic_gvi_fields, "GVI table")
-    dynamic_ci_fields = list(set(CI_FIELDS + [col for col in ci.columns if col not in base.columns and col not in KEY]))
-    base = replace_from_source(base, ci, dynamic_ci_fields, "Clearness Index table")
+    base = replace_from_source(base, gvi, GVI_FIELDS, "GVI table")
+    base = replace_from_source(base, ci, CI_FIELDS, "Clearness Index table")
     base, svf_rows, route_rows = add_svf(
         base, svf_root, OUTPUT_DIR / "key.csv", svf_source_mode
     )
@@ -494,8 +509,11 @@ def build(
     if not set(ROUTE_PHASES).intersection(set(base["PhaseID"].dropna().unique())):
         raise AssertionError("Final table has no route phases")
 
+    base = preserve_column_order(base, published_columns)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    base.to_csv(output_path, index=False)
+    temporary = output_path.with_suffix(".tmp.csv")
+    base.to_csv(temporary, index=False)
+    temporary.replace(output_path)
 
     ucm_columns = [column for column in base.columns if column.startswith("ucm_")]
     print(f"Saved: {output_path}")
@@ -514,9 +532,13 @@ def build(
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--svf-only", action="store_true",
+                        help="Refresh only SVF from current 10-second means; preserve all other merged streams.")
+    args = parser.parse_args()
     jobs = [
         (
-            OUTPUT_DIR / "merged_all_11participants_8min.csv",
+            PROJECT_ROOT.parent / "Paper3_Github" / "output" / "merged_all_11participants_8min.csv",
             OUTPUT_DIR / "GVI_output" / "merged_all_11participants_8min_GVI.csv",
             OUTPUT_DIR / "Sound_ucm" / "all_participants_sound_analysis_matched_8min.csv",
             OUTPUT_DIR / "Clearness Index" / "merged_all_11participants_8min_CI.csv",
@@ -525,7 +547,7 @@ def main() -> None:
             "matched_8min",
         ),
         (
-            OUTPUT_DIR / "merged_all_11participants.csv",
+            PROJECT_ROOT.parent / "Paper3_Github" / "output" / "merged_all_11participants.csv",
             OUTPUT_DIR / "GVI_output" / "merged_all_11participants_GVI.csv",
             OUTPUT_DIR / "Sound_ucm" / "all_participants_sound_analysis.csv",
             OUTPUT_DIR / "Clearness Index" / "merged_all_11participants_CI.csv",
@@ -536,7 +558,19 @@ def main() -> None:
     ]
 
     for job in jobs:
-        build(*job)
+        if args.svf_only:
+            base = matched_phase_rows(read_table(job[5]), job[6])
+            assert_unique_keys(base, "Existing merged table")
+            updated, matched, route_rows = add_svf(base, job[4], OUTPUT_DIR / "key.csv", job[6])
+            if len(updated) != len(base):
+                raise AssertionError("SVF-only refresh changed the base row count")
+            updated = preserve_column_order(updated, base.columns.tolist())
+            temporary = job[5].with_suffix(".tmp.csv")
+            updated.to_csv(temporary, index=False)
+            temporary.replace(job[5])
+            print(f"Saved SVF-only refresh: {job[5]} ({len(updated)} rows; {matched}/{route_rows} route rows matched)")
+        else:
+            build(*job)
 
 
 if __name__ == "__main__":

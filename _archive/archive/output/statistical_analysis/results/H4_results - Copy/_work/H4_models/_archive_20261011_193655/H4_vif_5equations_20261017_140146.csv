@@ -1,0 +1,6 @@
+"equation_id","heat_form","block","test","n_design_rows","n_terms","baseline_max_vif","baseline_worst_term","best_1drop_max_vif","best_1drop_terms","reaches_under5_with_1drop","best_2drop_max_vif","best_2drop_terms","reaches_under5_with_2drop","removed_terms","max_vif_after","design_outcome","vif_threshold"
+1,"AIR_temp + AIR_RH + WIND_AWS","heat_x_sound","Noise",2101,15,2.21388573860296,"ucm_AIR_RH:SND_dBA",2.05072964642369,"ucm_AIR_temp:SND_dBA",TRUE,,"",FALSE,"",2.21388573860296,"empatica_heart_rate",5
+2,"MRT","heat_x_sound","Noise",2101,11,2.29143246471637,"ucm_MRT",1.11572761437485,"ucm_MRT",TRUE,,"",FALSE,"",2.29143246471637,"empatica_heart_rate",5
+3,"HUMIDEX","heat_x_sound","Noise",2101,11,1.16409221451462,"gvi_50m",1.07489667270845,"gvi_50m",TRUE,,"",FALSE,"",1.16409221451462,"empatica_heart_rate",5
+4,"PET","heat_x_sound","Noise",2101,11,2.25464341513819,"ucm_SUN_Gh",1.05881022418626,"ucm_SUN_Gh",TRUE,,"",FALSE,"",2.25464341513819,"empatica_heart_rate",5
+5,"UTCI","heat_x_sound","Noise",2101,11,2.45374185551699,"ucm_SUN_Gh",1.08572451325778,"ucm_SUN_Gh",TRUE,,"",FALSE,"",2.45374185551699,"empatica_heart_rate",5

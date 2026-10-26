@@ -1,0 +1,94 @@
+"equation_id","heat_form","block","test","design_outcome","n_design_rows","grouped_term","GVIF","Df","GVIF_root","VIF_equivalent","flag_vif_gt_threshold"
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_UTCI",2.94766755255095,1,1.71687726775997,2.94766755255095,FALSE
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA",1.06889884521158,1,1.03387564301108,1.06889884521158,FALSE
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_MRT",2.88197302056504,1,1.69763748208062,2.88197302056504,FALSE
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SUN_Gh",2.9165793837446,1,1.70779957364575,2.9165793837446,FALSE
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"SVF",1.4129486365111,1,1.18867516021455,1.4129486365111,FALSE
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"atmo_pm2.5_avg",1.01153133324065,1,1.00574914031315,1.01153133324065,FALSE
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_lux_avg",1.03160362711292,1,1.01567889960997,1.03160362711292,FALSE
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_kelvin_avg",1.04982894850374,1,1.02461160861262,1.04982894850374,FALSE
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"gvi_50m",1.26483137727179,1,1.12464722347578,1.26483137727179,FALSE
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"PhaseID",1.01509228374341,3,1.00249970712192,1.00500566277954,FALSE
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_UTCI:ucm_SND_dBA",2.40545916770616,1,1.5509542764718,2.40545916770616,FALSE
+1,"UTCI / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA:ucm_MRT",2.39461649135788,1,1.54745484307552,2.39461649135788,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_UTCI",2.98899997316605,1,1.72887245717145,2.98899997316605,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA",1.39657650528679,1,1.18176838055805,1.39657650528679,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_MRT",2.90885901523725,1,1.70553774957849,2.90885901523725,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SUN_Gh",2.9306435861784,1,1.71191226007012,2.9306435861784,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"SVF",1.42726782129232,1,1.19468314681857,1.42726782129232,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"atmo_pm2.5_avg",1.02376084506275,1,1.01181067649178,1.02376084506275,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_lux_avg",1.03672988264393,1,1.0181993334529,1.03672988264393,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_kelvin_avg",1.05635487929102,1,1.02779126250957,1.05635487929102,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"gvi_50m",1.28558685897274,1,1.13383722772396,1.28558685897274,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"vehicle_prop",1.19414924217352,1,1.09277135859864,1.19414924217352,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"freq_prop_20_125",1.74870142182679,1,1.32238474803167,1.74870142182679,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"wind_prop",1.33273696920456,1,1.15444227625488,1.33273696920456,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"spectral_centroid_hz",1.67589378139006,1,1.29456316237952,1.67589378139006,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"mechanisms_prop",1.04581369098235,1,1.02265032683823,1.04581369098235,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"PhaseID",1.01590472140931,3,1.00263338906342,1.00527371286481,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_UTCI:ucm_SND_dBA",2.42023454180784,1,1.55571030137614,2.42023454180784,FALSE
+2,"UTCI / atmo_pm2.5_avg (sound sensitivity)","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA:ucm_MRT",2.42899514669348,1,1.55852338663669,2.42899514669348,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_AIR_temp",2.14164848619489,1,1.46343721634886,2.14164848619489,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA",1.21220312979589,1,1.10100096720934,1.21220312979589,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_AIR_RH",1.97072302853439,1,1.40382442938367,1.97072302853439,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_WIND_AWS",1.24870259883477,1,1.11745362267737,1.24870259883477,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_MRT",2.50110902176897,1,1.5814894946755,2.50110902176897,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SUN_Gh",2.3106045836053,1,1.52006729574888,2.3106045836053,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"SVF",1.44238846734698,1,1.2009947823979,1.44238846734698,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"atmo_pm2.5_avg",1.02503270870493,1,1.01243899011493,1.02503270870493,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_lux_avg",1.03586199886034,1,1.01777305862375,1.03586199886034,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_kelvin_avg",1.0582132232419,1,1.02869491261593,1.0582132232419,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"gvi_50m",1.37927303168651,1,1.17442455342457,1.37927303168651,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"PhaseID",1.20298290416519,3,1.03127995375978,1.06353834302677,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_AIR_temp:ucm_SND_dBA",2.22144287034295,1,1.49045055950976,2.22144287034295,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA:ucm_AIR_RH",2.23017495613852,1,1.49337703080586,2.23017495613852,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA:ucm_WIND_AWS",1.26500306214466,1,1.12472354920872,1.26500306214466,FALSE
+3,"AIR_temp + AIR_RH + WIND_AWS / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA:ucm_MRT",1.23739362202607,1,1.11238195869318,1.23739362202607,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_HUMIDEX",1.1933322672576,1,1.09239748592607,1.1933322672576,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA",1.04375304641515,1,1.02164232802637,1.04375304641515,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_MRT",2.45093038904222,1,1.56554475791726,2.45093038904222,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SUN_Gh",2.28567903385196,1,1.51184623353434,2.28567903385196,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"SVF",1.42593397475477,1,1.19412477352862,1.42593397475477,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"atmo_pm2.5_avg",1.01944869219515,1,1.00967751891143,1.01944869219515,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_lux_avg",1.02763394933947,1,1.01372281681901,1.02763394933947,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_kelvin_avg",1.0484216990632,1,1.02392465497379,1.0484216990632,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"gvi_50m",1.34221865044812,1,1.15854160497072,1.34221865044812,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"PhaseID",1.04075905139117,3,1.00668060032702,1.01340583107477,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_HUMIDEX:ucm_SND_dBA",1.17855902148522,1,1.0856145823842,1.17855902148522,FALSE
+4,"HUMIDEX / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA:ucm_MRT",1.14573848521033,1,1.07039174380706,1.14573848521033,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_PET",2.35505382637472,1,1.53461846280264,2.35505382637472,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA",1.06830406300613,1,1.0335879561054,1.06830406300613,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_MRT",2.58010432398196,1,1.60627031472973,2.58010432398196,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SUN_Gh",2.92676487317933,1,1.71077902523363,2.92676487317933,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"SVF",1.41073999406228,1,1.18774576154254,1.41073999406228,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"atmo_pm2.5_avg",1.01013644741253,1,1.00505544494447,1.01013644741253,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_lux_avg",1.02739657129687,1,1.01360572773484,1.02739657129687,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_kelvin_avg",1.04813542064208,1,1.02378485075824,1.04813542064208,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"gvi_50m",1.26991415584682,1,1.12690467913077,1.26991415584682,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"PhaseID",1.01627916561541,3,1.00269497171178,1.00539720629609,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_PET:ucm_SND_dBA",1.87010513587446,1,1.36751787406032,1.87010513587446,FALSE
+5,"PET / atmo_pm2.5_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA:ucm_MRT",1.84896435816348,1,1.35976628806699,1.84896435816348,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_UTCI",2.95128058083375,1,1.71792915477727,2.95128058083375,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA",1.06909303576248,1,1.03396955262835,1.06909303576248,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_MRT",2.88582934156578,1,1.69877289287467,2.88582934156578,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SUN_Gh",2.91288064418238,1,1.70671633383594,2.91288064418238,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"SVF",1.41200102155431,1,1.18827649204817,1.41200102155431,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"atmo_pm1_avg",1.00886122761983,1,1.00442084188841,1.00886122761983,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_lux_avg",1.03160294848703,1,1.0156785655349,1.03160294848703,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_kelvin_avg",1.05028454230298,1,1.02483390961803,1.05028454230298,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"gvi_50m",1.26387043955721,1,1.12421992490669,1.26387043955721,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"PhaseID",1.01518605418134,3,1.00251514105833,1.0050366080512,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_UTCI:ucm_SND_dBA",2.40169550577779,1,1.54974046400608,2.40169550577779,FALSE
+6,"UTCI / atmo_pm1_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA:ucm_MRT",2.39365197163886,1,1.5471431645581,2.39365197163886,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_UTCI",2.95404966643605,1,1.71873490289691,2.95404966643605,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA",1.06915694435799,1,1.0340004566527,1.06915694435799,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_MRT",2.87811372556743,1,1.69650043488572,2.87811372556743,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SUN_Gh",2.92080394503642,1,1.70903596949755,2.92080394503642,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"SVF",1.41272857116445,1,1.18858258912221,1.41272857116445,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"atmo_pm10_avg",1.01062456453255,1,1.00529824655798,1.01062456453255,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_lux_avg",1.03240875482306,1,1.01607517183674,1.03240875482306,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"lys_kelvin_avg",1.04984662515733,1,1.02462023460272,1.04984662515733,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"gvi_50m",1.26338589719751,1,1.12400440265931,1.26338589719751,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"PhaseID",1.01507927726313,3,1.00249756625544,1.00500137034808,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_UTCI:ucm_SND_dBA",2.40046313030201,1,1.54934280593483,2.40046313030201,FALSE
+7,"UTCI / atmo_pm10_avg","heat_x_sound","Noise","empatica_heart_rate",2056,"ucm_SND_dBA:ucm_MRT",2.39384972595845,1,1.54720707274703,2.39384972595845,FALSE

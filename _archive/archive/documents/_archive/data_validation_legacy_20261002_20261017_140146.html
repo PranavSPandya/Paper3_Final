@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper 3 Data Validation & Exposure Selection Report</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #17202a;
+    background: #f8fafc;
+    max-width: 1200px;
+    margin: 24px auto;
+    padding: 0 20px;
+    line-height: 1.5;
+  }
+  header {
+    background: #ffffff;
+    border: 1px solid #d5dce3;
+    border-radius: 8px;
+    padding: 18px 24px;
+    margin-bottom: 20px;
+  }
+  h1 { color: #1f3b5b; margin: 0 0 6px 0; font-size: 22px; }
+  h2 { color: #1f3b5b; margin: 0 0 12px 0; font-size: 16px; border-bottom: 2px solid #eef2f7; padding-bottom: 6px; }
+  h3 { color: #2c3e50; margin: 16px 0 6px 0; font-size: 14px; font-weight: 600; }
+  p, li { font-size: 13px; color: #2c3e50; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #d5dce3;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  }
+  .callout {
+    background: #ebf5fb;
+    border-left: 4px solid #2980b9;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #e1e8ed;
+    border-radius: 6px;
+    margin: 12px 0;
+  }
+  table.data {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+    margin: 10px 0 16px 0;
+  }
+  table.data th, table.data td {
+    border: 1px solid #d8dee4;
+    padding: 6px 9px;
+    text-align: left;
+    word-break: break-word;
+  }
+  table.data td { max-width: 520px; }
+  table.data th { background: #edf2f7; color: #2c3e50; font-weight: 600; font-size: 12px; }
+  table.data tr:nth-child(even) { background: #f8fafc; }
+  code { background: #f1f4f8; padding: 2px 5px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #c0392b; }
+  .badge { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .badge-pass { background: #d4edda; color: #155724; }
+  .badge-warn { background: #fff3cd; color: #856404; }
+  .badge-fail { background: #f8d7da; color: #721c24; }
+  details summary { cursor: pointer; user-select: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Paper 3: Data Validation & Exposure Selection Executive Report</h1>
+  <p><strong>Input:</strong> <code>C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/merged_all_11participants_8min.csv</code> | <strong>Cohort:</strong> 11 participants &times; 4 outdoor travel phases (2,156 core epochs) + Tram reference (535 epochs).</p>
+</header>
+
+<div class="card">
+  <h2>Executive Summary</h2>
+  <ol>
+    <li><strong>Complete Schema Partition (189 Columns):</strong> Every variable is accounted for across 7 distinct analytical roles.</li>
+    <li><strong>Native Physical Exposures (Zero Premature Transformation):</strong> Environmental stressors are retained in their native, untransformed physical units (lux, °C, dBA, µg/m³, %). Transformations (log, z-score) are reserved for the modeling stage.</li>
+    <li><strong>Continuous Spatial Resolution:</strong> For greenery, continuous <code>gvi_50m</code> is selected over static <code>gvi_phase_mean</code> to preserve micro-spatial route variability.</li>
+    <li><strong>Outcome-blind H4 reduction:</strong> All five predeclared domain representatives were tested in the exact matched phase-level WPZ design matrix. <strong>4 predictors remain in primary H4</strong> (ucm_UTCI + ucm_SND_dBA + atmo_pm2.5_avg + lys_lux_avg); removed by the VIF &ge; 5 rule: <strong>gvi_50m</strong>. Final matched-design VIF range: <strong>1.40 to 1.88</strong>.</li>
+    <li><strong>Audited Sensor Plausibility & 100% Protocol Completion:</strong> All 10 audited physiological and environmental streams fall within clinical and physical bounds across all 2,156 epochs with 0.00% out-of-bounds violations.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h2>Methodological Benchmarking: How Experiment Papers Did It</h2>
+  <p>The papers below provide methodological background for domain grouping, repeated-measures modeling, and within-person standardization. They are supporting precedents, not proof that the present study uses an identical design:</p>
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Benchmark Paper</th>
+        <th>Core Focus & Sensor Suite</th>
+        <th>How They Solved It (Their Method)</th>
+        <th>Paper 3 correspondence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Rodrigues et al. (2025/2026)</strong><br><em>The Influence of Urban Context on Emotions and Bodily Responses During Walking</em></td>
+        <td>Outdoor mobile walking; Empatica E4 (EDA, HRV, Skin Temp); GIS / microclimate / noise / green exposure</td>
+        <td><strong>Methodological precedent:</strong> Grouped environmental predictors into thematic blocks, screened related measures, standardized predictors and outcomes, and used participant-random-intercept mixed models. This supports the Paper 3 workflow but is not treated as an outcome-driven selection rule.</td>
+        <td><strong>Steps 2, 4 & 5</strong><br>(WPZ, VIF, phase-level LMM)</td>
+      </tr>
+      <tr>
+        <td><strong>Chang et al. (2015)</strong><br><em>Short-term exposure to noise, fine particulate matter and nitrogen oxides on ambulatory blood pressure</em> (<em>Env. Res.</em>)</td>
+        <td>Multi-exposure mixture monitoring (Noise, PM<sub>2.5</sub>, NO<sub>x</sub>); ambulatory repeated measures</td>
+        <td><strong>Multi-exposure precedent:</strong> Co-entered measured environmental exposures in repeated-measures models after checking their relationships. Paper 3 uses simultaneous VIF diagnostics, a participant random intercept, and Mode adjustment; it does not claim predictor independence or copy the cited paper covariance-selection procedure.</td>
+        <td><strong>Step 4 & Step 5</strong><br>(Multi-exposure co-entry and VIF)</td>
+      </tr>
+      <tr>
+        <td><strong>Bush, Hess & Wolford (1993)</strong><br><em>Transformations for within-subject designs: A Monte Carlo investigation</em> (<em>Psych. Bull.</em>)</td>
+        <td>Psychophysiological repeated measures; transformation comparison</td>
+        <td><strong>Within-Subject Standardization:</strong> Proved via Monte Carlo simulations that within-subject z-score standardization (z<sub>ij</sub> = (Y<sub>ij</sub> - &mu;<sub>i</sub>)/&sigma;<sub>i</sub>) produces the greatest statistical power and protects against baseline individual differences, vastly outperforming crude subtraction (Y - Baseline) or percent change.</td>
+        <td><strong>Step 2</strong><br>(Within-Person Z-Score wpz)</td>
+      </tr>
+      <tr>
+        <td><strong>Lykken & Venables (1971)</strong> & <strong>Boucsein (2012)</strong><br><em>Direct measurement of skin conductance</em> / <em>Electrodermal Activity</em></td>
+        <td>Electrodermal activity (EDA / SCL / SCR) standardization</td>
+        <td><strong>Peripheral Factor Correction:</strong> Established that raw EDA tonic levels reflect anatomical differences (skin thickness, sweat gland density) rather than acute arousal; established range/within-subject standardization as the psychophysiological gold standard.</td>
+        <td><strong>Step 2</strong><br>(EDA baseline variance correction)</td>
+      </tr>
+      <tr>
+        <td><strong>Task Force (1996)</strong> & <strong>Laborde et al. (2017)</strong><br><em>Heart Rate Variability: Standards of measurement</em></td>
+        <td>Ambulatory & resting HRV guidelines</td>
+        <td><strong>Logarithmic Transformation:</strong> Documented that time- and frequency-domain HRV metrics (RMSSD, LF, HF) are strictly positive and positively skewed; established natural log (ln) transformation prior to parametric modeling as the international standard.</td>
+        <td><strong>Step 2</strong><br>(ln(HRV) transformation)</td>
+      </tr>
+      <tr>
+        <td><strong>Enders & Tofighi (2007)</strong><br><em>Centering predictor variables in multilevel models</em> (<em>Psych. Meth.</em>)</td>
+        <td>Multilevel & mixed-effects modeling</td>
+        <td><strong>Variance Decomposition:</strong> Demonstrated that within-person centering isolates acute within-subject environmental exposure slopes from between-subject confounding.</td>
+        <td><strong>Step 2 & Step 5</strong><br>(Within-subject slope isolation)</td>
+      </tr>
+      <tr>
+        <td><strong>Cnaan, Laird & Slasor (1997)</strong><br><em>GLMM for Unbalanced Repeated Measures</em> (<em>Stat. Med.</em>)</td>
+        <td>Longitudinal / repeated measures biostatistics</td>
+        <td><strong>Mixed Models for Repeated Measures:</strong> Established the linear mixed-effects model with participant random intercepts as the gold standard over RM-ANOVA for unbalanced field repeated measures.</td>
+        <td><strong>Step 5</strong><br>(LMM framework)</td>
+      </tr>
+      <tr>
+        <td><strong>Kim et al. (2023)</strong> & <strong>Chrisinger & King (2018)</strong><br><em>Collective distress biosignals</em> / <em>SENSE citizen science</em></td>
+        <td>Outdoor wearable Empatica E4 biosensing in urban environments</td>
+        <td><strong>Motion & Exertion Context:</strong> Supports accounting for locomotion when interpreting ambulatory biosignals. Paper 3 uses Mode in primary H4; MET and GPS speed remain audited columns, not separate primary H4 predictors.</td>
+        <td><strong>Step 5</strong><br>(Mode-adjusted primary H4)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Step 1: Master Schema Partition (189 Columns)</h2>
+  <p>Every single column in the canonical merged dataset is categorized according to its scientific role:</p>
+  <table class='data'><thead><tr><th>Role_Classification</th><th>Column_Count</th><th>All_Variables_In_Role</th><th>Scientific_Purpose_Modeling_Action</th></tr></thead><tbody><tr><td>Study Metadata & Spatiotemporal Tracking</td><td>16</td><td>ParticipantID, PhaseID, Datetime, Date, ucm_Date, ucm_GPS_lat, ucm_GPS_lon, ucm_GPS_alt, ucm_GPS_HDOP, ucm_GPS_hdg, ucm_MAG_hdg, ucm_GPS_speed_valid_sample_count, atmo_lys_Date, eyetracker_Date, pct_complete, gvi_match_dist_m</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td>Participant Demographics & Clothing Metadata</td><td>28</td><td>questionnaire_participant_id, questionnaire_response_index_within_participant, questionnaire_clothing_height_raw, questionnaire_clothing_weight_raw, questionnaire_clothing_skin_tone, questionnaire_clothing_upper_body, questionnaire_clothing_lower_body, questionnaire_clothing_footwear, questionnaire_clothing_accessories, questionnaire_height_m, questionnaire_weight_kg, questionnaire_bmi_kg_m2, questionnaire_bmi_category_who, questionnaire_background_name, questionnaire_background_age, questionnaire_background_gender, questionnaire_background_nationality, questionnaire_background_residential_area, questionnaire_background_years_in_brussels, questionnaire_background_vision_correction, questionnaire_background_site_familiarity_1_10, questionnaire_background_residence_type, questionnaire_background_has_children, questionnaire_background_commute_modes, questionnaire_background_regular_physical_activity, questionnaire_background_daily_walking, questionnaire_background_bike_frequency, questionnaire_background_own_bike_for_experiment</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>Movement & Exertion Covariates (Z)</td><td> 6</td><td>empatica__met, empatica_acc_x, empatica_acc_y, empatica_acc_z, empatica_vector_magnitude, ucm_GPS_speed_kmh</td><td>Retained for audit; primary H4 uses Mode as the mobility adjustment, not separate MET/GPS predictors</td></tr>
+<tr><td>Physiological Sensor Outcomes (Y_physio)</td><td>28</td><td>empatica__eda_scl_usiemens, empatica_eda_tonic, empatica_eda_phasic, empatica_skin_temperature, empatica_hrv_td_sdnn, empatica_hrv_fd_lf, empatica_hrv_fd_hf, empatica_hrv_fd_lf_hf_ratio, empatica_hrv_fd_lfnu, empatica_hrv_fd_hfnu, empatica_hrv_fd_vlf, empatica_hrv_fd_total_power, empatica_hrv_td_rmssd, empatica_heart_rate, eyetracker_pupil_diameter_avg, eyetracker_pupil_change_rate, eyetracker_blink_duration_s, eyetracker_fixation_duration_s, eyetracker_fixation_rate, eyetracker_saccade_duration_s, eyetracker_saccade_amplitude, eyetracker_saccade_peak_velocity, eyetracker_gaze_velocity, eyetracker_gaze_dispersion, eyetracker_distance_from_center, eyetracker_gaze_centrality, eyetracker_eyelid_aperture_avg, eyetracker_stress_composite</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>Physiological Signal Quality & HRV Windowing (Empatica QC)</td><td> 7</td><td>empatica_hrv_fd_5min_available, empatica_hrv_fd_5min_segment_start, empatica_hrv_fd_5min_segment_end, empatica_hrv_fd_5min_valid_rri_count, empatica_hrv_fd_5min_removed_pct, empatica_hrv_fd_5min_max_gap_seconds, empatica_hrv_fd_5min_valid_span_seconds</td><td>Validates 5-min frequency-domain HRV window integrity, artifact removal percentage, and valid RRI span (Anna-Laura biometrics methodology); used for physiological QC and sensitivity filtering.</td></tr>
+<tr><td>Psychological Survey Outcomes (Y_psych)</td><td>11</td><td>questionnaire_current_comfort_1_7, questionnaire_space_familiarity_1_5, questionnaire_pleasantness_1_5, questionnaire_thermal_comfort_1_5, questionnaire_environmental_comfort_mean_1_5, questionnaire_stai6_mean_1_5, questionnaire_prs11_fascination_mean_1_5, questionnaire_prs11_being_away_mean_1_5, questionnaire_prs11_coherence_mean_1_5, questionnaire_prs11_scope_mean_1_5, questionnaire_prs11_total_mean_1_5</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>Environmental Stressor Candidates (X_env)</td><td>93</td><td>ucm_AIR_temp, ucm_AIR_RH, ucm_AIR_T_bot, ucm_AIR_T_mid, ucm_AIR_T_top, ucm_IR_back, ucm_IR_front, ucm_IR_left, ucm_IR_right, ucm_IR_up, ucm_IR_down, ucm_IR_spot_gnd, ucm_IR_spot_sky, ucm_IR_spot_left, ucm_IR_spot_right, ucm_SUN_Gh, ucm_SND_dBA, ucm_WIND_AWS, ucm_WIND_AWA, ucm_WIND_TWS, ucm_WIND_TWD, ucm_IO_flag, ucm_AH, ucm_SUN_alt, ucm_SUN_az, ucm_fp, ucm_MRT, ucm_MRT_S, ucm_OPT, ucm_HUMIDEX, ucm_HUMIDEX_SR, ucm_UTCI, ucm_UTCI_SR, ucm_PET, ucm_PET_SR, atmo_lys_LYS1__lys_b', atmo_lys_LYS1__lys_g', atmo_lys_LYS1__lys_kelvin, atmo_lys_LYS1__lys_lux, atmo_lys_LYS1__lys_medi, atmo_lys_LYS1__lys_movement, atmo_lys_LYS1__lys_r', atmo_lys_LYS1__lys_rgbb, atmo_lys_LYS1__lys_rgbg, atmo_lys_LYS1__lys_rgbir, atmo_lys_LYS1__lys_rgbr, atmo_lys_LYS2__lys_b', atmo_lys_LYS2__lys_g', atmo_lys_LYS2__lys_kelvin, atmo_lys_LYS2__lys_lux, atmo_lys_LYS2__lys_medi, atmo_lys_LYS2__lys_movement, atmo_lys_LYS2__lys_r', atmo_lys_LYS2__lys_rgbb, atmo_lys_LYS2__lys_rgbg, atmo_lys_LYS2__lys_rgbir, atmo_lys_LYS2__lys_rgbr, atmo_lys_atmotube_left__atmotube_pm10, atmo_lys_atmotube_left__atmotube_pm1, atmo_lys_atmotube_left__atmotube_pm2.5, atmo_lys_atmotube_left__atmotube_humidity, atmo_lys_atmotube_left__atmotube_temperature, atmo_lys_atmotube_right__atmotube_pm10, atmo_lys_atmotube_right__atmotube_pm1, atmo_lys_atmotube_right__atmotube_pm2.5, atmo_lys_atmotube_right__atmotube_humidity, atmo_lys_atmotube_right__atmotube_temperature, atmo_lys_LYS1__lux_cat, atmo_lys_LYS2__lux_cat, gvi_point_gvi, gvi_point_tree, gvi_50m, gvi_tree_50m, gvi_grass_50m, gvi_plant_50m, gvi_phase_mean, tree_phase_mean, grass_phase_mean, plant_phase_mean, Clearness_Index_G0, Clearness_Index, Clearness_Index_Infer, sound_level_dbfs, sound_class_id, sound_category_label, sound_prop_urban_manmade_positive, sound_prop_urban_manmade_neutral, sound_prop_urban_manmade_negative, sound_prop_mechanisms, sound_prop_rural_natural, sound_prop_unidentify, sound_prop_vehicle, sound_prop_wind</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr></tbody></table>
+
+  <details style="margin: 14px 0; background: #ffffff; border: 1px solid #d5dce3; border-radius: 6px; padding: 12px 16px;">
+    <summary style="font-weight: 600; color: #1f3b5b; font-size: 13px;">
+      &#9654; Complete 189-Column Master Variable Dictionary & Role Audit [Click to expand all 189 columns]
+    </summary>
+    <table class='data'><thead><tr><th>Index</th><th>Column_Name</th><th>Platform</th><th>Role_Classification</th><th>Modeling_Action</th></tr></thead><tbody><tr><td>  1</td><td>ParticipantID</td><td>Study Design</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td>  2</td><td>PhaseID</td><td>Study Design</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td>  3</td><td>Datetime</td><td>Study Design</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td>  4</td><td>Date</td><td>Study Design</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td>  5</td><td>empatica__met</td><td>Empatica EmbracePlus</td><td>Movement & Exertion Covariates (Z)</td><td>Retained for audit; primary H4 uses Mode as the mobility adjustment, not separate MET/GPS predictors</td></tr>
+<tr><td>  6</td><td>empatica__eda_scl_usiemens</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>  7</td><td>empatica_eda_tonic</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>  8</td><td>empatica_eda_phasic</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>  9</td><td>empatica_skin_temperature</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td> 10</td><td>empatica_acc_x</td><td>Empatica EmbracePlus</td><td>Movement & Exertion Covariates (Z)</td><td>Retained for audit; primary H4 uses Mode as the mobility adjustment, not separate MET/GPS predictors</td></tr>
+<tr><td> 11</td><td>empatica_acc_y</td><td>Empatica EmbracePlus</td><td>Movement & Exertion Covariates (Z)</td><td>Retained for audit; primary H4 uses Mode as the mobility adjustment, not separate MET/GPS predictors</td></tr>
+<tr><td> 12</td><td>empatica_acc_z</td><td>Empatica EmbracePlus</td><td>Movement & Exertion Covariates (Z)</td><td>Retained for audit; primary H4 uses Mode as the mobility adjustment, not separate MET/GPS predictors</td></tr>
+<tr><td> 13</td><td>empatica_vector_magnitude</td><td>Empatica EmbracePlus</td><td>Movement & Exertion Covariates (Z)</td><td>Retained for audit; primary H4 uses Mode as the mobility adjustment, not separate MET/GPS predictors</td></tr>
+<tr><td> 14</td><td>empatica_hrv_td_sdnn</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td> 15</td><td>empatica_hrv_fd_lf</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td> 16</td><td>empatica_hrv_fd_hf</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td> 17</td><td>empatica_hrv_fd_lf_hf_ratio</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td> 18</td><td>empatica_hrv_fd_lfnu</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td> 19</td><td>empatica_hrv_fd_hfnu</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td> 20</td><td>empatica_hrv_fd_vlf</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td> 21</td><td>empatica_hrv_fd_total_power</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td> 22</td><td>empatica_hrv_fd_5min_available</td><td>Empatica EmbracePlus</td><td>Physiological Signal Quality & HRV Windowing (Empatica QC)</td><td>Validates 5-min frequency-domain HRV window integrity, artifact removal percentage, and valid RRI span (Anna-Laura biometrics methodology); used for physiological QC and sensitivity filtering.</td></tr>
+<tr><td> 23</td><td>empatica_hrv_fd_5min_segment_start</td><td>Empatica EmbracePlus</td><td>Physiological Signal Quality & HRV Windowing (Empatica QC)</td><td>Validates 5-min frequency-domain HRV window integrity, artifact removal percentage, and valid RRI span (Anna-Laura biometrics methodology); used for physiological QC and sensitivity filtering.</td></tr>
+<tr><td> 24</td><td>empatica_hrv_fd_5min_segment_end</td><td>Empatica EmbracePlus</td><td>Physiological Signal Quality & HRV Windowing (Empatica QC)</td><td>Validates 5-min frequency-domain HRV window integrity, artifact removal percentage, and valid RRI span (Anna-Laura biometrics methodology); used for physiological QC and sensitivity filtering.</td></tr>
+<tr><td> 25</td><td>empatica_hrv_fd_5min_valid_rri_count</td><td>Empatica EmbracePlus</td><td>Physiological Signal Quality & HRV Windowing (Empatica QC)</td><td>Validates 5-min frequency-domain HRV window integrity, artifact removal percentage, and valid RRI span (Anna-Laura biometrics methodology); used for physiological QC and sensitivity filtering.</td></tr>
+<tr><td> 26</td><td>empatica_hrv_fd_5min_removed_pct</td><td>Empatica EmbracePlus</td><td>Physiological Signal Quality & HRV Windowing (Empatica QC)</td><td>Validates 5-min frequency-domain HRV window integrity, artifact removal percentage, and valid RRI span (Anna-Laura biometrics methodology); used for physiological QC and sensitivity filtering.</td></tr>
+<tr><td> 27</td><td>empatica_hrv_fd_5min_max_gap_seconds</td><td>Empatica EmbracePlus</td><td>Physiological Signal Quality & HRV Windowing (Empatica QC)</td><td>Validates 5-min frequency-domain HRV window integrity, artifact removal percentage, and valid RRI span (Anna-Laura biometrics methodology); used for physiological QC and sensitivity filtering.</td></tr>
+<tr><td> 28</td><td>empatica_hrv_fd_5min_valid_span_seconds</td><td>Empatica EmbracePlus</td><td>Physiological Signal Quality & HRV Windowing (Empatica QC)</td><td>Validates 5-min frequency-domain HRV window integrity, artifact removal percentage, and valid RRI span (Anna-Laura biometrics methodology); used for physiological QC and sensitivity filtering.</td></tr>
+<tr><td> 29</td><td>empatica_hrv_td_rmssd</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td> 30</td><td>empatica_heart_rate</td><td>Empatica EmbracePlus</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td> 31</td><td>ucm_Date</td><td>UCM Backpack</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td> 32</td><td>ucm_GPS_lat</td><td>UCM Backpack</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td> 33</td><td>ucm_GPS_lon</td><td>UCM Backpack</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td> 34</td><td>ucm_GPS_alt</td><td>UCM Backpack</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td> 35</td><td>ucm_GPS_HDOP</td><td>UCM Backpack</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td> 36</td><td>ucm_GPS_hdg</td><td>UCM Backpack</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td> 37</td><td>ucm_MAG_hdg</td><td>UCM Backpack</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td> 38</td><td>ucm_AIR_temp</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 39</td><td>ucm_AIR_RH</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 40</td><td>ucm_AIR_T_bot</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 41</td><td>ucm_AIR_T_mid</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 42</td><td>ucm_AIR_T_top</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 43</td><td>ucm_IR_back</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 44</td><td>ucm_IR_front</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 45</td><td>ucm_IR_left</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 46</td><td>ucm_IR_right</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 47</td><td>ucm_IR_up</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 48</td><td>ucm_IR_down</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 49</td><td>ucm_IR_spot_gnd</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 50</td><td>ucm_IR_spot_sky</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 51</td><td>ucm_IR_spot_left</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 52</td><td>ucm_IR_spot_right</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 53</td><td>ucm_SUN_Gh</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 54</td><td>ucm_SND_dBA</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 55</td><td>ucm_WIND_AWS</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 56</td><td>ucm_WIND_AWA</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 57</td><td>ucm_WIND_TWS</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 58</td><td>ucm_WIND_TWD</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 59</td><td>ucm_IO_flag</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 60</td><td>ucm_AH</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 61</td><td>ucm_SUN_alt</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 62</td><td>ucm_SUN_az</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 63</td><td>ucm_fp</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 64</td><td>ucm_MRT</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 65</td><td>ucm_MRT_S</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 66</td><td>ucm_OPT</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 67</td><td>ucm_HUMIDEX</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 68</td><td>ucm_HUMIDEX_SR</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 69</td><td>ucm_UTCI</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 70</td><td>ucm_UTCI_SR</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 71</td><td>ucm_PET</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 72</td><td>ucm_PET_SR</td><td>UCM Backpack</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 73</td><td>ucm_GPS_speed_valid_sample_count</td><td>UCM Backpack</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td> 74</td><td>ucm_GPS_speed_kmh</td><td>UCM Backpack</td><td>Movement & Exertion Covariates (Z)</td><td>Retained for audit; primary H4 uses Mode as the mobility adjustment, not separate MET/GPS predictors</td></tr>
+<tr><td> 75</td><td>atmo_lys_Date</td><td>Atmo / LYS</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td> 76</td><td>atmo_lys_LYS1__lys_b'</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 77</td><td>atmo_lys_LYS1__lys_g'</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 78</td><td>atmo_lys_LYS1__lys_kelvin</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 79</td><td>atmo_lys_LYS1__lys_lux</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 80</td><td>atmo_lys_LYS1__lys_medi</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 81</td><td>atmo_lys_LYS1__lys_movement</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 82</td><td>atmo_lys_LYS1__lys_r'</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 83</td><td>atmo_lys_LYS1__lys_rgbb</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 84</td><td>atmo_lys_LYS1__lys_rgbg</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 85</td><td>atmo_lys_LYS1__lys_rgbir</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 86</td><td>atmo_lys_LYS1__lys_rgbr</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 87</td><td>atmo_lys_LYS2__lys_b'</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 88</td><td>atmo_lys_LYS2__lys_g'</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 89</td><td>atmo_lys_LYS2__lys_kelvin</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 90</td><td>atmo_lys_LYS2__lys_lux</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 91</td><td>atmo_lys_LYS2__lys_medi</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 92</td><td>atmo_lys_LYS2__lys_movement</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 93</td><td>atmo_lys_LYS2__lys_r'</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 94</td><td>atmo_lys_LYS2__lys_rgbb</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 95</td><td>atmo_lys_LYS2__lys_rgbg</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 96</td><td>atmo_lys_LYS2__lys_rgbir</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 97</td><td>atmo_lys_LYS2__lys_rgbr</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 98</td><td>atmo_lys_atmotube_left__atmotube_pm10</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td> 99</td><td>atmo_lys_atmotube_left__atmotube_pm1</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>100</td><td>atmo_lys_atmotube_left__atmotube_pm2.5</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>101</td><td>atmo_lys_atmotube_left__atmotube_humidity</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>102</td><td>atmo_lys_atmotube_left__atmotube_temperature</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>103</td><td>atmo_lys_atmotube_right__atmotube_pm10</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>104</td><td>atmo_lys_atmotube_right__atmotube_pm1</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>105</td><td>atmo_lys_atmotube_right__atmotube_pm2.5</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>106</td><td>atmo_lys_atmotube_right__atmotube_humidity</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>107</td><td>atmo_lys_atmotube_right__atmotube_temperature</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>108</td><td>atmo_lys_LYS1__lux_cat</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>109</td><td>atmo_lys_LYS2__lux_cat</td><td>Atmotube / LYS</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>110</td><td>eyetracker_Date</td><td>Pupil Labs</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td>111</td><td>eyetracker_pupil_diameter_avg</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>112</td><td>eyetracker_pupil_change_rate</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>113</td><td>eyetracker_blink_duration_s</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>114</td><td>eyetracker_fixation_duration_s</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>115</td><td>eyetracker_fixation_rate</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>116</td><td>eyetracker_saccade_duration_s</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>117</td><td>eyetracker_saccade_amplitude</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>118</td><td>eyetracker_saccade_peak_velocity</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>119</td><td>eyetracker_gaze_velocity</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>120</td><td>eyetracker_gaze_dispersion</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>121</td><td>eyetracker_distance_from_center</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>122</td><td>eyetracker_gaze_centrality</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>123</td><td>eyetracker_eyelid_aperture_avg</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>124</td><td>eyetracker_stress_composite</td><td>Pupil Labs Neon</td><td>Physiological Sensor Outcomes (Y_physio)</td><td>Objective dependent variable (Y); normalized via within-person Z-scores</td></tr>
+<tr><td>125</td><td>questionnaire_participant_id</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>126</td><td>questionnaire_response_index_within_participant</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>127</td><td>questionnaire_current_comfort_1_7</td><td>Post-Phase Surveys (STAI, PRS)</td><td>Psychological Survey Outcomes (Y_psych)</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>128</td><td>questionnaire_space_familiarity_1_5</td><td>Post-Phase Surveys (STAI, PRS)</td><td>Psychological Survey Outcomes (Y_psych)</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>129</td><td>questionnaire_pleasantness_1_5</td><td>Post-Phase Surveys (STAI, PRS)</td><td>Psychological Survey Outcomes (Y_psych)</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>130</td><td>questionnaire_thermal_comfort_1_5</td><td>Post-Phase Surveys (STAI, PRS)</td><td>Psychological Survey Outcomes (Y_psych)</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>131</td><td>questionnaire_environmental_comfort_mean_1_5</td><td>Post-Phase Surveys (STAI, PRS)</td><td>Psychological Survey Outcomes (Y_psych)</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>132</td><td>questionnaire_stai6_mean_1_5</td><td>Post-Phase Surveys (STAI, PRS)</td><td>Psychological Survey Outcomes (Y_psych)</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>133</td><td>questionnaire_prs11_fascination_mean_1_5</td><td>Post-Phase Surveys (STAI, PRS)</td><td>Psychological Survey Outcomes (Y_psych)</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>134</td><td>questionnaire_prs11_being_away_mean_1_5</td><td>Post-Phase Surveys (STAI, PRS)</td><td>Psychological Survey Outcomes (Y_psych)</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>135</td><td>questionnaire_prs11_coherence_mean_1_5</td><td>Post-Phase Surveys (STAI, PRS)</td><td>Psychological Survey Outcomes (Y_psych)</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>136</td><td>questionnaire_prs11_scope_mean_1_5</td><td>Post-Phase Surveys (STAI, PRS)</td><td>Psychological Survey Outcomes (Y_psych)</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>137</td><td>questionnaire_prs11_total_mean_1_5</td><td>Post-Phase Surveys (STAI, PRS)</td><td>Psychological Survey Outcomes (Y_psych)</td><td>Subjective dependent variable (Y); post-phase psychological evaluation</td></tr>
+<tr><td>138</td><td>questionnaire_clothing_height_raw</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>139</td><td>questionnaire_clothing_weight_raw</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>140</td><td>questionnaire_clothing_skin_tone</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>141</td><td>questionnaire_clothing_upper_body</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>142</td><td>questionnaire_clothing_lower_body</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>143</td><td>questionnaire_clothing_footwear</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>144</td><td>questionnaire_clothing_accessories</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>145</td><td>questionnaire_height_m</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>146</td><td>questionnaire_weight_kg</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>147</td><td>questionnaire_bmi_kg_m2</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>148</td><td>questionnaire_bmi_category_who</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>149</td><td>questionnaire_background_name</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>150</td><td>questionnaire_background_age</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>151</td><td>questionnaire_background_gender</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>152</td><td>questionnaire_background_nationality</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>153</td><td>questionnaire_background_residential_area</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>154</td><td>questionnaire_background_years_in_brussels</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>155</td><td>questionnaire_background_vision_correction</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>156</td><td>questionnaire_background_site_familiarity_1_10</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>157</td><td>questionnaire_background_residence_type</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>158</td><td>questionnaire_background_has_children</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>159</td><td>questionnaire_background_commute_modes</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>160</td><td>questionnaire_background_regular_physical_activity</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>161</td><td>questionnaire_background_daily_walking</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>162</td><td>questionnaire_background_bike_frequency</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>163</td><td>questionnaire_background_own_bike_for_experiment</td><td>Pre-Experiment Questionnaire</td><td>Participant Demographics & Clothing Metadata</td><td>Cohort baseline characterization; held constant across experimental trials</td></tr>
+<tr><td>164</td><td>pct_complete</td><td>Study Design</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td>165</td><td>gvi_point_gvi</td><td>Eye-Level Panoramic Imagery</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>166</td><td>gvi_point_tree</td><td>Eye-Level Panoramic Imagery</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>167</td><td>gvi_50m</td><td>Eye-Level Panoramic Imagery</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>168</td><td>gvi_tree_50m</td><td>Eye-Level Panoramic Imagery</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>169</td><td>gvi_grass_50m</td><td>Eye-Level Panoramic Imagery</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>170</td><td>gvi_plant_50m</td><td>Eye-Level Panoramic Imagery</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>171</td><td>gvi_match_dist_m</td><td>GVI</td><td>Study Metadata & Spatiotemporal Tracking</td><td>Tracking, positioning & clustering; excluded from statistical equations</td></tr>
+<tr><td>172</td><td>gvi_phase_mean</td><td>Eye-Level Panoramic Imagery</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>173</td><td>tree_phase_mean</td><td>Eye-Level Panoramic Imagery</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>174</td><td>grass_phase_mean</td><td>Eye-Level Panoramic Imagery</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>175</td><td>plant_phase_mean</td><td>Eye-Level Panoramic Imagery</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>176</td><td>Clearness_Index_G0</td><td>Solar Irradiance Models</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>177</td><td>Clearness_Index</td><td>Solar Irradiance Models</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>178</td><td>Clearness_Index_Infer</td><td>Solar Irradiance Models</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>179</td><td>sound_level_dbfs</td><td>YAMNet Audio Classification</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>180</td><td>sound_class_id</td><td>YAMNet Audio Classification</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>181</td><td>sound_category_label</td><td>YAMNet Audio Classification</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>182</td><td>sound_prop_urban_manmade_positive</td><td>YAMNet Audio Classification</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>183</td><td>sound_prop_urban_manmade_neutral</td><td>YAMNet Audio Classification</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>184</td><td>sound_prop_urban_manmade_negative</td><td>YAMNet Audio Classification</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>185</td><td>sound_prop_mechanisms</td><td>YAMNet Audio Classification</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>186</td><td>sound_prop_rural_natural</td><td>YAMNet Audio Classification</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>187</td><td>sound_prop_unidentify</td><td>YAMNet Audio Classification</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>188</td><td>sound_prop_vehicle</td><td>YAMNet Audio Classification</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr>
+<tr><td>189</td><td>sound_prop_wind</td><td>YAMNet Audio Classification</td><td>Environmental Stressor Candidates (X_env)</td><td>Candidate environmental exposure entering objective 3-stage screening funnel</td></tr></tbody></table>
+  </details>
+</div>
+
+<div class="card">
+  <h2>Step 2: Physical Sensor Fusion (all environmental columns audited; 33 active continuous candidates)</h2>
+  <p>The 93 environmental columns consist of <strong>53 raw sensor hardware channels</strong> (UCM microclimate, LYS photopic, Atmotube particle, microphone) and <strong>40 derived/calculated indices</strong> (bioclimatic UTCI/PET/MRT, computer vision GVI segmentation, deep learning YAMNet event proportions, astronomical clearness). Before statistical modeling, 55 raw, duplicate, or unilateral channels are consolidated via 6 physical measurement rules:</p>
+  <ul>
+    <li><strong>1. Bilateral Air Pollution Fusion:</strong> Left and right Atmotubes are averaged (<code>atmo_pm1_avg</code>, <code>atmo_pm2.5_avg</code>, <code>atmo_pm10_avg</code>) to eliminate heading-dependent body-shielding.</li>
+    <li><strong>2. Photopic Lighting Harmonization:</strong> Raw RGB bands and discrete step categories (<code>lux_cat</code>) are excluded in favor of continuous physical lux (<code>lys_lux_avg</code>).</li>
+    <li><strong>3. Radiant Plane & Mast Consolidation:</strong> 10 directional IR spot angles, pyranometer flux, and multi-tier temperatures are synthesized by standard biometeorology into composite Mean Radiant Temperature (<code>ucm_MRT</code>) and reference ambient temperature (<code>ucm_AIR_temp</code>).</li>
+    <li><strong>4. Removal of Solar Duplicates:</strong> Solar-forced duplicate formulations (<code>ucm_UTCI_SR</code>, <code>ucm_PET_SR</code>, <code>ucm_MRT_S</code>) and celestial geometry are excluded in favor of standard ISO/COST formulations.</li>
+    <li><strong>5. Acoustic Event Filtering:</strong> Unclassified audio residue and categorical string labels are removed; physical <i>L</i><sub>Aeq</sub> (<code>ucm_SND_dBA</code>) and continuous YAMNet event proportions are retained.</li>
+    <li><strong>6. Protocol Flag Removal:</strong> Discrete indoor/outdoor flag (<code>ucm_IO_flag</code>) is excluded since trial boundaries are controlled by protocol.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Step 3: Full Candidate Audit & Outcome-Blind H4 Reduction</h2>
+  <p>The broader validation pool is shown here with Spearman correlations, medoid centrality, and PC1 loadings; these are diagnostics, not outcome-driven selection rules. The active statistical script audits all 202 working columns (189 raw + 13 derived), identifies 33 continuous H4 candidate streams, records an explicit eligibility and collinearity-diagnostic stage for every disposition in <code>output/statistical_analysis/H4_Candidate_Audit.csv</code>, and then applies the prespecified exact matched-design VIF rule to the five predeclared domain candidates before fitting the final primary H4 set.</p>
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Domain</th><th>Selected Metric</th><th>Native Unit</th><th>Selected Variable</th><th>Excluded & Subsumed Variables</th><th>Scientific Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Thermal</strong></td><td>UTCI</td><td>°C</td><td><code>ucm_UTCI</code></td><td><code>ucm_PET</code>, <code>ucm_MRT</code>, <code>ucm_AIR_temp</code>, mast tiers, IR spots</td><td>Universal Thermal Climate Index integrates temperature, radiation, humidity, and wind into human energy balance. Co-entering PET or MRT induces severe collinearity (VIF &gt; 15). Sky solar context is captured separately by Clearness Index (Kt = Gh / G0).</td>
+      </tr>
+      <tr>
+        <td><strong>Acoustic</strong></td><td>Sound Level (LAeq)</td><td>dBA</td><td><code>ucm_SND_dBA</code></td><td><code>sound_level_dbfs</code>, unclassified audio residual</td><td>A-weighted equivalent continuous sound level measuring total acoustic pressure (sound intensity). YAMNet semantic sound categories capture sound type/composition as a separate qualitative soundscape dimension.</td>
+      </tr>
+      <tr>
+        <td><strong>Air Pollution</strong></td><td>PM2.5</td><td>µg/m³</td><td><code>atmo_pm2.5_avg</code></td><td><code>atmo_pm1_avg</code>, <code>atmo_pm10_avg</code>, unilateral channels</td><td>Fine particulate matter. Bilateral average of researcher-carried left/right sensors resolves directional body-shielding bias to estimate route ambient exposure.</td>
+      </tr>
+      <tr>
+        <td><strong>Visual Light</strong></td><td>Illuminance</td><td>lux</td><td><code>lys_lux_avg</code></td><td><code>lys_medi_avg</code>, qualitative categorical lux</td><td>Ambient ocular illuminance. Participant-worn LYS1 captures personal photopic illuminance; bilateral corridor average (<code>lys_lux_avg</code>) provides route ambient lighting reference.</td>
+      </tr>
+      <tr>
+        <td><strong>Greenery</strong></td><td>Green View Index</td><td>%</td><td><code>gvi_50m</code></td><td><code>gvi_phase_mean</code>, <code>gvi_tree_50m</code>, buffer variants</td><td>Eye-level vegetation visibility. Continuous 50m spatial moving window along the route preserves micro-spatial variability.</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <details style="margin: 14px 0; background: #ffffff; border: 1px solid #d5dce3; border-radius: 6px; padding: 12px 16px;">
+    <summary style="font-weight: 600; color: #1f3b5b; font-size: 13px;">
+      &#9654; Complete Within-Domain Candidate Screening & Correlation Matrix (Broad Candidate Diagnostics) [Click to expand]
+    </summary>
+    <p style="margin-top: 8px; font-size: 12px; color: #555;">Empirical pairwise correlations with selected domain metrics, medoid correlation centrality, and PC1 loadings are diagnostics only. The authoritative all-column disposition and the active 33-candidate count are in <code>H4_Candidate_Audit.csv</code>.</p>
+    <table class='data'><thead><tr><th>Domain</th><th>Domain_Role</th><th>Candidate_Variable</th><th>Pairwise_r_with_Selected</th><th>Domain_Medoid_r</th><th>PC1_Loading</th><th>Selection_Outcome</th><th>Selection_Rationale</th></tr></thead><tbody><tr><td>Thermal</td><td>Primary Representative</td><td>ucm_UTCI</td><td>1.00</td><td>0.650</td><td>0.369</td><td>SELECTED (Domain Representative)</td><td>Universal Thermal Climate Index (bioclimatic human energy balance integrating T, MRT, RH, wind)</td></tr>
+<tr><td>Thermal</td><td>Secondary / Subsumed Variant</td><td>ucm_PET</td><td>0.98</td><td>0.644</td><td>0.351</td><td>SUBSUMED (Collinear Domain Variant)</td><td>Collinear with ucm_UTCI (|r| = 0.98 >= 0.70); redundant variation subsumed into primary domain metric.</td></tr>
+<tr><td>Thermal</td><td>Secondary / Subsumed Variant</td><td>ucm_OPT</td><td>0.98</td><td>0.657</td><td>0.372</td><td>SUBSUMED (Collinear Domain Variant)</td><td>Collinear with ucm_UTCI (|r| = 0.98 >= 0.70); redundant variation subsumed into primary domain metric.</td></tr>
+<tr><td>Thermal</td><td>Secondary / Subsumed Variant</td><td>ucm_MRT</td><td>0.95</td><td>0.633</td><td>0.353</td><td>SUBSUMED (Collinear Domain Variant)</td><td>Collinear with ucm_UTCI (|r| = 0.95 >= 0.70); redundant variation subsumed into primary domain metric.</td></tr>
+<tr><td>Thermal</td><td>Secondary / Subsumed Variant</td><td>ucm_AIR_T_mid</td><td>0.91</td><td>0.636</td><td>0.365</td><td>SUBSUMED (Collinear Domain Variant)</td><td>Collinear with ucm_UTCI (|r| = 0.91 >= 0.70); redundant variation subsumed into primary domain metric.</td></tr>
+<tr><td>Thermal</td><td>Secondary / Subsumed Variant</td><td>ucm_AIR_temp</td><td>0.88</td><td>0.617</td><td>0.349</td><td>SUBSUMED (Collinear Domain Variant)</td><td>Collinear with ucm_UTCI (|r| = 0.88 >= 0.70); redundant variation subsumed into primary domain metric.</td></tr>
+<tr><td>Thermal</td><td>Secondary / Subsumed Variant</td><td>ucm_HUMIDEX</td><td>0.84</td><td>0.582</td><td>0.335</td><td>SUBSUMED (Collinear Domain Variant)</td><td>Collinear with ucm_UTCI (|r| = 0.84 >= 0.70); redundant variation subsumed into primary domain metric.</td></tr>
+<tr><td>Thermal</td><td>Secondary / Subsumed Variant</td><td>ucm_AH</td><td>0.65</td><td>0.506</td><td>0.251</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with ucm_UTCI (|r| = 0.65 < 0.70); domain represented by consensus metric ucm_UTCI.</td></tr>
+<tr><td>Thermal</td><td>Secondary / Subsumed Variant</td><td>Clearness_Index</td><td>0.44</td><td>0.257</td><td>0.173</td><td>MACRO-CONTEXT (Sky/Solar Context)</td><td>Captures extraterrestrial-to-global solar radiation clearness (Gh/G0; |r| = 0.44 with UTCI); distinct macro-meteorological sky context from human biometeorological energy balance.</td></tr>
+<tr><td>Thermal</td><td>Secondary / Subsumed Variant</td><td>ucm_AIR_RH</td><td>0.31</td><td>0.280</td><td>0.094</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with ucm_UTCI (|r| = 0.31 < 0.70); domain represented by consensus metric ucm_UTCI.</td></tr>
+<tr><td>Thermal</td><td>Secondary / Subsumed Variant</td><td>ucm_WIND_AWS</td><td>0.18</td><td>0.153</td><td>0.071</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with ucm_UTCI (|r| = 0.18 < 0.70); domain represented by consensus metric ucm_UTCI.</td></tr>
+<tr><td>Thermal</td><td>Secondary / Subsumed Variant</td><td>ucm_WIND_TWS</td><td>0.03</td><td>0.149</td><td>0.062</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with ucm_UTCI (|r| = 0.03 < 0.70); domain represented by consensus metric ucm_UTCI.</td></tr>
+<tr><td>Acoustic</td><td>Primary Representative</td><td>ucm_SND_dBA</td><td>1.00</td><td>0.291</td><td>0.376</td><td>SELECTED (Domain Representative)</td><td>A-weighted equivalent continuous sound level LAeq (physical sound pressure intensity)</td></tr>
+<tr><td>Acoustic</td><td>Secondary / Subsumed Variant</td><td>sound_level_dbfs</td><td>0.68</td><td>0.367</td><td>0.489</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with ucm_SND_dBA (|r| = 0.68 < 0.70); domain represented by consensus metric ucm_SND_dBA.</td></tr>
+<tr><td>Acoustic</td><td>Secondary / Subsumed Variant</td><td>sound_prop_rural_natural</td><td>0.41</td><td>0.237</td><td>0.020</td><td>DISTINCT CONSTRUCT (Exploratory Sound Type)</td><td>Measures acoustic composition / sound source type (proportions), distinct from sound pressure intensity (dBA; |r| = 0.41). Retained for exploratory soundscape analysis.</td></tr>
+<tr><td>Acoustic</td><td>Secondary / Subsumed Variant</td><td>sound_prop_urban_manmade_neutral</td><td>0.31</td><td>0.204</td><td>0.098</td><td>DISTINCT CONSTRUCT (Exploratory Sound Type)</td><td>Measures acoustic composition / sound source type (proportions), distinct from sound pressure intensity (dBA; |r| = 0.31). Retained for exploratory soundscape analysis.</td></tr>
+<tr><td>Acoustic</td><td>Secondary / Subsumed Variant</td><td>sound_prop_wind</td><td>0.24</td><td>0.447</td><td>0.519</td><td>DISTINCT CONSTRUCT (Exploratory Sound Type)</td><td>Measures acoustic composition / sound source type (proportions), distinct from sound pressure intensity (dBA; |r| = 0.24). Retained for exploratory soundscape analysis.</td></tr>
+<tr><td>Acoustic</td><td>Secondary / Subsumed Variant</td><td>sound_prop_vehicle</td><td>0.20</td><td>0.371</td><td>0.372</td><td>DISTINCT CONSTRUCT (Exploratory Sound Type)</td><td>Measures acoustic composition / sound source type (proportions), distinct from sound pressure intensity (dBA; |r| = 0.2). Retained for exploratory soundscape analysis.</td></tr>
+<tr><td>Acoustic</td><td>Secondary / Subsumed Variant</td><td>sound_prop_mechanisms</td><td>0.14</td><td>0.123</td><td>0.117</td><td>DISTINCT CONSTRUCT (Exploratory Sound Type)</td><td>Measures acoustic composition / sound source type (proportions), distinct from sound pressure intensity (dBA; |r| = 0.14). Retained for exploratory soundscape analysis.</td></tr>
+<tr><td>Acoustic</td><td>Secondary / Subsumed Variant</td><td>sound_prop_urban_manmade_positive</td><td>0.05</td><td>0.412</td><td>0.435</td><td>DISTINCT CONSTRUCT (Exploratory Sound Type)</td><td>Measures acoustic composition / sound source type (proportions), distinct from sound pressure intensity (dBA; |r| = 0.05). Retained for exploratory soundscape analysis.</td></tr>
+<tr><td>Acoustic</td><td>Secondary / Subsumed Variant</td><td>sound_prop_urban_manmade_negative</td><td>0.00</td><td>0.000</td><td>0.000</td><td>EXCLUDED (ZERO VARIANCE)</td><td>Zero variance across outdoor protocol (constant 0.00 across all routes).</td></tr>
+<tr><td>Air Pollution</td><td>Primary Representative</td><td>atmo_pm2.5_avg</td><td>1.00</td><td>0.584</td><td>0.620</td><td>SELECTED (Domain Representative)</td><td>Fine particulate matter; bilateral average of researcher-carried left/right sensors</td></tr>
+<tr><td>Air Pollution</td><td>Secondary / Subsumed Variant</td><td>atmo_pm1_avg</td><td>0.69</td><td>0.360</td><td>0.556</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with atmo_pm2.5_avg (|r| = 0.69 < 0.70); domain represented by consensus metric atmo_pm2.5_avg.</td></tr>
+<tr><td>Air Pollution</td><td>Secondary / Subsumed Variant</td><td>atmo_pm10_avg</td><td>0.48</td><td>0.252</td><td>0.553</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with atmo_pm2.5_avg (|r| = 0.48 < 0.70); domain represented by consensus metric atmo_pm2.5_avg.</td></tr>
+<tr><td>Visual Light</td><td>Primary Representative</td><td>lys_lux_avg</td><td>1.00</td><td>0.269</td><td>0.416</td><td>SELECTED (Domain Representative)</td><td>Ambient illuminance in native lux; route average across wearers (participant LYS1 captures personal exposure)</td></tr>
+<tr><td>Visual Light</td><td>Secondary / Subsumed Variant</td><td>lys_kelvin_avg</td><td>0.30</td><td>0.337</td><td>0.588</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with lys_lux_avg (|r| = 0.30 < 0.70); domain represented by consensus metric lys_lux_avg.</td></tr>
+<tr><td>Visual Light</td><td>Secondary / Subsumed Variant</td><td>lys_medi_avg</td><td>0.24</td><td>0.304</td><td>0.694</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with lys_lux_avg (|r| = 0.24 < 0.70); domain represented by consensus metric lys_lux_avg.</td></tr>
+<tr><td>Greenery</td><td>Primary Representative</td><td>gvi_50m</td><td>1.00</td><td>0.643</td><td>0.376</td><td>SELECTED (Domain Representative)</td><td>Continuous 50m moving-window green view index preserving micro-spatial route variability</td></tr>
+<tr><td>Greenery</td><td>Secondary / Subsumed Variant</td><td>gvi_point_gvi</td><td>1.00</td><td>0.643</td><td>0.376</td><td>SUBSUMED (Collinear Domain Variant)</td><td>Collinear with gvi_50m (|r| = 1.00 >= 0.70); redundant variation subsumed into primary domain metric.</td></tr>
+<tr><td>Greenery</td><td>Secondary / Subsumed Variant</td><td>gvi_tree_50m</td><td>0.98</td><td>0.653</td><td>0.368</td><td>SUBSUMED (Collinear Domain Variant)</td><td>Collinear with gvi_50m (|r| = 0.98 >= 0.70); redundant variation subsumed into primary domain metric.</td></tr>
+<tr><td>Greenery</td><td>Secondary / Subsumed Variant</td><td>gvi_point_tree</td><td>0.98</td><td>0.653</td><td>0.368</td><td>SUBSUMED (Collinear Domain Variant)</td><td>Collinear with gvi_50m (|r| = 0.98 >= 0.70); redundant variation subsumed into primary domain metric.</td></tr>
+<tr><td>Greenery</td><td>Secondary / Subsumed Variant</td><td>gvi_phase_mean</td><td>0.91</td><td>0.646</td><td>0.372</td><td>SUBSUMED (Collinear Domain Variant)</td><td>Collinear with gvi_50m (|r| = 0.91 >= 0.70); redundant variation subsumed into primary domain metric.</td></tr>
+<tr><td>Greenery</td><td>Secondary / Subsumed Variant</td><td>tree_phase_mean</td><td>0.91</td><td>0.646</td><td>0.367</td><td>SUBSUMED (Collinear Domain Variant)</td><td>Collinear with gvi_50m (|r| = 0.91 >= 0.70); redundant variation subsumed into primary domain metric.</td></tr>
+<tr><td>Greenery</td><td>Secondary / Subsumed Variant</td><td>gvi_plant_50m</td><td>0.29</td><td>0.449</td><td>0.177</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with gvi_50m (|r| = 0.29 < 0.70); domain represented by consensus metric gvi_50m.</td></tr>
+<tr><td>Greenery</td><td>Secondary / Subsumed Variant</td><td>plant_phase_mean</td><td>0.28</td><td>0.471</td><td>0.091</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with gvi_50m (|r| = 0.28 < 0.70); domain represented by consensus metric gvi_50m.</td></tr>
+<tr><td>Greenery</td><td>Secondary / Subsumed Variant</td><td>grass_phase_mean</td><td>0.25</td><td>0.440</td><td>0.276</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with gvi_50m (|r| = 0.25 < 0.70); domain represented by consensus metric gvi_50m.</td></tr>
+<tr><td>Greenery</td><td>Secondary / Subsumed Variant</td><td>gvi_grass_50m</td><td>0.19</td><td>0.410</td><td>0.243</td><td>SECONDARY CANDIDATE (|r| < 0.70)</td><td>Moderate/weak correlation with gvi_50m (|r| = 0.19 < 0.70); domain represented by consensus metric gvi_50m.</td></tr></tbody></table>
+  </details>
+</div>
+
+<div class="card">
+  <h2>Step 4: Multi-Exposure Collinearity & Exact H4 Design Matrix</h2>
+  
+  <h3>4.1 Collinearity & Variance Inflation Factor (VIF) Proof</h3>
+  <p>All five predeclared domain representatives were tested simultaneously in the exact matched participant-phase WPZ design matrix. The final primary set contains <strong>4</strong> predictors; removed representatives remain visible below. All other continuous candidates remain in the broad audit and secondary screening. In the table, <code>Matched_H4_VIF_N44</code> is the primary decision column; the epoch/eye columns are contextual raw-data diagnostics, not replacements for the exact WPZ H4 VIF.</p>
+  <table class='data'><thead><tr><th>Physical_Domain</th><th>Selected_Predictor</th><th>Native_Unit</th><th>H4_Primary_Status</th><th>Matched_H4_VIF_N44</th><th>Matched_H4_Status</th><th>Contextual_Raw_Epoch_VIF_N2156</th><th>Contextual_Raw_Aggregated_Phase_VIF_N44</th><th>Contextual_Raw_Eye_Subset_VIF_N40</th><th>Contextual_Raw_Epoch_Status</th><th>Contextual_Raw_Phase_Status</th></tr></thead><tbody><tr><td>Thermal</td><td>ucm_UTCI</td><td>°C</td><td>PRIMARY H4</td><td> 1.46</td><td><span class='badge badge-pass'>PASS (VIF < 5.0)</span></td><td>1.35</td><td>1.61</td><td>1.74</td><td>CONTEXT ONLY (raw VIF < 2.0)</td><td>CONTEXT ONLY (raw VIF < 5.0)</td></tr>
+<tr><td>Acoustic</td><td>ucm_SND_dBA</td><td>dBA</td><td>PRIMARY H4</td><td> 1.88</td><td><span class='badge badge-pass'>PASS (VIF < 5.0)</span></td><td>1.14</td><td>1.52</td><td>1.53</td><td>CONTEXT ONLY (raw VIF < 2.0)</td><td>CONTEXT ONLY (raw VIF < 5.0)</td></tr>
+<tr><td>Air Pollution</td><td>atmo_pm2.5_avg</td><td>µg/m³</td><td>PRIMARY H4</td><td> 1.61</td><td><span class='badge badge-pass'>PASS (VIF < 5.0)</span></td><td>1.03</td><td>1.18</td><td>1.20</td><td>CONTEXT ONLY (raw VIF < 2.0)</td><td>CONTEXT ONLY (raw VIF < 5.0)</td></tr>
+<tr><td>Visual Light</td><td>lys_lux_avg</td><td>lux</td><td>PRIMARY H4</td><td> 1.40</td><td><span class='badge badge-pass'>PASS (VIF < 5.0)</span></td><td>1.13</td><td>1.39</td><td>1.43</td><td>CONTEXT ONLY (raw VIF < 2.0)</td><td>CONTEXT ONLY (raw VIF < 5.0)</td></tr>
+<tr><td>Greenery</td><td>gvi_50m</td><td>%</td><td>REMOVED_BY_VIF</td><td>13.99</td><td>REMOVED: initial matched-design VIF >= 5</td><td>1.57</td><td>2.69</td><td>3.00</td><td>CONTEXT ONLY (raw VIF < 2.0)</td><td>CONTEXT ONLY (raw VIF < 5.0)</td></tr></tbody></table>
+
+  <div class="callout">
+    <strong>Exact H4 design-matrix result:</strong> The final matched-design VIF range is <strong>1.40 to 1.88</strong>; all final predictors pass VIF &lt; 5. The removed predeclared representative(s) were <strong>gvi_50m</strong> because the full predeclared set produced a VIF &ge; 5. The broader 33-candidate all-column VIF is not estimable as one model because only 19 participant-phase rows are complete for every candidate; this is reported as <strong>not estimable</strong>, not treated as a pass. Every candidate remains in the audit and pairwise diagnostics. This is a collinearity decision, not a claim of predictor independence.
+  </div>
+
+  <h3>4.2 Counter-Proof: Demonstrating Variance Explosion under Flawed Specifications</h3>
+  <p>Variance inflation comparison demonstrating the variance explosion and distortion caused by violating the 1-predictor-per-domain rule:</p>
+  <table class='data'><thead><tr><th>Model_Specification</th><th>Predictor_Combination</th><th>Max_Epoch_VIF</th><th>Max_Aggregated_VIF</th><th>Statistical_Status</th></tr></thead><tbody><tr><td>Primary H4 after outcome-blind VIF reduction</td><td>ucm_UTCI + ucm_SND_dBA + atmo_pm2.5_avg + lys_lux_avg</td><td> 1.07</td><td> 1.23</td><td><span class='badge badge-pass'>PASS: Final primary set is selected by the exact matched-design VIF rule; raw epoch VIF shown for context</span></td></tr>
+<tr><td>Flawed Model A (Co-entering PET + UTCI)</td><td>UTCI + PET + Sound + PM2.5 + Lux + GVI_50m</td><td>15.37</td><td>36.40</td><td><span class='badge badge-fail'>FAIL: Extreme thermal collinearity; variance explosion (VIF > 15)</span></td></tr>
+<tr><td>Flawed Model B (Co-entering Air Temp + UTCI)</td><td>UTCI + Air Temp + Sound + PM2.5 + Lux + GVI_50m</td><td> 4.44</td><td>12.40</td><td><span class='badge badge-fail'>FAIL: Severe phase collinearity (Phase VIF > 10); unstable coefficients and inflated standard errors</span></td></tr>
+<tr><td>Flawed Model C (Co-entering PM1.0 + PM2.5)</td><td>UTCI + Sound + PM2.5 + PM1.0 + Lux + GVI_50m</td><td> 2.11</td><td> 6.27</td><td>REDUNDANT: Unnecessary particulate duplication (PM1.0 r = 0.88 with PM2.5)</td></tr></tbody></table>
+</div>
+
+<div class="card">
+  <h2>Step 5: The Primary H4 Phase-Level Model Formula</h2>
+  <div class="callout" style="font-family: Consolas, monospace; font-size: 14px; background: #fdfefe; border-left: 4px solid #1f3b5b;">
+    <strong>Y<sup>*</sup><sub>ij</sub> = &gamma;<sub>0</sub> + &beta;<sub>Mode</sub>&middot;Mode<sub>ij</sub> + &beta;<sub>1</sub>&middot;ucm_UTCI<sup>*</sup><sub>ij</sub> + &beta;<sub>2</sub>&middot;ucm_SND_dBA<sup>*</sup><sub>ij</sub> + &beta;<sub>3</sub>&middot;atmo_pm2.5_avg<sup>*</sup><sub>ij</sub> + &beta;<sub>4</sub>&middot;lys_lux_avg<sup>*</sup><sub>ij</sub> + u<sub>i</sub> + &epsilon;<sub>ij</sub></strong>
+  </div>
+  <p>Here <strong>Y<sup>*</sup><sub>ij</sub></strong> is the participant-phase mean of the within-person standardized outcome for participant <i>i</i> and route phase <i>j</i> (BikeU, WalkU, BikeG, or WalkG). Each BikeG exposure is paired with that same participant&apos;s BikeG outcome because aggregation uses <code>ParticipantID + PhaseID</code>; phases are never cross-matched. <strong>Mode</strong> is the only categorical covariate in primary H4. Primary H4 has no MET, GPS-speed, or AR(1) term; AR(1) is a separate temporal sensitivity analysis.</p>
+</div>
+
+<div class="card">
+  <h2>Input Sensor Plausibility, Protocol Adherence & Spatial Trajectory</h2>
+  
+  <h3>Sensor Range Plausibility QC</h3>
+  <table class='data'><thead><tr><th>Sensor_Stream</th><th>Unit</th><th>Core_Completeness_Pct</th><th>Observed_Range</th><th>Plausible_Range</th><th>Out_of_Bounds_Pct</th><th>QC_Status</th><th>Validation_Notes</th></tr></thead><tbody><tr><td>Heart Rate</td><td>bpm</td><td>100.0</td><td>52.9 – 109.7</td><td>40.0 – 190.0</td><td>0</td><td><span class='badge badge-pass'>PASS</span></td><td>Resting to cycling cardiovascular range</td></tr>
+<tr><td>Skin Temperature</td><td>°C</td><td>100.0</td><td>26.2 – 37.4</td><td>20.0 – 40.0</td><td>0</td><td><span class='badge badge-pass'>PASS</span></td><td>Peripheral thermoregulatory response</td></tr>
+<tr><td>Pupil Diameter</td><td>mm</td><td> 88.0</td><td>1.6 – 4.7</td><td>1.5 – 8.5</td><td>0</td><td><span class='badge badge-pass'>PASS</span></td><td>Clinical human pupillometry envelope</td></tr>
+<tr><td>UTCI Thermal Index</td><td>°C</td><td> 99.9</td><td>14.5 – 38.0</td><td>-10.0 – 50.0</td><td>0</td><td><span class='badge badge-pass'>PASS</span></td><td>Universal Thermal Climate Index heat exchange</td></tr>
+<tr><td>Acoustic Sound Level</td><td>dBA</td><td> 99.9</td><td>45.0 – 88.5</td><td>30.0 – 110.0</td><td>0</td><td><span class='badge badge-pass'>PASS</span></td><td>Ambient urban traffic sound pressure</td></tr>
+<tr><td>PM2.5 Air Quality</td><td>µg/m³</td><td> 98.2</td><td>1.9 – 106.3</td><td>0.0 – 150.0</td><td>0</td><td><span class='badge badge-pass'>PASS</span></td><td>Ambient fine particulate matter</td></tr>
+<tr><td>Photopic Illuminance</td><td>lux</td><td> 98.2</td><td>49.7 – 37478.0</td><td>0.0 – 120000.0</td><td>0</td><td><span class='badge badge-pass'>PASS</span></td><td>Ambient ocular daylight illumination</td></tr>
+<tr><td>Green View Index (GVI_50m)</td><td>%</td><td> 99.1</td><td>1.0 – 73.4</td><td>0.0 – 100.0</td><td>0</td><td><span class='badge badge-pass'>PASS</span></td><td>Pedestrian eye-level vegetation visibility percentage along route</td></tr>
+<tr><td>HRV RMSSD</td><td>ms</td><td> 92.2</td><td>48.6 – 503.8</td><td>10.0 – 550.0</td><td>0</td><td><span class='badge badge-pass'>PASS</span></td><td>Ambulatory wrist PPG range; clinical plausibility confirmed</td></tr>
+<tr><td>EDA Tonic (SCL)</td><td>µS</td><td> 87.3</td><td>0.0 – 32.5</td><td>0.0 – 50.0</td><td>0</td><td><span class='badge badge-pass'>PASS</span></td><td>Autonomic non-responder variation (< 0.1 µS) observed in P4 and P8 (Boucsein et al., 2012)</td></tr></tbody></table>
+  <p><em>Note on Signal Quality & Non-Responders:</em> All 10 audited sensor streams exhibit 0.00% out-of-bounds violations across the 2,156 epochs. For electrodermal activity (EDA tonic), 87.3% valid epochs are retained after Empatica motion artifact rejection; low tonic skin conductance levels (&lt; 0.1 µS) observed in specific participants (e.g., P4, P8) are consistent with potential autonomic non-responders (hypohidrotic baseline; Boucsein et al., 2012), although measurement-related sensor contact resistance cannot be definitively ruled out.</p>
+
+  <h3>Diagnostic Dashboards & Spatial Trajectory</h3>
+  <img src="../output/data_validation/Data_Validation_Dashboard.png" alt="Data Validation Dashboard">
+  <img src="../output/data_validation/Route_GPS_Points_5Phases.png" alt="Route GPS Points across 5 Travel Phases">
+
+  <details style="margin: 14px 0; background: #ffffff; border: 1px solid #d5dce3; border-radius: 6px; padding: 12px 16px;">
+    <summary style="font-weight: 600; color: #1f3b5b; font-size: 13px;">
+      &#9654; Participant-by-Phase Standardized Protocol Duration Audit [Click to expand all 11 participants]
+    </summary>
+    <p style="margin-top: 8px; font-size: 12px; color: #555;">Each participant completed 49 continuous 10-second sampling points spanning exactly 480 seconds (8.0 minutes: t = 0 s to t = 480 s) per outdoor travel phase, yielding 196 standardized outdoor points (32.0 minutes) per participant and exactly 2,156 total core outdoor points across the cohort:</p>
+    <table class='data'><thead><tr><th>ParticipantID</th><th>BikeU_Duration</th><th>WalkU_Duration</th><th>BikeG_Duration</th><th>WalkG_Duration</th><th>Total_Outdoor</th><th>Matched_Protocol_QC</th></tr></thead><tbody><tr><td>P4</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>32.0 min (196 pts)</td><td><span class='badge badge-pass'>PASS (100% matched)</span></td></tr>
+<tr><td>P8</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>32.0 min (196 pts)</td><td><span class='badge badge-pass'>PASS (100% matched)</span></td></tr>
+<tr><td>P9</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>32.0 min (196 pts)</td><td><span class='badge badge-pass'>PASS (100% matched)</span></td></tr>
+<tr><td>P10</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>32.0 min (196 pts)</td><td><span class='badge badge-pass'>PASS (100% matched)</span></td></tr>
+<tr><td>P11</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>32.0 min (196 pts)</td><td><span class='badge badge-pass'>PASS (100% matched)</span></td></tr>
+<tr><td>P12</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>32.0 min (196 pts)</td><td><span class='badge badge-pass'>PASS (100% matched)</span></td></tr>
+<tr><td>P13</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>32.0 min (196 pts)</td><td><span class='badge badge-pass'>PASS (100% matched)</span></td></tr>
+<tr><td>P14</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>32.0 min (196 pts)</td><td><span class='badge badge-pass'>PASS (100% matched)</span></td></tr>
+<tr><td>P15</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>32.0 min (196 pts)</td><td><span class='badge badge-pass'>PASS (100% matched)</span></td></tr>
+<tr><td>P16</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>32.0 min (196 pts)</td><td><span class='badge badge-pass'>PASS (100% matched)</span></td></tr>
+<tr><td>P17</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>8.0 min (49 pts)</td><td>32.0 min (196 pts)</td><td><span class='badge badge-pass'>PASS (100% matched)</span></td></tr></tbody></table>
+  </details>
+</div>
+
+<div class="card">
+  <h2>Single Source of Truth & Authoritative File Registry</h2>
+  <table class="data">
+    <thead>
+      <tr><th>File Role</th><th>Full Absolute File Path</th><th>Validation Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Primary Input Dataset</strong></td><td><code>C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/merged_all_11participants_8min.csv</code></td><td>Validated (189 Columns, 5,077 Rows, 2,156 Core Epochs)</td></tr>
+      <tr><td><strong>Primary Model Predictors CSV</strong></td><td><code>C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/data_validation/Validation_Model_Predictors_VIF.csv</code></td><td>Validated (4 primary predictors; 1 predeclared candidate removed by exact matched-design VIF)</td></tr>
+      <tr><td><strong>Interactive HTML Report</strong></td><td><code>C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/documents/data_validation.html</code></td><td>Synchronized</td></tr>
+      <tr><td><strong>Authoritative Markdown Report</strong></td><td><code>C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/documents/data_validation.md</code></td><td>Validated (Native Physical Units, 4 Steps)</td></tr>
+      <tr><td><strong>Validation & QC Dashboard Plot</strong></td><td><code>C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/data_validation/Data_Validation_Dashboard.png</code></td><td>Rendered (200 DPI High-Resolution Panel)</td></tr>
+      <tr><td><strong>Route GPS Spatial Map Plot</strong></td><td><code>C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/output/data_validation/Route_GPS_Points_5Phases.png</code></td><td>Rendered (200 DPI High-Resolution Map)</td></tr>
+      <tr><td><strong>Validation Pipeline Script</strong></td><td><code>C:/Users/pandya/Documents/Github/docker/Paper3_Analysis/scripts/data_validation.R</code></td><td>Master R Pipeline Script</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

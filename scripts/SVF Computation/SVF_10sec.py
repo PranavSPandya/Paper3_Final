@@ -5,7 +5,7 @@ Derived totals (0–100 % of fisheye): Total_Vegetation_% = Tree_+Plant_+Grass_;
 Total_Builtup_% = Building_+Wall_.
 Gong annular view factors [0,1] (same Holmer compute_svf as SVF): TVF, BVF —
 TVF from Tree∪Plant∪Grass; BVF from Building∪Wall (Ceiling not in BVF).
-Per frame: exclude from window mean if sum of those seven < 50%. Windows with no eligible frames omitted.
+Per frame: exclude from window mean if sum of those seven < 50%. Windows with no eligible frames retain blank measurements and a zero frame count.
 Writes merged_SVF_10sec_avg.csv and merged_SVF_matched_8min_10sec_avg.csv under output/SVF Output/.
 """
 import os
@@ -89,14 +89,17 @@ def run(st, mode):
     nf = len(w)
     g = ["ParticipantID", "PhaseID", "SVF_Window_Start_s"]
     n_win_all = w.groupby(g).ngroups
+    windows = w[g].drop_duplicates().set_index(g).index
     w = w.loc[w[F].apply(pd.to_numeric, errors="raise").sum(axis=1).ge(MIN)]
     ex = nf - len(w)
     wi = w.groupby(g).ngroups
     if n_win_all > wi:
-        print(f"  warning: {n_win_all - wi} windows dropped (no frame with class sum >= {MIN}%)")
-    # Published schema: keys + measurements + SVF_Frames_In_Window only
-    # (no SVF_Window_Start / Timestamp / SVF_Selection_Method / SVF_Aggregation_Method).
-    o = w.groupby(g, sort=False)[MF].mean().join(w.groupby(g, sort=False).size().rename("SVF_Frames_In_Window")).reset_index()
+        print(f"  warning: {n_win_all - wi} windows retained with blank measurements (no frame with class sum >= {MIN}%)")
+    o = w.groupby(g, sort=False)[MF].mean().reindex(windows)
+    o["SVF_Frames_In_Window"] = w.groupby(g, sort=False).size().reindex(windows, fill_value=0).astype(int)
+    o["SVF_Status"] = np.where(o["SVF_Frames_In_Window"].gt(0), "available", "no_frames_with_coverage_≥50%")
+    assert o.loc[o["SVF_Frames_In_Window"].eq(0), MF].isna().all().all()
+    o = o.reset_index()
     p = OUT / f"{st}_10sec_avg.csv"
     t = p.with_suffix(".tmp.csv")
     o.to_csv(t, index=False)

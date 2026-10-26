@@ -1,0 +1,7 @@
+H4 Step 4 domain-wise LASSO scaling rule.
+Exposures stay participant-mean centered. They are not returned to global raw z-scores.
+Inside each training fold, after centering, each environmental predictor is z-scored with the unweighted mean and SD of those centered training rows. A column with non-finite or zero SD is dropped from that fold.
+glmnet is called with standardize=FALSE because those z-scores are already applied. standardize=TRUE is not also applied, so the penalty is not scaled a second time.
+Held-out rows are centered with the held-out participant's own mean, then divided using the training-fold mean and SD. The final refit uses the same rule on all complete-case rows.
+Three sum-to-zero PhaseID contrasts are unscaled and unpenalised, matching the LMM condition adjustment. Outcomes are training-fold standardized. Participants, including P4, stay in the sample. The selector is the minimum participant-held-out MSE on the two separate screens (Empatica and eye-tracker). The union is domain-wise, not a best-overall ranking.
+The Step 5 LMM centers exposures on the bout (participant x phase) mean, scaled by the full-sample SD of that within-bout deviation (see H4_hypothesis_readme.txt). Condition-level differences are absorbed by PhaseID sum-to-zero fixed effects; redundant between-bout thermal terms are excluded.

@@ -1,4 +1,6 @@
 # Machine-local caches
+.cursor/
+.venv_yamnet/
 %SystemDrive%/
 .Rhistory
 .RData
@@ -14,5 +16,8 @@ __pycache__/
 .env.*
 *.pem
 
-# A temporary Edge profile contains cookies and session tokens.
+# Local scratch (keep small H4 VIF helpers only if needed)
+temp/
+!temp/h4_*.csv
+!temp/h4_*.py
 temp/_tmp_edge_pdf_profile/

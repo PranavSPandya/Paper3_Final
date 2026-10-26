@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\pandya\Documents\Github\docker\Paper3_Final\scripts\SVF Computation\compute_svf_camup.py", line 988, in <module>
+    main()
+  File "C:\Users\pandya\Documents\Github\docker\Paper3_Final\scripts\SVF Computation\compute_svf_camup.py", line 979, in main
+    raise RuntimeError(
+RuntimeError: SVF run is incomplete and was NOT promoted to canonical/pilot final output. failures=2, duplicate_rows=0, missing=2, unexpected=0. Inspect C:\Users\pandya\Documents\Github\docker\Paper3_Final\output\SVF Output\P13\P13_SVF_PARTIAL.csv and C:\Users\pandya\Documents\Github\docker\Paper3_Final\output\SVF Output\P13\P13_SVF_failures.csv.

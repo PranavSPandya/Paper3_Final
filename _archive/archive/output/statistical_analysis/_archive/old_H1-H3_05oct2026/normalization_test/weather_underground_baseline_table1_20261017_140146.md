@@ -1,0 +1,21 @@
+# Table 1: Macro-Scale Ambient Meteorological Baseline (Etterbeek / Usquare)
+
+Source: `C:\Users\pandya\Documents\Github\docker\Paper3_Github\Weather underground.csv`
+Coordinates: Latitude 50.828°N, Longitude 4.388°E | Brussels Municipal Macro-Station Archive
+
+| ParticipantID   | Date             |   T_mean_day (°C) |   T_min_24h (°C) |   T_max_24h (°C) |   RH_mean_day (%) |   Pressure_mean (hPa) |   Wind_mean (km/h) |   Wind_gust (km/h) |   Solar_mean (W/m²) |   Solar_max (W/m²) |   Rain_total (mm) | Weather_Condition   |
+|:----------------|:-----------------|------------------:|-----------------:|-----------------:|------------------:|----------------------:|-------------------:|-------------------:|--------------------:|-------------------:|------------------:|:--------------------|
+| P8              | 2025-08-03       |              19.4 |             12.6 |             22.3 |              63.7 |                1009.4 |               15.7 |               19.4 |               491.1 |              800.9 |               0   | Dry / Fair          |
+| P9              | 2025-08-06       |              19.5 |             12.1 |             22.1 |              57.5 |                1015.3 |                6.2 |                8.5 |               546.4 |              798.3 |               0   | Dry / Fair          |
+| P11             | 2025-08-09       |              21   |             13.9 |             24.5 |              59.1 |                1011.4 |                9.7 |               12.3 |               642.1 |              881.1 |               0   | Dry / Fair          |
+| P12             | 2025-08-10       |              22.4 |             13   |             26.4 |              50.9 |                1018.3 |                4.2 |                6.7 |               677.5 |              856   |               0   | Dry / Fair          |
+| P10             | 2025-08-12       |              27.8 |             16.8 |             33.7 |              39.3 |                1005.8 |                5.9 |                8.3 |               741   |              858.6 |               0   | Dry / Fair          |
+| P13             | 2025-08-13       |              27.4 |             18.5 |             32   |              49.2 |                1006.8 |                7.2 |               10.9 |               649.9 |              844.5 |               0   | Dry / Fair          |
+| P14             | 2025-08-14       |              28.2 |             21.5 |             30.7 |              56.4 |                1009   |                8   |               10.8 |               641.9 |              835.3 |               1.5 | Light Rain          |
+| P15             | 2025-08-15       |              24.7 |             16   |             28.6 |              52.8 |                1014.5 |                6.3 |               11.4 |               701.8 |              853.4 |               0   | Dry / Fair          |
+| P16             | 2025-08-17       |              19.7 |             12   |             24.6 |              56.1 |                1013.9 |                9.8 |               13   |               555.7 |              800.1 |               0   | Dry / Fair          |
+| P4              | 2025-08-25       |              20.7 |             11.4 |             24.5 |              39   |                1009.2 |                5.7 |                7   |               725.9 |              862.2 |               0   | Dry / Fair          |
+| P17             | 2025-08-26       |              25   |             15.6 |             28.8 |              36.2 |                1000.2 |               13.3 |               18.1 |               349.7 |              575.5 |               0   | Dry / Fair          |
+| ALL (11)        | Campaign Average |              23.3 |             11.4 |             33.7 |              50.9 |                1010.3 |                8.4 |               19.4 |               611.2 |              881.1 |               1.5 | 100% Dry Campaign   |
+
+*Note: Daytime means are computed across experimental fieldwork hours (08:00 - 18:00 CET). T_min and T_max represent 24-hour diurnal extremes. For P14, 1.5 mm precipitation fell overnight (03:00–04:00 CET); all daytime experimental test hours across all 11 participant days were 100% dry (0.0 mm).*

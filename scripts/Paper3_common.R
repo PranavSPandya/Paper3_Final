@@ -1,4 +1,4 @@
-# Paper3_common.R — minimal shared cohort/outcome/path helpers (H1–H3 meeting file, H4_multivariate.R).
+# Paper3_common.R — minimal shared cohort/outcome/path helpers (H1–H3 meeting file, H4_time_series.R).
 # Not sourced by H4_core.R (H4-only audit/engine stays decoupled).
 
 resolve_project_root <- function() {
@@ -23,7 +23,7 @@ paper3_merged_8min_path <- function(root = resolve_project_root()) {
   file.path(root, "output", "merged_all_11participants_8min.csv")
 }
 
-# 26 physiological outcomes (indices 1–13 empatica, 14–26 eyetracker); attrs match H4_multivariate.R.
+# 26 physiological outcomes (indices 1–13 empatica, 14–26 eyetracker); attrs match H4_time_series.R.
 paper3_physiological_outcomes <- function() {
   p <- c(
     "empatica_heart_rate", "empatica_eda_tonic", "empatica_eda_phasic", "empatica_skin_temperature",
@@ -36,7 +36,28 @@ paper3_physiological_outcomes <- function() {
     "eyetracker_gaze_dispersion", "eyetracker_distance_from_center", "eyetracker_gaze_centrality",
     "eyetracker_eyelid_aperture_avg"
   )
-  attr(p, "hrv_log") <- p[c(5L, 6L, 7L, 8L, 9L, 12L, 13L)]
+  attr(p, "hrv_log") <- p[c(2L, 5L, 6L, 7L, 8L, 9L, 12L, 13L)]
   attr(p, "hrv_fd") <- p[7L:13L]
   p
+}
+
+PAPER3_NORMALIZATION_CSV <- file.path("output", "statistical_analysis", "Normalization & Parameter Screening",
+  "Normalization", "Normalization_H1toH4_all_parameters.csv")
+PAPER3_OUTCOME_TRANSFORMS <- c("Natural log", "No transformation")
+
+# Natural-log outcomes as written by Normalization_H1toH4.ipynb (transformation_in_models).
+# Stops on missing or unknown transformations and when the log set differs from attr(outcomes, "hrv_log").
+paper3_log_outcomes <- function(outcomes = paper3_physiological_outcomes(), root = resolve_project_root()) {
+  path <- file.path(root, PAPER3_NORMALIZATION_CSV)
+  table <- read.csv(path, check.names = FALSE, stringsAsFactors = FALSE)
+  if (anyDuplicated(table$column_name)) stop("Duplicate column_name rows in ", path, call. = FALSE)
+  rule <- table$transformation_in_models[match(outcomes, table$column_name)]
+  if (anyNA(rule)) stop("No transformation in ", path, " for: ", paste(outcomes[is.na(rule)], collapse = ", "), call. = FALSE)
+  unknown <- setdiff(rule, PAPER3_OUTCOME_TRANSFORMS)
+  if (length(unknown)) stop("Unknown outcome transformation in ", path, ": ", paste(unknown, collapse = ", "), call. = FALSE)
+  logged <- outcomes[rule == "Natural log"]
+  declared <- attr(outcomes, "hrv_log")
+  if (!setequal(logged, declared)) stop("Natural-log outcomes in ", path, " differ from attr(outcomes, \"hrv_log\"). CSV only: ",
+    paste(setdiff(logged, declared), collapse = ", "), "; hrv_log only: ", paste(setdiff(declared, logged), collapse = ", "), call. = FALSE)
+  logged
 }

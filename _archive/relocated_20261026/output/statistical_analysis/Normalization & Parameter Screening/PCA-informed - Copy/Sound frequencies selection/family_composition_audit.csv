@@ -1,0 +1,6 @@
+family,family_label,n_parts,use_ilr,n_complete,sum_min,sum_median,sum_max,closed_to_one,all_parts_positive
+yamnet_proportions,YAMNet proportions,7,False,2111,0.0,1.0,1.8,False,False
+yamnet_scores,YAMNet scores,7,False,2111,0.240451750248106,1.0330975728381384,2.08173432133252,False,True
+broad_bands,Broad frequency bands,5,True,2111,0.9999999999999992,0.9999999999999998,1.0000000000000007,True,True
+octave_bands,Octave bands,9,False,2111,0.6199111169422893,0.9753151027292647,1.0716826316901602,False,True
+spectral_descriptors,Spectral descriptors,3,False,2111,148.96134307078245,775.8435949534755,16773.56213564187,False,True
