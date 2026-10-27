@@ -1,294 +1,309 @@
-# Psychophysiological Comfort During Active Urban Mobility: Environment and Activity Modulated Physiological and Perceived Responses Across Diverse Urban Contexts
+<!-- Track changes from `Paper3_outline2 - Copy.docx`.
+GREEN/RED in this file: look inside ```diff blocks (syntax-colored in the editor).
+FULL-PAGE compare: open `Paper3_outline_ml_before.md`, right-click → Select for Compare,
+then open `Paper3_outline_ml_after.md` (Cursor/VS Code diff = green/red lines).
+Word Accept/Reject: still only on the .docx.
+-->
 
-**Document Status:** Working Manuscript Outline & Statistical Benchmark. Target Journal: *Building and Environment* / *Transportation Research Part D*.
+## Psychophysiological comfort during active urban mobility: Environment and activity modulated physiological and perceived responses across diverse urban contexts
 
----
+### Abstract
 
-# 1 Introduction
+Urban active travel exposes people simultaneously to thermal, acoustic, visual and physical demands, yet these exposures are rarely studied together under naturalistic conditions. This repeated-measures field study examined psychophysiological comfort across cycling and walking phases in impervious urban and green environments in Brussels. Eleven participants completed route phases while wearable physiological, mobile eye-tracking and environmental data were synchronized to 10-second epochs. Linear mixed models tested environment, mode and within-day thermal-stress-by-noise interactions, with repeated measures accounted for and Benjamini-Hochberg correction applied within hypothesis families. Green phases were associated with lower square-root-transformed tonic electrodermal activity, lower skin temperature and larger pupil diameter. Walking versus cycling was associated with tonic electrodermal activity, skin temperature, fixation rate and gaze velocity. Thermal-stress-by-noise interactions were retained for skin temperature, pupil diameter and saccade peak velocity. Phase-level physiological-perceptual correlations did not survive false-discovery-rate correction. These findings indicate distinct physiological and visual-attention signatures across mobility contexts, while the small sample, model diagnostics and observational field exposures limit causal and population-level claims.
 
-## 1.1 Background & Research Gap
+Keywords: active mobility; green infrastructure; thermal comfort; wearable sensing; mobile eye tracking; linear mixed models
 
-- **Active Mobility Imperative:** Pedestrian and cycling infrastructure heavily expanded across European cities as low-carbon, healthy transit solutions.
-- **Climate & Heat Urgency:** Compounded vulnerability to summer heat extremes, urban heat island (UHI) effects, and traffic stressors (Nikolopoulou et al., 2001; Mansi et al., 2022).
-- **Field Sensing Limitations in Prior Work:** Existing outdoor comfort studies focus primarily on stationary pedestrians or campus transects; cycling studies focus on kinematic/vibrational safety or dedicated cardiac readouts without synchronous environmental exposure (Rupi & Krizek, 2019).
-- **Wearable Sensor Complexities:** Autonomic signals cannot be treated as naive comfort meters: electrodermal activity (EDA) reflects sympathetic autonomic arousal (Boucsein et al., 2012), peripheral skin temperature reflects vasomotor convective cooling (Charkoudian, 2010), and PPG-derived heart rate variability (HRV) requires physical motion artifact control (Quigley et al., 2024; Stuyck et al., 2022). Mobile eye-tracking captures visual-cognitive attention but is modulated by ambient light (Evans et al., 2012; Mahanama et al., 2021).
-- **Core Novelty:** First experimental within-subject field campaign synchronously contrasting cycling and walking across matched green corridors and impervious urban routes with multi-channel wearable physiology, mobile eye-tracking, hyper-local microclimatic sensing, and psychometric surveys.
-- **Spatial Noise Repeatability Gap:** To our knowledge, no prior study has tested whether environmental noise hotspots recur at the same locations across multiple participants travelling a shared route while recording physiology (HRV) at those locations. Aumond et al. (2017) mapped acoustic levels at fixed points along a shared Paris walking path across repeated group walks but measured no physiology; personal-exposure panels linked noise to HRV in daily life (Kraus et al., 2013; El Aarbaoui et al., 2017; El Aarbaoui & Chaix, 2020) but did not map noise along a fixed, repeated route.
+## 1 Introduction
 
-## 1.2 Study Hypotheses
+### Background and research gap
 
-- **H1 (Green vs. Urban Route Contrast):** Participants experience superior psychophysiological comfort (lower sympathetic tone, reduced skin temperature, higher restorativeness and pleasantness) in green park corridors compared to impervious urban routes.
-- **H2 (Psychophysiological Concurrence):** Acute within-person physiological deviations systematically correspond in direction with perceived psychological states (e.g., lower peripheral sympathetic tone and longer fixations concurring with higher perceived restorativeness).
-- **H3 (Mobility Mode Contrast: Walk vs. Bike):** Active mobility mode modulates cognitive-visual scanning and perceived exertion; walking exhibits broader exploratory gaze, while cycling in shaded green space yields higher perceived comfort due to convective airflow.
-- **H4 (Environmental Stressor Predictor Streams):** Environmental heat (PET/UTCI), acoustic noise (dBA), solar radiation, and particulate matter (PM2.5) are associated with acute physiological and ocular responses across routes.
+Active mobility is increasingly promoted as part of low-carbon and healthy urban transport, but route choice also determines exposure to heat, noise, traffic and visual complexity. Outdoor comfort is adaptive and context-dependent rather than a direct function of meteorological conditions alone (Nikolopoulou et al., 2001).
 
-> [!NOTE]
-> **COMMENT [ID:69] by Maider Llaguno (2026-06-06):**  
-> *"Which can we answer based on the 11 participants, some may not be ok for anova"*  
-> **Methodological Implementation:** The analytical framework implements 2x2 factorial Linear Mixed-Effects Models (Mode x Environment) with participant random intercepts, ensuring each participant serves as their own control across all 4 experimental blocks. Statistical inference is explicitly calibrated via sensitivity power analysis (N=11 reliably detects large within-person effects $d_z \ge 0.94$ at 80% power).
+Naturalistic mobility studies must consider environmental exposure and physical travel demands together. Physiological measures can complement self-report, but they are not direct or unique readouts of comfort: electrodermal activity reflects sympathetic arousal, skin temperature is influenced by thermoregulation and movement, and wrist-derived heart-rate variability requires careful measurement and interpretation (Boucsein et al., 2012; Quigley et al., 2024; Stuyck et al., 2022).
 
-> [!NOTE]
-> **COMMENT [ID:82] by Maider Llaguno (2026-06-06):**  
-> *"This we cannot answer givne that each transect was shorter than 20 min"*  
-> **Methodological Implementation:** The study protocol analyzes acute psychophysiological responses during outdoor transit. All route phases are standardized to the common initial 8.00-minute steady-state window (0-480 s; `merged_all_11participants_8min.csv`) to evaluate immediate environmental and mobility contrasts.
+Existing field studies commonly examine walking or cycling separately. Mobile eye tracking is feasible outdoors but remains sensitive to illumination, motion, calibration and scene complexity (Evans et al., 2012; Mahanama et al., 2021). Cycling studies further show that gaze allocation changes with task and road context (Rupi & Krizek, 2019).
 
----
+Wearable physiological sensing can support thermal-comfort research, but much of the evidence comes from controlled or indoor exposures (Mansi et al., 2022). Cross-domain effects are plausible: daylight can alter thermal perception even under controlled thermal conditions (Chinazzo et al., 2019), illustrating why field responses should not be assigned to a single exposure in isolation.
 
-# 2 Methodology
+A central evidence gap is the within-person comparison of walking and cycling across contrasting urban and green route phases while environmental, physiological, eye-tracking and perceived responses are measured together.
 
-## 2.1 Data Collection Protocol & Route Transects
+This study addresses that gap using repeated phase blocks in one field protocol. The design supports within-participant association estimates across the observed routes; it does not establish that greenery, mode or individual stressors independently caused the responses.
 
-- **Campaign Timeline:** Conducted in Brussels, Belgium between 3 July and 27 August 2025. Ethics approval: 30 planned, 18 tested, 11 retained with complete multi-sensor fidelity (P4, P8–P17).
-- **Route Layout:** Two contrasting mobility corridors: (1) Urban Corridor (Etterbeek / Usquare to Montgomery) and (2) Green Corridor (Bois de la Cambre park). Connected by seated reference transit (Tram 7 / 25) and baseline Indoor rest stops.
-- **Matched Exposure Window:** To eliminate exposure-duration confounds from differing route lengths, all inferential analyses use the common initial 8.00-minute steady-state window (0 to 480 s; `merged_all_11participants_8min.csv`).
+The contribution is the integrated comparison of environment and mobility mode, separation of primary and sensitivity analyses, and joint examination of thermal and acoustic exposure in a naturalistic active-mobility setting.
 
-> [!NOTE]
-> **COMMENT [ID:94] by Maider Llaguno (2026-06-06):**  
-> *"You also have images for this section I understand, please add them in the corresponding places"*  
-> **Methodological Implementation:** This section includes Figure 6 (study design timeline and matched 8-minute window schematic), Figure 9 (environmental exposure distributions across study phases), Figure S1 (geographic route trajectory map), Figure S2 (phase progression timeline), and Figure S3 (wearable sensor deployment schematic).
+The study asks whether response profiles differ between green and impervious urban phases, between walking and cycling, whether physiological and perceived responses covary, and whether the thermal association changes with concurrent noise.
 
-- **Figure Reference:** See **Figure 6** (study design timeline and matched window), **Figure 9** (environmental exposure distributions), **Figure S1** (geographic trajectory map), and **Figure S2** (phase progression timeline).
+The results can inform hypotheses and measurement priorities for larger urban-mobility studies and, cautiously, route designs intended to reduce combined environmental burden.
 
-## 2.2 Sensor Deployment & Instrumentation
+```diff
+- The field campaign was conducted on urban and green routes in Brussels, including Bois de la Cambre and Etterbeek, with a tram phase retained as a seated comparator in sensitivity analyses. Before submission, insert the exact recruitment dates, eligibility criteria, participant demographics, weather range, route order and ethics approval identifier.
++ Field campaign in Brussels, 3 July–27 August 2025. Ethics protocol: 30 planned; 18 tested; 11 retained (P4, P8–P17). Eligibility: age 18–40, Brussels resident, able to sit/walk/cycle, and eye-tracking-compatible vision. Signed ethics application: 28 May 2025; official approval reference number is not shown in the available PDF. Demographics, weather range and exact phase order remain to be added from campaign records.
+```
 
-- **urban Climate Monitor (uCM) Backpack:** Carried by trailing researcher; measures air temperature, relative humidity, wind speed, solar radiation (global horizontal), acoustic sound level (dBA), PM2.5/PM10, GPS coordinates, and computes biometeorological comfort indices (UTCI, PET).
-- **Empatica Embrace Plus Wristband:** Worn on non-dominant wrist; records electrodermal activity (EDA; tonic skin conductance level SCL and phasic skin conductance responses SCR at 4 Hz), photoplethysmography (PPG; heart rate and HRV rMSSD / SDNN at 64 Hz), and wrist skin temperature.
-- **Pupil Labs Neon Eye Tracker:** Wearable eye-tracking glasses; measures pupil diameter (mm), blink duration (s), fixation duration (s), fixation rate (/s), saccade velocity (°/s), and 2D gaze dispersion.
-- **Personal Light & Air Quality Loggers:** LYS button sensors (illuminance lux) and Atmotube Pro loggers mounted on participant and researcher.
-- **Psychometric Surveys:** Administered immediately pre- and post-phase: State-Trait Anxiety Inventory (STAI-6, 1-5), Perceived Restorativeness Scale (PRS-11, 1-5), General Comfort (single-item, 1-7), and Pleasantness (single-item, 1-5).
-- **Figure Reference:** See **Figure S3** (sensor instrumentation and backpack deployment schematic).
+Field campaign in Brussels, 3 July–27 August 2025. Ethics protocol: 30 planned; 18 tested; 11 retained (P4, P8–P17). Eligibility: age 18–40, Brussels resident, able to sit/walk/cycle, and eye-tracking-compatible vision. Signed ethics application: 28 May 2025; official approval reference number is not shown in the available PDF. Demographics, weather range and exact phase order remain to be added from campaign records.
 
-## 2.3 Data Harmonization & Preprocessing
+The hypotheses on which the campaign was based were:
 
-- **Temporal Epochs:** Continuous sensor streams synchronized to UTC timestamps and aggregated into 10-second homogeneous non-overlapping epochs.
-- **Phase-Level Modeling:** For inferential testing, 10-second epochs are aggregated to participant-phase means (1 observation per participant per condition; 44 core bouts) to strictly prevent pseudoreplication and artificially deflated p-values.
-- **Standardization:** Variables analyzed in both unstandardized units and within-person z-scores to isolate relative acute deviations from personal baseline means.
+H1: Participants will show better physiological and perceived comfort in green than in impervious areas.
 
-## 2.4 Inferential Statistical Framework
+H2: Physiological and perceived responses will be concordant (i.e., they correlate in direction).
 
-> [!NOTE]
-> **COMMENT [ID:95] by Maider Llaguno (2026-06-06):**  
-> *"I don’t understand this, they should be more clearly described to reveal those 4 hypothesis describe in the introduction."*  
-> **Methodological Implementation:** The statistical framework is structured 1-to-1 with H1, H2, H3, and H4 using explicit LMM model formulas, Restricted Maximum Likelihood (REML) estimation, Satterthwaite degrees of freedom, and planned simple contrasts.
+H3: Psychophysiological comfort will be more compromised during cycling than during walking.
+
+```diff
+- H4: The presence of noise and traffic will amplify thermal discomfort.
++ H4: The presence of noise will amplify thermal discomfort.
+```
+
+H4: The presence of noise will amplify thermal discomfort.
+
+The following sections describe the repeated-measures field protocol, synchronized sensing workflow, hypothesis-specific analyses and distinction between primary and exploratory evidence.
+
+Figure : Sensors used in experiment
+
+## 2 Methodology
+
+### Data collection process
 
 > [!NOTE]
-> **COMMENT [ID:96] by Maider Llaguno (2026-06-06):**  
-> *"I have been looking online and this is a protocol -with several things we should try - dfined by claude. It is important for yoru case to validate that 11 is enough for the hypotheiss testing you propose, and to choose the right statistical analysis as described. I paste it here:Short answer: it can run, and it's far more viable than '11 people' sounds — but with caveats about what you can and can't claim..."*  
-> **Methodological Implementation:** The statistical architecture specifies linear mixed-effects models (LMM) with participant random intercepts, 2x2 factorial structure (Mode x Environment), standardized effect sizes (Cohen's d with 95% CIs), Benjamini-Hochberg False Discovery Rate (FDR) control, LMM residual Q-Q diagnostics, and reproducible sensitivity power benchmarks.
+> **Comment [9] Maider Llaguno (2026-06-06):** 
 
-- **H1 & H3 (Factorial Environmental and Mode Contrasts):** Fitted via 2x2 factorial LMMs using REML with participant random intercepts (`nlme::lme`): $\text{Outcome}_z \sim \text{Mode} \times \text{Environment} + (1 \mid \text{ParticipantID})$. Planned simple contrasts: Green - Urban within Bike (H1_Bike), Green - Urban within Walk (H1_Walk), Walk - Bike within Urban (H3_Urban), and Walk - Bike within Green (H3_Green), evaluated alongside main marginal contrasts and Mode $\times$ Environment interaction tests ($F, p$). Standardized effect sizes computed as Cohen's $d_{\text{LMM}} = \hat{\beta}_{\text{contrast}} / \sqrt{\sigma^2_{\text{participant}} + \sigma^2_{\text{residual}}}$ with exact 95% CIs (Westfall et al., 2014; Brysbaert & Stevens, 2018).
-- **H2 (Psychophysiological Concurrence):** Evaluated via within-person psychophysiological concurrence mixed-effects models across participant-phase bouts (Van Doren et al., 2021; Cuve et al., 2023): $\text{Psychology}_z \sim \text{Physiology}_z + (1 \mid \text{ParticipantID})$, testing whether acute physiological changes systematically associate with perceived psychological states across 104 pairs (4 surveys $\times$ 26 autonomic and ocular outcomes, including frequency-domain HRV). Sensitivity models also evaluate condition-adjusted concurrence ($\text{Psych}_z \sim \text{Phys}_z + \text{Mode} + \text{Environment} + (1 \mid \text{ID})$).
-- **H4 (Environmental Stressor Predictors):**
-  - **Primary Model (Unified Multivariable Co-Exposure LMM):** Evaluates simultaneous independent environmental effects while adjusting for travel mode:
-    $$\text{Outcome}_z \sim \text{Mode} + \text{UTCI}_z + \text{SND\_dBA}_z + \text{PM2.5}_z + \text{Lux}_z + \text{GVI}_z + (1 \mid \text{ParticipantID})$$
-    using the 5 validated orthogonal domain predictors established during variable selection (all continuous epoch VIF $< 1.6$, aggregated phase VIF $< 3.5$).
-  - **Pre-Registered Mode Interactions:** Tests whether travel mode modifies thermal or acoustic vulnerability ($\text{Mode} \times \text{UTCI}$ and $\text{Mode} \times \text{SND\_dBA}$).
-  - **Secondary Univariable Screening:** Mode-adjusted single-predictor models: $\text{Outcome}_z \sim \text{Mode} + \text{Predictor}_z + (1 \mid \text{ParticipantID})$ across candidate environmental streams (with non-exposure metadata, GPS HDOP, headings, speed, and circular angles excluded).
-- **Multiple Comparison Control:** Benjamini-Hochberg False Discovery Rate (FDR) applied across all outcomes within each declared hypothesis family ($q_{\text{FDR}} < 0.05$).
-- **Sensitivity Power Benchmark vs. Standardized LMM Effect Size:** Sensitivity power analysis for paired within-subject tests ($N = 11, \alpha = 0.05$, two-sided, 80% power) establishes a minimum detectable paired difference threshold of $d_z \approx 0.94$. Note that paired $d_z$ is scaled by the standard deviation of paired difference scores ($\sigma_D = \sqrt{2 \sigma^2_e (1 - \rho)}$), whereas mixed-model Cohen's $d_{\text{LMM}}$ is standardized by total population variance ($\sqrt{\sigma^2_u + \sigma^2_e}$). Therefore, LMM effect sizes are interpreted on the standard total-variance benchmark and not conflated with paired $d_z$.
+Within-participant field campaign in Brussels; each participant completed cycling and walking phases in impervious urban and green environments, plus a seated tram phase.
 
----
+```diff
+- Surveys were administered around exposure phases; wearable sensors were checked during breaks; and a researcher followed the participant with the environmental backpack. Add the exact survey timing and whether phase order was fixed, randomized or counterbalanced.
++ Surveys were administered before/after exposure according to the ethics protocol; sensors were checked during breaks and the researcher carried the environmental backpack. Exact per-phase timing and phase-order/counterbalancing remain to be verified.
+```
 
-# 3 Results
+Surveys were administered before/after exposure according to the ethics protocol; sensors were checked during breaks and the researcher carried the environmental backpack. Exact per-phase timing and phase-order/counterbalancing remain to be verified.
 
-## 3.1 Participants & Environmental Context
+### Experiment plan and phases
 
-- **Retained Sample:** 11 participants (P4, P8–P17; 5 female, 6 male; mean age 28.4 +/- 4.2 years). 10 classified as Active/Fit, 1 as Inactive/Not Fit.
-- **Thermal & Microclimatic Contrasts:** Urban route exhibited significantly higher radiant and thermal stress (Mean air temp 26.8°C vs 24.1°C; UTCI 29.4°C vs 25.1°C; PM2.5 14.8 $\mu\text{g/m}^3$ vs 8.2 $\mu\text{g/m}^3$) compared to shaded Green corridors.
-- **Solar Clearness Index ($K_t$):** Solar clearness computed via Duffie & Beckman extraterrestrial radiation model; 54.5% of sessions conducted under sunny conditions ($K_t \ge 0.65$), 36.4% partly cloudy, 9.1% overcast.
-- **Figure Reference:** See **Figure 9** (environmental exposure distributions across study phases).
+Primary factorial contrasts: Green minus Urban and Walk minus Bike. Tram was not included in the primary 2 x 2 environment-by-mode contrast.
 
-## 3.2 Hypothesis 1 Findings: Green vs. Urban Route Contrast
+Phases: Biking in Urban (BikeU), Walking in Urban (WalkU), Biking in Green (BikeG), Walking in Green (WalkG) and Tram.
 
-> [!NOTE]
-> **COMMENT [ID:97] by Maider Llaguno (2026-06-06):**  
-> *"Please be sure that this and the ones in the intro are coherent. The acclimatization we cannot answer as discussed."*  
-> **Methodological Implementation:** Section 3.2 details the H1 Green vs. Urban findings across psychological, autonomic, and ocular domains, supported directly by Table 1 (planned contrasts), Table 2 (descriptive statistics), and Figure 1 (forest plot).
+Figure : Experiment timeline
 
-- **Summary:** 35 contrast/normalization models achieved FDR significance ($q_{\text{FDR}} < 0.05$).
-- **Psychological Restoration:** Robust and large across all metrics: Restorativeness PRS-11 (Bike: $d = 4.69, q < 0.001$; Walk: $d = 3.12, q < 0.001$); Pleasantness (Bike: $d = 2.66, q < 0.001$; Walk: $d = 1.47, q = 0.005$); State Anxiety STAI-6 (Bike: $d = -1.74, q = 0.003$).
-- **Autonomic Physiology:** Green routes induced significant peripheral vasoconstrictive cooling: Skin Temperature (Bike: $d = -1.42, q = 0.006$; Walk: $d = -1.41, q = 0.007$). Tonic EDA decreased significantly during walking in green space ($d = -1.25, q = 0.013$). Heart rate and HRV did not survive FDR correction (HR Bike: $d = -0.05, q = 0.90$; Walk: $d = 0.29, q = 0.60$), reflecting physical exertion dominance.
-- **Ocular Dynamics:** Green routes showed larger pupil diameter (Bike: $d = 1.64, q = 0.003$; Walk: $d = 3.93, q < 0.001$) and shorter blink duration (Bike: $d = -3.38, q < 0.001$; Walk: $d = -5.13, q < 0.001$). Pupil changes reflect lower canopy illuminance rather than cognitive arousal.
-- **Figure Reference:** See **Figure 1** (Forest plot of H1 Green vs. Urban route planned contrasts).
+Figure : Experiment trajectory
 
-## 3.3 Hypothesis 3 Findings: Walking vs. Cycling Contrast
+### Sensors and questionnaires
 
-- **Summary:** 28 contrast/normalization models achieved FDR significance ($q_{\text{FDR}} < 0.05$).
-- **Visual Exploration:** Walking elicited broader exploratory scanning: longer blink duration (Urban: $d = 5.90, q < 0.001$; Green: $d = 4.15, q < 0.001$) and shorter fixations (Urban: $d = -2.44, q < 0.001$; Green: $d = -1.44, q = 0.011$) compared to the tightly focused forward gaze of cycling.
-- **Perceived Comfort in Motion:** Cycling in green space yielded significantly higher perceived comfort (Walk - Bike: $d = -1.43, q = 0.011$) and pleasantness ($d = -1.88, q < 0.001$), mediated by convective airflow.
+urban Climate Monitor (uCM) backpack: air temperature, humidity, radiation, wind, sound level, Global Positioning System (GPS) and comfort indices that include Universal Thermal Climate Index (UTCI)/Physiological Equivalent Temperature (PET).
 
-> [!NOTE]
-> **COMMENT [ID:99] by Maider Llaguno (2026-06-06):**  
-> *"What do you mean?"*  
-> **Methodological Implementation:** Section 3.3 presents the H3 Walking vs. Cycling mode contrasts, reporting distinct physiological workloads and visual-attention strategies supported by exact LMM contrasts in Figure 3.
+Empatica Embrace Plus: electrodermal activity (EDA) tonic/phasic, photoplethysmography (PPG) heart rate, heart rate variability (HRV) root mean square of successive differences (rMSSD) and wrist temperature; physiological stream averaged to 10-sec epochs.
 
-- **Figure Reference:** See **Figure 3** (Forest plot of H3 Walking vs. Cycling mobility mode contrasts).
+```diff
+- Questionnaires: State-Trait Anxiety Inventory (STAI-6), Perceived Restorativeness Scale (PRS-11),
++ Questionnaires: State-Trait Anxiety Inventory (STAI-6), Perceived Restorativeness Scale (PRS-11), Comfort Sensation Vote (CSV), Thermal Sensation Vote (TSV), Environmental Stressor [Temperature, Lighting, Noise, Air Quality, Crowding], Pleasantness.
+```
 
-## 3.4 Hypothesis 2 Findings: Psychophysiological Concurrence
+Questionnaires: State-Trait Anxiety Inventory (STAI-6), Perceived Restorativeness Scale (PRS-11), Comfort Sensation Vote (CSV), Thermal Sensation Vote (TSV), Environmental Stressor [Temperature, Lighting, Noise, Air Quality, Crowding], Pleasantness.
 
-> [!NOTE]
-> **COMMENT [ID:98] by Maider Llaguno (2026-06-06):**  
-> *"As said we cannot really answer this"*  
-> **Methodological Implementation:** Section 3.4 evaluates acute within-person psychophysiological concurrence using within-person standardized LMMs across participant-phase bouts (Van Doren et al., 2021; Cuve et al., 2023), testing whether acute physiological shifts systematically track perceived psychological states across experimental conditions. Findings are illustrated in Figure 2.
+```diff
+- 
++ Continuous recordings: Empatica, Atmotube Pro, LYS. Phase recordings: uCM, Eyetracker. Questionnaires.
+```
 
-- **Summary:** 104 psychophysiological concurrence models evaluated across 4 psychological surveys and 26 autonomic/ocular outcomes; exactly 18 models achieved FDR significance ($q_{\text{FDR}} < 0.05$).
-- **Concurring Biomarkers:** Higher Perceived Restorativeness (PRS-11) is significantly associated within-person with:
-  - Lower wrist skin temperature ($\beta = -0.78, p = 2.6 \times 10^{-6}, q_{\text{FDR}} = 8.4 \times 10^{-5}$)
-  - Lower tonic electrodermal arousal ($\beta = -0.62, p = 0.0025, q_{\text{FDR}} = 0.024$)
-  - Larger pupil diameter ($\beta = +0.85, p = 3.2 \times 10^{-6}, q_{\text{FDR}} = 8.4 \times 10^{-5}$)
-  - Shorter blink duration ($\beta = -2.67, p = 3.3 \times 10^{-9}, q_{\text{FDR}} = 3.4 \times 10^{-7}$)
-  - Longer fixation duration ($\beta = +1.23, p = 0.00046, q_{\text{FDR}} = 0.0068$)
-  - Lower gaze velocity ($\beta = -0.72, p = 0.0055, q_{\text{FDR}} = 0.036$)
-  - Concentrated central gaze ($\beta = -1.22, p = 7.8 \times 10^{-5}, q_{\text{FDR}} = 0.0013$)
-- **Pleasantness & Anxiety Patterns:** Pleasantness and State Anxiety (STAI-6) exhibit coherent mirroring patterns (e.g., higher anxiety associated with higher skin temperature $\beta = +0.55, q = 0.024$, longer blinks $\beta = +2.29, q < 0.001$, and elevated gaze scanning velocity $\beta = +0.76, q = 0.039$).
-- **Dissociation of Cardiac Metrics:** Heart rate ($\beta = -0.06, p = 0.73$) and time/frequency HRV measures (RMSSD, HF, LF/HF ratio) showed no significant concurrence with perceived comfort or restorativeness, confirming that acute cardiac autonomic shifts are heavily dominated by physical active travel workload rather than conscious psychological perception.
-- **Figure Reference:** See **Figure 2** (Acute within-person psychophysiological concurrence slopes).
+Continuous recordings: Empatica, Atmotube Pro, LYS. Phase recordings: uCM, Eyetracker. Questionnaires.
 
-## 3.5 Hypothesis 4 Findings: Environmental Stressor Associations
+### Data analysis and correction
 
-- **Primary Multivariable Co-Exposure Model:** Evaluated via simultaneous REML mixed-effects models adjusting for travel mode:
-  $$\text{Outcome}_z \sim \text{Mode} + \text{UTCI}_z + \text{SND\_dBA}_z + \text{PM2.5}_z + \text{Lux}_z + \text{GVI}_z + (1 \mid \text{ParticipantID})$$
-  across the 5 validated orthogonal domain predictors (Thermal: UTCI, Acoustic: SND dBA, Particulate: PM2.5, Lighting: Lux, Greenery: GVI 50m; all continuous epoch VIF $< 1.6$, aggregated phase VIF $< 3.5$).
-- **Acoustic Overdrive Under Co-Exposure:** Acoustic noise level (`ucm_SND_dBA`) emerged as the most potent and consistent independent environmental stressor, maintaining strong statistical significance even after simultaneous adjustment for thermal stress, fine particulate matter, visual illuminance, eye-level greenness, and travel mode:
-  - General Comfort: $\beta = -0.96, p = 0.0034, q_{\text{FDR}} = 0.021$
-  - Perceived Pleasantness: $\beta = -0.98, p = 0.000015, q_{\text{FDR}} = 0.00023$
-  - State Anxiety (STAI-6): $\beta = +1.03, p = 0.00065, q_{\text{FDR}} = 0.0048$
-  - Restorativeness (PRS-11): $\beta = -0.87, p = 0.000001, q_{\text{FDR}} = 0.000043$
-  - Ocular kinematics: Blink duration ($\beta = +0.12, p = 0.00010, q_{\text{FDR}} = 0.0010$) and gaze distance from center ($\beta = +0.34, p = 0.0060, q_{\text{FDR}} = 0.030$).
-- **Pre-Registered Mode Interactions:** Testing $\text{Mode} \times \text{UTCI}$ and $\text{Mode} \times \text{SND\_dBA}$ interactions confirmed that physical travel mode modulates thermal strain and acoustic vulnerability.
-- **Secondary Univariable Screening:** Mode-adjusted single-predictor models: $\text{Outcome}_z \sim \text{Mode} + \text{Predictor}_z + (1 \mid \text{ParticipantID})$ were evaluated across cleaned environmental candidate streams (with metadata, GPS HDOP, headings, speed, and circular angles excluded).
-- **Figure Reference:** See **Figure 4** (Forest plot of H4 multivariable co-exposure effects).
+```diff
+- Sensor streams were synchronized, path-matched, quality-checked and aggregated to 10-second epochs. The primary retained sample comprised 11 participants. Report the original recruitment count, exclusion rules, missingness by sensor and retained participant-phases before submission.
++ Sensor streams were synchronized, path-matched, quality-checked and aggregated to 10-second epochs. Active analysis: N = 11 (P4, P8–P17), 44 core participant-phase cells. Add the sensor-specific missingness summary before submission.
+```
 
-## 3.6 Synthesis & Participant Phase Profiles
+Sensor streams were synchronized, path-matched, quality-checked and aggregated to 10-second epochs. Active analysis: N = 11 (P4, P8–P17), 44 core participant-phase cells. Add the sensor-specific missingness summary before submission.
 
-- **Figure Reference:** See **Figure 5** (Comprehensive manuscript synthesis matrix), **Figure 7** (Participant-level phase profiles across the 4 core blocks), and **Figure 8** (Standardized 8-minute temporal trajectories).
+```diff
+- 
++ Because the same participants completed all five phases, the omnibus phase effect was assessed as a repeated-measures within-subject design. A G*Power sensitivity analysis for repeated-measures ANOVA with 5 measurements, n = 11, α = .05, power = .80, correlation among repeated measures = .50, and ε = 1 indicated a minimum detectable effect of f = 0.52, equivalent to partial η² ≈ 0.11.
+```
 
-## 3.7 Sensitivity Analysis: Temporal Lag & Cumulative Exposure Kinetics
+Because the same participants completed all five phases, the omnibus phase effect was assessed as a repeated-measures within-subject design. A G*Power sensitivity analysis for repeated-measures ANOVA with 5 measurements, n = 11, α = .05, power = .80, correlation among repeated measures = .50, and ε = 1 indicated a minimum detectable effect of f = 0.52, equivalent to partial η² ≈ 0.11.
 
-- **Methodological Scope:** Evaluated via `statistical_analysis_lag.R` across 18 target canonical environmental predictor streams across 6 discrete lags (0s, 10s, 20s, 30s, 60s, 120s) and 3 rolling cumulative exposure windows (30s, 60s, 120s) using 10-second autoregressive LMMs with serial autocorrelation (`corAR1`) across all 19 physiological/ocular outcomes (2,907 models fitted; 109 FDR-significant).
-- **Peak Response Window:** Environmental associations peaked strongly at **30s to 60s delayed exposure** (19 FDR-significant discrete lag associations at 60s vs. 9 at 0s concurrent; 14 significant rolling window models at 120s).
-- **Greenness Dynamic Timeline:** Eye-level GVI elicited early visual search calming at 10s–30s (fixation rate $\beta = -0.098$ to $-0.109, q = 0.023$), progressive ocular relaxation at 60s–120s (blink duration lengthening $\beta = +0.102$ to $+0.116, q = 0.015$), and marked parasympathetic cardiovascular calming after 2 minutes of continuous tree canopy immersion (heart rate $\beta = -0.182, p = 1.1 \times 10^{-8}, q_{\text{FDR}} = 2.1 \times 10^{-7}$).
-- **Acoustic Stress Kinetics:** Noise (dBA) provoked acute visual scanning vigilance at 30s (elevated gaze velocity $\beta = +0.065$, reduced gaze centrality $\beta = -0.087$), while sympathetic electrodermal tone climbed monotonically from 10s ($\beta = +0.019$) to peak at 60s ($\beta = +0.027, q = 4.4 \times 10^{-5}$).
-- **Spatial Decay Beyond 2 Minutes:** Extended lag modeling up to 7 minutes (180s, 240s, 300s, 360s, 420s) confirmed that associations flatten to zero ($p > 0.30$) due to spatial displacement in active transit (cyclists move 1.3–2.3 km in 5–7 min).
-
-## 3.8 Sensitivity Analysis: Non-Responder & Baseline Artifact Exclusions (EDA0)
-
-- **Methodological Scope:** Re-estimated all hypotheses via `statistical_analysis_EDA_0.R` after excluding non-reactive zero-conductance baseline sessions.
-- **Inferential Robustness:** Confirmed 100% inferential stability across primary hypotheses: exactly 35 H1 Green vs. Urban models, 28 H3 Walk vs. Bike models, and 13 H2 concurrence models retained FDR significance ($q_{\text{FDR}} < 0.05$).
-
-## 3.9 Statistical Summary Tables
+### Hypothesis testing strategy
 
 > [!NOTE]
-> **COMMENT [ID:100] by Maider Llaguno (2026-06-06):**  
-> *"What do you mean by comfort here?"*  
-> **Methodological Implementation:** Comfort is operationalized as the single-item General Comfort rating evaluated on a 1-7 Likert scale administered immediately post-phase.
+> **Comment [23] Maider Llaguno (2026-06-06):** 
 
 > [!NOTE]
-> **COMMENT [ID:101] by Maider Llaguno (2026-06-06):**  
-> *"And this?"*  
-> **Methodological Implementation:** Pleasantness is operationalized as the single-item environmental pleasantness rating evaluated on a 1-5 scale administered immediately post-phase.
+> **Comment [24] Maider Llaguno (2026-06-06):** 
 
-> [!NOTE]
-> **COMMENT [ID:102] by Maider Llaguno (2026-06-06):**  
-> *"Is this heart rate variablity or just heart rate?"*  
-> **Methodological Implementation:** Cardiac outcomes distinguish mean Heart Rate (bpm, photoplethysmography pulse rate) from Heart Rate Variability (HRV RMSSD and SDNN in ms). Both metrics are modeled and reported separately in Table 1 and Table 2.
+```diff
+- H1 (Green vs Urban), H3 (Walk vs Bike) and H4 (within-day thermal stress x noise) were tested with linear mixed models fitted to 10-second epochs. Participant and phase-block random intercepts were used where estimable. The inferential unit remained the participant; repeated epochs increased within-person resolution but were not independent participants.
++ H1/H3: participant-phase mean LMMs on matched 8-minute routes, Outcome ~ Mode * Environment + (1|ParticipantID); 10-second epochs were aggregated before testing.
+```
 
-> [!NOTE]
-> **COMMENT [ID:103] by Maider Llaguno (2026-06-06):**  
-> *"idem"*  
-> **Methodological Implementation:** All psychometric metrics are standardized and identified by their validated instrument designations: Perceived Restorativeness Scale (PRS-11), State Anxiety Inventory (STAI-6), General Comfort (1-7), and Pleasantness (1-5).
+H1/H3: participant-phase mean LMMs on matched 8-minute routes, Outcome ~ Mode * Environment + (1|ParticipantID); 10-second epochs were aggregated before testing.
 
-Table 1. Linear Mixed-Effects Model (LMM) planned simple contrasts for H1 and H3 (8-minute matched duration, within-person z-scores).
+```diff
+- For H1 and H3, the fixed-effects structure was Outcome ~ Mode * Environment + time_in_phase_z. Coefficients used Bike and Urban reference levels. For H4, the structure was Outcome ~ Mode * Environment + UTCI_within_day_z * SND_within_day_z + UTCI_day_mean_z + SND_day_mean_z + time_in_phase_z, separating within-day covariation from between-day exposure differences.
++ H2: person-mean-centred participant-phase LMMs. H4: single-predictor REML LMMs for PET, UTCI, noise, light and air quality; correlated associations, not a unified causal model.
+```
 
-| Hyp | Indicator | Domain | Contrast | Cohen's d | p-value | q (FDR) | Status |
-|---|---|---|---|:---:|:---:|:---:|:---:|
-| **H1** | EDA Tonic | Autonomic | Green - Urban (Bike) | -0.64 | 0.1337 | 0.2197 | ns |
-|  | EDA Tonic | Autonomic | Green - Urban (Walk) | **-1.25** | 0.0052 | **0.0133** | **FDR Sig \*** |
-|  | Skin Temperature | Autonomic | Green - Urban (Bike) | **-1.42** | 0.0024 | **0.0060** | **FDR Sig \*\*** |
-|  | Skin Temperature | Autonomic | Green - Urban (Walk) | **-1.41** | 0.0024 | **0.0069** | **FDR Sig \*\*** |
-|  | Heart Rate | Autonomic | Green - Urban (Bike) | -0.05 | 0.9014 | 0.9014 | ns |
-|  | Heart Rate | Autonomic | Green - Urban (Walk) | 0.29 | 0.4917 | 0.5975 | ns |
-|  | HRV RMSSD | Autonomic | Green - Urban (Bike) | 0.07 | 0.8674 | 0.9014 | ns |
-|  | HRV RMSSD | Autonomic | Green - Urban (Walk) | 0.75 | 0.0901 | 0.1884 | ns |
-|  | Pupil Diameter | Ocular | Green - Urban (Bike) | **1.64** | 0.0011 | **0.0032** | **FDR Sig \*\*** |
-|  | Pupil Diameter | Ocular | Green - Urban (Walk) | **3.93** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | Blink Duration | Ocular | Green - Urban (Bike) | **-3.38** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | Blink Duration | Ocular | Green - Urban (Walk) | **-5.13** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | General Comfort (1-7) | Psychological | Green - Urban (Bike) | **1.63** | 0.0011 | **0.0032** | **FDR Sig \*\*** |
-|  | General Comfort (1-7) | Psychological | Green - Urban (Walk) | 0.31 | 0.4936 | 0.5975 | ns |
-|  | Pleasantness (1-5) | Psychological | Green - Urban (Bike) | **2.66** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | Pleasantness (1-5) | Psychological | Green - Urban (Walk) | **1.47** | 0.0017 | **0.0054** | **FDR Sig \*\*** |
-|  | Restorativeness (PRS-11) | Psychological | Green - Urban (Bike) | **4.69** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | Restorativeness (PRS-11) | Psychological | Green - Urban (Walk) | **3.12** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | State Anxiety (STAI-6) | Psychological | Green - Urban (Bike) | **-1.74** | <0.001 | **0.0027** | **FDR Sig \*\*** |
-|  | State Anxiety (STAI-6) | Psychological | Green - Urban (Walk) | -1.06 | 0.0257 | 0.0591 | Trend |
-| **H3** | Pupil Diameter | Ocular | Walk - Bike (Urban) | **-1.95** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | Blink Duration | Ocular | Walk - Bike (Urban) | **5.90** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | Blink Duration | Ocular | Walk - Bike (Green) | **4.15** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | Fixation Duration | Ocular | Walk - Bike (Urban) | **-2.44** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | Fixation Duration | Ocular | Walk - Bike (Green) | **-1.44** | 0.0032 | **0.0113** | **FDR Sig \*** |
-|  | Gaze Velocity | Ocular | Walk - Bike (Urban) | **2.99** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | General Comfort (1-7) | Psychological | Walk - Bike (Green) | **-1.43** | 0.0034 | **0.0113** | **FDR Sig \*** |
-|  | Pleasantness (1-5) | Psychological | Walk - Bike (Green) | **-1.88** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
-|  | Restorativeness (PRS-11) | Psychological | Walk - Bike (Urban) | **-1.28** | 0.0053 | **0.0202** | **FDR Sig \*** |
-|  | Restorativeness (PRS-11) | Psychological | Walk - Bike (Green) | **-2.85** | <0.001 | **<0.001** | **FDR Sig \*\*\*** |
+H2: person-mean-centred participant-phase LMMs. H4: single-predictor REML LMMs for PET, UTCI, noise, light and air quality; correlated associations, not a unified causal model.
 
-Table 2. Descriptive statistics across conditions (Mean +/- SD in 8-minute matched window).
+```diff
+- Condition 1, using untrimmed route data, was the primary analysis. Conditions 2 and 3 were same-duration sensitivity analyses, with Condition 3 additionally subtracting the tram baseline. Benjamini-Hochberg correction was applied within prespecified hypothesis families. H2 used participant-phase Spearman correlations because questionnaire scores were phase-level rather than 10-second outcomes.
++ Primary: common matched 8-minute window. Indoor/Tram subtraction and within-person z-score analyses were sensitivity branches where supported; Benjamini–Hochberg FDR was applied within prespecified families.
+```
 
-| Sensor / Survey Variable | Urban Route | Green Route | Biking Mode | Walking Mode |
-|---|:---:|:---:|:---:|:---:|
-| EDA Tonic ($\mu$S) | 4.99 +/- 6.62 | 3.66 +/- 7.09 | 3.59 +/- 5.48 | 5.06 +/- 7.99 |
-| Skin Temperature (°C) | 33.14 +/- 1.34 | 32.32 +/- 1.54 | 32.55 +/- 1.48 | 32.91 +/- 1.45 |
-| Heart Rate (bpm) | 73.35 +/- 6.79 | 74.50 +/- 6.51 | 73.74 +/- 5.26 | 74.12 +/- 7.84 |
-| HRV RMSSD (ms) | 267.12 +/- 29.47 | 277.77 +/- 20.71 | 269.97 +/- 27.53 | 274.92 +/- 24.22 |
-| Pupil Diameter (mm) | 3.12 +/- 0.35 | 3.38 +/- 0.38 | 3.31 +/- 0.37 | 3.19 +/- 0.38 |
-| Fixation Duration (s) | 0.28 +/- 0.08 | 0.27 +/- 0.07 | 0.31 +/- 0.08 | 0.24 +/- 0.06 |
-| General Comfort (1-7) | 5.09 +/- 1.23 | 5.68 +/- 1.39 | 5.68 +/- 1.32 | 5.09 +/- 1.31 |
-| Pleasantness (1-5) | 2.95 +/- 0.90 | 4.00 +/- 0.98 | 3.82 +/- 1.14 | 3.14 +/- 0.89 |
-| Restorativeness (PRS-11) | 2.48 +/- 0.53 | 3.53 +/- 0.59 | 3.28 +/- 0.76 | 2.73 +/- 0.68 |
-| State Anxiety (STAI-6) | 2.20 +/- 0.78 | 1.83 +/- 0.58 | 1.91 +/- 0.69 | 2.13 +/- 0.71 |
+Primary: common matched 8-minute window. Indoor/Tram subtraction and within-person z-score analyses were sensitivity branches where supported; Benjamini–Hochberg FDR was applied within prespecified families.
 
----
+## 3 Results
 
-# 4 Discussion
+Primary hypothesis findings
 
-- **Psychological Superiority of Green Infrastructure:** Green park corridors provided profound, highly robust psychological restoration ($d$ up to 4.69 for PRS-11), confirming Attention Restoration Theory (ART; Kaplan, 1995) in naturalistic mobility.
-- **Physiological Discordance with Cardiac Metrics:** Unlike stationary chamber experiments, active mobility creates strong metabolic cardiac demands (HR ~74 bpm across all conditions) that override subtle autonomic recovery, explaining the lack of FDR-significant cardiac concurrence.
-- **Convective Cooling in Active Cycling:** Cycling in green corridors showed the lowest skin temperature and highest comfort ratings, supporting the hypothesis that forward cycling velocity generates restorative microclimatic airflow under tree canopies.
-- **Visual Cognitive Workload Modulation:** Walking allows open visual exploration (longer blinks, shorter fixations), whereas cycling demands concentrated forward gazes to ensure obstacle avoidance and kinematic stability.
-- **Methodological Caveats & Power Limitations:** With $N = 11$, the study is reliably powered for large within-person effects ($d_z \ge 0.94$); subtle effects and second-order interaction terms are interpreted descriptively.
+```diff
+- The retained primary analysis was Condition 1, the untrimmed route dataset, with N = 11 participants. Conditions 2 and 3 were same-duration sensitivity analyses; Condition 3 additionally used tram-baseline subtraction.
++ Primary analysis: matched 8-minute dataset, N = 11; full-duration and baseline-subtraction branches are sensitivities.
+```
 
----
+Primary analysis: matched 8-minute dataset, N = 11; full-duration and baseline-subtraction branches are sensitivities.
 
-# 5 Conclusion
+Across models, estimates describe associations conditional on the fitted covariates and reference levels. The number of 10-second rows must not be interpreted as the independent sample size.
 
-- **Multi-Factorial Paradigm:** Active commuter well-being cannot be captured by binary green-vs-grey classifications. Comfort emerges at the nexus of microclimate, physical exertion, convective airflow, and visual attentional demand.
-- **Urban Planning Translation:** To maximize psychological restoration and mitigate heat stress, cities must integrate continuous vegetative canopy shading directly with grade-separated cycling tracks, ensuring simultaneous convective airflow and noise shielding.
+```diff
+- H1 (Green vs Urban): after Benjamini-Hochberg False Discovery Rate correction, significant effects were found for lower square-root-transformed tonic EDA in green segments, lower skin temperature in green segments, and higher pupil diameter in green segments. Heart rate, fixation rate, gaze velocity, and saccade peak velocity were not significant for H1 after correction.
++ H1: current primary output has 35 FDR-significant contrast/normalization results involving selected EDA, skin-temperature, ocular and questionnaire outcomes. Pupil results remain illumination-sensitive.
+```
 
-> [!NOTE]
-> **COMMENT [ID:131] by Maider Llaguno (2026-06-06):**  
-> *"We need to evolve the above to get to this"*  
-> **Methodological Implementation:** Section 5 outlines a multi-factorial framework linking environmental vegetative buffering, mode-specific physiological exertion, and microclimatic stressor exposure with actionable urban planning and active transit design takeaways.
+H1: current primary output has 35 FDR-significant contrast/normalization results involving selected EDA, skin-temperature, ocular and questionnaire outcomes. Pupil results remain illumination-sensitive.
 
----
+```diff
+- H2 (physiology-perception concordance): H2 was analysed for Condition 1 using phase-level Spearman correlations. Several correlations involving PRS-11 and comfort ratings showed raw p < 0.05, but none remained significant after Benjamini-Hochberg False Discovery Rate correction. These findings are therefore interpreted as exploratory concordance trends rather than confirmed effects.
++ H2: current output has 152 psychophysiological models; 13 survived FDR (5 unstandardized and 8 within-person z-score results). These are within-person associations, not causal effects.
+```
 
-# References
+H2: current output has 152 psychophysiological models; 13 survived FDR (5 unstandardized and 8 within-person z-score results). These are within-person associations, not causal effects.
 
-- Aumond, P., Can, A., De Coensel, B., Botteldooren, D., Ribeiro, C., & Lavandier, C. (2017). Modeling soundscape pleasantness using perceptual assessments and acoustic measurements along paths in urban context. *Acta Acustica united with Acustica*, 103(3), 430–443.
-- Boucsein, W., et al. (2012). Publication recommendations for electrodermal measurements. *Psychophysiology*, 49(8), 1017–1034.
-- Charkoudian, N. (2010). Mechanisms and modifiers of reflex sympathoneural control in humans. *Autonomic Neuroscience*, 196, 68–75.
-- Chinazzo, G., Wienold, J., & Andersen, M. (2019). Daylight affects human thermal perception. *Scientific Reports*, 9(1), 13690.
-- Cuve, H. C., et al. (2023). Validation of pupil size dynamics as an index of cognitive effort and stress. *Psychophysiology*, 60(4), e14205.
-- El Aarbaoui, T., & Chaix, B. (2020). The short-term association between exposure to noise and heart rate variability in daily locations and mobility contexts. *Journal of Exposure Science & Environmental Epidemiology*, 30(2), 383–393.
-- El Aarbaoui, T., Méline, J., Brondeel, R., & Chaix, B. (2017). Short-term association between personal exposure to noise and heart rate variability: The RECORD MultiSensor Study. *Environmental Pollution*, 231, 703–711.
-- Evans, K. M., et al. (2012). Collecting and analyzing eye-tracking data in outdoor environments. *Journal of Eye Movement Research*, 5(2), 1–19.
-- Kaplan, S. (1995). The restorative benefits of nature: Toward an integrative framework. *Journal of Environmental Psychology*, 15(3), 169–182.
-- Kraus, U., et al. (2013). Individual daytime noise exposure during routine activities and heart rate variability in adults: A repeated measures study. *Environmental Health Perspectives*, 121(5), 607–612.
-- Mahanama, B., et al. (2021). Eye movement and pupil measures: A review. *Frontiers in Computer Science*, 3, 733531.
-- Mansi, S. A., et al. (2022). A novel methodology for human thermal comfort assessment in outdoor environments. *Building and Environment*, 211, 108729.
-- Nikolopoulou, M., Baker, N., & Steemers, K. (2001). Thermal comfort in outdoor urban spaces. *Solar Energy*, 70(3), 227–235.
-- Quigley, K. S., et al. (2024). Publication guidelines for human heart rate and heart rate variability studies. *Psychophysiology*, 61(1), e14455.
-- Romanovsky, A. A. (2014). Skin temperature: Its role in thermoregulation. *Handbook of Clinical Neurology*, 156, 441–459.
-- Rupi, F., & Krizek, K. J. (2019). Visual eye gaze while cycling: Analyzing eye tracking at signalized intersections. *Transportmetrica A: Transport Science*, 15(2), 1629–1643.
-- Stuyck, H., et al. (2022). Validity of the Empatica E4 wristband to measure heart rate and HRV. *Behavior Research Methods*, 54(5), 2382–2398.
-- Van Doren, N., et al. (2021). Examining within-person associations between psychological stress and physiological arousal in daily life. *Biological Psychology*, 161, 108082.
+```diff
+- H3 (Walk vs Bike): after False Discovery Rate correction, significant effects were found for square-root-transformed tonic EDA, skin temperature, fixation rate, and gaze velocity. Heart rate, pupil diameter, and saccade peak velocity were not significant for H3 after correction.
++ H3: current primary output has 28 FDR-significant contrast/normalization results involving selected skin-temperature, ocular and questionnaire outcomes. These are mode differences, not a simple comfort ranking.
+```
+
+H3: current primary output has 28 FDR-significant contrast/normalization results involving selected skin-temperature, ocular and questionnaire outcomes. These are mode differences, not a simple comfort ranking.
+
+```diff
+- H4 (within-day heat x noise): after False Discovery Rate correction, significant interaction terms were found for skin temperature, pupil diameter, and saccade peak velocity in Condition 1. Heart rate, EDA tonic, fixation rate, and gaze velocity were not significant for H4 in Condition 1 after correction.
++ H4: the primary matched 8-minute within-person z-score branch contains 1,501 single-predictor models; 254 survived FDR across 50 predictor streams. These are correlated associations, not causal or unified-model effects.
+```
+
+H4: the primary matched 8-minute within-person z-score branch contains 1,501 single-predictor models; 254 survived FDR across 50 predictor streams. These are correlated associations, not causal or unified-model effects.
+
+```diff
+- Sensitivity checks: Conditions 2 and 3 used same-duration route data, with Condition 3 additionally subtracting the Tram baseline. The H1 pattern for tonic EDA, skin temperature and pupil diameter was stable. H3 remained FDR-significant for skin temperature, fixation rate and gaze velocity. Several H4 terms differed between primary and sensitivity conditions; robustness is supported only where direction and interpretation agree.
++ Sensitivity: Indoor/Tram subtraction and within-person z-score branches were retained where coverage supported them; 13 Indoor-baseline eye-tracking models were not estimable because of insufficient baseline coverage.
+```
+
+Sensitivity: Indoor/Tram subtraction and within-person z-score branches were retained where coverage supported them; 13 Indoor-baseline eye-tracking models were not estimable because of insufficient baseline coverage.
+
+```diff
+- Table 1. Current Condition 1 FDR-corrected linear mixed model results for H1, H3, and H4.
++ Table 1. Selected H1/H3/H4 results; displayed legacy values require synchronization with current CSV outputs before submission.
+```
+
+Table 1. Selected H1/H3/H4 results; displayed legacy values require synchronization with current CSV outputs before submission.
+
+| H | Outcome | Contrast/term | Estimate | SE | 95% CI | p_value | p_value_FDR | eta_squared |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| H1 | empatica_skin_temperature | H1_Green_minus_Urban | -1.358 | 0.175 | [-1.702, -1.014] | <0.001 | <0.001 | 0.0827 |
+| H1 | empatica_sqrt_eda_tonic | H1_Green_minus_Urban | -0.357 | 0.136 | [-0.624, -0.089] | 0.009 | 0.021 | 0.0153 |
+| H1 | eyetracker_pupil_diameter_avg | H1_Green_minus_Urban | 0.498 | 0.076 | [0.348, 0.647] | <0.001 | <0.001 | 0.2385 |
+| H3 | empatica_skin_temperature | H3_Walk_minus_Bike | 0.986 | 0.175 | [0.643, 1.329] | <0.001 | <0.001 | 0.0462 |
+| H3 | empatica_sqrt_eda_tonic | H3_Walk_minus_Bike | 0.367 | 0.136 | [0.100, 0.634] | 0.007 | 0.012 | 0.0170 |
+| H3 | eyetracker_fixation_rate | H3_Walk_minus_Bike | 0.236 | 0.061 | [0.115, 0.356] | <0.001 | <0.001 | 0.0674 |
+| H3 | eyetracker_gaze_velocity | H3_Walk_minus_Bike | 354.515 | 90.773 | [176.600, 532.429] | <0.001 | <0.001 | 0.3971 |
+| H4 | empatica_skin_temperature | H4_UTCI_within_day_x_SND_within_day | 0.052 | 0.011 | [0.031, 0.074] | <0.001 | <0.001 | <0.001 |
+| H4 | eyetracker_pupil_diameter_avg | H4_UTCI_within_day_x_SND_within_day | 0.016 | 0.004 | [0.008, 0.025] | <0.001 | <0.001 | <0.001 |
+| H4 | eyetracker_saccade_peak_velocity | H4_UTCI_within_day_x_SND_within_day | -30.199 | 5.973 | [-41.905, -18.493] | <0.001 | <0.001 | <0.001 |
+
+```diff
+- Table 2. Current H2 phase-level Spearman concordance trends before correction; none remained significant after FDR correction.
++ Table 2. Legacy Spearman table; superseded by the current H2 participant-phase LMM output.
+```
+
+Table 2. Legacy Spearman table; superseded by the current H2 participant-phase LMM output.
+
+| Outcome | Questionnaire | Spearman r | 95% CI | p_value | p_value_FDR | Interpretation |
+| --- | --- | --- | --- | --- | --- | --- |
+| empatica_skin_temperature | questionnaire_prs11_total_mean_1_5 | -0.359 | [-0.593, -0.070] | 0.017 | 0.146 | raw p < 0.05 only; not FDR-significant |
+| eyetracker_pupil_diameter_avg | questionnaire_environmental_comfort_mean_1_5 | 0.479 | [0.197, 0.688] | 0.002 | 0.061 | raw p < 0.05 only; not FDR-significant |
+| eyetracker_pupil_diameter_avg | questionnaire_prs11_total_mean_1_5 | 0.418 | [0.123, 0.646] | 0.007 | 0.085 | raw p < 0.05 only; not FDR-significant |
+| eyetracker_pupil_diameter_avg | questionnaire_thermal_comfort_1_5 | 0.419 | [0.123, 0.646] | 0.007 | 0.085 | raw p < 0.05 only; not FDR-significant |
+
+```diff
+- Diagnostic note: all selected LMMs were estimable and no fits failed. Residual normality cautions occurred across outcomes, with residual-spread cautions for selected eye-tracking and EDA models. The Condition 1 heart-rate H4 model produced a boundary-variance warning; that interaction was not FDR-significant and should not be emphasized.
++ Diagnostics: 71 models fitted; 13 Indoor-baseline models not fit for insufficient baseline coverage. A secondary AR(1) analysis quantified temporal dependence; residual cautions remain for selected outcomes.
+```
+
+Diagnostics: 71 models fitted; 13 Indoor-baseline models not fit for insufficient baseline coverage. A secondary AR(1) analysis quantified temporal dependence; residual cautions remain for selected outcomes.
+
+### Phase-block descriptive profile
+
+The merged 10-second dataset can support participant-weighted phase profiles, within-participant trajectories, distributions and confidence intervals for BikeU, WalkU, BikeG, WalkG and Tram. These summaries should be labelled exploratory and used to explain heterogeneity or generate future hypotheses. New tests selected after viewing these data must not be presented as confirmatory hypotheses.
+
+## 4 Discussion
+
+Environment contrast: green phases showed lower square-root-transformed tonic EDA and lower skin temperature, together with larger pupil diameter. Their co-occurrence is best described as a distinct response profile rather than proof of restoration. Lower tonic EDA is compatible with lower sympathetic arousal, but effort, temperature, sensor contact and motion remain plausible contributors (Boucsein et al., 2012). Pupil diameter cannot be interpreted as improved comfort without accounting for ambient illumination (Mahanama et al., 2021).
+
+Mobility contrast: walking versus cycling was associated with tonic EDA, skin temperature, fixation rate and gaze velocity. Walking and cycling impose different speed, stabilization and hazard-monitoring demands, so the visual-attention findings should not be framed as a simple comfort ranking (Rupi & Krizek, 2019).
+
+Combined thermal and acoustic exposure: within-day UTCI x sound interactions were FDR-significant for skin temperature, pupil diameter and saccade peak velocity in Condition 1. An interaction means that the association with one exposure changed across levels of the other; it does not by itself show that noise amplified discomfort. That wording requires the interaction sign, predicted-value plots over observed ranges and consistency with a comfort outcome.
+
+```diff
+- 
++ What about EDA etc? which are the ones to underline? And are they mode specific?
+```
+
+What about EDA etc? which are the ones to underline? And are they mode specific?
+
+```diff
+- 
++ What is the role of movement air flow/wind? I thought it would help biking to feel more comfortable.
+```
+
+What is the role of movement air flow/wind? I thought it would help biking to feel more comfortable.
+
+```diff
+- 
++ What about the interactions?
+```
+
+What about the interactions?
+
+```diff
+- Limitations: N = 11, one city and season, and route, mode and environment were not fully separable from location, order, illumination, workload and other co-exposures. Ten-second observations were serially correlated within phases, while the current random-intercept models did not explicitly model temporal autocorrelation. Wearable EDA, wrist temperature, HRV and mobile eye tracking are vulnerable to motion and environmental artefacts; ultra-short HRV warrants particular caution (Quigley et al., 2024; Stuyck et al., 2022). Multiple outcomes were controlled within hypothesis families, but cross-outcome interpretation remains exploratory. These limitations preclude causal claims.
++ Limitations: N = 11, one city and season, and route, mode and environment were not fully separable from location, order, illumination, workload and other co-exposures. Primary models used participant-phase means; AR(1) was a secondary temporal diagnostic. Wearable EDA, wrist temperature, HRV and mobile eye tracking remain vulnerable to motion and environmental artefacts; multiple-outcome interpretation remains exploratory. These limitations preclude causal claims.
+```
+
+Limitations: N = 11, one city and season, and route, mode and environment were not fully separable from location, order, illumination, workload and other co-exposures. Primary models used participant-phase means; AR(1) was a secondary temporal diagnostic. Wearable EDA, wrist temperature, HRV and mobile eye tracking remain vulnerable to motion and environmental artefacts; multiple-outcome interpretation remains exploratory. These limitations preclude causal claims.
+
+## 5 Conclusion
+
+Urban active-mobility exposure produced distinct physiological and visual-attention profiles across environment and travel mode. Green phases differed from impervious urban phases in tonic EDA, skin temperature and pupil diameter, while walking differed from cycling in tonic EDA, skin temperature, fixation rate and gaze velocity.
+
+The primary evidence supports context-dependent psychophysiological associations, not a universal ranking of green versus urban or walking versus cycling. Physiological-perceptual concordance was not confirmed after FDR correction, and heat-noise interactions require predicted-value visualization before being described as amplification. Larger counterbalanced studies with explicit temporal correlation structures are needed.
+
+## References
+
+Boucsein, W., et al. (2012). Publication recommendations for electrodermal measurements. Psychophysiology, 49(8), 1017-1034. https://doi.org/10.1111/j.1469-8986.2012.01384.x
+
+Chinazzo, G., Wienold, J., & Andersen, M. (2019). Daylight affects human thermal perception. Scientific Reports, 9, 13690. https://doi.org/10.1038/s41598-019-48963-y
+
+Evans, K. M., Jacobs, R. A., Tarduno, J. A., & Pelz, J. B. (2012). Collecting and analyzing eye-tracking data in outdoor environments. Journal of Eye Movement Research, 5(2), Article 6.
+
+Mahanama, B., et al. (2021). Eye movement and pupil measures: A review. Frontiers in Computer Science, 3, 733531. https://doi.org/10.3389/fcomp.2021.733531
+
+Mansi, S. A., Pigliautile, I., Arnesano, M., & Pisello, A. L. (2022). A novel methodology for human thermal comfort decoding via physiological signals measurement and analysis. Building and Environment, 222, 109385. https://doi.org/10.1016/j.buildenv.2022.109385
+
+Nikolopoulou, M., Baker, N., & Steemers, K. (2001). Thermal comfort in outdoor urban spaces: Understanding the human parameter. Solar Energy, 70(3), 227-235. https://doi.org/10.1016/S0038-092X(00)00093-1
+
+Quigley, K. S., et al. (2024). Publication guidelines for human heart rate and heart rate variability studies in psychophysiology - Part 1. Psychophysiology, 61, e14604. https://doi.org/10.1111/psyp.14604
+
+Rupi, F., & Krizek, K. J. (2019). Visual eye gaze while cycling: Analyzing eye tracking at signalized intersections in urban conditions. Sustainability, 11(21), 6089. https://doi.org/10.3390/su11216089
+
+Stuyck, H., Dalla Costa, L., Cleeremans, A., & Van den Bussche, E. (2022). Validity of the Empatica E4 wristband to estimate resting-state heart rate variability in a lab-based context. International Journal of Psychophysiology, 182, 105-118. https://doi.org/10.1016/j.ijpsycho.2022.10.003
+
