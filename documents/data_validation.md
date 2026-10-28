@@ -1,6 +1,6 @@
-# Paper 3 variable audit and reduction — historical snapshot
+﻿# Paper 3 variable audit and reduction — historical snapshot
 
-> **Current status (7 October 2026):** The counts below describe the 5 October merged-table snapshot. `scripts/H4_time_series.R` is the single H4 script. Its revised implementation now uses person-mean-centered predictors, iterative highest-VIF removal, phase-level coverage, questionnaire uniqueness checks, and fit-qualified FDR. It has not been run after these changes; all saved H4 model tables and audit figures remain historical and non-reportable. The five H4 exposure domains are analyst-selected candidates, not a documented preregistered set; no protocol/QC rationale for the fixed 11-person cohort has been located.
+> **Current status (7 October 2026):** The counts below describe the 5 October merged-table snapshot. `scripts/H4_timeseries.R` is the single H4 script. Its revised implementation now uses person-mean-centered predictors, iterative highest-VIF removal, phase-level coverage, questionnaire uniqueness checks, and fit-qualified FDR. It has not been run after these changes; all saved H4 model tables and audit figures remain historical and non-reportable. The five H4 exposure domains are analyst-selected candidates, not a documented preregistered set; no protocol/QC rationale for the fixed 11-person cohort has been located.
 
 > **Merge blocker:** ExpData\.venv\Scripts\python.exe is not present, so the updated merge could not be run in the required environment. Rebuild the merged inputs before refreshing this audit or using H4 outputs.
 

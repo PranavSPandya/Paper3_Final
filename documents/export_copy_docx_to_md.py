@@ -1,9 +1,7 @@
-"""Export Paper3_outline2 - Copy.docx → markdown with visible track changes.
+"""Export Paper3_outline2 - Copy.docx → markdown.
 
-- Paper3_outline_ml.md: outline with ```diff blocks (green + / red − in the editor)
-  plus accepted (revised) text for reading.
-- Paper3_outline_ml_before.md / _after.md: compare in Cursor for Word-like red/green
-  (Select for Compare → open the other file).
+Main file is Word Final (accepted) text: insertions kept, deletions dropped.
+No HTML, no strikethrough redline. Track changes stay in the .docx.
 """
 from __future__ import annotations
 
@@ -19,14 +17,41 @@ OUT_AFTER = Path(r"D:\Pranav\docker\Paper3_Final\documents\Paper3_outline_ml_aft
 
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 
-HEADER = """<!-- Track changes from `Paper3_outline2 - Copy.docx`.
-GREEN/RED in this file: look inside ```diff blocks (syntax-colored in the editor).
-FULL-PAGE compare: open `Paper3_outline_ml_before.md`, right-click → Select for Compare,
-then open `Paper3_outline_ml_after.md` (Cursor/VS Code diff = green/red lines).
-Word Accept/Reject: still only on the .docx.
--->
+HEADER = ""
 
-"""
+
+def wrap_track(kind: str, text: str) -> str:
+    if kind == "ins":
+        lead = len(text) - len(text.lstrip())
+        trail = len(text) - len(text.rstrip())
+        core = text.strip()
+        if not core:
+            return text
+        return text[:lead] + f"**{core}**" + (text[-trail:] if trail else "")
+    if kind == "del":
+        lead = len(text) - len(text.lstrip())
+        trail = len(text) - len(text.rstrip())
+        core = text.strip()
+        if not core:
+            return text
+        return text[:lead] + f"~~{core}~~" + (text[-trail:] if trail else "")
+    return text
+
+
+def segments_tracked(segments: list[tuple[str, str]]) -> str:
+    merged: list[tuple[str, str]] = []
+    for kind, text in segments:
+        if not text:
+            continue
+        if merged and merged[-1][0] == kind:
+            merged[-1] = (kind, merged[-1][1] + text)
+        else:
+            merged.append((kind, text))
+    return "".join(wrap_track(kind, text) for kind, text in merged).strip()
+
+
+def render_tracked(p: ET.Element) -> str:
+    return segments_tracked(walk_rich(p))
 
 
 def local_name(tag: str) -> str:
@@ -90,14 +115,6 @@ def render_revised(p: ET.Element) -> str:
 
 def render_original(p: ET.Element) -> str:
     return segments_plain(walk_rich(p), keep="original")
-
-
-def diff_fence(original: str, revised: str) -> str:
-    if original == revised:
-        return ""
-    o = original.replace("\n", " ")
-    r = revised.replace("\n", " ")
-    return f"```diff\n- {o}\n+ {r}\n```\n\n"
 
 
 def load_comments(z: zipfile.ZipFile) -> dict[str, dict]:
@@ -218,21 +235,19 @@ def emit_paragraph(
 
     level, is_heading = style_to_md_prefix(style)
     lvl = level or 2
-    tracked = paragraph_has_track(p) and original != revised
+    # Main md = Word Final (accepted) text only. No strikethrough / bold redline.
+    clean = revised or original
 
-    if is_heading and (revised or original):
+    if is_heading and clean:
         before.append(md_heading(lvl, original or revised))
         after.append(md_heading(lvl, revised or original))
-        if tracked:
-            parts.append(diff_fence(original, revised))
-        parts.append(md_heading(lvl, revised or original))
+        parts.append(md_heading(lvl, clean))
         return
 
     before.append((original or "") + "\n\n")
     after.append((revised or "") + "\n\n")
-    if tracked:
-        parts.append(diff_fence(original, revised))
-    parts.append((revised or original) + "\n\n")
+    if clean:
+        parts.append(clean + "\n\n")
 
 
 def main() -> None:
@@ -281,7 +296,8 @@ def main() -> None:
         print(f"Wrote {path} ({len(text)} chars)")
 
     main_text = "".join(parts)
-    print(f"Diff blocks in main md: {main_text.count('```diff')}")
+    print(f"HTML tags: {main_text.count('<ins ') + main_text.count('<del ')}")
+    print(f"Diff fences: {main_text.count('```diff')}")
 
 
 if __name__ == "__main__":
