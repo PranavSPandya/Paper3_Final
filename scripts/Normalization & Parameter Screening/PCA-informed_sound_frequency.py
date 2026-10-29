@@ -56,10 +56,11 @@ BANDS = [
     "freq_proportion_2000_to_20000Hz",
 ]
 OCTAVES = [
-    f"octave_proportion_{c}Hz"
-    for c in ["31.25", "62.5", "125", "250", "500", "1000", "2000", "4000", "8000"]
+    "octave_proportion_31_5_Hz", "octave_proportion_63_0_Hz", "octave_proportion_125_0_Hz",
+    "octave_proportion_250_0_Hz", "octave_proportion_500_0_Hz", "octave_proportion_1000_0_Hz",
+    "octave_proportion_2000_0_Hz", "octave_proportion_4000_0_Hz", "octave_proportion_8000_0_Hz",
 ]
-SPECTRAL = ["dominant_frequency_hz", "spectral_centroid_hz", "spectral_rolloff85_hz"]
+SPECTRAL = ["dominant_frequency_Hz", "spectral_centroid_Hz", "spectral_rolloff85_Hz"]
 SOUND_COLUMNS = ["ucm_SND_dBA"] + SPECTRAL + BANDS + OCTAVES + SCORES + PROPORTIONS + ["unidentify_proportion"]
 
 TEXT_OR_NOMINAL_SOUND_FIELDS = {
@@ -473,8 +474,8 @@ SCIENCE_SLOTS = [
     {
         "name": "low_frequency",
         "prefer": [
-            "freq_proportion_20_to_200Hz", "freq_proportion_200_to_2000Hz", "octave_proportion_62.5Hz",
-            "octave_proportion_125Hz", "octave_proportion_31.25Hz",
+            "freq_proportion_20_to_200Hz", "freq_proportion_200_to_2000Hz", "octave_proportion_63_0_Hz",
+            "octave_proportion_125_0_Hz", "octave_proportion_31_5_Hz",
         ],
     },
     {
@@ -489,7 +490,7 @@ SCIENCE_SLOTS = [
     },
     {
         "name": "spectral_shape",
-        "prefer": ["spectral_centroid_hz", "dominant_frequency_hz", "spectral_rolloff85_hz"],
+        "prefer": ["spectral_centroid_Hz", "dominant_frequency_Hz", "spectral_rolloff85_Hz"],
     },
 ]
 
@@ -675,7 +676,7 @@ def self_check() -> None:
     assert np.allclose(x, standardized_matrix(frame, ["x", "y"]))
     assert "ucm_SND_dBA" not in [c for f in FAMILIES.values() for c in f["original_columns"]]
     assert len(PROPORTIONS) == 7 and len(SCORES) == 7
-    assert len(BANDS) == 5 and len(OCTAVES) == 9 and len(SPECTRAL) == 3
+    assert len(BANDS) == 3 and len(OCTAVES) == 9 and len(SPECTRAL) == 3
     comps = np.array([[0.1, 0.2, 0.3, 0.4], [0.25, 0.25, 0.25, 0.25]])
     ilr = ilr_helmert(comps)
     assert ilr.shape == (2, 3) and np.isfinite(ilr).all()
@@ -1099,7 +1100,7 @@ def make_air_temp_figures(result: dict) -> tuple[plt.Figure, plt.Figure]:
     rows = np.arange(len(result["columns"]))
     lax.barh(rows - 0.18, pca.components_[0], height=0.36, color="slategray", label="PC1")
     if rank > 1:
-    lax.barh(rows + 0.18, pca.components_[1], height=0.36, color="black", label="PC2")
+        lax.barh(rows + 0.18, pca.components_[1], height=0.36, color="black", label="PC2")
     lax.set_yticks(rows, result["columns"])
     lax.set_title("Air-temperature PCA weights")
     lax.legend(fontsize=8)
@@ -1178,7 +1179,7 @@ def build_report(frame, family_results, combined, eq2_vif, target, digest,
         "# Sound screening: family-wise PCA and VIF",
         "",
         "**Status: done.** Family-wise PCA screening finished; Eq2 sound mains locked in "
-        "`scripts/H4_time_series.R`. H4 already refit with these terms.",
+        "`scripts/H4_timeseries.R`. H4 already refit with these terms.",
         "",
         "**Read these only** (live PCA folder is wiped each run):",
         f"1. This report - `Presentation material/{REPORT_NAME}`",
