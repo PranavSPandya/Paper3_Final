@@ -1,3 +1,8 @@
 Step 3: measurement categories.
+<<<<<<<< HEAD:_archive/archive/output/statistical_analysis/results/H4_results/_work/H4_Multivariate_Formula_20261018_113029.txt
 Step 4: retain 16 candidates; specify 7 equations (primary UTCI + PM2.5; Eq 2 sound sensitivity); check full-design rank and VIF on heat x sound terms.
 Step 5: mixed-model fitting (6 equations by default; Eq 2 when H4_SPEC$fit_sound_sensitivity is TRUE); new equations require a new verified fit.
+========
+Step 4: retain 16 candidates; specify 7 equations (primary UTCI + PM2.5; Eq 2 sound sensitivity); check full-design rank and VIF; MRT x sound is Eq 3 only.
+Step 5: mixed-model fitting (6 equations by default; Eq 2 when h4_study_spec$include_sound_sensitivity_equation is TRUE); new equations require a new verified fit.
+>>>>>>>> 935dd64e099e80dbb9d1f58a4c53b5d2b3adfc96:output/statistical_analysis/results/H4_timeseries/H4_timeseries_Multivariate_Formula.txt

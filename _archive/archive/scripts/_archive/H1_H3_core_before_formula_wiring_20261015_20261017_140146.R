@@ -1,51 +1,81 @@
-# H1_H3_core.R — load, fit, FDR, figures, and CSV outputs; sourced by H1_to_H3.R.
-# GLOBAL_SPEC, H1_SPEC, H2_SPEC, H3_SPEC and explicit models live in H1_to_H3.R.
+# H1_H3_core.R — load, fit, FDR, figures, and CSV outputs; sourced by H1_H3_phaseavg.R and H1_H3_timeseries.R.
+# study_wide_spec, hypothesis specs, and explicit model quotes live in those meeting scripts.
 
 if (!exists("PROJECT_ROOT", envir = .GlobalEnv, inherits = FALSE)) {
-  stop("PROJECT_ROOT must be set before sourcing H1_H3_core.R (source scripts/H1_to_H3.R).", call. = FALSE)
+  stop("PROJECT_ROOT must be set before sourcing H1_H3_core.R (source scripts/statistical_analysis/H1_H3_phaseavg.R).", call. = FALSE)
 }
-for (spec_name in c("GLOBAL_SPEC", "H1_SPEC", "H2_SPEC", "H3_SPEC")) {
+for (spec_name in c("study_wide_spec", "h1_hypothesis_spec", "h2_hypothesis_spec", "h3_hypothesis_spec")) {
   if (!exists(spec_name, envir = .GlobalEnv, inherits = FALSE))
     stop(spec_name, " must be set before sourcing H1_H3_core.R.", call. = FALSE)
 }
+<<<<<<<< HEAD:_archive/archive/scripts/_archive/H1_H3_core_before_formula_wiring_20261015_20261017_140146.R
 # H1 and H3 reuse PhaseID fits; differing outcome sets require separate fitting.
 stopifnot(identical(H1_SPEC$outcomes, H3_SPEC$outcomes),
           identical(H1_SPEC$outcomes, H2_SPEC$physiological_outcomes))
+========
+PAPER3_TIME_SERIES_ENGINE <- isTRUE(get0("PAPER3_TIME_SERIES_ENGINE", envir = .GlobalEnv, ifnotfound = FALSE))
+if (!PAPER3_TIME_SERIES_ENGINE) {
+  stopifnot(identical(h1_hypothesis_spec$physiological_outcome_names, h3_hypothesis_spec$physiological_outcome_names),
+            identical(h1_hypothesis_spec$physiological_outcome_names, h2_hypothesis_spec$physiological_outcome_names))
+  for (model_suffix in c("PhaseMean_Primary_LMM", "PhaseMean_Sensitivity_WPZ_LMM",
+                         "Temporal_AR1_10s_LMM", "Temporal_AR1_60s_LMM")) {
+    stopifnot(identical(get(paste0("H1_", model_suffix)), get(paste0("H3_", model_suffix))))
+  }
+} else {
+  stopifnot(identical(h1_hypothesis_spec$physiological_outcome_names, h3_hypothesis_spec$physiological_outcome_names),
+            identical(h1_hypothesis_spec$physiological_outcome_names, h2_hypothesis_spec$physiological_outcome_names))
+}
+>>>>>>>> 935dd64e099e80dbb9d1f58a4c53b5d2b3adfc96:scripts/statistical_analysis/library/H1_H3_core.R
 
 # --- input paths and outputs (not part of meeting spec) ---
 script_arg_h1 <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
 H1_TO_H3_SCRIPT_PATH <- if (length(script_arg_h1) && file.exists(script_arg_h1[1])) {
   script_arg_h1[1]
 } else {
-  file.path(PROJECT_ROOT, "scripts/H1_to_H3.R")
+  file.path(PROJECT_ROOT, "scripts/statistical_analysis/H1_H3_phaseavg.R")
 }
 RAW_PATH <- paper3_merged_8min_path(PROJECT_ROOT)
 if (basename(RAW_PATH) != "merged_all_11participants_8min.csv") {
-  stop("H1_to_H3.R must use merged_all_11participants_8min.csv only.")
+  stop("H1_H3_phaseavg.R must use merged_all_11participants_8min.csv only.")
 }
+<<<<<<<< HEAD:_archive/archive/scripts/_archive/H1_H3_core_before_formula_wiring_20261015_20261017_140146.R
 SIBLING_DATA_ROOT <- file.path(dirname(PROJECT_ROOT), "Paper3_Github")
 KEY_PATH <- Sys.getenv("PAPER3_KEY_PATH", file.path(PROJECT_ROOT, "output", "key.csv"))
 if (!file.exists(KEY_PATH)) KEY_PATH <- file.path(SIBLING_DATA_ROOT, "output", "key.csv")
 OUT_DIR <- Sys.getenv("PAPER3_OUT_DIR", file.path(PROJECT_ROOT, "output", "statistical_analysis", "results"))
+========
+KEY_PATH <- file.path(PROJECT_ROOT, "output", "key.csv")
+# Phase-average run: results/H1_H3_phaseavg/ (H1_/H2_/H3_ and H1_to_H3_ run-level files).
+# Time-series engine: OUT_DIR = results/H1_H3_timeseries/ (PAPER3_TIME_SERIES_ENGINE).
+RESULTS_ROOT <- file.path(PROJECT_ROOT, "output", "statistical_analysis", "results")
+OUT_DIR <- if (PAPER3_TIME_SERIES_ENGINE) {
+  file.path(RESULTS_ROOT, "H1_H3_timeseries")
+} else {
+  Sys.getenv("PAPER3_OUT_DIR", file.path(RESULTS_ROOT, "H1_H3_phaseavg"))
+}
+>>>>>>>> 935dd64e099e80dbb9d1f58a4c53b5d2b3adfc96:scripts/statistical_analysis/library/H1_H3_core.R
 MAKE_FIGURES <- Sys.getenv("PAPER3_MAKE_FIGURES", "TRUE") == "TRUE"
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+pa_out_path <- function(prefix, filename) file.path(OUT_DIR, paste0(prefix, "_", filename))
 
-PARTICIPANTS <- GLOBAL_SPEC$participants
-CORE_PHASES <- GLOBAL_SPEC$phases
-MATCHED_CAP_SEC <- GLOBAL_SPEC$matched_cap_sec
-h1_contrasts <- H1_SPEC$contrasts
-h3_contrasts <- H3_SPEC$contrasts
+PARTICIPANTS <- study_wide_spec$participants
+CORE_PHASES <- study_wide_spec$phases
+MATCHED_CAP_SEC <- study_wide_spec$matched_cap_sec
+h1_contrasts <- h1_hypothesis_spec$contrasts
+h3_contrasts <- h3_hypothesis_spec$contrasts
+study_wide_spec <- paper3_ensure_outcome_normalization(study_wide_spec, PROJECT_ROOT)
+physio_groups <- paper3_physiological_outcome_groups(study_wide_spec$physiological_outcome_names)
+NATURAL_LOG_OUTCOMES <- study_wide_spec$natural_log_outcome_names
 OUTCOMES <- list(
-  Psychological = H2_SPEC$psychological_outcomes,
-  Physiological_Autonomic = GLOBAL_SPEC$physiological_outcomes[1:13],
-  Physiological_Ocular = GLOBAL_SPEC$physiological_outcomes[14:26]
+  Psychological = h2_hypothesis_spec$psychological_outcomes,
+  Physiological_Autonomic = physio_groups$empatica,
+  Physiological_Ocular = physio_groups$eyetracker
 )
-all_outcomes <- c(H2_SPEC$psychological_outcomes, H1_SPEC$outcomes)
+all_outcomes <- c(h2_hypothesis_spec$psychological_outcomes, h1_hypothesis_spec$physiological_outcome_names)
 outcome_group_map <- setNames(
   rep(names(OUTCOMES), vapply(OUTCOMES, length, integer(1))),
   unlist(OUTCOMES, use.names = FALSE)
 )
-HRV_LOG_ES <- hrv_log_outcomes()
 SCRIPT_PATH <- H1_TO_H3_SCRIPT_PATH
 
 clean_labels <- c(
@@ -96,7 +126,7 @@ OUTCOME_UNITS <- c(
   eyetracker_gaze_centrality = "not specified in source data", eyetracker_distance_from_center = "px", eyetracker_eyelid_aperture_avg = "mm")
 H2_LOG_UNITS <- c(empatica_hrv_td_sdnn = "ln(ms)", empatica_hrv_td_rmssd = "ln(ms)", empatica_hrv_fd_lf = "ln(ms^2)",
                   empatica_hrv_fd_hf = "ln(ms^2)", empatica_hrv_fd_lf_hf_ratio = "ln(ratio), unitless",
-                  empatica_hrv_fd_vlf = "ln(ms^2)", empatica_hrv_fd_total_power = "ln(ms^2)")
+                  empatica_hrv_fd_vlf = "ln(ms^2)", empatica_hrv_fd_total_power = "ln(ms^2)", empatica_eda_tonic = "ln(uS)")
 units_of <- function(v) unname(ifelse(!is.na(OUTCOME_UNITS[v]), OUTCOME_UNITS[v], "not specified in source data"))
 
 # Plain words for "higher"/"lower" per physiological measure (H2 Direction sentence)
@@ -123,6 +153,26 @@ CITE_WPZ   <- "Ben-Shakhar G (1985) Standardization within individuals: a simple
 CITE_SMD   <- "Bonett DG (2008) Confidence intervals for standardized linear contrasts of means. Psychol Methods 13(2):99-109. doi:10.1037/1082-989X.13.2.99 (R package statpsych::ci.stdmean.ps)"
 CITE_RMC   <- "Bakdash JZ, Marusich LR (2017) Repeated Measures Correlation. Front Psychol 8:456. doi:10.3389/fpsyg.2017.00456"
 
+wald_ci95 <- function(beta, se, df) {
+  out <- c(low = NA_real_, high = NA_real_)
+  if (!is.finite(beta) || !is.finite(se) || !is.finite(df) || se < 0 || df <= 0) return(out)
+  q <- qt(0.975, df)
+  c(low = beta - q * se, high = beta + q * se)
+}
+
+infer_ci95_from_summary_row <- function(row, estimate_col = "estimate") {
+  est <- if (estimate_col %in% names(row)) row[[estimate_col]] else row[["Value"]]
+  se <- row[["SE"]]
+  if (is.null(se) && "Std.Error" %in% names(row)) se <- row[["Std.Error"]]
+  df <- row[["df"]]
+  if (is.null(df) && "DF" %in% names(row)) df <- row[["DF"]]
+  if ("lower.CL" %in% names(row) && is.finite(row[["lower.CL"]]))
+    return(c(low = row[["lower.CL"]], high = row[["upper.CL"]]))
+  if ("asymp.LCL" %in% names(row) && is.finite(row[["asymp.LCL"]]))
+    return(c(low = row[["asymp.LCL"]], high = row[["asymp.UCL"]]))
+  wald_ci95(est, se, df)
+}
+
 # 2. Reusable Helper Functions -------------------------------------------------
 label_of <- function(v) ifelse(!is.na(clean_labels[v]), clean_labels[v], v)
 mean_na <- function(x) if (all(is.na(x))) NA_real_ else mean(x, na.rm = TRUE)
@@ -134,9 +184,17 @@ safe_write_csv <- function(data, path) {
   if (!ok) tryCatch(write.csv(data, sub("\\.csv$", "_latest.csv", path), row.names = FALSE, na = ""), error = function(e) NULL)
 }
 
-audit_row <- function(analysis, condition, outcome, predictor, status, n_rows, n_pid, warn = "", err = "")
+# Temporal sensitivity companion: rows with BH-FDR q < 0.05 on the primary 10 s fixed-effect term (FDR_significant).
+write_temporal_sensitivity_fdr_subset <- function(table, path_without_suffix) {
+  if (is.null(table) || nrow(table) == 0 || !"FDR_significant" %in% names(table)) return(invisible(NULL))
+  fdr_only <- table[table$FDR_significant %in% TRUE, , drop = FALSE]
+  safe_write_csv(fdr_only, paste0(path_without_suffix, "_FDR.csv"))
+  invisible(fdr_only)
+}
+
+audit_row <- function(analysis, condition, outcome, predictor, status, n_rows, n_participants, warn = "", err = "")
   data.frame(Analysis = analysis, Condition = condition, Outcome = outcome, Predictor = predictor, Status = status,
-             N_rows = n_rows, N_participants = n_pid, Temporal_Rho_Not_Used = NA_real_, Warning = warn, Error = err,
+             N_rows = n_rows, N_participants = n_participants, Temporal_Rho_Not_Used = NA_real_, Warning = warn, Error = err,
              stringsAsFactors = FALSE)
 
 fit_phase_lmm <- function(fml, data, method = "REML") {
@@ -155,20 +213,18 @@ model_data_ok <- function(data, outcome, min_rows, min_participants) {
     is.finite(sd(x, na.rm = TRUE)) && sd(x, na.rm = TRUE) != 0
 }
 
-within_person_z <- function(x, id) {
-  ave(as.numeric(x), id, FUN = function(v) {
-    m <- mean(v, na.rm = TRUE)
-    s <- sd(v, na.rm = TRUE)
-    if (!is.finite(s) || s == 0) rep(NA_real_, length(v)) else (v - m) / s
-  })
-}
+within_person_z <- get0("PAPER3_OUTCOME_WITHIN_PERSON_Z", envir = .GlobalEnv, ifnotfound = paper3_within_person_z)
 
 # H1 and H3 effect size: paired standardized mean difference (Bonett 2008, Psychol Methods 13:99-109) via
 # statpsych::ci.stdmean.ps (sqrt((SD1^2 + SD2^2)/2) standardizer), bias-adjusted estimate with 95% CI, on participant-phase
 # means in analysis units. Within-person z-scores are not used (person-standardisation shrinks the SD). p/q come from the LMM.
+<<<<<<<< HEAD:_archive/archive/scripts/_archive/H1_H3_core_before_formula_wiring_20261015_20261017_140146.R
 # Transforms: ln(x) where "Transformation in Step 5" starts with "Natural log" (x <= 0 -> NA), applied once to the 10-s rows.
 NB_TRANSFORM <- read.csv(file.path(PROJECT_ROOT, "scripts", "Normalization_H1toH4_physio.csv"), check.names = FALSE)
 HRV_LOG_ES <- NB_TRANSFORM$Column[startsWith(NB_TRANSFORM$`Transformation in Step 5`, "Natural log")]
+========
+# Transforms: PAPER3_APPLY_CSV_TRANSFORM (or CSV via study_wide_spec$outcome_transforms_csv).
+>>>>>>>> 935dd64e099e80dbb9d1f58a4c53b5d2b3adfc96:scripts/statistical_analysis/library/H1_H3_core.R
 paired_smd <- function(d, outcome, ref, comp) {
   na3 <- c(g = NA_real_, low = NA_real_, high = NA_real_)
   if (!outcome %in% names(d)) return(na3)
@@ -199,6 +255,7 @@ extract_phase_lmm_contrasts <- function(fit, d, outcome, family_set, value_col) 
     ref <- d$PhaseID == k$Reference_PhaseID; comp <- d$PhaseID == k$Comparison_PhaseID
     es <- paired_smd(d, outcome, ref, comp)
     est <- cc$estimate[i]
+    beta_ci <- infer_ci95_from_summary_row(cc[i, , drop = FALSE])
     data.frame(
       Hypothesis = k$Hypothesis, Sub_Hypothesis = k$Sub_Hypothesis, Contrast = k$Contrast,
       Reference_PhaseID = k$Reference_PhaseID, Comparison_PhaseID = k$Comparison_PhaseID,
@@ -206,6 +263,7 @@ extract_phase_lmm_contrasts <- function(fit, d, outcome, family_set, value_col) 
       Direction = if (is.finite(est)) sprintf("%s is %s in %s than in %s", outcome,
                     ifelse(est > 0, "higher", "lower"), k$Comparison_PhaseID, k$Reference_PhaseID) else NA_character_,
       Beta = est, SE = cc$SE[i], df = cc$df[i], t_ratio = cc$t.ratio[i], p_value = cc$p.value[i],
+      Beta_CI95_low = unname(beta_ci["low"]), Beta_CI95_high = unname(beta_ci["high"]),
       Reference_Mean_raw = mean(d[[outcome]][ref], na.rm = TRUE),
       Comparison_Mean_raw = mean(d[[outcome]][comp], na.rm = TRUE),
       N_Participants = length(intersect(d$ParticipantID[ref], d$ParticipantID[comp])),
@@ -213,7 +271,7 @@ extract_phase_lmm_contrasts <- function(fit, d, outcome, family_set, value_col) 
       Model_Formula = sprintf("lme(%s ~ PhaseID, random = ~1 | ParticipantID); Beta = %s - %s",
                               value_col, k$Comparison_PhaseID, k$Reference_PhaseID),
       Interaction_Test = int_txt,
-      Normalization = if (startsWith(value_col, "wpz__")) "Sensitivity: within-person z-score over the 4 PhaseIDs (after notebook transform)" else "Primary: analysis units (notebook transform), random intercept",
+      Normalization = if (startsWith(value_col, "within_person_z__")) "Sensitivity: within-person z-score over the 4 PhaseIDs (after notebook transform)" else "Primary: analysis units (notebook transform), random intercept",
       Family_Set = family_set, Contrast_ID = k$Contrast,
       stringsAsFactors = FALSE)
   }))
@@ -235,10 +293,227 @@ adjust_by_family <- function(tab, family_size_map) {
   tab
 }
 
+# Outcome-only 10 s / 60 s AR(1) temporal models (shared by H1_H3_phaseavg.R and H1_H3_timeseries.R).
+fit_ar1_with_fallback <- function(epoch_data, step_variable) {
+  model_10s <- get0("TimeSeries_Temporal_AR1_10s_LMM", envir = .GlobalEnv, ifnotfound = NULL)
+  model_60s <- get0("TimeSeries_Temporal_AR1_60s_LMM", envir = .GlobalEnv, ifnotfound = NULL)
+  model_call <- if (step_variable == "time_10s_step") {
+    if (!is.null(model_10s)) model_10s else H1_Temporal_AR1_10s_LMM
+  } else {
+    if (!is.null(model_60s)) model_60s else H1_Temporal_AR1_60s_LMM
+  }
+  ar1_formula <- formula(eval(model_call$correlation))
+  fit_one <- function(optimizer, is_primary) {
+    control_settings <- if (is_primary) lmeControl(opt = "optim", maxIter = 200, msMaxIter = 200, returnObject = TRUE) else
+      lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE, opt = optimizer)
+    ar1_correlation <- if (is_primary) corAR1(form = ar1_formula) else corAR1(value = 0.2, form = ar1_formula)
+    model_call[[2L]][[2L]] <- as.name("outcome_z")
+    model_call$data <- quote(epoch_data)
+    model_call$correlation <- quote(ar1_correlation)
+    model_call$na.action <- quote(na.omit)
+    model_call$control <- quote(control_settings)
+    tryCatch(eval(model_call), error = function(e) NULL)
+  }
+  fitted_model <- fit_one("optim", TRUE)
+  if (!is.null(fitted_model)) return(list(fit = fitted_model, method = "optim (primary)"))
+  fitted_model <- fit_one("nlminb", FALSE)
+  if (!is.null(fitted_model)) return(list(fit = fitted_model, method = "nlminb (fallback, as in H4_timeseries.R)"))
+  fitted_model <- fit_one("optim", FALSE)
+  if (!is.null(fitted_model)) return(list(fit = fitted_model, method = "optim (fallback, as in H4_timeseries.R)"))
+  list(fit = NULL, method = "none (not converged)")
+}
 
-h1_to_h3_pipeline_run <- function() {
-  # 3. Data Loading & Feature Engineering ----------------------------------------
-  cat("[1/6] Loading and formatting dataset...\n")
+ar1_rho <- function(fit) if (is.null(fit)) NA_real_ else tryCatch(as.numeric(coef(fit$modelStruct$corStruct, unconstrained = FALSE)), error = function(e) NA_real_)
+
+time_series_result_row <- function(outcome, term_name, formula_template, t_table, column_map, ...) {
+  has_term <- !is.null(t_table) && term_name %in% rownames(t_table)
+  estimates <- setNames(lapply(column_map, function(column_name) if (has_term) t_table[term_name, column_name] else NA_real_), names(column_map))
+  data.frame(Outcome_Group = outcome_group_map[outcome], Outcome = outcome, Clean_Outcome = ifelse(!is.na(clean_labels[outcome]), clean_labels[outcome], outcome),
+             Term = term_name, Model_Formula = sprintf(formula_template, outcome), ..., estimates, stringsAsFactors = FALSE)
+}
+
+TEMPORAL_PHASE_SHORT <- c(BikeU = "BikeU", WalkU = "WalkU", BikeG = "BikeG", WalkG = "WalkG")
+
+temporal_observed_wpz <- function(outcome, beta) {
+  if (!is.finite(beta)) return("not estimated")
+  if (abs(beta) < 1e-8) return("flat")
+  dir_word(outcome, beta > 0)
+}
+
+temporal_beta_sign_word <- function(beta) {
+  if (!is.finite(beta)) return("n/a")
+  if (beta > 0) "Beta>0" else if (beta < 0) "Beta<0" else "Beta~0"
+}
+
+h1_h3_temporal_term_statement <- function(outcome, term, beta, use_phase_sum_coding, epoch_grid = c("10s", "60s")) {
+  epoch_grid <- match.arg(epoch_grid)
+  grid <- if (epoch_grid == "60s") "60s" else "10s"
+  obs <- temporal_observed_wpz(outcome, beta)
+  sign_w <- temporal_beta_sign_word(beta)
+  short_out <- gsub("^Empatica: |^Eyetracker: ", "", label_of(outcome))
+  if (use_phase_sum_coding) {
+    if (identical(term, "time_min")) {
+      return(sprintf("Row: %s AR(1) common WPZ slope per minute; observed: %s %s (%s).", grid, short_out, obs, sign_w))
+    }
+    if (grepl(":time_min", term, fixed = TRUE)) {
+      ph <- sub(":time_min", "", term, fixed = TRUE)
+      return(sprintf("Row: %s AR(1) extra WPZ slope/min for %s; observed: %s %s (%s).", grid, ph, short_out, obs, sign_w))
+    }
+    return(sprintf("Row: %s AR(1) WPZ level for %s (sum coding); observed: %s %s (%s).", grid, term, short_out, obs, sign_w))
+  }
+  if (identical(term, "time_min")) {
+    return(sprintf("Row: %s AR(1) WPZ slope/min in BikeU; observed: %s %s over bout (%s).", grid, short_out, obs, sign_w))
+  }
+  if (grepl("^PhaseID", term) && !grepl(":", term, fixed = TRUE)) {
+    ph <- sub("^PhaseID", "", term)
+    ph <- if (ph %in% names(TEMPORAL_PHASE_SHORT)) TEMPORAL_PHASE_SHORT[[ph]] else ph
+    return(sprintf("Row: %s AR(1) WPZ at bout start, %s vs BikeU; observed: %s %s (%s).", grid, ph, short_out, obs, sign_w))
+  }
+  if (grepl(":", term, fixed = TRUE)) {
+    ph <- sub("^PhaseID", "", strsplit(term, ":", fixed = TRUE)[[1]][1])
+    ph <- if (ph %in% names(TEMPORAL_PHASE_SHORT)) TEMPORAL_PHASE_SHORT[[ph]] else ph
+    return(sprintf("Row: %s AR(1) extra WPZ slope/min, %s vs BikeU; observed: %s %s (%s).", grid, ph, short_out, obs, sign_w))
+  }
+  sprintf("Row: %s AR(1) term %s; observed: %s %s (%s).", grid, term, short_out, obs, sign_w)
+}
+
+attach_temporal_statements <- function(table, beta_col, statement_col, use_phase_sum_coding, epoch_grid) {
+  if (is.null(table) || nrow(table) == 0 || !beta_col %in% names(table)) return(table)
+  beta_vec <- table[[beta_col]]
+  table[[statement_col]] <- mapply(
+    h1_h3_temporal_term_statement,
+    table$Outcome, table$Term, beta_vec,
+    MoreArgs = list(use_phase_sum_coding = use_phase_sum_coding, epoch_grid = epoch_grid),
+    SIMPLIFY = TRUE, USE.NAMES = FALSE
+  )
+  table
+}
+
+attach_phase_sum_columns <- function(epoch_data) {
+  phase_design_function <- get0("paper3_phase_sum_design", envir = .GlobalEnv, ifnotfound = NULL)
+  phase_sum_columns <- get0("TIME_SERIES_PHASE_SUM_COLUMNS", envir = .GlobalEnv, ifnotfound = NULL)
+  if (is.null(phase_design_function) || is.null(phase_sum_columns)) return(epoch_data)
+  phase_design <- phase_design_function(epoch_data$PhaseID)
+  epoch_data[phase_sum_columns] <- phase_design
+  if ("time_10s_step" %in% names(epoch_data)) epoch_data$time_10s_step_integer <- as.integer(epoch_data$time_10s_step)
+  epoch_data$PhaseID <- factor(as.character(epoch_data$PhaseID), levels = c("WalkG", "WalkU", "BikeG", "BikeU"))
+  epoch_data
+}
+
+h1_h3_fit_temporal_ar1 <- function(route, CONDITIONS, sensor_outcomes, model_audit) {
+  temporal_results_list <- list()
+  temporal_sens_list <- list()
+  route_epoch_data <- CONDITIONS[[1]]
+  route_epoch_data$time_10s_step <- round(route_epoch_data$time_in_phase_sec / 10)
+  route_epoch_data$PhaseID <- factor(route_epoch_data$PhaseID, levels = CORE_PHASES)
+  use_phase_sum_coding <- !is.null(get0("TIME_SERIES_PHASE_SUM_COLUMNS", envir = .GlobalEnv, ifnotfound = NULL))
+  time_step_key <- paste(route_epoch_data$ParticipantID, route_epoch_data$PhaseID, route_epoch_data$time_10s_step)
+  if (anyDuplicated(time_step_key)) stop("Temporal AR(1): ", sum(duplicated(time_step_key)),
+    " duplicate participant/phase/10-s steps; fix the epoch grid upstream instead of dropping rows.")
+  phase_sum_columns <- get0("TIME_SERIES_PHASE_SUM_COLUMNS", envir = .GlobalEnv, ifnotfound = character(0))
+  if (use_phase_sum_coding) {
+    formula_template_10s <- paste0("lme(within_person_z__%s ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min, random = ~1 | ParticipantID/PhaseID, ",
+                  "corAR1(value=0.2, ~ time_10s_step_integer | ParticipantID/PhaseID)); BikeU implicit (contr.sum)")
+    formula_template_60s <- paste0("lme(mean within_person_z__%s per 60-s epoch ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min, random = ~1 | ParticipantID/PhaseID, ",
+                  "corAR1(value=0.2, ~ time_60s_step | ParticipantID/PhaseID)); BikeU implicit (contr.sum)")
+    fixed_effect_terms <- paste0("(", paste(phase_sum_columns, collapse = " + "), ") * time_min")
+  } else {
+    formula_template_10s <- "lme(within_person_z__%s ~ PhaseID * time_min, random = ~1 | ParticipantID, correlation = corAR1(~ time_10s_step | ParticipantID/PhaseID)); reference PhaseID = BikeU"
+    formula_template_60s <- "lme(mean within_person_z__%s per 60-s epoch ~ PhaseID * time_min, random = ~1 | ParticipantID, correlation = corAR1(~ time_60s_step | ParticipantID/PhaseID)); reference PhaseID = BikeU"
+    fixed_effect_terms <- "PhaseID * time_min"
+  }
+
+  for (outcome in sensor_outcomes) {
+    z_column <- paste0("within_person_z__", outcome)
+    required_columns <- c("ParticipantID", "PhaseID", "time_min", "time_10s_step", z_column)
+    complete_rows <- complete.cases(route_epoch_data[, required_columns, drop = FALSE])
+    n_na_excluded <- sum(!complete_rows)
+    epoch_data <- route_epoch_data[complete_rows, , drop = FALSE]
+    epoch_data$outcome_z <- epoch_data[[z_column]]
+    epoch_data <- attach_phase_sum_columns(epoch_data)
+    epoch_data <- epoch_data[order(epoch_data$ParticipantID, epoch_data$PhaseID, epoch_data$time_10s_step), ]
+    excluded_epochs_note <- sprintf("NA epochs excluded: %d of %d", n_na_excluded, nrow(route_epoch_data))
+    n_participants <- length(unique(epoch_data$ParticipantID))
+    if (!model_data_ok(epoch_data, "outcome_z", 100, 8)) {
+      model_audit[[length(model_audit) + 1]] <- audit_row("Temporal_AR1", "Primary_10s_matched_8min", outcome, fixed_effect_terms,
+        "NOT_FIT_INSUFFICIENT_DATA", nrow(epoch_data), n_participants, warn = paste("Insufficient time-series rows;", excluded_epochs_note))
+      next
+    }
+    fit_result_10s <- fit_ar1_with_fallback(epoch_data, "time_10s_step")
+    if (use_phase_sum_coding) {
+      design_matrix <- model.matrix(as.formula(paste("~", fixed_effect_terms)), data = epoch_data)
+      all_terms <- colnames(design_matrix)[-1L]
+    } else {
+      all_terms <- colnames(model.matrix(~ PhaseID * time_min, data = epoch_data))[-1]
+    }
+
+    epoch_data_60s <- epoch_data
+    epoch_data_60s$time_60s_step <- floor(epoch_data_60s$time_10s_step / 6)
+    epoch_data_60s <- aggregate(cbind(outcome_z, time_min) ~ ParticipantID + PhaseID + time_60s_step, data = epoch_data_60s, FUN = mean)
+    if (use_phase_sum_coding) {
+      epoch_data_60s <- attach_phase_sum_columns(epoch_data_60s)
+    } else {
+      epoch_data_60s$PhaseID <- factor(epoch_data_60s$PhaseID, levels = CORE_PHASES)
+    }
+    epoch_data_60s <- epoch_data_60s[order(epoch_data_60s$ParticipantID, epoch_data_60s$PhaseID, epoch_data_60s$time_60s_step), ]
+    fit_result_60s <- fit_ar1_with_fallback(epoch_data_60s, "time_60s_step")
+    t_table_60s <- if (!is.null(fit_result_60s$fit)) summary(fit_result_60s$fit)$tTable
+    for (term_name in all_terms) temporal_sens_list[[length(temporal_sens_list) + 1]] <- cbind(
+      time_series_result_row(outcome, term_name, formula_template_60s, t_table_60s, c(Beta_60s = "Value", SE_60s = "Std.Error", p_value_60s = "p-value")),
+      AR1_phi_60s = ar1_rho(fit_result_60s$fit), Fit_Method_60s = fit_result_60s$method, N_epochs_60s = nrow(epoch_data_60s), stringsAsFactors = FALSE)
+
+    status <- if (is.null(fit_result_10s$fit)) "FAILED_CONVERGENCE" else "FIT"
+    model_audit[[length(model_audit) + 1]] <- audit_row("Temporal_AR1", "Primary_10s_matched_8min", outcome, "PhaseID*time_min", status,
+      nrow(epoch_data), n_participants, warn = if (status == "FIT") paste0(excluded_epochs_note, "; fit method: ", fit_result_10s$method) else excluded_epochs_note,
+      err = if (status == "FIT") "" else "AR(1) model failed to converge (optim, nlminb and optim fallbacks)")
+    t_table_10s <- if (status == "FIT") summary(fit_result_10s$fit)$tTable
+    terms <- if (status == "FIT") setdiff(rownames(t_table_10s), "(Intercept)") else all_terms
+    for (term_name in terms) temporal_results_list[[length(temporal_results_list) + 1]] <- cbind(
+      time_series_result_row(outcome, term_name, formula_template_10s, t_table_10s, c(Beta = "Value", SE = "Std.Error", t_stat = "t-value", df = "DF", p_value = "p-value"),
+             Normalization = "Within-Person Z-score", Duration = "Matched_start_8min"),
+      AR1_phi = ar1_rho(fit_result_10s$fit), N_epochs = nrow(epoch_data), N_participants = n_participants, Fit_Method = fit_result_10s$method, Status = status, stringsAsFactors = FALSE)
+  }
+
+  temporal_table <- safe_rbind(temporal_results_list)
+  temporal_family_size <- length(sensor_outcomes)
+  if (nrow(temporal_table) > 0) {
+    temporal_table$Family_Size <- temporal_family_size
+    temporal_table$q_FDR <- ave(temporal_table$p_value, temporal_table$Term, FUN = function(p) p.adjust(p, method = "BH", n = temporal_family_size))
+    temporal_table$FDR_significant <- !is.na(temporal_table$q_FDR) & temporal_table$q_FDR < 0.05
+    temporal_table$Stability_Flag <- ifelse(temporal_table$Status != "FIT", "not converged",
+      ifelse(!is.na(temporal_table$AR1_phi) & temporal_table$AR1_phi > 0.95, "rho > 0.95, interpret cautiously", ""))
+    tci <- t(vapply(seq_len(nrow(temporal_table)), function(i) {
+      wald_ci95(temporal_table$Beta[i], temporal_table$SE[i], temporal_table$df[i])
+    }, numeric(2)))
+    temporal_table$Beta_CI95_low <- tci[, 1L]
+    temporal_table$Beta_CI95_high <- tci[, 2L]
+    temporal_table <- attach_temporal_statements(temporal_table, "Beta", "Statement", use_phase_sum_coding, "10s")
+  }
+  temporal_sens_table <- safe_rbind(temporal_sens_list)
+  if (nrow(temporal_sens_table) > 0) {
+    temporal_sens_table <- attach_temporal_statements(temporal_sens_table, "Beta_60s", "Statement_60s", use_phase_sum_coding, "60s")
+    temporal_sens_table$Family_Size <- temporal_family_size
+    temporal_sens_table$q_FDR_60s <- ave(temporal_sens_table$p_value_60s, temporal_sens_table$Term, FUN = function(p) p.adjust(p, method = "BH", n = temporal_family_size))
+    temporal_sens_table$FDR_significant_60s <- !is.na(temporal_sens_table$q_FDR_60s) & temporal_sens_table$q_FDR_60s < 0.05
+    if ("Beta_60s" %in% names(temporal_sens_table) && "SE_60s" %in% names(temporal_sens_table)) {
+      df60 <- if ("df" %in% names(temporal_sens_table)) temporal_sens_table$df else rep(NA_real_, nrow(temporal_sens_table))
+      tci60 <- t(vapply(seq_len(nrow(temporal_sens_table)), function(i) {
+        wald_ci95(temporal_sens_table$Beta_60s[i], temporal_sens_table$SE_60s[i], df60[i])
+      }, numeric(2)))
+      temporal_sens_table$Beta_CI95_60s_low <- tci60[, 1L]
+      temporal_sens_table$Beta_CI95_60s_high <- tci60[, 2L]
+    }
+    primary_columns <- temporal_table[, intersect(c("Outcome", "Term", "Beta", "SE", "df", "Beta_CI95_low", "Beta_CI95_high",
+      "Statement", "p_value", "q_FDR", "FDR_significant", "AR1_phi", "Fit_Method", "Stability_Flag"), names(temporal_table))]
+    temporal_sens_table <- merge(primary_columns, temporal_sens_table, by = c("Outcome", "Term"), all = TRUE, sort = FALSE)
+    temporal_sens_table$Same_Sign_As_Primary <- sign(temporal_sens_table$Beta) == sign(temporal_sens_table$Beta_60s)
+    temporal_sens_table$Primary_Holds_In_60s <- temporal_sens_table$FDR_significant %in% TRUE &
+      temporal_sens_table$FDR_significant_60s %in% TRUE & temporal_sens_table$Same_Sign_As_Primary %in% TRUE
+  }
+  list(temporal_table = temporal_table, temporal_sens_table = temporal_sens_table, model_audit = model_audit)
+}
+
+h1_h3_load_route_data <- function() {
   if (!file.exists(RAW_PATH)) stop("Input dataset not found: ", RAW_PATH)
   df <- read.csv(RAW_PATH, check.names = FALSE, stringsAsFactors = FALSE)
   df$ParticipantID <- as.character(df$ParticipantID)
@@ -254,11 +529,7 @@ h1_to_h3_pipeline_run <- function() {
   core_time_key <- paste(df$ParticipantID, df$PhaseID, df$Datetime, sep = "::")
   core_idx <- df$ParticipantID %in% PARTICIPANTS & df$PhaseID %in% c(CORE_PHASES, "Tram")
   if (anyDuplicated(core_time_key[core_idx])) stop("Duplicate ParticipantID/PhaseID/Datetime keys detected in active/Tram data.")
-  cat("   Input:", RAW_PATH, "\n")
-  cat("   Rows/columns:", nrow(df), "/", ncol(df), "| Participants:", length(intersect(PARTICIPANTS, unique(df$ParticipantID))),
-      "of", length(PARTICIPANTS), "| Indoor rows:", sum(df$PhaseID == "Indoor", na.rm = TRUE), "\n")
 
-  # Bilateral sensor fusion for researcher-carried Atmotube and corridor LYS
   safe_pair_mean <- function(data, left, right) {
     if (!all(c(left, right) %in% names(data))) return(rep(NA_real_, nrow(data)))
     z <- rowMeans(cbind(as.numeric(data[[left]]), as.numeric(data[[right]])), na.rm = TRUE)
@@ -266,60 +537,87 @@ h1_to_h3_pipeline_run <- function() {
     z
   }
   pair_map <- list(
-    atmo_pm1.0_avg       = c("atmo_lys_atmotube_left__atmotube_pm1", "atmo_lys_atmotube_right__atmotube_pm1"),
-    atmo_pm2.5_avg       = c("atmo_lys_atmotube_left__atmotube_pm2.5", "atmo_lys_atmotube_right__atmotube_pm2.5"),
-    atmo_pm10_avg        = c("atmo_lys_atmotube_left__atmotube_pm10", "atmo_lys_atmotube_right__atmotube_pm10"),
+    atmo_pm1.0_avg = c("atmo_lys_atmotube_left__atmotube_pm1", "atmo_lys_atmotube_right__atmotube_pm1"),
+    atmo_pm2.5_avg = c("atmo_lys_atmotube_left__atmotube_pm2.5", "atmo_lys_atmotube_right__atmotube_pm2.5"),
+    atmo_pm10_avg = c("atmo_lys_atmotube_left__atmotube_pm10", "atmo_lys_atmotube_right__atmotube_pm10"),
     atmo_temperature_avg = c("atmo_lys_atmotube_left__atmotube_temperature", "atmo_lys_atmotube_right__atmotube_temperature"),
-    atmo_humidity_avg    = c("atmo_lys_atmotube_left__atmotube_humidity", "atmo_lys_atmotube_right__atmotube_humidity"),
-    lys_lux_avg          = c("atmo_lys_LYS1__lys_lux", "atmo_lys_LYS2__lys_lux"),
-    lys_rgbb_avg         = c("atmo_lys_LYS1__lys_rgbb", "atmo_lys_LYS2__lys_rgbb"),
-    lys_rgbg_avg         = c("atmo_lys_LYS1__lys_rgbg", "atmo_lys_LYS2__lys_rgbg"),
-    lys_rgbr_avg         = c("atmo_lys_LYS1__lys_rgbr", "atmo_lys_LYS2__lys_rgbr"),
-    lys_kelvin_avg       = c("atmo_lys_LYS1__lys_kelvin", "atmo_lys_LYS2__lys_kelvin"),
-    lys_medi_avg         = c("atmo_lys_LYS1__lys_medi", "atmo_lys_LYS2__lys_medi")
+    atmo_humidity_avg = c("atmo_lys_atmotube_left__atmotube_humidity", "atmo_lys_atmotube_right__atmotube_humidity"),
+    lys_lux_avg = c("atmo_lys_LYS1__lys_lux", "atmo_lys_LYS2__lys_lux"),
+    lys_rgbb_avg = c("atmo_lys_LYS1__lys_rgbb", "atmo_lys_LYS2__lys_rgbb"),
+    lys_rgbg_avg = c("atmo_lys_LYS1__lys_rgbg", "atmo_lys_LYS2__lys_rgbg"),
+    lys_rgbr_avg = c("atmo_lys_LYS1__lys_rgbr", "atmo_lys_LYS2__lys_rgbr"),
+    lys_kelvin_avg = c("atmo_lys_LYS1__lys_kelvin", "atmo_lys_LYS2__lys_kelvin"),
+    lys_medi_avg = c("atmo_lys_LYS1__lys_medi", "atmo_lys_LYS2__lys_medi")
   )
   for (nm in names(pair_map)) df[[nm]] <- do.call(safe_pair_mean, c(list(df), pair_map[[nm]]))
 
-  # Derived input columns kept for the manifest column count (not used by H1, H2, or H3 models)
-  um_cols <- intersect(c("sound_prop_urban_manmade_positive", "sound_prop_urban_manmade_neutral", "sound_prop_urban_manmade_negative"), names(df))
-  if (!"sound_prop_urban_manmade" %in% names(df) && length(um_cols) > 0) df$sound_prop_urban_manmade <- rowSums(df[, um_cols, drop = FALSE], na.rm = TRUE)
-  if ("atmo_lys_LYS1__lys_lux" %in% names(df) && !"lys_lux_participant" %in% names(df)) df$lys_lux_participant <- as.numeric(df[["atmo_lys_LYS1__lys_lux"]])
-
   sensor_outcomes <- intersect(c(OUTCOMES$Physiological_Autonomic, OUTCOMES$Physiological_Ocular), names(df))
-  psych_outcomes  <- intersect(OUTCOMES$Psychological, names(df))
+  psych_outcomes <- intersect(OUTCOMES$Psychological, names(df))
   if (length(sensor_outcomes) == 0) stop("No declared physiological/ocular outcome columns are available after schema harmonization.")
-  if (length(psych_outcomes) == 0) warning("No declared psychological outcome columns are available.")
 
-  # Within-person standardization reference: the participant's 4 core outdoor phases only (no Indoor/Tram).
   route <- df[df$ParticipantID %in% PARTICIPANTS & df$PhaseID %in% CORE_PHASES, ]
-  route$Datetime           <- as.POSIXct(route$Datetime, tz = "UTC")
+  route$Datetime <- as.POSIXct(route$Datetime, tz = "UTC")
   if (anyNA(route$Datetime)) stop("Unparseable Datetime values found in core route data.")
   phase_span <- aggregate(as.numeric(route$Datetime), by = route[c("ParticipantID", "PhaseID")], FUN = function(x) max(x) - min(x))
   bad <- phase_span[phase_span$x > MATCHED_CAP_SEC, ]
   if (nrow(bad)) stop("Input is not the matched 8-min file; phases longer than 480 s: ", paste(bad$ParticipantID, bad$PhaseID, bad$x, sep = "/", collapse = ", "))
-  route$ParticipantID      <- factor(route$ParticipantID, levels = PARTICIPANTS)
+  route$ParticipantID <- factor(route$ParticipantID, levels = PARTICIPANTS)
   route$ParticipantPhaseID <- interaction(route$ParticipantID, route$PhaseID, drop = TRUE)
   route <- route[order(route$ParticipantID, route$PhaseID, route$Datetime), ]
 
-  # Notebook transforms on the 10-s rows, before z-scores and phase means
-  for (v in intersect(HRV_LOG_ES, names(route))) route[[v]] <- ifelse(route[[v]] > 0, log(route[[v]]), NA_real_)
-  # Within-person z-scores across the 10-s epochs of the 4 core phases (sensitivity + temporal AR(1))
-  for (v in intersect(sensor_outcomes, names(route))) route[[paste0("wpz__", v)]] <- within_person_z(route[[v]], route$ParticipantID)
+  csv_transform_fn <- get0("PAPER3_APPLY_CSV_TRANSFORM", envir = .GlobalEnv, ifnotfound = NULL)
+  csv_table <- study_wide_spec$outcome_transforms_csv
+  for (v in intersect(sensor_outcomes, names(route))) {
+    route[[v]] <- if (is.function(csv_transform_fn)) {
+      csv_transform_fn(route[[v]], v)
+    } else {
+      paper3_apply_csv_transform(route[[v]], v, csv_table)
+    }
+    route[[paste0("within_person_z__", v)]] <- within_person_z(route[[v]], route$ParticipantID)
+  }
+  for (v in intersect(psych_outcomes, names(route))) {
+    route[[paste0("within_person_z__", v)]] <- within_person_z(route[[v]], route$ParticipantID)
+  }
 
   route$time_in_phase_sec <- ave(as.numeric(route$Datetime), route$ParticipantPhaseID, FUN = function(x) x - min(x, na.rm = TRUE))
   route$time_min <- route$time_in_phase_sec / 60
 
   durations <- aggregate(time_in_phase_sec ~ ParticipantID + PhaseID, route, max, na.rm = TRUE)
-  dur_w <- reshape(durations, idvar = "ParticipantID", timevar = "PhaseID", direction = "wide")
-  names(dur_w) <- sub("time_in_phase_sec\\.", "", names(dur_w))
-  for (nm in CORE_PHASES) if (!nm %in% names(dur_w)) dur_w[[nm]] <- NA_real_
-  dur_w$Common_cap <- pmin(dur_w$BikeU, dur_w$BikeG, dur_w$WalkU, dur_w$WalkG, MATCHED_CAP_SEC, na.rm = FALSE)
-  route <- merge(route, dur_w[c("ParticipantID", "Common_cap")], by = "ParticipantID", all.x = TRUE, sort = FALSE)
+  phase_durations_wide <- reshape(durations, idvar = "ParticipantID", timevar = "PhaseID", direction = "wide")
+  names(phase_durations_wide) <- sub("time_in_phase_sec\\.", "", names(phase_durations_wide))
+  for (nm in CORE_PHASES) if (!nm %in% names(phase_durations_wide)) phase_durations_wide[[nm]] <- NA_real_
+  phase_durations_wide$Common_cap <- pmin(phase_durations_wide$BikeU, phase_durations_wide$BikeG, phase_durations_wide$WalkU, phase_durations_wide$WalkG, MATCHED_CAP_SEC, na.rm = FALSE)
+  route <- merge(route, phase_durations_wide[c("ParticipantID", "Common_cap")], by = "ParticipantID", all.x = TRUE, sort = FALSE)
   route$matched_cap_sec <- route$Common_cap
 
   CONDITIONS <- list("Primary: Matched duration <=8 min" = route[!is.na(route$matched_cap_sec) & route$time_in_phase_sec <= route$matched_cap_sec, ])
   cname <- names(CONDITIONS)[1]
   d_cond <- CONDITIONS[[1]]
+
+  list(df = df, route = route, d_cond = d_cond, CONDITIONS = CONDITIONS, cname = cname,
+       sensor_outcomes = sensor_outcomes, psych_outcomes = psych_outcomes)
+}
+
+
+h1_to_h3_pipeline_run <- function() {
+  # 3. Data Loading & Feature Engineering ----------------------------------------
+  cat("[1/6] Loading and formatting dataset...\n")
+  prep <- h1_h3_load_route_data()
+  df <- prep$df
+  route <- prep$route
+  d_cond <- prep$d_cond
+  CONDITIONS <- prep$CONDITIONS
+  cname <- prep$cname
+  sensor_outcomes <- prep$sensor_outcomes
+  psych_outcomes <- prep$psych_outcomes
+  cat("   Input:", RAW_PATH, "\n")
+  cat("   Rows/columns:", nrow(df), "/", ncol(df), "| Participants:", length(intersect(PARTICIPANTS, unique(df$ParticipantID))),
+      "of", length(PARTICIPANTS), "| Indoor rows:", sum(df$PhaseID == "Indoor", na.rm = TRUE), "\n")
+
+  um_cols <- intersect(c("sound_prop_urban_manmade_positive", "sound_prop_urban_manmade_neutral", "sound_prop_urban_manmade_negative"), names(df))
+  if (!"sound_prop_urban_manmade" %in% names(df) && length(um_cols) > 0) df$sound_prop_urban_manmade <- rowSums(df[, um_cols, drop = FALSE], na.rm = TRUE)
+  if ("atmo_lys_LYS1__lys_lux" %in% names(df) && !"lys_lux_participant" %in% names(df)) df$lys_lux_participant <- as.numeric(df[["atmo_lys_LYS1__lys_lux"]])
+  if (length(psych_outcomes) == 0) warning("No declared psychological outcome columns are available.")
 
   # 4. H1 & H3 Inferential Models (26 physiological outcomes) ----------------------
   cat("[2/6] Fitting H1 and H3 models across the 26 physiological outcomes (questionnaires are H2 only)...\n")
@@ -330,14 +628,14 @@ h1_to_h3_pipeline_run <- function() {
                                                         err = "Declared outcome absent from input dataset.")
 
   # Participant-phase means: one row per participant x phase (N = 44); questionnaires are constant within a phase.
-  all_phase_vars <- intersect(unique(c(sensor_outcomes, psych_outcomes, paste0("wpz__", sensor_outcomes), paste0("wpz__", psych_outcomes))), names(d_cond))
+  all_phase_vars <- intersect(unique(c(sensor_outcomes, psych_outcomes, paste0("within_person_z__", sensor_outcomes), paste0("within_person_z__", psych_outcomes))), names(d_cond))
   phase_df <- aggregate(d_cond[all_phase_vars], by = d_cond[c("ParticipantID", "PhaseID")], FUN = mean_na)
   phase_df$ParticipantID <- factor(phase_df$ParticipantID, levels = PARTICIPANTS)
   phase_df$PhaseID <- factor(phase_df$PhaseID, levels = CORE_PHASES)
 
   for (family_set in c("Primary", "Sensitivity_WPZ"))
   for (outcome in intersect(sensor_outcomes, names(d_cond))) {   # physio only; questionnaires belong to H2
-    value_col <- if (family_set == "Primary") outcome else paste0("wpz__", outcome)
+    value_col <- if (family_set == "Primary") outcome else paste0("within_person_z__", outcome)
     analysis <- paste0("H1_and_H3_phase_mean_", family_set)
     if (!value_col %in% names(phase_df)) {
       model_audit[[length(model_audit) + 1]] <- audit_row(analysis, cname, outcome, "PhaseID", "NOT_FIT_MISSING_COLUMN", 0, 0,
@@ -357,6 +655,7 @@ h1_to_h3_pipeline_run <- function() {
 
   phase_lmm_table <- adjust_by_family(safe_rbind(phase_lmm_rows), c(Primary = length(sensor_outcomes), Sensitivity_WPZ = length(sensor_outcomes)))
 
+<<<<<<<< HEAD:_archive/archive/scripts/_archive/H1_H3_core_before_formula_wiring_20261015_20261017_140146.R
   # AR(1) residual correlation (Pinheiro & Bates 2000). Primary fit uses optim; only if it fails, the nlminb -> optim fallback
   # of H4_multivariate.R (maxIter 100, msMaxIter 150, corAR1 start 0.2) is tried. No other model changes.
   fit_ar1_with_fallback <- function(dd, step_var) {
@@ -385,85 +684,18 @@ h1_to_h3_pipeline_run <- function() {
                Term = tname, Model_Formula = sprintf(formula, outc), ..., est, stringsAsFactors = FALSE)
   }
 
+========
+>>>>>>>> 935dd64e099e80dbb9d1f58a4c53b5d2b3adfc96:scripts/statistical_analysis/library/H1_H3_core.R
   # 4D. Temporal Time-Series Mixed Models with AR(1) Autocorrelation -------------
   cat("[2b/6] Fitting 10-second temporal time-series LMMs with AR(1) autocorrelation...\n")
-  temporal_results_list <- list(); temporal_sens_list <- list()
-  route_ar1 <- CONDITIONS[[1]]   # same matched first-8-min window as the primary models
-  route_ar1$time_10s_step <- round(route_ar1$time_in_phase_sec / 10)
-  route_ar1$PhaseID <- factor(route_ar1$PhaseID, levels = CORE_PHASES)
-  step_key <- paste(route_ar1$ParticipantID, route_ar1$PhaseID, route_ar1$time_10s_step)
-  if (anyDuplicated(step_key)) stop("Temporal AR(1): ", sum(duplicated(step_key)),
-    " duplicate participant/phase/10-s steps; fix the epoch grid upstream instead of dropping rows.")
-  F10 <- "lme(wpz__%s ~ PhaseID * time_min, random = ~1 | ParticipantID, correlation = corAR1(~ time_10s_step | ParticipantID/PhaseID)); reference PhaseID = BikeU"
-  F60 <- "lme(mean wpz__%s per 60-s epoch ~ PhaseID * time_min, random = ~1 | ParticipantID, correlation = corAR1(~ time_60s_step | ParticipantID/PhaseID)); reference PhaseID = BikeU"
-
-  for (outc in sensor_outcomes) {
-    zc <- paste0("wpz__", outc)
-    needed <- c("ParticipantID", "PhaseID", "time_min", "time_10s_step", zc)
-    keep <- complete.cases(route_ar1[, needed, drop = FALSE])
-    n_na_excluded <- sum(!keep)
-    d_ts <- route_ar1[keep, needed, drop = FALSE]
-    d_ts$outcome_z <- d_ts[[zc]]
-    d_ts <- d_ts[order(d_ts$ParticipantID, d_ts$PhaseID, d_ts$time_10s_step), ]
-    na_note <- sprintf("NA epochs excluded: %d of %d", n_na_excluded, nrow(route_ar1))
-    n_pid <- length(unique(d_ts$ParticipantID))
-    if (!model_data_ok(d_ts, "outcome_z", 100, 8)) {
-      model_audit[[length(model_audit) + 1]] <- audit_row("Temporal_AR1", "Primary_10s_matched_8min", outc, "PhaseID*time_min",
-        "NOT_FIT_INSUFFICIENT_DATA", nrow(d_ts), n_pid, warn = paste("Insufficient time-series rows;", na_note))
-      next
-    }
-    fr <- fit_ar1_with_fallback(d_ts, "time_10s_step")
-    all_terms <- colnames(model.matrix(~ PhaseID * time_min, data = d_ts))[-1]
-
-    # Sensitivity: 60-s epoch means (6 x 10-s epochs); a longer window lowers the near-unit lag-1 autocorrelation at 10 s
-    # while leaving 8 points per participant-phase.
-    d_60 <- d_ts
-    d_60$time_60s_step <- floor(d_60$time_10s_step / 6)
-    d_60 <- aggregate(cbind(outcome_z, time_min) ~ ParticipantID + PhaseID + time_60s_step, data = d_60, FUN = mean)
-    d_60$PhaseID <- factor(d_60$PhaseID, levels = CORE_PHASES)
-    d_60 <- d_60[order(d_60$ParticipantID, d_60$PhaseID, d_60$time_60s_step), ]
-    fr60 <- fit_ar1_with_fallback(d_60, "time_60s_step")
-    tt60 <- if (!is.null(fr60$fit)) summary(fr60$fit)$tTable
-    for (tname in all_terms) temporal_sens_list[[length(temporal_sens_list) + 1]] <- cbind(
-      ts_row(outc, tname, F60, tt60, c(Beta_60s = "Value", SE_60s = "Std.Error", p_value_60s = "p-value")),
-      AR1_phi_60s = ar1_rho(fr60$fit), Fit_Method_60s = fr60$method, N_epochs_60s = nrow(d_60), stringsAsFactors = FALSE)
-
-    status <- if (is.null(fr$fit)) "FAILED_CONVERGENCE" else "FIT"
-    model_audit[[length(model_audit) + 1]] <- audit_row("Temporal_AR1", "Primary_10s_matched_8min", outc, "PhaseID*time_min", status,
-      nrow(d_ts), n_pid, warn = if (status == "FIT") paste0(na_note, "; fit method: ", fr$method) else na_note,
-      err = if (status == "FIT") "" else "AR(1) model failed to converge (optim, nlminb and optim fallbacks)")
-    tt_ar1 <- if (status == "FIT") summary(fr$fit)$tTable
-    terms <- if (status == "FIT") setdiff(rownames(tt_ar1), "(Intercept)") else all_terms
-    for (tname in terms) temporal_results_list[[length(temporal_results_list) + 1]] <- cbind(
-      ts_row(outc, tname, F10, tt_ar1, c(Beta = "Value", SE = "Std.Error", t_stat = "t-value", df = "DF", p_value = "p-value"),
-             Normalization = "Within-Person Z-score", Duration = "Matched_start_8min"),
-      AR1_phi = ar1_rho(fr$fit), N_epochs = nrow(d_ts), N_participants = n_pid, Fit_Method = fr$method, Status = status, stringsAsFactors = FALSE)
-  }
-  temporal_table <- safe_rbind(temporal_results_list)
-  # BH-FDR family = one Term across all 26 planned sensor outcomes, converged or not (Benjamini & Hochberg 1995).
-  TEMPORAL_FAMILY_N <- length(sensor_outcomes)
-  if (nrow(temporal_table) > 0) {
-    temporal_table$Family_Size <- TEMPORAL_FAMILY_N
-    temporal_table$q_FDR <- ave(temporal_table$p_value, temporal_table$Term, FUN = function(p) p.adjust(p, method = "BH", n = TEMPORAL_FAMILY_N))
-    temporal_table$FDR_significant <- !is.na(temporal_table$q_FDR) & temporal_table$q_FDR < 0.05
-    temporal_table$Stability_Flag <- ifelse(temporal_table$Status != "FIT", "not converged",
-      ifelse(!is.na(temporal_table$AR1_phi) & temporal_table$AR1_phi > 0.95, "rho > 0.95, interpret cautiously", ""))
-  }
-  temporal_sens_table <- safe_rbind(temporal_sens_list)
-  if (nrow(temporal_sens_table) > 0) {
-    temporal_sens_table$Family_Size <- TEMPORAL_FAMILY_N
-    temporal_sens_table$q_FDR_60s <- ave(temporal_sens_table$p_value_60s, temporal_sens_table$Term, FUN = function(p) p.adjust(p, method = "BH", n = TEMPORAL_FAMILY_N))
-    temporal_sens_table$FDR_significant_60s <- !is.na(temporal_sens_table$q_FDR_60s) & temporal_sens_table$q_FDR_60s < 0.05
-    prim <- temporal_table[, c("Outcome", "Term", "Beta", "p_value", "q_FDR", "FDR_significant", "AR1_phi", "Fit_Method", "Stability_Flag")]
-    temporal_sens_table <- merge(prim, temporal_sens_table, by = c("Outcome", "Term"), all = TRUE, sort = FALSE)
-    temporal_sens_table$Same_Sign_As_Primary <- sign(temporal_sens_table$Beta) == sign(temporal_sens_table$Beta_60s)
-    temporal_sens_table$Primary_Holds_In_60s <- temporal_sens_table$FDR_significant %in% TRUE &
-      temporal_sens_table$FDR_significant_60s %in% TRUE & temporal_sens_table$Same_Sign_As_Primary %in% TRUE
-  }
+  temporal_fit <- h1_h3_fit_temporal_ar1(route, CONDITIONS, sensor_outcomes, model_audit)
+  temporal_table <- temporal_fit$temporal_table
+  temporal_sens_table <- temporal_fit$temporal_sens_table
+  model_audit <- temporal_fit$model_audit
 
   # 5. H2: within-person rmcorr (Bakdash & Marusich 2017, Front Psychol 8:456) across the 4 core phases ----------------
   # rmcorr = lm(psych ~ factor(ParticipantID) + physio): one common within-person slope, df = N - k - 1. Inputs are
-  # participant-phase means (ln(x) already applied to the HRV outcomes). 4 questionnaires x 26 outcomes, one BH-FDR family.
+  # participant-phase means (ln(x) already applied to the natural-log outcomes). 4 questionnaires x 26 outcomes, one BH-FDR family.
   cat("[3/6] Evaluating H2 psychophysiological concurrence models...\n")
   h2_physio_outcomes <- intersect(sensor_outcomes, names(df))
   h2_psych_outcomes  <- intersect(psych_outcomes, names(df))
@@ -481,7 +713,16 @@ h1_to_h3_pipeline_run <- function() {
                                                           warn = "Fewer than 20 bouts or 8 participants")
       next
     }
+<<<<<<<< HEAD:_archive/archive/scripts/_archive/H1_H3_core_before_formula_wiring_20261015_20261017_140146.R
     f_rm <- lm(psych ~ ParticipantID + phys, data = x)
+========
+    h2_call <- H2_rmcorr
+    h2_call[[2L]] <- do.call("substitute", list(h2_call[[2L]], list(
+      psychological = as.name("psych"), physiological = as.name("phys")
+    )))
+    h2_call$data <- quote(x)
+    f_rm <- eval(h2_call)
+>>>>>>>> 935dd64e099e80dbb9d1f58a4c53b5d2b3adfc96:scripts/statistical_analysis/library/H1_H3_core.R
     cf <- summary(f_rm)$coefficients["phys", ]
     dfr <- f_rm$df.residual
     t_val <- cf[["t value"]]
@@ -560,12 +801,12 @@ h1_to_h3_pipeline_run <- function() {
   phase_lmm_out$Outcome_Label   <- label_of(phase_lmm_out$Outcome)
   phase_lmm_out$Outcome_Meaning <- meaning_of(phase_lmm_out$Outcome)
   phase_lmm_out$Units           <- units_of(phase_lmm_out$Outcome)
-  phase_lmm_out$How_To_Read <- sprintf("Beta > 0: %s higher in %s than %s; < 0: lower. Beta units: Primary rows = Units (ln(Units) for the 7 HRV outcomes, notebook transform); Sensitivity_WPZ rows = within-person SD. Reference_Mean_raw/Comparison_Mean_raw and SMD_paired_Bonett use the same analysis units (ln for HRV).",
+  phase_lmm_out$How_To_Read <- sprintf("Beta > 0: %s higher in %s than %s; < 0: lower. Beta_CI95_* = 95%% CI on the LMM contrast (emmeans); SMD_CI95_* = Bonett 95%% CI on paired SMD. Beta units: Primary rows = Units (ln(Units) for the 7 HRV outcomes and EDA tonic, notebook transform); Sensitivity_WPZ rows = within-person SD.",
                                  phase_lmm_out$Outcome, phase_lmm_out$Comparison_PhaseID, phase_lmm_out$Reference_PhaseID)
   phase_lmm_out$Method_Citation <- paste(CITE_WPZ, CITE_LMM, CITE_EMM, CITE_FDR, CITE_SMD, sep = " | ")
   phase_lmm_cols <- c("Hypothesis", "Sub_Hypothesis", "Contrast", "Reference_PhaseID", "Comparison_PhaseID",
                 "Outcome", "Outcome_Label", "Units", "Outcome_Meaning", "Direction", "How_To_Read",
-                "Beta", "SE", "df", "t_ratio", "p_value", "q_FDR", "FDR_significant", "Family_Size",
+                "Beta", "SE", "df", "Beta_CI95_low", "Beta_CI95_high", "t_ratio", "p_value", "q_FDR", "FDR_significant", "Family_Size",
                 "SMD_paired_Bonett", "SMD_CI95_low", "SMD_CI95_high",
                 "Reference_Mean_raw", "Comparison_Mean_raw", "N_Participants",
                 "Model_Formula", "Interaction_Test", "Normalization", "Method_Citation")
@@ -592,12 +833,18 @@ h1_to_h3_pipeline_run <- function() {
   h2_clean_table <- h2_table[, intersect(h2_cols, names(h2_table)), drop = FALSE]
   names(h2_clean_table)[names(h2_clean_table) == "Partial_r_Within"] <- "r_rmcorr"
 
-  safe_write_csv(phase_lmm_clean_table, file.path(OUT_DIR, "H1_H3_Contrasts.csv"))
-  safe_write_csv(h2_clean_table, file.path(OUT_DIR, "H2_Physio_Psycho_Concordance.csv"))
-  safe_write_csv(temporal_table, file.path(OUT_DIR, "H1_H3_Temporal_TimeSeries_AR1.csv"))
-  safe_write_csv(temporal_sens_table, file.path(OUT_DIR, "H1_H3_Temporal_AR1_Sensitivity.csv"))
+  # Per-hypothesis files: H1_/H3_ contrasts split by Hypothesis; H1 and H3 share identical temporal AR(1) shells,
+  # so the same temporal tables are written under both prefixes; H2 is its own file.
+  for (hyp in c("H1", "H3")) {
+    safe_write_csv(phase_lmm_clean_table[phase_lmm_clean_table$Hypothesis == hyp, , drop = FALSE], pa_out_path(hyp, "Contrasts.csv"))
+    safe_write_csv(temporal_table, pa_out_path(hyp, "Temporal_TimeSeries_AR1.csv"))
+    sens_path <- pa_out_path(hyp, "Temporal_AR1_Sensitivity.csv")
+    safe_write_csv(temporal_sens_table, sens_path)
+    write_temporal_sensitivity_fdr_subset(temporal_sens_table, sub("\\.csv$", "", sens_path))
+  }
+  safe_write_csv(h2_clean_table, pa_out_path("H2", "Physio_Psycho_Concordance.csv"))
   model_audit_df <- safe_rbind(model_audit)
-  safe_write_csv(model_audit_df, file.path(OUT_DIR, "Model_Audit.csv"))
+  safe_write_csv(model_audit_df, pa_out_path("H1_to_H3", "Model_Audit.csv"))
 
   # 8. Forest Plots -------------------------------------------------------------
   if (MAKE_FIGURES) {
@@ -616,10 +863,10 @@ h1_to_h3_pipeline_run <- function() {
         geom_text(aes(label = Label), vjust = -0.7, size = 2.4) +
         facet_wrap(~ Panel, ncol = 4, scales = "free_x") +
         labs(title = "H1 and H3: paired standardized mean difference per PhaseID contrast",
-             subtitle = "Positive = higher in the second PhaseID. Bonett (2008) 95% CI on participant-phase means (ln for HRV). * BH-FDR q < 0.05 from primary lme(outcome ~ PhaseID).",
+             subtitle = "Positive = higher in the second PhaseID. Bonett (2008) 95% CI on participant-phase means (ln for HRV and EDA tonic). * BH-FDR q < 0.05 from primary lme(outcome ~ PhaseID).",
              x = "Paired standardized mean difference (Bonett 2008)", y = "") +
         theme_minimal(base_size = 9)
-      ggsave(file.path(OUT_DIR, "Statistical_Results_ForestPlot.jpg"), plot = p_forest,
+      ggsave(pa_out_path("H1_to_H3", "Statistical_Results_ForestPlot.jpg"), plot = p_forest,
              width = 16, height = 10, dpi = 300, device = "jpeg")
     }
 
@@ -645,10 +892,14 @@ h1_to_h3_pipeline_run <- function() {
     Missing_Declared_Outcomes = paste(setdiff(all_outcomes, names(df)), collapse = ","),
     Common_Duration_Min_Sec = if (any(is.finite(route$matched_cap_sec))) min(route$matched_cap_sec, na.rm = TRUE) else NA_real_,
     Common_Duration_Max_Sec = if (any(is.finite(route$matched_cap_sec))) max(route$matched_cap_sec, na.rm = TRUE) else NA_real_,
-    Primary_Sensor_Model = "lme(<outcome> ~ PhaseID, random = ~1 | ParticipantID), REML, participant-phase means in analysis units (notebook transform: ln(x) for 7 HRV outcomes), matched first 8 min; 26 physiological outcomes",
-    Sensitivity_Sensor_Model = "Same model on within-person z-scores (wpz__, computed after the notebook transform); separate BH-FDR family (Family_Set = Sensitivity_WPZ)",
+    Primary_Sensor_Model = "lme(<outcome> ~ PhaseID, random = ~1 | ParticipantID), REML, participant-phase means in analysis units (notebook transform: ln(x) for 7 HRV outcomes and EDA tonic), matched first 8 min; 26 physiological outcomes",
+    Sensitivity_Sensor_Model = "Same model on within-person z-scores (within_person_z__, computed after the notebook transform); separate BH-FDR family (Family_Set = Sensitivity_WPZ)",
     Matched_Duration_Sensitivity = "Participant-specific common duration across BikeU/BikeG/WalkU/WalkG, capped at 8 minutes from phase start",
+<<<<<<<< HEAD:_archive/archive/scripts/_archive/H1_H3_core_before_formula_wiring_20261015_20261017_140146.R
     Normalization = "Primary: analysis units (scripts/Normalization_H1toH4_physio.csv transforms) + participant random intercept. Sensitivity and temporal AR(1): within-person z over the 4 core routes (after transform); no Indoor/Tram reference",
+========
+    Normalization = "Primary: analysis units (output/statistical_analysis/Normalization & Parameter Screening/Normalization/Normalization_H1toH4_all_parameters.csv transforms) + participant random intercept. Sensitivity and temporal AR(1): within-person z over the 4 core routes (after transform); no Indoor/Tram reference",
+>>>>>>>> 935dd64e099e80dbb9d1f58a4c53b5d2b3adfc96:scripts/statistical_analysis/library/H1_H3_core.R
     H2_Method = "Within-person rmcorr across 4 core phases (Bakdash & Marusich 2017); 4 questionnaires x 26 physiological outcomes = 104 pairs; one BH-FDR family",
     Temporal_Method = "10-s AR(1) LMM on within-person z outcomes, matched first 8 min",
     Multiple_Testing = "Benjamini-Hochberg FDR (q < 0.05) within declared hypothesis families",
@@ -664,11 +915,265 @@ h1_to_h3_pipeline_run <- function() {
     Failed_or_Unstable_Models = sum(grepl("NOT_FIT|FAILED_CONVERGENCE|UNSTABLE", model_audit_df$Status)),
     stringsAsFactors = FALSE
   )
-  write.csv(manifest, file.path(OUT_DIR, "Run_Manifest.csv"), row.names = FALSE, na = "")
+  write.csv(manifest, pa_out_path("H1_to_H3", "Run_Manifest.csv"), row.names = FALSE, na = "")
 
   cat("   H1 and H3 contrasts:", nrow(phase_lmm_clean_table), "rows | H2 pairs:", nrow(h2_clean_table), "rows\n")
   cat(sprintf("   Model Audit Logged: %d total attempted models (%d fits, %d non-fits/skips logged)\n",
               nrow(model_audit_df), sum(model_audit_df$Status == "FIT"),
               sum(model_audit_df$Status != "FIT")))
-  cat("\nSUCCESS: H1 and H3 pipeline finished (H2 included). H4: scripts/H4_multivariate.R.\n")
+  cat("\nSUCCESS: H1 and H3 pipeline finished (H2 included). H4: scripts/statistical_analysis/H4_timeseries.R.\n")
+}
+
+tag_hypothesis_rows <- function(result_table, hypothesis_id) {
+  if (nrow(result_table) == 0) return(result_table)
+  result_table$Hypothesis <- hypothesis_id
+  result_table$Analysis_Entry <- paste0(hypothesis_id, "_time_series")
+  result_table
+}
+
+time_series_output_path <- function(filename) {
+  file.path(OUT_DIR, paste0(time_series_run_spec$hypothesis_label, "_", filename))
+}
+
+h1_h3_time_series_dispatch_run <- function() {
+  if (!exists("time_series_run_spec", envir = .GlobalEnv, inherits = FALSE)) {
+    stop("time_series_run_spec must be set before h1_h3_time_series_dispatch_run().", call. = FALSE)
+  }
+  stopifnot(is.character(time_series_run_spec$hypothesis_label), length(time_series_run_spec$hypothesis_label) == 1L)
+  hypothesis_id <- match.arg(time_series_run_spec$hypothesis_label, c("H1", "H2", "H3"))
+  for (model_name in c("TimeSeries_Temporal_AR1_10s_LMM", "TimeSeries_Temporal_AR1_60s_LMM")) {
+    if (!exists(model_name, envir = .GlobalEnv, inherits = FALSE)) {
+      stop(model_name, " must be defined in the meeting script before dispatch.", call. = FALSE)
+    }
+  }
+  if (!exists("TIME_SERIES_SCRIPT_PATH", envir = .GlobalEnv, inherits = FALSE)) {
+    assign("TIME_SERIES_SCRIPT_PATH", file.path(PROJECT_ROOT, "scripts/statistical_analysis/H1_H3_timeseries.R"), envir = .GlobalEnv)
+  }
+
+  n_outcomes <- length(study_wide_spec$physiological_outcome_names)
+  cat("==============================================================================\n")
+  cat(sprintf("Running %s time series: outcome-only 10 s AR(1) LMMs (engine: H1_H3_core.R)\n", hypothesis_id))
+  cat("==============================================================================\n")
+  cat(sprintf("Participants (%d): %s\n", length(study_wide_spec$participants), paste(study_wide_spec$participants, collapse = ", ")))
+  cat(sprintf("Outcomes (%d): physiological 10 s series (within-person z); no environmental predictors\n\n", n_outcomes))
+
+  cat("[1/3] Loading matched 8-min epoch data...\n")
+  route_data_bundle <- h1_h3_load_route_data()
+  input_data <- route_data_bundle$df
+  route_data <- route_data_bundle$route
+  conditions <- route_data_bundle$CONDITIONS
+  condition_name <- route_data_bundle$cname
+  condition_data <- route_data_bundle$d_cond
+  physiological_outcomes <- route_data_bundle$sensor_outcomes
+  psychological_outcomes <- route_data_bundle$psych_outcomes
+  model_audit <- list()
+
+  cat("[2/3] Fitting 10 s / 60 s AR(1) temporal LMMs...\n")
+  temporal_fit <- h1_h3_fit_temporal_ar1(route_data, conditions, physiological_outcomes, model_audit)
+  temporal_table <- tag_hypothesis_rows(temporal_fit$temporal_table, hypothesis_id)
+  temporal_sens_table <- tag_hypothesis_rows(temporal_fit$temporal_sens_table, hypothesis_id)
+  model_audit <- temporal_fit$model_audit
+
+  secondary_table <- NULL
+  if (exists("time_series_secondary_fit", envir = .GlobalEnv, inherits = FALSE)) {
+    cat("[2b/3] Running hypothesis-specific secondary fit from meeting script...\n")
+    secondary_result <- get("time_series_secondary_fit", envir = .GlobalEnv)(list(
+      hypothesis = hypothesis_id, input_data = input_data, condition_data = condition_data, condition_name = condition_name,
+      physiological_outcomes = physiological_outcomes, psychological_outcomes = psychological_outcomes,
+      model_audit = model_audit, OUT_DIR = OUT_DIR
+    ))
+    if (is.list(secondary_result)) {
+      if (!is.null(secondary_result$model_audit)) model_audit <- secondary_result$model_audit
+      secondary_table <- secondary_result$table
+    }
+  }
+
+  cat("[3/3] Writing CSV outputs...\n")
+  safe_write_csv(temporal_table, time_series_output_path("Temporal_TimeSeries_AR1_10s.csv"))
+  safe_write_csv(temporal_sens_table, time_series_output_path("Temporal_AR1_Sensitivity_60s.csv"))
+  if (!is.null(secondary_table) && nrow(secondary_table) > 0) {
+    secondary_csv_name <- get0("TIME_SERIES_SECONDARY_CSV", envir = .GlobalEnv, ifnotfound = "Secondary_Fit.csv")
+    safe_write_csv(secondary_table, time_series_output_path(secondary_csv_name))
+  }
+  model_audit_df <- safe_rbind(model_audit)
+  safe_write_csv(model_audit_df, time_series_output_path("Model_Audit.csv"))
+
+  manifest <- data.frame(
+    Script = normalizePath(TIME_SERIES_SCRIPT_PATH, winslash = "/", mustWork = FALSE),
+    Engine = "scripts/statistical_analysis/library/H1_H3_core.R",
+    Hypothesis = hypothesis_id,
+    Input_File = RAW_PATH,
+    Output_Directory = OUT_DIR,
+    N_Physiological_Outcomes = length(physiological_outcomes),
+    N_Temporal_Rows = nrow(temporal_table),
+    N_Secondary_Rows = if (is.null(secondary_table)) 0L else nrow(secondary_table),
+    Completed_At = format(Sys.time(), "%Y-%m-%d %H:%M:%S"),
+    stringsAsFactors = FALSE
+  )
+  manifest_extra <- get0("TIME_SERIES_MANIFEST_EXTRA", envir = .GlobalEnv, ifnotfound = NULL)
+  if (!is.null(manifest_extra)) {
+    manifest <- cbind(manifest, as.data.frame(as.list(manifest_extra), stringsAsFactors = FALSE))
+  }
+  write.csv(manifest, time_series_output_path("Run_Manifest.csv"), row.names = FALSE, na = "")
+
+  cat(sprintf("\nSUCCESS: %s time series finished. Outputs: %s\n", hypothesis_id, OUT_DIR))
+  invisible(list(temporal_table = temporal_table, temporal_sens_table = temporal_sens_table, secondary = secondary_table))
+}
+
+h1_h3_phase_sum_design <- function(phase) {
+  phase <- factor(as.character(phase), levels = c("WalkG", "WalkU", "BikeG", "BikeU"))
+  if (anyNA(phase)) stop("Unknown or missing PhaseID for sum-to-zero contrasts")
+  design <- stats::model.matrix(~ phase, contrasts.arg = list(phase = stats::contr.sum(4L)))[, -1L, drop = FALSE]
+  colnames(design) <- c("PhaseSumWalkG", "PhaseSumWalkU", "PhaseSumBikeG")
+  design
+}
+
+h1_h3_install_time_series_globals <- function() {
+  assign("TIME_SERIES_PHASE_SUM_COLUMNS", c("PhaseSumWalkG", "PhaseSumWalkU", "PhaseSumBikeG"), envir = .GlobalEnv)
+  if (!exists("paper3_phase_sum_design", envir = .GlobalEnv, inherits = FALSE)) {
+    assign("paper3_phase_sum_design", h1_h3_phase_sum_design, envir = .GlobalEnv)
+  }
+}
+
+h1_h3_clear_time_series_secondary_hook <- function() {
+  if (exists("time_series_secondary_fit", envir = .GlobalEnv, inherits = FALSE)) {
+    rm("time_series_secondary_fit", envir = .GlobalEnv)
+  }
+}
+
+h1_h3_assign_time_series_active_models <- function(hypothesis_id) {
+  hypothesis_id <- match.arg(hypothesis_id, c("H1", "H2", "H3"))
+  assign("TimeSeries_Temporal_AR1_10s_LMM", get(paste0(hypothesis_id, "_TimeSeries_Temporal_AR1_10s_LMM"), envir = .GlobalEnv), envir = .GlobalEnv)
+  assign("TimeSeries_Temporal_AR1_60s_LMM", get(paste0(hypothesis_id, "_TimeSeries_Temporal_AR1_60s_LMM"), envir = .GlobalEnv), envir = .GlobalEnv)
+}
+
+h1_h3_time_series_secondary_rmcorr <- function(context) {
+  model_audit <- context$model_audit
+  condition_name <- context$condition_name
+  condition_data <- context$condition_data
+  input_data <- context$input_data
+  physiological_outcomes <- context$physiological_outcomes
+  psychological_outcomes <- context$psychological_outcomes
+  h2_physio_outcomes <- intersect(physiological_outcomes, names(input_data))
+  h2_psych_outcomes <- intersect(psychological_outcomes, names(input_data))
+  h2_results_list <- list()
+  participant_phase_source <- condition_data[c("ParticipantID", "PhaseID", h2_psych_outcomes, h2_physio_outcomes)]
+  participant_phase_means <- aggregate(participant_phase_source[c(h2_psych_outcomes, h2_physio_outcomes)], by = participant_phase_source[c("ParticipantID", "PhaseID")], FUN = mean_na)
+  for (psychological_measure in h2_psych_outcomes) for (physiological_measure in h2_physio_outcomes) {
+    pair_data <- participant_phase_means[complete.cases(participant_phase_means[c(psychological_measure, physiological_measure)]), c("ParticipantID", psychological_measure, physiological_measure)]
+    pair_data <- pair_data[pair_data$ParticipantID %in% names(which(table(pair_data$ParticipantID) >= 2)), , drop = FALSE]
+    names(pair_data) <- c("ParticipantID", "psychological_value", "physiological_value")
+    pair_data$ParticipantID <- droplevels(factor(pair_data$ParticipantID))
+    n_participants <- nlevels(pair_data$ParticipantID)
+    if (nrow(pair_data) < 20 || n_participants < 8 || sd(pair_data$physiological_value) == 0) {
+      model_audit[[length(model_audit) + 1]] <- audit_row("H2_rmcorr", condition_name, psychological_measure, physiological_measure, "NOT_FIT_INSUFFICIENT_DATA", nrow(pair_data), n_participants,
+        warn = "Fewer than 20 bouts or 8 participants")
+      next
+    }
+    h2_call <- H2_rmcorr
+    h2_call[[2L]] <- do.call("substitute", list(h2_call[[2L]], list(
+      psychological = as.name("psychological_value"),
+      physiological = as.name("physiological_value")
+    )))
+    h2_call$data <- quote(pair_data)
+    rmcorr_fit <- eval(h2_call)
+    physiological_coefficients <- summary(rmcorr_fit)$coefficients["physiological_value", ]
+    residual_df <- rmcorr_fit$df.residual
+    t_value <- physiological_coefficients[["t value"]]
+    rmcorr_r <- sign(t_value) * sqrt(t_value^2 / (t_value^2 + residual_df))
+    fisher_z_ci <- atanh(rmcorr_r) + c(-1, 1) * qnorm(0.975) / sqrt(residual_df - 1)
+    model_audit[[length(model_audit) + 1]] <- audit_row("H2_rmcorr", condition_name, psychological_measure, physiological_measure, "FIT", nrow(pair_data), n_participants)
+    h2_results_list[[length(h2_results_list) + 1]] <- data.frame(
+      Hypothesis = "H2", Analysis_Entry = "H2_time_series",
+      Psychological_Measure = psychological_measure, Physiological_Measure = physiological_measure,
+      Model_Formula = sprintf("rmcorr: lm(%s ~ ParticipantID + %s), Bakdash & Marusich 2017", psychological_measure, physiological_measure),
+      Beta = physiological_coefficients[["Estimate"]], SE = physiological_coefficients[["Std. Error"]], CI95_low = tanh(fisher_z_ci[1]), CI95_high = tanh(fisher_z_ci[2]),
+      t_stat = t_value, df = residual_df, p_value = physiological_coefficients[["Pr(>|t|)"]], Partial_r_Within = rmcorr_r,
+      N_PhaseBouts = nrow(pair_data), N_Participants = n_participants, stringsAsFactors = FALSE)
+  }
+  h2_table <- safe_rbind(h2_results_list)
+  if (nrow(h2_table) > 0) {
+    h2_table$q_FDR <- p.adjust(h2_table$p_value, method = "BH")
+    h2_table$FDR_significant <- !is.na(h2_table$q_FDR) & h2_table$q_FDR < 0.05
+  }
+  list(table = h2_table, model_audit = model_audit)
+}
+
+h1_h3_prepare_time_series_hypothesis <- function(hypothesis_id) {
+  hypothesis_id <- match.arg(hypothesis_id, c("H1", "H2", "H3"))
+  h1_h3_clear_time_series_secondary_hook()
+  h1_h3_assign_time_series_active_models(hypothesis_id)
+  assign("time_series_run_spec", list(hypothesis_label = hypothesis_id), envir = .GlobalEnv)
+  manifest_extra <- list(
+    PhaseID_Coding = "contr.sum(4): PhaseSumWalkG, PhaseSumWalkU, PhaseSumBikeG; BikeU implicit"
+  )
+  if (hypothesis_id == "H1") {
+    manifest_extra$Planned_Phase_Contrasts <- paste(h1_hypothesis_spec$contrasts$Contrast, collapse = ", ")
+  } else if (hypothesis_id == "H3") {
+    manifest_extra$Planned_Phase_Contrasts <- paste(h3_hypothesis_spec$contrasts$Contrast, collapse = ", ")
+  }
+  assign("TIME_SERIES_MANIFEST_EXTRA", manifest_extra, envir = .GlobalEnv)
+  if (hypothesis_id == "H2") {
+    assign("TIME_SERIES_SECONDARY_CSV", "Physio_Psycho_Concordance.csv", envir = .GlobalEnv)
+    assign("time_series_secondary_fit", h1_h3_time_series_secondary_rmcorr, envir = .GlobalEnv)
+  }
+}
+
+h1_h3_run_one_time_series <- function(hypothesis_id) {
+  h1_h3_prepare_time_series_hypothesis(hypothesis_id)
+  h1_h3_time_series_dispatch_run()
+}
+
+h1_h3_run_all_time_series <- function(hypotheses = c("H1", "H2", "H3")) {
+  cat("==============================================================================\n")
+  cat("Running H1–H3 time series (outcome-only 10 s AR(1); engine per hypothesis)\n")
+  cat("==============================================================================\n")
+  cat(sprintf("Participants (%d): %s\n", length(study_wide_spec$participants), paste(study_wide_spec$participants, collapse = ", ")))
+  cat(sprintf("Outcomes     (%d): 13 empatica + 13 eyetracker (physiological vector)\n", length(study_wide_spec$physiological_outcome_names)))
+  cat(sprintf("H1 contrasts: %s | H3 contrasts: %s\n\n",
+              paste(h1_hypothesis_spec$contrasts$Contrast, collapse = ", "),
+              paste(h3_hypothesis_spec$contrasts$Contrast, collapse = ", ")))
+  for (hypothesis_id in hypotheses) {
+    cat(sprintf("--- %s ---\n", hypothesis_id))
+    h1_h3_run_one_time_series(hypothesis_id)
+  }
+  cat("\nSUCCESS: H1–H3 time series dispatch finished.\n")
+}
+
+h1_h3_time_series_dispatch_from_env <- function() {
+  time_series_hypothesis_arg <- Sys.getenv("PAPER3_TIME_SERIES_HYPOTHESIS", "")
+  if (nzchar(time_series_hypothesis_arg)) h1_h3_run_one_time_series(time_series_hypothesis_arg) else h1_h3_run_all_time_series()
+}
+
+h1_h3_time_series_autostart <- function(run_all_fn, run_one_fn) {
+  stopifnot(is.function(run_all_fn), is.function(run_one_fn))
+  time_series_dispatch_from_cli_or_ide <- function() {
+    time_series_hypothesis_arg <- Sys.getenv("PAPER3_TIME_SERIES_HYPOTHESIS", "")
+    if (nzchar(time_series_hypothesis_arg)) run_one_fn(time_series_hypothesis_arg) else run_all_fn()
+  }
+  if (interactive() && sys.nframe() > 0L) {
+    on.exit({
+      .time_series_autorun_lock <- ".__paper3_h1_h3_time_series_autorun_lock__"
+      if (!exists(.time_series_autorun_lock, envir = .GlobalEnv, inherits = FALSE)) {
+        assign(.time_series_autorun_lock, TRUE, envir = .GlobalEnv)
+        on.exit(rm(list = .time_series_autorun_lock, envir = .GlobalEnv), add = TRUE)
+        time_series_hypothesis_arg <- Sys.getenv("PAPER3_TIME_SERIES_HYPOTHESIS", "")
+        if (nzchar(time_series_hypothesis_arg)) {
+          run_one_fn(time_series_hypothesis_arg)
+        } else {
+          run_all_fn()
+        }
+      }
+    }, add = TRUE)
+  }
+  if (sys.nframe() == 0L || interactive()) {
+    if (!(interactive() && sys.nframe() > 0L)) {
+      .time_series_autorun_lock <- ".__paper3_h1_h3_time_series_autorun_lock__"
+      if (!exists(.time_series_autorun_lock, envir = .GlobalEnv, inherits = FALSE)) {
+        assign(.time_series_autorun_lock, TRUE, envir = .GlobalEnv)
+        on.exit(rm(list = .time_series_autorun_lock, envir = .GlobalEnv), add = TRUE)
+        time_series_dispatch_from_cli_or_ide()
+      }
+    }
+  }
 }
