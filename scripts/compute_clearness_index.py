@@ -31,7 +31,7 @@ import pandas as pd
 # CONFIGURATION & PATHS
 # ==============================================================================
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-INPUT_CSV = PROJECT_ROOT / "output" / "merged_all_11participants.csv"
+INPUT_CSV = PROJECT_ROOT.parent / "Paper3_Github" / "output" / "merged_all_11participants.csv"
 OUT_DIR = PROJECT_ROOT / "output" / "Clearness Index"
 OUT_CI_FULL = OUT_DIR / "merged_all_11participants_CI.csv"
 OUT_CI_8MIN = OUT_DIR / "merged_all_11participants_8min_CI.csv"

@@ -1,11 +1,12 @@
 """
 match_mapillary_gvi.py
 ======================
-Spatially match computed Mapillary 360 GVI metrics to participant trajectories.
+Estimate route greenery from Mapillary imagery matched to participant trajectories.
+Image capture dates describe the source imagery, not the experiment date.
 
 Reads:
   - GVI_Xception_Mapillary_360_metrics.csv (static route point GVI calculations)
-  - merged_all_11participants_8min.csv (1-second participant physiological and environmental data)
+  - merged_all_11participants_8min.csv (10-second participant data)
   - merged_all_11participants.csv (full participant dataset)
 
 Outputs:
@@ -13,9 +14,11 @@ Outputs:
   - merged_all_11participants_GVI.csv
 
 Spatial matching rule:
-  For each 1-second participant GPS location (ucm_GPS_lat, ucm_GPS_lon) in a given phase,
+  For each outdoor participant GPS location (ucm_GPS_lat, ucm_GPS_lon) in a given phase,
   find the nearest Mapillary route point within the phase.
   Record the nearest point GVI, tree%, grass%, plant%, and distance.
+  Tram uses elapsed full-phase time mapped linearly to ordered route stations;
+  its distance is station-rounding offset, not measured GPS distance.
   Also append phase-level summary means for GVI, tree, grass, and plant.
 """
 
@@ -26,18 +29,23 @@ import pandas as pd
 # ── CONFIG ─────────────────────────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 OUTPUT_DIR = PROJECT_ROOT / "output"
-MERGED_8MIN_PATH = OUTPUT_DIR / "merged_all_11participants_8min.csv"
-MERGED_FULL_PATH = OUTPUT_DIR / "merged_all_11participants.csv"
+MERGED_8MIN_PATH = PROJECT_ROOT.parent / "Paper3_Github" / "output" / "merged_all_11participants_8min.csv"
+MERGED_FULL_PATH = PROJECT_ROOT.parent / "Paper3_Github" / "output" / "merged_all_11participants.csv"
 MAPILLARY_PATH = OUTPUT_DIR / "GVI_output" / "GVI_Xception_Mapillary_360_metrics.csv"
 OUT_8MIN_PATH = OUTPUT_DIR / "GVI_output" / "merged_all_11participants_8min_GVI.csv"
 OUT_FULL_PATH = OUTPUT_DIR / "GVI_output" / "merged_all_11participants_GVI.csv"
 MAX_MATCH_RADIUS_M = 50.0
+TRAM_ROUTE_LENGTH_M = 2801.857975328076  # Projected Tram route geometry length; stations every 50 m.
 
 # ── LOAD ───────────────────────────────────────────────────────────────────
 def load_mapillary_metrics(path: Path) -> pd.DataFrame:
     print(f"Loading Mapillary GVI metrics from: {path}")
     df_map = pd.read_csv(path)
-    df_map = df_map.dropna(subset=['point_lat', 'point_lon', 'GVI_%']).copy()
+    required = ['PhaseID', 'PointID', 'point_lat', 'point_lon', 'GVI_%', 'Tree_%', 'Grass_%', 'Plant_%']
+    if df_map[required].isna().any().any():
+        raise ValueError('GVI metrics contain missing matching fields')
+    if df_map.duplicated(['PhaseID', 'PointID']).any():
+        raise ValueError('Select one image per route point before matching GVI')
     return df_map
 
 # ── DEFINE ─────────────────────────────────────────────────────────────────
@@ -62,8 +70,8 @@ def compute_phase_summaries(df_map: pd.DataFrame) -> pd.DataFrame:
     ).reset_index()
 
 
-def match_gvi_to_merged(merged_df: pd.DataFrame, map_df: pd.DataFrame, piv_map: pd.DataFrame, max_radius_m: float = 50.0) -> pd.DataFrame:
-    """Matches 1s GPS observations to nearest GVI points within phase."""
+def match_gvi_to_merged(merged_df: pd.DataFrame, map_df: pd.DataFrame, piv_map: pd.DataFrame, max_radius_m: float = 50.0, tram_anchors=None) -> pd.DataFrame:
+    """Match outdoor GPS points and estimate Tram stations from full-phase elapsed time."""
     df = merged_df.copy()
 
     # Remove any existing GVI columns before matching to ensure idempotency
@@ -83,6 +91,7 @@ def match_gvi_to_merged(merged_df: pd.DataFrame, map_df: pd.DataFrame, piv_map: 
     df['gvi_grass_50m'] = np.nan
     df['gvi_plant_50m'] = np.nan
     df['gvi_match_dist_m'] = np.nan
+    df['gvi_image_capture_date'] = pd.Series(pd.NA, index=df.index, dtype='string')
 
     # Pre-index mapillary points by phase
     map_by_phase = {}
@@ -94,7 +103,8 @@ def match_gvi_to_merged(merged_df: pd.DataFrame, map_df: pd.DataFrame, piv_map: 
             'tree': sub['Tree_%'].values,
             'grass': sub['Grass_%'].values,
             'plant': sub['Plant_%'].values,
-            'pid': sub['PointID'].values
+            'pid': sub['PointID'].values,
+            'dates': sub['CaptureDate'].values
         }
 
     has_gps = df['ucm_GPS_lat'].notna() & df['ucm_GPS_lon'].notna()
@@ -102,7 +112,7 @@ def match_gvi_to_merged(merged_df: pd.DataFrame, map_df: pd.DataFrame, piv_map: 
 
     matched_count = 0
     rejected_count = 0
-    for idx in df[has_gps].index:
+    for idx in df[has_gps & df['PhaseID'].ne('Tram')].index:
         phase = df.at[idx, 'PhaseID']
         if phase not in map_by_phase:
             continue
@@ -124,8 +134,30 @@ def match_gvi_to_merged(merged_df: pd.DataFrame, map_df: pd.DataFrame, piv_map: 
         df.at[idx, 'gvi_grass_50m'] = m_phase['grass'][min_idx]
         df.at[idx, 'gvi_plant_50m'] = m_phase['plant'][min_idx]
         df.at[idx, 'gvi_match_dist_m'] = min_d
+        df.at[idx, 'gvi_image_capture_date'] = m_phase['dates'][min_idx]
         if min_d <= max_radius_m:
             matched_count += 1
+
+    tram = map_df.loc[map_df.PhaseID.eq('Tram')].copy()
+    tram['station'] = tram.PointID.str.extract(r'_(\d+)$')[0].astype(int)
+    tram = tram.sort_values('station')
+    if tram.station.tolist() != list(range(1, 59)) or tram_anchors is None:
+        raise ValueError('Tram requires all 58 ordered stations and full-duration time anchors')
+    stations = np.minimum((tram.station.to_numpy() - 1) * 50.0, TRAM_ROUTE_LENGTH_M)
+    fields = ['gvi_50m', 'gvi_tree_50m', 'gvi_grass_50m', 'gvi_plant_50m']
+    values = tram[['GVI_%', 'Tree_%', 'Grass_%', 'Plant_%']].to_numpy()
+    for participant, rows in df.loc[df.PhaseID.eq('Tram')].groupby('ParticipantID'):
+        start, end = tram_anchors.loc[participant, ['min', 'max']]
+        if end <= start:
+            raise ValueError(f'Invalid full Tram duration for {participant}')
+        elapsed = (pd.to_datetime(rows.Datetime) - start).dt.total_seconds()
+        distance = np.clip(elapsed / (end - start).total_seconds(), 0, 1) * TRAM_ROUTE_LENGTH_M
+        offsets = np.abs(distance.to_numpy()[:, None] - stations)
+        nearest = offsets.argmin(axis=1)
+        df.loc[rows.index, fields] = values[nearest]
+        df.loc[rows.index, 'gvi_image_capture_date'] = tram.CaptureDate.to_numpy()[nearest]
+        df.loc[rows.index, 'gvi_match_dist_m'] = offsets[np.arange(len(rows)), nearest]
+    print(f"Tram sequential assignments: {df.loc[df.PhaseID.eq('Tram'), 'gvi_50m'].notna().sum()}")
 
     overlap_piv = [c for c in piv_map.columns if c != 'PhaseID' and c in df.columns]
     if overlap_piv:
@@ -141,14 +173,20 @@ def match_gvi_to_merged(merged_df: pd.DataFrame, map_df: pd.DataFrame, piv_map: 
 def main():
     df_map = load_mapillary_metrics(MAPILLARY_PATH)
     piv_map = compute_phase_summaries(df_map)
+    df_full = pd.read_csv(MERGED_FULL_PATH, low_memory=False)
+    tram_times = df_full.loc[df_full.PhaseID.eq('Tram'), ['ParticipantID', 'Datetime']].copy()
+    tram_times['Datetime'] = pd.to_datetime(tram_times.Datetime)
+    tram_anchors = tram_times.groupby('ParticipantID').Datetime.agg(['min', 'max'])
 
     # 1. Process 8-min dataset
     if MERGED_8MIN_PATH.exists():
         print(f"\nProcessing 8-min dataset: {MERGED_8MIN_PATH}")
         df_8min = pd.read_csv(MERGED_8MIN_PATH, low_memory=False)
-        df_8min_gvi = match_gvi_to_merged(df_8min, df_map, piv_map, MAX_MATCH_RADIUS_M)
+        df_8min_gvi = match_gvi_to_merged(df_8min, df_map, piv_map, MAX_MATCH_RADIUS_M, tram_anchors)
         OUT_8MIN_PATH.parent.mkdir(parents=True, exist_ok=True)
-        df_8min_gvi.to_csv(OUT_8MIN_PATH, index=False)
+        temporary = OUT_8MIN_PATH.with_suffix('.tmp.csv')
+        df_8min_gvi.to_csv(temporary, index=False)
+        temporary.replace(OUT_8MIN_PATH)
         print(f"Saved matched 8-min GVI dataset to: {OUT_8MIN_PATH}")
         print("\nPhase summary in 8-min data:")
         print(df_8min_gvi.groupby('PhaseID')[['gvi_50m', 'gvi_tree_50m', 'gvi_grass_50m', 'gvi_plant_50m', 'gvi_match_dist_m', 'gvi_phase_mean']].mean())
@@ -156,10 +194,11 @@ def main():
     # 2. Process Full dataset
     if MERGED_FULL_PATH.exists():
         print(f"\nProcessing Full dataset: {MERGED_FULL_PATH}")
-        df_full = pd.read_csv(MERGED_FULL_PATH, low_memory=False)
-        df_full_gvi = match_gvi_to_merged(df_full, df_map, piv_map, MAX_MATCH_RADIUS_M)
+        df_full_gvi = match_gvi_to_merged(df_full, df_map, piv_map, MAX_MATCH_RADIUS_M, tram_anchors)
         OUT_FULL_PATH.parent.mkdir(parents=True, exist_ok=True)
-        df_full_gvi.to_csv(OUT_FULL_PATH, index=False)
+        temporary = OUT_FULL_PATH.with_suffix('.tmp.csv')
+        df_full_gvi.to_csv(temporary, index=False)
+        temporary.replace(OUT_FULL_PATH)
         print(f"Saved matched Full GVI dataset to: {OUT_FULL_PATH}")
 
     print("\nGVI Matching Pipeline Complete!")

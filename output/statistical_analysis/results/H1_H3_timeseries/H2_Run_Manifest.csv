@@ -1,0 +1,2 @@
+"Script","Engine","Hypothesis","Input_File","Output_Directory","N_Physiological_Outcomes","N_Temporal_Rows","N_Secondary_Rows","Completed_At","PhaseID_Coding"
+"D:/Pranav/docker/Paper3_Final/scripts/statistical_analysis/H1_H3_timeseries.R","scripts/statistical_analysis/library/H1_H3_core.R","H2","D:/Pranav/docker/Paper3_Final/output/merged_all_11participants_8min.csv","D:/Pranav/docker/Paper3_Final/output/statistical_analysis/results/H1_H3_timeseries",26,182,104,"2026-10-27 03:00:45","contr.sum(4): PhaseSumWalkG, PhaseSumWalkU, PhaseSumBikeG; BikeU implicit"

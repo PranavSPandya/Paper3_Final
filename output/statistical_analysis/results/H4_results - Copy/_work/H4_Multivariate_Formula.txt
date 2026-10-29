@@ -1,3 +1,0 @@
-Step 3: measurement categories.
-Step 4: retain 16 candidates; specify 6 equations (primary UTCI + PM2.5); check full-design rank and VIF including MRT x sound.
-Step 5: mixed-model fitting, covariance diagnostics and inference; new equations require a new verified fit.

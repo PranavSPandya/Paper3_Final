@@ -1,0 +1,5 @@
+PhaseID,n_distance_hotspot_bins,n_bins_with_gps_data,n_1sec_gps_rows_total,max_participants_in_bin,median_1sec_rows_per_hotspot_bin,bin_width_m
+BikeG,199,199,5216,11,2.0,12.0
+BikeU,1417,1400,12482,11,1.0,3.4
+WalkG,96,96,9095,11,10.0,12.5
+WalkU,180,180,19469,11,9.0,11.5

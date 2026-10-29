@@ -1,0 +1,5 @@
+PhaseID,n_distance_bins,n_1sec_rows_in_bins,n_offers_9of11,max_spatial_cluster,max_participants_in_bin,median_rows_per_hotspot_bin,bin_width_m,spatial_radius_m
+BikeG,199,5216,152,11,11,2.0,12.0,30
+BikeU,1417,12482,49,11,11,1.0,3.4,30
+WalkG,96,9095,0,7,11,10.0,12.5,10
+WalkU,180,19469,59,10,11,9.0,11.5,10
