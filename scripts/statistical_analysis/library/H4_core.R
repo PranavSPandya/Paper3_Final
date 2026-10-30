@@ -2376,7 +2376,17 @@ h4_run_full_pipeline <- function() {
 h4_publish_outputs <- function(audit_df, step5_result, prep = NULL) {
   render_h4_faceted_flow(prep = prep)
   h4_res <- if (!is.null(step5_result$h4)) step5_result$h4 else step5_result
-  if (isTRUE(h4_res$all_failed) && h4_exploratory_inference_relaxed()) {
+  n_coef <- if (!is.null(h4_res$coef) && is.data.frame(h4_res$coef)) nrow(h4_res$coef) else 0L
+  n_success <- if (!is.null(h4_res$status) && is.data.frame(h4_res$status) && "success" %in% names(h4_res$status)) {
+    sum(h4_res$status$success %in% TRUE, na.rm = TRUE)
+  } else {
+    NA_integer_
+  }
+  skip_exploratory_publish <- h4_exploratory_inference_relaxed() && (
+    isTRUE(h4_res$all_failed) ||
+      (n_coef == 0L && !is.na(n_success) && n_success == 0L)
+  )
+  if (skip_exploratory_publish) {
     cat(
       "Exploratory subgroup: no successful H4 time-series fits; skipped final report ",
       "(fit status and skip manifest already on disk).\n",
