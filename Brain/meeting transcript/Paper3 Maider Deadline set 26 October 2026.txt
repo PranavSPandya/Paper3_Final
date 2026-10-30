@@ -1,0 +1,307 @@
+Raw conversation:
+Today meeting transcript So, I've shared, uh, in the data, like in the plots, we saw that the sheet has effect, but when we tested it, we didn't have enough data to prove it, because the same time when she disturbed, the heat stress was not there. So we didn't have sufficient data. So what can we say? 
+Something related with shade or something else? So, in the. So, in the abstract, we have this like shade was not reportable, so maybe we can say she'd sustain. 
+And you can say that, though. We cannot make a false claim. Can you say that if you don't specify spring and summer, can you say that shade sustains biking? 
+under heat stress. Because his stress is only gonna be in streaming summer, so... Hmm. 
+Nothing really changes, does it? So maybe we can say shade sustains Viking under heat stress, but was not statistically significant. Then how do you how can you report that it sustains it? 
+Hmm. Can we change it for another highlight? There you have to come up with a sentence to say no to delete a highlight. 
+Hmm. So it's a rewarding. It was a reviewer is not gonna be very picky, but if we delete one... 
+Yes. It looks very strange, you know, at this stage. Hmm. 
+So is there something you can say? That you haven't said in the other ones. Did you talk about cold stress? 
+You talk about? Isn't it true that, I mean, again, you have to see whether statistically this can be reportable, but that when in warmer days, not necessarily with heat stress, no? That there is more biking. 
+In former days. You discuss, I don't know about this. Because I, I, at some point, we had that. 
+And not only that kids didn't reduce Viking people, but if you look at warm days, So those are very hot, but also those are that are just warm. Promote biking. In other words, remove the highlight, but we may get in trouble. 
+This is, if you cannot, you really have to be careful with these things before submitting, because that's reducing a claim. And the reviewer is one of the things we have to sign, whether the novelty that is brought forward, whether it's sufficient to, and it's like you remove one, see what I mean? Hmm. 
+Yes. So, I mean, if you don't have any ideas, then remove it, but ideally we should replace it with something. Hmm. 
+Yes. I will think about this, but for the time I have it, keep it like this. And uh, there was just this, this was for rain, so rain suppresses biking. 
+And these are the same values as we have in table. Wasn't it also rain with wind? Uh, yeah. 
+We have it, combined rain and wind conditions. Oh, okay, okay. And then this analyze the proofreader wrote this. 
+Okay. And degree and degree. And this also they call 15 minute. 
+There's also, they did some. And here the symbol, less than negative. I don't know. 
+Yeah. But that's the editor, no? Hmm, he is. 
+Yep. Yeah, these things, we just follow the preference. Yes, and grammatically, it's just off at least 6 hours. 
+All right, yep. And there was this IT thing this. Because holiday are not with eye for location. 
+And yes. And for here, The wind was with only tea, not I, and that is consistent. Yep. 
+And same consistent check for the wind. And this is the same that we have in the model formula, so just updated that. And there was some format. 
+When you mark the changes distinguished, please, would you change what they told you to change? So far it's what they told you, right? Aside from the removing the bullet point. 
+Mm, yes. Okay. It's fine. 
+No money, they are very wise, so. And this, like, some tea was not coming in the formula, so I updated that. And I made consistent that rain is tea. 
+Mm And same here. The rains will be tea. And here are some format issue and the analysis which they did. 
+The comments are very easy to address, no? Yes. And some value which are already in table, so I choose that. 
+And why are these different to the originals? So, in the table, the values were different, but they were written wrong here. And they picked that up or you picked it up? 
+I picked it up. So they had it noticed? Yes. 
+Okay, so they may not like this, huh? Does it happen elsewhere, aside from here? Uh, 10, some value here, and cluster value plus 2. 
+I got only there. And here, one.99. And that's good news, because the RMC is slower, no? 
+Hmm, yes. Yeah, and there was only one, uh, this citation issue, which, They ask to add some name of the authors. Yeah, here. 
+Okay. In the credits, you have the funding, the STR funding. Yes, I have both the fundings. 
+We sure this is fine, you know? Okay. And, um, what was I gonna say? 
+Let's go back to the other, so you and Jhenshu had identified and discussed that. Hmm, yes. So there was a shade, wording the extract, Ms. Label's H1. 
+So hypothesis one was off. This is that rain and wind, which we had in the abstract. the wind, okay. And this values, which over there, the value that... 
+Yes. And this also is the value? And 2.9 to one.99 And this was already correct? 
+And this was the less than 6 hours, which they picked up. Did you check also with AI to be sure there are no other issues? Yes. 
+Yeah. Because these are the ones you identified, so. He is. 
+So, Pranap, so what is the statement here, finally? What happened with the, with the, when you were using the local weather data versus the general weather versus snow weather, you remember those 3 values that were coming, so... and logical, in the, in the previous version, we had looked at how do they look now in the last version? Yeah, so when there is no weather data, the model performs and when we add constant or same meteorological data, it performs a little worse. 
+But when we add micrometrology data, it improves. And how much can we look at those bunnies? How come it worsens when we add meteorological data if you say that with heat? 
+So this is the spatial moment, right? Hmm, yes. Until when do you have this to revise? 
+Uh, they didn't give a time. Okay, sharing with everyone. Okay. 
+And say that unless you hear from them that you would submit by Wednesday, something like this, you know, because that you will have to submit in the following 2 days, something like this, say. So if they are giving feedback, it's fast. Yes. 
+If anyone wants to revise something in the proof. So we are always talking about this spatial prediction, right? In the temporal prediction. 
+Yes. Consider meteorology, no? So, and temporal prediction? 
+Yeah, it is here it. It is smooth in the temporal that .85.86.87. So there there is a slight improvement with meteorology and with micromateorology, again, a little is slight improvement for tempolo. 
+Yes. But not much. Yes. 
+And how do you account for heat then or for cold? If there's no meteorology? So if, so that will be model one, and in that we only look at the date, time, our, and... 
+The model knows it's cold because it's December, huh? Yeah, it just looks at pattern. Like last year it was cold, so this year also it will be cold. 
+Okay, yeah. That also tells us in a way that doesn't change much from year to year. Hmm, yes. 
+Looks like... Okay, and what about this special model? Yeah, so it's here? 
+So I think, uh, meteorological data. Makes it slightly worse, and then So where do I see that? I'm not able to read this. 
+But on micromating. So that's the RMSC. Yes. 
+Also micrometric makes it worse than nothing. Hmm. How do they rationalize this? 
+How do you explain this? This is surprising, isn't it? Hmm, yes. 
+And you validated this well? Hmm? Yes. 
+So it is that the values are within, like, small distance, like difference is small, and I think variables like the meteorology, uh, it, uh, has more variables to confound, and therefore training gets worse. Right, so we have the meeting tomorrow, by the way, um, we can do it in person. I'll try unless I get worse with a cold, but I have to go to meet Elena also in person with Sergio, so we can meet in the faculty in Brussels. 
+Okay, yes. And... Well, maybe it's better we discuss today, actually, this because tomorrow would be Jhengshu, also. 
+So, my plan plan was, okay, great. This is accepted. So you have to papers. 
+Now, you have, you need the 3rd paper to be submitted. And one, it's emitted and under review, we can start planning the private defense. Okay? 
+Yes. That's how it goes. So, we should submit this by December before the holidays. 
+Hmm. Submit. I'm not saying accept it because that we cannot control, huh? 
+Sometimes it's 3 months, sometimes it's 4 months. But then we can plan a private defense. And from the submission, um, the private defense, it's not so complicated because, uh, Gabrielle doesn't need to come in person, okay? 
+Normally for the public defense, he would come, no? So, we just have to find a day when Martin is available, when, so remind me who was in your panel, and we have to find an external review. So, it was Martin, it was Emily. 
+It was Gabriel, and you and You have to check, remind me that, okay, what's your official, when you login, you know, where you got online, what you see in there. Okay? Okay. 
+So, please share the names and then we have to find external people also that review your work. And imagine, you send me your draft, uh, which means if you're gonna do the final, the kind of the journal submission in December, in November, you have to share with me the final draft of paper number three, okay? Mm, yes. 
+Otherwise, you want to submit to me, to Jiangshu, who else are authors there? Martin. Martin. 
+Yes. Poets is no Gabriella in that one. No, Gabriel also, he has to be. yeah. 
+Maybe, and, you know, because he... It's uh... Is there anyone else on Peter? 
+You need to send it to Peter, also, because of the black pots. Hmm, yes. Just be sure that we don't forget anyone. 
+And you have to give them a two week window to reply. Hmm. So you have a hard bedline there if you want to if you want to defend next spring, huh? 
+That's why, because otherwise, you're gonna get trapped in summer, and you won't finish until the end of the year. You're busy. Hmm. 
+So, I'm just trying to tell you a guideline to have your be by summer, hmm? Yes. Yeah, I would like that, yeah. 
+Yeah. So, in that way, so if we are, let's have a look. Today is the 26th. 
+And it has to be, with no mistakes, a plan up? Yes. So take it very seriously. 
+You would need to share the draft with everyone by the 18th of November, something like this, so that you get it back by the end of November. Hmm, yes. And then we have some time to work it. 
+Yes. And just admit it before it was holidays. Okay. 
+But that is only possible, if it's a very good draft. Because if they come back with a city of changes... Okay? 
+Yes. So I'm gonna put it in my calendar, right? The 18th... 
+Um. And that's, yeah, that would be the meeting tomorrow also, not the objective. Um, Of course, I need to review this draft before sending it. 
+So in those 2 weeks, I don't send you feedback, huh? Because that draft, I've already revised it, okay? It's for the others that you give it to us. 
+Mm, yes. And then how it goes, if you do a paper-based PSC, you need to do an introduction, and you need to do a conclusion. And you also need to submit a conference paper. 
+That's why I send you this link to CSPT. Hmm, yes. And I think that's due in a couple of weeks, only three weeks, no? 
+Yes. So, I would do that as a preliminary, very, we choose something, and we can, we can do that, uh, once you send me the, the drops. So forget about this, but for the time being. 
+Because if you want to send these to the authors on their teams, I have to get the full draft on the on Monday, the ninth or something like this. Hmm, yes. And then you have a week and a half to do the, the, the, or a week to do the paper for season one, which is completely fine. 
+Hmm, yes. Because it's a long abstract. Okay? 
+And we can say what you choose from the paper to put it there. So I want you to focus on the journal, right? Okay. 
+Yes. Did we discuss about, uh, where could this be parished, I know? Uh no. 
+We looked at some of the review, like the papers that were checked, but I don't think we'd finalized. And what's your feelings? So, you published already environmentology in... sustainable citizen society? 
+No? Hmm, yes. Um, So where, where would you like to, to publish this? 
+Maybe urban climate? Yeah, I think so. I don't know how we tried once. 
+No, we tried with the journal too. Nobody came also. Yes. 
+Um. What's the weight means they report milk? Because they keep on rejecting everything, no? 
+Is he anything about it, Tom? Oh. Oh, yeah. 10 days to further decision. 
+Okay, so we can. We can try it. Okay. 
+Also, maybe it is building an environment, but they did. I think they didn't accept our previous article. Yeah. 
+Yeah, because they are more, I'm addressing just published here. They are more a little bit more inclined towards indo. A bit more. 
+Okay. Okay, yeah. But that could be of a possibility. 
+They also do outdoor, so Christos, he's gonna try his last paper, he's submitting it here, I think, today. Hmm. So if everyone climb it doesn't go through, I will do, I think, a legal environment, yes. 
+Hmm, okay. Yes. So, why am I talking about this now? 
+Probably the format is exactly the same for these two. So that's how, well, have a look, huh? How format changes between these two? 
+Hmm, yes. If it's different, then maybe we could also target building an environment. Directly. 
+Okay. But I think it's exactly the same, the format. Yes. 
+So what is the what's the status with that work kind of? With the data analysis, with the validation of the data that's been on for so long now. Hmm, yes. 
+How is all of that? Uh, so, I... Uh... 
+So, I rent all the hypothesis and the 4th one, there is, unfortunately, we didn't find noise and uh, thermal comfort to have any effect. Oh, okay. And why? 
+Because before it looked like there was, no? Yeah, but it doesn't pass the FDR, like it needs 0.05, but we get around 0.9. So. 
+Statistical, it's not. It doesn't really pass. Yes. 
+And if we mix with the pollution or like three ingredients, either. Yeah, it doesn't. So, I actually found some papers where they also didn't find the effect, and they actually tested it without the air pollution, and there they found something, but then when they add the air pollution, the effect is mainly because of pollution, and they said that it is because where there is vehicles, there is noise, and there is also pollution. 
+Okay. Okay, so what's the story then? So, we can say that the hypothesis one and 3, like the difference between the mode and environment, we see that that is statistically significant, and. 
+What do you mean by environment? Urban versus screen. Yeah. 
+Yes. There we saw. And between biking and walking, we saw the effects. 
+Yeah, and what else? And for the hypothesis too, it is concordance between physio and psychology. And we saw the effects. 
+So we saw the effects with the skin temperature and with EDA, right? Hmm, yes. And with eye tracking. 
+Yeah. Yes. Right? 
+But not with the old ones. No. And why is it that you need to read about? 
+Because I think for higher variability and so on, we need more time. Yeah. Yes. 
+So maybe we shouldn't say there's no, there's no, um, you know, we don't see the same trend or anything like this. Maybe we have to say, we didn't record for sufficient time. to be able, so we cannot tell. See what I mean? 
+Yes. So, you need to figure that out to know how to say it, rather than saying heart rate, it's not linked with psychology. Maybe we need to say the studies set up, didn't allow us to test for that, you know? 
+Mm, yes. If it was not long enough, no? So we have to be sure whether the physiological parameters that we are targeting are okay or can be targeted with the eight, nine minute duration sometimes of the biking or whatever. 
+Yes. Yeah. And what else? 
+So there are, when I did the hypothesis 4, I made the multivariate model. So putting all the things and I found some additional things like GVI, uh, has impact on because it is shading. So we see the effect with the skin temperature. 
+And like that, we can report maybe some other findings. But they won't be hypothesis for the sound, but it will be like covariates or between parameters effect. So no song on with their pollution either. 
+Mm, no. Yeah. Yeah, that I need to check, but yeah, I don't think it had strong effect. 
+So that, why am I saying? Because before writing it, I identify what are the What are the things we want to highlight? Otherwise, it becomes a boring text and the urban climate is going to reject it. 
+What is it that you've seen that other people haven't seen? The bike walk, okay? And why is that? 
+Is it because of wind, potentially? because we are cool, because of the wind, and maybe when there is a slope, then this effect, this is what I was looking at also with Jiangshu, I think, because in the part that we're asleep, all of a sudden, the skin temperature also increased, but I think it was the slow. The good effect of the wind in the biking was still there, but these are not electric bikes, right? 
+So there is physical... the megaw, the grape, probably increases, no? When... So how that was play about, you know, biking, 'cause that's noble. 
+I don't... And if so, you have to ride it that way. Has anyone compared biking and walking? 
+Looking on psychology, physiology. Hmm. Yes. 
+If not, we have to say it very loudly, and clearly. Yes. What else? 
+Some people recently, having conveyed noise, and heat, and these things. For example, if you compare in the urban versus in the green, only environment, was it more uncomfortable? Was the UTCI higher in the urban, in urban places than in green? 
+Yes. Or it was higher. Okay. 
+Because that, one thing, it's okay, UTCI is higher, and hence, that's why people report thermal comfort, uh, a higher thermal go for in in the park, right? in Guadalac. But if they would be more or less the same, the UTCI, then maybe the thermal comfort, it's a perception. 
+Because you are in a green environment, so you feel better, no? Mm, yes. What is the story, then, for example? 
+Because one thing is how you perceive thermal. You know, the thing is physiologically, what your body is processing, right? Sometimes these two things are not completely in line. 
+No? Yeah. Yes. 
+Then you're saying noise doesn't make a big, big difference. But then, I think we have to be careful there, saying, if you look at the noise spectrum and the noise across the experiments, are there, is it etherogenous enough? Maybe it's very, it's very flat. 
+So, some other studies, we would need to look, maybe, in those studies, they go in through calmsols, then they go in New York to an intersection, and then you have lots of noise, then see what I mean? Maybe it's a much more vibrant, even seen. While we're we did the experiment, just it is urban, but it's, you know, first of all, it's Brussels. 
+It's not London, it's not, you know... So, in a way, I think we have to acknowledge, by looking at the other studies, whether we are really comparing apples with apples, maybe not. Maybe it's when the noise exceeds whatever, or when the changes in the noise are substantial, that creates an effect, a combined effect with hints, no? 
+Yeah. So I did that sensitivity, like I found some paper where they say that when noise increases more than 65 decibels. It doesn't, it stops showing effect. 
+But when it is less than 65 decibels, like maybe 40 to 55 in that range, it creates discomfort. But Okay, then if it's more than 65, you are in discomfort. Yeah, you are ignoring any more noise, you are already, yes. 
+Yeah, you are, it's the same as if it will be 50. No, it's just uncomfortable. Yes. 
+But in your case, how does it go? That's it. Does it go very high? 
+Uh, yeah, it goes very high. Like sometimes 65, sometimes 80 also. Yeah, but is it high all along? 
+Uh, yeah, I did see that there are, like, more than 40 always. Yeah, so maybe that's the problem. See, it's not that they're a genius enough. 
+Yes. So we have to find a clever way to report this, because it's very naive to say there's no effects. No. 
+But how do the conditions of our experiments play with the other experiments where they have reported? But noise comes together with, you know... So maybe we have to clever it, and rather than saying, this contradicts all the findings, say, in a situation where the noise conditions are more or less homogeneous, with a change, and you can report the statistics there. 
+No coupling was seen or no, I don't know how they say it, no? No, no combine effect or whatever. It's in with uh, between noise and and heat, don't. 
+Yes. Well, that doesn't mean that if the scenario would be much more terogenous in terms of soundscape, whether that would be the case, no? Hmm, yes. 
+So you have to be clever in these things. So otherwise, a reviewer, we think, okay, he didn't think. He just looked at the result, and he just reported the result, as if it would be a robot, you know? 
+Yes. So that's about noise, and you also need a narrative for the air pollution. How our pollution plays, with noise on how it plays with heat, maybe, you know? 
+Hmm, yes. We have also light. What about light? 
+So... Or Skype view or... Yeah, Sky view. 
+Is there an effect there or not? Yeah, Skyview also had effect because it also is like shading. So. 
+So maybe that's something to report. See what other literature said. So, which means we are getting direct sunlight, no? 
+Most likely. Yes. If the sky view is large, you're getting most likely more sunlight. 
+And in your light sensor, because that was the other thing, whether the user was casting shadow or not, right? Yeah. Right, so that was not... 
+You have to be careful to know, to clean that, huh? Yes. There, there should be an effect, I mean, if we think about it logically. 
+Yes. So, for tomorrow, please bring the figures that you are thinking to cook in the bag. Hmm. 
+Yes. So you can put the section, introduction, and maybe you can put some bullet points of things you think should be there. You don't need to write it, of course, you don't have time. 
+And then, you know, the methodology and what figures you are just a diagram, you know, for the paper. Hmm. Yes. 
+Because I like to think through the papers, huh? It's much easier, right that way. Yes. 
+And then you just write bullet points, short sentences of things that you think should be explained. I know you have written more, but now it's a moment to get the overall structure rather than getting in the text. Okay? 
+Yes. Okay. And then you can use also parts that you have written before, huh? 
+I'm not saying that, like, those go to the rubbish. But rather, to get the overall picture right first. Mm hmm. 
+Yes. Okay, so then we talk tomorrow. Send this to all the authors, sir. 
+Don't forget. Yes. And say you have a couple of days that, unless you hear from any of them with whatever edits they want to add, that you would proceed. 
+Yes. And then, you know, like that, it gives them the chance to look at everything. All right? 
+Yes. Okay. Okay, good. 
+Have a nice day. Have a nice day. Thank you. 
+Bye. Bye bye. Bye. 
+Christos. No, no, Christos, the guy who did the experiment, no? With me. 
+From Italy? Yeah. Yeah, I guess people keep working after all. 
+Yeah That's like, I guess, you know, like Chauhan, sir, sometimes. Yeah, I told you, you cannot delete it right. Yes. 
+That's why you should have thought about better when you thought the busiest way. It doesn't feel right, even though I'm not a researcher. I told you. 
+Yeah. It isn't pure light.
+
+# Meeting notes — 26 October 2026
+
+The main decision is that Paper 3 must move from exploratory analysis to a publication-ready scientific narrative. Your supervisor is no longer asking you to keep testing every possible relationship. She wants you to identify the defensible findings, explain their mechanisms and limitations, and structure the paper around them.
+
+There are two immediate deadlines:
+
+9 NOVEMBER 2026
+
+Complete Paper 3 draft to supervisor
+
+14 days
+
+18 NOVEMBER 2026
+
+Validated draft to all coauthors
+
+23 days
+
+DECEMBER 2026
+
+Submit Paper 3 before the Christmas holidays
+
+The 9 November deadline is the supervisor-review target inferred from the meeting; 18 November was explicitly proposed for coauthor circulation.
+
+## 1. Immediate tasks for tomorrow's meeting — 27 October
+
+Prepare a one-page Paper 3 outline: Introduction, Methods, Results, Discussion, Conclusion.
+
+Write 3–5 short bullet points for each section, without drafting full paragraphs.
+
+Prepare a figure plan showing which figures will appear in the manuscript and their purpose.
+
+Identify the strongest findings from H1, H2 and H3, including actual effect estimates and uncertainty.
+
+Prepare a concise H4 summary: tested interaction, estimates, confidence intervals and FDR results.
+
+Identify candidate novel findings involving cycling, walking, GVI, SVF, sunlight, wind and skin temperature.
+
+List unresolved methodological questions, particularly sound variability and physiological measurement duration.
+
+Bring the proposed target journals: Urban Climate and Building and Environment.
+
+0 of 8 completed
+
+Do not spend tomorrow producing dozens of exploratory plots. Your supervisor explicitly requested the paper structure and proposed figures, not a finished Results section.
+
+## 2. Scientific analyses you must complete
+
+| Priority | Analysis                        | Required output                                                      |
+| -------- | ------------------------------- | -------------------------------------------------------------------- |
+| P0       | H1 Green vs Urban               | Significant outcomes, direction, effect sizes and interpretation     |
+| P0       | H3 Bike vs Walk                 | Physiological, environmental and psychological comparison            |
+| P0       | H2 concordance                  | Which physiological outcomes correspond with reported comfort        |
+| P0       | H4 sound × thermal              | Report null interaction carefully; assess uncertainty                |
+| P1       | Sound exposure heterogeneity    | Distribution, range, variability and time above candidate thresholds |
+| P1       | Physiological response duration | Literature and actual usable phase durations                         |
+| P1       | GVI and SVF                     | Adjusted associations with skin temperature and thermal exposure     |
+| P1       | Lux and shading                 | Verify sensor orientation, obstruction and shadow contamination      |
+| P1       | Cycling wind and slope          | Explore whether wind and exertion plausibly explain mode differences |
+| P1       | PM, sound and heat              | Check multicollinearity and adjusted relationships                   |
+| P2       | Literature novelty              | Establish what earlier walking–cycling studies measured              |
+
+Important statistical correction: H4 having an FDR-adjusted p-value near 0.9 does not prove the absence of an effect. It means your analysis did not establish evidence for the tested association. A claim that the experiment lacked sufficient variation or duration also needs evidence, not just an explanation invented after a nonsignificant result.
+
+Similarly, GVI and SVF should not automatically be described as causing shading or lower skin temperature. Their associations may reflect sunlight exposure, location, weather or other correlated factors.
+
+## 3. Proposed Paper 3 figure plan
+
+Your supervisor asked you to bring a figure structure, not every exploratory figure.
+
+| Figure           | Content                                                                        | Scientific purpose                                             |
+| ---------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------- |
+| Fig. 1           | Experimental design, routes and sensors                                        | Explain study design                                           |
+| Fig. 2           | Participant-level physiological and psychological responses across four phases | Show variability and actual observations                       |
+| Fig. 3           | H1 and H3 effect estimates with 95% CIs                                        | Establish Green–Urban and Bike–Walk findings                   |
+| Fig. 4           | H2 physiological–psychological associations                                    | Show concordance and discordance                               |
+| Fig. 5           | H4 noise × thermal interaction estimates                                       | Show evidence and uncertainty for the hypothesized interaction |
+| Fig. 6, optional | GVI/SVF, radiation, wind and physiological outcomes                            | Support the paper's novel mechanistic interpretation           |
+
+Move detailed environmental distributions, missing-data sensitivity, device validation and additional model coefficients into supplementary material.
+
+## 4. Proposed scientific story
+
+I would test three possible contributions before deciding the final narrative.
+
+Contribution A — Cycling and walking produce different physiological responses under different urban microclimates. This is potentially your strongest novelty. But you must separate physical exertion, wind exposure and thermal conditions. Do not assume a difference in skin temperature means cycling is universally more thermally comfortable.
+
+Contribution B — Perceived comfort and physiological responses are only partly concordant. H2 could be valuable if you demonstrate which associations are present, their uncertainty and why other indicators may respond on different timescales. You cannot claim short phase duration explains nonsignificant findings without supporting evidence.
+
+Contribution C — Sound and thermal stress did not show a statistically supported interaction under the observed exposure conditions. This is a legitimate finding, but the explanation must come from the measured sound distribution, precision of the interaction estimate and comparisons with previous studies. A minimum above 40 dBA alone does not establish homogeneous exposure.
+
+The paper's novelty should be based primarily on A and B unless C or the GVI/SVF analysis reveals a stronger, robust contribution.
+
+## 5. Paper 1 — accepted paper proof corrections
+
+These are separate from Paper 3 and should be closed quickly.
+
+- Resolve the shade-related highlight. Do not replace it with another unsupported claim.
+- Reconcile every corrected numerical value against the final validated results tables, especially RMSE and model-performance values.
+- Verify the H1 label and rain/wind notation.
+- Confirm temporal versus LOSO spatial model interpretation.
+- Avoid claiming that microclimate data improves new-station prediction when the reported metrics do not support that comparison.
+- Confirm acknowledgements and funding.
+- Send the proof to all coauthors, specifying a short response deadline and intended submission date.
+
+For the weather-model discussion, an important distinction is that a predictor can explain associations with cycling while failing to improve out-of-sample prediction. This is not necessarily contradictory. The explanation that extra meteorological variables “confound training” is currently speculative and should not be presented as established.
+
+## 6. PhD completion timeline
+
+| Date                     | Deliverable                                                               |
+| ------------------------ | ------------------------------------------------------------------------- |
+| 27 Oct                   | Paper 3 figure plan and narrative meeting                                 |
+| 28 Oct–8 Nov             | Finalize analyses, tables, figures and manuscript                         |
+| 9 Nov                    | Full Paper 3 draft to supervisor                                          |
+| 10–17 Nov                | Supervisor review and essential corrections                               |
+| 18 Nov                   | Circulate validated draft to all coauthors                                |
+| 19–30 Nov                | Two-week coauthor feedback window                                         |
+| 1–18 Dec                 | Incorporate feedback and submit Paper 3                                   |
+| After journal submission | Begin formal private-defense planning, subject to university requirements |
+
+Also pending: confirm the official doctoral committee membership, identify external reviewers, and plan the thesis introduction, conclusion and conference contribution. The conference abstract was mentioned as having a near deadline, so its actual submission date needs verification.
+
+My assessment: The November–December plan is achievable only if you freeze the validated methodology and stop expanding exploratory analyses without a specific scientific question. Your biggest risk is not the number of figures; it is entering manuscript writing with changing models, unstable coefficients or unverified interpretations.
+
+For coauthor proof circulation, Gmail can also be connected here to prepare and send the email directly.

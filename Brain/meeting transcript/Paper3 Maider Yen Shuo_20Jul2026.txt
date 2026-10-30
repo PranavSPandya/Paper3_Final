@@ -1,0 +1,391 @@
+Meeting recordings. 20 July 2026
+
+I met with Alen 2 times and... I mean, sorry, yeah. Yes.
+
+So I met him and I focused on like one hypothesis 1st and he looked at it completely and then he was, okay, it's fine. Uh, and. And how did you understand it?
+
+I want to understand the reasoning behind. I remember because it's very important that we get that, right? Yes.
+
+Right. So you are sticking to the continue with a linear mixed model, right? Yes.
+
+Okay. Okay. So what is it that you look at?
+
+Yeah. So, to begin with, I got this one paper, which is quite interesting because they are, it's a literature review and they have looked at uh, like linear mix models and they have also used atmotube. No, not atmotube, but they have used particulate matter and compared abolition levels.
+
+So, When we talk about linear mix, there are a fixed effect and a random effect, and when we are comparing between mixture of environments like urban versus green, so that's when a linear mixed model is useful. So for us, the equation will follow like this where P is the outcome variable for us. It is skin temperature, and this are the different parameters.
+
+So X can be urban and X2 can be green and that way we compare them. And my... broadcast, what are the metas and the alpha? Those are internal parameters that are computed by the model itself.
+
+And what does the model really look at if you want to explain what the model is doing? So it looks at between urban and crane, it labels them as this part is urban. This part is thin, green, and then it tries to compare, uh, it's like a, uh, regression model.
+
+But with fixed, so regression only has fixed effects, but this one also has random effects. And, um, so we are seeing whether the skin temperature is the skin temperature. And, um, so we are telling me that the predictor is the skin temperature.
+
+Yes. So, how do you feed in for the skin temperature for green and for urban differently in the peak? Yes.
+
+So, uh, it reads all the rows from the data for skin temperature and it uh, it quells one for its urban or so I will show it here. So, uh, in the art studio, I have this formula where outcome is moored into environment and uh, more is the, uh, urban and cream, uh, no, sorry, more is bike and walk, an urban and cleanness environment, and plus we add that time, and then there is this random effect of one, and what this does is that for each participant, it creates its own basis. line. So that we are not mixing between the participants and comparing within participant.
+
+Yes, and this wait, uh, Alan asked me to add this so that uh, we are looking at equal number of population of data. And.
+
+Yeah, so the equation expands and becomes like this.
+
+So outcome Y is walk plus screen plus walk into screen plus time uh factor which we are adding and the participants uh intercepts. And Okay. Yeah.
+
+Yes. And then I do the same for H3 and for noise H4. But but hold on, and and the effect you are getting, remember how you were not knowing how to interpret, because that's not the D, you know?
+
+What were you getting at the effects? Yeah, so I was getting better.
+
+Uh, how do you interpret better?
+
+So I was looking at that and there is actually a solution. So there is a paper, effect size estimation in linear mix model. So they actually compute the effect size using the linear mix model itself.
+
+So then we can represent that as co handi. Okay, and otherwise, how do you interpret better? There should be a way to interpret it, no?
+
+So I will show you the table. So, this is the outcome from the. as we know what the number means, you know? Yes.
+
+It's not mandatory that we change to Co and Z. Okay.
+
+Yes. So, in that we are only looking at uh, the P value.
+
+So if the P value is significant, that is less than 0.05, then it's acceptable. So... So that's their face, no?
+
+Yes. So. Okay, and then we have betas -0.4.9.
+
+So how do you interpret this? So this means that uh, we are comparing for this is hypothesis one and hypothesis one is, uh, green verse, which better? Okay, green versus urban.
+
+So, uh, compared to cream in urban, the pupil diameter is 0.86 units higher. And what does that mean? Is that enough higher?
+
+Does that mean anything? No, it's only looking at contrast, like how much different is in urban as compared to Korean? A 0.8?
+
+I mean, it doesn't even have a unit, right? So what is it? So it is the pupil diameter unit, I believe it is millimeter.
+
+So our pupil diameter uh increases 5.8 millimeter. I'm not. I would ask how to interpret this and whether it's a common practice to convert it into currency or but here that we need to make this qualitative.
+
+We need to be able to talk about this saying, This is meaningful or not. No? Yes.
+
+Or this is very meaningful. No? Hmm, yes.
+
+Okay. By the way, Jen, who is not joining? Yeah, I...
+
+He said he was scared about now? Yeah. We're gonna send him a request to join.
+
+All right, um... And what if we look into around the whole coding process, or the coding mixed model? Yes.
+
+Revise the... okay. Yeah. I am here.
+
+It's okay. Yeah. All right.
+
+And what else? Yeah. Uh, okay, so, uh, another thing was about the variables, because we have same variables like Atmotube has PM and UCM has PM, Atmotive has temperature.
+
+So, which one to choose? So, I used like I made this, so, It's step by step like we can say it's manually done. So 1st all the column names that I have, and then the parameters which are derived.
+
+So uh, I'm keeping derived like heart rate as derived and labeling them and independent ones like uh, GPS and uh, air temperature, relative humidity, and all of those as independent. So, uh, they are not good. Independent, I mean, this is wrong data.
+
+Yeah. And UTCI. Also, I'm labeling it as Tirav because it is using MRT.
+
+So that way we know that we can use MRT and we shall avoid using UTCI because UTCI is also having wind component and other components. Mhm. And the next step, I, uh, I created this column of labels and, Uh, how do we decide which ones we are cooking?
+
+Yes, so then I'm checking the correlation, if it is, uh, no, sorry. I am looking at the parameter. So if humidity is there between atmotube, and also in UCM, UCM Air RH, so then we don't keep the atmotube one, we keep the UCM one because UCM is higher.
+
+Right, but you see whether there is an agreement between them. Uh, yes, so I can shoot up plots. So.
+
+So there is one thing, in the PM value, there is much less, yeah. Yeah, but in theory, the UCMPM was not calibrated, huh? This is what they told us.
+
+Okay, so I see that in NO2, SO2, Ozone 03. They have I think they don't have sensor because it's like almost strange data. Okay, yeah.
+
+So I, for the PM, I would go for with Almo tuba. Okay. Yeah.
+
+Yeah. And I, uh, these are just some other plots I made. Yes, so I made few.
+
+I didn't finish making all the plots, so this is for case velocity. So this is pixel per 2nd. So 2000 is acceptable unit.
+
+And for MRT. Oh, no, no, I didn't. Yes.
+
+What are the points floating around that I've never seen? Normally, they are in the access, no? Well, it is face.
+
+N Normally, the the points. Black points, they are placed in the axis. Why are they outside the axis?
+
+I've never seen such a Isalization. Because, I mean, the value only matters vertically, so the horizontal, what does that mean? You know what I, you see what I mean?
+
+Uh... Like a slight like... Those thoughts, yeah.
+
+Why are in the in the access? Also, they should be, like, in layout, outliers, so they should be, not late, should not be in the box, they should be on the top order button. Normally, yeah.
+
+Yeah. Yeah. Yeah, I don't know what's going on with the... my cube, like...
+
+Yes. Yeah, and that's a bit contradictory, you know, because the gayest behavior, then it moves more when you work, hmm? Yes.
+
+And you go back to the same parts? Yes. I don't know whether maybe it's not true what I'm saying.
+
+Maybe when you buy, you fixate something more. rather than moving around. But something's off with the dogs, Prana, so I'm not sure about whether these are correct, too. Yes.
+
+I always got chapters. Yes. In any case, we were talking about the parameters, right?
+
+And the agreement between the parameters, and that's when you show it has the PM, but did you do that for humidity and these things? Because you were saying you would you would drop the humidity of them. So do it for all.
+
+It's just for us. I would keep the UCM for everything other than air quality. Okay?
+
+Okay, yes. Okay. Otherwise, GCM goes first.
+
+Hmm, yes. But I want to see the agreement, in case. Okay.
+
+And maybe it's something we cannot do supplementary material, but in principle, it's for us. Hmm, yes. Okay.
+
+So, after... So, yeah, you have the UCM ones, you have the admotube air quality ones, what else do you have? So after I look at the parameters.
+
+So these are the ones that I have retained. So you see an high temperature, solaritation humidity, and these are some infraded temperatures. So I'm not sure if to remove or keep them. So for now I have kept it.
+
+And then from the. You don't have the noise from the UCM now. It is sound level. It's down there. Yes.
+
+And which ones did you drop for the UCM? Uh, So, there was apparent wind direction, which I have dropped because we have apparent and true wind. So I'm using the true wind and uh, Uh, Dux CO2 and CO levels and Yeah, I'm not sure about this infrared one, so I'm still looking into this and Uh, yeah, SPO2 and NO2.
+
+So, as I mentioned, brought up, and I know Martin told you otherwise, but I wouldn't drop. So, I will keep UCM fully. I will just remove all their quality words.
+
+Hmm. And then from Atmotube, you take the air quality ones, then you have the looks from the button, right? Yes.
+
+And then you have all the eye tracking ones. Hmm, yes. And from empatica, I don't know, that you have to, I wouldn't drop them. I would do it, and I would drop them after, because we don't know which ones matter. Hmm, okay. Yes.
+
+So don't listen to Martin, but I mean, yes, listen to him, but not for this. Why? Because he always worked with the same sensors. And if you work with the same sensors and the same variables, then you are, you know which variables you have to keep. Hmm. Yes.
+
+Okay. I think maybe dropped out from the car. Yeah, I believe that it did not commission is not good. Yes. So now you are validating the data or, like, select which one to keep? Uh, yes. So that we don't have overlapping parameters. Yeah. I'm trying to see for transformation also, so which ones are better? So I will send indicators at high correlation because they should be, right? Yeah. Mm, yes. So I need to check that. Yeah. Yeah, I would be curious about both the poor, the sound, like the eye tracker has the sound, right? And also, uh, also backpack, have, uh, uh, record of the song, so... Yes, I, I, my internet went down. Okay, yeah, I was saying in front of, I mean, we are not familiar with, you know, the sidetracking device. 1st time we use it, likewise, for the empatica.
+
+So we have to be conservative. We keep them. We only drop those that we know we don't need, such as humidity for the animal tube and all those that we have replicated because in the UCM, we should have a good humidity sensors.
+
+But I would just check for sanity. It's whether they agree. Okay.
+
+But this is something for us to know. And I would also drop the UCMR quality once because we were told these were not calibrated. Okay?
+
+Okay. Yes. There My parents, I don't know exactly what they, I don't know whether the raw one is the apparent or the true one. I imagine is the truth. But maybe it's, they have some sort of correction formula or something. I don't know.
+
+Yes. Okay. Yes, here. I understand what Martin said. When we publish, then we don't show all of that. Then we're gonna choose, because otherwise we're gonna confuse the reader, but not now.
+
+Because we have to see how they look like first, okay? Yes, okay. Yeah.
+
+And apart from that, I'm also looking at the transformation to apply because some are requiring transformation and some don't and so I'm checking which ones to keep and that way I will be able to finalize it. And about hypothesis. So this were the 4 hypotheses that we had and I'm making it into like alternative and hypothesis.
+
+So like green and urban have no difference in each outcome or Like this is just general statement. And based on the beta values, we can maybe conclude like the skin temperature is lower in cream in both conditions or pupil is higher and something like this. Green and Irvine have no difference in each outcome.
+
+Green changes, the outcome, it is predeclared favorable direction. So, that is what I plan to get when the beta values are sorted, and I have run it for all the hypothesis, and I will have a statement like this. Based on the significant ones only, we can say, for the not significant ones, we have to look how to explain it, but for the ones that have significance of...
+
+Yeah, outcome is very vague, you know? So if you're talking about Why can't this hypothesis, and this is something to be discussed with Martin? I would break it down in 3, saying they're gonna be that you say that there will be a difference, like a positive, physiological, in physiological measures between green and no green.
+
+Yes. That there will be differences in environmental measures, and there will be differences in psychological ones. You know, 3 of them, man.
+
+This is what I would say, and then you say, in which physiological measure, because we cannot do this for every one of them. Hmm. And you say that you've seen a difference for skin temperature while, no difference with scene for ixy gray concepts, no?
+
+Hmm, yes. Bear in mind that we are talking to... an audience that is environmental scientists, mainly, urban planners, and maybe some people with physiology background, but mainly environmental scientists. Or biometorologist.
+
+Yes. While halam and martin are used to write is for medical sciences. But this is not our audience, huh?
+
+So we have to keep, what we want to know, you know, as an urban planner is, how, how the design of the city is affecting the, uh, the urban submobility users, right? Yes. We are not going to use this data to understand have outcomes in the writers.
+
+So in a way, the way you ask the question has to be understandable for this audience. That's how I see it. Now, I would get it checked also by Martin.
+
+But I would ask you that way. And that's how you are plotting it. So like this, your plots are going to be answering the question directly.
+
+Okay. Yes. Well, for biking, we have to see.
+
+But cuisine is more difficult because I'm not sure. I think that in terms of environmental comfort, Viking is gonna give more comfort than working. Hmm.
+
+So maybe I would put it that way. No, I'm not sure whether I'm I'm right or not. When it's hot and I'm biking.
+
+Usually I'm more comfortable in this kind of, uh, but I mean, it was a little bit humid, so I'm not sure, but in Spain, in a hot season, in a beach, um, city, when you bike, you feel better than when you walk. Because there's no much wind. I didn't catch that.
+
+Could you try again? This is the AI. Yes.
+
+Yeah. So, again, we are trying to talk to our audience. Hmm.
+
+Okay. Well, if you say, Green and Irvine have no difference in each outcome. Yes.
+
+It's very confusing as the hypothesis, right? Hmm, okay. Yeah.
+
+For me, there's gonna be difference for free, for all 3 dimensions, the physiological environmental and psychological. Or green and no green. Okay, yes.
+
+And same for biking and walking. Certainly in terms of psychology. An environment, like in a walking, I think more, more comfort.
+
+Viking. Now, the psychology, I'm not sure, honestly, I'm not sure whether they're gonna record that they are more comfortable or not. The physiology, sorry.
+
+I'm not sure whether the results are gonna record that. Oh, yes. But we could hypothesize that way.
+
+Yes. I don't know what your intuition is in that. Yeah.
+
+We could do that. So I, um, made some, Some of the standard plots of just average across his. So across full duration and the match duration.
+
+So air temperature goes like this. So there is less high temperature at bike G and walk G as compared to urban. So, sorry, the colors are the participants, no?
+
+Yeah. And I'm trying to look at the mean. And you are plotting the mean.
+
+Yes. The main temperature for each participant. Yes.
+
+Yeah. One thing here, I mean, linking the plot made it confusing because there's no transition from A to B, right? So maybe they just have to be points.
+
+Hmm, okay. Yes. The line means nothing.
+
+It's not the trend, right? Yes. So otherwise, it's gonna be confusing.
+
+So these are gonna be points. They can be with different colors for participants, that's okay. Um, so we have.
+
+So generally they they are great on the trend. So, I mean, all participants have, um, For example, for air temperature, um, slightly higher air temperature in biking and urban and biking ingrain, no? Yes.
+
+And in terms of relative humidity, slightly more in the green. Yeah, that makes sense. And for the windscreen also, we see slightly more in the green in the bike, sorry, and as compared to walk.
+
+And for main routine temperature also, slightly lower for cream and Melbourne. And UTC also, yeah, same. Yeah, just have PM value, so they are UCM based, so um, might not rely, please see this.
+
+Then there is a different trend in one participant. And BM, but that's just him. Okay, let's not look at that.
+
+Yeah. And for what was LYS? That's the button.
+
+The light illuminous looks. There's one participant that has a much more pronounced difference, no? Yeah.
+
+Yeah, so these you should do for all the parameters, excluding the ones that we know that are not reliable, and the repeated ones that has been discussed, or the ones that you are sure that they mean nothing. Yes. And then we can select.
+
+Yeah. So by the next meeting, what's good here is that the exposure is generally coherent. Or all parties, not for PM, but that we cannot look.
+
+So if you go up a little bit, turn up. Yeah, so it's coherent. It's not like a participant was exposed to much higher temperatures in green and then another one, so that that's kind of a, it does the same story, which is good.
+
+Yes. Okay. And did you plot the effects or the D?
+
+Uh, so... No, it was the bedtime, but hold on, because if it's the real difference, then it makes no sense to plot because for gays, then if it's stupid diameter, in millimeters, and we are comparing against something else, then it makes no sense. Yes. to compare.
+
+Yeah. So the formula which I showed earlier, this one is co handy. I computed using that and the, it's smaller relative to others.
+
+So the left, uh, the full are, uh, so we see the orange is urban and green is green and the heart rate and the other parameters are as shown. And this is our average. These are for which phase?
+
+So, I'm just comparing our bone versus screen. So urban is average of walking and bicarbon and green is average of bike connect. Okay, altogether.
+
+Okay. I kind of read the coins. These here.
+
+So it's not, it's very small. It's moderate for skin temperature, no? Yes.
+
+Medium, no, for skin temperature. So lard starts at .9, was it, right now? Yes, uh, point.
+
+No, I think it was .8. I'm not sure. It's okay.
+
+Yeah, point eight. Okay, and that one is skin temperature is how much? 0.6.
+
+Okay, so it's medium. Yes. And what do you mean, painful and matched?
+
+That's the condition? Uh, yes, so the full has a standard time, matched has... And then 2 kil diameter that's large.
+
+Yes. And it's positive. So, it means that it's more opening green.
+
+Yes. The light is also less, or the response to the light. Oh, yeah.
+
+And the fixation duration? Is shorter? For the green?
+
+Is that what I'm saying? That's a contradictory. Mm, yes.
+
+Are you sure about that? I'm a little bit... unsure about the plug of insession duration. Normally, it should be, the duration should be longer.
+
+Taxation count should be lower for green, but the duration normally should be longer for green. Oh, yes. This is what all the literature has said.
+
+Hmm. I met you... Which is the fixation count?
+
+Is that what you mean by rate? Uh, yes. So.
+
+Huh. It's pretty much the same. That's also surprising.
+
+Then you need to explore a bit better, huh? Like how they compete the rate and. In case this person, maybe, maybe that's the one that is, um, accession count.
+
+So what fixation count means is that you move your gate. How many times you move? If I look here, then I look a little bit more to the left, but, so, dispersion, maybe it's about how much it's moving also.
+
+You need to understand these parameters, hmm? Hmm, yes. Well, it looks like if the fixation count is the fixation rate, it's a very small, the difference that I find it surprising, then the dispersion is much bigger.
+
+But again, it's contradictory, because normally, you will have a higher count in urban than in ingredients. So, in green, higher duration? Yes.
+
+But lower it counts. Yes. Maybe it's not the case, but then we have to make a point about this in the paper because it's not what has been generally said in previous literature.
+
+Do you have more blood below, Anna? Uh, no. What about the other plots, about the effect sizes?
+
+You have to work on the interpretation. And what about the psychology ones? Can you look at them with a linear mix model that was a question you had for a lamp?
+
+Yeah, I can look at them. And why was he saying that you couldn't? He was saying, I confuse both, like, physio and psychological in the same time.
+
+Because, you know, physiological is only one for the whole phrase. But you can look at them separately. Yeah.
+
+Okay. And did you do that? No, not yet.
+
+All right, so what is it that you need to do next, Anna? So, next I need to look at the hypothesis 2 and the other's hypothesis. No, really.
+
+Because you haven't finished this hypo. Let's do let's fully do one person. Okay.
+
+With all the plots and everything before we start with the other hypotheses. Okay. So what is it that you need to do for hypothesis one to finish it?
+
+So... I have to check all the plots. So, so far, I'm only did this much.
+
+I should check on the other parameters also and. Yeah, otherwise I got the, uh, P values and I got the parameter, so now I think it's a question for Martinez to, uh, or to add an actually to how to interpret this, uh, the D value and, yeah. Mm-hmm.
+
+Well, I would still plot them. So here, what we want to do, as I mentioned, in the last 2 meetings, is we want to create a plot for physiology, a plot for environment. And even if they are not significant, even if the effect is very low.
+
+We may want to show it. Okay. Not all parameters.
+
+Again, we're gonna choose which ones, no? But for the time being in those clothes, you can keep all, but you think may be useful. And then we select them.
+
+As you say, you need to know how to interpret the better. Yes. whether the right way to do this is this transformation to currency or not, or otherwise how we can even create it, no? Yes.
+
+Then you need to look at the fixation duration and the fixation count, right? Yes. And you need to look at the agreement.
+
+Are you making notes, Rana? Yes, I am. And you need to make, look at the, with the agreement between the parameters for ourselves, hmm?
+
+Yes. And then we also discussed about revising the plots, that those are your school, where you go through all the parameters, no? And you show the vulnerability between participants, no?
+
+And you color the participants differently, that's a good practice. You just need a legend next week to show who is who, you know? in case we, that's of interest.
+
+And let's stick to hypothesis one for the time being. Okay. As I see, it's one hypothesis with three, some hypothesis within it.
+
+Yes. And that's not a normal hypothesis. honestly. What's normal about the hypothesis that you are looking at sort of mobility in general, in that one.
+
+But people are not only walking, but they are also biking, and previous studies, Analara has done this many times, people walking around the city. And seeing whether, uh, EDA or what is most, uh, the, the kind of the, the most visible, a biomarker, not physiological marker. So she has already looked at that.
+
+But no one would like it. So the looking at some mobility as, as a, as a group. Um gives, you know, interest to that hypothesis, I think.
+
+Even if the question is very similar. Oh, yes. All right?
+
+Yes. Anything on your end, you sure? Nope.
+
+Looks good. Okay. Shall we talk 5 minutes about your paper, then for the relations?
+
+No, I'm still working on it. Okay, uh, but just wanted to mention, you saw the example that Ahmadresa share with you, right? Yes.
+
+Yep. So it will be very thorough point by point, I'm politely replying. This is...
+
+Yes, I will try to kill them. Yeah, but I think they are all addressable. So there's no, like, um, because sometimes some comments are, like, go, no, go.
+
+Yeah, we don't. I don't think we drop anything. No, it doesn't look like a dramatic change in the paper, so that's good.
+
+Okay, what about your submission from that? What does it say? Yeah, it was doing the same thing earlier.
+
+So I didn't receive any email also. But it was not science of the Tokan environment. Oh, yeah.
+
+Normally, you have to follow another signing. Author side, mm hmm. Okay.
+
+Oh, yes, good. The disturbing process. Okay, status changed, before it was received, reviews received, and I guess it was decision of editor that was pending.
+
+So now decision in process. So I guess editor is looking at it and the last status was yesterday. 19 July.
+
+Okay. So that changed. Because it took a long time since he received the, But what's surprising is that he received the reviews very quickly.
+
+Yeah. And do you know how many he miss it? 2 was written and like 2 reviews received.
+
+Okay, so I guess you will hear from them soon. Yes. Yeah.
+
+Let's, uh, let me know when you're here, so that, uh, we, because you are the only one who's gonna be receiving the email. Yes. Oh, yeah.
+
+Okay. You didn't submit this to any other one, right? Pranaam, that, uh, no.
+
+No, only. Because I remember there were some overlapping emails. Those were all...
+
+Okay. Um, yeah. So, probably you should hear today, tomorrow very quickly.
+
+If it's a decision, once it's in the hands of the editor, he shares it quickly because otherwise he forgot or she forgets. Okay. Yes.
+
+Okay. Yeah. Thank you, Prana.
+
+Thank you, sure. Thank you. Yeah.
+
+Bye the way, next meeting, we didn't talk. No? I'm not sure, actually, I'll email you because I'm not sure whether I'll be available next week. If I'm not available next week.
+
+I'm available the following week. Otherwise, if I'm um, I really will next week, I won't be available uh, on the week of the 1st of August. But I'll let you know. I should know in a few days. Okay?
+
+Okay. Yeah. Have a nice day.
+
+Have a nice day. You too. Thank you, bye.

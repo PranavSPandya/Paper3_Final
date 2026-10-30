@@ -1,0 +1,35 @@
+name: Validate Skills
+on:  
+  pull_request:    
+    types: [opened, synchronize, reopened, edited]    
+    paths:      
+      - "skills/**"      
+      - ".github/pull_request_template.md"      
+      - "scripts/**"
+
+jobs:  
+  validate:    
+    runs-on: ubuntu-latest    
+    permissions:      
+      pull-requests: read      
+      contents: read    
+    steps:      
+      - name: Checkout        
+        uses: actions/checkout@v4
+          
+      - name: Setup Rust        
+        uses: dtolnay/rust-toolchain@stable
+          
+      - name: Cache Rust Dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: "scripts/validate_skills -> target"
+          
+      - name: Run Validation        
+        env:          
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}          
+          PR_NUMBER: ${{ github.event.pull_request.number }}          
+          REPO_NAME: ${{ github.repository }}        
+        working-directory: scripts/validate_skills
+        run: |          
+          cargo run --release

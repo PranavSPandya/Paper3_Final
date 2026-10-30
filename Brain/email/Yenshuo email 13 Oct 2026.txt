@@ -1,0 +1,4 @@
+Hi Pranav,
+BTW, for the SVF analysis, most of the tree + building consist of more than 90% of the pixels, but there are some minor cases that are around 60%. It is not a big issue but maybe worth checking what could be the third category that dominates the sky view. 
+Kind regards, 
+

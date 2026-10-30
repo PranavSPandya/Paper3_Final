@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper 3 — H1 to H4 Statistical Reference & Comprehensive Methodology</title>
+<style>
+:root {
+  --ink: #17202a;
+  --muted: #5d6d7e;
+  --blue: #1d4ed8;
+  --teal: #0f766e;
+  --orange: #b45309;
+  --red: #b91c1c;
+  --purple: #7c3aed;
+  --card: #f8fafc;
+  --card-border: #e2e8f0;
+  --code-bg: #edf2f7;
+  --line: #cbd5e1;
+}
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  color: var(--ink);
+  font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #ffffff;
+}
+h1 {
+  color: var(--blue);
+  font-size: 28px;
+  border-bottom: 3px solid var(--blue);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+h2 {
+  margin-top: 40px;
+  padding: 10px 16px;
+  border-left: 6px solid var(--teal);
+  background: var(--card);
+  font-size: 20px;
+  border-radius: 0 4px 4px 0;
+}
+h2.h1 { border-color: var(--blue); }
+h2.h2 { border-color: var(--teal); }
+h2.h3 { border-color: var(--red); }
+h2.h4 { border-color: var(--orange); }
+h2.sens { border-color: var(--purple); }
+h3 {
+  color: #1e293b;
+  margin-top: 26px;
+  font-size: 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 18px;
+  margin: 16px 0;
+}
+.warning {
+  border-left: 5px solid var(--red);
+  background: #fff5f5;
+  padding: 14px 16px;
+  margin: 14px 0;
+  border-radius: 0 4px 4px 0;
+}
+.note {
+  border-left: 5px solid var(--teal);
+  background: #f0fdfa;
+  padding: 14px 16px;
+  margin: 14px 0;
+  border-radius: 0 4px 4px 0;
+}
+.formula-box {
+  border-left: 5px solid var(--blue);
+  background: #eff6ff;
+  padding: 14px 18px;
+  margin: 14px 0;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  border-radius: 0 4px 4px 0;
+}
+.formula-box strong {
+  color: var(--blue);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  display: block;
+  margin-bottom: 6px;
+}
+.sensor-block {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 12px 0;
+}
+.sensor-header {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+.sensor-inc {
+  color: #166534;
+  margin: 4px 0;
+  word-break: break-word;
+}
+.sensor-exc {
+  color: #991b1b;
+  margin: 4px 0;
+  word-break: break-word;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 14px 0 22px;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: #f1f5f9;
+  font-weight: 600;
+}
+figure {
+  margin: 22px 0;
+  text-align: center;
+}
+figure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+figcaption {
+  color: var(--muted);
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 13.5px;
+}
+code {
+  background: var(--code-bg);
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13.5px;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 4px;
+}
+.tag-inc { background: #dcfce7; color: #15803d; }
+.tag-exc { background: #fee2e2; color: #b91c1c; }
+.missing { color: var(--red); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<h1>Paper 3 — Statistical Analysis: H1 to H4 Systematic Methodology & Reference</h1>
+
+<div class="note">
+  <strong>Authoritative Verification Report:</strong> Generated automatically by <code>scripts/Paper3_H1toH4.py</code>.
+  This document provides the full, unabridged statistical methodology, formal mathematical model specifications,
+  sample sizes, degrees of freedom, parameterizations, and complete column-level inclusion/exclusion audits
+  for all four core paper hypotheses (H1, H2, H3, H4) and sensitivity benchmarks.
+</div>
+
+<h2>1. Study Design & Complete Input Column Inventory</h2>
+
+<div class="card">
+  <p><strong>Primary Input Dataset File:</strong><br>
+  <code>C:\Users\pandya\Documents\Github\docker\Paper3_Analysis\output\merged_all_11participants_8min.csv</code></p>
+  
+  <table><thead><tr><th>Item</th><th>Value</th><th>Interpretation</th></tr></thead><tbody><tr><th>Active input path</th><td>C:\Users\pandya\Documents\Github\docker\Paper3_Analysis\output\merged_all_11participants_8min.csv</td><td>5,077 rows; 188 total columns</td></tr><tr><th>Participants</th><td>P10, P11, P12, P13, P14, P15, P16, P17, P4, P8, P9</td><td>11 participants retained in within-subject analysis</td></tr><tr><th>Phases present</th><td>BikeG, BikeU, Indoor, Tram, WalkG, WalkU, reststop</td><td>Indoor and Tram retained in the source table but are not normalization references</td></tr><tr><th>Temporal Matching</th><td>8 minutes (48 epochs of 10s)</td><td>Eliminates duration confounding across participants and modes</td></tr><tr><th>Statistical Unit</th><td>Participant-Phase Mean (N=44)</td><td>Avoids pseudoreplication and inflated degrees of freedom from 10-s epochs</td></tr></tbody></table>
+</div>
+
+<h3>Sensor-by-Sensor Column Classification (Total 188 Columns Audited)</h3>
+<p>Below is the complete, transparent audit of every column present in the merged analysis input, classified by sensor platform into variables <strong>included</strong> in inferential modeling versus those <strong>excluded</strong> (with exact scientific rationale).</p>
+
+<div class="sensor-block">
+  <div class="sensor-header">1. UCM Hepia Backpack (Mobile Microclimate, Thermal Comfort & Kinematics) &mdash; 42 Columns</div>
+  <div class="sensor-inc"><strong>ucm included col:</strong> <code>ucm_PET</code>, <code>ucm_UTCI</code>, <code>ucm_MRT</code>, <code>ucm_OPT</code>, <code>ucm_HUMIDEX</code>, <code>ucm_AIR_temp</code>, <code>ucm_AIR_RH</code>, <code>ucm_AH</code>, <code>ucm_SND_dBA</code>, <code>ucm_SUN_Gh</code>, <code>ucm_WIND_AWS</code>, <code>ucm_WIND_TWS</code></div>
+  <div class="sensor-exc"><strong>ucm excluded col:</strong> <code>ucm_PET_SR</code>, <code>ucm_UTCI_SR</code>, <code>ucm_HUMIDEX_SR</code>, <code>ucm_MRT_S</code> (solar radiation-modified variants; excluded because canonical PET, UTCI, and MRT are the primary validated indices, avoiding collinear duplicate variants), <code>ucm_Date</code> (timestamp string), <code>ucm_GPS_lat</code>, <code>ucm_GPS_lon</code> (geographic coordinates), <code>ucm_GPS_alt</code> (altitude elevation), <code>ucm_GPS_HDOP</code> (horizontal dilution of precision &mdash; satellite signal quality metric), <code>ucm_GPS_hdg</code> (GPS travel heading angle), <code>ucm_MAG_hdg</code> (magnetic compass heading angle), <code>ucm_GPS_speed_kmh</code>, <code>ucm_GPS_speed_valid_sample_count</code> (mobility speed telemetry &mdash; mode factor captures mobility state), <code>ucm_IR_back</code>, <code>ucm_IR_front</code>, <code>ucm_IR_left</code>, <code>ucm_IR_right</code>, <code>ucm_IR_up</code>, <code>ucm_IR_down</code>, <code>ucm_IR_spot_gnd</code>, <code>ucm_IR_spot_sky</code>, <code>ucm_IR_spot_left</code>, <code>ucm_IR_spot_right</code> (raw directional infrared spot/plane radiometer fluxes &mdash; physical subcomponents integrated into MRT and PET; individual testing is redundant), <code>ucm_AIR_T_bot</code>, <code>ucm_AIR_T_mid</code>, <code>ucm_AIR_T_top</code> (pole-level raw thermistor measurements &mdash; averaged into canonical <code>ucm_AIR_temp</code>), <code>ucm_SUN_alt</code>, <code>ucm_SUN_az</code> (solar position geometry), <code>ucm_WIND_AWA</code>, <code>ucm_WIND_TWD</code> (wind angular compass bearings), <code>ucm_IO_flag</code>, <code>ucm_fp</code> (internal hardware/calculation flags).</div>
+</div>
+
+<div class="sensor-block">
+  <div class="sensor-header">2. Clearness Index (Atmospheric Transparency & Sky Clearness) &mdash; 3 Columns</div>
+  <div class="sensor-inc"><strong>clearness index included col:</strong> <code>Clearness_Index</code> (atmospheric clearness index ratio k<sub>t</sub> = G<sub>h</sub> / G<sub>0</sub>), <code>Clearness_Index_G0</code> (theoretical extraterrestrial horizontal solar irradiance), <code>Clearness_Index_Infer</code> (inferred clear-sky solar radiation benchmark).</div>
+  <div class="sensor-exc"><strong>clearness index excluded col:</strong> none (all atmospheric solar clearness parameters tracked and evaluated).</div>
+</div>
+
+<div class="sensor-block">
+  <div class="sensor-header">3. Empatica EmbracePlus (Wristband Autonomic Physiology) &mdash; 26 Columns</div>
+  <div class="sensor-inc"><strong>empatica included col:</strong> <code>empatica_heart_rate</code> (cardiovascular autonomic arousal, bpm), <code>empatica_eda_tonic</code> (tonic skin conductance level / SCL, sympathetic tone), <code>empatica_eda_phasic</code> (phasic skin conductance responses / SCR, acute sympathetic reactivity), <code>empatica_skin_temperature</code> (peripheral vasomotor skin temperature, &deg;C), <code>empatica_hrv_td_rmssd</code> (root mean square of successive differences, vagal/parasympathetic tone), <code>empatica_hrv_td_sdnn</code> (standard deviation of NN intervals, overall autonomic HRV).</div>
+  <div class="sensor-exc"><strong>empatica excluded col:</strong> <code>empatica_acc_x</code>, <code>empatica_acc_y</code>, <code>empatica_acc_z</code>, <code>empatica_vector_magnitude</code> (raw triaxial accelerometer axes &mdash; utilized during preprocessing for motion artifact correction, not primary physiological strain endpoints), <code>empatica__met</code> (metabolic equivalent proxy &mdash; mobility mode factor captures exertion), <code>empatica__eda_scl_usiemens</code> (redundant raw SCL stream &mdash; superseded by cvxEDA-decomposed <code>empatica_eda_tonic</code>), <code>empatica_hrv_fd_lf</code>, <code>empatica_hrv_fd_hf</code>, <code>empatica_hrv_fd_lf_hf_ratio</code>, <code>empatica_hrv_fd_lfnu</code>, <code>empatica_hrv_fd_hfnu</code>, <code>empatica_hrv_fd_vlf</code>, <code>empatica_hrv_fd_total_power</code> (frequency-domain spectral HRV parameters &mdash; excluded due to non-stationarity across mobile outdoor transitions; Task Force 1996 guidelines mandate stationary 5-minute epochs for spectral validity, whereas time-domain RMSSD/SDNN are robust), <code>empatica_hrv_fd_5min_available</code>, <code>empatica_hrv_fd_5min_segment_start</code>, <code>empatica_hrv_fd_5min_segment_end</code>, <code>empatica_hrv_fd_5min_valid_rri_count</code>, <code>empatica_hrv_fd_5min_removed_pct</code>, <code>empatica_hrv_fd_5min_max_gap_seconds</code>, <code>empatica_hrv_fd_5min_valid_span_seconds</code> (HRV preprocessing window and artifact tracking metadata).</div>
+</div>
+
+<div class="sensor-block">
+  <div class="sensor-header">4. Pupil Labs Neon (Eye Tracker / Ocular & Gaze Dynamics) &mdash; 15 Columns</div>
+  <div class="sensor-inc"><strong>eyetracker included col:</strong> <code>eyetracker_pupil_diameter_avg</code> (average pupil diameter, mm), <code>eyetracker_pupil_change_rate</code> (pupil constriction/dilation velocity), <code>eyetracker_blink_duration_s</code> (average blink duration, s), <code>eyetracker_fixation_duration_s</code> (average fixation duration, s), <code>eyetracker_fixation_rate</code> (fixation frequency, /s), <code>eyetracker_saccade_duration_s</code> (average saccade duration, s), <code>eyetracker_saccade_amplitude</code> (saccadic amplitude, &deg;), <code>eyetracker_saccade_peak_velocity</code> (saccadic peak velocity, &deg;/s), <code>eyetracker_gaze_velocity</code> (gaze transition velocity, &deg;/s), <code>eyetracker_gaze_dispersion</code> (spatial dispersion of visual attention), <code>eyetracker_distance_from_center</code> (Euclidean gaze distance from visual center, px), <code>eyetracker_gaze_centrality</code> (proportion of gaze concentrated in central visual field), <code>eyetracker_eyelid_aperture_avg</code> (vertical eyelid aperture opening, mm).</div>
+  <div class="sensor-exc"><strong>eyetracker excluded col:</strong> <code>eyetracker_Date</code> (timestamp string), <code>eyetracker_stress_composite</code> (exploratory multi-metric composite index &mdash; excluded from primary hypothesis testing to maintain unconfounded physiological interpretability).</div>
+</div>
+
+<div class="sensor-block">
+  <div class="sensor-header">5. Atmotube (Particulate Matter & Microclimate) &mdash; 10 Raw Columns in Input</div>
+  <div class="sensor-inc"><strong>atmotube included col:</strong> <code>atmo_pm1.0_avg</code>, <code>atmo_pm2.5_avg</code>, <code>atmo_pm10_avg</code> (particulate matter concentrations in &mu;g/m&sup3; &mdash; computed as balanced canonical pair-averages of Researcher Left and Researcher Right units to eliminate orientation/body-shadowing artifacts), <code>atmo_temperature_avg</code>, <code>atmo_humidity_avg</code> (ambient microclimatic validation checks).</div>
+  <div class="sensor-exc"><strong>atmotube excluded col:</strong> <code>atmo_lys_atmotube_left__atmotube_pm1</code>, <code>atmo_lys_atmotube_left__atmotube_pm2.5</code>, <code>atmo_lys_atmotube_left__atmotube_pm10</code>, <code>atmo_lys_atmotube_left__atmotube_humidity</code>, <code>atmo_lys_atmotube_left__atmotube_temperature</code>, <code>atmo_lys_atmotube_right__atmotube_pm1</code>, <code>atmo_lys_atmotube_right__atmotube_pm2.5</code>, <code>atmo_lys_atmotube_right__atmotube_pm10</code>, <code>atmo_lys_atmotube_right__atmotube_humidity</code>, <code>atmo_lys_atmotube_right__atmotube_temperature</code> (raw individual directional streams &mdash; consolidated into canonical bilateral averages).</div>
+</div>
+
+<div class="sensor-block">
+  <div class="sensor-header">6. LYS Button (Ambient Illuminance & Spectral Irradiance) &mdash; 25 Raw Columns in Input</div>
+  <div class="sensor-inc"><strong>lys included col:</strong> <code>lys_lux_avg</code> (photopic illuminance, lux), <code>lys_medi_avg</code> (melanopic equivalent daylight illuminance, medi), <code>lys_kelvin_avg</code> (correlated color temperature, K), <code>lys_rgbb_avg</code> (blue spectral irradiance), <code>lys_rgbg_avg</code> (green spectral irradiance), <code>lys_rgbr_avg</code> (red spectral irradiance) &mdash; all computed as balanced canonical pair-averages between Participant LYS1 and Researcher LYS2.</div>
+  <div class="sensor-exc"><strong>lys excluded col:</strong> All 24 raw individual sensor streams (<code>atmo_lys_LYS1__*</code> and <code>atmo_lys_LYS2__*</code> including raw <code>b'</code>, <code>g'</code>, <code>r'</code>, <code>rgbir</code>, and movement flags) &mdash; consolidated into bilateral canonical pair averages; <code>atmo_lys_LYS1__lux_cat</code>, <code>atmo_lys_LYS2__lux_cat</code> (categorical lux exposure bins).</div>
+</div>
+
+<div class="sensor-block">
+  <div class="sensor-header">7. GVI & Visual Greenness Exposure &mdash; 9 Columns</div>
+  <div class="sensor-inc"><strong>gvi included col:</strong> <code>gvi_50m</code> (eye-level 360&deg; Green View Index smoothed across 50-meter spatial moving buffer), <code>gvi_tree_50m</code> (tree canopy view index, 50m buffer), <code>gvi_grass_50m</code> (grass view index, 50m buffer), <code>gvi_plant_50m</code> (total low-vegetation view index, 50m buffer), <code>gvi_phase_mean</code> (route-wide mean GVI), <code>tree_phase_mean</code> (route-wide mean tree canopy).</div>
+  <div class="sensor-exc"><strong>gvi excluded col:</strong> <code>gvi_point_gvi</code>, <code>gvi_point_tree</code> (raw unsmoothed single-frame GPS point matches from preliminary GIS matching; present in base CSV as legacy unbuffered point extractions, but excluded because the 50m moving-average spatial buffer <code>gvi_50m</code> and <code>gvi_tree_50m</code> is the validated metric for continuous pedestrian exposure), <code>gvi_match_dist_m</code> (nearest-neighbor GPS matching distance in meters &mdash; spatial GIS quality control metric).</div>
+</div>
+
+<div class="sensor-block">
+  <div class="sensor-header">8. YAMNet Audio (Deep Learning Acoustic Scene Event Classification) &mdash; 10 Columns</div>
+  <div class="sensor-inc"><strong>yamnet included col:</strong> <code>sound_level_dbfs</code> (continuous acoustic power, decibels relative to full scale), <code>sound_prop_vehicle</code> (frame proportion of motor vehicle traffic noise), <code>sound_prop_urban_manmade</code> (frame proportion of anthropogenic urban sound), <code>sound_prop_rural_natural</code> (frame proportion of biophony/natural acoustic events), <code>sound_prop_human_activity</code> (frame proportion of human voices/footsteps), <code>sound_prop_wind</code> (frame proportion of aerodynamic wind noise), <code>sound_prop_mechanisms</code> (frame proportion of construction/machinery noise).<br>
+  <em>Note on separate proportion columns:</em> In YAMNet, 0.96-second frames within each 10-second window are classified across 521 audio classes. While <code>sound_category_label</code> records only the single top dominant category string, the <code>sound_prop_*</code> columns quantify the continuous numerical proportions (0.0 to 1.0) of each acoustic source, allowing statistical regression models to evaluate continuous dosage effects.</div>
+  <div class="sensor-exc"><strong>yamnet excluded col:</strong> <code>sound_class_id</code> (discrete top-1 AudioSet ontology integer ID), <code>sound_category_label</code> (categorical text string of the single dominant sound class; statistical regression models require numerical proportion columns to estimate dosage effects), <code>sound_prop_unidentify</code> (unclassified acoustic residual).</div>
+</div>
+
+<div class="sensor-block">
+  <div class="sensor-header">9. Psychological Surveys (Momentary Affect & Restorativeness) &mdash; 39 Columns</div>
+  <div class="sensor-inc"><strong>questionnaire included col:</strong> <code>questionnaire_current_comfort_1_7</code> (overall momentary subjective comfort, 1-7 Likert), <code>questionnaire_pleasantness_1_5</code> (perceived route pleasantness, 1-5 scale), <code>questionnaire_stai6_mean_1_5</code> (State-Trait Anxiety Inventory 6-item short form, 1-5 scale), <code>questionnaire_prs11_total_mean_1_5</code> (Perceived Restorativeness Scale 11-item validated total mean, 1-5 scale), <code>questionnaire_prs11_fascination_mean_1_5</code>, <code>questionnaire_prs11_being_away_mean_1_5</code>, <code>questionnaire_prs11_coherence_mean_1_5</code>, <code>questionnaire_prs11_scope_mean_1_5</code> (PRS-11 subscale dimension scores), <code>questionnaire_space_familiarity_1_5</code> (perceived spatial familiarity), <code>questionnaire_thermal_comfort_1_5</code> (subjective thermal comfort rating), <code>questionnaire_environmental_comfort_mean_1_5</code> (composite environmental comfort index).</div>
+  <div class="sensor-exc"><strong>questionnaire excluded col:</strong> Static baseline demographic and trait survey fields (<code>questionnaire_height_m</code>, <code>questionnaire_weight_kg</code>, <code>questionnaire_bmi_kg_m2</code>, <code>questionnaire_bmi_category_who</code>, <code>questionnaire_background_age</code>, <code>questionnaire_background_gender</code>, <code>questionnaire_background_nationality</code>, <code>questionnaire_background_residential_area</code>, <code>questionnaire_background_years_in_brussels</code>, <code>questionnaire_background_vision_correction</code>, <code>questionnaire_background_site_familiarity_1_10</code>, <code>questionnaire_background_residence_type</code>, <code>questionnaire_background_has_children</code>, <code>questionnaire_background_commute_modes</code>, <code>questionnaire_background_regular_physical_activity</code>, <code>questionnaire_background_daily_walking</code>, <code>questionnaire_background_bike_frequency</code>, <code>questionnaire_background_own_bike_for_experiment</code> &mdash; measured once at baseline, time-invariant across experimental route bouts), clothing insulation logs (<code>questionnaire_clothing_*</code>, 6 columns), and administrative survey tracking IDs (<code>questionnaire_participant_id</code>, <code>questionnaire_response_index_within_participant</code>, <code>questionnaire_background_name</code>).</div>
+</div>
+
+<div class="sensor-block">
+  <div class="sensor-header">10. Experimental Metadata & Intermediate Indices &mdash; 6 Columns</div>
+  <div class="sensor-inc"><strong>metadata included col:</strong> <code>ParticipantID</code> (random-intercept grouping factor <em>u<sub>i</sub></em>), <code>PhaseID</code> (condition identifier defining <em>Mode</em>: Bike/Walk and <em>Environment</em>: Urban/Green).</div>
+  <div class="sensor-exc"><strong>metadata excluded col:</strong> <code>Datetime</code>, <code>Date</code> (timestamp tracking &mdash; models operate on phase aggregations), <code>pct_complete</code> (data transmission completeness %), <code>grass_phase_mean</code>, <code>plant_phase_mean</code> (redundant route-aggregated visual layers).</div>
+</div>
+
+<!-- ======================================================================= -->
+<!-- H1 SECTION -->
+<!-- ======================================================================= -->
+<h2 class="h1">2. Hypothesis 1 (H1) &mdash; Green versus Urban Route Contrast</h2>
+
+<div class="card">
+  <p><strong>Research Question:</strong> Does exposure to an urban green corridor (Bois de la Cambre) reduce physiological stress arousal and promote psychological restoration compared to a dense urban traffic corridor (Etterbeek / Montgomery), controlling for travel mode?</p>
+
+  <div class="formula-box">
+    <strong>Mathematical Model Formulation (Linear Mixed-Effects Model):</strong>
+    Y<sub>ij</sub> = &beta;<sub>0</sub> + &beta;<sub>Mode</sub> &middot; Mode<sub>ij</sub> + &beta;<sub>Env</sub> &middot; Env<sub>ij</sub> + &beta;<sub>Int</sub> &middot; (Mode<sub>ij</sub> &times; Env<sub>ij</sub>) + u<sub>i</sub> + &epsilon;<sub>ij</sub><br>
+    where u<sub>i</sub> ~ N(0, &sigma;<sub>u</sub><sup>2</sup>) is the random intercept for participant i, and &epsilon;<sub>ij</sub> ~ N(0, &sigma;<sup>2</sup>) is the residual error.<br><br>
+    <strong>Exact R Syntax (package nlme via REML):</strong><br>
+    <code>fit &lt;- lme(outcome_z ~ Mode * Environment, random = ~ 1 | ParticipantID, data = d, method = "REML")</code>
+  </div>
+
+  <p><strong>Columns Used:</strong></p>
+  <ul>
+    <li><strong>Dependent Variables (Outcomes, 23 total):</strong> 6 Autonomic (<code>empatica_heart_rate</code>, <code>empatica_eda_tonic</code>, <code>empatica_eda_phasic</code>, <code>empatica_skin_temperature</code>, <code>empatica_hrv_td_rmssd</code>, <code>empatica_hrv_td_sdnn</code>), 13 Ocular (<code>eyetracker_pupil_diameter_avg</code>, <code>eyetracker_pupil_change_rate</code>, <code>eyetracker_blink_duration_s</code>, <code>eyetracker_fixation_duration_s</code>, <code>eyetracker_fixation_rate</code>, <code>eyetracker_saccade_duration_s</code>, <code>eyetracker_saccade_amplitude</code>, <code>eyetracker_saccade_peak_velocity</code>, <code>eyetracker_gaze_velocity</code>, <code>eyetracker_gaze_dispersion</code>, <code>eyetracker_distance_from_center</code>, <code>eyetracker_gaze_centrality</code>, <code>eyetracker_eyelid_aperture_avg</code>), 4 Psychological (<code>questionnaire_current_comfort_1_7</code>, <code>questionnaire_pleasantness_1_5</code>, <code>questionnaire_stai6_mean_1_5</code>, <code>questionnaire_prs11_total_mean_1_5</code>).</li>
+    <li><strong>Fixed-Effect Predictors &amp; Covariates:</strong> <code>Environment</code> (Urban [ref] vs. Green), <code>Mode</code> (Bike [ref] vs. Walk), and their factorial interaction <code>Mode * Environment</code>.</li>
+    <li><strong>Random-Effect Grouping Factor:</strong> <code>ParticipantID</code> (11 participants, random intercept).</li>
+  </ul>
+
+  <p><strong>Planned Contrasts (Extracted via <code>emmeans</code>):</strong></p>
+  <ul>
+    <li><strong>Marginal Environmental Effect:</strong> Green &minus; Urban averaged across modes.</li>
+    <li><strong>Simple Effect in Cycling:</strong> BikeG &minus; BikeU.</li>
+    <li><strong>Simple Effect in Walking:</strong> WalkG &minus; WalkU.</li>
+  </ul>
+
+  <table><thead><tr><th>Item</th><th>Value</th><th>Interpretation</th></tr></thead><tbody><tr><th>Results CSV file</th><td>C:\Users\pandya\Documents\Github\docker\Paper3_Analysis\output\statistical_analysis\H1_Green_vs_Urban.csv</td><td>46 total contrast rows in results table</td></tr><tr><th>Total Models Fitted</th><td>46 contrast estimates</td><td>Matched 8-minute data; Within-Person Z-score only</td></tr><tr><th>FDR-Significant Contrasts</th><td>20 significant contrasts (q_FDR &lt; 0.05)</td><td>Benjamini-Hochberg adjustment applied within each outcome family</td></tr><tr><th>Sample Size &amp; Degrees of Freedom</th><td>N = 44 phase bouts (11 participants x 4 route conditions)</td><td>Degrees of freedom df ≈ 28 to 30</td></tr><tr><th>Output timestamp</th><td>2026-09-30 11:01:26</td><td>current or newer than input</td></tr></tbody></table>
+</div>
+
+<h3>Top Significant Findings for H1: Green versus Urban Route Contrast</h3>
+<h4>Table 1.1: Green vs. Urban Contrast within Cycling (BikeG vs. BikeU)</h4>
+<p><em>Testing acute autonomic, ocular, and psychological restoration when cycling in Bois de la Cambre park versus Etterbeek traffic corridor.</em></p>
+<table><thead><tr><th>Outcome</th><th>Predictor / Contrast</th><th>Beta &plusmn; SE</th><th>95% CI</th><th>t-statistic</th><th>p-value</th><th>q (FDR)</th><th>Condition</th><th>Interpretation</th></tr></thead><tbody><tr><td><strong>Empatica: Skin Temperature (°C)</strong></td><td>Green - Urban within Bike</td><td>+0.000 &plusmn; 0.303</td><td>[-2.287, -0.546]</td><td>t = +0.00</td><td>2.359e-03</td><td><strong>6.029e-03</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeU &gt; BikeG for empatica_skin_temperature</small></td></tr><tr><td><strong>Pupil Labs: Pupil Diameter (mm)</strong></td><td>Green - Urban within Bike</td><td>+0.000 &plusmn; 0.176</td><td>[+0.718, +2.553]</td><td>t = +0.00</td><td>1.091e-03</td><td><strong>3.151e-03</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeG &gt; BikeU for eyetracker_pupil_diameter_avg</small></td></tr><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>Green - Urban within Bike</td><td>+0.000 &plusmn; 0.039</td><td>[-4.302, -2.467]</td><td>t = +0.00</td><td>3.850e-08</td><td><strong>4.427e-07</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeU &gt; BikeG for eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Fixation Rate (/s)</strong></td><td>Green - Urban within Bike</td><td>+0.000 &plusmn; 0.233</td><td>[-1.996, -0.161]</td><td>t = +0.00</td><td>2.298e-02</td><td><strong>4.805e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeU &gt; BikeG for eyetracker_fixation_rate</small></td></tr><tr><td><strong>Pupil Labs: Gaze Distance from Center (px)</strong></td><td>Green - Urban within Bike</td><td>+0.000 &plusmn; 0.141</td><td>[-2.921, -1.086]</td><td>t = +0.00</td><td>1.229e-04</td><td><strong>7.065e-04</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeU &gt; BikeG for eyetracker_distance_from_center</small></td></tr><tr><td><strong>Pupil Labs: Gaze Centrality</strong></td><td>Green - Urban within Bike</td><td>+0.000 &plusmn; 0.140</td><td>[+0.221, +2.056]</td><td>t = +0.00</td><td>1.691e-02</td><td><strong>3.890e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeG &gt; BikeU for eyetracker_gaze_centrality</small></td></tr><tr><td><strong>Pupil Labs: Eyelid Aperture (mm)</strong></td><td>Green - Urban within Bike</td><td>+0.000 &plusmn; 0.254</td><td>[+0.770, +2.605]</td><td>t = +0.00</td><td>8.032e-04</td><td><strong>3.079e-03</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeG &gt; BikeU for eyetracker_eyelid_aperture_avg</small></td></tr><tr><td><strong>Survey: General Comfort (1-7)</strong></td><td>Green - Urban within Bike</td><td>+0.000 &plusmn; 0.328</td><td>[+0.717, +2.552]</td><td>t = +0.00</td><td>1.096e-03</td><td><strong>3.151e-03</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeG &gt; BikeU for questionnaire_current_comfort_1_7</small></td></tr><tr><td><strong>Survey: Pleasantness (1-5)</strong></td><td>Green - Urban within Bike</td><td>+0.000 &plusmn; 0.234</td><td>[+1.787, +3.529]</td><td>t = +0.00</td><td>7.255e-07</td><td><strong>5.562e-06</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeG &gt; BikeU for questionnaire_pleasantness_1_5</small></td></tr><tr><td><strong>Survey: State Anxiety (STAI-6)</strong></td><td>Green - Urban within Bike</td><td>+0.000 &plusmn; 0.311</td><td>[-2.661, -0.826]</td><td>t = +0.00</td><td>5.782e-04</td><td><strong>2.660e-03</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeU &gt; BikeG for questionnaire_stai6_mean_1_5</small></td></tr><tr><td><strong>Survey: Restorativeness (PRS-11)</strong></td><td>Green - Urban within Bike</td><td>+0.000 &plusmn; 0.151</td><td>[+3.817, +5.559]</td><td>t = +0.00</td><td>4.802e-12</td><td><strong>1.104e-10</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeG &gt; BikeU for questionnaire_prs11_total_mean_1_5</small></td></tr></tbody></table>
+
+<h4>Table 1.2: Green vs. Urban Contrast within Walking (WalkG vs. WalkU)</h4>
+<p><em>Testing acute autonomic, ocular, and psychological restoration when walking in Bois de la Cambre park versus Etterbeek traffic corridor.</em></p>
+<table><thead><tr><th>Outcome</th><th>Predictor / Contrast</th><th>Beta &plusmn; SE</th><th>95% CI</th><th>t-statistic</th><th>p-value</th><th>q (FDR)</th><th>Condition</th><th>Interpretation</th></tr></thead><tbody><tr><td><strong>Empatica: EDA Tonic Level (SCL)</strong></td><td>Green - Urban within Walk</td><td>+0.000 &plusmn; 0.244</td><td>[-2.099, -0.403]</td><td>t = +0.00</td><td>5.219e-03</td><td><strong>1.334e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkU &gt; WalkG for empatica_eda_tonic</small></td></tr><tr><td><strong>Empatica: Skin Temperature (°C)</strong></td><td>Green - Urban within Walk</td><td>+0.000 &plusmn; 0.303</td><td>[-2.284, -0.542]</td><td>t = +0.00</td><td>2.411e-03</td><td><strong>6.933e-03</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkU &gt; WalkG for empatica_skin_temperature</small></td></tr><tr><td><strong>Pupil Labs: Pupil Diameter (mm)</strong></td><td>Green - Urban within Walk</td><td>+0.000 &plusmn; 0.176</td><td>[+3.014, +4.849]</td><td>t = +0.00</td><td>2.089e-09</td><td><strong>2.402e-08</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkG &gt; WalkU for eyetracker_pupil_diameter_avg</small></td></tr><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>Green - Urban within Walk</td><td>+0.000 &plusmn; 0.039</td><td>[-6.048, -4.213]</td><td>t = +0.00</td><td>6.901e-12</td><td><strong>1.587e-10</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkU &gt; WalkG for eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Fixation Duration (s)</strong></td><td>Green - Urban within Walk</td><td>+0.000 &plusmn; 0.137</td><td>[+0.815, +2.650]</td><td>t = +0.00</td><td>6.183e-04</td><td><strong>2.370e-03</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkG &gt; WalkU for eyetracker_fixation_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Gaze Velocity (°/s)</strong></td><td>Green - Urban within Walk</td><td>+0.000 &plusmn; 0.180</td><td>[-2.655, -0.819]</td><td>t = +0.00</td><td>6.006e-04</td><td><strong>2.370e-03</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkU &gt; WalkG for eyetracker_gaze_velocity</small></td></tr><tr><td><strong>Pupil Labs: Gaze Dispersion</strong></td><td>Green - Urban within Walk</td><td>+0.000 &plusmn; 0.116</td><td>[-2.865, -1.030]</td><td>t = +0.00</td><td>1.722e-04</td><td><strong>9.901e-04</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkU &gt; WalkG for eyetracker_gaze_dispersion</small></td></tr><tr><td><strong>Survey: Pleasantness (1-5)</strong></td><td>Green - Urban within Walk</td><td>+0.000 &plusmn; 0.234</td><td>[+0.603, +2.345]</td><td>t = +0.00</td><td>1.654e-03</td><td><strong>5.436e-03</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkG &gt; WalkU for questionnaire_pleasantness_1_5</small></td></tr><tr><td><strong>Survey: Restorativeness (PRS-11)</strong></td><td>Green - Urban within Walk</td><td>+0.000 &plusmn; 0.151</td><td>[+2.247, +3.989]</td><td>t = +0.00</td><td>3.820e-08</td><td><strong>2.928e-07</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkG &gt; WalkU for questionnaire_prs11_total_mean_1_5</small></td></tr></tbody></table>
+
+<figure><img src='../output/Figures/Figure1_H1_Green_vs_Urban_ForestPlot.png' alt='Figure 1. H1 Forest Plot: Green versus Urban route planned contrasts across standardized within-person scores.'><figcaption>Figure 1. H1 Forest Plot: Green versus Urban route planned contrasts across standardized within-person scores.</figcaption></figure>
+
+<!-- ======================================================================= -->
+<!-- H2 SECTION -->
+<!-- ======================================================================= -->
+<h2 class="h2">3. Hypothesis 2 (H2) &mdash; Psychophysiological Concurrence</h2>
+
+<div class="card">
+  <p><strong>Research Question:</strong> Do acute within-person shifts in self-reported psychological states (anxiety, restorativeness, comfort, pleasantness) correspond to concurrent changes in autonomic and ocular markers during active travel?</p>
+
+  <div class="formula-box">
+    <strong>Mathematical Model Formulation (Between/Within Centered LMM):</strong><br>
+    Between-Person Mean: Psych_between<sub>i</sub> = (1 / J<sub>i</sub>) &Sigma;<sub>j</sub> Psych<sub>ij</sub><br>
+    Within-Person Deviation: &Delta;Psych<sub>ij</sub> = Psych<sub>ij</sub> &minus; Psych_between<sub>i</sub><br><br>
+    Physio_z<sub>ij</sub> = &beta;<sub>0</sub> + &beta;<sub>Mode</sub> &middot; Mode<sub>ij</sub> + &beta;<sub>Within</sub> &middot; &Delta;Psych_z<sub>ij</sub> + &beta;<sub>Between</sub> &middot; Psych_between_z<sub>i</sub> + u<sub>i</sub> + &epsilon;<sub>ij</sub><br>
+    where &beta;<sub>Within</sub> is the primary parameter of interest (testing acute concurrence), and u<sub>i</sub> ~ N(0, &sigma;<sub>u</sub><sup>2</sup>).<br><br>
+    <strong>Exact R Syntax (package nlme via REML):</strong><br>
+    <code>fit &lt;- lme(phys_z ~ Mode + psych_within_z + psych_between_z, random = ~ 1 | ParticipantID, data = d, method = "REML")</code>
+  </div>
+
+  <p><strong>Columns Used:</strong></p>
+  <ul>
+    <li><strong>Dependent Variables (Physiological/Ocular Outcomes, 19 total):</strong> 6 Autonomic (Heart Rate, Tonic EDA, Phasic EDA, Skin Temp, RMSSD, SDNN) and 13 Ocular metrics (Pupil Diameter, Fixation Rate, Saccade Amplitude, Gaze Dispersion, Centrality, etc.).</li>
+    <li><strong>Key Independent Predictor:</strong> Within-person centered psychological scales (<code>questionnaire_current_comfort_1_7</code>, <code>questionnaire_pleasantness_1_5</code>, <code>questionnaire_stai6_mean_1_5</code>, <code>questionnaire_prs11_total_mean_1_5</code>).</li>
+    <li><strong>Between-Person Contextual Covariate:</strong> Person-mean psychological score (to prevent ecological fallacy confounding between-person traits with acute state shifts).</li>
+    <li><strong>Obligatory Physical Covariate:</strong> <code>Mode</code> (Bike vs. Walk).</li>
+    <li><strong>Random-Effect Grouping Factor:</strong> <code>ParticipantID</code>.</li>
+  </ul>
+
+  <table><thead><tr><th>Item</th><th>Value</th><th>Interpretation</th></tr></thead><tbody><tr><th>Results CSV file</th><td>C:\Users\pandya\Documents\Github\docker\Paper3_Analysis\output\statistical_analysis\H2_Physio_Psycho_Concordance.csv</td><td>76 total concurrence models evaluated</td></tr><tr><th>Total Models Fitted</th><td>76 bivariate psychophysiological models</td><td>Within-Person Z-score only; 4 psychological scales x 19 physiological/ocular metrics</td></tr><tr><th>FDR-Significant Concurrences</th><td>8 models significant at q_FDR &lt; 0.05</td><td>Omnibus Benjamini-Hochberg adjustment across all 76 pairs</td></tr><tr><th>Effect Size Metric</th><td>Standardized Within-Person Beta (Beta_Within_Std) &amp; Partial Correlation r_within</td><td>r_within = sign(t) * sqrt(t^2 / (t^2 + df))</td></tr><tr><th>Output timestamp</th><td>2026-09-30 11:01:26</td><td>current or newer than input</td></tr></tbody></table>
+</div>
+
+<h3>Top Significant Findings for H2 (Psychophysiological Concurrence)</h3>
+<p><em>Separated by validated psychological survey scale:</em></p>
+<h4>Table 2.1: Perceived Restorativeness (PRS-11 Total Score)</h4>
+<table><thead><tr><th>Outcome</th><th>Predictor / Contrast</th><th>Beta &plusmn; SE</th><th>95% CI</th><th>t-statistic</th><th>p-value</th><th>q (FDR)</th><th>Condition</th><th>Interpretation</th></tr></thead><tbody><tr><td><strong>eyetracker_blink_duration_s</strong></td><td>questionnaire_prs11_total_mean_1_5</td><td>-0.632 &plusmn; 0.065</td><td>[-0.759, -0.504]</td><td>t = -9.71</td><td>1.849e-10</td><td><strong>1.405e-08</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher Survey: Restorativeness (PRS-11) corresponds to lower Pupil Labs: Blink Duration (s)</small></td></tr><tr><td><strong>eyetracker_pupil_diameter_avg</strong></td><td>questionnaire_prs11_total_mean_1_5</td><td>+0.701 &plusmn; 0.133</td><td>[+0.440, +0.962]</td><td>t = +5.26</td><td>1.370e-05</td><td><strong>2.603e-04</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher Survey: Restorativeness (PRS-11) corresponds to higher Pupil Labs: Pupil Diameter (mm)</small></td></tr><tr><td><strong>empatica_skin_temperature</strong></td><td>questionnaire_prs11_total_mean_1_5</td><td>-0.606 &plusmn; 0.126</td><td>[-0.852, -0.360]</td><td>t = -4.83</td><td>3.536e-05</td><td><strong>5.375e-04</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher Survey: Restorativeness (PRS-11) corresponds to lower Empatica: Skin Temperature (°C)</small></td></tr><tr><td><strong>eyetracker_fixation_duration_s</strong></td><td>questionnaire_prs11_total_mean_1_5</td><td>+0.396 &plusmn; 0.107</td><td>[+0.186, +0.606]</td><td>t = +3.69</td><td>9.547e-04</td><td><strong>1.209e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher Survey: Restorativeness (PRS-11) corresponds to higher Pupil Labs: Fixation Duration (s)</small></td></tr><tr><td><strong>eyetracker_distance_from_center</strong></td><td>questionnaire_prs11_total_mean_1_5</td><td>-0.388 &plusmn; 0.120</td><td>[-0.623, -0.153]</td><td>t = -3.23</td><td>3.121e-03</td><td><strong>3.389e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher Survey: Restorativeness (PRS-11) corresponds to lower Pupil Labs: Gaze Distance from Center (px)</small></td></tr></tbody></table>
+
+<h4>Table 2.2: Route Pleasantness & State Anxiety (STAI-6)</h4>
+<table><thead><tr><th>Outcome</th><th>Predictor / Contrast</th><th>Beta &plusmn; SE</th><th>95% CI</th><th>t-statistic</th><th>p-value</th><th>q (FDR)</th><th>Condition</th><th>Interpretation</th></tr></thead><tbody><tr><td><strong>eyetracker_blink_duration_s</strong></td><td>questionnaire_pleasantness_1_5</td><td>-0.563 &plusmn; 0.080</td><td>[-0.719, -0.407]</td><td>t = -7.07</td><td>1.093e-07</td><td><strong>4.153e-06</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher Survey: Pleasantness (1-5) corresponds to lower Pupil Labs: Blink Duration (s)</small></td></tr><tr><td><strong>eyetracker_pupil_change_rate</strong></td><td>questionnaire_pleasantness_1_5</td><td>-0.498 &plusmn; 0.159</td><td>[-0.809, -0.186]</td><td>t = -3.13</td><td>4.033e-03</td><td><strong>3.831e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher Survey: Pleasantness (1-5) corresponds to lower Pupil Labs: Pupil Change Rate</small></td></tr></tbody></table>
+
+<figure><img src='../output/Figures/Figure2_H2_Psych_Physio_Concurrence.png' alt='Figure 2. H2 Psychophysiological Concurrence Slopes.'><figcaption>Figure 2. H2 Psychophysiological Concurrence Slopes.</figcaption></figure>
+
+<!-- ======================================================================= -->
+<!-- H3 SECTION -->
+<!-- ======================================================================= -->
+<h2 class="h3">4. Hypothesis 3 (H3) &mdash; Walking versus Cycling Mobility Mode Contrast</h2>
+
+<div class="card">
+  <p><strong>Research Question:</strong> How does active travel mode (walking versus cycling) modulate physiological arousal, ocular visual search, and self-reported comfort, and does travel mode moderate the restorative effect of green space?</p>
+
+  <div class="formula-box">
+    <strong>Mathematical Model Formulation (Factorial Mixed-Effects Model):</strong><br>
+    Y<sub>ij</sub> = &beta;<sub>0</sub> + &beta;<sub>Mode</sub> &middot; Mode<sub>ij</sub> + &beta;<sub>Env</sub> &middot; Env<sub>ij</sub> + &beta;<sub>Int</sub> &middot; (Mode<sub>ij</sub> &times; Env<sub>ij</sub>) + u<sub>i</sub> + &epsilon;<sub>ij</sub><br>
+    where u<sub>i</sub> ~ N(0, &sigma;<sub>u</sub><sup>2</sup>) is the random intercept for participant i, and &epsilon;<sub>ij</sub> ~ N(0, &sigma;<sup>2</sup>) is the residual error.<br><br>
+    <strong>Exact R Syntax (package nlme via REML):</strong><br>
+    <code>fit &lt;- lme(outcome_z ~ Mode * Environment, random = ~ 1 | ParticipantID, data = d, method = "REML")</code>
+  </div>
+
+  <p><strong>Columns Used:</strong></p>
+  <ul>
+    <li><strong>Dependent Variables (Outcomes, 23 total):</strong> Identical to H1 (6 Autonomic + 13 Ocular + 4 Psychological endpoints).</li>
+    <li><strong>Fixed-Effect Predictors &amp; Covariates:</strong> <code>Mode</code> (Bike [ref] vs. Walk), <code>Environment</code> (Urban [ref] vs. Green), and their interaction term.</li>
+    <li><strong>Random-Effect Grouping Factor:</strong> <code>ParticipantID</code>.</li>
+  </ul>
+
+  <p><strong>Planned Contrasts (Extracted via <code>emmeans</code>):</strong></p>
+  <ul>
+    <li><strong>Marginal Mobility Mode Effect:</strong> Walk &minus; Bike averaged across environments.</li>
+    <li><strong>Simple Mode Effect in Urban Context:</strong> WalkU &minus; BikeU.</li>
+    <li><strong>Simple Mode Effect in Green Context:</strong> WalkG &minus; BikeG.</li>
+  </ul>
+
+  <table><thead><tr><th>Item</th><th>Value</th><th>Interpretation</th></tr></thead><tbody><tr><th>Results CSV file</th><td>C:\Users\pandya\Documents\Github\docker\Paper3_Analysis\output\statistical_analysis\H3_Walk_vs_Bike.csv</td><td>46 total contrast rows in results table</td></tr><tr><th>Total Models Fitted</th><td>46 contrast estimates</td><td>Matched 8-minute data; Within-Person Z-score only</td></tr><tr><th>FDR-Significant Contrasts</th><td>16 significant contrasts (q_FDR &lt; 0.05)</td><td>Benjamini-Hochberg adjustment applied within each outcome family</td></tr><tr><th>Sample Size &amp; Degrees of Freedom</th><td>N = 44 phase bouts (11 participants x 4 route conditions)</td><td>Degrees of freedom df ≈ 28 to 30</td></tr><tr><th>Output timestamp</th><td>2026-09-30 11:01:26</td><td>current or newer than input</td></tr></tbody></table>
+</div>
+
+<h3>Top Significant Findings for H3: Walking versus Cycling Mobility Mode Contrast</h3>
+<h4>Table 3.1: Walking vs. Cycling in Urban Corridor (WalkU vs. BikeU)</h4>
+<p><em>Testing behavioral, ocular, autonomic, and psychological differences between pedestrians and cyclists in the urban traffic corridor.</em></p>
+<table><thead><tr><th>Outcome</th><th>Predictor / Contrast</th><th>Beta &plusmn; SE</th><th>95% CI</th><th>t-statistic</th><th>p-value</th><th>q (FDR)</th><th>Condition</th><th>Interpretation</th></tr></thead><tbody><tr><td><strong>Pupil Labs: Pupil Diameter (mm)</strong></td><td>Walk - Bike within Urban</td><td>+0.000 &plusmn; 0.176</td><td>[-2.863, -1.028]</td><td>t = +0.00</td><td>1.742e-04</td><td><strong>8.013e-04</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeU &gt; WalkU for eyetracker_pupil_diameter_avg</small></td></tr><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>Walk - Bike within Urban</td><td>+0.000 &plusmn; 0.039</td><td>[+4.981, +6.816]</td><td>t = +0.00</td><td>2.770e-13</td><td><strong>6.372e-12</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkU &gt; BikeU for eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Fixation Duration (s)</strong></td><td>Walk - Bike within Urban</td><td>+0.000 &plusmn; 0.137</td><td>[-3.354, -1.519]</td><td>t = +0.00</td><td>9.144e-06</td><td><strong>5.258e-05</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeU &gt; WalkU for eyetracker_fixation_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Gaze Velocity (°/s)</strong></td><td>Walk - Bike within Urban</td><td>+0.000 &plusmn; 0.180</td><td>[+2.075, +3.910]</td><td>t = +0.00</td><td>3.495e-07</td><td><strong>2.679e-06</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkU &gt; BikeU for eyetracker_gaze_velocity</small></td></tr><tr><td><strong>Pupil Labs: Gaze Dispersion</strong></td><td>Walk - Bike within Urban</td><td>+0.000 &plusmn; 0.116</td><td>[+2.464, +4.299]</td><td>t = +0.00</td><td>3.917e-08</td><td><strong>4.504e-07</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkU &gt; BikeU for eyetracker_gaze_dispersion</small></td></tr><tr><td><strong>Pupil Labs: Gaze Distance from Center (px)</strong></td><td>Walk - Bike within Urban</td><td>+0.000 &plusmn; 0.141</td><td>[+0.373, +2.208]</td><td>t = +0.00</td><td>7.585e-03</td><td><strong>2.492e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkU &gt; BikeU for eyetracker_distance_from_center</small></td></tr><tr><td><strong>Pupil Labs: Eyelid Aperture (mm)</strong></td><td>Walk - Bike within Urban</td><td>+0.000 &plusmn; 0.254</td><td>[+0.278, +2.113]</td><td>t = +0.00</td><td>1.261e-02</td><td><strong>3.624e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkU &gt; BikeU for eyetracker_eyelid_aperture_avg</small></td></tr><tr><td><strong>Survey: Restorativeness (PRS-11)</strong></td><td>Walk - Bike within Urban</td><td>+0.000 &plusmn; 0.151</td><td>[-2.154, -0.412]</td><td>t = +0.00</td><td>5.271e-03</td><td><strong>2.020e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeU &gt; WalkU for questionnaire_prs11_total_mean_1_5</small></td></tr></tbody></table>
+
+<h4>Table 3.2: Walking vs. Cycling in Green Corridor (WalkG vs. BikeG)</h4>
+<p><em>Testing behavioral, ocular, autonomic, and psychological differences between pedestrians and cyclists in the green park corridor.</em></p>
+<table><thead><tr><th>Outcome</th><th>Predictor / Contrast</th><th>Beta &plusmn; SE</th><th>95% CI</th><th>t-statistic</th><th>p-value</th><th>q (FDR)</th><th>Condition</th><th>Interpretation</th></tr></thead><tbody><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>Walk - Bike within Green</td><td>+0.000 &plusmn; 0.039</td><td>[+3.235, +5.070]</td><td>t = +0.00</td><td>6.787e-10</td><td><strong>1.561e-08</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkG &gt; BikeG for eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Fixation Duration (s)</strong></td><td>Walk - Bike within Green</td><td>+0.000 &plusmn; 0.137</td><td>[-2.362, -0.527]</td><td>t = +0.00</td><td>3.241e-03</td><td><strong>1.131e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeG &gt; WalkG for eyetracker_fixation_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Gaze Velocity (°/s)</strong></td><td>Walk - Bike within Green</td><td>+0.000 &plusmn; 0.180</td><td>[+0.231, +2.066]</td><td>t = +0.00</td><td>1.606e-02</td><td><strong>4.618e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkG &gt; BikeG for eyetracker_gaze_velocity</small></td></tr><tr><td><strong>Pupil Labs: Gaze Distance from Center (px)</strong></td><td>Walk - Bike within Green</td><td>+0.000 &plusmn; 0.141</td><td>[+1.919, +3.754]</td><td>t = +0.00</td><td>8.638e-07</td><td><strong>6.622e-06</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>WalkG &gt; BikeG for eyetracker_distance_from_center</small></td></tr><tr><td><strong>Pupil Labs: Gaze Centrality</strong></td><td>Walk - Bike within Green</td><td>+0.000 &plusmn; 0.140</td><td>[-3.463, -1.627]</td><td>t = +0.00</td><td>4.794e-06</td><td><strong>2.757e-05</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeG &gt; WalkG for eyetracker_gaze_centrality</small></td></tr><tr><td><strong>Survey: General Comfort (1-7)</strong></td><td>Walk - Bike within Green</td><td>+0.000 &plusmn; 0.328</td><td>[-2.352, -0.516]</td><td>t = +0.00</td><td>3.442e-03</td><td><strong>1.131e-02</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeG &gt; WalkG for questionnaire_current_comfort_1_7</small></td></tr><tr><td><strong>Survey: Pleasantness (1-5)</strong></td><td>Walk - Bike within Green</td><td>+0.000 &plusmn; 0.234</td><td>[-2.755, -1.013]</td><td>t = +0.00</td><td>1.197e-04</td><td><strong>5.507e-04</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeG &gt; WalkG for questionnaire_pleasantness_1_5</small></td></tr><tr><td><strong>Survey: Restorativeness (PRS-11)</strong></td><td>Walk - Bike within Green</td><td>+0.000 &plusmn; 0.151</td><td>[-3.724, -1.982]</td><td>t = +0.00</td><td>2.059e-07</td><td><strong>2.368e-06</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>BikeG &gt; WalkG for questionnaire_prs11_total_mean_1_5</small></td></tr></tbody></table>
+
+<figure><img src='../output/Figures/Figure3_H3_Walk_vs_Bike_ForestPlot.png' alt='Figure 3. H3 Forest Plot: Walking versus Cycling mobility mode contrasts.'><figcaption>Figure 3. H3 Forest Plot: Walking versus Cycling mobility mode contrasts.</figcaption></figure>
+
+<!-- ======================================================================= -->
+<!-- H4 SECTION -->
+<!-- ======================================================================= -->
+<h2 class="h4">5. Hypothesis 4 (H4) &mdash; Environmental Stressor Regressions</h2>
+
+<div class="card">
+  <p><strong>Research Question:</strong> Which continuous ambient stressors (thermal comfort indices, acoustic noise, air pollution, visual greenness, lighting) predict acute physiological arousal and visual search dynamics during outdoor active travel, controlling for mobility mode?</p>
+
+  <div class="formula-box">
+    <strong>Mathematical Model Formulation (Univariable Stressor LMM):</strong><br>
+    Outcome_z<sub>ij</sub> = &beta;<sub>0</sub> + &beta;<sub>Mode</sub> &middot; Mode<sub>ij</sub> + &beta;<sub>Stressor</sub> &middot; Stressor_z<sub>ij</sub> + u<sub>i</sub> + &epsilon;<sub>ij</sub><br>
+    where both Outcome and Stressor are standardized (z-scored), so &beta;<sub>Stressor</sub> represents the standard deviation shift in physiological response per 1 SD increase in environmental exposure.<br><br>
+    <strong>Exact R Syntax (package nlme via REML):</strong><br>
+    <code>fit &lt;- lme(outcome_z ~ Mode + pred_z, random = ~ 1 | ParticipantID, data = d_s, method = "REML")</code>
+  </div>
+
+  <p><strong>Columns Used:</strong></p>
+  <ul>
+    <li><strong>Dependent Variables (Physiological &amp; Ocular Outcomes, 19 total):</strong> 6 Autonomic (Heart Rate, Tonic EDA, Phasic EDA, Skin Temperature, RMSSD, SDNN) + 13 Ocular dynamics (Pupil Diameter, Change Rate, Blink Duration, Fixation Rate, Saccade Amplitude, Gaze Dispersion, etc.).</li>
+    <li><strong>Continuous Environmental Predictors:</strong> Evaluated across physical environmental domains:
+      <ul>
+        <li><em>Thermal &amp; Microclimatic:</em> <code>ucm_PET</code>, <code>ucm_UTCI</code>, <code>ucm_MRT</code>, <code>ucm_AIR_temp</code>, <code>ucm_AIR_RH</code>, <code>ucm_AH</code>.</li>
+        <li><em>Acoustic Noise:</em> <code>ucm_SND_dBA</code>, <code>sound_level_dbfs</code>, <code>sound_prop_vehicle</code>, <code>sound_prop_urban_manmade</code>.</li>
+        <li><em>Air Pollution:</em> <code>atmo_pm1.0_avg</code>, <code>atmo_pm2.5_avg</code>, <code>atmo_pm10_avg</code>.</li>
+        <li><em>Visual Greenness:</em> <code>gvi_50m</code>, <code>gvi_tree_50m</code>, <code>gvi_phase_mean</code>.</li>
+        <li><em>Lighting &amp; Solar:</em> <code>lys_lux_avg</code>, <code>lys_medi_avg</code>, <code>ucm_SUN_Gh</code>, <code>Clearness_Index</code>.</li>
+      </ul>
+    </li>
+    <li><strong>Obligatory Covariate:</strong> <code>Mode</code> (Bike vs. Walk) to eliminate physical exertion confounding.</li>
+    <li><strong>Random-Effect Grouping Factor:</strong> <code>ParticipantID</code> (11 participants, random intercept).</li>
+  </ul>
+
+  <div class="note">
+    <strong>Objective Model Estimation &amp; Systematic Visualization:</strong><br>
+    In the inferential analysis (<code>statistical_analysis.R</code>), all <strong>63 continuous environmental candidate streams</strong> are systematically and objectively tested against all 19 physiological and ocular outcomes, yielding exactly <strong>1,184 univariable models</strong> (with 277 FDR-significant associations at q &lt; 0.05 across 51 predictors). No candidate stream is filtered out in statistical testing.<br><br>
+    To ensure complete transparency without visual clutter across publication media:
+    <ul>
+      <li><strong>Complete Comprehensive Coverage (Figure 4b Heatmap):</strong> Displays <em>all 51 environmental predictor streams</em> that yielded at least one FDR-significant association, grouped and divider-bracketed by sensor platform (UCM, Atmotube, LYS, GVI, YAMNet) across all 19 bodily outcomes.</li>
+      <li><strong>Multi-Panel Forest Plot (Figure 4):</strong> Illustrates 8 representative physical exposure modalities across a balanced 4&times;2 grid (PET, UTCI, MRT, Air Temperature, LYS Lux, Acoustic Noise, PM2.5, and Clearness Index) to show full parameter estimates with 95% Confidence Intervals.</li>
+      <li><strong>Full Data Tables:</strong> The entire unabridged output of all 1,184 fitted models is permanently preserved and auditable in <code>H4_Environmental_Stressors.csv</code>.</li>
+    </ul>
+  </div>
+
+  <table><thead><tr><th>Item</th><th>Value</th><th>Interpretation</th></tr></thead><tbody><tr><th>Results CSV file</th><td>C:\Users\pandya\Documents\Github\docker\Paper3_Analysis\output\statistical_analysis\H4_Environmental_Stressors.csv</td><td>1,184 total univariable models in results table</td></tr><tr><th>Total Models Fitted</th><td>1,184 regression models</td><td>Matched 8-minute data; Within-Person Z-score only</td></tr><tr><th>FDR-Significant Associations</th><td>277 models significant at q_FDR &lt; 0.05</td><td>Benjamini-Hochberg adjustment applied per predictor across the 19 physiological outcomes</td></tr><tr><th>Raw p &lt; 0.05 Associations</th><td>364 models significant before FDR correction</td><td></td></tr><tr><th>Sample Size &amp; Degrees of Freedom</th><td>N = 44 phase bouts (11 participants x 4 route conditions)</td><td>Degrees of freedom df ≈ 31</td></tr><tr><th>Output timestamp</th><td>2026-09-30 11:01:26</td><td>current or newer than input</td></tr></tbody></table>
+</div>
+
+<h3>A. Significant Associations by Sensor Platform</h3>
+<table><thead><tr><th>Sensor Platform</th><th>Total Models Fitted</th><th>FDR-Significant (q &lt; 0.05)</th><th>Hit Rate</th></tr></thead><tbody><tr><td><strong>UCM</strong></td><td>722</td><td><strong>185</strong></td><td>25.6%</td></tr><tr><td><strong>GVI</strong></td><td>152</td><td><strong>45</strong></td><td>29.6%</td></tr><tr><td><strong>Atmotube</strong></td><td>95</td><td><strong>29</strong></td><td>30.5%</td></tr><tr><td><strong>YAMNet</strong></td><td>101</td><td><strong>7</strong></td><td>6.9%</td></tr><tr><td><strong>LYS</strong></td><td>114</td><td><strong>11</strong></td><td>9.6%</td></tr></tbody></table>
+
+<h3>B. Top FDR-Significant Environmental Stressor Regressions</h3>
+<table><thead><tr><th>Outcome</th><th>Predictor / Contrast</th><th>Beta &plusmn; SE</th><th>95% CI</th><th>t-statistic</th><th>p-value</th><th>q (FDR)</th><th>Condition</th><th>Interpretation</th></tr></thead><tbody><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>GVI: Tree Canopy (50m)</td><td>-0.231 &plusmn; 0.017</td><td>[-0.265, -0.197]</td><td>t = -13.25</td><td>1.387e-13</td><td><strong>2.635e-12</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher gvi_tree_50m is associated with lower eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>GVI: Point Tree Canopy</td><td>-0.235 &plusmn; 0.018</td><td>[-0.270, -0.200]</td><td>t = -13.18</td><td>1.590e-13</td><td><strong>3.021e-12</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher gvi_point_tree is associated with lower eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>GVI: Phase Mean Tree Canopy</td><td>-0.198 &plusmn; 0.015</td><td>[-0.228, -0.168]</td><td>t = -12.94</td><td>2.484e-13</td><td><strong>4.720e-12</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher tree_phase_mean is associated with lower eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>GVI: Green View Index (50m)</td><td>-0.241 &plusmn; 0.019</td><td>[-0.277, -0.204]</td><td>t = -12.90</td><td>2.670e-13</td><td><strong>5.072e-12</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher gvi_50m is associated with lower eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>GVI: Point Green View Index</td><td>-0.245 &plusmn; 0.019</td><td>[-0.282, -0.207]</td><td>t = -12.82</td><td>3.111e-13</td><td><strong>5.911e-12</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher gvi_point_gvi is associated with lower eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>GVI: Phase Mean GVI</td><td>-0.201 &plusmn; 0.016</td><td>[-0.232, -0.170]</td><td>t = -12.64</td><td>4.308e-13</td><td><strong>8.186e-12</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher gvi_phase_mean is associated with lower eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>UCM: Relative Humidity (%)</td><td>-0.200 &plusmn; 0.019</td><td>[-0.236, -0.163]</td><td>t = -10.75</td><td>1.887e-11</td><td><strong>3.585e-10</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher ucm_AIR_RH is associated with lower eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>YAMNet: Audio Level (dBFS)</td><td>+0.318 &plusmn; 0.031</td><td>[+0.258, +0.378]</td><td>t = +10.39</td><td>4.123e-11</td><td><strong>7.834e-10</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher sound_level_dbfs is associated with higher eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Blink Duration (s)</strong></td><td>UCM: Thermal Radiation Right (W/m²)</td><td>+0.197 &plusmn; 0.020</td><td>[+0.157, +0.236]</td><td>t = +9.73</td><td>1.742e-10</td><td><strong>3.309e-09</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher ucm_IR_right is associated with higher eyetracker_blink_duration_s</small></td></tr><tr><td><strong>Pupil Labs: Pupil Diameter (mm)</strong></td><td>GVI: Phase Mean GVI</td><td>+0.638 &plusmn; 0.066</td><td>[+0.509, +0.768]</td><td>t = +9.65</td><td>2.093e-10</td><td><strong>1.988e-09</strong></td><td><small>Matched_start_8min | Within-Person Z-score</small></td><td><small>Higher gvi_phase_mean is associated with higher eyetracker_pupil_diameter_avg</small></td></tr></tbody></table>
+
+<figure><img src='../output/Figures/Figure4_H4_Environmental_Stressors.png' alt='Figure 4. H4 Environmental Stressor Multi-Panel Forest Plot (Key Modalities).'><figcaption>Figure 4. H4 Environmental Stressor Multi-Panel Forest Plot (Key Modalities).</figcaption></figure>
+<figure><img src='../output/Figures/Figure4b_H4_All_Significant_Stressors_Heatmap.png' alt='Figure 4b. Heatmap of all FDR-significant environmental stressor associations, clustered explicitly by sensor platform.'><figcaption>Figure 4b. Heatmap of all FDR-significant environmental stressor associations, clustered explicitly by sensor platform.</figcaption></figure>
+
+<!-- ======================================================================= -->
+<!-- SENSITIVITY ANALYSES -->
+<!-- ======================================================================= -->
+<h2 class="sens">6. Sensitivity Analysis: Temporal Lag & Cumulative Exposure Kinetics</h2>
+<div class="card">
+  <p>Evaluated via <code>statistical_analysis_lag.R</code> across 18 target environmental predictor streams across 6 discrete lags (0s, 10s, 20s, 30s, 60s, 120s) and 3 rolling cumulative exposure windows (30s, 60s, 120s) using 10-second autoregressive LMMs with serial autocorrelation (corAR1) across 19 physiological/ocular outcomes (3,078 models fitted; 112 FDR-significant).</p>
+  <table><thead><tr><th>Exposure Specification</th><th>FDR-Significant Models (q &lt; 0.05)</th><th>Temporal Dynamic Interpretation</th></tr></thead><tbody><tr><td>Discrete Lag (-0s)</td><td>9</td><td>Concurrent baseline</td></tr><tr><td>Discrete Lag (-10s)</td><td>11</td><td>Rapid acute onset</td></tr><tr><td>Discrete Lag (-20s)</td><td>10</td><td>Rapid acute onset</td></tr><tr><td>Discrete Lag (-30s)</td><td>16</td><td>Peak response window</td></tr><tr><td>Discrete Lag (-60s)</td><td>19</td><td>Peak response window</td></tr><tr><td>Discrete Lag (-120s)</td><td>6</td><td>Delayed decay</td></tr><tr><td>Cumulative Rolling Window (30s mean)</td><td>11</td><td>Sustained exposure onset</td></tr><tr><td>Cumulative Rolling Window (60s mean)</td><td>13</td><td>Sustained exposure onset</td></tr><tr><td>Cumulative Rolling Window (120s mean)</td><td>14</td><td>Peak sustained calming</td></tr></tbody></table>
+  <p class="note"><strong>Key Finding:</strong> Environmental associations peak at <strong>30s to 60s delayed exposure</strong> (19 discrete lag models significant at 60s vs. 9 at 0s concurrent). Green canopy immersion shows cumulative cardiovascular calming at 120s (heart rate &beta; = &minus;0.182, q_FDR = 2.1e-7), while acoustic noise triggers immediate scanning vigilance at 30s.</p>
+</div>
+
+<h2 class="sens">7. Sensitivity Analysis: Non-Responder & Baseline Artifact Exclusions (EDA0)</h2>
+<div class="card">
+  <p>Evaluated via <code>statistical_analysis_EDA_0.R</code> by re-estimating all model families after filtering non-reactive zero-conductance baseline sessions (EDA tonic &lt; 0.05 &mu;S set to NA).</p>
+  <table><thead><tr><th>Hypothesis Family</th><th>Primary Branch (All Data)</th><th>EDA0 Sensitivity (Non-Responder Filtered)</th><th>Inferential Stability Verdict</th></tr></thead><tbody><tr><th>H1: Green vs. Urban Route Contrast</th><td>46 (20 sig)</td><td>46 (20 sig)</td><td><strong>100% Identical — Complete inferential stability</strong></td></tr><tr><th>H2: Psychophysiological Concurrence</th><td>76 (8 sig)</td><td>76 (8 sig)</td><td><strong>100% Identical — Complete inferential stability</strong></td></tr><tr><th>H3: Walking vs. Cycling Mode Contrast</th><td>46 (16 sig)</td><td>46 (16 sig)</td><td><strong>100% Identical — Complete inferential stability</strong></td></tr><tr><th>H4: Environmental Stressor Models</th><td>1184 (277 sig)</td><td>1183 (274 sig)</td><td><strong>98.9% agreement - 277 vs. 274 significant models</strong></td></tr></tbody></table>
+  <p class="note"><strong>Robustness Verdict:</strong> 100% inferential stability across all primary hypothesis contrasts (H1, H2, and H3). Zero conclusions change upon removing non-reactive sessions.</p>
+</div>
+
+<h2>8. Primary Statistical Output Map</h2>
+<div class="card">
+  <p>The statistical models remain version-controlled in the R scripts; this Python script assembles their saved outputs into this single inspectable reference report.</p>
+  <ul>
+    <li><a href='../output/statistical_analysis/Run_Manifest.csv'>Main Run Manifest</a></li>
+    <li><a href='../output/statistical_analysis/results_H1-4.csv'>Combined H1-H4 Results Table (Primary)</a></li>
+    <li><a href='../output/statistical_analysis_lag/H4_Environmental_Stressors_Lag.csv'>Lagged &amp; Cumulative Environmental Models Table</a></li>
+    <li><a href='../output/statistical_analysis_EDA0/results_H1-4.csv'>EDA0 Sensitivity Results Table</a></li>
+    <li><a href='../output/merged_all_11participants_8min.csv'>Active Matched 8-Minute Input Dataset</a></li>
+  </ul>
+</div>
+
+<p class="note"><strong>Generated:</strong> 2026-09-30 11:11:03</p>
+</body>
+</html>

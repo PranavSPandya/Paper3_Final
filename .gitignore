@@ -1,0 +1,26 @@
+# Machine-local caches
+.cursor/
+.venv_yamnet/
+%SystemDrive%/
+.Rhistory
+.RData
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Office lock files
+~$*
+
+# Secrets / local env
+.env
+.env.*
+*.pem
+
+# Oversized local design source (> GitHub 100MB limit)
+Figures/sensor_setup/Experiment Sensor Setup.ai
+
+# Local scratch (keep small H4 VIF helpers only if needed)
+temp/
+!temp/h4_*.csv
+!temp/h4_*.py
+temp/_tmp_edge_pdf_profile/

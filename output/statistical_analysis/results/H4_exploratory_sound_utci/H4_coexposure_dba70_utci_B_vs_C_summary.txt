@@ -1,0 +1,20 @@
+Co-exposure: ucm_SND_dBA >= 70 within UTCI stratum (matched 10 s epochs, core cohort)
+Cohort rows: 2112
+
+UTCI strata (Blazejczyk / UTCI-FEBS heat bands):
+  A: UTCI < 26 degC (no thermal stress, 9–26 degC band)
+  B: 26 <= UTCI < 32 degC (moderate heat stress)
+  C: UTCI >= 32 degC (strong + very strong + extreme heat stress)
+
+Epochs in stratum B: 888 (42.0% of rows)
+Epochs in stratum C: 338 (16.0% of rows)
+
+Loud (>=65 dBA) AND stratum B: 489 epochs (55.1% of B epochs; 23.2% of all rows)
+Loud (>=65 dBA) AND stratum C: 237 epochs (70.1% of C epochs; 11.2% of all rows)
+
+Participant-phases with >=1 loud+B epoch: 29 of 44
+Participant-phases with >=1 loud+C epoch: 16 of 44
+
+Top participants by loud+thermal co-exposure epoch count (see dominance CSV):
+  B stratum leaders: P17, P14, P13, P10, P15
+  C stratum leaders: P13, P10, P14, P12, P11

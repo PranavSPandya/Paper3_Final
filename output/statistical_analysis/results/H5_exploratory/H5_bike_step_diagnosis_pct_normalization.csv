@@ -1,0 +1,3 @@
+PhaseID,n_sessions,median_cor_pct_route,mean_pct_at_session_max,median_abs_pct_minus_cohort_implied_pp,median_abs_pct_minus_session_implied_pp,median_session_route_max_m,interpretation
+BikeU,528,0.999429182909074,38.3181818181818,14.405587658349,26.0168617733102,1569.27059701276,"If pct uses fixed cohort route length, median_abs_pct_minus_cohort_implied is small; if per-session length, session-implied is small."
+BikeG,528,0.999211067571368,84,2.42524186517618,10.4182487093688,1884.62350638332,"If pct uses fixed cohort route length, median_abs_pct_minus_cohort_implied is small; if per-session length, session-implied is small."

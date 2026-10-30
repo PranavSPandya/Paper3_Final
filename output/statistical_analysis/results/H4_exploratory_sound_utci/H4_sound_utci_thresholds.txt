@@ -1,0 +1,26 @@
+H4 exploratory sound × UTCI exposure thresholds
+Input: D:/Pranav/docker/Paper3_Final/output/merged_all_11participants_8min.csv
+Rows (core cohort): 2112
+
+high_sound: ucm_SND_dBA >= 65 dBA (traffic/annoyance band; aligns with user figure bands from 70 dBA upward)
+high_UTCI (primary): ucm_UTCI >= 26 degC — lower bound of moderate heat stress (no stress ends at 26 degC; Blazejczyk UTCI)
+UTCI strata A/B/C: <26 / [26,32) / >=32 degC (moderate vs strong+ heat stress bands)
+high_UTCI_tertile (reported): within PhaseID, value >= 67th percentile of finite ucm_UTCI in this matched table
+both_high: high_sound AND high_UTCI (primary lit threshold)
+
+suggested_for_H4_sound (participant-phase) = Y when ALL of:
+  n_rows >= 40
+  pct_high_sound >= 20
+  pct_high_UTCI >= 20
+  pct_both_high >= 5
+
+Phase-specific UTCI tertile cuts (degC): BikeG=27.03; BikeU=28.61; WalkG=26.54; WalkU=33.52
+
+Participant-phases with >=1 epoch: dBA>=65 AND UTCI>=26 degC: 34 of 44
+Participant-phases with >=1 epoch: dBA>=65 AND UTCI>=32 degC (strong heat): 16 of 44
+
+UTCI 26 vs 32 degC (recommendation):
+  26 degC = inclusive screen (any moderate+ heat: UTCI >= 26 degC).
+  32 degC = strong-heat subset only (UTCI >= 32 degC; excludes moderate 26–32 band).
+  Strata CSV: H4_sound_dba_bands_by_utci_stratum_participant_phase.csv
+  B vs C co-exposure: H4_coexposure_dba70_utci_B_vs_C_summary.txt
