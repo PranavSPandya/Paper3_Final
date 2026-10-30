@@ -5,6 +5,16 @@
 - **DOI:** 10.1002/eet.1701
 - **OpenAlex:** https://openalex.org/W2285234339
 - **Landing page:** https://doi.org/10.1002/eet.1701
-- **Best OA PDF URL:** none
-- **Download status:** No open-access PDF retrieved automatically.
+- **Open access (OpenAlex):** closed
+- **Download status:** No legal open-access PDF retrieved automatically.
 
+## BibTeX (minimal)
+
+```bibtex
+@article{Middel_2015_W2285234,
+  author = {Middel, Ariane and others},
+  title = {European Climate Change Perceptions: Public support for mitigation and adaptation policies},
+  year = {2015},
+  doi = {10.1002/eet.1701},
+}
+```

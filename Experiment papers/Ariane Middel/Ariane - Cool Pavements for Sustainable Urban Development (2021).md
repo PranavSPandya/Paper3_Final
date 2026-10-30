@@ -5,6 +5,16 @@
 - **DOI:** 10.33593/xx1hzrq3
 - **OpenAlex:** https://openalex.org/W4226176973
 - **Landing page:** https://doi.org/10.33593/xx1hzrq3
-- **Best OA PDF URL:** none
-- **Download status:** No open-access PDF retrieved automatically.
+- **Open access (OpenAlex):** closed
+- **Download status:** No legal open-access PDF retrieved automatically.
 
+## BibTeX (minimal)
+
+```bibtex
+@article{Middel_2021_W4226176,
+  author = {Middel, Ariane and others},
+  title = {Cool Pavements for Sustainable Urban Development},
+  year = {2021},
+  doi = {10.33593/xx1hzrq3},
+}
+```

@@ -5,6 +5,16 @@
 - **DOI:** n/a
 - **OpenAlex:** https://openalex.org/W133633398
 - **Landing page:** http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.650.1941
-- **Best OA PDF URL:** none
-- **Download status:** No open-access PDF retrieved automatically.
+- **Open access (OpenAlex):** closed
+- **Download status:** No legal open-access PDF retrieved automatically.
 
+## BibTeX (minimal)
+
+```bibtex
+@article{Middel_2007_W1336333,
+  author = {Middel, Ariane and others},
+  title = {A framework for visualizing multivariate geodata},
+  year = {2007},
+  
+}
+```
