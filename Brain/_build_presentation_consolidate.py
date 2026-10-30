@@ -4,14 +4,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PRES = ROOT / "Presentation material"
-SCRIPTS = ROOT / "scripts"
+STAT_R = ROOT / "scripts" / "statistical_analysis"
 
-h4_lines = (SCRIPTS / "H4_multivariate.R").read_text(encoding="utf-8").splitlines()
-eq_block = "\n".join(h4_lines[72:139])  # lines 73-139 inclusive
+h4_lines = (STAT_R / "H4_timeseries.R").read_text(encoding="utf-8").splitlines()
+eq_block = "\n".join(h4_lines[75:146])  # H4_timeseries.R: nested-RE comment through Eq7 quote (1-based lines 76–146)
 
 methods_header = (
     "<!-- Consolidated 2026-10-27 from Presentation material sources; "
-    "formulas anchored to scripts/H1_to_H3_phase_average.R and scripts/H4_multivariate.R -->\n\n"
+    "formulas anchored to scripts/statistical_analysis/H1_H3_phaseavg.R and scripts/statistical_analysis/H4_timeseries.R -->\n\n"
     "## Front matter\n\n"
     "| Item | Detail |\n"
     "| --- | --- |\n"
@@ -20,13 +20,13 @@ methods_header = (
     "| **H3** | Psychophysiological comfort more compromised during cycling than walking. |\n"
     "| **H4** | Noise and traffic amplify thermal discomfort (heat × sound interactions). |\n"
     "| **Input CSV** | `output/merged_all_11participants_8min.csv` |\n"
-    "| **H1–H3 entrypoint** | `scripts/H1_to_H3_phase_average.R` (engine: `scripts/H1_H3_core.R`) |\n"
-    "| **H4 entrypoint** | `scripts/H4_multivariate.R` (engine: `scripts/H4_core.R`) |\n\n"
-    "## Locked H4 equation quotes (from H4_multivariate.R)\n\n"
+    "| **H1–H3 entrypoint** | `scripts/statistical_analysis/H1_H3_phaseavg.R` (engine: `scripts/statistical_analysis/library/H1_H3_core.R`) |\n"
+    "| **H4 entrypoint** | `scripts/statistical_analysis/H4_timeseries.R` (engine: `scripts/statistical_analysis/library/H4_core.R`) |\n\n"
+    "## Locked H4 equation quotes (from H4_timeseries.R)\n\n"
     "```r\n"
     f"{eq_block}\n"
     "```\n\n"
-    "## Locked H1-H3 quotes (from H1_to_H3_phase_average.R)\n\n"
+    "## Locked H1-H3 quotes (from H1_H3_phaseavg.R)\n\n"
     "Primary H1/H3 phase-mean LMM (same shell; planned contrasts differ via emmeans):\n\n"
     "```r\n"
     "H1_PhaseMean_Primary_LMM <- quote(\n"

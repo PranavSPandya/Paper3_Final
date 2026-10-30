@@ -24,6 +24,13 @@ h4_study_spec$bilateral_sources <- list(
   lys_lux_avg = c("atmo_lys_LYS1__lys_lux", "atmo_lys_LYS2__lys_lux")
 )
 
+# Exploratory subgroup runs: allow skip manifests without full report publication when all fits fail.
+h4_exploratory_inference_relaxed <- function() {
+  (exists("paper3_exploratory_group_active", mode = "function") &&
+     isTRUE(paper3_exploratory_group_active())) ||
+    nzchar(getOption("paper3_exploratory_output_suffix", ""))
+}
+
 # --- output paths (flat analysis-specific H4 result folders; not part of meeting spec) ---
 # Variant folders: results/H4_timeseries/ or results/H4_phaseavg/ (H4_timeseries_* / H4_phaseavg_* files).
 # h4_file() maps "H4_x" -> "<H4_VARIANT>_x" with H4_FILE_PREFIX = paste0("H4_", H4_VARIANT).
@@ -33,7 +40,12 @@ H4_FILE_PREFIX <- paste0("H4_", H4_VARIANT)
 h4_file <- function(filename) sub("^H4_", paste0(H4_FILE_PREFIX, "_"), filename)
 H4_RESULTS_ROOT <- file.path(PROJECT_ROOT, "output/statistical_analysis/results")
 H4_OUT_PATHS <- local({
-  result_dir <- file.path(H4_RESULTS_ROOT, H4_FILE_PREFIX)
+  override_dir <- Sys.getenv("PAPER3_OUT_DIR", "")
+  result_dir <- if (nzchar(override_dir)) {
+    override_dir
+  } else {
+    file.path(H4_RESULTS_ROOT, H4_FILE_PREFIX)
+  }
   work_dir <- result_dir
   dir.create(work_dir, recursive = TRUE, showWarnings = FALSE)
   list(
@@ -624,7 +636,8 @@ h4_run_gvif_diagnostic <- function(prep, design_outcome = "empatica_heart_rate",
     phase_vec <- raw_df$PhaseID[ok]
     n_rows <- nrow(z)
     design <- make_design(z, thermal[[eq$heat_form]], phase_vec, test = eq$test,
-      terms_order = h4_equation_term_order(eq$equation_id))
+      terms_order = setdiff(h4_equation_term_order(eq$equation_id), "grid_f"))
+    design <- h4_append_grid_design_columns(design, raw_df, ok, eq$equation_id)
     vv <- h4_vif_per_term(design)
     gt <- attr(vv, "gvif_table")
     phase_gt <- gt[gt$term == "PhaseID", , drop = FALSE]
@@ -1169,7 +1182,7 @@ h4_phase_mean_results <- function(equation_id, outcome, fixed, phase, design, fi
     min_epochs_per_phase = if (nrow(phase)) min(phase$epochs) else 0,
     max_epochs_per_phase = if (nrow(phase)) max(phase$epochs) else 0,
     coefficients = ncol(design), full_rank = full_rank, boundary_variance = boundary,
-    condition_index = kappa(design, exact = TRUE),
+    condition_index = tryCatch(kappa(design, exact = TRUE), error = function(e) NA_real_),
     note = if (length(note)) paste(unique(note), collapse = "; ") else "Completed")
   if (!is.null(phase_comparisons)) {
     phase_comparisons$equation_id <- equation_id
@@ -1182,6 +1195,12 @@ h4_phase_mean_results <- function(equation_id, outcome, fixed, phase, design, fi
 }
 
 h4_step4_exposure_prep <- function(audit_df, raw_df) {
+  if (identical(H4_VARIANT, "timeseries")) {
+    if (!exists("paper3_timeseries_attach_corridor_grid", mode = "function")) {
+      source(file.path(paper3_statistical_library_dir(), "Paper3_corridor_grid.R"), local = FALSE)
+    }
+    raw_df <- paper3_timeseries_attach_corridor_grid(raw_df, PROJECT_ROOT)
+  }
   raw_df <- h4_apply_average_sources(raw_df, c("lys_lux_avg", "lys_kelvin_avg", "lys_medi_avg"))
   raw_df <- raw_df[raw_df$ParticipantID %in% h4_study_spec$participants & raw_df$PhaseID %in% h4_study_spec$phases, , drop = FALSE]
   if (!"empatica_hrv_fd_5min_available" %in% names(raw_df)) stop("Missing HRV availability flag")
@@ -1330,13 +1349,25 @@ h4_step5_write_checkpoint <- function(records, fingerprints, h4_model_dir) {
   invisible(n_done)
 }
 
+h4_append_grid_design_columns <- function(design, raw_df, valid, equation_id) {
+  if (!"grid_f" %in% h4_equation_term_order(equation_id) || !"grid_f" %in% names(raw_df)) return(design)
+  gf <- raw_df$grid_f[valid]
+  if (all(is.na(gf))) return(design)
+  gmx <- stats::model.matrix(~ grid_f, data = data.frame(grid_f = gf))
+  if (ncol(gmx) <= 1L) return(design)
+  cbind(design, gmx[, -1, drop = FALSE])
+}
+
 h4_complete_rows <- function(raw_df, outcome, equation_id, natural_log_outcomes = h4_study_spec$natural_log_outcome_names) {
   predictors <- unique(unlist(strsplit(h4_equation_term_order(equation_id), ":", fixed = TRUE)))
-  predictors <- setdiff(predictors, H4_PHASE_SUM_COLS)
+  predictors <- setdiff(predictors, c(H4_PHASE_SUM_COLS, "grid_f"))
   values <- as.matrix(raw_df[, c(predictors, outcome), drop = FALSE])
   storage.mode(values) <- "double"
   ok <- rowSums(!is.finite(values)) == 0L
   if (outcome %in% natural_log_outcomes) ok <- ok & raw_df[[outcome]] > 0
+  if ("grid_f" %in% h4_equation_term_order(equation_id)) {
+    if (!"grid_f" %in% names(raw_df)) ok <- rep(FALSE, length(ok)) else ok <- ok & !is.na(raw_df$grid_f)
+  }
   ok
 }
 
@@ -1355,8 +1386,18 @@ h4_fit_begin <- function(audit_df = NULL, raw_df = NULL) {
     # Rebuild the averaged sensor columns (Atmotube PM, LYS) that are not stored in the raw CSV.
     raw_df <- h4_apply_average_sources(raw_df)
   }
+  if (identical(H4_VARIANT, "timeseries")) {
+    if (!exists("paper3_timeseries_attach_corridor_grid", mode = "function")) {
+      source(file.path(paper3_statistical_library_dir(), "Paper3_corridor_grid.R"), local = FALSE)
+    }
+    raw_df <- paper3_timeseries_attach_corridor_grid(raw_df, PROJECT_ROOT)
+  }
   h4_model_dir <- OUT_DIR
   dir.create(h4_model_dir, recursive = TRUE, showWarnings = FALSE)
+  if (identical(H4_VARIANT, "timeseries") && exists("paper3_write_epoch_grid_coverage", mode = "function") &&
+      "grid_label" %in% names(raw_df)) {
+    paper3_write_epoch_grid_coverage(raw_df, file.path(h4_model_dir, "H4_timeseries_epoch_grid_coverage.csv"))
+  }
   job_start_env <- h4_env_int("H4_JOB_START", 1L)
   continue_checkpoint <- job_start_env > 1L || identical(Sys.getenv("H4_APPEND_BATCH", unset = ""), "1")
   if (!continue_checkpoint) {
@@ -1542,6 +1583,7 @@ for (eq_id in fit_equation_ids) {
   sound_ix <- grepl(":", coefficient_results$term, fixed = TRUE) & grepl("ucm_SND_dBA", coefficient_results$term, fixed = TRUE)
   coefficient_results$term_category[sound_ix] <- "Thermal_x_Sound"
   coefficient_results$term_category[grepl(":PhaseSum", coefficient_results$term, fixed = TRUE)] <- "Thermal_x_Phase"
+  coefficient_results$term_category[grepl("^grid_f", coefficient_results$term, fixed = FALSE)] <- "corridor grid"
   # Candidate terms are specified before outcome fits; no significance-based or PCA selection.
   coefficient_results$selection_status <- ifelse(coefficient_results$term == "Intercept", "intercept",
     ifelse(coefficient_results$term_category == "Nonthermal_Covariate" & !(coefficient_results$term %in% agreed_common),
@@ -1686,8 +1728,24 @@ h4_write_phase_results <- function(results, coefficients, status, report, audit,
 }
 
 h4_phase_publish_results <- function(results, prepared, audit, shared_audit_dir) {
-  coefficients <- do.call(rbind, lapply(results, `[[`, "coefficients"))
   status <- do.call(rbind, lapply(results, `[[`, "status"))
+  if (h4_exploratory_inference_relaxed() && (!nrow(status) || !any(status$success))) {
+    dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+    utils::write.csv(status, file.path(OUT_DIR, h4_file("H4_fit_status.csv")), row.names = FALSE, na = "NA")
+    suffix <- getOption("paper3_exploratory_output_suffix", "")
+    if (exists("paper3_exploratory_write_inference_skipped", mode = "function")) {
+      paper3_exploratory_write_inference_skipped(
+        OUT_DIR, suffix, "H4_phaseavg",
+        length(h4_study_spec$participants), h4_study_spec$participants,
+        reason = paste(
+          "All phase-average LME fits failed or did not converge in this exploratory subgroup;",
+          "coefficient/FDR tables not produced."
+        )
+      )
+    }
+    return(invisible(list(all_failed = TRUE, status = status)))
+  }
+  coefficients <- do.call(rbind, lapply(results, `[[`, "coefficients"))
   coefficients <- h4_coefficient_fdr(coefficients, coefficients$equation_id, coefficients$term,
     coefficients$p, is.finite(coefficients$p), h4_study_spec$all_physiological_outcomes)
   failed <- !is.finite(coefficients$p)
@@ -1719,7 +1777,35 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
   status_all <- do.call(rbind, lapply(fit_results, `[[`, "status"))
   stopifnot(nrow(status_all) == length(outcomes) * length(fit_equation_ids),
             !anyDuplicated(status_all[, c("outcome", "equation_id")]))
-  if (is.null(coef_all) || !nrow(coef_all)) stop("All fits failed; existing published outputs preserved")
+  if (is.null(coef_all) || !nrow(coef_all)) {
+    if (h4_exploratory_inference_relaxed()) {
+      status_all[names(fingerprints)] <- as.list(fingerprints)
+      utils::write.csv(status_all, file.path(h4_model_dir, h4_file("H4_fit_status.csv")), row.names = FALSE, na = "NA")
+      skip <- data.frame(
+        pipeline = "H4_timeseries",
+        skipped_fdr = TRUE,
+        n_successful_fits = 0L,
+        n_attempted = nrow(status_all),
+        reason = "All planned fits failed numerically in this exploratory subgroup; coefficient/FDR tables not produced.",
+        participant_ids = if ("participant_ids" %in% names(status_all)) {
+          paste(unique(status_all$participant_ids), collapse = ";")
+        } else {
+          paste(paper3_active_participants(), collapse = ";")
+        },
+        skipped_utc = format(Sys.time(), tz = "UTC", format = "%Y-%m-%dT%H:%M:%SZ"),
+        stringsAsFactors = FALSE
+      )
+      suffix <- getOption("paper3_exploratory_output_suffix", "")
+      utils::write.csv(
+        skip,
+        file.path(h4_model_dir, paste0("exploratory_inference_skipped", suffix, ".csv")),
+        row.names = FALSE
+      )
+      cat(skip$reason, "\n")
+      return(invisible(list(all_failed = TRUE, status = status_all)))
+    }
+    stop("All fits failed; existing published outputs preserved")
+  }
   contrast_all <- do.call(rbind, lapply(fit_results, `[[`, "contrasts"))
   contrast_grid <- expand.grid(outcome = outcomes, equation_id = fit_equation_ids,
                               contrast = rownames(h4_phase_contrast_weights()), stringsAsFactors = FALSE)
@@ -1790,10 +1876,19 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
   coef_all <- h4_merge_covariance_sensitivity(coef_all, sens_all)
   # Both correction scopes are explicit; sensitivity equations remain separate analyses.
   is_thermal <- coef_all$term_category %in% c(primary_cats, "Thermal_x_Phase")
+  term_pub <- coef_all$term
+  grid_ix <- grepl("^grid_f", term_pub, fixed = FALSE)
+  if (any(grid_ix) && exists("paper3_grid_term_display", mode = "function")) {
+    term_pub[grid_ix] <- vapply(term_pub[grid_ix], paper3_grid_term_display, character(1L))
+  } else {
+    term_pub[grid_ix] <- sub("^grid_f", "", term_pub[grid_ix])
+  }
   coef_out <- data.frame(equation = coef_all$heat_form, outcome = coef_all$outcome,
-    term = sub("^PhaseSum(.*)$", "Phase: \\1 vs mean of phases", coef_all$term),
-    term_type = ifelse(coef_all$term == "Intercept", "intercept", ifelse(startsWith(coef_all$term, "PhaseSum"), "phase (study design)",
-      ifelse(is_thermal, "thermal exposure", ifelse(is_sound, "sound exposure", "covariate")))),
+    term = sub("^PhaseSum(.*)$", "Phase: \\1 vs mean of phases", term_pub),
+    term_type = ifelse(coef_all$term == "Intercept", "intercept",
+      ifelse(coef_all$term_category == "corridor grid", "corridor grid",
+        ifelse(startsWith(coef_all$term, "PhaseSum"), "phase (study design)",
+          ifelse(is_thermal, "thermal exposure", ifelse(is_sound, "sound exposure", "covariate"))))),
     Beta = coef_all$estimate, ci_low = coef_all$ci_low, ci_high = coef_all$ci_high, p = ifelse(is_correlated_fit, coef_all$p_value, NA_real_),
     df = coef_all$df, low_df_flag = coef_all$low_df_flag,
     q = fdr$q, q_equation = fdr$q_equation, FDR_significant = fdr$FDR_significant,
@@ -1862,12 +1957,15 @@ h4_design_preflight <- function(raw_df, centered, selected, catalog, thermal, ma
       check_phase <- raw_df$PhaseID[valid]
       check_eq <- catalog[catalog$equation_id == check_eid, ]
       check_x <- make_design(check_z, thermal[[check_eq$heat_form]], check_phase, test = check_eq$test,
-        terms_order = h4_equation_term_order(check_eid))
-      vv <- h4_vif_per_term(check_x)
+        terms_order = setdiff(h4_equation_term_order(check_eid), "grid_f"))
+      check_x <- h4_append_grid_design_columns(check_x, raw_df, valid, check_eid)
+      grid_cols <- grepl("^grid_f", colnames(check_x), fixed = FALSE)
+      check_x_core <- if (any(grid_cols)) check_x[, !grid_cols, drop = FALSE] else check_x
+      vv <- h4_vif_per_term(check_x_core)
       gt <- attr(vv, "gvif_table")
       phase_gt <- gt[gt$term == "PhaseID", , drop = FALSE]
       if (!nrow(phase_gt)) phase_gt <- data.frame(GVIF = NA_real_, Df = 3L, GVIF_root = NA_real_, VIF_equivalent = NA_real_)
-      exposure_terms <- intersect(colnames(check_x), selected)
+      exposure_terms <- intersect(colnames(check_x_core), selected)
       cells <- interaction(raw_df$ParticipantID[valid], check_phase, drop = TRUE)
       within_share <- vapply(exposure_terms, function(v) {
         x <- check_x[, v]
@@ -1875,19 +1973,26 @@ h4_design_preflight <- function(raw_df, centered, selected, catalog, thermal, ma
         if (total <= 0) return(NA_real_)
         sum((x - ave(x, cells, FUN = mean))^2) / total
       }, numeric(1))
-      rr <- qr(cbind(Intercept = 1, check_x))$rank
-      sigmas <- apply(check_x, 2L, stats::sd)
-      singular <- svd(sweep(sweep(check_x, 2L, colMeans(check_x), "-"), 2L, ifelse(is.finite(sigmas) & sigmas > 0, sigmas, 1), "/"), nu = 0L, nv = 0L)$d
+      rr <- if (nrow(check_x_core) > 0L && ncol(check_x_core) > 0L) qr(cbind(Intercept = 1, check_x_core))$rank else 0L
+      sigmas <- if (ncol(check_x_core) > 0L) apply(check_x_core, 2L, stats::sd) else numeric(0)
+      singular <- if (nrow(check_x_core) > 0L && ncol(check_x_core) > 0L) {
+        svd(sweep(sweep(check_x_core, 2L, colMeans(check_x_core), "-"), 2L, ifelse(is.finite(sigmas) & sigmas > 0, sigmas, 1), "/"), nu = 0L, nv = 0L)$d
+      } else {
+        numeric(0)
+      }
       mx <- max(vv)
+      n_grid_terms <- sum(grid_cols)
       preflight[[length(preflight) + 1L]] <- data.frame(equation_id = check_eid, heat_form = check_eq$heat_form, block = check_eq$block,
-        outcome = check_y, n = nrow(check_x), rank = rr, expected_rank = ncol(check_x) + 1L, full_rank = rr == ncol(check_x) + 1L,
+        outcome = check_y, n = nrow(check_x), rank = rr, expected_rank = ncol(check_x_core) + 1L, full_rank = rr == ncol(check_x_core) + 1L,
+        n_corridor_grid_terms = n_grid_terms,
         max_vif = mx, worst_term = names(vv)[which.max(vv)], diagnostic = "Design-only GVIF^(1/Df); ordinary VIF for Df=1",
         phase_df = phase_gt$Df, phase_gvif = phase_gt$GVIF, phase_gvif_root = phase_gt$GVIF_root, phase_vif_equivalent = phase_gt$VIF_equivalent,
         term_vif_equivalents = paste(names(vv), signif(vv, 6), sep = "=", collapse = ";"),
         within_participant_phase_variation_share = paste(names(within_share), signif(within_share, 6), sep = "=", collapse = ";"),
         high_vif_terms = paste(names(vv)[!is.finite(vv) | vv >= h4_study_spec$variance_inflation_factor_limit], collapse = ";"),
         condition_index = if (!length(singular) || min(singular) <= 1e-10) Inf else max(singular) / min(singular),
-        passes_check = rr == ncol(check_x) + 1L, vif_flag = is.finite(mx) && mx >= h4_study_spec$variance_inflation_factor_limit, stringsAsFactors = FALSE)
+        passes_check = rr == ncol(check_x_core) + 1L && nrow(check_x) > ncol(check_x) + 1L,
+        vif_flag = is.finite(mx) && mx >= h4_study_spec$variance_inflation_factor_limit, stringsAsFactors = FALSE)
     }
   }
   do.call(rbind, preflight)
@@ -2270,6 +2375,15 @@ h4_run_full_pipeline <- function() {
 
 h4_publish_outputs <- function(audit_df, step5_result, prep = NULL) {
   render_h4_faceted_flow(prep = prep)
+  h4_res <- if (!is.null(step5_result$h4)) step5_result$h4 else step5_result
+  if (isTRUE(h4_res$all_failed) && h4_exploratory_inference_relaxed()) {
+    cat(
+      "Exploratory subgroup: no successful H4 time-series fits; skipped final report ",
+      "(fit status and skip manifest already on disk).\n",
+      sep = ""
+    )
+    return(invisible(step5_result))
+  }
   h4_write_results(audit_df, step5_result)
   if (identical(Sys.getenv("H4_INCLUDE_AUDIT_PDF"), "1")) {
     render_audit_pdf(audit_df, AUDIT_PDF)

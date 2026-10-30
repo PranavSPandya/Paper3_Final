@@ -1,0 +1,13 @@
+"Exposure","Outcome","Lag_s","N_Participants","mean_r","ci_low","ci_high","p","N_Changes","q"
+"lys_lux_avg","eyetracker_pupil_diameter_avg",0,3,NA,NA,NA,NA,541,NA
+"lys_lux_avg","eyetracker_pupil_diameter_avg",10,3,NA,NA,NA,NA,537,NA
+"lys_lux_avg","eyetracker_pupil_diameter_avg",30,3,NA,NA,NA,NA,518,NA
+"lys_lux_avg","eyetracker_pupil_diameter_avg",60,3,NA,NA,NA,NA,482,NA
+"ucm_MRT","empatica_skin_temperature",0,3,NA,NA,NA,NA,564,NA
+"ucm_MRT","empatica_skin_temperature",10,3,NA,NA,NA,NA,552,NA
+"ucm_MRT","empatica_skin_temperature",30,3,NA,NA,NA,NA,528,NA
+"ucm_MRT","empatica_skin_temperature",60,3,NA,NA,NA,NA,492,NA
+"ucm_SND_dBA","empatica_eda_phasic",0,3,NA,NA,NA,NA,564,NA
+"ucm_SND_dBA","empatica_eda_phasic",10,3,NA,NA,NA,NA,552,NA
+"ucm_SND_dBA","empatica_eda_phasic",30,3,NA,NA,NA,NA,528,NA
+"ucm_SND_dBA","empatica_eda_phasic",60,3,NA,NA,NA,NA,492,NA

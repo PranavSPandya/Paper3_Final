@@ -1,5 +1,0 @@
-block,method,PC,column,coefficient,squared_coefficient_pct,corr_transformed_variable_PC,corr_original_within_bout_variable_PC,PC_retained,candidate_representative,LOPO_selection_fraction,LOPO_min_abs_component_cosine
-radiation,within-bout standardized correlation PCA,1,ucm_SUN_Gh,0.7071067811865476,50.000000000000014,0.9314261978361058,0.9314261978361058,True,False,0.0,0.9999999999999998
-radiation,within-bout standardized correlation PCA,1,ucm_MRT,0.7071067811865474,49.99999999999998,0.9314261978361056,0.9314261978361058,True,False,0.0,0.9999999999999998
-radiation,within-bout standardized correlation PCA,2,ucm_SUN_Gh,-0.7071067811865474,49.99999999999998,-0.3639302652769834,-0.3639302652769835,False,False,,
-radiation,within-bout standardized correlation PCA,2,ucm_MRT,0.7071067811865476,50.000000000000014,0.363930265276984,0.36393026527698397,False,False,,

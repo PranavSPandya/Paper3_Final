@@ -1,0 +1,5 @@
+"Source","Outcome","N_Participants","mean_beta_SD","ci_low","ci_high","p","N_10s","q"
+"vehicle_proportion","empatica_eda_tonic",3,NA,NA,NA,NA,467,NA
+"vehicle_proportion","eyetracker_fixation_rate",3,NA,NA,NA,NA,553,NA
+"rural_natural_proportion","empatica_eda_tonic",3,NA,NA,NA,NA,467,NA
+"rural_natural_proportion","eyetracker_fixation_rate",3,NA,NA,NA,NA,553,NA

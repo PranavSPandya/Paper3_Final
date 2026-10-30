@@ -62,6 +62,8 @@ h5_hotspot_spec <- list(
   exploratory_fdr_family = "within_outcome_x_phase",
   # Temporary: RH1 only (RH2–RH4 and staged sensitivities disabled in core until restored).
   run_rh1_only = TRUE,
+  # Routine runs: FDR tables only; set TRUE for debugging / per-hotspot coef review.
+  write_rh1_per_outcome_coef_csvs = FALSE,
   # RH1 temporal lag (off): prior hotspot-day row UTCI within participant×phase.
   rh1_include_temporal_lag = FALSE,
   rh1_lag_term = "env_ucm_UTCI_lag1_c",
@@ -106,7 +108,8 @@ h5_hotspot_spec <- paper3_attach_outcome_normalization(h5_hotspot_spec, PROJECT_
 # Else pooled: median_center_Y ~ PhaseID + env_ucm_UTCI_c + hotspot_f
 # Sensitivity (optional flags): + env_ucm_UTCI_lag1_c → results/H5_exploratory/lag/;
 #   + env_ucm_UTCI_cum_c → results/H5_exploratory/cumulative/ (not GAM/GAMM; same LMM + extra linear term).
-# Writes RH1_hotspot_coefficients_<outcome>.csv (hotspot_f levels + p_value_FDR) and H5_RH1_hotspot_FDR_*.csv.
+# Writes RH1_hotspot_coefficients_<outcome>.csv (term = PhaseID_gridN, e.g. BikeG_grid1 + p_value_FDR) and H5_RH1_hotspot_FDR_*.csv.
+# Label map: H5_corridor_grid_label_map.csv (buffer seg_idx / route_bin -> BikeG_grid1, WalkU_grid2, …).
 # PAUSED (run_rh1_only = TRUE): RH2 green_phase interaction; RH3 route_bin random slope; RH4 mobility_mode;
 #   RH1_sens_<cov> staged +1 covariate runs — see h5s_fit_models_and_sensitivity() in H5_hotspot_core.R.
 

@@ -1,5 +1,5 @@
 "field","value"
-"script_path","H5_hotspot_weather.R"
+"script_path","scripts\statistical_analysis\H5_hotspot_weather.R"
 "raw_data_path","D:/Pranav/docker/Paper3_Final/output/merged_all_11participants_8min.csv"
 "analysis","repeated_hotspot_backpack_env_staged_sensitivity"
 "hotspot_definition","corridor_buffer"
@@ -34,4 +34,4 @@
 "hotspot_slope_source_column","ucm_GPS_alt"
 "n_epochs","2112"
 "n_hotspot_day_rows","1801"
-"timestamp_utc","2026-10-29 15:36:46 UTC"
+"timestamp_utc","2026-10-30 09:56:26 UTC"

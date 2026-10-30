@@ -1,0 +1,61 @@
+$script_dir
+[1] "C:/Users/sanga/Documents/Codex/p3h/scripts/statistical_analysis"
+
+$library_dir
+[1] "C:/Users/sanga/Documents/Codex/p3h/scripts/statistical_analysis/library"
+
+$project_root
+[1] "C:/Users/sanga/Documents/Codex/p3h"
+
+==============================================================================
+Running H1–H3 time series (outcome-only 10 s AR(1); engine per hypothesis)
+==============================================================================
+Participants (8): P8, P9, P11, P13, P14, P15, P16, P17
+Outcomes     (26): 13 empatica + 13 eyetracker (physiological vector)
+H1 contrasts: BikeU_BikeG, WalkU_WalkG | H3 contrasts: BikeU_WalkU, BikeG_WalkG
+
+--- H1 ---
+==============================================================================
+Running H1 time series: outcome-only 10 s AR(1) LMMs (engine: H1_H3_core.R)
+==============================================================================
+Participants (8): P8, P9, P11, P13, P14, P15, P16, P17
+Outcomes (26): physiological 10 s series (within-person z); no environmental predictors
+
+[1/3] Loading matched 8-min epoch data...
+[2/3] Fitting 10 s / 60 s AR(1) temporal LMMs...
+[3/3] Writing CSV outputs...
+
+SUCCESS: H1 time series finished. Outputs: C:/Users/sanga/Documents/Codex/p3h/output/statistical_analysis/results/H1_H3_timeseries_grouped_by_fitness_fit
+--- H2 ---
+==============================================================================
+Running H2 time series: outcome-only 10 s AR(1) LMMs (engine: H1_H3_core.R)
+==============================================================================
+Participants (8): P8, P9, P11, P13, P14, P15, P16, P17
+Outcomes (26): physiological 10 s series (within-person z); no environmental predictors
+
+[1/3] Loading matched 8-min epoch data...
+[2/3] Fitting 10 s / 60 s AR(1) temporal LMMs...
+[2b/3] Running hypothesis-specific secondary fit from meeting script...
+[3/3] Writing CSV outputs...
+
+SUCCESS: H2 time series finished. Outputs: C:/Users/sanga/Documents/Codex/p3h/output/statistical_analysis/results/H1_H3_timeseries_grouped_by_fitness_fit
+--- H3 ---
+==============================================================================
+Running H3 time series: outcome-only 10 s AR(1) LMMs (engine: H1_H3_core.R)
+==============================================================================
+Participants (8): P8, P9, P11, P13, P14, P15, P16, P17
+Outcomes (26): physiological 10 s series (within-person z); no environmental predictors
+
+[1/3] Loading matched 8-min epoch data...
+[2/3] Fitting 10 s / 60 s AR(1) temporal LMMs...
+[3/3] Writing CSV outputs...
+
+SUCCESS: H3 time series finished. Outputs: C:/Users/sanga/Documents/Codex/p3h/output/statistical_analysis/results/H1_H3_timeseries_grouped_by_fitness_fit
+
+SUCCESS: H1–H3 time series dispatch finished.
+
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 

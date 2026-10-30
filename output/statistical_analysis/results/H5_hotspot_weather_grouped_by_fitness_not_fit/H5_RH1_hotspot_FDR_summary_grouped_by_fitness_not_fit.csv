@@ -1,0 +1,2 @@
+"n_hotspot_f_tests","n_raw_p_lt_alpha","n_fdr_significant","n_fdr_significant_primary_panel","exploratory_fdr_family","fdr_group_columns","note"
+4986,820,476,195,"within_outcome_x_phase","outcome;PhaseID","BH on hotspot_f coefficients only"

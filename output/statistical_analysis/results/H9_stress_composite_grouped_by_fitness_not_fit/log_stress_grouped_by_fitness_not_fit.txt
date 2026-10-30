@@ -1,0 +1,12 @@
+[H9 1/4] Loading matched 8-min route epochs...
+[H9 2/4] Building stress-oriented composites on participant-phase means...
+[H9 3/4] Pairwise rmcorr across composites (one BH-FDR family)...
+[H9 4/4] Done. 55 composites, 0 pairs fit, 0 FDR-significant (q < 0.05).
+Outputs: C:\Users\sanga\Documents\Codex\2026-10-29\d-pranav-docker-paper3-final-scripts\work\h5h9\results/H9_stress_composite_grouped_by_fitness_not_fit
+GROUPED DONE stress fitness not_fit 
+
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 

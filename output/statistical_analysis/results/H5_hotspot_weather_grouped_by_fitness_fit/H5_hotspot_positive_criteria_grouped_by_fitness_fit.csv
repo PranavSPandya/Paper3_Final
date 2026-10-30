@@ -1,0 +1,4 @@
+"criterion","passed","detail"
+"replication_5plus_participant_hotspot_2dates",FALSE,"n=0"
+"RH1_env_moderator_FDR_sig",TRUE,"n_FDR_sig=14; env_FDR_family=within_outcome (env: one UTCI test per outcome×phase model)"
+"RH1_env_moderator_raw_p_lt_alpha",TRUE,"n_raw_sig=21"

@@ -328,12 +328,34 @@ temporal_beta_sign_word <- function(beta) {
   if (beta > 0) "Beta>0" else if (beta < 0) "Beta<0" else "Beta~0"
 }
 
+h1_h3_enrich_temporal_grid_columns <- function(table, term_col = "Term") {
+  if (is.null(table) || !nrow(table) || !term_col %in% names(table)) return(table)
+  terms <- table[[term_col]]
+  display_fn <- get0("paper3_grid_term_display", mode = "function")
+  is_grid_fn <- get0("paper3_is_grid_lmm_term", mode = "function")
+  is_grid <- if (is.function(is_grid_fn)) vapply(terms, is_grid_fn, logical(1L)) else grepl("^grid_f", terms)
+  table$term_category <- ifelse(is_grid, "corridor grid", "phase/time")
+  table$Term_display <- if (is.function(display_fn)) vapply(terms, display_fn, character(1L)) else terms
+  table
+}
+
 h1_h3_temporal_term_statement <- function(outcome, term, beta, use_phase_sum_coding, epoch_grid = c("10s", "60s")) {
   epoch_grid <- match.arg(epoch_grid)
   grid <- if (epoch_grid == "60s") "60s" else "10s"
   obs <- temporal_observed_wpz(outcome, beta)
   sign_w <- temporal_beta_sign_word(beta)
   short_out <- gsub("^Empatica: |^Eyetracker: ", "", label_of(outcome))
+  is_grid_fn <- get0("paper3_is_grid_lmm_term", mode = "function")
+  if (is.function(is_grid_fn) && is_grid_fn(term)) {
+    cell <- if (is.function(get0("paper3_grid_term_display", mode = "function"))) paper3_grid_term_display(term) else sub("^grid_f", "", term)
+    return(sprintf("Row: %s AR(1) WPZ offset vs reference corridor grid cell (%s); observed: %s %s (%s).",
+      grid, cell, short_out, obs, sign_w))
+  }
+  if (grepl("^grid_f", term)) {
+    cell <- sub("^grid_f", "", term)
+    return(sprintf("Row: %s AR(1) WPZ offset vs reference corridor grid cell (%s); observed: %s %s (%s).",
+      grid, cell, short_out, obs, sign_w))
+  }
   if (use_phase_sum_coding) {
     if (identical(term, "time_min")) {
       return(sprintf("Row: %s AR(1) common WPZ slope per minute; observed: %s %s (%s).", grid, short_out, obs, sign_w))
@@ -395,11 +417,11 @@ h1_h3_fit_temporal_ar1 <- function(route, CONDITIONS, sensor_outcomes, model_aud
     " duplicate participant/phase/10-s steps; fix the epoch grid upstream instead of dropping rows.")
   phase_sum_columns <- get0("TIME_SERIES_PHASE_SUM_COLUMNS", envir = .GlobalEnv, ifnotfound = character(0))
   if (use_phase_sum_coding) {
-    formula_template_10s <- paste0("lme(within_person_z__%s ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min, random = ~1 | ParticipantID/PhaseID, ",
+    formula_template_10s <- paste0("lme(within_person_z__%s ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min + grid_f, random = ~1 | ParticipantID/PhaseID, ",
                   "corAR1(value=0.2, ~ time_10s_step_integer | ParticipantID/PhaseID)); BikeU implicit (contr.sum)")
-    formula_template_60s <- paste0("lme(mean within_person_z__%s per 60-s epoch ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min, random = ~1 | ParticipantID/PhaseID, ",
+    formula_template_60s <- paste0("lme(mean within_person_z__%s per 60-s epoch ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min + grid_f, random = ~1 | ParticipantID/PhaseID, ",
                   "corAR1(value=0.2, ~ time_60s_step | ParticipantID/PhaseID)); BikeU implicit (contr.sum)")
-    fixed_effect_terms <- paste0("(", paste(phase_sum_columns, collapse = " + "), ") * time_min")
+    fixed_effect_terms <- paste0("(", paste(phase_sum_columns, collapse = " + "), ") * time_min + grid_f")
   } else {
     formula_template_10s <- "lme(within_person_z__%s ~ PhaseID * time_min, random = ~1 | ParticipantID, correlation = corAR1(~ time_10s_step | ParticipantID/PhaseID)); reference PhaseID = BikeU"
     formula_template_60s <- "lme(mean within_person_z__%s per 60-s epoch ~ PhaseID * time_min, random = ~1 | ParticipantID, correlation = corAR1(~ time_60s_step | ParticipantID/PhaseID)); reference PhaseID = BikeU"
@@ -414,6 +436,10 @@ h1_h3_fit_temporal_ar1 <- function(route, CONDITIONS, sensor_outcomes, model_aud
     epoch_data <- route_epoch_data[complete_rows, , drop = FALSE]
     epoch_data$outcome_z <- epoch_data[[z_column]]
     epoch_data <- attach_phase_sum_columns(epoch_data)
+    if (!"grid_f" %in% names(epoch_data) && exists("paper3_attach_grid_factor", mode = "function")) {
+      epoch_data <- paper3_attach_grid_factor(epoch_data)
+    }
+    if ("grid_f" %in% names(epoch_data)) epoch_data <- epoch_data[!is.na(epoch_data$grid_f), , drop = FALSE]
     epoch_data <- epoch_data[order(epoch_data$ParticipantID, epoch_data$PhaseID, epoch_data$time_10s_step), ]
     excluded_epochs_note <- sprintf("NA epochs excluded: %d of %d", n_na_excluded, nrow(route_epoch_data))
     n_participants <- length(unique(epoch_data$ParticipantID))
@@ -432,11 +458,20 @@ h1_h3_fit_temporal_ar1 <- function(route, CONDITIONS, sensor_outcomes, model_aud
 
     epoch_data_60s <- epoch_data
     epoch_data_60s$time_60s_step <- floor(epoch_data_60s$time_10s_step / 6)
+    grid_60s <- aggregate(grid_label ~ ParticipantID + PhaseID + time_60s_step, data = epoch_data_60s,
+      FUN = if (exists("paper3_mode_grid_label", mode = "function")) paper3_mode_grid_label else function(x) {
+        x <- x[!is.na(x)]; if (!length(x)) NA_character_ else names(sort(table(x), decreasing = TRUE))[1L]
+      })
     epoch_data_60s <- aggregate(cbind(outcome_z, time_min) ~ ParticipantID + PhaseID + time_60s_step, data = epoch_data_60s, FUN = mean)
+    epoch_data_60s <- merge(epoch_data_60s, grid_60s, by = c("ParticipantID", "PhaseID", "time_60s_step"), all.x = TRUE, sort = FALSE)
     if (use_phase_sum_coding) {
       epoch_data_60s <- attach_phase_sum_columns(epoch_data_60s)
     } else {
       epoch_data_60s$PhaseID <- factor(epoch_data_60s$PhaseID, levels = CORE_PHASES)
+    }
+    if (exists("paper3_attach_grid_factor", mode = "function")) {
+      epoch_data_60s <- paper3_attach_grid_factor(epoch_data_60s)
+      epoch_data_60s <- epoch_data_60s[!is.na(epoch_data_60s$grid_f), , drop = FALSE]
     }
     epoch_data_60s <- epoch_data_60s[order(epoch_data_60s$ParticipantID, epoch_data_60s$PhaseID, epoch_data_60s$time_60s_step), ]
     fit_result_60s <- fit_ar1_with_fallback(epoch_data_60s, "time_60s_step")
@@ -471,10 +506,12 @@ h1_h3_fit_temporal_ar1 <- function(route, CONDITIONS, sensor_outcomes, model_aud
     temporal_table$Beta_CI95_low <- tci[, 1L]
     temporal_table$Beta_CI95_high <- tci[, 2L]
     temporal_table <- attach_temporal_statements(temporal_table, "Beta", "Statement", use_phase_sum_coding, "10s")
+    temporal_table <- h1_h3_enrich_temporal_grid_columns(temporal_table)
   }
   temporal_sens_table <- safe_rbind(temporal_sens_list)
   if (nrow(temporal_sens_table) > 0) {
     temporal_sens_table <- attach_temporal_statements(temporal_sens_table, "Beta_60s", "Statement_60s", use_phase_sum_coding, "60s")
+    temporal_sens_table <- h1_h3_enrich_temporal_grid_columns(temporal_sens_table, term_col = "Term")
     temporal_sens_table$Family_Size <- temporal_family_size
     temporal_sens_table$q_FDR_60s <- ave(temporal_sens_table$p_value_60s, temporal_sens_table$Term, FUN = function(p) p.adjust(p, method = "BH", n = temporal_family_size))
     temporal_sens_table$FDR_significant_60s <- !is.na(temporal_sens_table$q_FDR_60s) & temporal_sens_table$q_FDR_60s < 0.05
@@ -564,6 +601,15 @@ h1_h3_load_route_data <- function() {
 
   route$time_in_phase_sec <- ave(as.numeric(route$Datetime), route$ParticipantPhaseID, FUN = function(x) x - min(x, na.rm = TRUE))
   route$time_min <- route$time_in_phase_sec / 60
+
+  if (!exists("paper3_merge_corridor_grid_columns", mode = "function")) {
+    cg_path <- file.path(paper3_statistical_library_dir(), "Paper3_corridor_grid.R")
+    if (file.exists(cg_path)) source(cg_path, local = FALSE)
+  }
+  if (exists("paper3_merge_corridor_grid_columns", mode = "function")) {
+    route <- paper3_merge_corridor_grid_columns(route, PROJECT_ROOT)
+    df <- paper3_merge_corridor_grid_columns(df, PROJECT_ROOT)
+  }
 
   durations <- aggregate(time_in_phase_sec ~ ParticipantID + PhaseID, route, max, na.rm = TRUE)
   phase_durations_wide <- reshape(durations, idvar = "ParticipantID", timevar = "PhaseID", direction = "wide")
@@ -934,6 +980,10 @@ h1_h3_time_series_dispatch_run <- function() {
   }
 
   cat("[3/3] Writing CSV outputs...\n")
+  if (exists("paper3_write_epoch_grid_coverage", mode = "function")) {
+    paper3_write_epoch_grid_coverage(condition_data,
+      file.path(OUT_DIR, "H1_H3_timeseries_epoch_grid_coverage.csv"))
+  }
   safe_write_csv(temporal_table, time_series_output_path("Temporal_TimeSeries_AR1_10s.csv"))
   safe_write_csv(temporal_sens_table, time_series_output_path("Temporal_AR1_Sensitivity_60s.csv"))
   if (!is.null(secondary_table) && nrow(secondary_table) > 0) {
@@ -1050,7 +1100,8 @@ h1_h3_prepare_time_series_hypothesis <- function(hypothesis_id) {
   h1_h3_assign_time_series_active_models(hypothesis_id)
   assign("time_series_run_spec", list(hypothesis_label = hypothesis_id), envir = .GlobalEnv)
   manifest_extra <- list(
-    PhaseID_Coding = "contr.sum(4): PhaseSumWalkG, PhaseSumWalkU, PhaseSumBikeG; BikeU implicit"
+    PhaseID_Coding = "contr.sum(4): PhaseSumWalkG, PhaseSumWalkU, PhaseSumBikeG; BikeU implicit",
+    Corridor_Grid = "additive grid_f (corridor buffer seg_idx); FDR BH by Term across outcomes — grid_f levels are separate Term values"
   )
   if (hypothesis_id == "H1") {
     manifest_extra$Planned_Phase_Contrasts <- paste(h1_hypothesis_spec$contrasts$Contrast, collapse = ", ")

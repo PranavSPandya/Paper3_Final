@@ -1,0 +1,4 @@
+"Family","Expected_N","Present_N","Missing_N","Status","Minimum_Available_Phase_Cells","Expected_Phase_Cells","Missing_Columns"
+"Sound category frame proportions",8,8,0,"SCHEMA_COMPLETE_CHECK_COVERAGE",12,12,""
+"Acoustic frequency descriptors",15,15,0,"SCHEMA_COMPLETE_CHECK_COVERAGE",12,12,""
+"SVF / urban morphology",11,10,1,"PARTIAL_SCHEMA_CHECK_COVERAGE",12,12,"Combined_Vegetation_%"

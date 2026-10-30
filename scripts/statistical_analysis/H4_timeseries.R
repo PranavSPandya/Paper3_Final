@@ -24,6 +24,7 @@ paper3_statistical_bootstrap(
   h4_pdf_null = TRUE
 )
 PROJECT_ROOT <- resolve_project_root()
+source(file.path(paper3_statistical_library_dir(), "Paper3_corridor_grid.R"), local = FALSE)
 # Step 5: serial fits (H4_PARALLEL_WORKERS=1). Optional batches via H4_JOB_START / H4_JOB_END or H4_MAX_JOBS (182 jobs = 26 outcomes × 7 equations).
 Sys.setenv(H4_PARALLEL_WORKERS = "1")
 H4_SCRIPT_PATH <- paper3_entry_script_path("scripts/statistical_analysis/H4_timeseries.R")
@@ -32,7 +33,7 @@ H4_START_MD5 <- unname(tools::md5sum(c(H4_SCRIPT_PATH, RAW_DATA_PATH)))
 
 # Cohort, phase and outcome specification (26 physiological outcomes via paper3_physiological_outcomes()).
 h4_study_spec <- list(
-  participants = PAPER3_PARTICIPANTS,
+  participants = paper3_active_participants(),
   phases = c("BikeU", "BikeG", "WalkU", "WalkG"),
   physiological_outcome_names = paper3_physiological_outcomes(),
   variance_inflation_factor_limit = 5,
@@ -67,7 +68,7 @@ h4_equation_table <- data.frame(
 # Eq1 primary: UTCI x sound. Random intercept per person and phase. AR(1) within the bout.
 # Y <- PAPER3_APPLY_CSV_TRANSFORM(x, column_name)
 Eq1 <- quote(nlme::lme(
-  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -77,7 +78,7 @@ Eq1 <- quote(nlme::lme(
 
 # Eq2: Eq1 + five sound mains
 Eq2 <- quote(nlme::lme(
-  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + vehicle_proportion_bout_z + freq_proportion_20_to_200Hz_bout_z + wind_proportion_bout_z + spectral_centroid_hz_bout_z + mechanisms_proportion_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + vehicle_proportion_bout_z + freq_proportion_20_to_200Hz_bout_z + wind_proportion_bout_z + spectral_centroid_hz_bout_z + mechanisms_proportion_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -87,7 +88,7 @@ Eq2 <- quote(nlme::lme(
 
 # Eq3: air temperature, humidity, wind, MRT, each x sound
 Eq3 <- quote(nlme::lme(
-  Y ~ ucm_AIR_T_mid_bout_z * ucm_SND_dBA_bout_z + ucm_AIR_RH_bout_z * ucm_SND_dBA_bout_z + ucm_WIND_AWS_bout_z * ucm_SND_dBA_bout_z + ucm_MRT_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_AIR_T_mid_bout_z * ucm_SND_dBA_bout_z + ucm_AIR_RH_bout_z * ucm_SND_dBA_bout_z + ucm_WIND_AWS_bout_z * ucm_SND_dBA_bout_z + ucm_MRT_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -97,7 +98,7 @@ Eq3 <- quote(nlme::lme(
 
 # Eq4: HUMIDEX x sound
 Eq4 <- quote(nlme::lme(
-  Y ~ ucm_HUMIDEX_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_HUMIDEX_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -107,7 +108,7 @@ Eq4 <- quote(nlme::lme(
 
 # Eq5: PET x sound
 Eq5 <- quote(nlme::lme(
-  Y ~ ucm_PET_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_PET_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -117,7 +118,7 @@ Eq5 <- quote(nlme::lme(
 
 # Eq6: Eq1 with PM1
 Eq6 <- quote(nlme::lme(
-  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm1_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm1_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -127,7 +128,7 @@ Eq6 <- quote(nlme::lme(
 
 # Eq7: Eq1 with PM10
 Eq7 <- quote(nlme::lme(
-  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm10_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm10_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -210,8 +211,9 @@ h4_prepare_bout_design <- function(raw_df, selected, nonthermal, thermal, rep_ta
       heat_label <- names(thermal)[i]
       vars <- thermal[[heat_label]]
       meeting_cols <- fixed[[as.character(h4_equation_table$equation_number[i])]]
-      fitted_cols <- colnames(make_design(centered[1L, , drop = FALSE], vars, "WalkG", terms_order = meeting_cols))
-      stopifnot(identical(fitted_cols, meeting_cols))
+      design_cols <- setdiff(meeting_cols, "grid_f")
+      design_only <- colnames(make_design(centered[1L, , drop = FALSE], vars, "WalkG", terms_order = design_cols))
+      stopifnot(identical(design_only, design_cols))
     }
   }
   list(raw_df = raw_df, nonthermal = nonthermal, thermal = thermal, selected = selected,
@@ -325,12 +327,7 @@ h4_fit <- function(audit_df = NULL, raw_df = NULL, prep = NULL) {
     equation_id <- eq_id <- job$equation_id
     outcome_matrix <- as.matrix(raw_df[, c(selected, y), drop = FALSE])
     storage.mode(outcome_matrix) <- "double"
-    predictors <- unique(unlist(strsplit(H4_EQUATION_FIXED[[equation_id]], ":", fixed = TRUE)))
-    predictors <- setdiff(predictors, H4_PHASE_SUM_COLS)
-    values <- as.matrix(raw_df[, c(predictors, y), drop = FALSE])
-    storage.mode(values) <- "double"
-    ok <- rowSums(!is.finite(values)) == 0L
-    if (y %in% natural_log_outcomes) ok <- ok & raw_df[[y]] > 0
+    ok <- h4_complete_rows(raw_df, y, equation_id, natural_log_outcomes)
     outcome_rows <- raw_df[ok, c("ParticipantID", "PhaseID", "Datetime"), drop = FALSE]
     outcome_rows$ParticipantID <- factor(outcome_rows$ParticipantID)
     outcome_rows$PhaseID <- factor(outcome_rows$PhaseID, levels = c("WalkG", "WalkU", "BikeG", "BikeU"))
@@ -351,18 +348,38 @@ h4_fit <- function(audit_df = NULL, raw_df = NULL, prep = NULL) {
     }
     outcome_values <- PAPER3_APPLY_CSV_TRANSFORM(outcome_values, y)
     eq_row <- prep$catalog[prep$catalog$equation_id == eq_id, ]
+    term_order <- h4_equation_term_order(eq_id)
     design <- prep$make_design(centered_exposures, prep$thermal[[eq_row$heat_form]], outcome_rows$PhaseID,
-      test = eq_row$test, terms_order = h4_equation_term_order(eq_id))
+      test = eq_row$test, terms_order = setdiff(term_order, "grid_f"))
     original_terms <- colnames(design)
     processed_terms <- vapply(strsplit(original_terms, ":", fixed = TRUE), function(parts) {
-      paste(ifelse(startsWith(parts, "PhaseSum"), parts, paste0(parts, "_bout_z")), collapse = ":")
+      paste(vapply(parts, function(p) {
+        if (identical(p, "grid_f") || startsWith(p, "PhaseSum")) p else paste0(p, "_bout_z")
+      }, character(1)), collapse = ":")
     }, character(1))
     safe_terms <- make.names(processed_terms, unique = TRUE)
     colnames(design) <- safe_terms
+    if ("grid_f" %in% term_order) {
+      original_terms <- c(original_terms, "grid_f")
+      safe_terms <- c(safe_terms, "grid_f")
+    }
     model_data <- cbind(outcome_rows, stats::setNames(list(outcome_values), "Y"), as.data.frame(design))
+    if ("grid_f" %in% term_order) {
+      gf <- raw_df$grid_f[ok]
+      if (y %in% natural_log_outcomes) {
+        keep <- is.finite(outcome_matrix[ok, y]) & outcome_matrix[ok, y] > 0
+        gf <- gf[keep]
+      }
+      model_data$grid_f <- gf
+    }
     model_data <- model_data[order(model_data$ParticipantID, model_data$PhaseID, model_data$Time10), ]
       # Execute the explicit REML/AR1 fitter below; existing ARMA/independent fallback rules are retained.
     attempt <- do_fit_with_fallback(reformulate(safe_terms, response = "Y"), model_data)
+    if (!is.null(attempt$fit)) {
+      fe <- names(nlme::fixef(attempt$fit))
+      original_terms <- fe[fe != "(Intercept)"]
+      safe_terms <- original_terms
+    }
     h4_fit_equations(eq_id, y, prep$catalog, prep$thermal, prep$make_design,
       centered_exposures, lagged_exposures, outcome_rows, outcome_values,
       h4_study_spec$outcome_transform[[y]], raw_df, prep$agreed_common,

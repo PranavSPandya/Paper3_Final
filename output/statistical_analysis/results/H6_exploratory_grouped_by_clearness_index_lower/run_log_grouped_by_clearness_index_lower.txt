@@ -1,0 +1,43 @@
+Input: D:\Pranav\docker\Paper3_Final/output/merged_all_11participants_8min.csv 
+H5 output directory: C:\Users\sanga\Documents\Codex\2026-10-29\d-pranav-docker-paper3-final-scripts\work\grouped_H6_final\H6_exploratory_grouped_by_clearness_index_lower 
+H6 finished. Results written to: C:\Users\sanga\Documents\Codex\2026-10-29\d-pranav-docker-paper3-final-scripts\work\grouped_H6_final\H6_exploratory_grouped_by_clearness_index_lower 
+  Mode                            Outcome N estimate  p  q
+1 Bike questionnaire_prs11_total_mean_1_5 5       NA NA NA
+2 Bike           eyetracker_fixation_rate 4       NA NA NA
+3 Bike     eyetracker_fixation_duration_s 4       NA NA NA
+4 Bike                 empatica_eda_tonic 5       NA NA NA
+5 Walk questionnaire_prs11_total_mean_1_5 5       NA NA NA
+6 Walk           eyetracker_fixation_rate 3       NA NA NA
+7 Walk     eyetracker_fixation_duration_s 3       NA NA NA
+8 Walk                 empatica_eda_tonic 5       NA NA NA
+      Exposure                       Outcome Lag_s N_Participants mean_r  p  q
+1  lys_lux_avg eyetracker_pupil_diameter_avg     0              4     NA NA NA
+2  lys_lux_avg eyetracker_pupil_diameter_avg    10              4     NA NA NA
+3  lys_lux_avg eyetracker_pupil_diameter_avg    30              4     NA NA NA
+4  lys_lux_avg eyetracker_pupil_diameter_avg    60              4     NA NA NA
+5      ucm_MRT     empatica_skin_temperature     0              5     NA NA NA
+6      ucm_MRT     empatica_skin_temperature    10              5     NA NA NA
+7      ucm_MRT     empatica_skin_temperature    30              5     NA NA NA
+8      ucm_MRT     empatica_skin_temperature    60              5     NA NA NA
+9  ucm_SND_dBA           empatica_eda_phasic     0              5     NA NA NA
+10 ucm_SND_dBA           empatica_eda_phasic    10              5     NA NA NA
+11 ucm_SND_dBA           empatica_eda_phasic    30              5     NA NA NA
+12 ucm_SND_dBA           empatica_eda_phasic    60              5     NA NA NA
+                    Source                  Outcome N_Participants mean_beta_SD
+1       vehicle_proportion       empatica_eda_tonic              5           NA
+2       vehicle_proportion eyetracker_fixation_rate              4           NA
+3 rural_natural_proportion       empatica_eda_tonic              5           NA
+4 rural_natural_proportion eyetracker_fixation_rate              4           NA
+   p  q
+1 NA NA
+2 NA NA
+3 NA NA
+4 NA NA
+
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+Warning message:
+The matched core input does not contain all 11 participants. 

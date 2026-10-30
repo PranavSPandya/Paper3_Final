@@ -7,29 +7,29 @@
 # H4 results report
 
 ## Physiological sensor models (10-second time series)
-Outcomes: 26 empatica + eyetracker columns (see H4_SPEC$outcomes$physiological). Nested (1 | ParticipantID / PhaseID) with AR(1) within bout.
-Sample sizes (Eq 1): see H4_time_series_hypothesis_readme.txt and 1363-2101 rows per outcome.
+Outcomes: 26 empatica + eyetracker columns (see h4_study_spec$physiological_outcome_names). Nested (1 | ParticipantID / PhaseID) with AR(1) within bout.
+Sample sizes (Eq 1): see H4_timeseries_hypothesis_readme.txt and 1363-2101 rows per outcome.
 
 ## Files
-- H4_time_series_Heat_Noise_Exposures.csv / H4_time_series_Covariates_and_Phases.csv: H4.1 only
-- H4_time_series_Variable_Selection.csv, H4_time_series_Selection_Flow.pdf; working fits in results/H4_time_series/ (phase-average variant: results/H4_phase_average/, files prefixed H4_phase_average_)
+- H4_timeseries_Heat_Noise_Exposures.csv / H4_timeseries_Covariates_and_Phases.csv: H4.1 only
+- H4_timeseries_Variable_Selection.csv, H4_timeseries_Selection_Flow.pdf; working fits in results/H4_timeseries/ (phase-average variant: results/H4_phaseavg/, files prefixed H4_phaseavg_)
 
 H4.1 Physiological Sensor Time-Series Models
 Full methods: scripts/Paper3_Code_Design_Methodology_Map.md and scripts/Paper3_Methods_Plain.md
 Equations (catalog ids): 1, 2, 3, 4, 5, 6, 7 — primary UTCI+PM2.5; heat-form sensitivities on PM2.5; PM1/PM10 with UTCI only.
 Sample: 10 s windows; 1328-2101 rows per outcome-equation (median 1807); 26 outcomes; participants 10-11 per model.
-Design VIF (threshold 5): max grouped VIF-equiv = 2.96; 0 design(s) >= 5. See H4_time_series_gvif_diagnostic.csv, H4_time_series_design_redundancy_by_outcome.csv.
+Design VIF (threshold 5): max grouped VIF-equiv = 2.96; 0 design(s) >= 5. See H4_timeseries_gvif_diagnostic.csv, H4_timeseries_design_redundancy_by_outcome.csv.
 Fits: 182/182 successful outcome-equation models. All non-intercept coefficients have BH q across planned outcomes per term/equation, plus q_equation across all non-intercept terms/outcomes within equation. Intercepts and invalid inference have explicit status text. Equations are not pooled into one correction family.
 SVF endpoint carry-forward rows: 44.
 Covariates retained after Step 4: SVF, atmo_pm10_avg, atmo_pm1_avg, atmo_pm2.5_avg, gvi_50m, lys_kelvin_avg, lys_lux_avg, ucm_MRT, ucm_SND_dBA, ucm_SUN_Gh.
-Thermal q<0.05: 6 thermal q<0.05 row(s); see H4_time_series_coefficients.csv. Lag-60 s: H4_time_series_lag60_sensitivity.csv (separate BH family).
+Thermal q<0.05: 6 thermal q<0.05 row(s); see H4_timeseries_coefficients.csv. Lag-60 s: H4_timeseries_lag60_sensitivity.csv (separate BH family).
 All non-intercept coefficients: 145 per-term q<0.05 and 93 equation-wide q<0.05. These include exploratory adjustment/phase effects and repeated sensitivity specifications, not independent H4 discoveries.
 Sound main effects: 0 per-term q<0.05. Sound interactions: 0. Phase contrasts and other adjustments are fully reported in the coefficient tables.
 Generated: 2026-10-19 23:41:47 UTC | code_md5 00f996bc87595f52a02d6d71dffb818c | input_md5 1b661e6201d4317a21389ca8a3580e23 | audit_md5 1e8ef55e91de7a5de6ddcec29b0c6917 | spec_md5 dcb08a6c8a7ef09fba042a841088f599
 
 # H4 design-only GVIF / VIF diagnostic
 
-Reference complete-case outcome: **empatica_heart_rate** (n = 2101). Other outcomes use different row sets; see `H4_time_series_design_redundancy_by_outcome.csv`.
+Reference complete-case outcome: **empatica_heart_rate** (n = 2101). Other outcomes use different row sets; see `H4_timeseries_design_redundancy_by_outcome.csv`.
 
 ## PhaseID vs single continuous predictors
 
@@ -61,7 +61,7 @@ Generated UTC: 2026-10-19 22:56:53
 # H4 measurement audit
 Steps 1-2 retain the complete inventory and declared exposure representations. Step 3 groups candidates without outcome-based deletion.
 Step 4 retains all 16 eligible candidates, specifies alternative heat/PM equations, and checks full-design VIF/rank; no automatic deletion.
-Participant is the independent cluster. Step 4 defines seven equations (primary UTCI + PM2.5; optional Eq 2 sound-structure sensitivity; heat-form sensitivities on PM2.5; PM1/PM10 only with UTCI) including heat x sound and MRT x sound. Step 5 fits six by default (Eq 2 when H4_SPEC$fit_sound_sensitivity is TRUE). Earlier model outputs are historical until a verified rerun succeeds.
+Participant is the independent cluster. Step 4 defines seven equations (primary UTCI + PM2.5; optional Eq 2 sound-structure sensitivity; heat-form sensitivities on PM2.5; PM1/PM10 only with UTCI) including heat x sound and MRT x sound. Step 5 fits six by default (Eq 2 when h4_study_spec$include_sound_sensitivity_equation is TRUE). Earlier model outputs are historical until a verified rerun succeeds.
 ## Stage totals
 | Stage | Entering | Retained | Not_Advanced |
 | --- | --- | --- | --- |
@@ -222,11 +222,21 @@ Sources: https://doi.org/10.1016/j.egypro.2017.07.427
 
 ---
 
+## H1–H3 dual-mode summary
+
+| Hypothesis | Phase average (primary) | Time series (sensitivity / supplement) |
+| --- | --- | --- |
+| **H1** | `H1_H3_phaseavg.R` → `H1_H3_phaseavg/` (`H1_Contrasts.csv`) | `H1_H3_timeseries.R` → `H1_H3_timeseries/` (`H1_*`) |
+| **H2** | same phaseavg → `H2_Physio_Psycho_Concordance.csv` | same timeseries → `H2_*` |
+| **H3** | same phaseavg → `H3_Contrasts.csv` | same timeseries → `H3_*` |
+
+All entry scripts live under `scripts/statistical_analysis/`; shared engine `H1_H3_core.R`, helpers `Paper3_common.R`.
+
 ## H1–H3 time series variants (scripts and outputs)
 
-**Canonical entry point:** `scripts/H1_to_H3_time_series.R` (meeting spec; engine `scripts/H1_to_H3_time_series_core.R`). Defines `H1_TS_*`, `H2_TS_*`, `H3_TS_*` temporal quotes plus `H2_rmcorr`. Default run: all three hypotheses; single hypothesis: `PAPER3_TIME_SERIES_HYPOTHESIS=H1` (or H2/H3) or call `run_h1_time_series()` / `run_h2_time_series()` / `run_h3_time_series()` after sourcing. Narrative specs in `Presentation material/H1_time_series.md`, `H2_time_series.md`, and `H3_time_series.md` remain reference only (also pasted in `methods.md`).
+**Canonical entry point:** `scripts/statistical_analysis/H1_H3_timeseries.R` (meeting spec; engine `scripts/statistical_analysis/library/H1_H3_core.R` via `h1_h3_time_series_dispatch_run()`). Defines `H1_TimeSeries_*`, `H2_TimeSeries_*`, `H3_TimeSeries_*` temporal quotes plus `H2_rmcorr`. Default run: all three hypotheses; single hypothesis: `PAPER3_TIME_SERIES_HYPOTHESIS=H1` (or H2/H3) or call `run_h1_time_series()` / `run_h2_time_series()` / `run_h3_time_series()` after sourcing. Narrative time-series specs are embedded in `Presentation material/methods.md` (sections `## Source: H1_time_series.md`, `H2_time_series.md`, `H3_time_series.md`; no separate files on disk).
 
-**Single output folder:** `output/statistical_analysis/results/H1_to_H3_time_series/`. All three hypotheses write here; every file is prefixed with the active hypothesis (`H1_`, `H2_`, `H3_`). The former separate folders `H1_time_series/`, `H2_time_series/`, `H3_time_series/` are no longer written.
+**Single output folder:** `output/statistical_analysis/results/H1_H3_timeseries/`. All three hypotheses write here; every file is prefixed with the active hypothesis (`H1_`, `H2_`, `H3_`). The former separate folders `H1_time_series/`, `H2_time_series/`, `H3_time_series/` are no longer written.
 
 | Variant | Dispatch | File prefix |
 | --- | --- | --- |
@@ -236,11 +246,18 @@ Sources: https://doi.org/10.1016/j.egypro.2017.07.427
 
 **CSVs per hypothesis (`{H}` = H1, H2, H3):** `{H}_Temporal_TimeSeries_AR1_10s.csv`, `{H}_Temporal_AR1_Sensitivity_60s.csv`, `{H}_Model_Audit.csv`, `{H}_Run_Manifest.csv`. H2 also writes `H2_Physio_Psycho_Concordance.csv` (phase-level rmcorr; questionnaires are not repeated at 10 s). H2 trajectory concordance strategies in the spec MD are not implemented. Total: 13 files (4 each for H1 and H3, 5 for H2).
 
+## H4 dual-mode summary
+
+| Mode | Entry script | Output folder | Run order |
+| --- | --- | --- | --- |
+| Time series | `scripts/statistical_analysis/H4_timeseries.R` | `output/statistical_analysis/results/H4_timeseries/` | **First** |
+| Phase average | `scripts/statistical_analysis/H4_phaseavg.R` | `output/statistical_analysis/results/H4_phaseavg/` | After time series (reads TS filtration) |
+
 ## H1–H3 phase-average run (scripts and outputs)
 
-**Entry point:** `scripts/H1_to_H3_phase_average.R` (renamed from `H1_to_H3.R`; engine `scripts/H1_H3_core.R`). Run: `Rscript scripts/H1_to_H3_phase_average.R`.
+**Entry point:** `scripts/statistical_analysis/H1_H3_phaseavg.R` (renamed from `H1_to_H3.R`; engine `scripts/statistical_analysis/library/H1_H3_core.R`). Run: `Rscript scripts/statistical_analysis/H1_H3_phaseavg.R`. **Time-series counterpart:** `H1_H3_timeseries.R` → `H1_H3_timeseries/` (see table above).
 
-**Single output folder:** `output/statistical_analysis/results/H1_to_H3_phase_average/` (override with env `PAPER3_OUT_DIR`). Files are prefixed with the hypothesis (`H1_`, `H2_`, `H3_`); run-level files shared by all three use the `H1_to_H3_` prefix. The earlier flat layout (`results/H1_H3_Contrasts.csv`, `H1_H3_Temporal_*.csv`, `H2_Physio_Psycho_Concordance.csv`, `Model_Audit.csv`, `Run_Manifest.csv`, `Statistical_Results_ForestPlot.jpg` directly in `results/`) is no longer written. The time-series engine keeps its own `H1_to_H3_time_series/` folder.
+**Single output folder:** `output/statistical_analysis/results/H1_H3_phaseavg/` (override with env `PAPER3_OUT_DIR`). Files are prefixed with the hypothesis (`H1_`, `H2_`, `H3_`); run-level files shared by all three use the `H1_to_H3_` prefix. The earlier flat layout (`results/H1_H3_Contrasts.csv`, `H1_H3_Temporal_*.csv`, `H2_Physio_Psycho_Concordance.csv`, `Model_Audit.csv`, `Run_Manifest.csv`, `Statistical_Results_ForestPlot.jpg` directly in `results/`) is no longer written. The time-series engine keeps its own `H1_H3_timeseries/` folder.
 
 | File | Content |
 | --- | --- |

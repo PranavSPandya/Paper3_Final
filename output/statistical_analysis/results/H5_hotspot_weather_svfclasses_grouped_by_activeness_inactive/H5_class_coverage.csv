@@ -1,0 +1,13 @@
+"phase","class","rows","participants","hotspots"
+"BikeU","A",4,4,1
+"WalkU","BS",188,5,46
+"BikeG","S",24,5,10
+"BikeU","S",78,5,21
+"WalkG","S",8,5,2
+"WalkU","S",43,5,9
+"BikeG","ST",90,5,27
+"BikeU","ST",43,5,13
+"WalkG","ST",73,5,18
+"BikeG","T",92,5,26
+"BikeU","T",72,5,27
+"WalkG","T",127,5,36

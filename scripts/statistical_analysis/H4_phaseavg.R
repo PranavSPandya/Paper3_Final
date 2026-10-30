@@ -32,7 +32,7 @@ H4_START_MD5 <- unname(tools::md5sum(c(H4_SCRIPT_PATH, RAW_DATA_PATH)))
 
 # Cohort, phase and outcome specification (26 physiological outcomes via paper3_physiological_outcomes()).
 h4_study_spec <- list(
-  participants = PAPER3_PARTICIPANTS,
+  participants = paper3_active_participants(),
   phases = c("BikeU", "BikeG", "WalkU", "WalkG"),
   physiological_outcome_names = paper3_physiological_outcomes(),
   variance_inflation_factor_limit = 10,
@@ -164,9 +164,20 @@ h4_fit_phaseavg <- function(raw_data, equation_ids = 1:7,
   results <- list()
   for (equation_id in equation_ids) for (outcome in outcomes) {
     fixed <- as.formula(equations[[equation_id]][[2L]])
-    reference <- H4_REFERENCE_MODELS[[equation_id]][[2L]]
-    eligibility <- setdiff(all.vars(reference), c("Y", H4_PHASE_SUM_COLS))
-    data <- raw_data[, c("ParticipantID", "PhaseID", eligibility, outcome)]
+    # Epoch eligibility follows the phase-average formula (not time-series reference; no grid_f).
+    eligibility <- setdiff(
+      gsub("_(phase|bout)_z", "", all.vars(fixed)),
+      c("Y", H4_PHASE_SUM_COLS, "grid_f")
+    )
+    missing_cols <- setdiff(eligibility, names(raw_data))
+    if (length(missing_cols)) {
+      stop(
+        "H4 phaseavg: required predictors absent from analysis data: ",
+        paste(missing_cols, collapse = ", "),
+        call. = FALSE
+      )
+    }
+    data <- raw_data[, c("ParticipantID", "PhaseID", eligibility, outcome), drop = FALSE]
     data$Y <- PAPER3_APPLY_CSV_TRANSFORM(data[[outcome]], outcome)
     valid <- rowSums(!is.finite(as.matrix(data[, c(eligibility, "Y")]))) == 0
     data <- data[valid, ]

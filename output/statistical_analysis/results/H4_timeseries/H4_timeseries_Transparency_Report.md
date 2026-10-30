@@ -68,9 +68,9 @@ fp remains unverified; true wind speed (TWS) excluded (gaps, undocumented correc
 | ucm_AIR_RH | ucm_HUMIDEX | -0.72964820 | -0.72501762 | 44 |
 | SVF | ucm_AIR_T_mid |  0.71301878 |  0.73192389 | 44 |
 | ucm_AIR_RH | ucm_PET | -0.70196122 | -0.77152925 | 44 |
-| SVF | gvi_50m | -0.69473209 | -0.74799154 | 44 |
+| gvi_50m | SVF | -0.69473209 | -0.74799154 | 44 |
 | SVF | ucm_MRT |  0.67033369 |  0.79746300 | 44 |
-| atmo_pm10_avg | atmo_pm1_avg |  0.66483642 |  0.17519380 | 44 |
+| atmo_pm1_avg | atmo_pm10_avg |  0.66483642 |  0.17519380 | 44 |
 | ucm_HUMIDEX | ucm_SUN_Gh |  0.64413223 |  0.51627907 | 44 |
 | SVF | ucm_SUN_Gh |  0.62815526 |  0.63664553 | 44 |
 | SVF | ucm_UTCI |  0.62299252 |  0.63368569 | 44 |
@@ -84,7 +84,7 @@ fp remains unverified; true wind speed (TWS) excluded (gaps, undocumented correc
 | lys_lux_avg | ucm_AIR_RH | -0.52514125 | -0.58083157 | 44 |
 | gvi_50m | lys_lux_avg | -0.51852086 | -0.48019732 | 44 |
 | lys_lux_avg | ucm_AIR_T_mid |  0.51690850 |  0.51120507 | 44 |
-| SVF | atmo_pm1_avg |  0.51564326 |  0.61930937 | 44 |
+| atmo_pm1_avg | SVF |  0.51564326 |  0.61930937 | 44 |
 | lys_lux_avg | ucm_UTCI |  0.51168756 |  0.45102185 | 44 |
 | lys_lux_avg | ucm_SUN_Gh |  0.50129813 |  0.52840028 | 44 |
 | lys_lux_avg | ucm_MRT |  0.49429364 |  0.50951374 | 44 |
@@ -93,11 +93,11 @@ fp remains unverified; true wind speed (TWS) excluded (gaps, undocumented correc
 | ucm_MRT | ucm_SND_dBA |  0.47175457 |  0.67202255 | 44 |
 | atmo_pm2.5_avg | ucm_MRT |  0.45268478 |  0.58844257 | 44 |
 | atmo_pm1_avg | ucm_MRT |  0.45088103 |  0.57392530 | 44 |
-| SVF | lys_lux_avg |  0.44698245 |  0.47258633 | 44 |
+| lys_lux_avg | SVF |  0.44698245 |  0.47258633 | 44 |
 | atmo_pm1_avg | ucm_AIR_T_mid |  0.43884085 |  0.55419309 | 44 |
 | atmo_pm2.5_avg | ucm_SUN_Gh |  0.42121434 |  0.44087385 | 44 |
 | atmo_pm1_avg | ucm_SND_dBA |  0.42023240 |  0.54883721 | 44 |
-| SVF | atmo_pm2.5_avg |  0.41644463 |  0.54362227 | 44 |
+| atmo_pm2.5_avg | SVF |  0.41644463 |  0.54362227 | 44 |
 | atmo_pm2.5_avg | ucm_AIR_T_mid |  0.40429042 |  0.57618041 | 44 |
 | atmo_pm1_avg | gvi_50m | -0.40412752 | -0.50810430 | 44 |
 | ucm_SND_dBA | ucm_UTCI |  0.40226629 |  0.57406624 | 44 |
@@ -124,7 +124,7 @@ fp remains unverified; true wind speed (TWS) excluded (gaps, undocumented correc
 | ucm_PET | ucm_WIND_AWS | -0.27634482 | -0.09443270 | 44 |
 | atmo_pm2.5_avg | ucm_SND_dBA |  0.27462755 |  0.41254405 | 44 |
 | ucm_UTCI | ucm_WIND_AWS | -0.25743478 | -0.10909091 | 44 |
-| SVF | lys_kelvin_avg |  0.25357328 |  0.28329810 | 44 |
+| lys_kelvin_avg | SVF |  0.25357328 |  0.28329810 | 44 |
 | atmo_pm2.5_avg | lys_kelvin_avg | -0.25291076 |  0.05313601 | 44 |
 | ucm_AIR_RH | ucm_WIND_AWS | -0.23716571 | -0.23932347 | 44 |
 | atmo_pm10_avg | ucm_UTCI |  0.23587735 |  0.05665962 | 44 |
@@ -132,7 +132,7 @@ fp remains unverified; true wind speed (TWS) excluded (gaps, undocumented correc
 | gvi_50m | lys_kelvin_avg | -0.23427071 | -0.36363636 | 44 |
 | atmo_pm2.5_avg | ucm_AIR_RH | -0.21544532 | -0.39577167 | 44 |
 | atmo_pm10_avg | ucm_PET |  0.20027655 | -0.00324172 | 44 |
-| SVF | atmo_pm10_avg |  0.18413205 |  0.12586328 | 44 |
+| atmo_pm10_avg | SVF |  0.18413205 |  0.12586328 | 44 |
 | lys_kelvin_avg | ucm_AIR_T_mid |  0.18286244 |  0.28400282 | 44 |
 | atmo_pm10_avg | ucm_AIR_T_mid |  0.17775392 |  0.02170543 | 44 |
 | atmo_pm10_avg | ucm_WIND_AWS | -0.17265844 | -0.08809020 | 44 |

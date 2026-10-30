@@ -298,3 +298,236 @@ paper3_h1_h3_planned_contrast_tables <- function() {
   h3$Contrast <- paste(h3$Reference_PhaseID, h3$Comparison_PhaseID, sep = "_")
   list(h1 = h1, h3 = h3)
 }
+
+# --- Exploratory participant subgroups (clearness / fitness / activeness) ---
+# Canonical clearness: Participant_Clearness_Summary_core_phases.csv (core-phase mean kt).
+# Clearness lower/higher: fixed literature epoch-class floor kt = 0.30 (matches compute_clearness_index.py).
+# Fitness/activeness: output/statistical_analysis/Participant Casestudy/Participant_fitness_activeness.csv
+
+PAPER3_CLEARNESS_SUBGROUP_KT_THRESHOLD <- 0.30
+
+paper3_fitness_activeness_lookup_path <- function(root = resolve_project_root()) {
+  file.path(root, "output", "statistical_analysis", "Participant Casestudy", "Participant_fitness_activeness.csv")
+}
+
+paper3_clearness_summary_core_path <- function(root = resolve_project_root()) {
+  file.path(root, "output", "Clearness Index", "Participant_Clearness_Summary_core_phases.csv")
+}
+
+paper3_exploratory_group_levels <- function() {
+  list(
+    clearness_index = c("higher", "lower"),
+    fitness = c("fit", "not_fit"),
+    activeness = c("active", "inactive")
+  )
+}
+
+paper3_exploratory_group_assignments <- function(project_root = resolve_project_root()) {
+  lookup <- read.csv(paper3_fitness_activeness_lookup_path(project_root), stringsAsFactors = FALSE)
+  ci <- read.csv(paper3_clearness_summary_core_path(project_root), stringsAsFactors = FALSE)
+  stopifnot(
+    !anyDuplicated(lookup$ParticipantID),
+    !anyDuplicated(ci$ParticipantID),
+    setequal(lookup$ParticipantID, PAPER3_PARTICIPANTS),
+    setequal(ci$ParticipantID, PAPER3_PARTICIPANTS),
+    all(is.finite(ci$Clearness_Index_Mean))
+  )
+  cutoff <- PAPER3_CLEARNESS_SUBGROUP_KT_THRESHOLD
+  ci_key <- setNames(ci$Clearness_Index_Mean, ci$ParticipantID)
+  out <- lookup
+  out$clearness_mean <- unname(ci_key[out$ParticipantID])
+  out$clearness_group <- ifelse(out$clearness_mean >= cutoff, "Higher", "Lower")
+  out$clearness_index <- tolower(out$clearness_group)
+  out$clearness_rule <- sprintf("participant_mean_kt_%s_literature_0.30", ifelse(out$clearness_mean >= cutoff, "ge", "lt"))
+  out$fitness_group <- out$fitness
+  out$fitness <- ifelse(out$fitness == "Fit", "fit", "not_fit")
+  out$activeness <- tolower(out$activeness)
+  out$clearness_cutoff <- cutoff
+  out[, c(
+    "ParticipantID", "clearness_mean", "clearness_cutoff", "clearness_rule", "clearness_group", "clearness_index",
+    "fitness_group", "fitness", "activeness"
+  )]
+}
+
+paper3_write_exploratory_group_assignments_csv <- function(project_root = resolve_project_root()) {
+  tab <- paper3_exploratory_group_assignments(project_root)
+  path <- file.path(project_root, "output", "statistical_analysis", "results", "H_group_assignments_grouped_by_all.csv")
+  dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
+  utils::write.csv(tab, path, row.names = FALSE)
+  invisible(path)
+}
+
+paper3_active_participants <- function() {
+  opt <- getOption("paper3_exploratory_group_ids", NULL)
+  if (!is.null(opt)) return(as.character(opt))
+  PAPER3_PARTICIPANTS
+}
+
+paper3_parse_exploratory_group_cli <- function(args = commandArgs(trailingOnly = TRUE)) {
+  group_arg <- sub("^--group=", "", grep("^--group=", args, value = TRUE))
+  level_arg <- sub("^--level=", "", grep("^--level=", args, value = TRUE))
+  if (length(group_arg) != 1L || length(level_arg) != 1L) {
+    stop(
+      "Specify --group=clearness_index|fitness|activeness and ",
+      "--level=higher|lower|fit|not_fit|active|inactive",
+      call. = FALSE
+    )
+  }
+  list(
+    dimension = group_arg[1L],
+    level = level_arg[1L],
+    overwrite = "--overwrite" %in% args
+  )
+}
+
+paper3_exploratory_group_output_suffix <- function(dimension, level) {
+  paste0("_grouped_by_", dimension, "_", level)
+}
+
+paper3_exploratory_group_participant_ids <- function(dimension, level, assignments = NULL, project_root = resolve_project_root()) {
+  allowed <- paper3_exploratory_group_levels()
+  if (!dimension %in% names(allowed) || !level %in% allowed[[dimension]]) {
+    stop("Invalid exploratory group or level: ", dimension, " / ", level, call. = FALSE)
+  }
+  if (is.null(assignments)) assignments <- paper3_exploratory_group_assignments(project_root)
+  col <- dimension
+  ids <- assignments$ParticipantID[assignments[[col]] == level]
+  if (!length(ids)) stop("No participants for group ", dimension, " / ", level, call. = FALSE)
+  as.character(ids)
+}
+
+paper3_exploratory_group_out_dir <- function(project_root, results_base_name, dimension, level) {
+  file.path(
+    project_root,
+    "output",
+    "statistical_analysis",
+    "results",
+    paste0(results_base_name, paper3_exploratory_group_output_suffix(dimension, level))
+  )
+}
+
+paper3_write_exploratory_group_sidecar <- function(grp, out_dir = grp$out_dir) {
+  dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+  utils::write.csv(grp$assignments, file.path(out_dir, "group_assignments.csv"), row.names = FALSE)
+  suffix <- grp$output_suffix
+  notes <- c(
+    paste("Group:", grp$dimension, grp$level),
+    paste("Participant IDs:", paste(grp$participant_ids, collapse = ", ")),
+    paste("Participants:", length(grp$participant_ids)),
+    paste(
+      "Clearness rule (when used): participant mean kt over core phases;",
+      "lower = kt < 0.30, higher = kt >= 0.30 (literature cloudy/overcast boundary;",
+      "matches epoch Sunny/Partly/Cloudy thresholds in compute_clearness_index.py)."
+    ),
+    paste("Clearness cutoff kt:", grp$clearness_cutoff),
+    "Exploratory subgroup: observational labels; participant and field-day confounding possible.",
+    "Do not treat significance differences across groups as causal."
+  )
+  base::writeLines(notes, file.path(out_dir, paste0("group_notes", suffix, ".txt")))
+  invisible(out_dir)
+}
+
+paper3_exploratory_group_from_cli <- function(
+  project_root,
+  results_base_name,
+  stop_if_nonempty = TRUE,
+  args = commandArgs(trailingOnly = TRUE)
+) {
+  cli <- paper3_parse_exploratory_group_cli(args)
+  assignments <- paper3_exploratory_group_assignments(project_root)
+  ids <- paper3_exploratory_group_participant_ids(cli$dimension, cli$level, assignments)
+  out_dir <- paper3_exploratory_group_out_dir(project_root, results_base_name, cli$dimension, cli$level)
+  allow_overwrite <- isTRUE(cli$overwrite) || identical(Sys.getenv("PAPER3_GROUP_OVERWRITE", ""), "1")
+  if (
+    isTRUE(stop_if_nonempty) && !allow_overwrite &&
+      dir.exists(out_dir) && length(list.files(out_dir, all.files = TRUE, no.. = TRUE))
+  ) {
+    stop("Output folder exists and is not empty: ", out_dir, call. = FALSE)
+  }
+  dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+  grp <- list(
+    dimension = cli$dimension,
+    level = cli$level,
+    participant_ids = ids,
+    assignments = assignments,
+    clearness_cutoff = assignments$clearness_cutoff[1L],
+    output_suffix = paper3_exploratory_group_output_suffix(cli$dimension, cli$level),
+    out_dir = out_dir,
+    results_base_name = results_base_name
+  )
+  paper3_write_exploratory_group_sidecar(grp, out_dir)
+  grp
+}
+
+paper3_apply_exploratory_group_from_cli <- function(project_root, results_base_name, stop_if_nonempty = TRUE) {
+  grp <- paper3_exploratory_group_from_cli(project_root, results_base_name, stop_if_nonempty = stop_if_nonempty)
+  options(
+    paper3_exploratory_group_ids = grp$participant_ids,
+    paper3_exploratory_output_suffix = grp$output_suffix
+  )
+  Sys.setenv(PAPER3_OUT_DIR = grp$out_dir)
+  invisible(grp)
+}
+
+# Primary H1/H3 pipelines require >= 8 participants (see H1_H3_core.R model_data_ok guards).
+PAPER3_EXPLORATORY_MIN_PARTICIPANTS_H1H3 <- 8L
+
+paper3_exploratory_group_active <- function() {
+  !is.null(getOption("paper3_exploratory_group_ids", NULL))
+}
+
+paper3_exploratory_min_participants_h1h3 <- function() {
+  as.integer(Sys.getenv("PAPER3_EXPLORATORY_MIN_PARTICIPANTS_H1H3", PAPER3_EXPLORATORY_MIN_PARTICIPANTS_H1H3))
+}
+
+paper3_exploratory_h1h3_inference_eligible <- function(n_participants) {
+  as.integer(n_participants) >= paper3_exploratory_min_participants_h1h3()
+}
+
+paper3_exploratory_write_inference_skipped <- function(out_dir, output_suffix, pipeline_label, n_participants, participant_ids, reason = NULL) {
+  dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+  min_n <- paper3_exploratory_min_participants_h1h3()
+  if (is.null(reason)) {
+    reason <- sprintf(
+      "Skipped inferential publish: %d participant(s) in subgroup (minimum %d for %s). Audit-only or empty contrast tables are expected; do not interpret as null findings.",
+      as.integer(n_participants), min_n, pipeline_label
+    )
+  }
+  tab <- data.frame(
+    pipeline = pipeline_label,
+    skipped_inference = TRUE,
+    n_participants = as.integer(n_participants),
+    min_participants_required = min_n,
+    participant_ids = paste(participant_ids, collapse = ";"),
+    reason = reason,
+    skipped_utc = format(Sys.time(), tz = "UTC", format = "%Y-%m-%dT%H:%M:%SZ"),
+    stringsAsFactors = FALSE
+  )
+  path <- file.path(out_dir, paste0("exploratory_inference_skipped", output_suffix, ".csv"))
+  utils::write.csv(tab, path, row.names = FALSE)
+  cat(reason, "\n")
+  invisible(path)
+}
+
+# Rename flat outputs in a grouped folder once (idempotent on reruns).
+paper3_finish_grouped_output_renames <- function(out_dir, suffix) {
+  if (!nzchar(suffix) || !dir.exists(out_dir)) return(invisible(NULL))
+  keep_plain <- c("group_assignments.csv")
+  files <- list.files(out_dir, full.names = TRUE, recursive = FALSE)
+  for (f in files) {
+    if (dir.exists(f)) next
+    nm <- basename(f)
+    if (nm %in% keep_plain) next
+    if (grepl(paste0(suffix, "(\\.|$)"), nm)) next
+    ext <- tools::file_ext(nm)
+    base <- if (nzchar(ext)) sub(paste0("\\.", ext, "$"), "", nm) else nm
+    target <- if (nzchar(ext)) {
+      file.path(dirname(f), paste0(base, suffix, ".", ext))
+    } else {
+      paste0(f, suffix)
+    }
+    if (file.exists(target)) next
+    if (!file.rename(f, target)) warning("Could not suffix grouped output: ", f, call. = FALSE)
+  }
+  invisible(NULL)
+}

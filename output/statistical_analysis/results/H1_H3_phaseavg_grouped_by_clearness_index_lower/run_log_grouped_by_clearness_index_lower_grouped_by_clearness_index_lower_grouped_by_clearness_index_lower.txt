@@ -1,0 +1,36 @@
+$script_dir
+[1] "C:/Users/sanga/Documents/Codex/2026-10-29/d-pranav-docker-paper3-final-scripts/work/h1h3_grouped_patchtest/scripts/statistical_analysis"
+
+$library_dir
+[1] "C:/Users/sanga/Documents/Codex/2026-10-29/d-pranav-docker-paper3-final-scripts/work/h1h3_grouped_patchtest/scripts/statistical_analysis/library"
+
+$project_root
+[1] "C:/Users/sanga/Documents/Codex/2026-10-29/d-pranav-docker-paper3-final-scripts/work/h1h3_grouped_patchtest"
+
+==============================================================================
+Running H1 and H3 (plus H2): phase contrasts, rmcorr, temporal AR(1)
+==============================================================================
+Participants (5): P13, P14, P17, P8, P9
+Core phases (4): BikeU, WalkU, BikeG, WalkG
+H1 and H3 LMM outcomes (26): empatica [1:13] + eyetracker [14:26] (physiological time series)
+H2 psychological (4): end-of-phase questionnaires only (rmcorr, not H1 or H3 LMM)
+H1 contrasts: BikeU_BikeG, WalkU_WalkG | H3 contrasts: BikeU_WalkU, BikeG_WalkG
+
+[1/6] Loading and formatting dataset...
+   Input: C:/Users/sanga/Documents/Codex/2026-10-29/d-pranav-docker-paper3-final-scripts/work/h1h3_grouped_patchtest/output/merged_all_11participants_8min.csv 
+   Rows/columns: 5023 / 239 | Participants: 5 of 5 | Indoor rows: 412 
+[2/6] Fitting H1 and H3 models across the 26 physiological outcomes (questionnaires are H2 only)...
+[2b/6] Fitting 10-second temporal time-series LMMs with AR(1) autocorrelation...
+[3/6] Evaluating H2 psychophysiological concurrence models...
+[5/6] Writing corrected, auditable outputs...
+[6/6] Rendering primary forest plots...
+   H1 and H3 contrasts: 0 rows | H2 pairs: 0 rows
+   Model Audit Logged: 182 total attempted models (0 fits, 182 non-fits/skips logged)
+
+SUCCESS: H1 and H3 pipeline finished (H2 included). H4: scripts/statistical_analysis/H4_timeseries.R.
+
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 

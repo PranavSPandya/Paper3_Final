@@ -1,0 +1,7 @@
+"Mode","Psych","Outcome","N","rho","p","q"
+"Bike","delta_PRS","delta_eyetracker_fixation_rate",4,NA,NA,NA
+"Bike","delta_PRS","delta_eyetracker_fixation_duration_s",4,NA,NA,NA
+"Bike","delta_PRS","delta_empatica_eda_tonic",5,NA,NA,NA
+"Walk","delta_PRS","delta_eyetracker_fixation_rate",3,NA,NA,NA
+"Walk","delta_PRS","delta_eyetracker_fixation_duration_s",3,NA,NA,NA
+"Walk","delta_PRS","delta_empatica_eda_tonic",5,NA,NA,NA

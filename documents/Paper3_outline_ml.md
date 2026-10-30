@@ -68,6 +68,10 @@ Eighteen volunteers were tested (30 planned under ethics). Eleven with complete 
 
 Streams were synchronized, path-matched and quality-checked, aggregated to **10-second epochs**, then—for confirmatory H1–H4—collapsed to **participant × phase means** on **matched eight-minute** segments (44 cells). Clearness index (k_t) was computed for solar QC; measured irradiance (`ucm_SUN_Gh`) entered models, not derived k_t. Transformations followed the locked normalization CSV.
 
+**Sound exposure (two streams):** **Primary loudness** is the uCM **calibrated A-weighted level** `ucm_SND_dBA` (10 s medians on the backpack stream). **Supplementary descriptors** from phase WAVs include YAMNet source-type proportions/scores, Welch band energy shares, octave summaries, and spectral centroids (`Sound spectrum in field experiment.md`). These are **not** interchangeable with calibrated dBA; low-frequency band fractions can correlate with classifier “wind” labels and with apparent wind on the body during cycling—interpret as type/frequency structure, not as a second loudness standard.
+
+**Wind and microphones:** Outdoor noise guidance (FHWA field measurement practice; ISO 1996-2:2017 measurement context; mobile mapping: Zuo et al., 2016) treats high wind as a **measurement-condition** issue even with windscreens. A **5 m/s apparent-wind exclusion** on `ucm_WIND_AWS` was implemented as an **optional sensitivity** for supplementary sound models only (**not** a decibel correction). Literature (Cooper & Evans, 2015) cautions that a 5 m/s cutoff alone does not guarantee absence of wind-on-microphone artefacts. Windscreen type and microphone placement on the uCM should be stated from field notes in the final manuscript.
+
 ### 2.4 Statistical analysis
 
 All primary tests used restricted maximum likelihood mixed models or repeated-measures correlation with Benjamini–Hochberg false-discovery-rate control within prespecified families (α = 0.05). Estimates are reported as within-person associations; 10-second epoch counts were not treated as independent observations in primary inference.
@@ -81,6 +85,24 @@ All primary tests used restricted maximum likelihood mixed models or repeated-me
 **H4 (thermal–acoustic co-exposure):** Seven phase-mean multivariable mixed models per outcome (`H4_phaseavg.R`); primary equation included UTCI × sound, covariates (irradiance, SVF, PM2.5, light, GVI, phase sums), participant random intercept, and design VIF screening (limit 10) without automatic term deletion. Alternate equations substituted heat metrics or PM size fractions; FDR was applied within equation scope.
 
 Implementation: `H1_H3_phaseavg.R`, `H4_phaseavg.R`; outputs under `output/statistical_analysis/results/`.
+
+### 2.5 Supplementary H4 sound analyses (exploratory; not confirmatory Eq1–7)
+
+These pipelines **do not replace** locked confirmatory H4 on **`ucm_SND_dBA`** at phase means. They support **robustness**, **temporal grain**, and **spectral/source structure** questions raised in supervision (Oct 2026).
+
+| Track | Scripts | Grain | What is tested |
+| --- | --- | --- | --- |
+| **Sound substitution Eq1** | `H4_timeseries_sound.R`, `H4_phaseavg_sound.R`, `library/H4_sound_core.R` | 10 s (AR(1) within bout), optional **30 / 60 / 300 s** epoch means, or phase means | Same fixed-effect shell as H4 Eq1 but **one supplementary sound column at a time** replaces dBA in the main effect and UTCI × sound interaction (**23** measures: YAMNet proportions, band shares, spectral descriptors; **no** `*_score` in the locked list). |
+| **Wind QC sensitivity** | Same entries with `--wind-sensitivity` [`--wind-max-aws=5`] | As above | **Exclude** 10 s windows with `ucm_WIND_AWS` > threshold before aggregation; default **5 m/s** follows FHWA/state DOT field practice and Zuo et al. (2016), with Cooper & Evans (2015) noted as caveat; override with `--wind-max-aws=` (e.g. 4 m/s stricter). Results under `…/wind_aws_le_5ms/`; **not** a dBA correction. |
+| **Minimal UTCI × dBA check** | `H4_minimal_utci_dba.R` [`--wind-sensitivity`] | 10 s | `Y ~ UTCI_bout_z × SND_dBA_bout_z` (+ phase sum contrasts pooled, or interaction-only within single **PhaseID** subsets); same **AWS ≤ 5 m/s** row screen as `_sound` when flagged; CR2 by participant; BH-FDR across **26 outcomes** per term type **within each model block**. |
+
+**FDR scope (sound substitution):** Benjamini–Hochberg separately for coefficient types (`sound` main, `thermal_x_sound`, UTCI main, adjustments), each across **23 sound measures × 26 outcomes = 598** planned tests per type and analysis mode. This multiplicity explains why **no** sound-main or UTCI×sound terms reached **q < 0.05** in the Oct 2026 exports despite isolated raw **p < 0.05** hits. Confirmatory H4 on dBA applies BH **within each equation** across **26 outcomes** per fixed term—not the 598-test sound-substitution family.
+
+**Wind sensitivity outcome (5 m/s, core 2112 windows):** **2110** windows retained (**99.9%**); coefficients and FDR conclusions **substantially unchanged**—consistent with treating screening as **transparency**, not a new exposure variable.
+
+**Method memos (local):** `D:\Pranav\docker\Paper3_Github\Experiment papers\Wind Correction for sound - *.md` (implementation note, FHWA, ISO 1996-2, Cooper & Evans 2015, Zuo et al. 2016).
+
+**Outputs (Paper3_Final):** `output/statistical_analysis/results/H4_timeseries_sound/` (10 s at root; `epoch_30s/`, `epoch_60s/`, `epoch_300s/`), `H4_phaseavg_sound/`, optional `…/wind_aws_le_5ms/`, `H4_minimal_utci_dba/`.
 
 ## 3 Results
 
@@ -107,6 +129,20 @@ Estimates from `H4_phaseavg_coefficients.csv` (seven equations). Interaction ter
 ### 3.6 Sensitivity and model diagnostics
 
 WPZ and AR(1) branches; Indoor/Tram baseline where estimable (13 Indoor-baseline eye models not fit for insufficient coverage). Residual and low-df flags from pipeline audits.
+
+### 3.7 Supplementary sound, wind QC and temporal grain (Oct 2026 exports)
+
+**Confirmatory H4 (phase-mean dBA):** UTCI × **`ucm_SND_dBA`** interactions in `H4_phaseavg_coefficients.csv` (Eq1) remain the **primary** heat–noise evidence cited in §3.5; they use **26-outcome** FDR per term within equation.
+
+**Sound-substitution Eq1 (780 models per mode at 10 s):** In `H4_timeseries_sound/` and `H4_phaseavg_sound/`, **zero** FDR-significant **sound** or **UTCI × sound** coefficients after BH across the **598-test** families (Oct 2026). A few **raw p < 0.05** interaction terms appear (e.g. low-frequency or wind-related descriptors at 10 s); these are **exploratory** and should not be ranked by smallest p-value.
+
+**Wind exclusion (5 m/s on `ucm_WIND_AWS`):** Sensitivity runs under `wind_aws_le_5ms/` dropped **two** bike-phase 10 s windows; **598/598** models still fitted; **no** change in FDR-significant sound/interaction rows vs unscreened trees.
+
+**Minimal UTCI × dBA script:** Pooled and single-phase 10 s models (`H4_minimal_utci_dba_coefficients.csv`) show **best raw p ≈ 0.01–0.03** for some interactions in subsets (e.g. WalkU, BikeU) but **no** **q_FDR < 0.05** after BH across 26 outcomes within each block—aligned with weak epoch-level interaction signal after multiplicity control.
+
+**Wider temporal bins (30 / 60 / 300 s):** Colleague-requested aggregation of 10 s rows before bout-centered LME; outputs under `H4_timeseries_sound/epoch_*`. Use for **method comparison**, not as a second confirmatory claim without pre-registration.
+
+**Manuscript stance:** Report **calibrated uCM dBA** for loudness; report **5 m/s wind screening** as optional QC showing stability; discuss **WAV/spectral** and **wind_proportion** results with microphone/airflow caveats—not as wind-corrected dBA.
 
 Table 1. Selected H1, H3 and H4 results (illustrative; confirm against current CSV exports for submission).
 
@@ -152,7 +188,7 @@ UTCI × sound interactions for selected physiological and ocular outcomes. An in
 
 ### 4.5 Limitations
 
-N = 11, one city and season. Route, mode and environment are confounded with location, order, illumination, workload and co-exposures. Primary models used participant-phase means; AR(1) was secondary. Wearable and eye-tracking artefacts remain. Multi-outcome testing is exploratory. No causal claims.
+N = 11, one city and season. Route, mode and environment are confounded with location, order, illumination, workload and co-exposures. Primary models used participant-phase means; AR(1) was secondary. Wearable and eye-tracking artefacts remain. Multi-outcome testing is exploratory. **Sound:** uCM dBA is calibrated, but apparent wind (`ucm_WIND_AWS`) mixes ambient and movement-induced airflow; supplementary WAV/YAMNet features are not level-calibrated like dBA. **Wind QC** in supplementary pipelines excludes high-AWS epochs only—it is not a validated decibel correction. No causal claims.
 
 ## 5 Conclusion
 
@@ -181,6 +217,14 @@ Quigley, K. S., et al. (2024). Publication guidelines for human heart rate and h
 Rupi, F., & Krizek, K. J. (2019). Visual eye gaze while cycling: Analyzing eye tracking at signalized intersections in urban conditions. Sustainability, 11(21), 6089. https://doi.org/10.3390/su11216089
 
 Stuyck, H., Dalla Costa, L., Cleeremans, A., & Van den Bussche, E. (2022). Validity of the Empatica E4 wristband to estimate resting-state heart rate variability in a lab-based context. International Journal of Psychophysiology, 182, 105-118. https://doi.org/10.1016/j.ijpsycho.2022.10.003
+
+Cooper, J., & Evans, T. (2015). Microphone wind speed limits during wind farm noise measurements. Proceedings of the Australian Acoustical Society Conference, Hunter Valley. (Wind-on-microphone limits; 5 m/s exclusion not sufficient alone.)
+
+Zuo, J., Xia, H., Liu, S., & Qiao, Y. (2016). Mapping urban environmental noise using smartphones. Sensors, 16(10), 1692. https://doi.org/10.3390/s16101692 (Mobile noise mapping; windscreens; avoid measurement above ~5 m/s.)
+
+ISO 1996-2:2017. Acoustics — Description, measurement and assessment of environmental noise — Part 2: Determination of sound pressure levels. (Outdoor measurement conditions; local preview in Experiment papers.)
+
+Federal Highway Administration. Noise barrier design / field measurement guidance. https://www.fhwa.dot.gov/environment/noise/ (Windscreens; do not measure when wind at microphone exceeds ~5 m/s.)
 
 ---
 

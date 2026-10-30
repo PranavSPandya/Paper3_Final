@@ -30,6 +30,11 @@ h5s_haversine_m <- function(lat1, lon1, lat2, lon2) {
 }
 
 h5s_output_dir <- function(project_root, spec = NULL) {
+  if (!is.null(spec) && !is.null(spec$output_dir) && nzchar(spec$output_dir)) {
+    return(spec$output_dir)
+  }
+  opt <- getOption("paper3_h5_output_dir", NULL)
+  if (!is.null(opt) && nzchar(opt)) return(opt)
   base <- file.path(project_root, "output", "statistical_analysis", "results", "H5_exploratory")
   sub <- if (!is.null(spec)) spec$results_subdirectory else NULL
   if (!is.null(sub) && nzchar(sub)) file.path(base, sub) else base
@@ -611,6 +616,67 @@ h5s_hotspot_inclusion_rule <- function(spec) {
   rule
 }
 
+# Corridor buffer cells (GPKG seg_idx / route_bin, 0-based) -> PhaseID_gridN labels for tables/figures.
+h5s_grid_number <- function(route_bin) {
+  as.integer(route_bin) + 1L
+}
+
+h5s_grid_label <- function(phase_id, route_bin) {
+  paste0(as.character(phase_id), "_grid", h5s_grid_number(route_bin))
+}
+
+h5s_route_bin_from_hotspot_id <- function(hotspot_id) {
+  if (!nzchar(hotspot_id) || !grepl("_seg[0-9]+$", hotspot_id, perl = TRUE)) return(NA_integer_)
+  as.integer(sub(".*_seg", "", hotspot_id))
+}
+
+h5s_hotspot_label_map_df <- function(dat) {
+  need <- c("PhaseID", "hotspot_id", "route_bin")
+  if (!all(need %in% names(dat))) return(data.frame())
+  ok <- !is.na(dat$hotspot_id)
+  if ("shared_hotspot" %in% names(dat)) ok <- ok & dat$shared_hotspot %in% TRUE
+  sub <- unique(dat[ok, c(need, intersect("buffer_seg_idx", names(dat))), drop = FALSE])
+  if (!nrow(sub)) return(data.frame())
+  if (!is.finite(sub$route_bin)[1L]) {
+    sub$route_bin <- vapply(sub$hotspot_id, h5s_route_bin_from_hotspot_id, integer(1L))
+  }
+  sub <- sub[order(sub$PhaseID, sub$route_bin), , drop = FALSE]
+  sub$grid_number <- h5s_grid_number(sub$route_bin)
+  sub$grid_label <- mapply(h5s_grid_label, sub$PhaseID, sub$route_bin, USE.NAMES = FALSE)
+  sub
+}
+
+h5s_attach_hotspot_factor <- function(hd) {
+  if (!"route_bin" %in% names(hd)) {
+    hd$route_bin <- vapply(hd$hotspot_id, h5s_route_bin_from_hotspot_id, integer(1L))
+  }
+  u <- unique(hd[, c("hotspot_id", "route_bin", "PhaseID"), drop = FALSE])
+  u <- u[order(u$PhaseID, u$route_bin), , drop = FALSE]
+  u$grid_label <- mapply(h5s_grid_label, u$PhaseID, u$route_bin, USE.NAMES = FALSE)
+  hd$hotspot_f <- factor(hd$hotspot_id, levels = u$hotspot_id, labels = u$grid_label)
+  hd
+}
+
+h5s_hotspot_coef_term_display <- function(model_term, lookup) {
+  raw <- sub("^hotspot_f", "", model_term, fixed = FALSE)
+  if (nrow(lookup) && "grid_label" %in% names(lookup) && raw %in% lookup$grid_label) {
+    return(raw)
+  }
+  mn <- make.names(raw)
+  w <- make.names(lookup$grid_label) == mn
+  if (any(w)) return(lookup$grid_label[w][1L])
+  raw
+}
+
+h5s_hotspot_id_from_model_term <- function(model_term, lookup) {
+  lab <- h5s_hotspot_coef_term_display(model_term, lookup)
+  w <- lookup$grid_label == lab
+  if (any(w)) return(lookup$hotspot_id[w][1L])
+  hid <- sub("^hotspot_f", "", model_term, fixed = FALSE)
+  if (hid %in% lookup$hotspot_id) return(hid)
+  NA_character_
+}
+
 h5s_min_participants_for_outliers <- function(spec) {
   rule <- h5s_hotspot_inclusion_rule(spec)
   if (rule == "corridor_all_assigned") {
@@ -1069,7 +1135,7 @@ h5s_run_extended_models <- function(spec) {
   isFALSE(isTRUE(spec$run_rh1_only))
 }
 
-h5s_rh1_hotspot_coef_table <- function(fit_res, outcome, phase_id = NA_character_) {
+h5s_rh1_hotspot_coef_table <- function(fit_res, outcome, phase_id = NA_character_, lookup = NULL) {
   note_p <- "raw two-sided p-values; not FDR-adjusted across hotspot levels"
   if (!fit_res$converged) {
     return(data.frame(
@@ -1100,12 +1166,23 @@ h5s_rh1_hotspot_coef_table <- function(fit_res, outcome, phase_id = NA_character
       significant_raw_p05 = NA, p_value_note = note_p, stringsAsFactors = FALSE
     ))
   }
+  if (is.null(lookup) || !nrow(lookup)) {
+    lookup <- data.frame(
+      hotspot_id = sub("^hotspot_f", "", hs_terms, fixed = FALSE),
+      grid_label = sub("^hotspot_f", "", hs_terms, fixed = FALSE),
+      stringsAsFactors = FALSE
+    )
+  }
+  display_term <- vapply(hs_terms, h5s_hotspot_coef_term_display, character(1L), lookup = lookup)
+  internal_id <- vapply(hs_terms, h5s_hotspot_id_from_model_term, character(1L), lookup = lookup)
   data.frame(
     PhaseID = phase_id,
     model_id = "RH1",
     outcome = outcome,
-    hotspot_id = sub("^hotspot_f", "", hs_terms, fixed = FALSE),
-    term = hs_terms,
+    hotspot_id = internal_id,
+    grid_label = display_term,
+    term_model = hs_terms,
+    term = display_term,
     estimate = ct[hs_terms, "estimate"],
     std_error = ct[hs_terms, "std_error"],
     t_or_z = ct[hs_terms, "t_or_z"],
@@ -1124,6 +1201,8 @@ h5s_write_rh1_hotspot_coef_dumps <- function(coef_by_outcome, out_dir, spec) {
   note_path <- file.path(out_dir, "RH1_hotspot_coefficients_p_value_note.txt")
   writeLines(c(
     "RH1 hotspot_f fixed-effect coefficients (reference hotspot level omitted by contrast coding).",
+    "term / grid_label: corridor buffer cell (route_bin + 1 within PhaseID), e.g. BikeG_grid3.",
+    "hotspot_id: internal PhaseID_seg{k}; term_model: raw R fixed-effect name.",
     paste0("p_value_FDR: Benjamini-Hochberg within family '", fam, "' (see spec$exploratory_fdr_family)."),
     "p_value: raw two-sided.",
     "Compare env_ucm_UTCI_c moderator in H5_hotspot_weather_models.csv (separate FDR family for env term)."
@@ -1132,7 +1211,8 @@ h5s_write_rh1_hotspot_coef_dumps <- function(coef_by_outcome, out_dir, spec) {
   for (outcome in names(coef_by_outcome)) {
     tab <- coef_by_outcome[[outcome]]
     if (!nrow(tab)) next
-    tab <- tab[grepl("^hotspot_f", tab$term), , drop = FALSE]
+    term_m <- if ("term_model" %in% names(tab)) tab$term_model else tab$term
+    tab <- tab[grepl("^hotspot_f", term_m, fixed = FALSE), , drop = FALSE]
     if (nrow(tab)) parts[[length(parts) + 1L]] <- tab
   }
   all_hs <- if (length(parts)) do.call(rbind, parts) else data.frame()
@@ -1140,22 +1220,27 @@ h5s_write_rh1_hotspot_coef_dumps <- function(coef_by_outcome, out_dir, spec) {
     all_hs$p_value_FDR <- h5s_apply_bh_fdr_grouped(all_hs, group_cols = gc)
     all_hs$fdr_significant <- is.finite(all_hs$p_value_FDR) & all_hs$p_value_FDR < alpha
   }
+  write_per_outcome <- isTRUE(spec$write_rh1_per_outcome_coef_csvs)
   sig_raw_rows <- list()
   for (outcome in names(coef_by_outcome)) {
     tab <- coef_by_outcome[[outcome]]
     if (nrow(all_hs) && "outcome" %in% names(all_hs)) {
       sub <- all_hs[all_hs$outcome == outcome, , drop = FALSE]
       if (nrow(sub)) {
+        fdr_key <- if ("term_model" %in% names(sub)) sub$term_model else sub$term
         fdr_map <- sub$p_value_FDR
-        names(fdr_map) <- sub$term
+        names(fdr_map) <- fdr_key
         sig_map <- sub$fdr_significant
-        names(sig_map) <- sub$term
-        tab$p_value_FDR <- fdr_map[tab$term]
-        tab$fdr_significant <- sig_map[tab$term]
+        names(sig_map) <- fdr_key
+        tab_key <- if ("term_model" %in% names(tab)) tab$term_model else tab$term
+        tab$p_value_FDR <- fdr_map[tab_key]
+        tab$fdr_significant <- sig_map[tab_key]
       }
     }
-    out_path <- file.path(out_dir, paste0("RH1_hotspot_coefficients_", outcome, ".csv"))
-    write.csv(tab, out_path, row.names = FALSE)
+    if (write_per_outcome) {
+      out_path <- file.path(out_dir, paste0("RH1_hotspot_coefficients_", outcome, ".csv"))
+      write.csv(tab, out_path, row.names = FALSE)
+    }
     if ("significant_raw_p05" %in% names(tab)) {
       sig <- tab[tab$significant_raw_p05 %in% TRUE, , drop = FALSE]
       if (nrow(sig)) {
@@ -1274,12 +1359,11 @@ h5s_fit_models_and_sensitivity <- function(hd, spec, out_dir = NULL) {
       if (stratify) {
         ph <- phase_levels[slice_i]
         hd_p <- hd_m[hd_m$PhaseID == ph, , drop = FALSE]
-        hd_p$hotspot_f <- factor(hd_p$hotspot_id)
+        hd_p <- h5s_attach_hotspot_factor(hd_p)
         phase_prefix <- ""
         phase_id <- ph
       } else {
-        hd_p <- hd_m
-        hd_p$hotspot_f <- factor(hd_p$hotspot_id)
+        hd_p <- h5s_attach_hotspot_factor(hd_m)
         phase_prefix <- h5s_rh1_phase_fixed_prefix(hd_m)
         phase_id <- NA_character_
       }
@@ -1303,37 +1387,45 @@ h5s_fit_models_and_sensitivity <- function(hd, spec, out_dir = NULL) {
       rh1_rows$PhaseID <- phase_id
       rh1_primary_by_outcome[[paste(outcome, phase_id, sep = "|")]] <- rh1_rows
       model_rows[[length(model_rows) + 1L]] <- rh1_rows
-      coef_parts[[length(coef_parts) + 1L]] <- h5s_rh1_hotspot_coef_table(rh1, outcome, phase_id = phase_id)
-
-      sens_summary_rows[[length(sens_summary_rows) + 1L]] <- data.frame(
-        model_id = "RH1_primary",
-        PhaseID = phase_id,
-        outcome = outcome,
-        formula = rh1_formula,
-        added_covariate = NA_character_,
-        converged = rh1$converged,
-        fit_engine = rh1$engine,
-        fit_error = rh1$err,
-        env_ucm_UTCI_c_estimate = rh1_rows$estimate[rh1_rows$term == env_c][1L],
-        env_ucm_UTCI_c_p_value = rh1_rows$p_value[rh1_rows$term == env_c][1L],
-        rh1_lag_term = if (identical(rh1_sec$kind, "lag")) sec_c else NA_character_,
-        rh1_lag_estimate = if (identical(rh1_sec$kind, "lag")) rh1_rows$estimate[rh1_rows$term == sec_c][1L] else NA_real_,
-        rh1_lag_p_value = if (identical(rh1_sec$kind, "lag")) rh1_rows$p_value[rh1_rows$term == sec_c][1L] else NA_real_,
-        rh1_cumulative_term = if (identical(rh1_sec$kind, "cumulative")) sec_c else NA_character_,
-        rh1_cumulative_estimate = if (identical(rh1_sec$kind, "cumulative")) rh1_rows$estimate[rh1_rows$term == sec_c][1L] else NA_real_,
-        rh1_cumulative_p_value = if (identical(rh1_sec$kind, "cumulative")) rh1_rows$p_value[rh1_rows$term == sec_c][1L] else NA_real_,
-        primary_effects_held = NA,
-        env_sign_held = NA,
-        env_sig_pattern_held = NA,
-        stringsAsFactors = FALSE
+      hs_lookup <- unique(hd_p[, c("hotspot_id", "route_bin", "PhaseID"), drop = FALSE])
+      hs_lookup$grid_label <- mapply(
+        h5s_grid_label, hs_lookup$PhaseID, hs_lookup$route_bin, USE.NAMES = FALSE
       )
+      coef_parts[[length(coef_parts) + 1L]] <- h5s_rh1_hotspot_coef_table(
+        rh1, outcome, phase_id = phase_id, lookup = hs_lookup
+      )
+
+      if (h5s_run_extended_models(spec)) {
+        sens_summary_rows[[length(sens_summary_rows) + 1L]] <- data.frame(
+          model_id = "RH1_primary",
+          PhaseID = phase_id,
+          outcome = outcome,
+          formula = rh1_formula,
+          added_covariate = NA_character_,
+          converged = rh1$converged,
+          fit_engine = rh1$engine,
+          fit_error = rh1$err,
+          env_ucm_UTCI_c_estimate = rh1_rows$estimate[rh1_rows$term == env_c][1L],
+          env_ucm_UTCI_c_p_value = rh1_rows$p_value[rh1_rows$term == env_c][1L],
+          rh1_lag_term = if (identical(rh1_sec$kind, "lag")) sec_c else NA_character_,
+          rh1_lag_estimate = if (identical(rh1_sec$kind, "lag")) rh1_rows$estimate[rh1_rows$term == sec_c][1L] else NA_real_,
+          rh1_lag_p_value = if (identical(rh1_sec$kind, "lag")) rh1_rows$p_value[rh1_rows$term == sec_c][1L] else NA_real_,
+          rh1_cumulative_term = if (identical(rh1_sec$kind, "cumulative")) sec_c else NA_character_,
+          rh1_cumulative_estimate = if (identical(rh1_sec$kind, "cumulative")) rh1_rows$estimate[rh1_rows$term == sec_c][1L] else NA_real_,
+          rh1_cumulative_p_value = if (identical(rh1_sec$kind, "cumulative")) rh1_rows$p_value[rh1_rows$term == sec_c][1L] else NA_real_,
+          primary_effects_held = NA,
+          env_sign_held = NA,
+          env_sig_pattern_held = NA,
+          stringsAsFactors = FALSE
+        )
+      }
     }
     if (length(coef_parts)) {
       rh1_hotspot_coef_by_outcome[[outcome]] <- do.call(rbind, coef_parts)
     }
 
     if (h5s_run_extended_models(spec)) {
-      hd_m$hotspot_f <- factor(hd_m$hotspot_id)
+      hd_m <- h5s_attach_hotspot_factor(hd_m)
       for (cov in spec$sensitivity_covariate_columns) {
         cov_term <- h5s_formula_term(cov)
         cov_c <- h5s_centered_covariate_name(cov)
@@ -1441,15 +1533,28 @@ h5s_fit_models_and_sensitivity <- function(hd, spec, out_dir = NULL) {
       "; not merged with H1–H4 FDR"
     )
   }
-  sens_summary <- if (length(sens_summary_rows)) do.call(rbind, sens_summary_rows) else {
-    data.frame(note = "RH1 only — sensitivities skipped (run_rh1_only)", stringsAsFactors = FALSE)
+  rh1_only_note <- data.frame(
+    note = "RH1 only — see H5_hotspot_weather_models.csv; staged sensitivities off (run_rh1_only)",
+    stringsAsFactors = FALSE
+  )
+  sens_summary <- if (h5s_run_extended_models(spec) && length(sens_summary_rows)) {
+    do.call(rbind, sens_summary_rows)
+  } else if (h5s_run_extended_models(spec)) {
+    data.frame(note = "no staged sensitivity rows", stringsAsFactors = FALSE)
+  } else {
+    rh1_only_note
+  }
+  sens_detail <- if (h5s_run_extended_models(spec)) {
+    tab[tab$model_id == "RH1", , drop = FALSE]
+  } else {
+    rh1_only_note
   }
   if (!is.null(out_dir) && length(rh1_hotspot_coef_by_outcome)) {
     h5s_write_rh1_hotspot_coef_dumps(rh1_hotspot_coef_by_outcome, out_dir, spec)
   }
   list(
     models = tab, sensitivity_summary = sens_summary,
-    sensitivity_detail = tab[tab$model_id == "RH1", , drop = FALSE],
+    sensitivity_detail = sens_detail,
     rh1_hotspot_coef_by_outcome = rh1_hotspot_coef_by_outcome
   )
 }
@@ -1570,6 +1675,9 @@ h5s_hotspot_stability <- function(hd, spec) {
 }
 
 h5s_dispatch_run <- function(spec, project_root, script_path, raw_data_path) {
+  if (is.null(spec$output_dir) || !nzchar(spec$output_dir)) {
+    options(paper3_h5_output_dir = NULL)
+  }
   out_dir <- h5s_output_dir(project_root, spec)
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
   apply_transform <- function(x, col) paper3_apply_csv_transform(x, col, spec$outcome_transforms_csv)
@@ -1591,6 +1699,14 @@ h5s_dispatch_run <- function(spec, project_root, script_path, raw_data_path) {
       file.path(out_dir, "H5_epoch_buffer_assignment.csv"),
       row.names = FALSE
     )
+    label_map <- h5s_hotspot_label_map_df(dat)
+    if (nrow(label_map)) {
+      write.csv(
+        label_map,
+        file.path(out_dir, "H5_corridor_grid_label_map.csv"),
+        row.names = FALSE
+      )
+    }
   }
   slope_audit <- h5s_slope_audit(dat, spec)
   env_discovered <- h5s_discover_environment_columns(dat)

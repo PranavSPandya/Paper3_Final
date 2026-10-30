@@ -1,0 +1,9 @@
+"N","estimate","ci_low","ci_high","p","sd_paired","fraction_positive","Mode","Outcome","q"
+5,NA,NA,NA,NA,NA,NA,"Bike","questionnaire_prs11_total_mean_1_5",NA
+4,NA,NA,NA,NA,NA,NA,"Bike","eyetracker_fixation_rate",NA
+4,NA,NA,NA,NA,NA,NA,"Bike","eyetracker_fixation_duration_s",NA
+5,NA,NA,NA,NA,NA,NA,"Bike","empatica_eda_tonic",NA
+5,NA,NA,NA,NA,NA,NA,"Walk","questionnaire_prs11_total_mean_1_5",NA
+3,NA,NA,NA,NA,NA,NA,"Walk","eyetracker_fixation_rate",NA
+3,NA,NA,NA,NA,NA,NA,"Walk","eyetracker_fixation_duration_s",NA
+5,NA,NA,NA,NA,NA,NA,"Walk","empatica_eda_tonic",NA

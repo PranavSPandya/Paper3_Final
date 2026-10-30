@@ -14,3 +14,19 @@ Registered S3 method overwritten by 'clubSandwich':
 Registered S3 method overwritten by 'clubSandwich':
   method    from    
   bread.mlm sandwich
+starting worker pid=35320 on localhost:11783 at 22:20:42.209
+starting worker pid=864 on localhost:11783 at 22:20:42.215
+starting worker pid=41948 on localhost:11783 at 22:20:42.228
+starting worker pid=18152 on localhost:11783 at 22:20:42.242
+Registered S3 method overwritten by 'clubSandwich':
+  method    from    
+  bread.mlm sandwich
+Registered S3 method overwritten by 'clubSandwich':
+  method    from    
+  bread.mlm sandwich
+Registered S3 method overwritten by 'clubSandwich':
+  method    from    
+  bread.mlm sandwich
+Registered S3 method overwritten by 'clubSandwich':
+  method    from    
+  bread.mlm sandwich

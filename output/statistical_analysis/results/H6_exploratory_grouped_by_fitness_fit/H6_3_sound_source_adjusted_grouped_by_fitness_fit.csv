@@ -1,0 +1,5 @@
+"Source","Outcome","N_Participants","mean_beta_SD","ci_low","ci_high","p","N_10s","q"
+"vehicle_proportion","empatica_eda_tonic",8,0.116580710208405,-0.00202488373857834,0.235186304155388,0.0546875,1336,0.21875
+"vehicle_proportion","eyetracker_fixation_rate",7,0.0171300200459059,-0.054507821746272,0.0887678618380838,0.546875,1229,0.546875
+"rural_natural_proportion","empatica_eda_tonic",8,-0.0482558814213316,-0.22032937167398,0.123817608831317,0.5234375,1336,0.546875
+"rural_natural_proportion","eyetracker_fixation_rate",7,0.0139108808138011,-0.0390067657472569,0.066828527374859,0.515625,1229,0.546875

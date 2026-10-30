@@ -1,0 +1,30 @@
+[H5 hotspot backpack env] Wrote: C:\Users\sanga\Documents\Codex\2026-10-29\d-pranav-docker-paper3-final-scripts\work\h5h9\results/H5_hotspot_weather_grouped_by_activeness_active 
+                                     metric                 value
+1                        n_hotspot_day_rows                   959
+2                         n_shared_hotspots                   231
+3                            n_participants                     6
+4    n_participant_hotspot_with_2plus_dates                     0
+5      n_hotspots_with_2plus_campaign_dates                   206
+6  n_participants_with_2plus_campaign_dates                     0
+7                          pilot_walkg_only                 FALSE
+8                    hotspot_inclusion_rule corridor_all_assigned
+9                spatial_proximity_radius_m                  <NA>
+10            min_participants_shared_place                  <NA>
+11   min_participants_per_shared_bin_legacy                     2
+12               min_epochs_per_hotspot_day                     1
+13                    rh1_stratify_by_phase                  TRUE
+                                     criterion passed
+1 replication_5plus_participant_hotspot_2dates  FALSE
+2                    RH1_env_moderator_FDR_sig   TRUE
+3             RH1_env_moderator_raw_p_lt_alpha   TRUE
+                                                                                     detail
+1                                                                                       n=0
+2 n_FDR_sig=18; env_FDR_family=within_outcome (env: one UTCI test per outcome\303\227phase model)
+3                                                                              n_raw_sig=29
+GROUPED DONE weather activeness active 
+
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 

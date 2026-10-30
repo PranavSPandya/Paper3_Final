@@ -1,0 +1,3 @@
+Recomputed from Paper3_Final/output/merged_all_11participants_8min.csv; SHA256 e739ceb6277db29d1345fce121e838cb3ae5f55a351aa2279e78c3b2d4ac723b
+Formula: G0=1367*(1+0.033*cos(2*pi*day_of_year/365))*sin(solar_altitude_degrees); k=solar_Gh/G0, only nonnegative Gh and positive G0. No clipping.
+Participant_Clearness_Summary.csv uses all valid rows, including non-core phases, matching previous scope; core_phases.csv includes BikeU, BikeG, WalkU, WalkG only. Percentages use valid index values as denominator. Legacy Sunny >=0.65; Partly Cloudy >=0.30 and <0.65; Cloudy <0.30. Those categories describe local measured irradiance, not verified sky conditions.

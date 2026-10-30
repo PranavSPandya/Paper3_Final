@@ -1,4 +1,4 @@
-<!-- Consolidated 2026-10-27 from Presentation material sources; formulas anchored to scripts/H1_to_H3_phase_average.R and scripts/H4_time_series.R -->
+<!-- Consolidated 2026-10-27 from Presentation material sources; formulas anchored to scripts/statistical_analysis/H1_H3_phaseavg.R and scripts/statistical_analysis/H4_timeseries.R. Updated 2026-10-26: dual-mode (phase average + time series) documented per hypothesis. -->
 
 ## Front matter
 
@@ -9,10 +9,19 @@
 | **H3** | Psychophysiological comfort more compromised during cycling than walking. |
 | **H4** | Noise and traffic amplify thermal discomfort (heat × sound interactions). |
 | **Input CSV** | `output/merged_all_11participants_8min.csv` |
-| **H1–H3 entrypoint** | `scripts/H1_to_H3_phase_average.R` (engine: `scripts/H1_H3_core.R`) |
-| **H4 entrypoint** | `scripts/H4_time_series.R` (engine: `scripts/H4_core.R`) |
+| **Shared helpers** | `scripts/statistical_analysis/library/Paper3_common.R`; engines `scripts/statistical_analysis/library/H1_H3_core.R` (H1–H3), `scripts/statistical_analysis/library/H4_core.R` (H4) |
+| **H1 — phase average** | Primary confirmatory contrasts (H1.1/H1.2): `scripts/statistical_analysis/H1_H3_phaseavg.R` → `output/statistical_analysis/results/H1_H3_phaseavg/` (`H1_Contrasts.csv`, shared `H1_Temporal_*` sensitivity tables) |
+| **H1 — time series** | Outcome-only 10 s AR(1) sensitivity: `scripts/statistical_analysis/H1_H3_timeseries.R` → `output/statistical_analysis/results/H1_H3_timeseries/` (`H1_*` CSV prefix) |
+| **H2 — phase average** | Primary rmcorr (104 pairs): same `H1_H3_phaseavg.R` → `H1_H3_phaseavg/` (`H2_Physio_Psycho_Concordance.csv`) |
+| **H2 — time series** | Phase-level rmcorr plus optional trajectory specs: same `H1_H3_timeseries.R` → `H1_H3_timeseries/` (`H2_*` prefix) |
+| **H3 — phase average** | Primary confirmatory contrasts (H3.1/H3.2): same `H1_H3_phaseavg.R` → `H1_H3_phaseavg/` (`H3_Contrasts.csv`, shared `H3_Temporal_*`) |
+| **H3 — time series** | Same temporal shell as H1, H3 contrasts by interpretation: same `H1_H3_timeseries.R` → `H1_H3_timeseries/` (`H3_*` prefix) |
+| **H4 — time series** | Primary multivariate bout LMMs (Eq1–7): **`scripts/statistical_analysis/H4_timeseries.R` first** → `output/statistical_analysis/results/H4_timeseries/` (`H4_timeseries_*`) |
+| **H4 — phase average** | Phase-collapsed equations using TS filtration: **`scripts/statistical_analysis/H4_phaseavg.R` after time series** → `output/statistical_analysis/results/H4_phaseavg/` (`H4_phaseavg_*`) |
 
-## Locked H4 equation quotes (from H4_time_series.R)
+**Run order:** H1–H3: phase-average and time-series entry scripts are independent (each runs H1, H2, and H3 together). H4: run time series before phase average so `H4_phaseavg.R` can read audit/filtration from the time-series run.
+
+## Locked H4 equation quotes (from H4_timeseries.R)
 
 ```r
 Eq1 <- quote(nlme::lme(
@@ -85,7 +94,7 @@ Eq7 <- quote(nlme::lme(
 ))
 ```
 
-## Locked H1-H3 quotes (from H1_to_H3_phase_average.R)
+## Locked H1-H3 quotes (from H1_H3_phaseavg.R)
 
 Primary H1/H3 phase-mean LMM (same shell; planned contrasts differ via emmeans):
 
@@ -109,18 +118,22 @@ H2_rmcorr <- quote(
 
 **Temporal AR(1) sensitivity (H1 & H3):** WPZ outcomes at 10 s or 60 s epochs; `lme(wpz_outcome ~ PhaseID * time_min, random = ~ 1 | ParticipantID, correlation = corAR1(form = ~ time_10s_step | ParticipantID / PhaseID))` (and 60 s variant on `epoch_data_60s`). Not the primary contrast table; separate BH-FDR family per temporal fixed-effect term.
 
-## H1–H3 time series variants (outcome-only)
+## H1–H3 analysis modes (phase average + time series)
 
-**Run:** `scripts/H1_to_H3_time_series.R` (engine `scripts/H1_to_H3_time_series_core.R`; explicit `H1_TS_*` / `H2_TS_*` / `H3_TS_*` and `H2_rmcorr` quotes in the meeting file). No environmental predictors; H4-style sum-to-zero `PhaseSum*` and 10 s AR(1) within `ParticipantID / PhaseID`.
+Every hypothesis **H1, H2, and H3** has two implemented grains. **Phase average** (`scripts/statistical_analysis/H1_H3_phaseavg.R`) collapses each bout to participant × `PhaseID` means (plus shared H1/H3 temporal sensitivity fits written under `H1_H3_phaseavg/`). **Time series** (`scripts/statistical_analysis/H1_H3_timeseries.R`) keeps 10 s epochs for outcome-only dynamics. Both scripts run **H1, H2, and H3 in one dispatch**; outputs differ by filename prefix (`H1_`, `H2_`, `H3_`) and folder (phase average vs `H1_H3_timeseries/`). Narrative detail for the time-series layer is pasted below (section headers retain legacy `H*_time_series.md` names; content lives only in this file).
 
-Reference prose (not executable): `Presentation material/H1_time_series.md`, `H2_time_series.md`, `H3_time_series.md` (full pastes below). Scripts supersede “spec-only” / placeholder language in those pastes where it conflicts.
+### H1–H3 time series variants (outcome-only)
+
+**Run:** `scripts/statistical_analysis/H1_H3_timeseries.R` (engine `scripts/statistical_analysis/library/H1_H3_core.R`; explicit `H1_TimeSeries_*` / `H2_TimeSeries_*` / `H3_TimeSeries_*` and `H2_rmcorr` quotes in the meeting file). No environmental predictors; H4-style sum-to-zero `PhaseSum*` and 10 s AR(1) within `ParticipantID / PhaseID`. **Phase-average counterpart:** `scripts/statistical_analysis/H1_H3_phaseavg.R` → `output/statistical_analysis/results/H1_H3_phaseavg/`.
+
+Reference prose (not executable): embedded sections below (`## Source: H1_time_series.md`, etc.). Scripts supersede “spec-only” / placeholder language in those pastes where it conflicts.
 
 Summary:
 
 - **Grain:** 10 s epochs, matched first 8 min, input `output/merged_all_11participants_8min.csv` (same as H4).
 - **Outcomes:** 26 physiological WPZ series for H1/H3; H2 adds phase-level psych–phys rmcorr (104 pairs) because questionnaires are not repeated at 10 s.
 - **Models:** `wpz_outcome ~ PhaseID * time_min`, random `~ 1 | ParticipantID`, `corAR1(~ time_10s_step | ParticipantID/PhaseID)`; 60 s sensitivity aggregation in engine.
-- **Outputs:** `output/statistical_analysis/results/H1_to_H3_time_series/` with `H1_`/`H2_`/`H3_`-prefixed CSVs, e.g. `H1_Temporal_TimeSeries_AR1_10s.csv`, `H3_Temporal_AR1_Sensitivity_60s.csv`, `H2_Physio_Psycho_Concordance.csv` (see `Presentation material/output.md`). Phase-average run (`scripts/H1_to_H3_phase_average.R`) writes to `output/statistical_analysis/results/H1_to_H3_phase_average/` as `H1_Temporal_*.csv` / `H3_Temporal_*.csv` (identical shared temporal fit, one copy per prefix).
+- **Outputs:** `output/statistical_analysis/results/H1_H3_timeseries/` with `H1_`/`H2_`/`H3_`-prefixed CSVs, e.g. `H1_Temporal_TimeSeries_AR1_10s.csv`, `H3_Temporal_AR1_Sensitivity_60s.csv`, `H2_Physio_Psycho_Concordance.csv` (see `Presentation material/output.md`). Phase-average run (`scripts/statistical_analysis/H1_H3_phaseavg.R`) writes to `output/statistical_analysis/results/H1_H3_phaseavg/` as `H1_Temporal_*.csv` / `H3_Temporal_*.csv` (identical shared temporal fit, one copy per prefix).
 
 ---
 ## Source: H1_time_series.md
@@ -129,7 +142,14 @@ Summary:
 
 Bibliography: [Reference Literature for all Paper3.md](Reference%20Literature%20for%20all%20Paper3.md).
 
-**Authoritative code anchors:** `scripts/H1_to_H3_phase_average.R` (model quotes), `scripts/H1_H3_core.R` (fit, FDR, CSV export). **H4 shell reference:** `scripts/H4_time_series.R` (nested AR(1) bout structure; environmental fixed effects removed here).
+**H1 analysis modes (always both):**
+
+| Mode | Entry script | Output folder | Role |
+| --- | --- | --- | --- |
+| **Phase average** | `scripts/statistical_analysis/H1_H3_phaseavg.R` | `output/statistical_analysis/results/H1_H3_phaseavg/` | **Primary** H1.1/H1.2 contrasts on phase-mean LMM (`H1_Contrasts.csv`) |
+| **Time series** | `scripts/statistical_analysis/H1_H3_timeseries.R` | `output/statistical_analysis/results/H1_H3_timeseries/` | **Sensitivity** — bout dynamics without exposure covariates (`H1_*` CSVs) |
+
+**Authoritative code anchors:** `scripts/statistical_analysis/H1_H3_phaseavg.R` (phase-mean model quotes), `scripts/statistical_analysis/H1_H3_timeseries.R` (time-series quotes), `scripts/statistical_analysis/library/H1_H3_core.R` (fit, FDR, CSV export). **H4 shell reference:** `scripts/statistical_analysis/H4_timeseries.R` (nested AR(1) bout structure; environmental fixed effects removed here).
 
 ---
 
@@ -140,7 +160,7 @@ Bibliography: [Reference Literature for all Paper3.md](Reference%20Literature%20
 | **Primary H1** | Is comfort *better in green than urban* within each mode? | One value per participant × `PhaseID` (phase mean of each physiological outcome) | Confirmatory planned contrasts **H1.1** (`BikeG` − `BikeU`) and **H1.2** (`WalkG` − `WalkU`) on `lme(outcome ~ PhaseID, random = ~ 1 \| ParticipantID)` |
 | **H1 time series (this document)** | How do outcomes **evolve during the matched bout**, and do **green vs urban differences** appear in **levels, slopes, or lag structure** rather than only in collapsed means? | Repeated 10 s epochs within each participant × bout | **Sensitivity / mechanistic supplement** to primary H1; same 26 outcomes, same four core phases, **no environmental predictors** |
 
-Primary inference for H1 remains participant–phase means and emmeans simple contrasts (`H1_SPEC$contrasts` in `H1_to_H3_phase_average.R`). The time-series layer tests whether green–urban separation is visible in **temporal dynamics** (main effects of `PhaseID`, `PhaseID × time_min`, and AR(1) residual correlation) without conditioning on UTCI, sound, PM, or other exposure covariates.
+Primary inference for H1 remains participant–phase means and emmeans simple contrasts (`H1_SPEC$contrasts` in `H1_H3_phaseavg.R`). The time-series layer tests whether green–urban separation is visible in **temporal dynamics** (main effects of `PhaseID`, `PhaseID × time_min`, and AR(1) residual correlation) without conditioning on UTCI, sound, PM, or other exposure covariates.
 
 ---
 
@@ -172,7 +192,7 @@ Questionnaire (psychological) outcomes are **not** part of H1 time series.
 
 ### Implemented primary temporal sensitivity (`H1_Temporal_AR1_10s_LMM`)
 
-Locked in `scripts/H1_to_H3_phase_average.R` (identical shell for H3 temporal quotes):
+Locked in `scripts/statistical_analysis/H1_H3_phaseavg.R` (identical shell for H3 temporal quotes):
 
 ```r
 H1_Temporal_AR1_10s_LMM <- quote(
@@ -221,7 +241,7 @@ H1_TS_OutcomeOnly_H4Shell <- quote(
 )
 ```
 
-Here `Y` is the analysis-scale physiological outcome (notebook transform, including ln where defined), **not** WPZ. This quote is the **H1 analogue** of H4’s random/AR(1) machinery with fixed effects restricted to the outcome block (`PhaseID`, time, interaction). The **implemented** pipeline currently uses participant-only random intercepts plus WPZ outcomes; converged runs live under `results/H1_to_H3_phase_average/H1_Temporal_*.csv`. Adopting `H1_TS_OutcomeOnly_H4Shell` would be a sensitivity labeled explicitly in outputs (nested intercept + native-scale Y).
+Here `Y` is the analysis-scale physiological outcome (notebook transform, including ln where defined), **not** WPZ. This quote is the **H1 analogue** of H4’s random/AR(1) machinery with fixed effects restricted to the outcome block (`PhaseID`, time, interaction). The **implemented** pipeline currently uses participant-only random intercepts plus WPZ outcomes; converged runs live under `results/H1_H3_phaseavg/H1_Temporal_*.csv`. Adopting `H1_TS_OutcomeOnly_H4Shell` would be a sensitivity labeled explicitly in outputs (nested intercept + native-scale Y).
 
 ---
 
@@ -302,15 +322,15 @@ Same **correlation shell**, different **fixed-effect block**: H1 TS isolates how
 
 ## Expected outputs (pipeline)
 
-When run via `scripts/H1_to_H3_phase_average.R` → `H1_H3_core.R`:
+When run via `scripts/statistical_analysis/H1_H3_phaseavg.R` → `H1_H3_core.R`:
 
 | Artifact | Path |
 | --- | --- |
-| Temporal fixed effects (10 s) | `output/statistical_analysis/results/H1_to_H3_phase_average/H1_Temporal_TimeSeries_AR1.csv` |
-| 60 s robustness | `output/statistical_analysis/results/H1_to_H3_phase_average/H1_Temporal_AR1_Sensitivity.csv` |
-| Primary H1 contrasts (reference) | `output/statistical_analysis/results/H1_to_H3_phase_average/H1_Contrasts.csv` |
+| Temporal fixed effects (10 s) | `output/statistical_analysis/results/H1_H3_phaseavg/H1_Temporal_TimeSeries_AR1.csv` |
+| 60 s robustness | `output/statistical_analysis/results/H1_H3_phaseavg/H1_Temporal_AR1_Sensitivity.csv` |
+| Primary H1 contrasts (reference) | `output/statistical_analysis/results/H1_H3_phaseavg/H1_Contrasts.csv` |
 
-H1-only time-series exports are now implemented as `H1_`-prefixed CSVs in `output/statistical_analysis/results/H1_to_H3_time_series/` (see `Presentation material/output.md`).
+H1-only time-series exports are now implemented as `H1_`-prefixed CSVs in `output/statistical_analysis/results/H1_H3_timeseries/` (see `Presentation material/output.md`).
 
 ---
 ## Source: H2_time_series.md
@@ -320,7 +340,14 @@ H1-only time-series exports are now implemented as `H1_`-prefixed CSVs in `outpu
 
 Bibliography: [Reference Literature for all Paper3.md](Reference%20Literature%20for%20all%20Paper3.md).
 
-**Authoritative code anchors:** `scripts/H1_to_H3_phase_average.R` (primary H2), `scripts/H1_H3_core.R` (rmcorr fit). **H4 reference:** multivariate 10 s loop over 26 physiological outcomes (`scripts/H4_time_series.R`) without environmental fixed effects.
+**H2 analysis modes (always both):**
+
+| Mode | Entry script | Output folder | Role |
+| --- | --- | --- | --- |
+| **Phase average** | `scripts/statistical_analysis/H1_H3_phaseavg.R` | `output/statistical_analysis/results/H1_H3_phaseavg/` | **Primary** rmcorr on participant–phase means (`H2_Physio_Psycho_Concordance.csv`) |
+| **Time series** | `scripts/statistical_analysis/H1_H3_timeseries.R` | `output/statistical_analysis/results/H1_H3_timeseries/` | **Supplement** — same rmcorr at phase level plus trajectory strategies in spec (`H2_*` CSVs) |
+
+**Authoritative code anchors:** `scripts/statistical_analysis/H1_H3_phaseavg.R` (primary H2), `scripts/statistical_analysis/H1_H3_timeseries.R` (TS dispatch), `scripts/statistical_analysis/library/H1_H3_core.R` (rmcorr fit). **H4 reference:** multivariate 10 s loop over 26 physiological outcomes (`scripts/statistical_analysis/H4_timeseries.R`) without environmental fixed effects.
 
 ---
 
@@ -369,7 +396,7 @@ Phase means use notebook transforms (ln for designated HRV). This remains the **
 
 ## Proposed time-series concordance strategies (specification)
 
-All variants below are **outcome-only** (no UTCI, sound, PM, etc.). None are separate locked quotes in `H1_to_H3_phase_average.R` today; choose one primary TS strategy before pipeline implementation.
+All variants below are **outcome-only** (no UTCI, sound, PM, etc.). None are separate locked quotes in `H1_H3_phaseavg.R` today; choose one primary TS strategy before pipeline implementation.
 
 ### Strategy A — Phase-level psych ~ physiological trajectory summary (recommended first)
 
@@ -497,8 +524,8 @@ Same **correlation shell** on the physiological block; fixed effects differ (H4:
 
 | Status | Path |
 | --- | --- |
-| **Implemented (primary H2)** | `output/statistical_analysis/results/H1_to_H3_phase_average/H2_Physio_Psycho_Concordance.csv` |
-| **H2 TS (spec only)** | `output/statistical_analysis/results/H1_to_H3_time_series/H2_Physio_Psycho_Concordance.csv` (phase-level rmcorr; trajectory-level strategies not implemented) |
+| **Implemented (primary H2)** | `output/statistical_analysis/results/H1_H3_phaseavg/H2_Physio_Psycho_Concordance.csv` |
+| **H2 TS (spec only)** | `output/statistical_analysis/results/H1_H3_timeseries/H2_Physio_Psycho_Concordance.csv` (phase-level rmcorr; trajectory-level strategies not implemented) |
 | **Supporting physio trajectories** | Reuse `H1_Temporal_TimeSeries_AR1.csv` (phase-average folder) or future bout-summary export |
 
 See `Presentation material/output.md` for specification-only status.
@@ -511,7 +538,14 @@ See `Presentation material/output.md` for specification-only status.
 
 Bibliography: [Reference Literature for all Paper3.md](Reference%20Literature%20for%20all%20Paper3.md).
 
-**Authoritative code anchors:** `scripts/H1_to_H3_phase_average.R`, `scripts/H1_H3_core.R`. **H4 shell reference:** `scripts/H4_time_series.R` (nested bout AR(1); no environmental terms here).
+**H3 analysis modes (always both):**
+
+| Mode | Entry script | Output folder | Role |
+| --- | --- | --- | --- |
+| **Phase average** | `scripts/statistical_analysis/H1_H3_phaseavg.R` | `output/statistical_analysis/results/H1_H3_phaseavg/` | **Primary** H3.1/H3.2 contrasts on phase-mean LMM (`H3_Contrasts.csv`) |
+| **Time series** | `scripts/statistical_analysis/H1_H3_timeseries.R` | `output/statistical_analysis/results/H1_H3_timeseries/` | **Sensitivity** — identical temporal shell to H1; H3 attribution via contrasts (`H3_*` CSVs) |
+
+**Authoritative code anchors:** `scripts/statistical_analysis/H1_H3_phaseavg.R`, `scripts/statistical_analysis/H1_H3_timeseries.R`, `scripts/statistical_analysis/library/H1_H3_core.R`. **H4 shell reference:** `scripts/statistical_analysis/H4_timeseries.R` (nested bout AR(1); no environmental terms here).
 
 ---
 
@@ -522,7 +556,7 @@ Bibliography: [Reference Literature for all Paper3.md](Reference%20Literature%20
 | **Primary H3** | Is comfort **more compromised when cycling than walking** within each environment? | Participant × `PhaseID` phase mean | Confirmatory **H3.1** (`WalkU` − `BikeU`) and **H3.2** (`WalkG` − `BikeG`) on `lme(outcome ~ PhaseID, random = ~ 1 \| ParticipantID)` |
 | **H3 time series (this document)** | Do **walking vs cycling** differences emerge in **intra-bout trajectories** (levels, slopes, serial dependence) rather than only in averaged endpoints? | 10 s epochs within bout | **Sensitivity** parallel to H1 TS; same estimation engine as H1 temporal in code |
 
-H3 shares the **identical** LMM and temporal shells as H1 (`H3_*` quotes are byte-identical to `H1_*` temporal quotes in `H1_to_H3_phase_average.R`). Hypothesis attribution is by **contrast interpretation**, not by a different formula.
+H3 shares the **identical** LMM and temporal shells as H1 (`H3_*` quotes are byte-identical to `H1_*` temporal quotes in `H1_H3_phaseavg.R`). Hypothesis attribution is by **contrast interpretation**, not by a different formula.
 
 ---
 
@@ -605,7 +639,7 @@ Same shell as H1 TS H4-parity quote; H3 interpretation attaches to **mode** cont
 2. Compare **urban vs green difference in mode gap:** `(WalkU − BikeU) − (WalkG − BikeG)` on predicted means or slopes (mode × environment on dynamics).
 3. Cross-check: bout **integral** (mean over epochs) of WPZ should correlate with primary phase-mean estimates.
 
-**Implemented export:** one shared temporal fit (written as `H1_Temporal_TimeSeries_AR1.csv` and an identical `H3_Temporal_TimeSeries_AR1.csv`) serves **both** H1 and H3 temporal sensitivity; assign rows to H3 by interpreting terms that separate **Walk vs Bike** within matched environment levels. Comments in `H1_to_H3_phase_average.R`: temporal phase coefficients are **not** the four primary planned comparisons.
+**Implemented export:** one shared temporal fit (written as `H1_Temporal_TimeSeries_AR1.csv` and an identical `H3_Temporal_TimeSeries_AR1.csv`) serves **both** H1 and H3 temporal sensitivity; assign rows to H3 by interpreting terms that separate **Walk vs Bike** within matched environment levels. Comments in `H1_H3_phaseavg.R`: temporal phase coefficients are **not** the four primary planned comparisons.
 
 ---
 
@@ -659,11 +693,11 @@ Shared with H1 temporal run:
 
 | Artifact | Path |
 | --- | --- |
-| 10 s temporal terms | `output/statistical_analysis/results/H1_to_H3_phase_average/H3_Temporal_TimeSeries_AR1.csv` |
-| 60 s sensitivity | `output/statistical_analysis/results/H1_to_H3_phase_average/H3_Temporal_AR1_Sensitivity.csv` |
-| Primary H3 contrasts | `output/statistical_analysis/results/H1_to_H3_phase_average/H3_Contrasts.csv` |
+| 10 s temporal terms | `output/statistical_analysis/results/H1_H3_phaseavg/H3_Temporal_TimeSeries_AR1.csv` |
+| 60 s sensitivity | `output/statistical_analysis/results/H1_H3_phaseavg/H3_Temporal_AR1_Sensitivity.csv` |
+| Primary H3 contrasts | `output/statistical_analysis/results/H1_H3_phaseavg/H3_Contrasts.csv` |
 
-H3-only time-series exports: `H3_`-prefixed CSVs in `output/statistical_analysis/results/H1_to_H3_time_series/` (see `output.md`).
+H3-only time-series exports: `H3_`-prefixed CSVs in `output/statistical_analysis/results/H1_H3_timeseries/` (see `output.md`).
 
 ---
 ## Source: H1_to_H3_Methodology_Map.md
@@ -677,14 +711,19 @@ Bibliography (methods, formulas, instruments): [Reference Literature for all Pap
 ---
 
 ### Core Scientific Questions & Hypotheses
-Source: study hypothesis definitions and current `scripts/H1_to_H3_phase_average.R`; this document does not establish preregistration.
+Source: study hypothesis definitions and current `scripts/statistical_analysis/H1_H3_phaseavg.R` / `scripts/statistical_analysis/H1_H3_timeseries.R`; this document does not establish preregistration.
+
+Each hypothesis below is implemented in **phase average** (`H1_H3_phaseavg.R` → `H1_H3_phaseavg/`) and **time series** (`H1_H3_timeseries.R` → `H1_H3_timeseries/`). H4 adds `H4_timeseries.R` → `H4_timeseries/` then `H4_phaseavg.R` → `H4_phaseavg/` (see front matter).
 
 * **Hypothesis 1 (H1) — Environmental Setting:**
   > *Participants will show better physiological and perceived comfort in green than in impervious (urban) areas.*
+  > **Modes:** phase-mean LMM + planned contrasts (primary); 10 s outcome-only AR(1) temporal sensitivity (time series).
 * **Hypothesis 2 (H2) — Psychophysiological Concordance:**
   > *Physiological and perceived responses will be concordant (i.e., they correlate in direction).*
+  > **Modes:** phase-mean rmcorr (primary); time-series rmcorr / trajectory supplements (`H2_*` exports).
 * **Hypothesis 3 (H3) — Active Mobility Exertion:**
   > *Psychophysiological comfort will be more compromised during cycling than during walking.*
+  > **Modes:** phase-mean LMM + planned contrasts (primary); same temporal shell as H1 time series (sensitivity).
 
 ---
 
@@ -771,7 +810,7 @@ questionnaire_prs11_total_mean_1_5 ~ empatica_skin_temperature + (1 | Participan
 * **Physiological column:** participant–phase mean of any outcome in the H1/H3 battery (e.g. `empatica_skin_temperature`, `empatica_heart_rate`, `eyetracker_pupil_diameter_avg`, …).
 * **Fitted in code (rmcorr, not `lme`):** `lm(questionnaire_prs11_total_mean_1_5 ~ ParticipantID + empatica_skin_temperature, data = participant_phase_means)` — common within-person slope on the physiological predictor.
 
-### Fitted form (`scripts/H1_to_H3_phase_average.R` → `H1_H3_core.R`)
+### Fitted form (`scripts/statistical_analysis/H1_H3_phaseavg.R` → `H1_H3_core.R`)
 
 **H1 & H3 — primary (native units or within-person *z* sensitivity):**
 
@@ -846,6 +885,8 @@ The experiment follows a within-subject repeated-measures crossover design acros
 
 ## 2. Methodology for H1 & H3: Linear Mixed Models & Planned Contrasts
 
+**Analysis modes:** **Phase average** (primary contrasts on participant–phase means via `H1_H3_phaseavg.R`) and **time series** (10 s outcome-only AR(1) sensitivity via `H1_H3_timeseries.R`). Same LMM shells; H1 vs H3 differs only in which planned contrasts are emphasized.
+
 ### Model Specification
 For each of the **26 physiological time-series outcomes** (participant-phase means from matched 10 s epochs), a Linear Mixed-Effects Model (LMM) is fitted via Restricted Maximum Likelihood (REML) using `nlme::lme`. The four questionnaire scales enter **H2 rmcorr** only, not this H1/H3 LMM loop:
 
@@ -879,6 +920,8 @@ Hypotheses 1 and 3 are evaluated using four planned pairwise contrasts (not mutu
 
 ## 3. Methodology for H2: Psychophysiological Concordance
 
+**Analysis modes:** **Phase average** (primary 104-pair rmcorr via `H1_H3_phaseavg.R`) and **time series** (`H1_H3_timeseries.R` → `H2_*` exports; questionnaires are not repeated at 10 s).
+
 ### Repeated Measures Correlation (`rmcorr`)
 Hypothesis 2 tests whether within-individual changes in physiological activation covary with subjective perceived comfort ratings across environmental transitions:
 
@@ -900,13 +943,14 @@ r_rm = Σ Σ ((X[ij] - Mean_i(X)) · (Y[ij] - Mean_i(Y))) /
 
 | Component | Path / Location | Description |
 | :--- | :--- | :--- |
-| **Meeting spec** | `scripts/H1_to_H3_phase_average.R` | `GLOBAL_SPEC`, separate `H1_SPEC` / `H2_SPEC` / `H3_SPEC`, explicit H1/H3/H2 model quotes; sources `H1_H3_core.R`. |
-| **Engine** | `scripts/H1_H3_core.R` | Input paths (`RAW_PATH`, `KEY_PATH`, `OUT_DIR`), load, fit, FDR, CSVs, forest plot (not shared with H4). |
+| **Meeting spec** | `scripts/statistical_analysis/H1_H3_phaseavg.R` | `study_wide_spec`, separate `h1_hypothesis_spec` / `h2_hypothesis_spec` / `h3_hypothesis_spec`, explicit H1/H3/H2 model quotes; sources `H1_H3_core.R`. |
+| **Engine** | `scripts/statistical_analysis/library/H1_H3_core.R` | Input paths (`RAW_PATH`, `KEY_PATH`, `OUT_DIR`), load, fit, FDR, CSVs, forest plot (not shared with H4). |
 | **Analysis Input** | `output/merged_all_11participants_8min.csv` | Canonical 11-participant matched 8-minute dataset. |
-| **Contrast Results** | `output/statistical_analysis/results/H1_to_H3_phase_average/H1_Contrasts.csv`, `H3_Contrasts.csv` | Full table of estimates, SE, *t*-values, Bonett SMDs, *p*-values, and FDR *q*-values. |
-| **Concordance Results** | `output/statistical_analysis/results/H1_to_H3_phase_average/H2_Physio_Psycho_Concordance.csv` | rmcorr coefficients (*r_rm*), 95% CIs, *p*-values, and FDR *q*-values. |
-| **Forest Plot** | `output/statistical_analysis/results/H1_to_H3_phase_average/H1_to_H3_Statistical_Results_ForestPlot.jpg` | Publication-ready forest plot illustrating paired SMDs across all four contrasts. |
-| **Execution Command** | `Rscript scripts/H1_to_H3_phase_average.R` | Runs complete inferential pipeline and updates result tables and figures. |
+| **Contrast Results** | `output/statistical_analysis/results/H1_H3_phaseavg/H1_Contrasts.csv`, `H3_Contrasts.csv` | Full table of estimates, SE, *t*-values, Bonett SMDs, *p*-values, and FDR *q*-values. |
+| **Concordance Results** | `output/statistical_analysis/results/H1_H3_phaseavg/H2_Physio_Psycho_Concordance.csv` | rmcorr coefficients (*r_rm*), 95% CIs, *p*-values, and FDR *q*-values. |
+| **Forest Plot** | `output/statistical_analysis/results/H1_H3_phaseavg/H1_to_H3_Statistical_Results_ForestPlot.jpg` | Publication-ready forest plot illustrating paired SMDs across all four contrasts. |
+| **Execution Command (phase average)** | `Rscript scripts/statistical_analysis/H1_H3_phaseavg.R` | Runs H1–H3 phase-mean pipeline → `H1_H3_phaseavg/`. |
+| **Execution Command (time series)** | `Rscript scripts/statistical_analysis/H1_H3_timeseries.R` | Runs H1–H3 outcome-only 10 s pipeline → `H1_H3_timeseries/`. |
 
 
 ## Saved result snapshot
@@ -943,26 +987,26 @@ Current normalization tables and method qualifications: [Normalization_results.m
 
 This chapter states the locked experimental design and the hypothesis-specific statistical specifications implemented in `Paper3_Final`. It is methods and design only: model forms and processing rules are complete; coefficient tables and FDR counts live under `output/statistical_analysis/` and are not restated unless verified against a current run.
 
-**Scripts.** H1–H3 (including H2): `scripts/H1_to_H3_phase_average.R` with engine `scripts/H1_H3_core.R`. H4: `scripts/H4_time_series.R` with engine `scripts/H4_core.R`. Shared helpers: `scripts/Paper3_common.R`, `scripts/H1_to_H4_common.R`. Matched analysis input: `output/merged_all_11participants_8min.csv`. H4 selection narrative: `Presentation material/H4_Selection_Flow.md`, `H4_Selection_Flow_explained.md`. Sound PCA report: `Presentation material/Sound_screening_pca_vif.md`. Master bibliography: `Presentation material/Reference Literature for all Paper3.md`; sibling PDF root `Paper3_Github/Experiment papers/`.
+**Scripts (dual mode per hypothesis).** H1–H3 phase average: `scripts/statistical_analysis/H1_H3_phaseavg.R`; H1–H3 time series: `scripts/statistical_analysis/H1_H3_timeseries.R`; engine `scripts/statistical_analysis/library/H1_H3_core.R`. H4 time series (run first): `scripts/statistical_analysis/H4_timeseries.R`; H4 phase average: `scripts/statistical_analysis/H4_phaseavg.R`; engine `scripts/statistical_analysis/library/H4_core.R`. Shared helpers: `scripts/statistical_analysis/library/Paper3_common.R`. Matched analysis input: `output/merged_all_11participants_8min.csv`. Output folders: `H1_H3_phaseavg/`, `H1_H3_timeseries/`, `H4_timeseries/`, `H4_phaseavg/` under `output/statistical_analysis/results/`. H4 selection narrative: `Presentation material/H4_Selection_Flow.md`, `H4_Selection_Flow_explained.md`. Sound PCA report: `Presentation material/Sound_screening_pca_vif.md`. Master bibliography: `Presentation material/Reference Literature for all Paper3.md`; sibling PDF root `Paper3_Github/Experiment papers/`.
 
 Paper 3 examines psychophysiological comfort during active urban mobility under contrasting green and impervious settings, with synchronous wearable physiology, ocular measures, hyper-local environmental sensing, and post-phase questionnaires. Confirmed hypothesis wording (user confirmation 2026-10-13; text only):
 
-- **H1.** Participants will show better physiological and perceived comfort in green than in impervious areas.
-- **H2.** Physiological and perceived responses will be concordant (i.e., they correlate in direction).
-- **H3.** Psychophysiological comfort will be more compromised during cycling than during walking.
-- **H4.** The presence of noise and traffic will amplify thermal discomfort.
+- **H1.** Participants will show better physiological and perceived comfort in green than in impervious areas. *(Phase average: primary contrasts; time series: outcome-only temporal sensitivity.)*
+- **H2.** Physiological and perceived responses will be concordant (i.e., they correlate in direction). *(Phase average: primary rmcorr; time series: `H2_*` supplements.)*
+- **H3.** Psychophysiological comfort will be more compromised during cycling than during walking. *(Phase average: primary contrasts; time series: same shell as H1 TS.)*
+- **H4.** The presence of noise and traffic will amplify thermal discomfort. *(Time series: primary multivariate bout LMMs; phase average: collapsed-grain equations after TS run.)*
 
-Operational mapping: H1 and H3 share participant-phase `PhaseID` linear mixed models with planned simple contrasts; H2 is repeated-measures correlation across participant-phase means; H4 is a set of 10-second multivariate LMEs with heat × sound interactions and declared covariates. The analytical order below follows H1 → H2 → H3 → H4.
+Operational mapping: H1 and H3 share participant-phase `PhaseID` linear mixed models with planned simple contrasts (phase average) plus shared temporal AR(1) sensitivity (time series); H2 is repeated-measures correlation across participant-phase means (phase average) with time-series exports where implemented; H4 is a set of 10-second multivariate LMEs with heat × sound interactions (time series) and a phase-average counterpart. The narrative order below follows H1 → H2 → H3 → H4; within each hypothesis both grains are documented.
 
 ---
 
 ## Experimental frame (shared by all hypotheses)
 
-Field campaign: Brussels, Belgium, 3 July–27 August 2025. Ethics planning allowed up to 30 participants; 18 were tested; the locked analysis cohort is **11 participants** with complete multi-sensor coverage on the four core outdoor phases — `P4`, `P8`, `P9`, `P10`, `P11`, `P12`, `P13`, `P14`, `P15`, `P16`, `P17` (`PAPER3_PARTICIPANTS` in `scripts/H1_to_H4_common.R`). Participants `P2`, `P3`, `P5`, `P6`, `P7`, and `P18` are outside this set. No dated QC/protocol document in-repo yet justifies those six omissions; cohort composition is therefore an analysis-scope definition until that record exists.
+Field campaign: Brussels, Belgium, 3 July–27 August 2025. Ethics planning allowed up to 30 participants; 18 were tested; the locked analysis cohort is **11 participants** with complete multi-sensor coverage on the four core outdoor phases — `P4`, `P8`, `P9`, `P10`, `P11`, `P12`, `P13`, `P14`, `P15`, `P16`, `P17` (`PAPER3_PARTICIPANTS` in `scripts/statistical_analysis/library/Paper3_common.R`). Participants `P2`, `P3`, `P5`, `P6`, `P7`, and `P18` are outside this set. No dated QC/protocol document in-repo yet justifies those six omissions; cohort composition is therefore an analysis-scope definition until that record exists.
 
 Within-subject design. Each retained participant contributes the four **core active phases** (`PAPER3_CORE_PHASES`): `BikeU` / `WalkU` (cycling / walking on the Etterbeek–Usquare → Montgomery urban corridor) and `BikeG` / `WalkG` (same modes on the Bois de la Cambre park loop). Additional recorded phases (`Tram`, `Indoor`, `Reststop`) are outside the four-route primary H1–H4 contrast set and do not enter H1–H3/H4 exposure centering baselines. `PhaseID` is the Mode × Environment cell and the matching key for participant-phase aggregation.
 
-Core outdoor phases differ in travel speed and duration. All primary inferential work for H1–H4 uses the **matched first 8 minutes** from phase start (0–480 s; `PAPER3_MATCHED_CAP_SEC = 480`). Documented row count for the matched product is **5,077** ten-second rows. Column count has grown with sound/SVF/GVI integration (historical pre-integration roster 189; post-integration audits 228 without full YAMNet expansion; later rebuild 1,252 including 521 YAMNet class fields). Analyses must bind to the file on disk for the run being reported. Expected matched windows per participant-phase for H4 coverage denominators: **49** ten-second epochs (`H4_SPEC$expected_epochs = 49L`).
+Core outdoor phases differ in travel speed and duration. All primary inferential work for H1–H4 uses the **matched first 8 minutes** from phase start (0–480 s; `PAPER3_MATCHED_CAP_SEC = 480`). Documented row count for the matched product is **5,077** ten-second rows. Column count has grown with sound/SVF/GVI integration (historical pre-integration roster 189; post-integration audits 228 without full YAMNet expansion; later rebuild 1,252 including 521 YAMNet class fields). Analyses must bind to the file on disk for the run being reported. Expected matched windows per participant-phase for H4 coverage denominators: **49** ten-second epochs (`h4_study_spec$expected_epoch_count = 49L`).
 
 **Instruments.** The urban Climate Monitor (uCM / CityFeel) backpack on the trailing researcher records air temperature, RH, wind, global horizontal irradiance (`ucm_SUN_Gh`), sound level (`ucm_SND_dBA`), multi-plane IR → mean radiant temperature (`ucm_MRT`), GPS, and derived thermal indices including UTCI, PET, and HUMIDEX (CityFeel / UCM; doi:10.1016/j.egypro.2017.07.427). UTCI is the outdoor equivalent temperature of a reference environment that elicits the same dynamic physiological response as the actual meteorological state (Bröde et al., 2012); Paper 3 uses the UCM-computed series `ucm_UTCI` (operational polynomial approximation in Bröde et al., not re-derived here). Empatica EmbracePlus (participant wrist) yields heart rate, EDA tonic/phasic, skin temperature, and time- and frequency-domain HRV. Pupil Labs Neon supplies pupil, blink, fixation, saccade, and gaze metrics. Bilateral Atmotube devices yield PM1/PM2.5/PM10 averages; LYS1 (participant) and LYS2 (researcher) yield bilateral lux and Kelvin averages. Post-phase questionnaires include comfort, pleasantness, STAI-6, and PRS-11.
 
@@ -1073,7 +1117,7 @@ Symbols match H1: $Y_{ij}$ is the physiological phase mean for participant $i$ i
 
 **Question.** Within outdoor active travel, do thermal–physiology associations depend on acoustic level (and related co-exposures), consistent with noise/traffic amplifying thermal discomfort?
 
-**Authoritative sources.** `Presentation material/H4_Selection_Flow.md`, `H4_Selection_Flow_explained.md`, `scripts/H4_time_series.R`, `scripts/H4_core.R`. **Data grain:** 10-second windows in the matched 8-minute file for the 11 × 4 core design. **Flag:** `H4_SPEC$fit_sound_sensitivity = TRUE` in `H4_time_series.R` (Eq2 is fitted in Step 5 when this flag is `TRUE`). Competing heat or PM formulations never share one equation with the primary UTCI + PM2.5 specification. “Derived” status (e.g. UTCI, SVF, GVI) is never an inclusion or exclusion rule. Acute co-exposure of pollutants and noise is a motivating context (e.g. Biel et al., 2020); mixtures redundancy arguments for not co-entering overlapping derived exposures follow Zhu et al. (2024) and related screening notes.
+**Authoritative sources.** `Presentation material/H4_Selection_Flow.md`, `H4_Selection_Flow_explained.md`, `scripts/statistical_analysis/H4_timeseries.R`, `scripts/statistical_analysis/library/H4_core.R`. **Data grain:** 10-second windows in the matched 8-minute file for the 11 × 4 core design. **Flag:** `h4_study_spec$include_sound_sensitivity_equation = TRUE` in `H4_timeseries.R` (Eq2 is fitted in Step 5 when this flag is `TRUE`). Competing heat or PM formulations never share one equation with the primary UTCI + PM2.5 specification. “Derived” status (e.g. UTCI, SVF, GVI) is never an inclusion or exclusion rule. Acute co-exposure of pollutants and noise is a motivating context (e.g. Biel et al., 2020); mixtures redundancy arguments for not co-entering overlapping derived exposures follow Zhu et al. (2024) and related screening notes.
 
 The selection flow below is chronological: inventory → declared exposures → domain grouping with sound PCA inside Step 2 → seven equations and design VIF → exposure preparation → fit, FDR, and AR(1) structure.
 
@@ -1109,7 +1153,7 @@ Scope: 11 participants × 4 core phases; windows with elapsed time from bout sta
 
 Jolliffe (2002) describes selecting a cumulative proportion of total variance in the range **70–90%** as a standard, albeit subjective, procedure for deciding how many principal components to retain, and notes that **80%** is frequently used as a practical baseline in applied work. This project implements that baseline explicitly (`VARIANCE_TARGET = 0.80`). King & Jackson (1999) evaluated cumulative-variance criteria including **80%** and **90%** in environmental applications; Jolliffe & Cadima (2016) review standardized PCA practice. On the locked merge, the **80% rule alone** retains **9 PCs** (cumulative **81.155%**); the code then applies $k = \max(k_v, 10)$, where $k_v$ is the count meeting the 80% variance target and 10 is `MIN_PCS_B4`, so operational retention is **10 PCs** (cumulative **84.037%**). PCA is correlation-PCA on the within-bout standardized matrix (`sklearn.decomposition.PCA`). Component signs are oriented so the largest absolute loading is positive. Leave-one-participant-out refits check subspace stability for the retained $k$.
 
-For each retained PC, one distinct original column is chosen by largest absolute loading among columns not already selected (Jolliffe B4-style sequential representatives; `representatives()` in the script). The resulting **ten candidates**, locked as `H4_EQ2_SOUND_MAIN_TERMS` in `H4_time_series.R`, are:
+For each retained PC, one distinct original column is chosen by largest absolute loading among columns not already selected (Jolliffe B4-style sequential representatives; `representatives()` in the script). The resulting **ten candidates**, locked as `H4_EQ2_SOUND_MAIN_TERMS` in `H4_timeseries.R`, are:
 
 `freq_prop_20_125`, `urban_manmade_positive_prop`, `vehicle_prop`, `wind_prop`, `freq_prop_8000_20000`, `mechanisms_prop`, `octave_prop_125_0_hz`, `urban_manmade_neutral_prop`, `freq_prop_4000_8000`, `dominant_frequency_hz`
 
@@ -1117,7 +1161,7 @@ Low-frequency (20–125 Hz) and mid-high band sensitivity motivate retaining fre
 
 ### Step 3 — Seven equations and design VIF
 
-All seven formulas are defined as `nlme::lme` quotes in `H4_time_series.R`. Each equation includes phase sum-to-zero contrasts `PhaseSumWalkG`, `PhaseSumWalkU`, `PhaseSumBikeG` (BikeU implicit). In R, `A * B` expands to main effects of A and B plus the A:B interaction.
+All seven formulas are defined as `nlme::lme` quotes in `H4_timeseries.R`. Each equation includes phase sum-to-zero contrasts `PhaseSumWalkG`, `PhaseSumWalkU`, `PhaseSumBikeG` (BikeU implicit). In R, `A * B` expands to main effects of A and B plus the A:B interaction.
 
 | Equation | Role | Maximum design VIF |
 |---|---|---|
@@ -1129,7 +1173,7 @@ All seven formulas are defined as `nlme::lme` quotes in `H4_time_series.R`. Each
 | Eq 6 | PM size: UTCI × SND + MRT × SND + PM1 + shared non-PM covariates | 3.06 |
 | Eq 7 | PM size: UTCI × SND + MRT × SND + PM10 + shared non-PM covariates | 3.07 |
 
-**General LMM (Eqs 1–7 share nesting).** For the 10 s physiological outcome $Y_{ijt}$ (`H4_time_series.R` / `H4_core.R`):
+**General LMM (Eqs 1–7 share nesting).** For the 10 s physiological outcome $Y_{ijt}$ (`H4_timeseries.R` / `H4_core.R`):
 
 $$
 Y_{ijt} = x_{ijt}^{\top}\beta + u_i + v_{ij} + \varepsilon_{ijt}
@@ -1156,9 +1200,9 @@ Y ~ ucm_UTCI * ucm_SND_dBA + ucm_MRT * ucm_SND_dBA + ucm_SUN_Gh + SVF
     + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG
 ```
 
-**Equation 2** (`fit_sound_sensitivity = TRUE`): Eq1 plus the ten Step-2 sound mains. Original heat × sound and MRT × sound interactions remain; Eq2 does not replace `ucm_SND_dBA`. Equations 3–7 are as quoted in `H4_time_series.R` (Eq3 air/RH/wind; Eq4 HUMIDEX; Eq5 PET; Eq6 PM1; Eq7 PM10).
+**Equation 2** (`fit_sound_sensitivity = TRUE`): Eq1 plus the ten Step-2 sound mains. Original heat × sound and MRT × sound interactions remain; Eq2 does not replace `ucm_SND_dBA`. Equations 3–7 are as quoted in `H4_timeseries.R` (Eq3 air/RH/wind; Eq4 HUMIDEX; Eq5 PET; Eq6 PM1; Eq7 PM10).
 
-**VIF rule.** Design screening uses variance inflation factor (VIF) threshold **5** (`H4_SPEC$vif_threshold = 5`; `VIF_THRESHOLD = 5.0` in the sound PCA script). Ordinary VIF for a single-df continuous term $k$, and Fox & Monette (1992) generalized VIF (GVIF) for multi-df blocks (via `car::vif`):
+**VIF rule.** Design screening uses variance inflation factor (VIF) threshold **5** (`h4_study_spec$variance_inflation_factor_limit = 5`; `VIF_THRESHOLD = 5.0` in the sound PCA script). Ordinary VIF for a single-df continuous term $k$, and Fox & Monette (1992) generalized VIF (GVIF) for multi-df blocks (via `car::vif`):
 
 $$
 VIF_k = \frac{1}{1-R_k^{2}},\qquad
@@ -1169,7 +1213,7 @@ where $R_k^{2}$ is the coefficient of determination from regressing term $k$ on 
 
 ### Step 4 — Exposure preparation (centering, scaling, interactions)
 
-Implemented in `h4_step4_exposure_prep()` in `H4_core.R`. For each continuous exposure: restrict to `H4_SPEC` participants and phases; apply frequency-domain HRV availability mask before fitting FD outcomes; ensure bilateral averages exist; optionally carry forward SVF endpoints within bout when coded; collect equation-eligible covariates. **Within-bout centering + common-SD scaling.** Let $x_{ijt}$ be a continuous exposure for participant $i$, PhaseID $j$, and epoch $t$ within bout. The scaled predictor is
+Implemented in `h4_step4_exposure_prep()` in `H4_core.R`. For each continuous exposure: restrict to `h4_study_spec` participants and phases; apply frequency-domain HRV availability mask before fitting FD outcomes; ensure bilateral averages exist; optionally carry forward SVF endpoints within bout when coded; collect equation-eligible covariates. **Within-bout centering + common-SD scaling.** Let $x_{ijt}$ be a continuous exposure for participant $i$, PhaseID $j$, and epoch $t$ within bout. The scaled predictor is
 
 $$
 \tilde{x}_{ijt}
@@ -1187,7 +1231,7 @@ where $\bar{x}_{ij}$ is the bout mean and $s_x$ is the pooled within-bout standa
 
 **Model structure.** For each outcome × equation: `nlme::lme` with REML, nested random intercepts `(1 | ParticipantID / PhaseID)`, AR(1) residuals within bout (`Time10`), and cluster-robust CR2 standard errors (`clubSandwich`; Pustejovsky & Tipton, 2018; Tipton, 2015). Design VIF screening uses threshold 5 as above.
 
-**Equation catalog vs fit.** All seven equations are always defined. Step 5 fits Eq2 only when `H4_SPEC$fit_sound_sensitivity` is `TRUE` (currently `TRUE` in `H4_time_series.R`). Coefficient artifacts from a six-equation run must not be treated as Eq2 results.
+**Equation catalog vs fit.** All seven equations are always defined. Step 5 fits Eq2 only when `h4_study_spec$include_sound_sensitivity_equation` is `TRUE` (currently `TRUE` in `H4_timeseries.R`). Coefficient artifacts from a six-equation run must not be treated as Eq2 results.
 
 **FDR.** Benjamini–Hochberg per fixed-effect term within each equation across the 26 outcomes (`h4_1_publish_fits`; Benjamini & Hochberg, 1995). Primary q-value emphasis: thermal main effects and thermal × sound interactions. Eq2-only sound mains, when fitted, form a separate exploratory BH family. Lag-60 s heat (and heat × sound) sensitivity uses exposures shifted one epoch earlier and has its own BH family (`H4_lag60_sensitivity.csv`).
 
@@ -1195,7 +1239,7 @@ where $\bar{x}_{ij}$ is the bout mean and $s_x$ is the pooled within-bout standa
 
 **Design notes (estimand, not filters).** Mode is absorbed into PhaseID sum-to-zero contrasts rather than a separate Bike/Walk fixed factor beside Environment. Broad Urban/Green labels are not added as covariates in primary H4 because the estimand decomposes environment into measured continuous exposures; an Environment-adjusted H4 would be a separately labelled sensitivity with its own VIF check. `PhaseID` is not a random effect at the phase-mean grain; at 10 s it appears in the nested random-intercept path.
 
-**Historical note.** An earlier phase-mean co-exposure specification (`Outcome ~ Mode + centered UTCI + dBA + PM2.5 + logLux + GVI + (1|ID)`) and the associated VIF/GVI-removal audit in `documents/data_validation.md` describe a superseded H4 formulation. The authoritative equation set is Eqs 1–7 in `H4_time_series.R`. Legacy CSV coefficient tables that lack a current input hash or that predate the nested AR(1) specification are not reportable as current H4 findings.
+**Historical note.** An earlier phase-mean co-exposure specification (`Outcome ~ Mode + centered UTCI + dBA + PM2.5 + logLux + GVI + (1|ID)`) and the associated VIF/GVI-removal audit in `documents/data_validation.md` describe a superseded H4 formulation. The authoritative equation set is Eqs 1–7 in `H4_timeseries.R`. Legacy CSV coefficient tables that lack a current input hash or that predate the nested AR(1) specification are not reportable as current H4 findings.
 
 **Pending items (selection-flow).** (i) Confirm whether inference targets within-bout fluctuations only, between-bout differences, or both. (ii) Complete-case filter that currently requires Eq2-only sound fields for other equations can drop observations unnecessarily — not resolved by a documented refit in the selection-flow update.
 
@@ -1207,7 +1251,7 @@ where $\bar{x}_{ij}$ is the bout mean and $s_x$ is the pooled within-bout standa
 |---|---|
 | Matched merge | `output/merged_all_11participants_8min.csv` |
 | H1–H3 / H2 outputs | `output/statistical_analysis/results/` (and/or `output/statistical_analysis/` for older runs) |
-| H4 work products | `output/statistical_analysis/results/H4_time_series/` (files `H4_time_series_*`; `scripts/H4_time_series.R`) and `output/statistical_analysis/results/H4_phase_average/` (files `H4_phase_average_*`; `scripts/H4_phase_average.R`) |
+| H4 work products | `output/statistical_analysis/results/H4_timeseries/` (files `H4_timeseries_*`; `scripts/statistical_analysis/H4_timeseries.R`) and `output/statistical_analysis/results/H4_phaseavg/` (files `H4_phaseavg_*`; `scripts/statistical_analysis/H4_phaseavg.R`) |
 | H4 selection narrative | `Presentation material/H4_Selection_Flow.md`, `H4_Selection_Flow_explained.md` |
 | Sound PCA/VIF | `Presentation material/Sound_screening_pca_vif.md` |
 | Normalization votes | `Presentation material/Normalization_Transformation_results.md` |
@@ -1221,7 +1265,7 @@ Run metadata (MD5 of script + merge, fit counts, skips) should be taken from the
 ## Documented factual gaps
 
 1. **Cohort exclusion protocol:** No dated QC/protocol document in-repo justifies omitting P2, P3, P5, P6, P7, and P18 from the locked 11-person set despite earlier coverage checks noting core-route data for some omitted IDs.
-2. **H4 Eq2 fit artifacts vs flag:** `fit_sound_sensitivity` is `TRUE` in `H4_time_series.R`; coefficient tables and reports must be checked against a run executed under that flag before citing Eq2 results. This chapter does not invent those coefficients.
+2. **H4 Eq2 fit artifacts vs flag:** `fit_sound_sensitivity` is `TRUE` in `H4_timeseries.R`; coefficient tables and reports must be checked against a run executed under that flag before citing Eq2 results. This chapter does not invent those coefficients.
 3. **H4 estimand clarification (pending):** whether inference targets within-bout fluctuations only, between-bout exposure differences, or both remains flagged; centering removes bout means from the exposure variation used in the slope.
 4. **Complete-case filter side effect (pending):** preparation that requires Eq2-only sound fields for other equations can drop observations unnecessarily; not resolved by a documented refit in the selection-flow update.
 5. **`Presentation material/Normalization_Process.md`:** empty; normalization facts were taken from the PCA script, `Normalization_Transformation_results.md`, and analysis scripts instead.
@@ -1313,13 +1357,20 @@ Zuur, A. F., Ieno, E. N., & Elphick, C. S. (2010). A protocol for data explorati
 
 **Hypothesis:** Noise and traffic amplify thermal discomfort.
 
+**H4 analysis modes (always both):**
+
+| Mode | Entry script | Output folder | Run order |
+| --- | --- | --- | --- |
+| **Time series** | `scripts/statistical_analysis/H4_timeseries.R` | `output/statistical_analysis/results/H4_timeseries/` (`H4_timeseries_*`) | **First** — filtration, exposure prep, audit |
+| **Phase average** | `scripts/statistical_analysis/H4_phaseavg.R` | `output/statistical_analysis/results/H4_phaseavg/` (`H4_phaseavg_*`) | **After time series** — reuses TS filtration |
+
 **Primary model (Eq 1):** UTCI × sound, with MRT × sound, solar irradiance (SUN Gh), SVF, PM2.5, lux, kelvin, and GVI as covariates, plus phase sum-to-zero contrasts.
 
 **Sensitivities:** alternate heat formulations (Eq 3–5), PM size (Eq 6–7), and optional Eq 2 sound block. Competing heat formulations are never co-entered in one equation.
 
 Selection method: one row per exposure (not one bundled “heat” row), by sensor; then check design VIF/rank. *Available cols* are inventory names for that exposure; *Chosen* is what enters the equations. "Derived" only describes how a field is produced — it is never an inclusion or exclusion rule.
 
-Equations live in `scripts/H4_time_series.R`.
+Equation quotes live in `scripts/statistical_analysis/H4_timeseries.R` (time series) and `scripts/statistical_analysis/H4_phaseavg.R` (phase average); shared engine `scripts/statistical_analysis/library/H4_core.R`.
 
 
 ### Declared exposures (by sensor)
@@ -1393,7 +1444,7 @@ One row per exposure. UCM and Atmo are never merged into the same row.
 | Eq 7 (PM size sensitivity — PM10): UTCI * Sound + MRT * Sound + solar irradiance + SVF (sky view) + PM10 + lux + kelvin (light) + GVI (greenery)                                                                                                                          | 3.07        |
 
 
-Eq2 adds 10 sound main effects; original interactions and phase adjustment remain. The full design has been checked for all 26 outcome-specific samples. `scripts/H4_time_series.R` defines all seven equations; Step 5 fits Eq2 only when `H4_SPEC$fit_sound_sensitivity` is TRUE (default FALSE). Published fit artifacts remain from the last six-equation run until rerun.
+Eq2 adds 10 sound main effects; original interactions and phase adjustment remain. The full design has been checked for all 26 outcome-specific samples. `scripts/statistical_analysis/H4_timeseries.R` defines all seven equations; Step 5 fits Eq2 only when `h4_study_spec$include_sound_sensitivity_equation` is TRUE (default FALSE). Published fit artifacts remain from the last six-equation run until rerun.
 
 Each fitted equation also includes phase sum-to-zero contrasts (`PhaseSumWalkG`, `PhaseSumWalkU`, `PhaseSumBikeG`; BikeU implicit) and nested random structure (see Step 5). In R formula notation, heat–sound interactions are written with `*` (e.g. `ucm_UTCI * ucm_SND_dBA`), which expands to main effects plus the product term.
 
@@ -1405,7 +1456,7 @@ Each fitted equation also includes phase sum-to-zero contrasts (`PhaseSumWalkG`,
 
 ## STEP 4 — Centering, scaling, and interaction construction
 
-All seven equation designs use the same exposure-preparation rule in `h4_step4_exposure_prep()` in `scripts/H4_core.R`. For each continuous exposure, subtract its mean within each participant-phase bout, then divide the deviations by their sample SD across the prepared analysis data. This is within-bout centering followed by common-SD scaling, rather than ordinary whole-sample z-scoring or a separate z-score within every bout. Phase contrast indicators are not standardized.
+All seven equation designs use the same exposure-preparation rule in `h4_step4_exposure_prep()` in `scripts/statistical_analysis/library/H4_core.R`. For each continuous exposure, subtract its mean within each participant-phase bout, then divide the deviations by their sample SD across the prepared analysis data. This is within-bout centering followed by common-SD scaling, rather than ordinary whole-sample z-scoring or a separate z-score within every bout. Phase contrast indicators are not standardized.
 
 `Scaled exposure = (measurement - participant-phase mean) / SD of all available centered deviations for that exposure`
 
@@ -1440,15 +1491,15 @@ The common-SD-scaled coefficients are changes in outcome units per common SD of 
 
 ## STEP 5 — Outcomes, model fit, and FDR
 
-**Outcomes (Y):** 26 physiological sensor time series at 10 s resolution — 13 Empatica and 13 eye-tracker columns (`H4_SPEC$outcomes$physiological` in `scripts/H4_time_series.R`). Questionnaire fields are psychological outcomes and are not entered as environmental predictors. Specified HRV frequency-domain outcomes are analyzed on the natural log scale; HRV time-domain and other outcomes use native units where applicable.
+**Outcomes (Y):** 26 physiological sensor time series at 10 s resolution — 13 Empatica and 13 eye-tracker columns (`h4_study_spec$physiological_outcome_names` in `scripts/statistical_analysis/H4_timeseries.R`). Questionnaire fields are psychological outcomes and are not entered as environmental predictors. Specified HRV frequency-domain outcomes are analyzed on the natural log scale; HRV time-domain and other outcomes use native units where applicable.
 
-**Model structure:** For each outcome and equation, `nlme::lme` with REML, nested random intercepts `(1 | ParticipantID / PhaseID)`, and AR(1) residual correlation within bout (`Time10`). Inference uses cluster-robust CR2 standard errors (`clubSandwich`). Design VIF screening uses threshold 5; grouped VIF-equivalent maxima for fitted designs are reported in `H4_time_series_gvif_diagnostic.md` / `H4_time_series_Report.md`.
+**Model structure:** For each outcome and equation, `nlme::lme` with REML, nested random intercepts `(1 | ParticipantID / PhaseID)`, and AR(1) residual correlation within bout (`Time10`). Inference uses cluster-robust CR2 standard errors (`clubSandwich`). Design VIF screening uses threshold 5; grouped VIF-equivalent maxima for fitted designs are reported in `H4_timeseries_gvif_diagnostic.md` / `H4_timeseries_Report.md`.
 
-**Equation catalog vs default fit:** All seven equations are defined in `scripts/H4_time_series.R` (Eq1–Eq7 quotes). Step 5 fits Eq2 only when `H4_SPEC$fit_sound_sensitivity` is TRUE (default FALSE), so published coefficient tables may reflect six equations until a seven-equation rerun.
+**Equation catalog vs default fit:** All seven equations are defined in `scripts/statistical_analysis/H4_timeseries.R` (Eq1–Eq7 quotes). Step 5 fits Eq2 only when `h4_study_spec$include_sound_sensitivity_equation` is TRUE (default FALSE), so published coefficient tables may reflect six equations until a seven-equation rerun.
 
-**FDR:** Benjamini–Hochberg adjustment is applied per fixed-effect term within each equation across the 26 outcomes (`h4_1_publish_fits` in `scripts/H4_core.R`). Primary q-values cover thermal main effects and thermal × sound interaction terms. Eq2-only sound main effects, when fitted, form a separate exploratory BH family across outcomes. Lag-60 s heat (and heat × sound) sensitivity uses exposures shifted one epoch earlier and has its own BH family (`H4_lag60_sensitivity.csv`).
+**FDR:** Benjamini–Hochberg adjustment is applied per fixed-effect term within each equation across the 26 outcomes (`h4_1_publish_fits` in `scripts/statistical_analysis/library/H4_core.R`). Primary q-values cover thermal main effects and thermal × sound interaction terms. Eq2-only sound main effects, when fitted, form a separate exploratory BH family across outcomes. Lag-60 s heat (and heat × sound) sensitivity uses exposures shifted one epoch earlier and has its own BH family (`H4_lag60_sensitivity.csv`).
 
-**Deliverables:** `H4_time_series_Heat_Noise_Exposures.csv` and `H4_time_series_Covariates_and_Phases.csv`; full coefficient and status tables under `results/H4_time_series/` (`H4_time_series_coefficients.csv`, `H4_time_series_fit_status.csv`). The phase-average sensitivity has corresponding outputs under `results/H4_phase_average/` with the `H4_phase_average_` prefix (e.g. `H4_phase_average_coefficients.csv`). The phase-average run reuses the time-series Step 1–4 audit (`H4_time_series_Multivariate_Filtration_Results.csv`), so run `H4_time_series.R` first. Each folder has its own `H4_<variant>_Report.md` with sample sizes, fit counts and diagnostics.
+**Deliverables:** `H4_timeseries_Heat_Noise_Exposures.csv` and `H4_timeseries_Covariates_and_Phases.csv`; full coefficient and status tables under `results/H4_timeseries/` (`H4_timeseries_coefficients.csv`, `H4_timeseries_fit_status.csv`). The phase-average sensitivity has corresponding outputs under `results/H4_phaseavg/` with the `H4_phaseavg_` prefix (e.g. `H4_phaseavg_coefficients.csv`). The phase-average run reuses the time-series Step 1–4 audit (`H4_timeseries_Multivariate_Filtration_Results.csv`), so run `H4_timeseries.R` first. Each folder has its own `H4_<variant>_Report.md` with sample sizes, fit counts and diagnostics.
 
 **Pending specification checks:** Confirm whether H4 targets within-bout fluctuations, between-bout exposure differences, or both; review the treatment of interaction components accordingly. Also check the complete-case filter, which currently requires all selected exposures, including Eq2-only sound fields, for other equations — this can exclude observations unnecessarily. These issues have not been resolved or tested by refitting models as part of this diagram update.
 
@@ -1508,7 +1559,7 @@ Compact audit of inventory fields that are not H4 environmental predictors. Reas
 
 # Sound screening: family-wise PCA and VIF
 
-**Status: done.** Family-wise PCA screening finished; Eq2 sound mains locked in `scripts/H4_time_series.R`. H4 already refit with these terms.
+**Status: done.** Family-wise PCA screening finished; Eq2 sound mains locked in `scripts/statistical_analysis/H4_timeseries.R`. H4 already refit with these terms.
 
 **Read these only** (live PCA folder is wiped each run):
 1. This report - `Presentation material/Sound_screening_pca_vif.md`
@@ -1954,7 +2005,7 @@ Detailed CSVs retain the observation counts and distribution diagnostics; they a
 
 **Scope:** Literature and local PDFs cited by Paper3_Final code, screening reports, and normalization notebooks (existing bibliography; not a newly verified count of distinct works). **Sibling PDF root:** `Paper3_Github/Experiment papers/` — paths below as `[cite: Experiment papers/…]`.
 
-**Also see (detailed cites / machine indexes):** `output/statistical_analysis/Normalization & Parameter Screening/Normalization/Normalization_H1toH4_paper_roles.csv` (152 parameter-reference mappings; not 152 distinct PDFs); `scripts/H1_H3_core.R` (`CITE_*`, H2 `LIT` table); `scripts/H4_core.R` (Step 2 keys, GVIF, centering); sibling `Experiment papers/H1 to H4/H4_Screening_Literature_Guide.md`; `documents/Statistical_Analysis_Reference.html`; `Presentation material/Sound_screening_pca_vif.md`; `Presentation material/H4_Selection_Flow_explained.md`.
+**Also see (detailed cites / machine indexes):** `output/statistical_analysis/Normalization & Parameter Screening/Normalization/Normalization_H1toH4_paper_roles.csv` (152 parameter-reference mappings; not 152 distinct PDFs); `scripts/statistical_analysis/library/H1_H3_core.R` (`CITE_*`, H2 `LIT` table); `scripts/statistical_analysis/library/H4_core.R` (Step 2 keys, GVIF, centering); sibling `Experiment papers/H1 to H4/H4_Screening_Literature_Guide.md`; `documents/Statistical_Analysis_Reference.html`; `Presentation material/Sound_screening_pca_vif.md`; `Presentation material/H4_Selection_Flow_explained.md`.
 
 ---
 
@@ -2190,26 +2241,34 @@ From `output/statistical_analysis/Normalization & Parameter Screening/Normalizat
 
 ### H1 — green infrastructure vs reference routes
 
+- **Phase average (primary):** Participant × `PhaseID` means; planned contrasts H1.1 (BikeG−BikeU) and H1.2 (WalkG−WalkU). **Script / folder:** `scripts/statistical_analysis/H1_H3_phaseavg.R` → `output/statistical_analysis/results/H1_H3_phaseavg/` (`H1_Contrasts.csv`; shared `H1_Temporal_*` sensitivity tables from the same run).
+- **Time series (sensitivity):** 10 s WPZ outcomes, outcome-only `PhaseID × time_min` with AR(1) within bout (no environmental covariates). **Script / folder:** `scripts/statistical_analysis/H1_H3_timeseries.R` → `output/statistical_analysis/results/H1_H3_timeseries/` (`H1_*`-prefixed CSVs).
 - **Question:** Do physiological outcomes differ between green and reference routes within bike (H1.1 BikeG−BikeU) and walk (H1.2 WalkG−WalkU) modes?
-- **Formulas (`H1_to_H3_phase_average.R`):** `H1_PhaseMean_Primary_LMM` — `lme(outcome ~ PhaseID, random = ~ 1 | ParticipantID)`; `H1_PhaseMean_Sensitivity_WPZ_LMM` — same with within-person z-scored outcome; `H1_Temporal_AR1_10s_LMM` / `H1_Temporal_AR1_60s_LMM` — `lme(wpz_outcome ~ PhaseID * time_min, random = ~ 1 | ParticipantID, correlation = corAR1(~ time_step | ParticipantID / PhaseID))`; difference-of-differences `(BikeG − BikeU) − (WalkG − WalkU)` reported alongside planned contrasts; paired SMD via `statpsych::ci.stdmean.ps`.
+- **Formulas (`scripts/statistical_analysis/H1_H3_phaseavg.R` / `H1_H3_timeseries.R`):** `H1_PhaseMean_Primary_LMM` — `lme(outcome ~ PhaseID, random = ~ 1 | ParticipantID)`; `H1_PhaseMean_Sensitivity_WPZ_LMM` — same with within-person z-scored outcome; `H1_Temporal_AR1_10s_LMM` / `H1_Temporal_AR1_60s_LMM` — `lme(wpz_outcome ~ PhaseID * time_min, random = ~ 1 | ParticipantID, correlation = corAR1(~ time_step | ParticipantID / PhaseID))`; difference-of-differences `(BikeG − BikeU) − (WalkG − WalkU)` reported alongside planned contrasts; paired SMD via `statpsych::ci.stdmean.ps`.
 - **References:** Pinheiro & Bates 2000 (`nlme`, REML, `corAR1`); Lenth 2023 `emmeans` phase contrasts; Bonett 2008 paired SMD CIs; Ben-Shakhar 1985 WPZ sensitivity; Benjamini & Hochberg 1995 BH-FDR (families: primary / WPZ / temporal per term); Gidlow et al. 2016; Hunter et al. 2019; Kaplan 1995 restorative framework (`Paper3_outline_ml.md`).
 
 ### H3 — active travel mode contrasts
 
+- **Phase average (primary):** Same LMM shell as H1 on phase means; planned contrasts H3.1 (WalkU−BikeU) and H3.2 (WalkG−BikeG). **Script / folder:** `scripts/statistical_analysis/H1_H3_phaseavg.R` → `output/statistical_analysis/results/H1_H3_phaseavg/` (`H3_Contrasts.csv`; shared `H3_Temporal_*` tables).
+- **Time series (sensitivity):** Identical temporal quotes to H1; inference targets mode contrasts over time. **Script / folder:** `scripts/statistical_analysis/H1_H3_timeseries.R` → `output/statistical_analysis/results/H1_H3_timeseries/` (`H3_*`-prefixed CSVs).
 - **Question:** Walking vs biking on reference (H3.1 WalkU−BikeU) and green (H3.2 WalkG−BikeG) routes?
-- **Formulas:** `H3_PhaseMean_Primary_LMM`, `H3_PhaseMean_Sensitivity_WPZ_LMM`, `H3_Temporal_AR1_10s_LMM`, `H3_Temporal_AR1_60s_LMM` — same shells as H1 (`H1_to_H3_phase_average.R`); emmeans reference level BikeU.
+- **Formulas:** `H3_PhaseMean_Primary_LMM`, `H3_PhaseMean_Sensitivity_WPZ_LMM`, `H3_Temporal_AR1_10s_LMM`, `H3_Temporal_AR1_60s_LMM` — same shells as H1 (`scripts/statistical_analysis/H1_H3_phaseavg.R` / time-series quotes in `H1_H3_timeseries.R`); emmeans reference level BikeU.
 - **References:** Same statistical core as H1 (Pinheiro & Bates; Lenth `emmeans`; Bonett; Ben-Shakhar WPZ; BH-FDR).
 
 ### H2 — psychophysiological concordance
 
+- **Phase average (primary):** rmcorr on participant–phase means (questionnaires not repeated at 10 s). **Script / folder:** `scripts/statistical_analysis/H1_H3_phaseavg.R` → `output/statistical_analysis/results/H1_H3_phaseavg/` (`H2_Physio_Psycho_Concordance.csv`).
+- **Time series (supplement):** Same entry script runs H2 dispatch; exports `H2_*` CSVs including phase-level concordance (`H1_H3_timeseries/`). Trajectory concordance strategies in the pasted H2 time-series spec are mostly design notes, not all implemented.
 - **Question:** Within-person association between end-of-phase questionnaires and phase-mean physiological outcomes across four mobility conditions?
 - **Formulas:** `H2_rmcorr` — `lm(psychological ~ ParticipantID + physiological)` (common within-person slope; Bakdash & Marusich 2017); 4 × 26 = 104 pairs; one BH-FDR family.
 - **References:** Bakdash & Marusich 2017 rmcorr; BH-FDR; Cuve et al. 2023 pupil/autonomic context; **`H1_H3_core.R` `LIT` table** — Boucsein 2012; Dawson et al. 2017; Laborde et al. 2017; Shaffer & Ginsberg 2017; Task Force ESC/NASPE 1996; Billman 2013 LF/HF; Van Doren et al. 2021; Ulrich et al. 1991; Romanovsky 2014; Charkoudian 2010; Mathot 2018; Rayner 1998; Schleicher et al. 2008; Bentivoglio et al. 1997; Berto et al. 2008; Franconeri et al. 2013; Valtchanov & Ellard 2015; Tatler 2007; Stern et al. 1994; Kim et al. 2023; Torku et al. 2023.
 
 ### H4 — noise amplification on thermal discomfort (multivariate bout LMM)
 
-- **Question:** Within 10 s bout windows, do heat × sound interactions and covariates (MRT, solar, SVF, PM, light, GVI, phase) associate with physiological/ocular outcomes (exploratory secondary models)?
-- **Formulas (`H4_time_series.R` — six meeting-spec equations; names match `H4_Selection_Flow_explained.md` table):**
+- **Time series (primary multivariate):** Full Step 1–5 pipeline on 10 s bout windows — exposure filtration, design diagnostics, nested AR(1) LMMs (Eq1–7). **Script / folder:** `scripts/statistical_analysis/H4_timeseries.R` → `output/statistical_analysis/results/H4_timeseries/` (`H4_timeseries_*`). **Run this first.**
+- **Phase average (secondary grain):** Same equation catalog on phase-collapsed data; reads filtration/audit artifacts from the time-series run. **Script / folder:** `scripts/statistical_analysis/H4_phaseavg.R` → `output/statistical_analysis/results/H4_phaseavg/` (`H4_phaseavg_*`). **Run after time series.**
+- **Question:** Within 10 s bout windows, do heat × sound interactions and covariates (MRT, solar, SVF, PM, light, GVI, phase) associate with physiological/ocular outcomes (exploratory secondary models)? (Phase-average mode asks the same structure at the collapsed bout mean grain.)
+- **Formulas (`scripts/statistical_analysis/H4_timeseries.R` / `H4_phaseavg.R` — six meeting-spec equations; names match `H4_Selection_Flow_explained.md` table):**
   - **Eq1 (Primary):** UTCI × Sound + MRT × Sound + `ucm_SUN_Gh` + `SVF` + PM2.5 + lux + kelvin + GVI + sum-to-zero phase (`PhaseSumWalkG`, `PhaseSumWalkU`, `PhaseSumBikeG`); `random = ~ 1 | ParticipantID / PhaseID`; `corAR1(~ Time10 | ParticipantID / PhaseID)`.
   - **Eq2 (Heat sensitivity — air temp, RH, wind):** AIR_temp × Sound + RH × Sound + wind × Sound + MRT × Sound + shared covariates/phases/AR(1).
   - **Eq3 (Heat sensitivity — HUMIDEX):** HUMIDEX × Sound + MRT × Sound + shared block.
@@ -2226,16 +2285,16 @@ From `output/statistical_analysis/Normalization & Parameter Screening/Normalizat
 | File path | What references it holds |
 | --- | --- |
 | `Presentation material/Reference Literature for all Paper3.md` | This master bibliography |
-| `scripts/H1_H3_core.R` | `CITE_*` strings; H2 `LIT` expectation citations |
-| `scripts/H1_to_H3_phase_average.R` | Named H1/H2/H3 model quotes and contrast specs |
-| `scripts/H4_time_series.R` | Eq1–Eq6 LMM formulas and equation metadata |
-| `scripts/H4_core.R` | Exposure definitions, Step 2 keys, GVIF, CR2 inference, centering |
+| `scripts/statistical_analysis/library/H1_H3_core.R` | `CITE_*` strings; H2 `LIT` expectation citations |
+| `scripts/statistical_analysis/H1_H3_phaseavg.R` | Named H1/H2/H3 model quotes and contrast specs |
+| `scripts/statistical_analysis/H4_timeseries.R` | Eq1–Eq6 LMM formulas and equation metadata |
+| `scripts/statistical_analysis/library/H4_core.R` | Exposure definitions, Step 2 keys, GVIF, CR2 inference, centering |
 | `output/statistical_analysis/Normalization & Parameter Screening/Normalization/Normalization_H1toH4_paper_roles.csv` | Experiment-papers PDF inventory by normalization role |
 | `output/statistical_analysis/Normalization & Parameter Screening/Normalization/Normalization_H1toH4_transformation_votes.csv` | Literature vote counts by physiology vote group and environmental exposure group |
 | `scripts/Normalization & Parameter Screening/Normalization_H1toH4.ipynb` | Per-column reference index → PDF paths; `PHYSIO_LITERATURE_VOTES` and environment roll-ups |
 | `Presentation material/Sound_screening_pca_vif.md` | Sound PCA candidate selection and separate VIF screening |
 | `Presentation material/H4_Selection_Flow_explained.md` | H4 retention narrative, Eq1–6 labels, SVF/GVI rules |
-| `output/statistical_analysis/results/H4_time_series/H4_time_series_gvif_diagnostic.md` | Fox & Monette GVIF diagnostic |
+| `output/statistical_analysis/results/H4_timeseries/H4_timeseries_gvif_diagnostic.md` | Fox & Monette GVIF diagnostic |
 | `Presentation material/H4_Transparency_Report.md` | CityFeel, Stevenson, Beiglary/Ishihara evidence |
 | `documents/Statistical_Analysis_Reference.html` | Method cards (EDA, HRV window, Cuve, Chrisinger, Enders, …) |
 | `documents/Paper3_outline_ml.md` | Manuscript-level refs (Kaplan, Nikolopoulou, Stuyck, Quigley, …) |

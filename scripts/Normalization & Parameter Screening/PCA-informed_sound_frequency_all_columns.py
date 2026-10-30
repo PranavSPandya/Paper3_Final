@@ -1,4 +1,4 @@
-"""Three within-bout PCAs: all sound columns except level and unidentified, MRT with sun, and the four air temperatures."""
+"""Two within-bout PCAs: sound (ucm_SND_dBA + spectral/band/proportion; *_score out) and four air temps."""
 from __future__ import annotations
 
 import argparse
@@ -19,12 +19,16 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 MERGED_PATH = REPO_ROOT / "output/merged_all_11participants_8min.csv"
 OUT_DIR = REPO_ROOT / (
     "output/statistical_analysis/Normalization & Parameter Screening/"
-    "PCA-informed/All-columns three PCAs"
+    "PCA-informed/All-columns two PCAs"
 )
 PARTICIPANTS = ["P4", "P8", "P9", "P10", "P11", "P12", "P13", "P14", "P15", "P16", "P17"]
 PHASES = ["BikeU", "WalkU", "BikeG", "WalkG"]
 VARIANCE_TARGET = 0.80
 MIN_PCS_B4 = 10
+YAMNET_STEMS = [
+    "wind", "rural_natural", "vehicle", "urban_manmade_neutral",
+    "urban_manmade_positive", "urban_manmade_negative", "mechanisms",
+]
 BANDS = [
     "freq_proportion_20_to_200Hz",
     "freq_proportion_200_to_2000Hz",
@@ -35,35 +39,25 @@ OCTAVES = [
     "octave_proportion_250_0_Hz", "octave_proportion_500_0_Hz", "octave_proportion_1000_0_Hz",
     "octave_proportion_2000_0_Hz", "octave_proportion_4000_0_Hz", "octave_proportion_8000_0_Hz",
 ]
-GROUP = ["ParticipantID", "PhaseID"]
-SCORES = [f"{c}_score" for c in ["wind", "rural_natural", "vehicle",
-          "urban_manmade_neutral", "urban_manmade_positive", "urban_manmade_negative", "mechanisms"]]
-PROPORTIONS = [f"{c}_proportion" for c in ["wind", "rural_natural", "vehicle",
-               "urban_manmade_neutral", "urban_manmade_positive", "urban_manmade_negative", "mechanisms"]]
 SPECTRAL = ["dominant_frequency_Hz", "spectral_centroid_Hz", "spectral_rolloff85_Hz"]
-FREQUENCIES = SPECTRAL + BANDS + OCTAVES
-SOUND_COLUMNS = ["ucm_SND_dBA"] + FREQUENCIES + SCORES + PROPORTIONS + ["unidentify_proportion"]
-RADIATION_COLUMNS = ["ucm_SUN_Gh", "ucm_MRT"]
+PROPORTIONS = [f"{stem}_proportion" for stem in YAMNET_STEMS]
+# Single sound-field prescription (classifier *_score omitted; level added for PCA below).
+SOUND_COLUMNS = SPECTRAL + BANDS + OCTAVES + PROPORTIONS
+GROUP = ["ParticipantID", "PhaseID"]
 AIR_TEMP_COLUMNS = ["ucm_AIR_temp", "ucm_AIR_T_bot", "ucm_AIR_T_mid", "ucm_AIR_T_top"]
 TEXT_OR_NOMINAL_SOUND_FIELDS = {
     "category": "Nominal classifier text label (e.g. Vehicle, Wind); audit field, not a PCA input.",
-}
-DIAGNOSTIC_COLUMNS = {
-    "unidentify_proportion": "Unidentified-classification proportion; not a sound exposure.",
-}
-OUTSIDE_PCA = {
-    "ucm_SND_dBA": "Calibrated sound level; kept out of the sound PCA.",
 }
 STRUCTURAL_COLUMNS = {
     "ParticipantID": "Participant identifier; bout grouping and leave-one-participant-out refits only.",
     "PhaseID": "Transport-phase identifier; bout grouping only.",
     "Datetime": "Window timestamp; bout elapsed-time (<480 s) filter only.",
 }
-PCA_COLUMNS = [c for c in SOUND_COLUMNS if c not in DIAGNOSTIC_COLUMNS and c not in OUTSIDE_PCA]
+PCA_COLUMNS = ["ucm_SND_dBA"] + SOUND_COLUMNS
+LOAD_SOUND_COLUMNS = ["ucm_SND_dBA"] + SOUND_COLUMNS
 VIF_THRESHOLD = 5.0
 BLOCK = "sound_exposures"
 METHOD = "within-bout standardized correlation PCA"
-REPORT_NAME = "Sound_screening_pca_vif.md"
 
 
 # Load and define
@@ -71,7 +65,7 @@ def load_analysis_frame(path: Path) -> tuple[pd.DataFrame, str]:
     """Read the matched cohort once; validate numeric sound fields before complete-case PCA."""
     source_bytes = path.read_bytes()
     raw = pd.read_csv(BytesIO(source_bytes), low_memory=False)
-    required = GROUP + ["Datetime", "category"] + SOUND_COLUMNS + RADIATION_COLUMNS + AIR_TEMP_COLUMNS
+    required = GROUP + ["Datetime", "category"] + LOAD_SOUND_COLUMNS + AIR_TEMP_COLUMNS
     missing = sorted(set(required) - set(raw.columns))
     if missing:
         raise ValueError(f"Missing band fields: {missing}")
@@ -83,14 +77,14 @@ def load_analysis_frame(path: Path) -> tuple[pd.DataFrame, str]:
     sub = sub.loc[elapsed < 480].reset_index(drop=True)
     if sub.groupby(GROUP).ngroups != len(PARTICIPANTS) * len(PHASES):
         raise ValueError("Missing declared participant-phase bout")
-    for c in SOUND_COLUMNS + RADIATION_COLUMNS + AIR_TEMP_COLUMNS:
+    for c in LOAD_SOUND_COLUMNS + AIR_TEMP_COLUMNS:
         sub[c] = pd.to_numeric(sub[c], errors="raise")
         values = sub[c].dropna()
         if not np.isfinite(values).all():
             raise ValueError(f"Nonfinite values: {c}")
-        if c in SOUND_COLUMNS + ["ucm_SUN_Gh"] and (values < 0).any():
+        if c in LOAD_SOUND_COLUMNS and (values < 0).any():
             raise ValueError(f"Negative values: {c}")
-    if (sub[BANDS + OCTAVES + PROPORTIONS + ["unidentify_proportion"]] > 1 + 1e-10).any().any():
+    if (sub[BANDS + OCTAVES + PROPORTIONS] > 1 + 1e-10).any().any():
         raise ValueError("A reported proportion exceeds one")
     complete_bands = sub[BANDS].dropna()
     if not np.allclose(complete_bands.sum(axis=1), 1, atol=1e-8, rtol=0):
@@ -289,9 +283,12 @@ def self_check() -> None:
     assert np.allclose(x.groupby([frame[c] for c in GROUP]).mean(), 0)
     frame["x"] *= 1000
     assert np.allclose(x, standardized_matrix(frame, ["x", "y"]))
-    assert "unidentify_proportion" not in PCA_COLUMNS and "ucm_SND_dBA" not in PCA_COLUMNS
+    assert "unidentify_proportion" not in SOUND_COLUMNS
+    assert "ucm_SND_dBA" in PCA_COLUMNS
+    assert not any(c.endswith("_score") for c in SOUND_COLUMNS + PCA_COLUMNS)
+    assert PCA_COLUMNS[0] == "ucm_SND_dBA"
+    assert PCA_COLUMNS[1:] == SOUND_COLUMNS
     assert "category" not in PCA_COLUMNS
-    assert set(RADIATION_COLUMNS) == {"ucm_SUN_Gh", "ucm_MRT"}
     assert int(representatives(np.array([[0.7, -0.7]]), 1)[0]) == -1
     assert set(AIR_TEMP_COLUMNS) == {"ucm_AIR_temp", "ucm_AIR_T_bot", "ucm_AIR_T_mid", "ucm_AIR_T_top"}
     assert list(representatives(np.array([[.9, .8, .1], [.9, .7, .6]]), 2)) == [0, 1]
@@ -426,13 +423,15 @@ def build_pca_results_md(frame, result, target, digest, merged_path, out_dir):
     selected = selected.rename(columns={"column": "terms"})
     selected.insert(2, "cumulative terms", [" + ".join(names[:i + 1]) for i in range(len(names))])
     final_max = screen["final_vifs"].max()
-    candidates = list(TEXT_OR_NOMINAL_SOUND_FIELDS) + SOUND_COLUMNS
-    excluded = "; ".join(f"`{c}`: {reason}" for group in
-                         (TEXT_OR_NOMINAL_SOUND_FIELDS, DIAGNOSTIC_COLUMNS) for c, reason in group.items())
+    candidates = list(TEXT_OR_NOMINAL_SOUND_FIELDS) + LOAD_SOUND_COLUMNS
+    excluded = "; ".join(
+        f"`{c}`: {reason}" for c, reason in TEXT_OR_NOMINAL_SOUND_FIELDS.items()
+    )
     return "\n".join([
         "# Sound screening: PCA and VIF", "",
         "**All candidate fields:** " + ", ".join(f"`{c}`" for c in candidates), "",
-        "**Exclude before PCA:** " + excluded, "",
+        "**Exclude before PCA:** " + excluded + "; classifier `*_score` columns are omitted from this inventory.",
+        "",
         f"**Retain {len(PCA_COLUMNS)} PCA inputs:** " + ", ".join(f"`{c}`" for c in PCA_COLUMNS), "",
         f"**Process:** {frame.ParticipantID.nunique()} participants, {frame.groupby(GROUP).ngroups} bouts; "
         f"{len(result['x'])}/{len(frame)} complete outdoor windows starting before 480 s. "
@@ -467,10 +466,12 @@ def run_sound_frequency_pca(merged_path=None, out_dir=None,
     blocks = (
         ("sound", PCA_COLUMNS, MIN_PCS_B4),
         ("air_temp", AIR_TEMP_COLUMNS, 1),
-        ("radiation", RADIATION_COLUMNS, 1),
     )
     print(f"Input: {merged_path.resolve()}")
-    print(f"Sound PCA columns ({len(PCA_COLUMNS)}), ucm_SND_dBA and unidentify_proportion excluded.")
+    print(
+        f"Sound PCA columns ({len(PCA_COLUMNS)}): ucm_SND_dBA + "
+        f"{len(PCA_COLUMNS) - 1} fields from SOUND_COLUMNS."
+    )
     results = []
     for block, columns, min_pcs in blocks:
         result = fit_pca(frame, variance_target, columns, block, min_pcs)

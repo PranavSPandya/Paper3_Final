@@ -1,0 +1,7 @@
+Group: clearness_index lower
+Participant IDs: P8, P9, P13, P14, P17
+Participants: 5
+Clearness rule (when used): participant mean kt over core phases; lower = kt < 0.30, higher = kt >= 0.30 (literature cloudy/overcast boundary; matches epoch Sunny/Partly/Cloudy thresholds in compute_clearness_index.py).
+Clearness cutoff kt: 0.3
+Exploratory subgroup: observational labels; participant and field-day confounding possible.
+Do not treat significance differences across groups as causal.

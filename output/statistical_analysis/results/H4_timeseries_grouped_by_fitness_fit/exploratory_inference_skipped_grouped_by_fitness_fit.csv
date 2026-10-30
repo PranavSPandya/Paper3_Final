@@ -1,0 +1,2 @@
+"pipeline","skipped_fdr","n_successful_fits","n_attempted","reason","participant_ids","skipped_utc"
+"H4_timeseries",TRUE,0,182,"All planned fits failed numerically in this exploratory subgroup; coefficient/FDR tables not produced.","P11;P13;P14;P15;P16;P17;P8;P9;P11;P14;P15;P16;P17;P8;P9","2026-10-30T11:11:42Z"

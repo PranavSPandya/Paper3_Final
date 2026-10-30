@@ -1,6 +1,39 @@
-# H4 time-series: ONLY Eq1, substituting one sound measure at a time for dBA.
+# H4 time-series: ONLY Eq1, substituting one sound measure at a time for dBA (ucm_SND_dBA_bout_z).
 # Run: Rscript scripts/statistical_analysis/H4_timeseries_sound.R --workers=4
-# Output: output/statistical_analysis/results/H4_timeseries_sound/
+# Output: output/statistical_analysis/results/H4_timeseries_sound/ (10 s CSVs at root;
+#   wider bins under epoch_30s/, epoch_60s/, epoch_300s/). Default run: 30/60/300 only (keeps root 10 s).
+# Primary H4_timeseries/ is never written.
+# Wind QC (no dBA correction): --wind-sensitivity [--wind-max-aws=5] writes under .../wind_aws_le_5ms/
+#   (per epoch subfolder). Excludes 10 s windows with ucm_WIND_AWS above threshold; see H4_sound_wind_screening_summary.csv.
+
+# Merged-data columns that replace dBA one at a time (main {name}_bout_z + UTCI interaction).
+# Indexed 1..N — edit h4s_sound_substitutes[[i]] to swap a single substitute by index (proportion/spectral only; no *_score).
+h4s_sound_substitutes <- list(
+  `1` = 'dominant_frequency_Hz',
+  `2` = 'freq_proportion_2000_to_20000Hz',
+  `3` = 'freq_proportion_200_to_2000Hz',
+  `4` = 'freq_proportion_20_to_200Hz',
+  `5` = 'mechanisms_proportion',
+  `6` = 'octave_proportion_1000_0_Hz',
+  `7` = 'octave_proportion_125_0_Hz',
+  `8` = 'octave_proportion_2000_0_Hz',
+  `9` = 'octave_proportion_250_0_Hz',
+  `10` = 'octave_proportion_31_5_Hz',
+  `11` = 'octave_proportion_4000_0_Hz',
+  `12` = 'octave_proportion_500_0_Hz',
+  `13` = 'octave_proportion_63_0_Hz',
+  `14` = 'octave_proportion_8000_0_Hz',
+  `15` = 'rural_natural_proportion',
+  `16` = 'spectral_centroid_Hz',
+  `17` = 'spectral_rolloff85_Hz',
+  `18` = 'unidentify_proportion',
+  `19` = 'urban_manmade_negative_proportion',
+  `20` = 'urban_manmade_neutral_proportion',
+  `21` = 'urban_manmade_positive_proportion',
+  `22` = 'vehicle_proportion',
+  `23` = 'wind_proportion'
+)
+
 options(stringsAsFactors=FALSE)
 .files <- vapply(sys.frames(),function(f)if(is.null(f$ofile))'' else as.character(f$ofile)[1],character(1))
 .entry <- sub('^--file=','',grep('^--file=',commandArgs(FALSE),value=TRUE))
@@ -20,4 +53,21 @@ Eq1 <- quote(nlme::lme(
   method='REML',na.action=na.fail
 ))
 source(file.path(dirname(.entry),'library','H4_sound_core.R'),local=FALSE)
-if(sys.nframe()==0L)h4s_run('timeseries',Eq1,.entry)
+if(sys.nframe()==0L) {
+  args <- commandArgs(trailingOnly = TRUE)
+  if ('--wind-sensitivity' %in% args) {
+    wind_max <- 5
+    argw <- grep('^--wind-max-aws=', args, value = TRUE)
+    if (length(argw)) wind_max <- as.numeric(sub('^--wind-max-aws=', '', argw[1L]))
+    one <- grep('^--epoch-sec=', args, value = TRUE)
+    epochs <- if (length(one)) as.integer(sub('^--epoch-sec=', '', one[1L])) else c(10L, 30L, 60L, 300L)
+    for (sec in epochs) {
+      h4s_run('timeseries', Eq1, .entry, h4s_sound_substitutes, epoch_sec = sec, wind_max_aws = wind_max)
+    }
+  } else {
+    one <- grep('^--epoch-sec=', args, value = TRUE)
+    epochs <- if (length(one)) as.integer(sub('^--epoch-sec=', '', one[1L])) else c(30L, 60L, 300L)
+    if (any(epochs == 10L)) stop('10 s writes H4_timeseries_sound/ root; default skips 10 s to preserve existing root outputs.')
+    for (sec in epochs) h4s_run('timeseries', Eq1, .entry, h4s_sound_substitutes, epoch_sec = sec)
+  }
+}

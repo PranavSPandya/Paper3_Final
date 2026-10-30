@@ -8,10 +8,11 @@ Calculates the Clearness Index (k_t = G_H / G_0) using Duffie & Beckman textbook
   - alpha(t) = sun altitude angle in radians from ucm_SUN_alt
   - G_H(t) = global horizontal solar radiation from ucm_SUN_Gh
   - Clearness_Index = G_H / G_0
-  - Weather inference categories:
+  - Weather inference categories (epoch-level; same thresholds for participant subgroup in R):
       k_t >= 0.65       -> Sunny
       0.30 <= k_t < 0.65 -> Partly Cloudy
       k_t < 0.30        -> Cloudy
+      Participant clearness_index lower/higher: mean k_t < 0.30 vs >= 0.30 (literature sky-class floor)
 
 Inputs:
   - Paper3_Final/output/merged_all_11participants.csv

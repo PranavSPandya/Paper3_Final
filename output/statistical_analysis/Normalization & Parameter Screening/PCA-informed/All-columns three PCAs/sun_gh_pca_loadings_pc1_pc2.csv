@@ -1,2 +1,0 @@
-block,method,PC,column,coefficient,squared_coefficient_pct,corr_transformed_variable_PC,corr_original_within_bout_variable_PC,PC_retained,candidate_representative,LOPO_selection_fraction,LOPO_min_abs_component_cosine
-sun_gh,within-bout standardized correlation PCA,1,ucm_SUN_Gh,1.0,100.0,1.0,1.0,True,True,1.0,1.0

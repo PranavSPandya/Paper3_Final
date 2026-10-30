@@ -1,0 +1,2 @@
+"pipeline","skipped_inference","n_participants","min_participants_required","participant_ids","reason","skipped_utc"
+"H1_H3_phaseavg",TRUE,6,8,"P4;P8;P9;P13;P14;P15","Skipped inferential publish: 6 participant(s) in subgroup (minimum 8 for H1_H3_phaseavg). Audit-only or empty contrast tables are expected; do not interpret as null findings.","2026-10-30T11:13:40Z"

@@ -1,0 +1,13 @@
+"Source","Outcome","ParticipantID","N_10s","Beta_SD","source_VIF"
+"vehicle_proportion","empatica_eda_tonic","P4",90,0.0295172382439447,1.09589508494438
+"vehicle_proportion","empatica_eda_tonic","P10",187,-0.081878103452305,1.16038090023105
+"vehicle_proportion","empatica_eda_tonic","P12",190,0.0607818490263309,1.02042579483485
+"vehicle_proportion","eyetracker_fixation_rate","P4",186,-0.0537231990269523,1.1490273340943
+"vehicle_proportion","eyetracker_fixation_rate","P10",182,-0.0173472949908706,1.19162240140881
+"vehicle_proportion","eyetracker_fixation_rate","P12",185,0.0819411567884338,1.00812218829111
+"rural_natural_proportion","empatica_eda_tonic","P4",90,0.144343119082798,1.04514717831441
+"rural_natural_proportion","empatica_eda_tonic","P10",187,-0.0252672647228558,1.05140642421597
+"rural_natural_proportion","empatica_eda_tonic","P12",190,-0.00577485512451592,1.04546434995912
+"rural_natural_proportion","eyetracker_fixation_rate","P4",186,0.157797950387741,1.06064506131223
+"rural_natural_proportion","eyetracker_fixation_rate","P10",182,-0.0636894408681492,1.03944583522942
+"rural_natural_proportion","eyetracker_fixation_rate","P12",185,0.0633349915972657,1.05183238820195

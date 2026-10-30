@@ -1,0 +1,43 @@
+H4 time-series equations — FDR review summary
+==============================================
+
+Concise review of FDR results for seven bout-level H4 time-series models (Eq1–Eq7).
+
+FINDINGS
+--------
+- All seven equations show at least one FDR hit (155 FDR rows total in the main run).
+- No FDR on primary exposure terms: UTCI, SND_dBA, or UTCI x sound (no thermal x sound interaction FDR).
+- Most FDR is phase contrasts and bout covariates; pupil outcomes carry much of the non-phase FDR (about 6–7 rows per equation).
+- Only equations 3 and 4 add heat-term FDRs on pupil via ucm_* heat copies (not on UTCI/dBA/interaction in UTCI equations).
+
+FDR RULE
+--------
+FDR_significant = TRUE flags a row. Benjamini–Hochberg per term within each equation across 26 planned outcomes (FDR_scope in CSV). Intercepts not FDR-tested.
+
+PER-EQUATION FDR COUNTS (main run)
+----------------------------------
+Eq  Model                              FDR rows  Exposure FDR?
+ 1  UTCI / PM2.5 (primary)                  22  No
+ 2  UTCI / PM2.5 (sound sensitivity)        20  No
+ 3  AIR_T + RH + wind / PM2.5               24  Yes — 2 pupil heat terms
+ 4  HUMIDEX / PM2.5                         23  Yes — 1 pupil heat term
+ 5  PET / PM2.5                             22  No
+ 6  UTCI / PM1                              22  No
+ 7  UTCI / PM10                             22  No
+
+Eq3 pupil heat FDRs: ucm_MRT -> pupil diameter avg; ucm_AIR_T_mid -> pupil change rate.
+Eq4 pupil heat FDR: ucm_HUMIDEX -> pupil change rate.
+
+Three thermal-exposure FDR rows total (all pupil ucm_* terms). Zero sound-exposure or interaction FDR.
+
+SOUND-ONLY RUN (Eq1 variants, alternative sound measures)
+---------------------------------------------------------
+508 FDR rows total; zero on thermal, sound, or thermal x sound exposure terms.
+
+SOURCE PATHS
+------------
+d:\Pranav\docker\Paper3_Final\output\statistical_analysis\results\H4_timeseries\H4_timeseries_coefficients.csv
+d:\Pranav\docker\Paper3_Final\output\statistical_analysis\results\H4_timeseries_sound\H4_sound_coefficients.csv
+d:\Pranav\docker\Paper3_Final\scripts\statistical_analysis\H4_timeseries.R
+
+Verified from FDR_significant and term_type columns (2026-10-29).

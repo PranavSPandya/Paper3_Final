@@ -2,6 +2,12 @@
 
 This document lives in `Paper3_Final/Brain`. Resolve its relative paths from this directory. Read `./Tasks.md`, `./WORK_DIARY.md`, `./PhD_proposal.md`, `./PhD_Status.md`, `./email/` and `./meeting transcript/` here. Update these canonical files, never the old machine-local compatibility pointers.
 
+## Research skills
+
+All research skills needed for this project are in `./skills` (`D:\Pranav\docker\Paper3_Final\Brain\skills`). When a task needs literature search, paper writing, peer review, experiment design, verification, reproducibility, or another research workflow, open the matching `SKILL.md` in that folder and follow it before acting. Do not rely on memory of those skills. Learn the relevant skill at the time it is needed.
+
+Current libraries in `./skills`: `Academic-Research-Agent-Skill-main`, `academic-research-skills-main`, `phd-skills-main`, `Research-Paper-Writing-Skills-main`, `research-skills-main`. `skiLL.Md-main` in the same folder is a software-engineering library, not the research set.
+
 The active statistical repository for this migration is `..` (Paper3_Final). The instructions below retain older project paths as context; verify the live repository before using any historical pipeline location. Other repositories, raw data and software environments are separate laptop-transfer dependencies. See `./README.md` and `./migration_manifest.csv` for verified copies and unresolved OneDrive files. Do not treat a successful Brain migration as a complete raw-data backup.
 
 "Always use gold standard foundation methods that are fully complete valid and gold standard so that our methodology process or even smallest thing we do in every task is gold standard that no reviewer would question or ask to redo"

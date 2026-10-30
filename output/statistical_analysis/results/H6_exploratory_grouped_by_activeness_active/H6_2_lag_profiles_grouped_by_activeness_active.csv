@@ -1,0 +1,13 @@
+"Exposure","Outcome","Lag_s","N_Participants","mean_r","ci_low","ci_high","p","N_Changes","q"
+"lys_lux_avg","eyetracker_pupil_diameter_avg",0,5,NA,NA,NA,NA,850,NA
+"lys_lux_avg","eyetracker_pupil_diameter_avg",10,5,NA,NA,NA,NA,844,NA
+"lys_lux_avg","eyetracker_pupil_diameter_avg",30,5,NA,NA,NA,NA,814,NA
+"lys_lux_avg","eyetracker_pupil_diameter_avg",60,5,NA,NA,NA,NA,758,NA
+"ucm_MRT","empatica_skin_temperature",0,6,-0.0594396563883446,-0.102036761557282,-0.0166249725964362,0.03125,1128,0.0833333333333333
+"ucm_MRT","empatica_skin_temperature",10,6,0.0058683990252001,-0.0356711461208383,0.0473877011015689,0.71875,1104,0.8125
+"ucm_MRT","empatica_skin_temperature",30,6,0.0561522329560877,-0.0207961727892017,0.132439307308714,0.1875,1056,0.3
+"ucm_MRT","empatica_skin_temperature",60,6,0.0533251068580476,0.00934922457386528,0.0970951207463437,0.03125,984,0.0833333333333333
+"ucm_SND_dBA","empatica_eda_phasic",0,6,0.00830265095487206,-0.0568031154948101,0.0733381026715768,0.78125,1128,0.8125
+"ucm_SND_dBA","empatica_eda_phasic",10,6,-0.0368802657201462,-0.0869745162219548,0.0134000224070533,0.125,1104,0.25
+"ucm_SND_dBA","empatica_eda_phasic",30,6,-0.00532125474764623,-0.0569025532348497,0.0462883758786591,0.8125,1056,0.8125
+"ucm_SND_dBA","empatica_eda_phasic",60,6,-0.0713086668042141,-0.121563711770365,-0.020688963995179,0.03125,984,0.0833333333333333
