@@ -1,0 +1,78 @@
+/// Questionnaire items
+table QItem
+	lineageTag: 291d7bb6-53d6-54cf-9a25-83da83206ba2
+
+	measure 'Questionnaire value' = AVERAGE(QLong[Value])
+		formatString: 0.00
+		lineageTag: 807e327a-22e0-581d-bd77-7729d4b131a1
+
+	measure 'Questionnaire title' = VAR p = SELECTEDVALUE(QItem[Parameter]) RETURN IF(ISBLANK(p), "QUESTIONNAIRE: pick one item", "QUESTIONNAIRE: " & p & ", per participant and phase")
+		lineageTag: 2574392c-7c02-5388-9890-f47366e30f6f
+
+	column ParamKey
+		dataType: string
+		isHidden
+		lineageTag: 5103d0ea-91f8-5775-84d9-8dd25c202fbf
+		summarizeBy: none
+		sourceColumn: ParamKey
+
+		annotation SummarizationSetBy = User
+
+	column Group
+		dataType: string
+		lineageTag: 4af9f408-a677-512c-a8e4-10dee57bb814
+		summarizeBy: none
+		sourceColumn: Group
+		sortByColumn: GroupSort
+
+		annotation SummarizationSetBy = User
+
+	column GroupSort
+		dataType: int64
+		isHidden
+		lineageTag: 4f19d920-2078-5f62-8606-7e8102557136
+		summarizeBy: none
+		sourceColumn: GroupSort
+
+		annotation SummarizationSetBy = User
+
+	column Parameter
+		dataType: string
+		lineageTag: c4c03d8f-7740-59f3-88be-fef3cd1efbc4
+		summarizeBy: none
+		sourceColumn: Parameter
+		sortByColumn: ParamSort
+
+		annotation SummarizationSetBy = User
+
+	column ParamSort
+		dataType: int64
+		isHidden
+		lineageTag: 3beb291b-dfdb-5f9e-9e3f-d4ebc9a87023
+		summarizeBy: none
+		sourceColumn: ParamSort
+
+		annotation SummarizationSetBy = User
+
+	partition QItem = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        type table [#"ParamKey" = text, #"Group" = text, #"GroupSort" = Int64.Type, #"Parameter" = text, #"ParamSort" = Int64.Type],
+				        {
+				        {"questionnaire_current_comfort_1_7", "Questionnaire", 1, "Current comfort (1–7)", 1},
+				        {"questionnaire_thermal_comfort_1_5", "Questionnaire", 1, "Thermal comfort (1–5)", 2},
+				        {"questionnaire_pleasantness_1_5", "Questionnaire", 1, "Pleasantness (1–5)", 3},
+				        {"questionnaire_environmental_comfort_mean_1_5", "Questionnaire", 1, "Environmental comfort, mean (1–5)", 4},
+				        {"questionnaire_stai6_mean_1_5", "Questionnaire", 1, "STAI-6 anxiety, mean (1–5)", 5},
+				        {"questionnaire_prs11_total_mean_1_5", "Questionnaire", 1, "PRS-11 total, mean (1–5)", 6},
+				        {"questionnaire_prs11_fascination_mean_1_5", "Questionnaire", 1, "PRS-11 fascination (1–5)", 7},
+				        {"questionnaire_prs11_being_away_mean_1_5", "Questionnaire", 1, "PRS-11 being away (1–5)", 8},
+				        {"questionnaire_prs11_coherence_mean_1_5", "Questionnaire", 1, "PRS-11 coherence (1–5)", 9},
+				        {"questionnaire_prs11_scope_mean_1_5", "Questionnaire", 1, "PRS-11 scope (1–5)", 10}
+				        })
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

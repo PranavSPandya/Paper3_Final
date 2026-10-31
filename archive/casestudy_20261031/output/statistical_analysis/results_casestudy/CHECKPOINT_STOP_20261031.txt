@@ -1,0 +1,16 @@
+Paper3 case-study — 14/14 complete — 2026-10-31 ~10:50 (local)
+
+All seven entry scripts ran for fitness and for activeness.
+Outputs only under results_casestudy/<factor>/ and figures_casestudy/<factor>/.
+Original output/statistical_analysis/results was not written.
+
+Last job: activeness H5_hotspot_weather_svfclasses
+  PAPER3_CASESTUDY_COVARIATE=activeness
+  log: results_casestudy/logs/activeness_H5_hotspot_weather_svfclasses.log
+  Completed: results_casestudy/activeness/H5_exploratory_svfclasses
+  Fits: 416 skips: 0
+  No "Execution halted" in that log.
+
+Activeness H4_timeseries: resumed from job 139; run_complete TRUE; 182/182 succeeded.
+Fitness H4_timeseries: run_complete TRUE (covariance-sensitivity table empty).
+Both H5_hotspot_weather runs used OPENBLAS_NUM_THREADS=1 and OMP_NUM_THREADS=1.

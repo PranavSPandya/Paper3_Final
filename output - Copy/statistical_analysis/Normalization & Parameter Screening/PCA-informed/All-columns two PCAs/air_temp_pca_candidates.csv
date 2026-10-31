@@ -1,0 +1,2 @@
+block,method,PC,column,coefficient,squared_coefficient_pct,corr_transformed_variable_PC,corr_original_within_bout_variable_PC,PC_retained,candidate_representative,LOPO_selection_fraction,LOPO_min_abs_component_cosine,candidate_set_score_R2,Terms_included,Max_VIF,Highest_VIF_term
+air_temp,within-bout standardized correlation PCA,1,ucm_AIR_T_mid,0.5103781266001315,26.04858321118598,0.9616427890144387,0.9616427890144383,True,True,0.8181818181818182,0.9999934032869495,0.924756853663468,1,1.0,ucm_AIR_T_mid

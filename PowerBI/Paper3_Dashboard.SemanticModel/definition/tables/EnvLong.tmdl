@@ -1,0 +1,61 @@
+/// Environment values, long format (unpivoted 10 s rows)
+table EnvLong
+	lineageTag: 2fa1004d-4427-54ba-b870-0e9d7200f80b
+
+	column ParticipantID
+		dataType: string
+		isHidden
+		lineageTag: 7af79b3d-a562-55ba-992e-3329ad1713c9
+		summarizeBy: none
+		sourceColumn: ParticipantID
+
+		annotation SummarizationSetBy = User
+
+	column PhaseID
+		dataType: string
+		isHidden
+		lineageTag: cfa623cd-324a-56f8-bef2-8ed5769cb47c
+		summarizeBy: none
+		sourceColumn: PhaseID
+
+		annotation SummarizationSetBy = User
+
+	column Slot
+		dataType: int64
+		isHidden
+		lineageTag: 7d774e7d-2e45-5a8d-b20a-2006ec904046
+		summarizeBy: none
+		sourceColumn: Slot
+
+		annotation SummarizationSetBy = User
+
+	column ParamKey
+		dataType: string
+		isHidden
+		lineageTag: 234332c4-6020-502e-bac2-aff6863bddd5
+		summarizeBy: none
+		sourceColumn: ParamKey
+
+		annotation SummarizationSetBy = User
+
+	column Value
+		dataType: double
+		formatString: 0.00
+		lineageTag: c48974c1-b1f1-55f8-b47c-d71a7ed5bf7c
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = User
+
+	partition EnvLong = m
+		mode: import
+		source =
+				let
+				    Src = Table.SelectColumns(Base, {"ParticipantID", "PhaseID", "Slot", "ucm_UTCI", "ucm_MRT", "ucm_PET", "ucm_HUMIDEX", "ucm_AIR_temp", "ucm_AIR_RH", "ucm_SND_dBA", "ucm_WIND_AWS", "ucm_SUN_Gh", "ucm_GPS_speed_kmh", "atmo_pm1_avg", "atmo_pm25_avg", "atmo_pm10_avg", "atmo_lys_LYS1__lys_lux", "atmo_lys_LYS2__lys_lux", "atmo_lys_LYS1__lys_kelvin", "atmo_lys_LYS2__lys_kelvin", "atmo_lys_LYS1__lys_medi", "atmo_lys_LYS2__lys_medi", "vehicle_proportion", "urban_manmade_negative_proportion", "urban_manmade_neutral_proportion", "urban_manmade_positive_proportion", "rural_natural_proportion", "wind_proportion", "mechanisms_proportion", "unidentify_proportion", "spectral_centroid_Hz", "spectral_rolloff85_Hz", "dominant_frequency_Hz", "freq_proportion_20_to_200Hz", "freq_proportion_200_to_2000Hz", "freq_proportion_2000_to_20000Hz", "octave_proportion_31_5_Hz", "octave_proportion_63_0_Hz", "octave_proportion_125_0_Hz", "octave_proportion_250_0_Hz", "octave_proportion_500_0_Hz", "octave_proportion_1000_0_Hz", "octave_proportion_2000_0_Hz", "octave_proportion_4000_0_Hz", "octave_proportion_8000_0_Hz", "gvi_50m", "gvi_tree_50m", "gvi_grass_50m", "gvi_plant_50m", "SVF", "TVF", "BVF", "Sky_%", "Building_%", "Tree_%", "Total_Vegetation_%"}),
+				    // one row per participant x phase x 10 s slot x parameter; nulls are dropped by the unpivot
+				    Unpivoted = Table.UnpivotOtherColumns(Src, {"ParticipantID", "PhaseID", "Slot"}, "ParamKey", "Value"),
+				    Typed = Table.TransformColumnTypes(Unpivoted, {{"ParticipantID", type text}, {"PhaseID", type text}, {"Slot", Int64.Type}, {"ParamKey", type text}, {"Value", type number}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

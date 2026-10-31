@@ -1,0 +1,61 @@
+/// Physiology values, long format (unpivoted 10 s rows)
+table PhysLong
+	lineageTag: 59db7b80-a80a-52b7-98d3-0f6e7ffe8cc5
+
+	column ParticipantID
+		dataType: string
+		isHidden
+		lineageTag: 70a9296f-717c-59fd-a59b-0014fb3d8c66
+		summarizeBy: none
+		sourceColumn: ParticipantID
+
+		annotation SummarizationSetBy = User
+
+	column PhaseID
+		dataType: string
+		isHidden
+		lineageTag: dd0f95b9-d27a-5835-a21f-2781fa3e2f4f
+		summarizeBy: none
+		sourceColumn: PhaseID
+
+		annotation SummarizationSetBy = User
+
+	column Slot
+		dataType: int64
+		isHidden
+		lineageTag: 183b84d7-f1b5-5ebd-8e61-3a3b54af5d5e
+		summarizeBy: none
+		sourceColumn: Slot
+
+		annotation SummarizationSetBy = User
+
+	column ParamKey
+		dataType: string
+		isHidden
+		lineageTag: a261c008-e52f-5a3f-9c81-0e8582227c31
+		summarizeBy: none
+		sourceColumn: ParamKey
+
+		annotation SummarizationSetBy = User
+
+	column Value
+		dataType: double
+		formatString: 0.00
+		lineageTag: f316730b-7ead-57fd-8f60-3cceef298168
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = User
+
+	partition PhysLong = m
+		mode: import
+		source =
+				let
+				    Src = Table.SelectColumns(Base, {"ParticipantID", "PhaseID", "Slot", "empatica_heart_rate", "empatica_hrv_td_rmssd", "empatica_hrv_td_sdnn", "empatica_hrv_fd_lf", "empatica_hrv_fd_hf", "empatica_hrv_fd_lf_hf_ratio", "empatica_hrv_fd_lfnu", "empatica_hrv_fd_hfnu", "empatica_hrv_fd_vlf", "empatica_hrv_fd_total_power", "empatica__eda_scl_usiemens", "empatica_eda_tonic", "empatica_eda_phasic", "empatica_skin_temperature", "empatica_vector_magnitude", "eyetracker_pupil_diameter_avg", "eyetracker_pupil_change_rate", "eyetracker_blink_duration_s", "eyetracker_fixation_duration_s", "eyetracker_fixation_rate", "eyetracker_saccade_duration_s", "eyetracker_saccade_amplitude", "eyetracker_saccade_peak_velocity", "eyetracker_gaze_velocity", "eyetracker_gaze_dispersion", "eyetracker_distance_from_center", "eyetracker_gaze_centrality", "eyetracker_eyelid_aperture_avg", "eyetracker_stress_composite"}),
+				    // one row per participant x phase x 10 s slot x parameter; nulls are dropped by the unpivot
+				    Unpivoted = Table.UnpivotOtherColumns(Src, {"ParticipantID", "PhaseID", "Slot"}, "ParamKey", "Value"),
+				    Typed = Table.TransformColumnTypes(Unpivoted, {{"ParticipantID", type text}, {"PhaseID", type text}, {"Slot", Int64.Type}, {"ParamKey", type text}, {"Value", type number}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

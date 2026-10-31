@@ -1,0 +1,42 @@
+column_name,Role,Missing,Nonpositive,Minimum,Maximum,Skewness,Nonfinite
+empatica__eda_scl_usiemens,Physiological outcome,0,325.0,-0.0099743890110403,32.493260097503665,2.0850808034082347,0
+empatica__met,Numeric measurement / derived field,49,0.0,0.95,8.52,-0.3106486368522212,0
+empatica_acc_x,Numeric measurement / derived field,0,1189.0,-1.2434239760041237,1.58307196944952,0.20886823018064407,0
+empatica_acc_y,Numeric measurement / derived field,0,340.0,-0.8905999828130007,0.9535519815981388,-0.7591578291352645,0
+empatica_acc_z,Numeric measurement / derived field,0,189.0,-0.7212639860808849,0.9623359814286232,-0.499808422493835,0
+empatica_eda_phasic,Physiological outcome,0,1079.0,-0.4096961542220847,0.3812870097645601,0.0483629350627019,0
+empatica_eda_tonic,Physiological outcome,274,0.0,3.7980505570884017e-06,32.4984802303486,1.897255183061756,0
+empatica_heart_rate,Physiological outcome,0,0.0,52.90804501708522,109.662859422889,0.598880018744431,0
+empatica_hrv_fd_5min_available,QC / processing metadata,0,787.0,False,True,-0.5610947574824527,0
+empatica_hrv_fd_5min_max_gap_seconds,QC / processing metadata,787,0.0,2.169666246,13.970269819,3.5004084241112885,0
+empatica_hrv_fd_5min_removed_pct,QC / processing metadata,787,0.0,4.333333333333333,20.28985507246377,0.002433149237452688,0
+empatica_hrv_fd_5min_segment_end,QC / processing metadata,787,,,,,0
+empatica_hrv_fd_5min_segment_start,QC / processing metadata,787,,,,,0
+empatica_hrv_fd_5min_valid_rri_count,QC / processing metadata,787,0.0,253.0,380.0,0.4068092281874025,0
+empatica_hrv_fd_5min_valid_span_seconds,QC / processing metadata,787,0.0,287.623935,299.973836,-3.5843478776834816,0
+empatica_hrv_fd_hf,Physiological outcome,787,0.0,7190.554007571002,38710.95499059317,0.22003268204338453,0
+empatica_hrv_fd_hfnu,Physiological outcome,787,0.0,10.560195298701409,80.89399271414422,-0.5575252682609558,0
+empatica_hrv_fd_lf,Physiological outcome,787,0.0,3385.06203956222,110313.15780498314,3.779352988755742,0
+empatica_hrv_fd_lf_hf_ratio,Physiological outcome,787,0.0,0.2361857369727173,8.469521838511552,8.25931743628309,0
+empatica_hrv_fd_lfnu,Physiological outcome,787,0.0,19.10600728585578,89.4398047012986,0.5575252682609559,0
+empatica_hrv_fd_total_power,Physiological outcome,787,0.0,18663.972657776445,260530.26538092384,4.5640839074967365,0
+empatica_hrv_fd_vlf,Physiological outcome,787,0.0,1060.5834195242458,134464.09852051217,8.009898794129708,0
+empatica_hrv_td_rmssd,Physiological outcome,169,0.0,48.64727814675332,503.8238757689868,-0.41449187779422547,0
+empatica_hrv_td_sdnn,Physiological outcome,335,0.0,69.76736858121157,310.571271866777,-0.931145616727685,0
+empatica_skin_temperature,Physiological outcome,0,0.0,26.203125,37.4140625,0.012887719692775686,0
+empatica_vector_magnitude,Numeric measurement / derived field,0,0.0,0.3430685922105808,1.5937375169823422,-0.013672254869975602,0
+eyetracker_Date,Metadata,307,,,,,0
+eyetracker_blink_duration_s,Physiological outcome,391,0.0,0.0962538266034381,0.3055222393419999,0.3800594483814658,0
+eyetracker_distance_from_center,Physiological outcome,307,0.0,62.78621380613357,399.8929441481488,0.3190752571939349,0
+eyetracker_eyelid_aperture_avg,Physiological outcome,307,0.0,3.473505510876613,13.4888264389247,1.0474240322936292,0
+eyetracker_fixation_duration_s,Physiological outcome,307,0.0,0.1083961774193548,0.5498702007157015,0.4591653517466514,0
+eyetracker_fixation_rate,Physiological outcome,307,0.0,0.7,4.7,0.3246841462562463,0
+eyetracker_gaze_centrality,Physiological outcome,307,0.0,0.2057076607037773,0.8544819542530644,-0.2599677048831856,0
+eyetracker_gaze_dispersion,Physiological outcome,307,0.0,0.0064039822271247,0.1422350109903052,0.6598515032863549,0
+eyetracker_gaze_velocity,Physiological outcome,307,0.0,157.72253052545182,3896.0177913848033,0.8719356777632868,0
+eyetracker_pupil_change_rate,Physiological outcome,346,880.0,-0.1236640886384379,0.0962864643046315,-0.33544467688361373,0
+eyetracker_pupil_diameter_avg,Physiological outcome,307,0.0,1.6388985186570042,4.721824275811512,0.4792251002613538,0
+eyetracker_saccade_amplitude,Physiological outcome,309,0.0,0.1263981698445,39.41,1.0234545874635133,0
+eyetracker_saccade_duration_s,Physiological outcome,309,0.0,0.0155441560519999,0.133722,1.0405504183589085,0
+eyetracker_saccade_peak_velocity,Physiological outcome,309,0.0,14.4330914627,6497.491923333334,0.6198357741286331,0
+eyetracker_stress_composite,Numeric measurement / derived field,307,0.0,0.1005433947578044,0.9237876430309616,-0.21408975122215607,0

@@ -1,12 +1,12 @@
 # H4 measurement audit
 Steps 1-2 retain the complete inventory and declared exposure representations. Step 3 groups candidates without outcome-based deletion.
 Step 4 retains all 16 eligible candidates, specifies alternative heat/PM equations, and checks full-design VIF/rank; no automatic deletion.
-Participant is the independent cluster. Step 4 defines seven equations (primary UTCI + PM2.5; optional Eq 2 sound-structure sensitivity; heat-form sensitivities on PM2.5; PM1/PM10 only with UTCI) including heat x sound and MRT x sound. Step 5 fits six by default (Eq 2 when h4_study_spec$include_sound_sensitivity_equation is TRUE). Earlier model outputs are historical until a verified rerun succeeds.
+Participant is the independent cluster. Step 4 defines six equations (primary UTCI + PM2.5; heat-form sensitivities on PM2.5; PM1/PM10 only with UTCI) including heat x sound and MRT x sound. Step 5 fits all six. Earlier model outputs are historical until a verified rerun succeeds.
 ## Stage totals
 | Stage | Entering | Retained | Not_Advanced |
 | --- | --- | --- | --- |
-| Step 1 | 229 | 126 | 103 |
-| Step 2 | 126 |  16 | 110 |
+| Step 1 | 231 | 128 | 103 |
+| Step 2 | 128 |  16 | 112 |
 | Step 3 |  16 |  16 |   0 |
 ## Measurement definitions and dependencies
 | Variable_Name | Measurement_Code | Measurement_Type | Inputs_or_Definition | Evidence |

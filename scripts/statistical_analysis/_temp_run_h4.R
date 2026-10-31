@@ -1,5 +1,0 @@
-source("library/Paper3_common.R")
-Sys.setenv(PAPER3_MAKE_FIGURES="FALSE", H4_PARALLEL_WORKERS="1")
-source("H4_timeseries.R")
-cat("Calling run_h4...\n")
-run_h4()

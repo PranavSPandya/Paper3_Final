@@ -55,6 +55,83 @@ Eq1 <- quote(nlme::lme(
   method='REML',na.action=na.fail
 ))
 source(file.path(dirname(.entry),'library','H4_sound_core.R'),local=FALSE)
+# Optional sound lag (default off; with no lag flag nothing below changes any run).
+# CLI: --lag-sec=30,60 [--epoch-sec=10|30|60] [--workers=4]; epochs default to 10, 30, 60.
+# Rscript -e route: h4s_run_lag('timeseries', Eq1, .entry, h4s_sound_substitutes, epoch_sec=10L, lag_sec=30L)
+# For lag L s, the sound column of each row is replaced by the sound value L s earlier in the same
+# ParticipantID x PhaseID bout, matched on the time index (10 s: Time10 from Datetime; wider epochs:
+# the bin index, lag L/epoch_sec bins). No earlier row -> NA -> row dropped. Only sound is lagged;
+# controls, random effects, AR1 and centering are those of H4_sound_core.R. A lag that is not a
+# whole multiple of epoch_sec is skipped. Output: <epoch folder>/lag_<L>s/ with a README line.
+h4s_lag_sec <- NA_integer_
+h4s_lag_shift <- function(x, participant, phase, time_index, steps) {
+  key <- paste(participant, phase, time_index, sep = '\r')
+  stopifnot(!anyDuplicated(key))
+  x[match(paste(participant, phase, time_index - steps, sep = '\r'), key)]
+}
+h4s_run_lag <- function(mode, template, script_path, sound_substitutes, epoch_sec = 10L, lag_sec = h4s_lag_sec) {
+  stopifnot(mode == 'timeseries', length(lag_sec) == 1L, is.finite(lag_sec), lag_sec > 0)
+  epoch_sec <- as.integer(epoch_sec); lag_sec <- as.integer(lag_sec)
+  if (lag_sec %% epoch_sec != 0L) {
+    cat('SKIPPED: lag', lag_sec, 's is not a whole multiple of epoch', epoch_sec, 's\n'); flush.console()
+    return(invisible(NULL))
+  }
+  steps <- as.integer(lag_sec / epoch_sec)
+  saved <- list(h4s_model_data = h4s_model_data, h4s_aggregate_epoch_sec = h4s_aggregate_epoch_sec, h4s_outdir = h4s_outdir)
+  on.exit(for (n in names(saved)) assign(n, saved[[n]], envir = .GlobalEnv), add = TRUE)
+  wrap_env <- new.env(parent = .GlobalEnv)
+  wrap_env$orig_model_data <- saved$h4s_model_data
+  wrap_env$orig_aggregate <- saved$h4s_aggregate_epoch_sec
+  wrap_env$orig_outdir <- saved$h4s_outdir
+  wrap_env$h4s_lag_shift <- h4s_lag_shift
+  wrap_env$steps <- steps
+  wrap_env$lag_sec <- lag_sec
+  model_data_lag <- function(d, outcome, sound, mode, transforms, template, epoch_sec = 10L, wind_max_aws = NA_real_) {
+    if (as.integer(epoch_sec) == 10L) {
+      d[[sound]] <- h4s_lag_shift(d[[sound]], d$ParticipantID, d$PhaseID, d$Time10, steps)
+    }
+    orig_model_data(d, outcome, sound, mode, transforms, template, epoch_sec, wind_max_aws)
+  }
+  aggregate_lag <- function(epoch, eligibility, epoch_sec) {
+    out <- orig_aggregate(epoch, eligibility, epoch_sec)
+    if (as.integer(epoch_sec) == 10L) return(out)
+    stopifnot(eligibility[1L] == 'ucm_UTCI')
+    sound <- eligibility[2L]
+    out[[sound]] <- h4s_lag_shift(out[[sound]], out$ParticipantID, out$PhaseID, out$Time10, steps)
+    out <- out[is.finite(out[[sound]]), , drop = FALSE]
+    if (!nrow(out)) stop('No eligible epochs after sound lag')
+    out
+  }
+  outdir_lag <- function(root, mode, epoch_sec = 10L, wind_max_aws = NA_real_) {
+    file.path(orig_outdir(root, mode, epoch_sec, wind_max_aws), paste0('lag_', lag_sec, 's'))
+  }
+  environment(model_data_lag) <- wrap_env
+  environment(aggregate_lag) <- wrap_env
+  environment(outdir_lag) <- wrap_env
+  assign('h4s_model_data', model_data_lag, envir = .GlobalEnv)
+  assign('h4s_aggregate_epoch_sec', aggregate_lag, envir = .GlobalEnv)
+  assign('h4s_outdir', outdir_lag, envir = .GlobalEnv)
+  res <- h4s_run(mode, template, script_path, sound_substitutes, epoch_sec = epoch_sec)
+  root <- resolve_project_root()
+  readme <- file.path(outdir_lag(root, mode, epoch_sec, NA_real_), 'README.txt')
+  cat(paste0('Sound lag used: ', lag_sec, ' s (', steps, ' x ', epoch_sec,
+    ' s time steps); the sound predictor (main effect and UTCI interaction) is the value from ', lag_sec,
+    ' s earlier in the same ParticipantID x PhaseID bout, matched on the time index; rows without that earlier value are dropped. Outcome, UTCI and all controls are unlagged. The earlier README line saying no lag models are run describes the unlagged default only.'),
+    file = readme, sep = '\n', append = TRUE)
+  invisible(res)
+}
+if (sys.nframe() == 0L && length(grep('^--lag-sec=', commandArgs(trailingOnly = TRUE)))) {
+  lag_args <- commandArgs(trailingOnly = TRUE)
+  if (any(c('--band-contrasts', '--wind-sensitivity') %in% lag_args)) stop('--lag-sec is not combined with --band-contrasts or --wind-sensitivity')
+  lag_values <- as.integer(strsplit(sub('^--lag-sec=', '', grep('^--lag-sec=', lag_args, value = TRUE)[1L]), ',', fixed = TRUE)[[1L]])
+  stopifnot(length(lag_values) >= 1L, !anyNA(lag_values), all(lag_values > 0L))
+  lag_one <- grep('^--epoch-sec=', lag_args, value = TRUE)
+  lag_epochs <- if (length(lag_one)) as.integer(sub('^--epoch-sec=', '', lag_one[1L])) else c(10L, 30L, 60L)
+  for (lag_epoch in lag_epochs) for (lag_value in lag_values) {
+    h4s_run_lag('timeseries', Eq1, .entry, h4s_sound_substitutes, epoch_sec = lag_epoch, lag_sec = lag_value)
+  }
+  quit(save = 'no', status = 0L)
+}
 if(sys.nframe()==0L) {
   args <- commandArgs(trailingOnly = TRUE)
   # Supplementary only: categorical dBA bands within UTCI strata b26_32 and gt32 only

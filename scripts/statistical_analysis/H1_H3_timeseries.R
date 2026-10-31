@@ -21,7 +21,6 @@ paper3_statistical_bootstrap(
   extra_setup = function() emmeans::emm_options(msg.interaction = FALSE)
 )
 PROJECT_ROOT <- resolve_project_root()
-source(file.path(paper3_statistical_library_dir(), "Paper3_corridor_grid.R"), local = FALSE)
 H1_H3_TIMESERIES_SCRIPT_PATH <- paper3_entry_script_path("scripts/statistical_analysis/H1_H3_timeseries.R")
 RAW_DATA_PATH <- paper3_merged_8min_path(PROJECT_ROOT)
 H1_H3_TIMESERIES_START_MD5 <- unname(tools::md5sum(c(H1_H3_TIMESERIES_SCRIPT_PATH, RAW_DATA_PATH)))
@@ -61,7 +60,7 @@ h3_hypothesis_spec$contrasts <- planned_h1_h3$h3
 # Y_within_person_z: PAPER3_APPLY_CSV_TRANSFORM then PAPER3_OUTCOME_WITHIN_PERSON_Z (H1_H3_core.R fits outcome_z on 10 s rows).
 H1_TimeSeries_Temporal_AR1_10s_LMM <- quote(
   nlme::lme(
-    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min + grid_f,
+    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min,
     data = ten_second_epoch_table,
     random = ~ 1 | ParticipantID / PhaseID,
     correlation = nlme::corAR1(value = 0.2, form = ~ time_10s_step_integer | ParticipantID / PhaseID),
@@ -71,7 +70,7 @@ H1_TimeSeries_Temporal_AR1_10s_LMM <- quote(
 
 H1_TimeSeries_Temporal_AR1_60s_LMM <- quote(
   nlme::lme(
-    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min + grid_f,
+    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min,
     data = sixty_second_epoch_table,
     random = ~ 1 | ParticipantID / PhaseID,
     correlation = nlme::corAR1(value = 0.2, form = ~ time_60s_step | ParticipantID / PhaseID),
@@ -81,7 +80,7 @@ H1_TimeSeries_Temporal_AR1_60s_LMM <- quote(
 
 H3_TimeSeries_Temporal_AR1_10s_LMM <- quote(
   nlme::lme(
-    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min + grid_f,
+    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min,
     data = ten_second_epoch_table,
     random = ~ 1 | ParticipantID / PhaseID,
     correlation = nlme::corAR1(value = 0.2, form = ~ time_10s_step_integer | ParticipantID / PhaseID),
@@ -91,7 +90,7 @@ H3_TimeSeries_Temporal_AR1_10s_LMM <- quote(
 
 H3_TimeSeries_Temporal_AR1_60s_LMM <- quote(
   nlme::lme(
-    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min + grid_f,
+    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min,
     data = sixty_second_epoch_table,
     random = ~ 1 | ParticipantID / PhaseID,
     correlation = nlme::corAR1(value = 0.2, form = ~ time_60s_step | ParticipantID / PhaseID),
@@ -101,7 +100,7 @@ H3_TimeSeries_Temporal_AR1_60s_LMM <- quote(
 
 H2_TimeSeries_Temporal_AR1_10s_LMM <- quote(
   nlme::lme(
-    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min + grid_f,
+    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min,
     data = ten_second_epoch_table,
     random = ~ 1 | ParticipantID / PhaseID,
     correlation = nlme::corAR1(value = 0.2, form = ~ time_10s_step_integer | ParticipantID / PhaseID),
@@ -111,7 +110,7 @@ H2_TimeSeries_Temporal_AR1_10s_LMM <- quote(
 
 H2_TimeSeries_Temporal_AR1_60s_LMM <- quote(
   nlme::lme(
-    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min + grid_f,
+    Y_within_person_z ~ (PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG) * time_min,
     data = sixty_second_epoch_table,
     random = ~ 1 | ParticipantID / PhaseID,
     correlation = nlme::corAR1(value = 0.2, form = ~ time_60s_step | ParticipantID / PhaseID),

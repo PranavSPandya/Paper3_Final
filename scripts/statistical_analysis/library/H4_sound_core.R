@@ -78,7 +78,7 @@ h4s_aggregate_epoch_sec <- function(epoch, eligibility, epoch_sec) {
   out <- stats::aggregate(epoch[cols], epoch[keys], mean, na.rm = TRUE)
   out <- out[order(out$ParticipantID, out$PhaseID, out$Time_bin), , drop = FALSE]
   bout <- interaction(out$ParticipantID, out$PhaseID, drop = TRUE)
-  out$Time10 <- unlist(lapply(split(out$Time_bin, bout), function(x) seq_along(x) - 1L), use.names = FALSE)
+  out$Time10 <- as.integer(out$Time_bin - ave(out$Time_bin, bout, FUN = min))
   out$Time_bin <- NULL
   out
 }
@@ -142,19 +142,7 @@ h4s_fit_time <- function(fml, data) {
     NULL
   }
   fit <- attempt(nlme::corAR1(.2,form=~Time10|ParticipantID/PhaseID),'AR1')
-  structure <- 'AR1'
-  if(!is.null(fit)) {
-    rho <- unname(coef(fit$modelStruct$corStruct,unconstrained=FALSE))
-    if(length(rho)==1L && is.finite(rho) && rho>.95) {
-      alt <- attempt(nlme::corARMA(c(.5,.2),form=~Time10|ParticipantID/PhaseID,p=2,q=0),'ARMA20')
-      if(!is.null(alt)){fit<-alt;structure<-'ARMA20'}
-    }
-  }
-  if(is.null(fit)) {
-    fit <- attempt(NULL,'independent_fallback',opts='nlminb')
-    structure <- 'independent_fallback'
-  }
-  list(fit=fit,structure=if(is.null(fit))'not_fitted' else structure,notes=notes)
+  list(fit=fit,structure=if(is.null(fit))'not_fitted' else 'AR1',notes=notes)
 }
 
 h4s_one <- function(job,d,mode,transforms,template,epoch_sec=10L,wind_max_aws=NA_real_) {
@@ -191,7 +179,7 @@ h4s_one <- function(job,d,mode,transforms,template,epoch_sec=10L,wind_max_aws=NA
     robust<-clubSandwich::coef_test(fit,vcov='CR2',cluster=a$ParticipantID,test='Satterthwaite')
     ix<-match(co$term,rownames(robust));stopifnot(!anyNA(ix))
     co$Beta<-robust$beta[ix];co$SE<-robust$SE[ix];co$df<-robust$df_Satt[ix]
-    eligible<-fitres$structure!='independent_fallback' & is.finite(co$Beta)&is.finite(co$SE)&co$SE>0&is.finite(co$df)&co$df>0
+    eligible<-is.finite(co$Beta)&is.finite(co$SE)&co$SE>0&is.finite(co$df)&co$df>0
     co$inference_eligible<-eligible;co$low_df_flag<-is.finite(co$df)&co$df<4
     co$p[eligible]<-2*pt(-abs(co$Beta[eligible]/co$SE[eligible]),co$df[eligible])
     co$ci_low[eligible]<-co$Beta[eligible]-qt(.975,co$df[eligible])*co$SE[eligible]
@@ -408,7 +396,7 @@ h4s_run <- function(mode, template, script_path, sound_substitutes, epoch_sec = 
     paste('Each of', length(sounds), 'numeric acoustic measures separately replaces dBA in BOTH the main effect and UTCI interaction; dBA is absent from every fitted fixed-effect equation.'),
     'No sound variables enter together. No other heat/PM equations or lag models are run.',
     'Original H4 outcome transformations, HRV-window mask, bilateral means, one-step SVF endpoint carry and sum-to-zero phase contrasts retained.',
-    paste('Timeseries epoch width (seconds):', epoch_sec, '(10 s uses original bout centering; wider bins mean-aggregate 10 s rows then center). Nested participant/phase intercepts; AR1 on consecutive bin index; ARMA20/independent fallback unchanged.'),
+    paste('Timeseries epoch width (seconds):', epoch_sec, '(10 s uses original bout centering; wider bins mean-aggregate 10 s rows then center). Nested participant/phase intercepts; AR1 on the time-bin index within each bout; no fallback, fits where AR1 fails are reported as not fitted.'),
     'Does not write to H4_timeseries/ or H4_phaseavg/ (primary seven-equation H4 only).',
     if (is.na(wind_max_aws)) 'Wind screening: none (all eligible 10 s windows by ucm_WIND_AWS).' else paste(
       'Wind screening: keep 10 s windows with ucm_WIND_AWS <=', wind_max_aws,
@@ -599,7 +587,7 @@ h4s_band_one <- function(d, outcome, mode, transforms, epoch_sec, utci_stratum) 
     df <- if (is.null(ct)) NA_real_ else suppressWarnings(min(ct$df_Satt[match(use, rownames(ct))], na.rm = TRUE))
     if (!is.finite(df)) df <- NA_real_
     numbers_ok <- is.finite(est) && is.finite(se) && se > 0 && is.finite(df) && df > 0
-    eligible <- numbers_ok && fitres$structure != 'independent_fallback'
+    eligible <- numbers_ok
     p <- if (numbers_ok) 2 * pt(-abs(est / se), df) else NA_real_
     data.frame(utci_stratum = utci_stratum, outcome = outcome, epoch_sec = as.integer(epoch_sec), contrast_id = id,
                comparison = c(sound_65_75_minus_55_65 = '65-75 dBA', sound_gt75_minus_55_65 = '>75 dBA')[id],
@@ -609,7 +597,6 @@ h4s_band_one <- function(d, outcome, mode, transforms, epoch_sec, utci_stratum) 
                n_epochs = n_epochs, n_participant_phases = n_participant_phases, n_participants = n_participants,
                interaction_in_model = FALSE, residual_structure = fitres$structure, inference_eligible = eligible,
                note = paste(c(base_note, 'UTCI-stratum-restricted epochs only; sound_band additive model',
-                              if (fitres$structure == 'independent_fallback') 'AR1 failed; not inference_eligible',
                               substr(paste(unique(fitres$notes), collapse = ' | '), 1L, 200L)), collapse = '; '),
                stringsAsFactors = FALSE)
   })

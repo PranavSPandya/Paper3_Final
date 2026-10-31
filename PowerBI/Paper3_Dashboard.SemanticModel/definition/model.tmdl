@@ -1,0 +1,21 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["CsvPath", "MaxElapsedMin", "Base", "DimParticipant", "DimPhase", "DimTime", "EnvParam", "EnvLong", "PhysParam", "PhysLong", "QItem", "QLong"]
+
+ref table DimParticipant
+ref table DimPhase
+ref table DimTime
+ref table EnvParam
+ref table EnvLong
+ref table PhysParam
+ref table PhysLong
+ref table QItem
+ref table QLong

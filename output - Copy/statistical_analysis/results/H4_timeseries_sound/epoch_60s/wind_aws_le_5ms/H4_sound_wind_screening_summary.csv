@@ -1,0 +1,2 @@
+"wind_max_aws_m_s","epoch_sec","n_10s_windows","n_10s_kept","pct_10s_kept","n_participants","n_bouts_any_kept","n_bouts_total","note"
+5,60,2112,2110,99.905303030303,11,44,44,"Screening only: exclude 10 s windows with ucm_WIND_AWS above threshold. Not a microphone dBA correction; compare coefficients to unscreened sound runs. FHWA/ISO outdoor guidance uses windscreens; 5 m/s is a common screening level for mobile audits."

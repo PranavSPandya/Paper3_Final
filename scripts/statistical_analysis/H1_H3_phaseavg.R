@@ -147,7 +147,7 @@ run_h1_h3_phaseavg <- function() {
   cat(sprintf("Core phases (%d): %s\n", length(study_wide_spec$phases), paste(study_wide_spec$phases, collapse = ", ")))
   cat(sprintf("H1 and H3 LMM outcomes (%d): empatica [1:13] + eyetracker [14:26] (physiological time series)\n",
               length(h1_hypothesis_spec$physiological_outcome_names)))
-  cat(sprintf("H2 psychological (%d): end-of-phase questionnaires only (rmcorr, not H1 or H3 LMM)\n",
+  cat(sprintf("H2 psychological (%d): end-of-phase questionnaires (H2 rmcorr; also H1/H3 contrasts as a separate BH-FDR family)\n",
               length(h2_hypothesis_spec$psychological_outcomes)))
   cat(sprintf("H1 contrasts: %s | H3 contrasts: %s\n\n",
               paste(h1_hypothesis_spec$contrasts$Contrast, collapse = ", "),

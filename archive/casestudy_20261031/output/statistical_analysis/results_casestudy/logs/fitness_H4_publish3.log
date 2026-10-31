@@ -1,0 +1,45 @@
+Registered S3 method overwritten by 'clubSandwich':
+  method    from    
+  bread.mlm sandwich
+$script_dir
+[1] "C:/Users/sanga/Desktop/Pranav Paper3_Final/scripts/statistical_analysis_casestudy"
+
+$library_dir
+[1] "C:/Users/sanga/Desktop/Pranav Paper3_Final/scripts/statistical_analysis_casestudy/library"
+
+$project_root
+[1] "C:/Users/sanga/Desktop/Pranav Paper3_Final"
+
+==============================================================================
+Running H4: Multivariate Models of Noise Amplification on Thermal Discomfort
+==============================================================================
+Participants (11): P4, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17
+Outcomes     (26): 13 empatica + 13 eyetracker (physiological vector)
+Equations    (7): 1 Primary, 1 Sound (fit=TRUE), 3 Heat, 2 PM
+
+[Fast Track] Found existing validated Step 4 audit at: C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results_casestudy/fitness/H4_timeseries/H4_timeseries_Multivariate_Filtration_Results.csv 
+[Step 5] Continuing checkpoint (H4_JOB_START=1 or H4_APPEND_BATCH=1); fit_records/fit_status not archived.
+[Step 5] GVIF diagnostic (design outcome empatica_heart_rate): C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results_casestudy/fitness/H4_timeseries/H4_timeseries_gvif_diagnostic.csv 
+[Step 5] Fitting 7 equations across 26 outcomes in parallel...
+[Step 5] H4_PUBLISH_ONLY=1: using fingerprints stored in fit_records checkpoint.
+[Step 5] Job queue: 182 total; this run jobs 1-182 (182 jobs).
+[Parallel] 1 worker(s); checkpoint after each job in this slice.
+[Step 5] H4_PUBLISH_ONLY=1: skipping fit loop; publishing completed checkpoint.
+[Step 5 checkpoint] 182/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results_casestudy/fitness/H4_timeseries/H4_timeseries_fit_records.rds
+[Step 5] Bundle published to C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results_casestudy/fitness/H4_timeseries. Total fitted models: 182, Succeeded: 182, Failed: 0
+[H4.1] Heat/sound exposure rows: 572, p < 0.05: 63, q < 0.05: 3 (per-term BH; m = 26 per term)
+Step 4: 182 outcome-equation designs; full rank 182/182; VIF >= 5: 0; rows 1330-2060.
+ equation_id max_vif_equivalent min_rows max_rows
+           1           2.622264     1330     2060
+           2           2.629288     1330     2059
+           3           2.910256     1330     2060
+           4           1.514257     1330     2060
+           5           2.414760     1330     2060
+           6           2.620859     1330     2060
+           7           2.621103     1330     2060
+Verified stage counts: 231 -> 16 -> 16 . Fixed horizontal positions; zero connectors.
+Saved figure (1 page): C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/figures_casestudy/fitness/H4_timeseries/H4_timeseries_Selection_Flow.pdf 
+[Results] Wrote 5 files to C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results_casestudy/fitness/H4_timeseries 
+H4 multivariate Step 5 execution and faceted flow PDF update completed successfully.
+Warning message:
+No covariance sensitivity rows; coefficients are published with covariance_robust left missing. 

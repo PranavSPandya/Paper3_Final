@@ -1,0 +1,5 @@
+PhaseID,metric,n,median_run,p75_run,max_run
+BikeU,all_epochs,515,,,
+BikeG,all_epochs,511,,,
+BikeU,zero_gps_step_runs,9,2,3,4
+BikeG,zero_gps_step_runs,2,1,1,1

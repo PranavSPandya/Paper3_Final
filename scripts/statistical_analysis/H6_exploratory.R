@@ -1,3 +1,6 @@
+# RETIRED 2026-10-31, pending Pranav's confirmation (do not delete yet): H6.2 (lag profiles) is superseded by the
+# H4 lagged-difference block in scripts/statistical_analysis/H4_timeseries.R (run with --lagdiff-only).
+# H6.1a, H6.1b and H6.3 below were not modified and have no H4 replacement yet.
 # Paper 3 H6.1–H6.3: focused exploratory analyses
 # Run from any directory: Rscript <project>/scripts/statistical_analysis/H6_exploratory.R
 # Optional explicit folder: Rscript scripts/H6_exploratory.R --h5-dir="D:/.../H5_results"

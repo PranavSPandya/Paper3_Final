@@ -1,0 +1,97 @@
+/// Physiology parameter list (Group -> Parameter)
+table PhysParam
+	lineageTag: 91d0fb9b-90f5-5610-bb4c-fca5ece64b14
+
+	measure 'Phys value' = AVERAGE(PhysLong[Value])
+		formatString: 0.00
+		lineageTag: 8396a62f-f42e-5fc7-a33f-14c2fcdad92f
+
+	measure 'Phys title' = VAR p = SELECTEDVALUE(PhysParam[Parameter]) RETURN IF(ISBLANK(p), "PHYSIOLOGY: pick one parameter of the selected group", "PHYSIOLOGY: " & p & ", mean over selected participants")
+		lineageTag: 62cc21ea-42ce-5654-8275-f9791c9836ea
+
+	column ParamKey
+		dataType: string
+		isHidden
+		lineageTag: c0ebda01-2dc3-5dbf-ad04-2bb9de972f0d
+		summarizeBy: none
+		sourceColumn: ParamKey
+
+		annotation SummarizationSetBy = User
+
+	column Group
+		dataType: string
+		lineageTag: 83847946-212b-5128-a5f2-e9df81aa85eb
+		summarizeBy: none
+		sourceColumn: Group
+		sortByColumn: GroupSort
+
+		annotation SummarizationSetBy = User
+
+	column GroupSort
+		dataType: int64
+		isHidden
+		lineageTag: a3e8c580-78a2-52ba-b7ce-90ec17628f10
+		summarizeBy: none
+		sourceColumn: GroupSort
+
+		annotation SummarizationSetBy = User
+
+	column Parameter
+		dataType: string
+		lineageTag: 441fab38-a175-51b7-956e-df366abbc185
+		summarizeBy: none
+		sourceColumn: Parameter
+		sortByColumn: ParamSort
+
+		annotation SummarizationSetBy = User
+
+	column ParamSort
+		dataType: int64
+		isHidden
+		lineageTag: 1f8ff85d-b991-5efb-b26b-274b640c02f4
+		summarizeBy: none
+		sourceColumn: ParamSort
+
+		annotation SummarizationSetBy = User
+
+	partition PhysParam = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        type table [#"ParamKey" = text, #"Group" = text, #"GroupSort" = Int64.Type, #"Parameter" = text, #"ParamSort" = Int64.Type],
+				        {
+				        {"empatica_heart_rate", "Empatica", 1, "Heart rate (bpm)", 1},
+				        {"empatica_hrv_td_rmssd", "Empatica", 1, "RMSSD (ms)", 2},
+				        {"empatica_hrv_td_sdnn", "Empatica", 1, "SDNN (ms)", 3},
+				        {"empatica_hrv_fd_lf", "Empatica", 1, "LF power (ms²)", 4},
+				        {"empatica_hrv_fd_hf", "Empatica", 1, "HF power (ms²)", 5},
+				        {"empatica_hrv_fd_lf_hf_ratio", "Empatica", 1, "LF/HF ratio", 6},
+				        {"empatica_hrv_fd_lfnu", "Empatica", 1, "LF (n.u.)", 7},
+				        {"empatica_hrv_fd_hfnu", "Empatica", 1, "HF (n.u.)", 8},
+				        {"empatica_hrv_fd_vlf", "Empatica", 1, "VLF power (ms²)", 9},
+				        {"empatica_hrv_fd_total_power", "Empatica", 1, "Total power (ms²)", 10},
+				        {"empatica__eda_scl_usiemens", "Empatica", 1, "EDA SCL (µS)", 11},
+				        {"empatica_eda_tonic", "Empatica", 1, "EDA tonic (µS)", 12},
+				        {"empatica_eda_phasic", "Empatica", 1, "EDA phasic (µS)", 13},
+				        {"empatica_skin_temperature", "Empatica", 1, "Skin temperature (°C)", 14},
+				        {"empatica_vector_magnitude", "Empatica", 1, "Vector magnitude (g)", 15},
+				        {"eyetracker_pupil_diameter_avg", "Eye tracker", 2, "Pupil diameter (mm)", 16},
+				        {"eyetracker_pupil_change_rate", "Eye tracker", 2, "Pupil change rate", 17},
+				        {"eyetracker_blink_duration_s", "Eye tracker", 2, "Blink duration (s)", 18},
+				        {"eyetracker_fixation_duration_s", "Eye tracker", 2, "Fixation duration (s)", 19},
+				        {"eyetracker_fixation_rate", "Eye tracker", 2, "Fixation rate (per s)", 20},
+				        {"eyetracker_saccade_duration_s", "Eye tracker", 2, "Saccade duration (s)", 21},
+				        {"eyetracker_saccade_amplitude", "Eye tracker", 2, "Saccade amplitude", 22},
+				        {"eyetracker_saccade_peak_velocity", "Eye tracker", 2, "Saccade peak velocity", 23},
+				        {"eyetracker_gaze_velocity", "Eye tracker", 2, "Gaze velocity", 24},
+				        {"eyetracker_gaze_dispersion", "Eye tracker", 2, "Gaze dispersion", 25},
+				        {"eyetracker_distance_from_center", "Eye tracker", 2, "Distance from centre", 26},
+				        {"eyetracker_gaze_centrality", "Eye tracker", 2, "Gaze centrality", 27},
+				        {"eyetracker_eyelid_aperture_avg", "Eye tracker", 2, "Eyelid aperture", 28},
+				        {"eyetracker_stress_composite", "Eye tracker", 2, "Eye-tracker stress composite", 29}
+				        })
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

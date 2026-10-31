@@ -1,5 +1,0 @@
-source("library/Paper3_common.R")
-Sys.setenv(PAPER3_MAKE_FIGURES="FALSE")
-source("H1_H3_phaseavg.R")
-cat("Calling run_h1_h3_phaseavg...\n")
-run_h1_h3_phaseavg()

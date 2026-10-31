@@ -1,0 +1,57 @@
+Input: C:/Users/sanga/Desktop/Pranav Paper3_Final/output/merged_all_11participants_8min.csv 
+H5 output directory: C:\Users\sanga\Desktop\Pranav Paper3_Final\output\statistical_analysis\results_casestudy\activeness\H6_exploratory 
+H6 finished. Results written to: C:\Users\sanga\Desktop\Pranav Paper3_Final\output\statistical_analysis\results_casestudy\activeness\H6_exploratory 
+  Mode                            Outcome  N     estimate            p
+1 Bike questionnaire_prs11_total_mean_1_5 11  1.264462810 0.0009765625
+2 Bike           eyetracker_fixation_rate 10 -0.338317495 0.0312500000
+3 Bike     eyetracker_fixation_duration_s 10  0.009900703 0.0175781250
+4 Bike                 empatica_eda_tonic 11 -0.971777194 0.3388671875
+5 Walk questionnaire_prs11_total_mean_1_5 11  0.834710744 0.0019531250
+6 Walk           eyetracker_fixation_rate  9 -0.123586606 0.3007812500
+7 Walk     eyetracker_fixation_duration_s  9  0.026026775 0.0039062500
+8 Walk                 empatica_eda_tonic 11 -1.691676353 0.0927734375
+           q
+1 0.00781250
+2 0.05000000
+3 0.03515625
+4 0.33886719
+5 0.00781250
+6 0.33886719
+7 0.01041667
+8 0.12369792
+      Exposure                       Outcome Lag_s N_Participants       mean_r
+1  lys_lux_avg eyetracker_pupil_diameter_avg     0             10 -0.019544077
+2  lys_lux_avg eyetracker_pupil_diameter_avg    10             10 -0.016906020
+3  lys_lux_avg eyetracker_pupil_diameter_avg    30             10  0.013619457
+4  lys_lux_avg eyetracker_pupil_diameter_avg    60             10 -0.009828772
+5      ucm_MRT     empatica_skin_temperature     0             11 -0.079552631
+6      ucm_MRT     empatica_skin_temperature    10             11 -0.017141579
+7      ucm_MRT     empatica_skin_temperature    30             11  0.048538245
+8      ucm_MRT     empatica_skin_temperature    60             11  0.052444891
+9  ucm_SND_dBA           empatica_eda_phasic     0             11  0.021969833
+10 ucm_SND_dBA           empatica_eda_phasic    10             11 -0.046926032
+11 ucm_SND_dBA           empatica_eda_phasic    30             11  0.007042304
+12 ucm_SND_dBA           empatica_eda_phasic    60             11 -0.044577093
+              p          q
+1  0.5058593750 0.67447917
+2  0.7070312500 0.77130682
+3  0.4707031250 0.67447917
+4  0.7812500000 0.78125000
+5  0.0009765625 0.01171875
+6  0.4628906250 0.67447917
+7  0.0468750000 0.14062500
+8  0.0126953125 0.07617188
+9  0.3632812500 0.67447917
+10 0.0273437500 0.10937500
+11 0.6621093750 0.77130682
+12 0.0625000000 0.15000000
+                    Source                  Outcome N_Participants mean_beta_SD
+1       vehicle_proportion       empatica_eda_tonic             11   0.08555152
+2       vehicle_proportion eyetracker_fixation_rate             10   0.01307808
+3 rural_natural_proportion       empatica_eda_tonic             11  -0.02479510
+4 rural_natural_proportion eyetracker_fixation_rate             10   0.02548197
+           p         q
+1 0.06152344 0.2460938
+2 0.57226562 0.6718750
+3 0.67187500 0.6718750
+4 0.29101562 0.5820312

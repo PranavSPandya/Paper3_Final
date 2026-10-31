@@ -1,0 +1,1 @@
+timeseries start=2026-10-31 16.20.21 end=2026-10-31 16.36.09 exit=0; phaseavg end=2026-10-31 16.36.39 exit=0

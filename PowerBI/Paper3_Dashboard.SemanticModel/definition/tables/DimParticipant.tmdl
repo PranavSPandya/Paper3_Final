@@ -1,0 +1,45 @@
+/// Participants, sorted P4, P8, P9 ... P17 by ParticipantNum
+table DimParticipant
+	lineageTag: 8bb4ae1d-14ff-589a-a7e8-836ce082380e
+
+	column ParticipantID
+		dataType: string
+		lineageTag: f55d8b41-7487-5f1d-aac8-efe365929274
+		summarizeBy: none
+		sourceColumn: ParticipantID
+		sortByColumn: ParticipantNum
+
+		annotation SummarizationSetBy = User
+
+	column ParticipantNum
+		dataType: int64
+		isHidden
+		lineageTag: 8a02acd4-a391-5954-a6a9-b96f1be2d3f3
+		summarizeBy: none
+		sourceColumn: ParticipantNum
+
+		annotation SummarizationSetBy = User
+
+	partition DimParticipant = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        type table [#"ParticipantID" = text, #"ParticipantNum" = Int64.Type],
+				        {
+				        {"P4", 4},
+				        {"P8", 8},
+				        {"P9", 9},
+				        {"P10", 10},
+				        {"P11", 11},
+				        {"P12", 12},
+				        {"P13", 13},
+				        {"P14", 14},
+				        {"P15", 15},
+				        {"P16", 16},
+				        {"P17", 17}
+				        })
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

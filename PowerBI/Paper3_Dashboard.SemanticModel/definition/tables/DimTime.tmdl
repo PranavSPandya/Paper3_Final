@@ -1,0 +1,32 @@
+/// Elapsed time within phase: Slot = 10 s steps, 0 to MaxElapsedMin minutes
+table DimTime
+	lineageTag: 2ba0e2d3-e177-5c4b-8248-16126226614d
+
+	column Slot
+		dataType: int64
+		isHidden
+		lineageTag: d983d559-f24b-5f23-95c0-1ccdc8ee38dd
+		summarizeBy: none
+		sourceColumn: Slot
+
+		annotation SummarizationSetBy = User
+
+	column 'Elapsed (min)'
+		dataType: double
+		formatString: 0.0
+		lineageTag: e492e891-f11b-50da-9f05-016a523bf191
+		summarizeBy: none
+		sourceColumn: Elapsed (min)
+
+		annotation SummarizationSetBy = User
+
+	partition DimTime = m
+		mode: import
+		source =
+				let
+				    Slots = List.Numbers(0, MaxElapsedMin * 6 + 1),
+				    Source = Table.FromColumns({Slots, List.Transform(Slots, each _ / 6)}, type table [Slot = Int64.Type, #"Elapsed (min)" = number])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

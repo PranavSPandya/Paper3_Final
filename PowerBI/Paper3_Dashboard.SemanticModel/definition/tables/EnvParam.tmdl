@@ -1,0 +1,121 @@
+/// Environment parameter list (Group -> Parameter); both slicers sit on this table, so Group filters the Parameter list
+table EnvParam
+	lineageTag: 1ccf3d47-7e03-593d-94fd-0ac07615a34a
+
+	measure 'Env value' = AVERAGE(EnvLong[Value])
+		formatString: 0.00
+		lineageTag: 5cc9f6ea-4d34-57ad-b710-90557a30d0a3
+
+	measure 'Env title' = VAR p = SELECTEDVALUE(EnvParam[Parameter]) RETURN IF(ISBLANK(p), "ENVIRONMENT: pick one parameter of the selected group", "ENVIRONMENT: " & p & ", mean over selected participants")
+		lineageTag: d68d0255-4426-5e83-9e96-0dc642c8cb9d
+
+	column ParamKey
+		dataType: string
+		isHidden
+		lineageTag: 8bb23a60-449a-5051-947c-5874faeaf536
+		summarizeBy: none
+		sourceColumn: ParamKey
+
+		annotation SummarizationSetBy = User
+
+	column Group
+		dataType: string
+		lineageTag: 95c09e4c-5961-58b9-b027-ac5b5c98c58d
+		summarizeBy: none
+		sourceColumn: Group
+		sortByColumn: GroupSort
+
+		annotation SummarizationSetBy = User
+
+	column GroupSort
+		dataType: int64
+		isHidden
+		lineageTag: d60c19f9-a42c-5238-9d2e-6b55346ad81d
+		summarizeBy: none
+		sourceColumn: GroupSort
+
+		annotation SummarizationSetBy = User
+
+	column Parameter
+		dataType: string
+		lineageTag: c136d3b5-a3c4-5977-9788-798151617848
+		summarizeBy: none
+		sourceColumn: Parameter
+		sortByColumn: ParamSort
+
+		annotation SummarizationSetBy = User
+
+	column ParamSort
+		dataType: int64
+		isHidden
+		lineageTag: 3bd76fbc-f948-5ea1-89a8-3d25c1ca52c0
+		summarizeBy: none
+		sourceColumn: ParamSort
+
+		annotation SummarizationSetBy = User
+
+	partition EnvParam = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        type table [#"ParamKey" = text, #"Group" = text, #"GroupSort" = Int64.Type, #"Parameter" = text, #"ParamSort" = Int64.Type],
+				        {
+				        {"ucm_UTCI", "UCM", 1, "UTCI (°C)", 1},
+				        {"ucm_MRT", "UCM", 1, "MRT (°C)", 2},
+				        {"ucm_PET", "UCM", 1, "PET (°C)", 3},
+				        {"ucm_HUMIDEX", "UCM", 1, "HUMIDEX", 4},
+				        {"ucm_AIR_temp", "UCM", 1, "Air temperature (°C)", 5},
+				        {"ucm_AIR_RH", "UCM", 1, "Relative humidity (%)", 6},
+				        {"ucm_SND_dBA", "UCM", 1, "Sound level (dBA)", 7},
+				        {"ucm_WIND_AWS", "UCM", 1, "Wind speed, apparent (m/s)", 8},
+				        {"ucm_SUN_Gh", "UCM", 1, "Global horizontal irradiance (W/m²)", 9},
+				        {"ucm_GPS_speed_kmh", "UCM", 1, "GPS speed (km/h)", 10},
+				        {"atmo_pm1_avg", "Atmo", 2, "PM1 (µg/m³), mean of 2 sensors", 11},
+				        {"atmo_pm25_avg", "Atmo", 2, "PM2.5 (µg/m³), mean of 2 sensors", 12},
+				        {"atmo_pm10_avg", "Atmo", 2, "PM10 (µg/m³), mean of 2 sensors", 13},
+				        {"atmo_lys_LYS1__lys_lux", "Atmo", 2, "Illuminance LYS1 (lux)", 14},
+				        {"atmo_lys_LYS2__lys_lux", "Atmo", 2, "Illuminance LYS2 (lux)", 15},
+				        {"atmo_lys_LYS1__lys_kelvin", "Atmo", 2, "Colour temperature LYS1 (K)", 16},
+				        {"atmo_lys_LYS2__lys_kelvin", "Atmo", 2, "Colour temperature LYS2 (K)", 17},
+				        {"atmo_lys_LYS1__lys_medi", "Atmo", 2, "Melanopic EDI LYS1 (lux)", 18},
+				        {"atmo_lys_LYS2__lys_medi", "Atmo", 2, "Melanopic EDI LYS2 (lux)", 19},
+				        {"vehicle_proportion", "Sound", 3, "YAMNet vehicle (proportion)", 20},
+				        {"urban_manmade_negative_proportion", "Sound", 3, "YAMNet urban man-made negative (proportion)", 21},
+				        {"urban_manmade_neutral_proportion", "Sound", 3, "YAMNet urban man-made neutral (proportion)", 22},
+				        {"urban_manmade_positive_proportion", "Sound", 3, "YAMNet urban man-made positive (proportion)", 23},
+				        {"rural_natural_proportion", "Sound", 3, "YAMNet rural / natural (proportion)", 24},
+				        {"wind_proportion", "Sound", 3, "YAMNet wind (proportion)", 25},
+				        {"mechanisms_proportion", "Sound", 3, "YAMNet mechanisms (proportion)", 26},
+				        {"unidentify_proportion", "Sound", 3, "YAMNet unidentified (proportion)", 27},
+				        {"spectral_centroid_Hz", "Sound", 3, "Spectral centroid (Hz)", 28},
+				        {"spectral_rolloff85_Hz", "Sound", 3, "Spectral roll-off 85 % (Hz)", 29},
+				        {"dominant_frequency_Hz", "Sound", 3, "Dominant frequency (Hz)", 30},
+				        {"freq_proportion_20_to_200Hz", "Sound", 3, "Band 20–200 Hz (proportion)", 31},
+				        {"freq_proportion_200_to_2000Hz", "Sound", 3, "Band 200–2000 Hz (proportion)", 32},
+				        {"freq_proportion_2000_to_20000Hz", "Sound", 3, "Band 2–20 kHz (proportion)", 33},
+				        {"octave_proportion_31_5_Hz", "Sound", 3, "Octave 31.5 Hz (proportion)", 34},
+				        {"octave_proportion_63_0_Hz", "Sound", 3, "Octave 63 Hz (proportion)", 35},
+				        {"octave_proportion_125_0_Hz", "Sound", 3, "Octave 125 Hz (proportion)", 36},
+				        {"octave_proportion_250_0_Hz", "Sound", 3, "Octave 250 Hz (proportion)", 37},
+				        {"octave_proportion_500_0_Hz", "Sound", 3, "Octave 500 Hz (proportion)", 38},
+				        {"octave_proportion_1000_0_Hz", "Sound", 3, "Octave 1 kHz (proportion)", 39},
+				        {"octave_proportion_2000_0_Hz", "Sound", 3, "Octave 2 kHz (proportion)", 40},
+				        {"octave_proportion_4000_0_Hz", "Sound", 3, "Octave 4 kHz (proportion)", 41},
+				        {"octave_proportion_8000_0_Hz", "Sound", 3, "Octave 8 kHz (proportion)", 42},
+				        {"gvi_50m", "Greenery/sky", 4, "Green view index, 50 m (%)", 43},
+				        {"gvi_tree_50m", "Greenery/sky", 4, "GVI trees, 50 m (%)", 44},
+				        {"gvi_grass_50m", "Greenery/sky", 4, "GVI grass, 50 m (%)", 45},
+				        {"gvi_plant_50m", "Greenery/sky", 4, "GVI plants, 50 m (%)", 46},
+				        {"SVF", "Greenery/sky", 4, "Sky view factor (0–1)", 47},
+				        {"TVF", "Greenery/sky", 4, "Tree view factor (0–1)", 48},
+				        {"BVF", "Greenery/sky", 4, "Building view factor (0–1)", 49},
+				        {"Sky_%", "Greenery/sky", 4, "Sky (%)", 50},
+				        {"Building_%", "Greenery/sky", 4, "Building (%)", 51},
+				        {"Tree_%", "Greenery/sky", 4, "Tree (%)", 52},
+				        {"Total_Vegetation_%", "Greenery/sky", 4, "Total vegetation (%)", 53}
+				        })
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

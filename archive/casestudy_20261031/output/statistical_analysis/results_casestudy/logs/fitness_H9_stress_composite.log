@@ -1,0 +1,20 @@
+$script_dir
+[1] "C:/Users/sanga/Desktop/Pranav Paper3_Final/scripts/statistical_analysis_casestudy"
+
+$library_dir
+[1] "C:/Users/sanga/Desktop/Pranav Paper3_Final/scripts/statistical_analysis_casestudy/library"
+
+$project_root
+[1] "C:/Users/sanga/Desktop/Pranav Paper3_Final"
+
+Running H9 stress composite concordance (exploratory)...
+[H9 1/4] Loading matched 8-min route epochs...
+[H9 2/4] Building stress-oriented composites on participant-phase means...
+[H9 3/4] Pairwise rmcorr across composites (one BH-FDR family)...
+[H9 4/4] Done. 55 composites, 1378 pairs fit, 403 FDR-significant (q < 0.05).
+Outputs: C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results_casestudy/fitness/H9_stress_composite
+Warning messages:
+1: In summary.lm(fit) : essentially perfect fit: summary may be unreliable
+2: In summary.lm(fit) : essentially perfect fit: summary may be unreliable
+3: In summary.lm(fit) : essentially perfect fit: summary may be unreliable
+4: In summary.lm(fit) : essentially perfect fit: summary may be unreliable

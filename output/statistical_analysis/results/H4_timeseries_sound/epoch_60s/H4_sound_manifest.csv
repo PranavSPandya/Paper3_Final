@@ -1,8 +1,8 @@
-"path","md5","mode","epoch_sec","planned_models","completed_models","run_complete"
-"D:/Pranav/docker/Paper3_Final/scripts/statistical_analysis/H4_timeseries_sound.R","550684ba2cd83dfcaa5baa65d735eb6d","timeseries",60,598,598,TRUE
-"D:/Pranav/docker/Paper3_Final/scripts/statistical_analysis/library/H4_sound_core.R","9736942813ad77d452c2c17e15c33f00","timeseries",60,598,598,TRUE
-"D:/Pranav/docker/Paper3_Final/scripts/statistical_analysis/library/Paper3_common.R","ca364a45f02fbbbde43baa73e933f4b6","timeseries",60,598,598,TRUE
-"D:/Pranav/docker/Paper3_Final/scripts/statistical_analysis/library/H4_core.R","05fc5ede06bf69e064068ad3f0534e44","timeseries",60,598,598,TRUE
-"D:/Pranav/docker/Paper3_Final/output/merged_all_11participants_8min.csv","13ffdfbd704f35bf2b795dac35010d27","timeseries",60,598,598,TRUE
-"D:/Pranav/docker/Paper3_Final/output/statistical_analysis/Normalization & Parameter Screening/Normalization/Normalization_H1toH4_all_parameters.csv","fe2e451fb712d398bbc13188ef560bc7","timeseries",60,598,598,TRUE
-"C:\Users\sanga\AppData\Local\Temp\RtmpKKLQM5\file8ae021292616.txt","d28233b78a66e143fc43368b89d5537a","timeseries",60,598,598,TRUE
+"path","md5","mode","epoch_sec","wind_max_aws_m_s","planned_models","completed_models","run_complete"
+"C:/Users/sanga/Desktop/Pranav Paper3_Final/scripts/statistical_analysis/H4_timeseries_sound.R","6cabb505ea1c132c57f7038297ad2b1b","timeseries",60,NA,572,572,TRUE
+"C:/Users/sanga/Desktop/Pranav Paper3_Final/scripts/statistical_analysis/library/H4_sound_core.R","709071817eef8456551a3885223d00bf","timeseries",60,NA,572,572,TRUE
+"C:/Users/sanga/Desktop/Pranav Paper3_Final/scripts/statistical_analysis/library/Paper3_common.R","ca364a45f02fbbbde43baa73e933f4b6","timeseries",60,NA,572,572,TRUE
+"C:/Users/sanga/Desktop/Pranav Paper3_Final/scripts/statistical_analysis/library/H4_core.R","d00d72eff12b596ce280a19f31e47e7d","timeseries",60,NA,572,572,TRUE
+"C:/Users/sanga/Desktop/Pranav Paper3_Final/output/merged_all_11participants_8min.csv","d1566f55ce744035511d5bf17c7d8114","timeseries",60,NA,572,572,TRUE
+"C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/Normalization & Parameter Screening/Normalization/Normalization_H1toH4_all_parameters.csv","fe2e451fb712d398bbc13188ef560bc7","timeseries",60,NA,572,572,TRUE
+"C:\Users\sanga\AppData\Local\Temp\Rtmp4cm0m4\file69c44e36749e.txt","3764acd9b913889ab575aa8eaa409ee5","timeseries",60,NA,572,572,TRUE

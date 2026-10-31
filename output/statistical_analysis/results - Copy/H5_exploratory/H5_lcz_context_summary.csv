@@ -1,0 +1,13 @@
+"PhaseID","lcz_context","n_epochs"
+"BikeG","LCZ_A_dense_trees_context",317
+"WalkG","LCZ_A_dense_trees_context",366
+"BikeG","LCZ_B_scattered_trees_context",126
+"WalkG","LCZ_B_scattered_trees_context",87
+"BikeU","LCZ_compact_built_context",190
+"WalkU","LCZ_compact_built_context",38
+"BikeG","LCZ_green_other_context",83
+"WalkG","LCZ_green_other_context",71
+"BikeU","LCZ_open_built_context",187
+"WalkU","LCZ_open_built_context",50
+"BikeU","LCZ_urban_mixed_context",151
+"WalkU","LCZ_urban_mixed_context",440

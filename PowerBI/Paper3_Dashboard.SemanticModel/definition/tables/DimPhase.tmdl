@@ -1,0 +1,49 @@
+/// Phases (reststop excluded), sorted WalkU, BikeU, WalkG, BikeG, Tram, Indoor by PhaseSort
+table DimPhase
+	lineageTag: 0489a735-2eb1-5b12-9837-71cc80eb95b5
+
+	column PhaseID
+		dataType: string
+		lineageTag: 2e1c6235-0818-57a3-88c7-71f63946254a
+		summarizeBy: none
+		sourceColumn: PhaseID
+		sortByColumn: PhaseSort
+
+		annotation SummarizationSetBy = User
+
+	column PhaseSort
+		dataType: int64
+		isHidden
+		lineageTag: a42342cc-7409-5430-8866-49e1f4c74e77
+		summarizeBy: none
+		sourceColumn: PhaseSort
+
+		annotation SummarizationSetBy = User
+
+	column PhaseColour
+		dataType: string
+		isHidden
+		lineageTag: 3765198c-2467-51c3-9ed2-c8611d378979
+		summarizeBy: none
+		sourceColumn: PhaseColour
+
+		annotation SummarizationSetBy = User
+
+	partition DimPhase = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        type table [#"PhaseID" = text, #"PhaseSort" = Int64.Type, #"PhaseColour" = text],
+				        {
+				        {"WalkU", 1, "#d62728"},
+				        {"BikeU", 2, "#ff7f0e"},
+				        {"WalkG", 3, "#2ca02c"},
+				        {"BikeG", 4, "#1f77b4"},
+				        {"Tram", 5, "#7f7f7f"},
+				        {"Indoor", 6, "#bcbd22"}
+				        })
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

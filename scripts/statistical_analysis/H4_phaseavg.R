@@ -36,9 +36,7 @@ h4_study_spec <- list(
   phases = c("BikeU", "BikeG", "WalkU", "WalkG"),
   physiological_outcome_names = paper3_physiological_outcomes(),
   variance_inflation_factor_limit = 10,
-  expected_epoch_count = 49L,
-  # Eq 2 (sound sensitivity) is in the design/VIF catalog; Step 5 fits it when TRUE (default).
-  include_sound_sensitivity_equation = TRUE
+  expected_epoch_count = 49L
 )
 
 h4_study_spec <- paper3_attach_outcome_normalization(h4_study_spec, PROJECT_ROOT)
@@ -49,16 +47,14 @@ PAPER3_APPLY_CSV_TRANSFORM <- function(x, column_name) {
 }
 
 
-# Eq1 is the model. Eq2–7 change the heat or PM term. Y is not centered. Predictors ending in _phase_z are.
-# Eq2 sound mains kept after the VIF screen: vehicle, wind, mechanisms.
-H4_EQ2_SOUND_MAIN_TERMS <- c("vehicle_proportion", "wind_proportion", "mechanisms_proportion")
+# Eq1 is the model. Eq2–6 change the heat or PM term. Y is not centered. Predictors ending in _phase_z are.
 
-# UTCI in rows 1–2, 6–7: Eq1 primary; Eq2 sound sensitivity on UTCI+PM2.5; Eqs 6–7 PM size on UTCI.
+# UTCI in rows 1, 5–6: Eq1 primary; Eqs 5–6 PM size on UTCI.
 h4_equation_table <- data.frame(
-  equation_number = 1:7,
-  heat_predictor_label = c("UTCI", "UTCI", "AIR_T_mid + AIR_RH + WIND_AWS", "HUMIDEX", "PET", "UTCI", "UTCI"),
-  particulate_matter_column = c("atmo_pm2.5_avg", "atmo_pm2.5_avg", rep("atmo_pm2.5_avg", 3), "atmo_pm1_avg", "atmo_pm10_avg"),
-  equation_role = c("primary", "sound_sensitivity", "heat_sensitivity", "heat_sensitivity", "heat_sensitivity",
+  equation_number = 1:6,
+  heat_predictor_label = c("UTCI", "AIR_T_mid + AIR_RH + WIND_AWS", "HUMIDEX", "PET", "UTCI", "UTCI"),
+  particulate_matter_column = c(rep("atmo_pm2.5_avg", 4), "atmo_pm1_avg", "atmo_pm10_avg"),
+  equation_role = c("primary", "heat_sensitivity", "heat_sensitivity", "heat_sensitivity",
     "pm_size_sensitivity", "pm_size_sensitivity"),
   stringsAsFactors = FALSE
 )
@@ -74,18 +70,8 @@ Eq1 <- quote(nlme::lme(
   control = nlme::lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE)
 ))
 
-# Eq2: Eq1 + vehicle, wind, mechanisms
+# Eq2: air temperature, humidity, wind, MRT, each x sound
 Eq2 <- quote(nlme::lme(
-  Y ~ ucm_UTCI_phase_z * ucm_SND_dBA_phase_z + SVF_phase_z + atmo_pm2.5_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + vehicle_proportion_phase_z + wind_proportion_phase_z + mechanisms_proportion_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
-  data = model_data,
-  random = ~ 1 | ParticipantID,
-  method = "REML",
-  na.action = na.fail,
-  control = nlme::lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE)
-))
-
-# Eq3: air temperature, humidity, wind, MRT, each x sound
-Eq3 <- quote(nlme::lme(
   Y ~ ucm_AIR_T_mid_phase_z * ucm_SND_dBA_phase_z + ucm_AIR_RH_phase_z * ucm_SND_dBA_phase_z + ucm_WIND_AWS_phase_z * ucm_SND_dBA_phase_z + ucm_MRT_phase_z * ucm_SND_dBA_phase_z + SVF_phase_z + atmo_pm2.5_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID,
@@ -94,8 +80,8 @@ Eq3 <- quote(nlme::lme(
   control = nlme::lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE)
 ))
 
-# Eq4: HUMIDEX x sound
-Eq4 <- quote(nlme::lme(
+# Eq3: HUMIDEX x sound
+Eq3 <- quote(nlme::lme(
   Y ~ ucm_HUMIDEX_phase_z * ucm_SND_dBA_phase_z + SVF_phase_z + atmo_pm2.5_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID,
@@ -104,8 +90,8 @@ Eq4 <- quote(nlme::lme(
   control = nlme::lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE)
 ))
 
-# Eq5: PET x sound
-Eq5 <- quote(nlme::lme(
+# Eq4: PET x sound
+Eq4 <- quote(nlme::lme(
   Y ~ ucm_PET_phase_z * ucm_SND_dBA_phase_z + SVF_phase_z + atmo_pm2.5_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID,
@@ -114,8 +100,8 @@ Eq5 <- quote(nlme::lme(
   control = nlme::lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE)
 ))
 
-# Eq6: Eq1 with PM1
-Eq6 <- quote(nlme::lme(
+# Eq5: Eq1 with PM1
+Eq5 <- quote(nlme::lme(
   Y ~ ucm_UTCI_phase_z * ucm_SND_dBA_phase_z + SVF_phase_z + atmo_pm1_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID,
@@ -124,8 +110,8 @@ Eq6 <- quote(nlme::lme(
   control = nlme::lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE)
 ))
 
-# Eq7: Eq1 with PM10
-Eq7 <- quote(nlme::lme(
+# Eq6: Eq1 with PM10
+Eq6 <- quote(nlme::lme(
   Y ~ ucm_UTCI_phase_z * ucm_SND_dBA_phase_z + SVF_phase_z + atmo_pm10_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID,
@@ -146,21 +132,21 @@ H4_REFERENCE_MODELS <- local({
   for (statement in diagnostic_defs) eval(statement, envir = .GlobalEnv)
   eq_assigns <- Filter(function(statement) {
     is.call(statement) && identical(statement[[1L]], as.name("<-")) &&
-      is.symbol(statement[[2L]]) && as.character(statement[[2L]]) %in% paste0("Eq", 1:7)
+      is.symbol(statement[[2L]]) && as.character(statement[[2L]]) %in% paste0("Eq", 1:6)
   }, statements)
   setNames(lapply(eq_assigns, function(statement) {
     model <- eval(statement[[3L]])
     model[[2L]] <- as.formula(gsub("_bout_z", "", paste(deparse(model[[2L]]), collapse = " ")))
     model
-  }), as.character(1:7))
+  }), as.character(1:6))
 })
 
-# One executed sequence per outcome/equation; the seven formulas above supply the fixed effects.
+# One executed sequence per outcome/equation; the six formulas above supply the fixed effects.
 # Example: phase means A=(10,14), B=(20,26) give deviations (-2,2,-3,3).
 # The ONE shared sample SD is sqrt(26/3)=2.9439, not a separate SD for each participant.
-h4_fit_phaseavg <- function(raw_data, equation_ids = 1:7,
+h4_fit_phaseavg <- function(raw_data, equation_ids = 1:6,
     outcomes = h4_study_spec$all_physiological_outcomes) {
-  equations <- list(Eq1, Eq2, Eq3, Eq4, Eq5, Eq6, Eq7)
+  equations <- list(Eq1, Eq2, Eq3, Eq4, Eq5, Eq6)
   results <- list()
   for (equation_id in equation_ids) for (outcome in outcomes) {
     fixed <- as.formula(equations[[equation_id]][[2L]])
@@ -207,7 +193,7 @@ h4_fit_phaseavg <- function(raw_data, equation_ids = 1:7,
   results
 }
 
-# Pipeline validation: fixed-effect order parsed from the seven formulas above (not edited separately).
+# Pipeline validation: fixed-effect order parsed from the six formulas above (not edited separately).
 h4_fixed_terms_from_lme_quote <- function(lme_quote) {
   fml <- as.formula(lme_quote[[2L]])
   gsub("_(phase|bout)_z", "", gsub("`", "", attr(terms(fml), "term.labels"), fixed = TRUE))
@@ -218,16 +204,14 @@ H4_EQUATION_FIXED <- list(
   `3` = h4_fixed_terms_from_lme_quote(Eq3),
   `4` = h4_fixed_terms_from_lme_quote(Eq4),
   `5` = h4_fixed_terms_from_lme_quote(Eq5),
-  `6` = h4_fixed_terms_from_lme_quote(Eq6),
-  `7` = h4_fixed_terms_from_lme_quote(Eq7)
+  `6` = h4_fixed_terms_from_lme_quote(Eq6)
 )
-stopifnot(identical(H4_EQ2_SOUND_MAIN_TERMS, setdiff(H4_EQUATION_FIXED[["2"]], H4_EQUATION_FIXED[["1"]])))
 
 # ==============================================================================
 # WORKFLOW
 # ==============================================================================
 run_h4_phaseavg <- function() {
-  # Load audit/fit engine after h4_study_spec, Eq1–7, and H4_REFERENCE_MODELS are defined.
+  # Load audit/fit engine after h4_study_spec, Eq1–6, and H4_REFERENCE_MODELS are defined.
   H4_ANALYSIS_MODE <<- "phaseavg"  # core writes to results/H4_phaseavg/ with H4_phaseavg_* file names
   source(file.path(LIBRARY_DIR, "H4_core.R"), local = FALSE)
   rm("H4_ANALYSIS_MODE", envir = .GlobalEnv)
@@ -237,8 +221,7 @@ run_h4_phaseavg <- function() {
   cat(sprintf("Participants (%d): %s\n", length(h4_study_spec$participants), paste(h4_study_spec$participants, collapse = ", ")))
   cat(sprintf("Outcomes     (%d): %d empatica + %d eyetracker (physiological vector)\n",
               length(h4_study_spec$all_physiological_outcomes), 13L, 13L))
-  cat(sprintf("Equations    (%d): 1 Primary, 1 Sound (fit=%s), 3 Heat, 2 PM\n\n",
-              nrow(h4_equation_table), h4_study_spec$include_sound_sensitivity_equation))
+  cat(sprintf("Equations    (%d): 1 Primary, 3 Heat, 2 PM\n\n", nrow(h4_equation_table)))
 
   shared_audit_dir <- file.path(H4_RESULTS_ROOT, "H4_timeseries")
   raw <- h4_read_merged_analysis_data()
@@ -247,7 +230,7 @@ run_h4_phaseavg <- function() {
   prepared <- h4_step4_exposure_prep(audit, raw)
   prepared$catalog$primary <- FALSE
   prepared$catalog$analysis_role <- "Exploratory phase-average sensitivity"
-  prepared$catalog$heat_role[prepared$catalog$equation_id == 3L] <- "Air temperature + RH + apparent wind + MRT interactions with sound"
+  prepared$catalog$heat_role[prepared$catalog$equation_id == 2L] <- "Air temperature + RH + apparent wind + MRT interactions with sound"
   results <- h4_fit_phaseavg(prepared$raw_df)
   h4_phase_publish_results(results, prepared, audit, shared_audit_dir)
 }

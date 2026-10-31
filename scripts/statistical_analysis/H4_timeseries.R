@@ -1,4 +1,15 @@
 # H4 time-series LME — explicit preparation and equations; shared audits/reporting in H4_core.R
+# Lagged-difference block (added 2026-10-31; moved here from H6.2 of H6_exploratory.R): a robustness /
+# exploratory extension of H4, NOT a separate hypothesis. Per person, Pearson r between the 10 s first
+# difference of an exposure (window ending at t - lag) and of a response (window ending at t), lags
+# 0/10/30/60 s, exact 10 s predecessors within each participant/phase, pairs pooled across phases
+# (>= 20 pairs, both changes varying); Fisher z (capped at +-0.999), unweighted mean across people,
+# back-transformed mean r; exact two-sided sign-flip test on mean z (>= 6 people); t-interval on z,
+# back-transformed; BH across the 12 pairing x lag rows. Raw values: no centering, standardization,
+# transformation, covariates or random effects. Pairings: lys_lux_avg -> eyetracker_pupil_diameter_avg,
+# ucm_MRT -> empatica_skin_temperature, ucm_SND_dBA -> empatica_eda_phasic. Not causal, not response time.
+# Runs ONLY with: Rscript scripts/statistical_analysis/H4_timeseries.R --lagdiff-only
+# (a normal or grouped H4 run does not execute it). Output: output/statistical_analysis/results/H4_timeseries_lagdiff/
 if (!exists("PAPER3_PARTICIPANTS", inherits = FALSE)) {
   .entry <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
   if (!length(.entry)) {
@@ -24,8 +35,7 @@ paper3_statistical_bootstrap(
   h4_pdf_null = TRUE
 )
 PROJECT_ROOT <- resolve_project_root()
-source(file.path(paper3_statistical_library_dir(), "Paper3_corridor_grid.R"), local = FALSE)
-# Step 5: serial fits (H4_PARALLEL_WORKERS=1). Optional batches via H4_JOB_START / H4_JOB_END or H4_MAX_JOBS (182 jobs = 26 outcomes × 7 equations).
+# Step 5: serial fits (H4_PARALLEL_WORKERS=1). Optional batches via H4_JOB_START / H4_JOB_END or H4_MAX_JOBS (156 jobs = 26 outcomes × 6 equations).
 Sys.setenv(H4_PARALLEL_WORKERS = "1")
 H4_SCRIPT_PATH <- paper3_entry_script_path("scripts/statistical_analysis/H4_timeseries.R")
 RAW_DATA_PATH <- paper3_merged_8min_path(PROJECT_ROOT)
@@ -37,9 +47,7 @@ h4_study_spec <- list(
   phases = c("BikeU", "BikeG", "WalkU", "WalkG"),
   physiological_outcome_names = paper3_physiological_outcomes(),
   variance_inflation_factor_limit = 5,
-  expected_epoch_count = 49L,
-  # Eq 2 (sound sensitivity) is in the design/VIF catalog; Step 5 fits it when TRUE (default).
-  include_sound_sensitivity_equation = TRUE
+  expected_epoch_count = 49L
 )
 
 h4_study_spec <- paper3_attach_outcome_normalization(h4_study_spec, PROJECT_ROOT)
@@ -50,17 +58,14 @@ PAPER3_APPLY_CSV_TRANSFORM <- function(x, column_name) {
 }
 
 
-# Eq1 is the model. Eq2–7 change the heat, PM, or sound terms. Y is not centered. Predictors ending in _bout_z are.
-H4_EQ2_SOUND_MAIN_TERMS <- c(
-  "vehicle_proportion", "freq_proportion_20_to_200Hz", "wind_proportion", "spectral_centroid_hz", "mechanisms_proportion"
-)
+# Eq1 is the model. Eq2–6 change the heat or PM term. Y is not centered. Predictors ending in _bout_z are.
 
-# UTCI in rows 1–2, 6–7: Eq1 primary; Eq2 sound sensitivity on UTCI+PM2.5; Eqs 6–7 PM size on UTCI.
+# UTCI in rows 1, 5–6: Eq1 primary; Eqs 5–6 PM size on UTCI.
 h4_equation_table <- data.frame(
-  equation_number = 1:7,
-  heat_predictor_label = c("UTCI", "UTCI", "AIR_T_mid + AIR_RH + WIND_AWS", "HUMIDEX", "PET", "UTCI", "UTCI"),
-  particulate_matter_column = c("atmo_pm2.5_avg", "atmo_pm2.5_avg", rep("atmo_pm2.5_avg", 3), "atmo_pm1_avg", "atmo_pm10_avg"),
-  equation_role = c("primary", "sound_sensitivity", "heat_sensitivity", "heat_sensitivity", "heat_sensitivity",
+  equation_number = 1:6,
+  heat_predictor_label = c("UTCI", "AIR_T_mid + AIR_RH + WIND_AWS", "HUMIDEX", "PET", "UTCI", "UTCI"),
+  particulate_matter_column = c(rep("atmo_pm2.5_avg", 4), "atmo_pm1_avg", "atmo_pm10_avg"),
+  equation_role = c("primary", "heat_sensitivity", "heat_sensitivity", "heat_sensitivity",
     "pm_size_sensitivity", "pm_size_sensitivity"),
   stringsAsFactors = FALSE
 )
@@ -68,7 +73,7 @@ h4_equation_table <- data.frame(
 # Eq1 primary: UTCI x sound. Random intercept per person and phase. AR(1) within the bout.
 # Y <- PAPER3_APPLY_CSV_TRANSFORM(x, column_name)
 Eq1 <- quote(nlme::lme(
-  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -76,9 +81,9 @@ Eq1 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq2: Eq1 + five sound mains
+# Eq2: air temperature, humidity, wind, MRT, each x sound
 Eq2 <- quote(nlme::lme(
-  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + vehicle_proportion_bout_z + freq_proportion_20_to_200Hz_bout_z + wind_proportion_bout_z + spectral_centroid_hz_bout_z + mechanisms_proportion_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_AIR_T_mid_bout_z * ucm_SND_dBA_bout_z + ucm_AIR_RH_bout_z * ucm_SND_dBA_bout_z + ucm_WIND_AWS_bout_z * ucm_SND_dBA_bout_z + ucm_MRT_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -86,9 +91,9 @@ Eq2 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq3: air temperature, humidity, wind, MRT, each x sound
+# Eq3: HUMIDEX x sound
 Eq3 <- quote(nlme::lme(
-  Y ~ ucm_AIR_T_mid_bout_z * ucm_SND_dBA_bout_z + ucm_AIR_RH_bout_z * ucm_SND_dBA_bout_z + ucm_WIND_AWS_bout_z * ucm_SND_dBA_bout_z + ucm_MRT_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_HUMIDEX_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -96,9 +101,9 @@ Eq3 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq4: HUMIDEX x sound
+# Eq4: PET x sound
 Eq4 <- quote(nlme::lme(
-  Y ~ ucm_HUMIDEX_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_PET_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -106,9 +111,9 @@ Eq4 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq5: PET x sound
+# Eq5: Eq1 with PM1
 Eq5 <- quote(nlme::lme(
-  Y ~ ucm_PET_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm1_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -116,19 +121,9 @@ Eq5 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq6: Eq1 with PM1
+# Eq6: Eq1 with PM10
 Eq6 <- quote(nlme::lme(
-  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm1_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
-  data = model_data,
-  random = ~ 1 | ParticipantID / PhaseID,
-  correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
-  method = "REML",
-  na.action = na.fail
-))
-
-# Eq7: Eq1 with PM10
-Eq7 <- quote(nlme::lme(
-  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm10_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + grid_f + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_UTCI_bout_z * ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm10_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID / PhaseID,
   correlation = nlme::corAR1(value = 0.2, form = ~ Time10 | ParticipantID / PhaseID),
@@ -171,7 +166,7 @@ h4_prepare_bout_design <- function(raw_df, selected, nonthermal, thermal, rep_ta
     if (!is.null(terms_order)) {
       ix_in_order <- terms_order[grepl(":", terms_order, fixed = TRUE)]
       mains_needed <- setdiff(terms_order, c(intersect(H4_PHASE_SUM_COLS, terms_order), ix_in_order))
-      # Meeting quotes are authoritative: do not inject extra nonthermal mains (e.g. MRT outside Eq 3).
+      # Meeting quotes are authoritative: do not inject extra nonthermal mains (e.g. MRT outside Eq 2).
       env_covars <- setdiff(mains_needed, vars)
     }
     design_mains <- h4_design_main_column_order(vars, env_covars)
@@ -185,7 +180,7 @@ h4_prepare_bout_design <- function(raw_df, selected, nonthermal, thermal, rep_ta
       return(x)
     }
     ix_terms <- if (!is.null(terms_order)) h4_sound_interaction_terms(terms_order) else {
-      # Fallback when meeting quotes are absent: heat Ã— SND; MRT Ã— SND only for multi-component (Eq 3) heat form.
+      # Fallback when meeting quotes are absent: heat Ã— SND; MRT Ã— SND only for multi-component (Eq 2) heat form.
       heat_ix <- paste0(vars, ":ucm_SND_dBA")
       if (length(vars) > 1L) c(heat_ix, "ucm_MRT:ucm_SND_dBA") else heat_ix
     }
@@ -211,9 +206,8 @@ h4_prepare_bout_design <- function(raw_df, selected, nonthermal, thermal, rep_ta
       heat_label <- names(thermal)[i]
       vars <- thermal[[heat_label]]
       meeting_cols <- fixed[[as.character(h4_equation_table$equation_number[i])]]
-      design_cols <- setdiff(meeting_cols, "grid_f")
-      design_only <- colnames(make_design(centered[1L, , drop = FALSE], vars, "WalkG", terms_order = design_cols))
-      stopifnot(identical(design_only, design_cols))
+      fitted_cols <- colnames(make_design(centered[1L, , drop = FALSE], vars, "WalkG", terms_order = meeting_cols))
+      stopifnot(identical(fitted_cols, meeting_cols))
     }
   }
   list(raw_df = raw_df, nonthermal = nonthermal, thermal = thermal, selected = selected,
@@ -222,9 +216,9 @@ h4_prepare_bout_design <- function(raw_df, selected, nonthermal, thermal, rep_ta
 }
 
 h4_bout_fitters <- function() {
-  templates <- list(Eq1, Eq2, Eq3, Eq4, Eq5, Eq6, Eq7)
+  templates <- list(Eq1, Eq2, Eq3, Eq4, Eq5, Eq6)
   model_template <- templates[[1L]]
-  for (eq_id in 2:7) {
+  for (eq_id in 2:6) {
     other_template <- templates[[eq_id]]
     stopifnot(identical(model_template$random, other_template$random),
               identical(model_template$correlation, other_template$correlation),
@@ -301,7 +295,7 @@ h4_fit <- function(audit_df = NULL, raw_df = NULL, prep = NULL) {
   make_design <- prep$make_design
   catalog <- prep$catalog
   agreed_common <- prep$agreed_common
-  stopifnot(nrow(catalog) == 7L, identical(catalog$equation_id, 1:7))
+  stopifnot(nrow(catalog) == 6L, identical(catalog$equation_id, 1:6))
 
   outcomes <- h4_study_spec$all_physiological_outcomes
   natural_log_outcomes <- h4_study_spec$natural_log_outcome_names
@@ -313,9 +307,6 @@ h4_fit <- function(audit_df = NULL, raw_df = NULL, prep = NULL) {
   do_fit_with_fallback <- fitters$do_fit_with_fallback
 
   fit_equation_ids <- catalog$equation_id
-  if (!isTRUE(h4_study_spec$include_sound_sensitivity_equation)) {
-    fit_equation_ids <- fit_equation_ids[catalog$role[match(fit_equation_ids, catalog$equation_id)] != "sound_sensitivity"]
-  }
   # Outcome-specific redundancy audit before fitting; a rank-deficient design blocks fitting (no predictor removal).
   preflight_df <- h4_design_preflight(raw_df, centered, selected, catalog, thermal, make_design, fit_equation_ids, outcomes, natural_log_outcomes)
   preflight_csv <- file.path(h4_model_dir, h4_file("H4_design_redundancy_by_outcome.csv"))
@@ -327,7 +318,12 @@ h4_fit <- function(audit_df = NULL, raw_df = NULL, prep = NULL) {
     equation_id <- eq_id <- job$equation_id
     outcome_matrix <- as.matrix(raw_df[, c(selected, y), drop = FALSE])
     storage.mode(outcome_matrix) <- "double"
-    ok <- h4_complete_rows(raw_df, y, equation_id, natural_log_outcomes)
+    predictors <- unique(unlist(strsplit(H4_EQUATION_FIXED[[equation_id]], ":", fixed = TRUE)))
+    predictors <- setdiff(predictors, H4_PHASE_SUM_COLS)
+    values <- as.matrix(raw_df[, c(predictors, y), drop = FALSE])
+    storage.mode(values) <- "double"
+    ok <- rowSums(!is.finite(values)) == 0L
+    if (y %in% natural_log_outcomes) ok <- ok & raw_df[[y]] > 0
     outcome_rows <- raw_df[ok, c("ParticipantID", "PhaseID", "Datetime"), drop = FALSE]
     outcome_rows$ParticipantID <- factor(outcome_rows$ParticipantID)
     outcome_rows$PhaseID <- factor(outcome_rows$PhaseID, levels = c("WalkG", "WalkU", "BikeG", "BikeU"))
@@ -348,38 +344,18 @@ h4_fit <- function(audit_df = NULL, raw_df = NULL, prep = NULL) {
     }
     outcome_values <- PAPER3_APPLY_CSV_TRANSFORM(outcome_values, y)
     eq_row <- prep$catalog[prep$catalog$equation_id == eq_id, ]
-    term_order <- h4_equation_term_order(eq_id)
     design <- prep$make_design(centered_exposures, prep$thermal[[eq_row$heat_form]], outcome_rows$PhaseID,
-      test = eq_row$test, terms_order = setdiff(term_order, "grid_f"))
+      test = eq_row$test, terms_order = h4_equation_term_order(eq_id))
     original_terms <- colnames(design)
     processed_terms <- vapply(strsplit(original_terms, ":", fixed = TRUE), function(parts) {
-      paste(vapply(parts, function(p) {
-        if (identical(p, "grid_f") || startsWith(p, "PhaseSum")) p else paste0(p, "_bout_z")
-      }, character(1)), collapse = ":")
+      paste(ifelse(startsWith(parts, "PhaseSum"), parts, paste0(parts, "_bout_z")), collapse = ":")
     }, character(1))
     safe_terms <- make.names(processed_terms, unique = TRUE)
     colnames(design) <- safe_terms
-    if ("grid_f" %in% term_order) {
-      original_terms <- c(original_terms, "grid_f")
-      safe_terms <- c(safe_terms, "grid_f")
-    }
     model_data <- cbind(outcome_rows, stats::setNames(list(outcome_values), "Y"), as.data.frame(design))
-    if ("grid_f" %in% term_order) {
-      gf <- raw_df$grid_f[ok]
-      if (y %in% natural_log_outcomes) {
-        keep <- is.finite(outcome_matrix[ok, y]) & outcome_matrix[ok, y] > 0
-        gf <- gf[keep]
-      }
-      model_data$grid_f <- gf
-    }
     model_data <- model_data[order(model_data$ParticipantID, model_data$PhaseID, model_data$Time10), ]
       # Execute the explicit REML/AR1 fitter below; existing ARMA/independent fallback rules are retained.
     attempt <- do_fit_with_fallback(reformulate(safe_terms, response = "Y"), model_data)
-    if (!is.null(attempt$fit)) {
-      fe <- names(nlme::fixef(attempt$fit))
-      original_terms <- fe[fe != "(Intercept)"]
-      safe_terms <- original_terms
-    }
     h4_fit_equations(eq_id, y, prep$catalog, prep$thermal, prep$make_design,
       centered_exposures, lagged_exposures, outcome_rows, outcome_values,
       h4_study_spec$outcome_transform[[y]], raw_df, prep$agreed_common,
@@ -390,7 +366,7 @@ h4_fit <- function(audit_df = NULL, raw_df = NULL, prep = NULL) {
   h4_fit_queue(fit_one_outcome, prep, preflight_df, fingerprints, h4_model_dir, outcomes, fit_equation_ids)
 }
 
-# Pipeline validation: fixed-effect order parsed from the seven formulas above (not edited separately).
+# Pipeline validation: fixed-effect order parsed from the six formulas above (not edited separately).
 h4_fixed_terms_from_lme_quote <- function(lme_quote) {
   fml <- as.formula(lme_quote[[2L]])
   gsub("_(phase|bout)_z", "", gsub("`", "", attr(terms(fml), "term.labels"), fixed = TRUE))
@@ -401,21 +377,18 @@ H4_EQUATION_FIXED <- list(
   `3` = h4_fixed_terms_from_lme_quote(Eq3),
   `4` = h4_fixed_terms_from_lme_quote(Eq4),
   `5` = h4_fixed_terms_from_lme_quote(Eq5),
-  `6` = h4_fixed_terms_from_lme_quote(Eq6),
-  `7` = h4_fixed_terms_from_lme_quote(Eq7)
+  `6` = h4_fixed_terms_from_lme_quote(Eq6)
 )
-stopifnot(identical(H4_EQ2_SOUND_MAIN_TERMS, setdiff(H4_EQUATION_FIXED[["2"]], H4_EQUATION_FIXED[["1"]])))
-# MRT × SND_dBA interaction is Eq 3 only; Eq 3 heat air term is mid-height temperature.
+# MRT × SND_dBA interaction is Eq 2 only; Eq 2 heat air term is mid-height temperature.
 MRT_SOUND_INTERACTION <- c("ucm_MRT:ucm_SND_dBA", "ucm_SND_dBA:ucm_MRT")
 stopifnot(
   !any(H4_EQUATION_FIXED[["1"]] %in% MRT_SOUND_INTERACTION),
-  !any(H4_EQUATION_FIXED[["2"]] %in% MRT_SOUND_INTERACTION),
-  any(H4_EQUATION_FIXED[["3"]] %in% MRT_SOUND_INTERACTION),
+  any(H4_EQUATION_FIXED[["2"]] %in% MRT_SOUND_INTERACTION),
+  !any(H4_EQUATION_FIXED[["3"]] %in% MRT_SOUND_INTERACTION),
   !any(H4_EQUATION_FIXED[["4"]] %in% MRT_SOUND_INTERACTION),
   !any(H4_EQUATION_FIXED[["5"]] %in% MRT_SOUND_INTERACTION),
   !any(H4_EQUATION_FIXED[["6"]] %in% MRT_SOUND_INTERACTION),
-  !any(H4_EQUATION_FIXED[["7"]] %in% MRT_SOUND_INTERACTION),
-  any(grepl("^ucm_AIR_T_mid", H4_EQUATION_FIXED[["3"]], fixed = FALSE)),
+  any(grepl("^ucm_AIR_T_mid", H4_EQUATION_FIXED[["2"]], fixed = FALSE)),
   !any(grepl("ucm_AIR_temp", unlist(H4_EQUATION_FIXED), fixed = TRUE))
 )
 
@@ -423,7 +396,7 @@ stopifnot(
 # WORKFLOW
 # ==============================================================================
 run_h4 <- function() {
-  # Load audit/fit engine after h4_study_spec and Eq1–7 are defined (script top level).
+  # Load audit/fit engine after h4_study_spec and Eq1–6 are defined (script top level).
   source(file.path(LIBRARY_DIR, "H4_core.R"), local = FALSE)
   cat("==============================================================================\n")
   cat("Running H4: Multivariate Models of Noise Amplification on Thermal Discomfort\n")
@@ -431,10 +404,112 @@ run_h4 <- function() {
   cat(sprintf("Participants (%d): %s\n", length(h4_study_spec$participants), paste(h4_study_spec$participants, collapse = ", ")))
   cat(sprintf("Outcomes     (%d): %d empatica + %d eyetracker (physiological vector)\n",
               length(h4_study_spec$all_physiological_outcomes), 13L, 13L))
-  cat(sprintf("Equations    (%d): 1 Primary, 1 Sound (fit=%s), 3 Heat, 2 PM\n\n",
-              nrow(h4_equation_table), h4_study_spec$include_sound_sensitivity_equation))
+  cat(sprintf("Equations    (%d): 1 Primary, 3 Heat, 2 PM\n\n", nrow(h4_equation_table)))
 
   h4_dispatch_run()
 }
 
-if (sys.nframe() == 0L) run_h4()
+# ==============================================================================
+# LAGGED-DIFFERENCE BLOCK (robustness/exploratory extension of H4; formerly H6.2). See header note.
+# ==============================================================================
+h4_lagdiff_run <- function(input_path = RAW_DATA_PATH,
+    out_dir = file.path(PROJECT_ROOT, "output", "statistical_analysis", "results", "H4_timeseries_lagdiff")) {
+  pairs <- list(c("lys_lux_avg", "eyetracker_pupil_diameter_avg"),
+                c("ucm_MRT", "empatica_skin_temperature"),
+                c("ucm_SND_dBA", "empatica_eda_phasic"))
+  lags <- c(0L, 10L, 30L, 60L)
+  participants <- h4_study_spec$participants
+  phases <- h4_study_spec$phases
+  needed <- c("ParticipantID", "PhaseID", "Datetime", "atmo_lys_LYS1__lys_lux", "atmo_lys_LYS2__lys_lux",
+              "eyetracker_pupil_diameter_avg", "ucm_MRT", "empatica_skin_temperature",
+              "ucm_SND_dBA", "empatica_eda_phasic")
+  header <- names(utils::read.csv(input_path, nrows = 0, check.names = FALSE))
+  miss <- setdiff(needed, header)
+  if (length(miss)) stop("Lagged-difference block: absent input columns: ", paste(miss, collapse = ", "))
+  raw <- utils::read.csv(input_path, check.names = FALSE,
+    colClasses = ifelse(header %in% needed, "character", "NULL"), na.strings = c("", "NA", "NaN", "null"))
+  for (nm in needed[-(1:3)]) raw[[nm]] <- suppressWarnings(as.numeric(raw[[nm]]))
+  # Same light definition as H4: mean of available LYS1/LYS2 readings; both missing stays NA.
+  raw$lys_lux_avg <- rowMeans(raw[, c("atmo_lys_LYS1__lys_lux", "atmo_lys_LYS2__lys_lux")], na.rm = TRUE)
+  raw$lys_lux_avg[!is.finite(raw$lys_lux_avg)] <- NA_real_
+  d <- raw[raw$ParticipantID %in% participants & raw$PhaseID %in% phases, , drop = FALSE]
+  d$Datetime <- as.POSIXct(d$Datetime, tz = "UTC", tryFormats = c("%Y-%m-%d %H:%M:%OS", "%Y-%m-%dT%H:%M:%OS",
+    "%Y-%m-%d %H:%M:%OS%z", "%Y-%m-%dT%H:%M:%OS%z"))
+  if (!nrow(d) || anyNA(d$Datetime)) stop("Lagged-difference block: empty core routes or unparseable Datetime")
+  d <- d[order(d$ParticipantID, d$PhaseID, d$Datetime), , drop = FALSE]
+  if (anyDuplicated(d[, c("ParticipantID", "PhaseID", "Datetime")])) stop("Duplicate participant/phase/time keys")
+  groups <- split(d, interaction(d$ParticipantID, d$PhaseID, drop = TRUE), drop = TRUE)
+  if (any(vapply(groups, function(x) as.numeric(max(x$Datetime) - min(x$Datetime), units = "secs") > 480.01, logical(1))))
+    stop("Data exceed first matched 8 minutes")
+  # Exact two-sided sign-flip test on the mean; t-interval on the values.
+  signflip <- function(values, min_n = 6L) {
+    v <- values[is.finite(values)]; n <- length(v)
+    if (n < min_n || sd(v) < 1e-12) return(list(N = n, estimate = NA_real_, ci_low = NA_real_, ci_high = NA_real_, p = NA_real_))
+    p <- 0
+    for (k in 0:(2^n - 1L)) {
+      signs <- 2 * as.integer(intToBits(k))[seq_len(n)] - 1
+      p <- p + (abs(mean(v * signs)) >= abs(mean(v)) - 1e-12)
+    }
+    h <- qt(.975, n - 1L) * sd(v) / sqrt(n)
+    list(N = n, estimate = mean(v), ci_low = mean(v) - h, ci_high = mean(v) + h, p = p / (2^n))
+  }
+  lag_subject <- list(); lag_results <- list()
+  for (pair in pairs) {
+    exposure <- pair[1]; outcome <- pair[2]
+    for (lag in lags) {
+      obs <- list()
+      for (x in groups) {
+        sec <- as.numeric(difftime(x$Datetime, x$Datetime[1], units = "secs"))
+        step <- as.integer(round(sec / 10))
+        if (any(abs(sec - 10 * step) > 1.2) || anyDuplicated(step))
+          stop("Unexpected time-grid mismatch: ", x$ParticipantID[1], "/ ", x$PhaseID[1])
+        ids_y_prev <- match(step - 1L, step)
+        ids_x <- match(step - as.integer(lag / 10), step)
+        ids_x_prev <- match(step - as.integer(lag / 10) - 1L, step)
+        Y <- x[[outcome]]; X <- x[[exposure]]
+        dy <- Y - Y[ids_y_prev]
+        dx <- X[ids_x] - X[ids_x_prev]
+        ok <- is.finite(dy) & is.finite(dx)
+        if (sum(ok)) obs[[length(obs) + 1L]] <- data.frame(ParticipantID = x$ParticipantID[1], dy = dy[ok], dx = dx[ok])
+      }
+      if (!length(obs)) next
+      allobs <- do.call(rbind, obs)
+      rows <- list()
+      for (id in unique(allobs$ParticipantID)) {
+        sub <- allobs[allobs$ParticipantID == id, ]
+        rv <- if (nrow(sub) >= 20L && sd(sub$dx) > 1e-10 && sd(sub$dy) > 1e-10) cor(sub$dx, sub$dy) else NA_real_
+        rows[[length(rows) + 1L]] <- data.frame(Exposure = exposure, Outcome = outcome, Lag_s = lag,
+          ParticipantID = id, N_10s_changes = nrow(sub), r = rv)
+      }
+      b <- do.call(rbind, rows); lag_subject[[length(lag_subject) + 1L]] <- b
+      z <- atanh(pmax(-.999, pmin(.999, b$r[is.finite(b$r)])))
+      tt <- signflip(z)
+      lag_results[[length(lag_results) + 1L]] <- data.frame(Exposure = exposure, Outcome = outcome, Lag_s = lag,
+        N_Participants = tt$N, mean_r = if (is.finite(tt$estimate)) tanh(tt$estimate) else NA_real_,
+        ci_low = if (is.finite(tt$ci_low)) tanh(tt$ci_low) else NA_real_,
+        ci_high = if (is.finite(tt$ci_high)) tanh(tt$ci_high) else NA_real_, p = tt$p,
+        N_Changes = sum(b$N_10s_changes[is.finite(b$r)]))
+    }
+  }
+  res <- do.call(rbind, lag_results)
+  res$q <- NA_real_; ok <- is.finite(res$p); res$q[ok] <- p.adjust(res$p[ok], method = "BH")
+  dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+  utils::write.csv(res, file.path(out_dir, "H4_timeseries_lagdiff_profiles.csv"), row.names = FALSE)
+  utils::write.csv(do.call(rbind, lag_subject), file.path(out_dir, "H4_timeseries_lagdiff_participant_correlations.csv"), row.names = FALSE)
+  writeLines(c("H4 lagged-difference block: robustness/exploratory extension of H4 (formerly H6.2); not a separate hypothesis; no causal claims.",
+    paste("Generated:", as.character(Sys.time())), paste("Input:", normalizePath(input_path)),
+    paste("Input MD5:", unname(tools::md5sum(input_path))), paste("Script:", H4_SCRIPT_PATH),
+    paste("Script MD5:", unname(tools::md5sum(H4_SCRIPT_PATH))),
+    paste("Participants:", paste(sort(unique(d$ParticipantID)), collapse = ", ")),
+    paste("Core route rows:", nrow(d)), paste("Participant-phase bouts:", length(groups)),
+    "Method: per-person Pearson r of exact 10 s first differences (exposure window ending at t - lag; response window ending at t), lags 0/10/30/60 s, pairs pooled across phases (>=20, both varying); Fisher z capped at +-0.999; unweighted mean across people; exact two-sided sign-flip (>=6 people); t-interval on z; BH across the 12 rows.",
+    "Raw values: no centering, standardization, transformation, covariates or random effects."),
+    file.path(out_dir, "H4_timeseries_lagdiff_README.txt"))
+  cat("Lagged-difference block finished. Results written to:", out_dir, "\n")
+  print(res[, c("Exposure", "Outcome", "Lag_s", "N_Participants", "mean_r", "ci_low", "ci_high", "p", "q")])
+  invisible(res)
+}
+
+if (sys.nframe() == 0L) {
+  if ("--lagdiff-only" %in% commandArgs(trailingOnly = TRUE)) h4_lagdiff_run() else run_h4()
+}

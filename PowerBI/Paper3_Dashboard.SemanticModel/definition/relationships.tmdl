@@ -1,0 +1,47 @@
+relationship 9dc79416-fd15-54ed-8b32-22517e6d678d
+	fromColumn: EnvLong.ParticipantID
+	toColumn: DimParticipant.ParticipantID
+
+relationship af23af5b-4041-52be-ac39-70c32a90ec7c
+	fromColumn: EnvLong.PhaseID
+	toColumn: DimPhase.PhaseID
+
+relationship 33e209e9-7162-5fe6-9d4b-af30061ed37e
+	fromColumn: EnvLong.Slot
+	toColumn: DimTime.Slot
+
+relationship 80b328c1-cf02-5da7-9151-c1fc76dbc34b
+	fromColumn: EnvLong.ParamKey
+	toColumn: EnvParam.ParamKey
+
+relationship ac3d52ed-3d42-5f3e-8414-fd3055957ac7
+	fromColumn: PhysLong.ParticipantID
+	toColumn: DimParticipant.ParticipantID
+
+relationship e25e7aec-33dd-57ca-8956-53921be19682
+	fromColumn: PhysLong.PhaseID
+	toColumn: DimPhase.PhaseID
+
+relationship 0367b396-f5bd-5e15-b76e-6df0e4885e6f
+	fromColumn: PhysLong.Slot
+	toColumn: DimTime.Slot
+
+relationship 50f69aa6-c02f-51ad-86d9-33e66be67504
+	fromColumn: PhysLong.ParamKey
+	toColumn: PhysParam.ParamKey
+
+relationship 3ff952c2-9eaa-56f0-b0d4-4daea9993dfd
+	fromColumn: QLong.ParticipantID
+	toColumn: DimParticipant.ParticipantID
+
+relationship 5b372b3f-0ad3-5240-a496-21f2a979698a
+	fromColumn: QLong.PhaseID
+	toColumn: DimPhase.PhaseID
+
+relationship 4c5b522e-47eb-55bf-a411-09961b7779d8
+	fromColumn: QLong.Slot
+	toColumn: DimTime.Slot
+
+relationship 28ac414f-d504-5d99-9f3d-57f33eb344b1
+	fromColumn: QLong.ParamKey
+	toColumn: QItem.ParamKey

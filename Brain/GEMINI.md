@@ -2,9 +2,18 @@
 
 This document lives in `Paper3_Final/Brain`. Resolve its relative paths from this directory. Read `./Tasks.md`, `./WORK_DIARY.md`, `./PhD_proposal.md`, `./PhD_Status.md`, `./email/` and `./meeting transcript/` here. Update these canonical files, never the old machine-local compatibility pointers.
 
-## Research skills
+**Canonical repository root (this laptop, after move from `D:\Pranav\docker\Paper3_Final`):** `C:\Users\sanga\Desktop\Pranav Paper3_Final`. Git work path and push workflow: `./PUSH_WORKFLOW.md` (branch `Final`). Treat repo-relative paths (`../output`, `../Experiment papers`, `../scripts`) from Brain as under that root. An older copy may still exist at `D:\Pranav\docker\Paper3_Final`; do not treat it as canonical unless the user explicitly says to work there.
 
-All research skills needed for this project are in `./skills` (`D:\Pranav\docker\Paper3_Final\Brain\skills`). When a task needs literature search, paper writing, peer review, experiment design, verification, reproducibility, or another research workflow, open the matching `SKILL.md` in that folder and follow it before acting. Do not rely on memory of those skills. Learn the relevant skill at the time it is needed.
+## Research skills — read before writing or revising the paper
+
+All research skills for this project are in `./skills`, full path `C:\Users\sanga\Desktop\Pranav Paper3_Final\Brain\skills`. Before drafting or editing `documents/Paper3_outline_ml.md` or any manuscript text, open and follow these files:
+
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\Brain\skills\phd-skills-main\plugin\skills\paper-writing\SKILL.md`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\Brain\skills\research-skills-main\research-paper\SKILL.md`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\Brain\skills\Research-Paper-Writing-Skills-main\research-paper-writing\SKILL.md`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\Brain\skills\Research-Paper-Writing-Skills-main\research-paper-writing\references\method.md`
+
+The outline is a short research paper (IMRaD). Methods name the scientific procedure a reader could follow. They do not name scripts, CSV files, column codes, or software commands. When a task needs literature search, peer review, experiment design, or verification, open the matching `SKILL.md` in `./skills` and follow it before acting.
 
 Current libraries in `./skills`: `Academic-Research-Agent-Skill-main`, `academic-research-skills-main`, `phd-skills-main`, `Research-Paper-Writing-Skills-main`, `research-skills-main`. `skiLL.Md-main` in the same folder is a software-engineering library, not the research set.
 
@@ -23,7 +32,7 @@ Always, always give me full path of each and every file u read and used for maki
 ""./email"
 "./meeting transcript"" these folders contain the emails i had with colleagues and the metting transcript. keep a check on them. 
 
-it makes me so mad how carefree and careless ur attitude is... pls update in gemini.md write a promise that u will never ever be tolerant, u will be critical about every detail. Promise me that u will never take anything for granted and will always check every detail and will never be careless or accepting, until it is critically checked. u need to always keep note of previous literature for supporting everyhitng we are doing. `../Experiment papers` (`D:\Pranav\docker\Paper3_Final\Experiment papers`) is the canonical peer-reviewed PDF library; searchable `.md` exports for some sound methods live alongside those PDFs in the same folder (no separate `_md` tree). Every method must be supported by literature tracked there.
+it makes me so mad how carefree and careless ur attitude is... pls update in gemini.md write a promise that u will never ever be tolerant, u will be critical about every detail. Promise me that u will never take anything for granted and will always check every detail and will never be careless or accepting, until it is critically checked. u need to always keep note of previous literature for supporting everyhitng we are doing. `../Experiment papers` (`C:\Users\sanga\Desktop\Pranav Paper3_Final\Experiment papers`) is the canonical peer-reviewed PDF library; searchable `.md` exports for some sound methods live alongside those PDFs in the same folder (no separate `_md` tree). Every method must be supported by literature tracked there.
 
 
 ## Paper 3 hypotheses confirmed by the user on 2026-10-13
@@ -37,15 +46,16 @@ Source: `./source_documents/Paper3_outline_ml.docx` (hypothesis wording only; ol
 
 H4 workflow: Step 3 defines measurement domains; Step 4 assesses redundancy within domains; Step 5 forms and evaluates equations. PCA and LASSO are not compulsory. Do not force a variable to survive selection merely to retain its domain, and do not adopt stale outline methods without checking the current scientific question.
 
-Current authoritative processing setup:
-- Scripts repo: `C:\Users\pandya\Documents\Github\docker\ExpData`
-- Active data preparation scripts: `C:\Users\pandya\Documents\Github\docker\Paper3_Github\scripts`
-- Staged raw data root: `C:\Users\pandya\Documents\Github\docker\Paper3_Github\rawdata`
-- Active outputs root: `C:\Users\pandya\Documents\Github\docker\Paper3_Github\output`
-- Active key file: `C:\Users\pandya\Documents\Github\docker\Paper3_Github\output\key.csv`
-- Current metadata/index tables location: `C:\Users\pandya\Documents\Github\docker\Paper3_Github\output`
-- Active Paper 3 post-processing & analysis workspace: `D:\Pranav\docker\Paper3_Final`
-- Active Paper 3 analysis input: `C:\Users\pandya\Documents\Github\docker\Paper3_Github\output\merged_all_11participants.csv`
+Current authoritative processing setup (verify paths exist on the machine in use):
+
+**Paper3_Final (stats, merges, figures, Brain):**
+- Active post-processing and analysis workspace: `C:\Users\sanga\Desktop\Pranav Paper3_Final`
+- Primary analysis inputs in-repo: `C:\Users\sanga\Desktop\Pranav Paper3_Final\output\merged_all_11participants.csv` and `...\merged_all_11participants_8min.csv`
+- In-repo key when used locally: `C:\Users\sanga\Desktop\Pranav Paper3_Final\output\key.csv`
+
+**Sensor pipeline (read-only staging; do not modify Paper3_Github without explicit permission):**
+- On this laptop: `D:\Pranav\docker\ExpData` (scripts), `D:\Pranav\docker\Paper3_Github\rawdata`, `D:\Pranav\docker\Paper3_Github\output`, key `D:\Pranav\docker\Paper3_Github\output\key.csv`
+- Historical primary-laptop paths (provenance only unless confirmed present): `C:\Users\pandya\Documents\Github\docker\ExpData`, `C:\Users\pandya\Documents\Github\docker\Paper3_Github\...`
 
 The older `Data Processing_05May` package is legacy context, not the main active pipeline location.
 
@@ -76,7 +86,7 @@ I will ask you to use "code-simplifier.md" which is for code simplifier, when I 
 My Project Data is here C:\Users\pandya\OneDrive - UCL\Field experiment raw data\Complete Participantwise data, in folders P2 to P18 each for one ParticipantID - number from 1 to 18. Each participant did 7 Phase of Experiment - BikeU, WalkU, BikeG, WalkG, Tram are most important phase and Indoor, Reststop are to fill gaps between Phase. Each ParticipantID P2 to P18 has these 5 important phase folder. 
 I used 5 different sensors - Empatica Embrace Plus, Pupil labs Neon eye tracker, LYS button (1 and 2 where LYS1 was on pariticpant and LYS2 was on researcher), Atmotube (Atmotube_left and Atmotube_right) these are on both sides of researcher, giving idea of air pollution based on direction of researcher, ucm Hepia backpack (for environemntal sensing). I also did Psychological surveys (STAI, PRS) the details of all this you will find here - "./source_documents/Formulaire Commission éthique_ABCD_27May25_signed.pdf" and the acronymn for each column names are "C:\Users\pandya\OneDrive - UCL\Field experiment raw data\Experiment material\Parameters acronym experiment data manual.docx".
 This is paper on ucm backapck - "./source_documents/Cityfeel ucm backpack paper.pdf"
-Other sensors papers: `../Experiment papers` (`D:\Pranav\docker\Paper3_Final\Experiment papers`). H4 supplementary **high sound** exploratory cut (`ucm_SND_dBA >= 70`) is documented in `../output/statistical_analysis/results/H4_exploratory_sound_utci/H4_sound_utci_thresholds.txt` — justify with local annoyance/comfort PDFs plus WHO/EU long-term limits (Lden), not as a universal discomfort onset constant.
+Other sensors papers: `../Experiment papers` (`C:\Users\sanga\Desktop\Pranav Paper3_Final\Experiment papers`). H4 supplementary **high sound** exploratory cut (`ucm_SND_dBA >= 70`) is documented in `C:\Users\sanga\Desktop\Pranav Paper3_Final\output\statistical_analysis\results\H4_exploratory_sound_utci\H4_sound_utci_thresholds.txt` — justify with local annoyance/comfort PDFs plus WHO/EU long-term limits (Lden), not as a universal discomfort onset constant.
 For the selected questionnaires find documentation here "./source_documents/Collected Questionnaire"  
 
 The experiment is done in biking, walking and tram. BikeU, WalkU - the U means in urban environemnt which was at Usquare and Etterbeek going to Montogomery. BikeG, WalkG - the G mean in green environment which was at La Cambre park, tram goes from Boondale Gare to Etterbeek Gare. 
@@ -236,15 +246,16 @@ Paper3_Github/
     └── metadata/key/index tables
 ```
 
-Rules: keep staged raw data read-only under `C:\Users\pandya\Documents\Github\docker\Paper3_Github\rawdata`. Put canonical, version-controlled scripts in `C:\Users\pandya\Documents\Github\docker\ExpData\scripts`. Place intermediate and final outputs under `C:\Users\pandya\Documents\Github\docker\Paper3_Github\output`. Use `C:\Users\pandya\Documents\Github\docker\ExpData\temp` only for throwaway or task-specific experiments. Do not create files outside this live layout without explicit permission.
+Rules: keep staged raw data read-only under `D:\Pranav\docker\Paper3_Github\rawdata` on this laptop (historical: `C:\Users\pandya\Documents\Github\docker\Paper3_Github\rawdata`). Put canonical sensor-pipeline scripts in `D:\Pranav\docker\ExpData\scripts` (historical pandya Github path as above). Place sensor-pipeline outputs under `D:\Pranav\docker\Paper3_Github\output`. Use `D:\Pranav\docker\ExpData\temp` only for throwaway sensor-pipeline experiments; use `C:\Users\sanga\Desktop\Pranav Paper3_Final\temp` for Paper3_Final analysis throwaways. Do not create files outside the agreed layout without explicit permission.
 
 Always remember and always remind me that using a published library means the implementation is independently verified and can be cited; prefer established tools to reduce implementation burden and improve reproducibility.
 
 Current experiment processing files are organized primarily across:
-- `C:\Users\pandya\Documents\Github\docker\ExpData` for scripts and pipeline logic
-- `C:\Users\pandya\Documents\Github\docker\Paper3_Github\rawdata` for staged raw sensor and questionnaire data
-- `C:\Users\pandya\Documents\Github\docker\Paper3_Github\output` for processed outputs, index files, and metadata tables
-- `C:\Users\pandya\Documents\Github\docker\Paper3_Github\output\key.csv` as the active participant phase key file used by the pipeline
+- `D:\Pranav\docker\ExpData` for sensor-pipeline scripts (this laptop)
+- `D:\Pranav\docker\Paper3_Github\rawdata` for staged raw sensor and questionnaire data
+- `D:\Pranav\docker\Paper3_Github\output` for sensor-pipeline processed outputs, index files, and metadata tables
+- `D:\Pranav\docker\Paper3_Github\output\key.csv` as the participant phase key for ExpData jobs
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final` for merged analysis tables, statistical R scripts, and paper outputs
 
 # New rules for Experiment File Analysis.
 Each sensor name like ucm, empatica, eyetracker, atmo & lys, 
@@ -277,20 +288,16 @@ for project metadata, mappings, keys, codebooks, and lookup tables.
 When organizing files, prefer updating existing validated files/folders rather than creating new structures.
 
 ## Python Environment
-- **Always use this venv** (single canonical environment for all docker projects): `C:\Users\pandya\Documents\Github\docker\.venv\`
-- Python executable: `C:\Users\pandya\Documents\Github\docker\.venv\Scripts\python.exe`
-- Do **not** use Anaconda, ArcGIS Pro Python, or `ExpData\.venv` — only the docker-root `.venv` above
+- **Primary laptop (historical):** docker-root venv `C:\Users\pandya\Documents\Github\docker\.venv\` with executable `...\Scripts\python.exe`. Do **not** use Anaconda, ArcGIS Pro Python, or ad hoc venvs there without user approval.
+- **This laptop:** confirm which venv exists before running Python (`D:\Pranav\docker\.venv` and pandya docker `.venv` are often absent after transfer). If none is installed, ask the user before creating or using an environment.
 - Python 3.11.9, neurokit2 0.2.13, avro-python3 1.10.2, folium 0.20.0 (plus packages installed here)
 - Removed redundant `.venv-1` and `.venv-2` (Jun 2025); legacy `ExpData\.venv` is superseded by docker-root `.venv`
-- Run scripts via full path (avoids PATH picking up Anaconda):
+- Run scripts via full path to the **verified** project venv (avoids PATH picking up Anaconda), e.g. on primary laptop:
   ```powershell
   & "C:\Users\pandya\Documents\Github\docker\.venv\Scripts\python.exe" script.py
   ```
-- Execute notebooks via:
-  ```powershell
-  & "C:\Users\pandya\Documents\Github\docker\.venv\Scripts\python.exe" -m nbconvert --to notebook --execute --inplace notebook.ipynb
-  ```
-- Notebook kernel: select `C:\Users\pandya\Documents\Github\docker\.venv` in VS Code/Cursor kernel picker
+- Execute notebooks the same way with `-m nbconvert --to notebook --execute --inplace notebook.ipynb`
+- Notebook kernel: select the same verified `.venv` in VS Code/Cursor kernel picker
 - Never create another venv or kernel — if something is missing, tell the user to install it into this `.venv`
 
 ## Scientific precision commitment
@@ -305,7 +312,7 @@ I commit to checking scientific details critically before claiming correctness. 
 - Treat even small discrepancies as requiring explanation and an explicit decision. Do not silently round, cap, rescale, fill, or otherwise alter scientific values to make checks pass.
 
 ## Paper3_Final temporary and archive folders
-- In `C:\Users\pandya\Documents\Github\docker\Paper3_Final`, the only project-managed temporary and archive roots are `<repo>\temp` and `<repo>\archive`. Do not create project `temp`, `archive`, or `_archive` folders elsewhere in this repository.
+- In `C:\Users\sanga\Desktop\Pranav Paper3_Final`, the only project-managed temporary and archive roots are `<repo>\temp` and `<repo>\archive`. Do not create project `temp`, `archive`, or `_archive` folders elsewhere in this repository.
 - Put temporary work beneath `<repo>\temp`, retaining useful source context beneath that root. When consolidating a nested temp folder, move its contents under `<repo>\temp` and remove the redundant nested temp folder after checking references.
 - Put archived files beneath `<repo>\archive`, mirroring each file's original repository-relative path. For example, `output\reports\old.csv` becomes `archive\output\reports\old_YYYYMMDD_HHMMSS.csv`.
 - Before archiving, audit references and collisions. Preserve contents, add the local archive-time suffix `_YYYYMMDD_HHMMSS` before each file extension, and never overwrite an existing archive destination.
