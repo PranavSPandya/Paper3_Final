@@ -1,7 +1,7 @@
 # Paper3 final output layer (presentation only; called at the end of every statistical script).
 # It never changes a model, estimate, p value, adjusted p value or adjustment family. Per result folder it
-#  1) renames columns to the shared vocabulary (snake_case: p_value, p_value_adjusted, estimate, std_error,
-#     ci_lower/ci_upper, statistic/statistic_type, correlation*, n_participants, n_observations, phase_id, ...),
+#  1) renames columns to the shared vocabulary (public fields: p_value, q_value, FDR_significant, estimate, std_error,
+#     ci_lower/ci_upper, test_statistic/statistic_test, correlation*, n_participants, n_observations, phase_id, ...),
 #  2) documents the BH family each analysis used (adjustment_method / adjustment_family / adjustment_family_size,
 #     sizes counted from the table itself) and re-checks the stored adjusted p values against that family,
 #  3) merges sibling tables (fit status into the timeseries hypothesis table; H5 epoch and grid-label tables) and
@@ -17,7 +17,7 @@ P3_DATA_TABLES <- c("H5_hotspot_day.csv", "H5_epoch_buffer_assignment.csv", "H5_
 P3_DERIVED <- c("statistic_type", "estimate_type", "correlation_type", "confidence_level",
                 "adjustment_method", "adjustment_family", "adjustment_family_size")
 P3_P_COLUMNS <- c("p", "p_value", "q", "q_FDR", "q_BH", "p_value_FDR", "fdr_q", "p_value_adjusted",
-                  "SignFlip_p", "p_value_60s", "n_p_lt_05", "n_significant_unadjusted")
+                  "q_value", "SignFlip_p", "p_value_60s", "n_p_lt_05", "n_significant_unadjusted")
 
 P3_MAP <- c(
   Beta = "estimate", SE = "std_error", se = "std_error", Beta_60s = "estimate_60s", SE_60s = "std_error_60s",
@@ -167,6 +167,14 @@ p3_family <- function(x, file) {
     key <- ifelse(has, "pooled", NA); size <- rep(sum(has), n)
     res <- list(key = key, size = size, forced = FALSE, text = sprintf(
       "BH pooled across all %d phase_id x outcome x view-factor (SVF, TVF, BVF) exposure terms; class and covariate terms not adjusted", size))
+  } else if (grepl("H6_stress_composite_(phaseavg|timeseries)_coupling_env_physio", file)) {
+    key <- col("analysis_family"); size <- cnt(key, finite_p)
+    res <- list(key = key, size = size, forced = FALSE,
+      text = sprintf("BH within %s across prespecified env-to-physio coupling tests", key))
+  } else if (grepl("H6_stress_composite_(phaseavg|timeseries)_coupling_psych_physio", file)) {
+    key <- col("analysis_family"); size <- cnt(key, finite_p)
+    res <- list(key = key, size = size, forced = FALSE,
+      text = sprintf("BH within %s across prespecified psych-to-physio tests (env-adjusted)", key))
   } else if (grepl("H6_pairwise_rmcorr", file)) {
     key <- ifelse(has, "pooled", NA); size <- rep(sum(has), n)
     res <- list(key = key, size = size, forced = FALSE, text = sprintf("BH across all %d fitted composite pairs", size))
@@ -216,6 +224,7 @@ p3_finalize_table <- function(x, file) {
     if (!pair[2] %in% names(x)) x[[pair[2]]] <- NA_character_
     qv <- p3_num(x[[pair[1]]]); i <- is.finite(qv) & !p3_nb(x[[pair[2]]])
     x[[pair[2]]][i] <- ifelse(qv[i] < 0.05, "TRUE", "FALSE")
+    x[[pair[2]]][!is.finite(qv)] <- NA_character_
   }
   tag <- paste(col("test"), col("table"))
   if ("estimate" %in% names(x)) {
@@ -244,6 +253,11 @@ p3_finalize_table <- function(x, file) {
     x$adjustment_family <- ifelse(fam$has, fam$text, NA)
     x$adjustment_family_size <- ifelse(fam$has, as.character(fam$size), NA)
     p3_check_family(x, fam, file)
+    if(grepl('Sensitivity_60s[.]csv$',file) && 'p_value_adjusted_60s' %in% names(x)) {
+      secondary<-x;secondary$p_value<-col('p_value_60s');secondary$p_value_adjusted<-col('p_value_adjusted_60s')
+      f60<-fam;f60$has<-is.finite(p3_num(secondary$p_value_adjusted))
+      p3_check_family(secondary,f60,file)
+    }
   }
   x[c(setdiff(names(x), P3_DERIVED), intersect(P3_DERIVED, names(x)))]
 }
@@ -316,13 +330,21 @@ p3_merge_epoch <- function(ep_path, lm_path) {
   list(data = out, extra = extra, epoch_cols = names(e))
 }
 
-p3_finalize_directory <- function(directory, detail_dir = get0("H4_DETAIL_DIR", ifnotfound = NULL)) {
+p3_run_info_path <- function(directory) {
+  directory <- normalizePath(directory, winslash = "/", mustWork = FALSE)
+  file.path(directory, paste0(basename(directory), "_run_info.csv"))
+}
+
+p3_finalize_directory_staged <- function(directory, detail_dir = get0("H4_DETAIL_DIR", ifnotfound = NULL)) {
   if (!dir.exists(directory)) return(invisible(NULL))
   folder <- basename(normalizePath(directory, winslash = "/"))
-  info_name <- paste0(folder, "_run_info.csv"); info_path <- file.path(directory, info_name)
+  info_path <- p3_run_info_path(directory)
+  info_name <- basename(info_path)
   files <- sort(list.files(directory, pattern = "\\.csv$"))
   files <- files[!grepl(P3_RETIRED_PATTERN, files) & !grepl(P3_UNTOUCHED_PATTERN, files) & files != info_name]
   sections <- list(); dict <- list(); consumed <- character()
+  prior_schema <- if(file.exists(info_path)) p3_read(info_path) else NULL
+  row_metadata <- list()
   add_dict <- function(item, d, source_file) dict[[length(dict) + 1]] <<- data.frame(section = "column_dictionary",
     item = item, field = d$field, value = paste0(source_file, ":", d$source_column), stringsAsFactors = FALSE)
 
@@ -347,7 +369,7 @@ p3_finalize_directory <- function(directory, detail_dir = get0("H4_DETAIL_DIR", 
   consumed <- c(consumed, fit_name)
 
   for (f in setdiff(files, consumed)) {
-    path <- file.path(directory, f); raw <- p3_read(path)
+    path <- file.path(directory, f); raw <- p3_restore_public(p3_read(path), prior_schema, f)
     is_data <- f %in% P3_DATA_TABLES
     is_hyp <- grepl("_hypothesis\\.csv$", f)
     if (!is_data && !is_hyp && !any(names(raw) %in% P3_P_COLUMNS)) next
@@ -361,8 +383,27 @@ p3_finalize_directory <- function(directory, detail_dir = get0("H4_DETAIL_DIR", 
         field = names(mf$md5), value = unname(mf$md5), stringsAsFactors = FALSE)
     }
     if (!is_data) x <- p3_finalize_table(x, f)
+    if (!is_data && 'p_value' %in% names(x)) {
+      public <- p3_public_result(x, f)
+      if(folder %in% c('H1_H3_phaseavg','H1_H3_timeseries','H6_stress_composite_phaseavg','H6_stress_composite_timeseries')) public$script_name <- rep(paste0(folder,'.R'),nrow(public))
+      removed_fields <- setdiff(names(x), c(names(public),'p_value_adjusted','significant_adjusted','term','hotspot_id','n_hotspots','statistic'))
+      # Store compacted model context in the existing run_info, not extra output CSVs.
+      for(k in removed_fields) {
+        v <- x[[k]]; ix <- which(p3_nb(v))
+        if(length(ix)) row_metadata[[length(row_metadata)+1L]] <- data.frame(
+          section='result_context', item=paste0(f,'::',ix), field=k, value=v[ix],stringsAsFactors=FALSE)
+      }
+      if(grepl('Sensitivity_60s[.]csv$',f)) {
+        for(k in intersect(P3_60S_FIELDS,names(x))) {
+          ix<-which(p3_nb(x[[k]]))
+          if(length(ix))row_metadata[[length(row_metadata)+1L]]<-data.frame(
+            section='result_context',item=paste0(f,'::',ix),field=paste0('reference10s__',k),value=x[[k]][ix],stringsAsFactors=FALSE)
+        }
+      }
+      x <- public
+    }
     p3_write(x, path)
-    der <- intersect(P3_DERIVED, names(x))
+    der <- union(intersect(P3_DERIVED, names(x)), setdiff(names(x), rn$dict$field))
     if (length(der)) dict[[length(dict) + 1]] <- data.frame(section = "column_dictionary", item = f, field = der,
       value = "derived", stringsAsFactors = FALSE)
   }
@@ -370,6 +411,7 @@ p3_finalize_directory <- function(directory, detail_dir = get0("H4_DETAIL_DIR", 
   # run_info: new sections replace old ones (section 'run' by item); dictionary keeps the full rename history
   prior <- if (file.exists(info_path)) p3_read(info_path) else NULL
   if (!is.null(prior)) prior[is.na(prior)] <- ""
+  if(length(row_metadata)) sections[[length(sections)+1L]] <- do.call(rbind,row_metadata)
   new <- if (length(sections)) do.call(rbind, sections) else NULL
   keep <- prior
   if (!is.null(keep)) {
@@ -413,12 +455,185 @@ p3_finalize_directory <- function(directory, detail_dir = get0("H4_DETAIL_DIR", 
     field=c('bh_check','published_file_count','maximum_published_files'),
     value=c('passed_or_not_applicable',as.character(published_count),'5'),stringsAsFactors=FALSE)
   if (!is.null(meta)) meta <- meta[!(meta$section=='validation' & meta$item=='output_schema'),,drop=FALSE]
-  info <- rbind(meta, d, fl, validation); rownames(info) <- NULL
+  info <- rbind(meta, d, fl, validation)
+  info <- info[order(info$section,info$item,info$field,info$value),,drop=FALSE]; rownames(info) <- NULL
   if (!is.null(info) && nrow(info)) p3_write(info, info_path)
   gone <- consumed[file.exists(file.path(directory, consumed))]
   if (length(gone)) file.remove(file.path(directory, gone))
   invisible(info_path)
 }
 
+# Validate a private copy first. Rejected validation cannot rename or delete published files.
+p3_finalize_directory <- function(directory, detail_dir = get0("H4_DETAIL_DIR", ifnotfound = NULL)) {
+  if (!dir.exists(directory)) return(invisible(NULL))
+  directory <- normalizePath(directory, winslash = "/", mustWork = TRUE)
+  workspace <- tempfile("paper3_output_transaction_")
+  dir.create(workspace)
+  on.exit(unlink(workspace, recursive = TRUE), add = TRUE)
+  original_dir <- file.path(workspace, "original")
+  staged_dir <- file.path(workspace, basename(directory))
+  dir.create(original_dir); dir.create(staged_dir)
+  original_files <- list.files(directory, full.names = TRUE, all.files = TRUE, no.. = TRUE)
+  original_files <- original_files[!dir.exists(original_files)]
+  if (length(original_files)) {
+    if (!all(file.copy(original_files, original_dir, copy.date = TRUE)) ||
+        !all(file.copy(original_files, staged_dir, copy.date = TRUE)))
+      stop("Could not stage output transaction; published files unchanged", call. = FALSE)
+  }
+  p3_finalize_directory_staged(staged_dir, detail_dir = detail_dir)
+  final_files <- list.files(staged_dir, full.names = TRUE, all.files = TRUE, no.. = TRUE)
+  final_names <- basename(final_files)
+  original_names <- basename(original_files)
+  changed <- final_files[vapply(final_files, function(p) {
+    target <- file.path(directory, basename(p))
+    !file.exists(target) || !identical(unname(tools::md5sum(p)), unname(tools::md5sum(target)))
+  }, logical(1))]
+  removed <- setdiff(original_names, final_names)
+  if (!length(changed) && !length(removed))
+    return(invisible(file.path(directory, paste0(basename(directory), "_run_info.csv"))))
+  # Roll back publication if copying/removal fails (e.g. a locked output file).
+  committed <- FALSE
+  on.exit({
+    if (!committed) {
+      added <- setdiff(final_names, original_names)
+      if (length(added)) unlink(file.path(directory, added))
+      restored <- if (length(original_files)) file.copy(
+        file.path(original_dir, original_names), directory, overwrite = TRUE, copy.date = TRUE) else TRUE
+      if (!all(restored)) warning("Output rollback incomplete: restore files from the project archive backup")
+    }
+  }, add = TRUE, after = FALSE)
+  for (p in changed) if (!file.copy(p, file.path(directory, basename(p)), overwrite = TRUE, copy.date = TRUE))
+    stop("Output publication failed; restoring original files", call. = FALSE)
+  if (length(removed) && !all(file.remove(file.path(directory, removed))))
+    stop("Output cleanup failed; restoring original files", call. = FALSE)
+  committed <- TRUE
+  invisible(file.path(directory, paste0(basename(directory), "_run_info.csv")))
+}
+
 # Entry point kept for the existing calls at the end of each script.
 paper3_standardize_result_directory <- function(directory) p3_finalize_directory(directory)
+
+
+# Compact public statistical schema. Internal analysis objects keep their original names.
+P3_60S_FIELDS <- c('estimate','std_error','ci_lower','ci_upper','df','statistic',
+                  'p_value','p_value_adjusted','significant_adjusted','n_observations','n_participants')
+
+p3_restore_public <- function(x, metadata, file) {
+  if(!'q_value' %in% names(x)) return(x)
+  mapping <- c(q_value='p_value_adjusted', FDR_significant='significant_adjusted',
+    predictor='term',comparison='contrast',grid_id='hotspot_id',n_grids='n_hotspots',test_statistic='statistic')
+  for(k in intersect(names(mapping),names(x))) {x[[mapping[[k]]]]<-x[[k]];x[[k]]<-NULL}
+  if(grepl('^9_FDR',file)) {x$term<-NULL;x$contrast<-NULL}
+  for(k in intersect(c('script_name','source_table','context','scale','inference_note'),names(x))) x[[k]]<-NULL
+  # Recover source context for validation and plotting without exposing wide tables.
+  if(!is.null(metadata) && all(c('section','item','field','value') %in% names(metadata))) {
+    z<-metadata[metadata$section=='result_context' & startsWith(metadata$item,paste0(file,'::')),,drop=FALSE]
+    promoted60<-grepl('Sensitivity_60s[.]csv$',file) && any(startsWith(z$field,'reference10s__'))
+    live60<-character()
+    if(promoted60) {
+      for(k in P3_60S_FIELDS) {
+        live60<-c(live60,paste0(k,'_60s'))
+        x[[paste0(k,'_60s')]]<-if(k %in% names(x))x[[k]]else rep(NA_character_,nrow(x))
+        x[[k]]<-NULL
+      }
+    }
+    for(k in setdiff(unique(z$field),live60)) {
+      a<-z[z$field==k,,drop=FALSE]
+      # Use the last :: separator; filenames need no regular-expression interpretation.
+      i<-as.integer(sub('^.*::','',a$item));ok<-!is.na(i)&i>=1&i<=nrow(x)
+      if(!k %in% names(x)) x[[k]]<-rep(NA_character_,nrow(x))
+      x[[k]][i[ok]]<-a$value[ok]
+    }
+    if(promoted60) {
+      for(k in P3_60S_FIELDS) {
+        ref<-paste0('reference10s__',k)
+        x[[k]]<-if(ref %in% names(x))x[[ref]]else rep(NA_character_,nrow(x))
+        x[[ref]]<-NULL
+      }
+    }
+  }
+  x
+}
+p3_public_result <- function(x,file) {
+  n<-nrow(x);get<-function(k)p3_col(x,k)
+  fill<-function(a,b){i<-!p3_nb(a);a[i]<-b[i];a}
+  join<-function(keys){v<-rep('',n);for(k in keys){z<-get(k);i<-p3_nb(z);v[i]<-paste0(v[i],ifelse(nzchar(v[i]),'; ',''),k,'=',z[i])};v}
+  script<-if(grepl('^Analysis_combined_phaseavg',file))'Analysis_combined_phaseavg.R' else
+    if(grepl('^Analysis_combined_timeseries',file))'Analysis_combined_timeseries.R' else
+    if(grepl('^H5_',file))'H5_hotspot_weather.R' else
+    if(grepl('^H6_',file))'H6_stress_composite.R' else
+    if(grepl('^9_FDR',file))'H4_sound_literature_tests.R' else ''
+  # The H1/H3 filenames overlap between variants; provenance is set by the directory finalizer.
+  if(!nzchar(script))script<-get0('P3_EXPORT_SCRIPT',ifnotfound='H1_H3_phaseavg.R')
+  y<-data.frame(script_name=rep(script,n),source_table=rep(file,n),stringsAsFactors=FALSE)
+  y$model_id<-fill(get('model_id'),get('model_label'))
+  y$context<-join(c('hypothesis','analysis','analysis_entry','table','mode','duration','outcome_type','block'))
+  y$outcome<-fill(get('outcome'),get('composite_y'))
+  y$predictor<-fill(get('term'),get('composite_x'));y$comparison<-get('contrast')
+  i<-p3_nb(get('reference_phase_id')) & p3_nb(get('comparison_phase_id'))
+  y$comparison[i]<-paste(get('comparison_phase_id')[i],'-',get('reference_phase_id')[i])
+  for(k in c('phase_id','hotspot_id','grid_label','estimate','std_error','ci_lower','ci_upper','correlation',
+    'correlation_ci_lower','correlation_ci_upper','smd','smd_ci_lower','smd_ci_upper','df','n_participants','n_observations','n_pairs','n_hotspots'))y[[k]]<-get(k)
+  names(y)[names(y)=='hotspot_id']<-'grid_id';names(y)[names(y)=='n_hotspots']<-'n_grids'
+  y$test_statistic<-get('statistic')
+  type<-get('statistic_type')
+  type<-ifelse(type=='t','t-test (model coefficient or contrast)',ifelse(type=='z','Wald z-test',ifelse(type=='F','f-test (ANOVA)',type)))
+  explicit<-get('statistic_test');y$statistic_test<-fill(explicit,type)
+  if(grepl('^9_FDR',file)) {
+    y$paper<-get('paper');y$context<-get('test')
+    cmp<-grepl('paired|Wilcoxon|Friedman|condition|ANOVA',get('test'),ignore.case=TRUE)
+    y$comparison[cmp]<-get('test')[cmp];y$predictor[!cmp]<-get('test')[!cmp]
+    y$comparison[get('paper')=='Jo 2019']<-'Green - Urban'
+    infer<-get('test');label<-rep('',n)
+    label[grepl('paired one-sided',infer)]<-'one-sided paired t-test'
+    label[grepl('paired t Hot',infer)]<-'two-sided paired t-test'
+    label[grepl('Wilcoxon',infer)]<-'Wilcoxon signed-rank test'
+    label[grepl('Friedman',infer)]<-'Friedman test'
+    label[grepl('ANOVA',infer)]<-'f-test (participant-blocked ANOVA)'
+    label[get('paper')=='Rodrigues 2026']<-'Wald z-test'
+    label[get('paper')=='Kraus 2013']<-'t-test (mixed-model coefficient)'
+    # Existing exports did not retain the ANOVA/Friedman selection. Never guess it.
+    label[infer=='global 4-condition test']<-'omnibus test (selection not retained in old export)'
+    y$statistic_test<-fill(explicit,label)
+  }
+  if(grepl('^Analysis_combined',file)) y$statistic_test<-rep(if(grepl('phase_contrasts',file))'t-test (model phase contrast)'else 't-test (model coefficient)',n)
+  if(grepl('Temporal_AR1',file))y$statistic_test<-rep('t-test (mixed-model coefficient)',n)
+  if(file=='H5_view_model_coefficients.csv')y$statistic_test<-rep('t-test (mixed-model coefficient)',n)
+  if('correlation' %in% names(x)) {
+    ctype<-get('correlation_type');i<-p3_nb(get('correlation'))
+    y$statistic_test[i]<-ifelse(ctype[i]=='spearman_rho','Spearman correlation test','t-test (within-participant correlation)')
+  }
+  y$scale<-join(c('transformation','normalization','outcome_units','term_units'))
+  y$p_value<-get('p_value');y$q_value<-get('p_value_adjusted')
+  y$FDR_significant<-get('significant_adjusted')
+  y$inference_note<-join(c('inference_status','fit_status','stability_flag','reporting_note','method_validation_status'))
+  for(k in c('low_df_flag','boundary_variance','high_ar1_flag')) {
+    i<-toupper(get(k))=='TRUE';i[is.na(i)]<-FALSE
+    y$inference_note[i]<-paste0(y$inference_note[i],'; ',k,'=TRUE')
+  }
+  if('reporting_eligible' %in% names(x)) {
+    i<-toupper(get('reporting_eligible'))=='FALSE';i[is.na(i)]<-FALSE
+    y$inference_note[i]<-paste0(y$inference_note[i],'; reporting_eligible=FALSE')
+  }
+  if(file=='H5_view_model_coefficients.csv') {
+    i<-get('term')=='exposure' & get('model_id') %in% c('SVF','TVF','BVF');i[is.na(i)]<-FALSE
+    y$scale[i]<-'view-factor coefficient per 0.1 increase'
+    i<-p3_nb(get('class_reference'));i[is.na(i)]<-FALSE
+    y$inference_note[i]<-paste0(y$inference_note[i],'; class reference=',get('class_reference')[i])
+  }
+  if(grepl('Sensitivity_60s[.]csv$',file)) {
+    # This file reports 60-s fits; 10-s reference cells remain in run_info only.
+    for(k in P3_60S_FIELDS) y[[if(k=='statistic')'test_statistic'else if(k=='p_value_adjusted')'q_value'else if(k=='significant_adjusted')'FDR_significant'else k]]<-get(paste0(k,'_60s'))
+    y$context<-paste0(y$context,ifelse(nzchar(y$context),'; ',''),'epoch_seconds=60; role=sensitivity')
+    y$scale<-rep('within-person z-score; coefficient scale follows the model term',n)
+    y$inference_note<-join(c('fit_method_60s'))
+    rho60<-p3_num(get('ar1_rho_60s'));i<-is.finite(rho60)&rho60>.95
+    y$inference_note[i]<-paste0(y$inference_note[i],'; AR1 rho > 0.95, interpret cautiously')
+  }
+  missing_q<-!is.finite(p3_num(y$q_value))
+  y$FDR_significant[missing_q]<-NA_character_
+  y$inference_note[missing_q]<-paste0(y$inference_note[missing_q],'; FDR unavailable for this test')
+  mandatory<-c('script_name','source_table','outcome','p_value','q_value','FDR_significant')
+  keep<-names(y) %in% mandatory | vapply(y,function(z)any(p3_nb(z)),logical(1))
+  y[keep]
+}

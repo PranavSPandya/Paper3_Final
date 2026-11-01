@@ -1,3 +1,6 @@
+# Reading order: study settings -> explicit equations -> data preparation -> run entry.
+# Shared audit/fitting/report implementation: library/Analysis_combined_core.R.
+# Internal h4_/H4_ names are retained legacy engine identifiers, not the current H4 literature hypothesis.
 # H4 phase-average LME — explicit preparation and equations; shared audits/reporting in Analysis_combined_core.R
 if (!exists("PAPER3_PARTICIPANTS", inherits = FALSE)) {
   .entry <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
@@ -59,7 +62,7 @@ h4_equation_table <- data.frame(
   stringsAsFactors = FALSE
 )
 
-# Eq1 primary: UTCI x sound
+# Eq1 primary: UTCI + sound (additive effects)
 # Y <- PAPER3_APPLY_CSV_TRANSFORM(x, column_name); phase mean of Y is not centered.
 Eq1 <- quote(nlme::lme(
   Y ~ ucm_UTCI_phase_z + ucm_SND_dBA_phase_z + SVF_phase_z + atmo_pm2.5_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
@@ -70,7 +73,7 @@ Eq1 <- quote(nlme::lme(
   control = nlme::lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE)
 ))
 
-# Eq2: air temperature, humidity, wind, MRT, each x sound
+# Eq2: air temperature, humidity, wind and MRT + sound (additive effects)
 Eq2 <- quote(nlme::lme(
   Y ~ ucm_AIR_T_mid_phase_z + ucm_SND_dBA_phase_z + ucm_AIR_RH_phase_z + ucm_WIND_AWS_phase_z + ucm_MRT_phase_z + SVF_phase_z + atmo_pm2.5_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
@@ -80,7 +83,7 @@ Eq2 <- quote(nlme::lme(
   control = nlme::lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE)
 ))
 
-# Eq3: HUMIDEX x sound
+# Eq3: HUMIDEX + sound (additive effects)
 Eq3 <- quote(nlme::lme(
   Y ~ ucm_HUMIDEX_phase_z + ucm_SND_dBA_phase_z + SVF_phase_z + atmo_pm2.5_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
@@ -90,7 +93,7 @@ Eq3 <- quote(nlme::lme(
   control = nlme::lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE)
 ))
 
-# Eq4: PET x sound
+# Eq4: PET + sound (additive effects)
 Eq4 <- quote(nlme::lme(
   Y ~ ucm_PET_phase_z + ucm_SND_dBA_phase_z + SVF_phase_z + atmo_pm2.5_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,

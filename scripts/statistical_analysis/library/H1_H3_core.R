@@ -66,10 +66,24 @@ outcome_group_map <- setNames(
 SCRIPT_PATH <- H1_TO_H3_SCRIPT_PATH
 
 clean_labels <- c(
-  "questionnaire_current_comfort_1_7"   = "Survey: General Comfort (1-7)",
-  "questionnaire_pleasantness_1_5"      = "Survey: Pleasantness (1-5)",
-  "questionnaire_stai6_mean_1_5"        = "Survey: State Anxiety (STAI-6)",
-  "questionnaire_prs11_total_mean_1_5"  = "Survey: Restorativeness (PRS-11)",
+  "questionnaire_current_comfort_1_7"            = "Survey: General Comfort (1-7)",
+  "questionnaire_space_familiarity_1_5"          = "Survey: Space Familiarity (1-5)",
+  "questionnaire_pleasantness_1_5"               = "Survey: Pleasantness (1-5)",
+  "questionnaire_thermal_comfort_1_5"            = "Survey: Thermal Comfort (1-5)",
+  "questionnaire_acoustic_comfort_1_5"           = "Survey: Acoustic Comfort (1-5)",
+  "questionnaire_visual_comfort_1_5"             = "Survey: Visual/Light Comfort (1-5)",
+  "questionnaire_air_quality_comfort_1_5"        = "Survey: Air Quality Comfort (1-5)",
+  "questionnaire_odor_comfort_1_5"               = "Survey: Odor Comfort (1-5)",
+  "questionnaire_stai_calm_rev_1_5"              = "Survey: STAI Calm (oriented; higher = more anxiety)",
+  "questionnaire_stai_tense_1_5"                 = "Survey: STAI Tense (1-5)",
+  "questionnaire_stai_upset_1_5"                 = "Survey: STAI Upset (1-5)",
+  "questionnaire_stai_relaxed_rev_1_5"           = "Survey: STAI Relaxed (oriented; higher = more anxiety)",
+  "questionnaire_stai_content_rev_1_5"           = "Survey: STAI Content (oriented; higher = more anxiety)",
+  "questionnaire_stai_worried_1_5"               = "Survey: STAI Worried (1-5)",
+  "questionnaire_prs11_fascination_mean_1_5"     = "Survey: PRS Fascination (1-5)",
+  "questionnaire_prs11_being_away_mean_1_5"      = "Survey: PRS Being Away (1-5)",
+  "questionnaire_prs11_coherence_mean_1_5"       = "Survey: PRS Coherence (1-5)",
+  "questionnaire_prs11_scope_mean_1_5"           = "Survey: PRS Scope (1-5)",
   "empatica_heart_rate"                 = "Empatica: Heart Rate (bpm)",
   "empatica_eda_tonic"                  = "Empatica: EDA Tonic Level (SCL)",
   "empatica_eda_phasic"                 = "Empatica: EDA Phasic (SCR)",
@@ -101,8 +115,25 @@ clean_labels <- c(
 
 # Units of the raw participant-phase means (from column-name suffixes and labels); H2 uses ln units for the HRV_LOG outcomes.
 OUTCOME_UNITS <- c(
-  questionnaire_current_comfort_1_7 = "rating scale points (1-7)", questionnaire_pleasantness_1_5 = "rating scale points (1-5)", questionnaire_stai6_mean_1_5 = "rating scale points (mean item score, 1-5)",
-  questionnaire_prs11_total_mean_1_5 = "rating scale points (mean item score, 1-5)", empatica_heart_rate = "bpm", empatica_eda_tonic = "uS (microsiemens)",
+  questionnaire_current_comfort_1_7 = "rating scale points (1-7)",
+  questionnaire_space_familiarity_1_5 = "rating scale points (1-5)",
+  questionnaire_pleasantness_1_5 = "rating scale points (1-5)",
+  questionnaire_thermal_comfort_1_5 = "rating scale points (1-5)",
+  questionnaire_acoustic_comfort_1_5 = "rating scale points (1-5)",
+  questionnaire_visual_comfort_1_5 = "rating scale points (1-5)",
+  questionnaire_air_quality_comfort_1_5 = "rating scale points (1-5)",
+  questionnaire_odor_comfort_1_5 = "rating scale points (1-5)",
+  questionnaire_stai_calm_rev_1_5 = "rating scale points (1-5; oriented)",
+  questionnaire_stai_tense_1_5 = "rating scale points (1-5)",
+  questionnaire_stai_upset_1_5 = "rating scale points (1-5)",
+  questionnaire_stai_relaxed_rev_1_5 = "rating scale points (1-5; oriented)",
+  questionnaire_stai_content_rev_1_5 = "rating scale points (1-5; oriented)",
+  questionnaire_stai_worried_1_5 = "rating scale points (1-5)",
+  questionnaire_prs11_fascination_mean_1_5 = "rating scale points (subscale mean, 1-5)",
+  questionnaire_prs11_being_away_mean_1_5 = "rating scale points (subscale mean, 1-5)",
+  questionnaire_prs11_coherence_mean_1_5 = "rating scale points (subscale mean, 1-5)",
+  questionnaire_prs11_scope_mean_1_5 = "rating scale points (subscale mean, 1-5)",
+  empatica_heart_rate = "bpm", empatica_eda_tonic = "uS (microsiemens)",
   empatica_eda_phasic = "uS (microsiemens)", empatica_skin_temperature = "degC", empatica_hrv_td_sdnn = "ms",
   empatica_hrv_td_rmssd = "ms", empatica_hrv_fd_lf = "ms^2", empatica_hrv_fd_hf = "ms^2",
   empatica_hrv_fd_lf_hf_ratio = "unitless (ratio)", empatica_hrv_fd_lfnu = "normalized units (n.u.)", empatica_hrv_fd_hfnu = "normalized units (n.u.)",
@@ -536,8 +567,8 @@ h1_h3_fit_temporal_ar1 <- function(route, CONDITIONS, sensor_outcomes, model_aud
     fit_result_60s <- fit_ar1_with_fallback(epoch_data_60s, "time_60s_step")
     t_table_60s <- if (!is.null(fit_result_60s$fit)) summary(fit_result_60s$fit)$tTable
     for (term_name in all_terms) temporal_sens_list[[length(temporal_sens_list) + 1]] <- cbind(
-      time_series_result_row(outcome, term_name, formula_template_60s, t_table_60s, c(Beta_60s = "Value", SE_60s = "Std.Error", p_value_60s = "p-value")),
-      AR1_phi_60s = ar1_rho(fit_result_60s$fit), Fit_Method_60s = fit_result_60s$method, N_epochs_60s = nrow(epoch_data_60s), stringsAsFactors = FALSE)
+      time_series_result_row(outcome, term_name, formula_template_60s, t_table_60s, c(Beta_60s = "Value", SE_60s = "Std.Error", statistic_60s = "t-value", df_60s = "DF", p_value_60s = "p-value")),
+      AR1_phi_60s = ar1_rho(fit_result_60s$fit), Fit_Method_60s = fit_result_60s$method, N_epochs_60s = nrow(epoch_data_60s), n_participants_60s = length(unique(epoch_data_60s$ParticipantID)), stringsAsFactors = FALSE)
 
     status <- if (is.null(fit_result_10s$fit)) "FAILED_CONVERGENCE" else "FIT"
     model_audit[[length(model_audit) + 1]] <- audit_row("Temporal_AR1", "Primary_10s_matched_8min", outcome, "PhaseID*time_min", status,
@@ -584,7 +615,7 @@ h1_h3_fit_temporal_ar1 <- function(route, CONDITIONS, sensor_outcomes, model_aud
     temporal_sens_table$q_FDR_60s <- ave(temporal_sens_table$p_value_60s, temporal_sens_table$Term, FUN = function(p) p.adjust(p, method = "BH", n = temporal_family_size))
     temporal_sens_table$FDR_significant_60s <- !is.na(temporal_sens_table$q_FDR_60s) & temporal_sens_table$q_FDR_60s < 0.05
     if ("Beta_60s" %in% names(temporal_sens_table) && "SE_60s" %in% names(temporal_sens_table)) {
-      df60 <- if ("df" %in% names(temporal_sens_table)) temporal_sens_table$df else rep(NA_real_, nrow(temporal_sens_table))
+      df60 <- if ("df_60s" %in% names(temporal_sens_table)) temporal_sens_table$df_60s else rep(NA_real_, nrow(temporal_sens_table))
       tci60 <- t(vapply(seq_len(nrow(temporal_sens_table)), function(i) {
         wald_ci95(temporal_sens_table$Beta_60s[i], temporal_sens_table$SE_60s[i], df60[i])
       }, numeric(2)))
@@ -759,7 +790,7 @@ h1_to_h3_pipeline_run <- function() {
 
   # 5. H2: within-person rmcorr (Bakdash & Marusich 2017, Front Psychol 8:456) across the 4 core phases ----------------
   # rmcorr = lm(psych ~ factor(ParticipantID) + physio): one common within-person slope, df = N - k - 1. Inputs are
-  # participant-phase means (ln(x) already applied to the natural-log outcomes). 4 questionnaires x 26 outcomes, one BH-FDR family.
+  # participant-phase means (ln(x) already applied to the natural-log outcomes). 18 questionnaires x 26 outcomes, one BH-FDR family.
   cat("[3/6] Evaluating H2 psychophysiological concurrence models...\n")
   h2_physio_outcomes <- intersect(sensor_outcomes, names(df))
   h2_psych_outcomes  <- intersect(psych_outcomes, names(df))
@@ -854,7 +885,7 @@ h1_to_h3_pipeline_run <- function() {
   # (Bike, Walk), participant Green-minus-Urban deltas of the participant-phase means in phase_df (the H1/H3 Primary analysis
   # units: ln(x) for EDA tonic, raw questionnaire scale); Spearman cor.test(exact = FALSE) of delta PRS vs each delta when
   # n >= 7 and both SDs > 0; one BH-FDR family of the 6 planned tests (n = 6). Exploratory; H2_Restoration_Concordance_DeltaPRS.csv.
-  concord_psych <- "questionnaire_prs11_total_mean_1_5"
+  concord_psych <- "questionnaire_prs11_fascination_mean_1_5"
   concord_vars <- c("eyetracker_fixation_rate", "eyetracker_fixation_duration_s", "empatica_eda_tonic")
   concord_delta <- function(paired, v) {
     if (all(paste0(v, c("_U", "_G")) %in% names(paired))) paired[[paste0(v, "_G")]] - paired[[paste0(v, "_U")]] else rep(NA_real_, nrow(paired))
@@ -1051,7 +1082,9 @@ h1_to_h3_pipeline_run <- function() {
     Sensitivity_Sensor_Model = "Same model on within-person z-scores (within_person_z__, computed after the notebook transform); separate BH-FDR family (Family_Set = Sensitivity_WPZ)",
     Matched_Duration_Sensitivity = "Participant-specific common duration across BikeU/BikeG/WalkU/WalkG, capped at 8 minutes from phase start",
     Normalization = "Primary: analysis units (output/statistical_analysis/Normalization & Parameter Screening/Normalization/Normalization_H1toH4_all_parameters.csv transforms) + participant random intercept. Sensitivity and temporal AR(1): within-person z over the 4 core routes (after transform); no Indoor/Tram reference",
-    H2_Method = "Within-person rmcorr across 4 core phases (Bakdash & Marusich 2017); 4 questionnaires x 26 physiological outcomes = 104 pairs; one BH-FDR family",
+    H2_Method = sprintf("Within-person rmcorr across 4 core phases (Bakdash & Marusich 2017); %d questionnaires x 26 physiological outcomes = %d pairs; one BH-FDR family",
+      length(h2_hypothesis_spec$psychological_outcomes),
+      length(h2_hypothesis_spec$psychological_outcomes) * length(h1_hypothesis_spec$physiological_outcome_names)),
     Temporal_Method = "10-s AR(1) LMM on within-person z outcomes, matched first 8 min",
     Multiple_Testing = "Benjamini-Hochberg FDR (q < 0.05) within declared hypothesis families",
     N_Participants = length(PARTICIPANTS),

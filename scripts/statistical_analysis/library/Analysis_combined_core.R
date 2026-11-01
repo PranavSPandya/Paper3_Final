@@ -31,6 +31,10 @@ h4_study_spec$bilateral_sources <- list(
 H4_VARIANT <- if (identical(get0("H4_ANALYSIS_MODE", ifnotfound = "timeseries"), "phaseavg")) "phaseavg" else "timeseries"
 H4_FILE_PREFIX <- paste0("Analysis_combined_", H4_VARIANT)
 h4_file <- function(filename) sub("^H4_", paste0(H4_FILE_PREFIX, "_"), filename)
+h4_run_info_path <- function(dir = OUT_DIR) p3_run_info_path(dir)
+h4_model_outputs_locked <- function(dir = OUT_DIR) {
+  file.exists(h4_run_info_path(dir)) || file.exists(file.path(dir, h4_file("H4_run_complete.csv")))
+}
 # Output reduction (2026-11-01): only the reviewable files in H4_KEEP_FILES are saved in the results folder.
 # PAPER3_WRITE_DETAILS=1 also saves every detail table there (pre-reduction behaviour). Without it, detail files
 # are written to a per-session temporary folder (H4_DETAIL_DIR) and read back from there, so every step that
@@ -112,7 +116,7 @@ SOUND_QC_COLUMNS <- c(
 SOUND_CATEGORY_PROP_COLUMNS <- c(
   "wind_proportion", "rural_natural_proportion", "vehicle_proportion", "urban_manmade_neutral_proportion", "urban_manmade_positive_proportion",
   "urban_manmade_negative_proportion", "mechanisms_proportion", "unidentify_proportion")
-# Scene shares and totals are percent of the fisheye circle (0â€“100).
+# Scene shares and totals are percent of the fisheye circle (0-100).
 # Total_Vegetation_% = Tree_% + Plant_% + Grass_%; Total_Builtup_% = Building_% + Wall_% (ceiling separate).
 # Combined_Vegetation_% is the current merge's vegetation aggregate (secondary to SVF).
 SVF_EXPOSURE_COLUMNS <- c(
@@ -762,7 +766,7 @@ h4_write_results <- function(audit_df, step5_result) {
     "## Files",
     if (H4_WRITE_DETAILS) sprintf("- %s / %s: H4.1 only", h4_file("H4_Heat_Noise_Exposures.csv"), h4_file("H4_Covariates_and_Phases.csv")) else
       sprintf("- Saved in results/%s/: %s (heat and sound exposure terms, H4.1, with the fit status of each outcome x model); %s (run information: manifest, file MD5 checksums, column dictionary); %s (Steps 1-4 variable audit, input to the phase-average run); %s (Step 5 resume checkpoint); this report.",
-        basename(RESULT_DIR), h4_file("H4_hypothesis.csv"), h4_file("H4_run_info.csv"),
+        basename(RESULT_DIR), h4_file("H4_hypothesis.csv"), basename(h4_run_info_path(md)),
         h4_file("H4_Multivariate_Filtration_Results.csv"), h4_file("H4_fit_records.rds")),
     if (H4_WRITE_DETAILS) sprintf("- %s, %s; working fits in results/%s/", h4_file("H4_Variable_Selection.csv"), h4_file("H4_Selection_Flow.pdf"), basename(RESULT_DIR)) else
       "- Not saved by default (rerun with PAPER3_WRITE_DETAILS=1 to write them): coefficients, Heat_Noise_Exposures, Covariates_and_Phases, Variable_Selection, phase_contrasts, covariance and lag-60 sensitivity, GVIF and design-redundancy diagnostics, audit step tables, Selection_Flow.pdf, hypothesis_readme, session_info. Detail file names mentioned below refer to that mode.", "",
@@ -2076,7 +2080,7 @@ h4_readme_lines <- function(status_all, coef_all, sens_all, catalog, preflight_d
   c(
     "H4.1 Physiological Sensor Time-Series Models",
     "Full methods: scripts/Paper3_Code_Design_Methodology_Map.md and scripts/Paper3_Methods_Plain.md",
-    sprintf("Equations (catalog ids): %s â€” primary UTCI+PM2.5; heat-form sensitivities on PM2.5; PM1/PM10 with UTCI only.", eq_ids),
+    sprintf("Equations (catalog ids): %s - primary UTCI+PM2.5; heat-form sensitivities on PM2.5; PM1/PM10 with UTCI only.", eq_ids),
     sprintf("Sample: 10 s windows; %s; %d outcomes; participants %d-%d per model.", n_text, length(unique(status_all$outcome)), np_rng[1], np_rng[2]),
     sprintf("Design VIF (threshold %s): %s. See H4_gvif_diagnostic.csv, H4_design_redundancy_by_outcome.csv.", h4_study_spec$variance_inflation_factor_limit, vif_txt),
     sprintf("Fits: %d/%d successful outcome-equation models. All non-intercept coefficients have BH q across planned outcomes per term/equation, plus q_equation across all non-intercept terms/outcomes within equation. Intercepts and invalid inference have explicit status text. Equations are not pooled into one correction family.", sum(status_all$success), nrow(status_all)),
@@ -2144,7 +2148,7 @@ h4_run_audit <- function() {
     all_variables_pool <<- unique(c(raw_cols_all, derived_cols_all))
     step1_mat <<- t(sapply(all_variables_pool, function(col) if (col %in% derived_cols_all)
       c(if (grepl("^atmo_", col)) "Atmotube" else "LYS Study Average", "Environmental Stressor Candidates (X_env)",
-        if (grepl("pm", col)) "Âµg/mÂ³" else if (grepl("lux", col)) "lux" else if (grepl("medi", col)) "medi" else "K",
+        if (grepl("pm", col)) "ug/m^3" else if (grepl("lux", col)) "lux" else if (grepl("medi", col)) "medi" else "K",
         "Retained for Step 2 technical sensor consolidation", "RETAINED FOR FILTRATION") else classify_col_role(col)))
     cat("[3/6] Step 2: Checking explicit replacements, measurement type and within-person availability...\n")
     stopifnot(length(unlist(average_sources)) == 12L, !anyDuplicated(unlist(average_sources)))
@@ -2324,7 +2328,7 @@ h4_dispatch_run <- function() {
     quit(save = "no", status = 0)
   }
   if (identical(Sys.getenv("H4_GVIF_ONLY"), "1")) {
-    if (file.exists(file.path(OUT_DIR, h4_file("H4_run_complete.csv"))) || file.exists(file.path(OUT_DIR, h4_file("H4_run_info.csv"))))
+    if (h4_model_outputs_locked())
       stop("A completed model bundle exists; rerun Step 5 instead of rewriting GVIF files after hashing.")
     raw_df <- h4_read_merged_analysis_data()
     raw_df <- h4_apply_average_sources(raw_df)
@@ -2333,7 +2337,7 @@ h4_dispatch_run <- function() {
     quit(save = "no", status = 0)
   }
   if (identical(Sys.getenv("H4_FACET_REFRESH"), "1")) {
-    if (!file.exists(file.path(OUT_DIR, h4_file("H4_run_complete.csv"))) && !file.exists(file.path(OUT_DIR, h4_file("H4_run_info.csv")))) {
+    if (!h4_model_outputs_locked()) {
       raw_df <- h4_read_merged_analysis_data()
       raw_df <- h4_apply_average_sources(raw_df)
       h4_run_gvif_diagnostic(h4_step4_exposure_prep(read.csv(OUT_CSV, stringsAsFactors = FALSE, check.names = FALSE), raw_df))

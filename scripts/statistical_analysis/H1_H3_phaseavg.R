@@ -48,8 +48,28 @@ h3_hypothesis_spec <- list(physiological_outcome_names = study_wide_spec$physiol
 h2_hypothesis_spec <- list(
   physiological_outcome_names = study_wide_spec$physiological_outcome_names,
   psychological_outcomes = c(
-    "questionnaire_current_comfort_1_7", "questionnaire_pleasantness_1_5",
-    "questionnaire_stai6_mean_1_5", "questionnaire_prs11_total_mean_1_5"
+    # Comfort / affect (single items)
+    "questionnaire_current_comfort_1_7",
+    "questionnaire_space_familiarity_1_5",
+    "questionnaire_pleasantness_1_5",
+    # Environmental comfort (five dimensions; no roll-up mean)
+    "questionnaire_thermal_comfort_1_5",
+    "questionnaire_acoustic_comfort_1_5",
+    "questionnaire_visual_comfort_1_5",
+    "questionnaire_air_quality_comfort_1_5",
+    "questionnaire_odor_comfort_1_5",
+    # STAI-6 (six oriented item scores; no scale mean)
+    "questionnaire_stai_calm_rev_1_5",
+    "questionnaire_stai_tense_1_5",
+    "questionnaire_stai_upset_1_5",
+    "questionnaire_stai_relaxed_rev_1_5",
+    "questionnaire_stai_content_rev_1_5",
+    "questionnaire_stai_worried_1_5",
+    # PRS-11 (four subscales; no total mean)
+    "questionnaire_prs11_fascination_mean_1_5",
+    "questionnaire_prs11_being_away_mean_1_5",
+    "questionnaire_prs11_coherence_mean_1_5",
+    "questionnaire_prs11_scope_mean_1_5"
   )
 )
 
@@ -137,7 +157,7 @@ H2_rmcorr <- quote(
 )
 
 # FDR families: H1 primary / H1 WPZ / H3 primary / H3 WPZ (26 outcomes × 2 contrasts each within hypothesis);
-# H2 one family (4 questionnaires × 26 physiological = 104 pairs);
+# H2 one family (18 questionnaires × 26 physiological = 468 pairs);
 # temporal one family per fixed-effect Term (26 outcomes; supports H1 & H3 phase contrasts from shared PhaseID effects).
 
 run_h1_h3_phaseavg <- function() {

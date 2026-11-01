@@ -2,7 +2,7 @@
 # Person-level campaign baseline centering; RH1–RH4 LMMs; participant×hotspot heterogeneity (RH3 random slope + outlier table).
 # Outputs: output/statistical_analysis/results/H5_exploratory/
 #
-# HOTSPOT (§8.0): corridor flat-cap buffer polygons per PhaseID (ExpData Experiment path_8min_buffer).
+# HOTSPOT (§8.0): corridor flat-cap buffer polygons per PhaseID (local copy under data/h5_buffers/).
 # Epoch uCM GPS → seg_idx (walk 11 m / bike 35 m along-route cells); all assigned cells enter RH1 (no ≥9/11 rule).
 # No cumulative route distance or pct-complete binning for hotspot identity.
 # Hyperlocal env: hotspot-day medians from backpack uCM (and atmo/lys on person); NOT station weather in RH1.
@@ -38,7 +38,10 @@ h5_hotspot_spec <- list(
   physiological_outcome_names = paper3_physiological_outcomes(),
   green_phases = c("WalkG", "BikeG"),
   hotspot_definition = "corridor_buffer",
-  buffer_gpkg_dir = "D:/Pranav/docker/ExpData/Experiment path_8min_buffer",
+  buffer_gpkg_dir = normalizePath(
+    file.path(paper3_statistical_script_dir(), "data", "h5_buffers"),
+    winslash = "/", mustWork = TRUE
+  ),
   route_distance_bin_m = NULL,
   # Pilot: TRUE → WalkG only for shared-hotspot assignment and RH1; FALSE → all PAPER3_CORE_PHASES.
   pilot_walkg_only = FALSE,

@@ -42,7 +42,7 @@ H4. Noise and traffic-related sound amplify thermal discomfort.
 
 H5. Within-person physiological responses change with shared places along the route and with local thermal stress.
 
-H6. Composite indices of environmental, physiological, and visual load are concordant within person.
+H6. Within-person coupling of environmental load, autonomic/ocular markers, and selected questionnaire constructs co-varies across matched mobility phases (prespecified LMMs; exploratory).
 
 ## 2 Methods
 
@@ -70,7 +70,7 @@ Archived mixed models that enter those Fit/Not Fit and Active/Inactive labels as
 
 ### 2.2 Data preparation
 
-Micrometeorology and context (uCM, 10 s): air temperature, humidity, mean radiant temperature, global horizontal irradiance, wind, A-weighted sound (dBA), GPS, UTCI and PET. Air quality and light: PM (Atmotube means), lux and colour temperature (LYS means). Scene openness (CamUp / Mapillary pipelines): Holmer annular sky view factor (SVF) for inferential models; tree view factor (TVF) and building view factor (BVF) computed alongside SVF but not co-entered with SVF or GVI in the combined-exposure model (Gong et al., 2018). Greenery: eye-level GVI (`gvi_50m`). Physiology (Empatica): EDA tonic/phasic, heart rate, HRV, wrist temperature. Vision (eye tracker): pupil, blink, fixation and gaze kinematics; proprietary `eyetracker_stress_composite` retained in the merge for exploration only (§9). Perception: STAI-6, PRS-11, comfort, pleasantness and multi-item environmental stressor ratings (temperature, lighting, noise, air quality, crowding).
+Micrometeorology and context (uCM, 10 s): air temperature, humidity, mean radiant temperature, global horizontal irradiance, wind, A-weighted sound (dBA), GPS, UTCI and PET. Air quality and light: PM (Atmotube means), lux and colour temperature (LYS means). Scene openness (CamUp / Mapillary pipelines): Holmer annular sky view factor (SVF) for inferential models; tree view factor (TVF) and building view factor (BVF) computed alongside SVF but not co-entered with SVF or GVI in the combined-exposure model (Gong et al., 2018). Greenery: eye-level GVI (`gvi_50m`). Physiology (Empatica): EDA tonic/phasic, heart rate, HRV, wrist temperature. Vision (eye tracker): pupil, blink, fixation and gaze kinematics; proprietary `eyetracker_stress_composite` retained in the merge for exploration only (§9). Perception: end-of-phase comfort and environmental-comfort items, STAI-6 item scores, PRS-11 subscale means (18 questionnaire columns in H2/H1–H3 exports).
 
 Streams were synchronized, path-matched and quality-checked, aggregated to 10-second epochs, then—for the phase-mean analyses (H1–H3, H6 and the phase-mean combined-exposure model)—collapsed to participant × phase means on matched **eight-minute segments** (44 cells). Clearness index (k_t) was computed for solar QC; measured irradiance (`ucm_SUN_Gh`) entered models, not derived k_t. Transformations followed the locked normalization CSV.
 
@@ -84,15 +84,17 @@ All primary tests used restricted maximum likelihood mixed models or repeated-me
 
 #### 2.3.1 H1 — environment within mode
 
-H1 (green vs impervious urban): Phase-mean linear mixed model `Y ~ PhaseID + (1 | ParticipantID)` fitted to 26 physiological and ocular outcomes; planned contrasts BikeG − BikeU and WalkG − WalkU (emmeans). Sensitivity: within-person z-scored outcomes on phase means; optional 10 s / 60 s AR(1) temporal models.
+H1 (green vs impervious urban): Phase-mean linear mixed model `Y ~ PhaseID + (1 | ParticipantID)` fitted to 26 physiological and ocular outcomes; planned contrasts BikeG − BikeU and WalkG − WalkU (emmeans). Sensitivity: within-person z-scored outcomes on phase means; optional 10 s / 60 s AR(1) temporal models (`H1_H3_Temporal_AR1.csv` from the phase-average run; dedicated time-series shells in `scripts/statistical_analysis/H1_H3_timeseries.R`).
+
+Implementation: `scripts/statistical_analysis/H1_H3_phaseavg.R` (engine `library/H1_H3_core.R`); outputs under `output/statistical_analysis/results/H1_H3_phaseavg/` (`H1_H3_Contrasts.csv`, `H2_Concordance.csv`, `H1_H3_Temporal_AR1.csv`, …).
 
 #### 2.3.2 H2 — psychophysiological concordance
 
-H2 (psychophysiological concordance): Repeated-measures correlation (Bakdash & Marusich, 2017) across four questionnaires and 26 physiological phase means (104 pairs; one FDR family).
+H2 (psychophysiological concordance): Repeated-measures correlation (Bakdash & Marusich, 2017) across **18 end-of-phase questionnaire items** (general comfort, space familiarity, pleasantness; five environmental-comfort dimensions; six oriented STAI-6 item scores; four PRS-11 subscale means—no STAI-6 or PRS-11 roll-ups) and 26 physiological phase means (**468 pairs**; one Benjamini–Hochberg FDR family). Fitted in `H1_H3_phaseavg.R` / `library/H1_H3_core.R`; export `H2_Concordance.csv`. Questionnaire time-series sensitivity: `H1_H3_timeseries.R`.
 
 #### 2.3.3 H3 — mode within environment
 
-H3 (walking vs cycling): Same phase-mean mixed-model shell as H1; planned contrasts WalkU − BikeU and WalkG − BikeG; difference-of-differences (BikeG − BikeU) − (WalkG − WalkU) reported descriptively.
+H3 (walking vs cycling): Same phase-mean mixed-model shell as H1; planned contrasts WalkU − BikeU and WalkG − BikeG; difference-of-differences (BikeG − BikeU) − (WalkG − WalkU) reported descriptively. Same entry scripts and output folder as §2.3.1 (`H1_H3_phaseavg.R`, `H1_H3_timeseries.R`; `H1_H3_Contrasts.csv`, Hypothesis = H3).
 
 #### 2.3.4 H4 — sound and heat-plus-sound tests from previous literature
 
@@ -115,13 +117,23 @@ Outputs: `output/statistical_analysis/results/H4_sound_literature_tests/` (`SUMM
 
 #### 2.3.5 H5 — shared places and local thermal stress (exploratory)
 
-Grain: corridor buffer cells along each fixed route, from the GeoPackage polygons `D:\Pranav\docker\ExpData\Experiment path_8min_buffer\{PhaseID}_buffer_{11|35}m.gpkg` (walk cells 11 m long, bike cells 35 m, 10 m half-width, EPSG:31370). Each 10 s epoch is assigned to a cell by point-in-polygon on its uCM GPS fix (`hotspot_id` = `{PhaseID}_seg{k}`), and epochs are collapsed to participant × hotspot × day medians. Model (RH1): per PhaseID × outcome, `lme(median_center_Y ~ env_ucm_UTCI_c + hotspot_f, random = ~1 | ParticipantID)` on campaign-centred outcomes. View-factor models (same script): per PhaseID × outcome, centred response ~ UTCI + log10(lux + 1) + one site view factor (SVF, TVF or BVF, hotspot median across visits) or a Gong et al. (2019) dominance class; participant random intercept, AR(1) along route position, no hotspot fixed effects. FDR: separate from H1–H4; BH within outcome × phase for `hotspot_f`; one BH family for the UTCI terms; one for continuous view factors; one for class omnibus tests. Implementation: `scripts/statistical_analysis/H5_hotspot_weather.R` (engine `library/H5_hotspot_core.R`); `--view-only` refits only the view-factor models. Operational definitions and design notes are in §7–§8.
+Grain: corridor buffer cells along each fixed route, from the GeoPackage polygons `D:\Pranav\docker\ExpData\Experiment path_8min_buffer\{PhaseID}_buffer_{11|35}m.gpkg` (walk cells 11 m long, bike cells 35 m, 10 m half-width, EPSG:31370). Each 10 s epoch is assigned to a cell by point-in-polygon on its uCM GPS fix (`hotspot_id` = `{PhaseID}_seg{k}`), and epochs are collapsed to participant × hotspot × day medians. Model (RH1): per PhaseID × outcome, `lme(median_center_Y ~ env_ucm_UTCI_c + hotspot_f, random = ~1 | ParticipantID)` on campaign-centred outcomes. View-factor models (same script): per PhaseID × outcome, centred response ~ UTCI + log10(lux + 1) + one site view factor (SVF, TVF or BVF, hotspot median across visits) or a Gong et al. (2019) dominance class; participant random intercept, AR(1) along route position, no hotspot fixed effects. FDR: separate from H1–H4; BH within outcome × phase for `hotspot_f`; one BH family for the UTCI terms; one for continuous view factors; one for class omnibus tests. Implementation: `scripts/statistical_analysis/H5_hotspot_weather.R` (engine `library/H5_hotspot_core.R`); corridor buffer GeoPackages under `scripts/statistical_analysis/data/h5_buffers/` (`{PhaseID}_buffer_{11|35}m.gpkg`, aligned with §8.0); `--view-only` refits only the view-factor models. Operational definitions and design notes are in §7–§8.
 
 #### 2.3.6 H6 — composite load concordance (exploratory)
 
-Grain: participant × phase means on the matched **eight-minute merge**. Model: repeated-measures correlation among stress-oriented composites—environmental (thermal, acoustic, air-quality, light, morphology groups and single factors), physiological (Empatica and ocular channels with stress-oriented within-person z-scores), and proprietary or transparent ocular stress indices. FDR: one exploratory Benjamini–Hochberg family over all fitted composite pairs. No composite enters the H1–H4 tests or the combined-exposure model (§9).
+Grain: participant × phase means (`H6_stress_composite_phaseavg.R`) or matched-route **10 s epochs** on the eight-minute cap (`H6_stress_composite_timeseries.R`). Engine: `library/H6_coupling_core.R`.
 
-Implementation: `scripts/statistical_analysis/H6_stress_composite.R` (engine `library/H6_stress_composite_core.R`); outputs under `output/statistical_analysis/results/H6_stress_composite/`.
+Prespecified **within-person coupling** linear mixed models on stress-oriented within-person z scores (CSV transforms where locked):
+
+- **Environmental load indices:** `thermal_load` (UTCI), `acoustic_load` (dBA), `restorative_stress` (equal-weight oriented SVF, TVF, GVI).
+- **Outcomes:** tonic EDA, HRV RMSSD, and a **transparent ocular** equal-weight index (fixation rate, inverted fixation duration, pupil diameter, blink duration).
+- **H6-A (env → physio):** `lme(outcome ~ idx_env + PhaseID, random = ~1 | ParticipantID)` — 3 env indices × 3 outcomes = **9 tests**; one Benjamini–Hochberg family (`H6_A_env_physio`).
+- **H6-B (psych → physio, env-adjusted):** `lme(outcome ~ psych_wpz + idx_thermal_load + idx_acoustic_load + PhaseID, random = ~1 | ParticipantID)` for PRS fascination, STAI tense, and acoustic comfort — **9 tests**; separate BH family (`H6_B_psych_physio_given_env`).
+- **Time series:** same equations on 10 s rows with **AR(1)** on `time_10s_step | ParticipantID/PhaseID`.
+
+Outputs: `output/statistical_analysis/results/H6_stress_composite_phaseavg/` and `.../H6_stress_composite_timeseries/` — `H6_stress_composite_{phaseavg|timeseries}_coupling_env_physio.csv`, `..._coupling_psych_physio.csv`, `..._prespecified_grid.csv`, `..._run_manifest.csv`, plus `..._run_info.csv` from the export finalizer. `Merge_statistical_outputs.R` group `H1_H3_H6_merged` collects `H1_H3_phaseavg`, `H1_H3_timeseries`, and **both** H6 folders.
+
+The retired pairwise rmcorr pipeline (`H6_stress_composite.R`, 55-composite grid, outputs under `output/statistical_analysis/results/H6_stress_composite/`) is archived for record only and is not current H6 inference. No H6 composite or coupling term enters H1–H4 or the combined-exposure model (§9).
 
 #### 2.3.7 Combined-exposure model (not a hypothesis test)
 
@@ -139,7 +151,7 @@ Outputs: `output/statistical_analysis/results/Analysis_combined_timeseries/` and
 
 #### 2.3.8 Restoration, lag and sound-source analyses (formerly H6; not a hypothesis)
 
-The former H6 script `H6_exploratory.R` was retired on 31 Oct 2026 (archived as `scripts/_archive/H6_exploratory_final_20261031.R`) and is no longer a hypothesis. Its parts now run elsewhere: the sign-flip check (former H6.1a) and restoration concordance (former H6.1b, section 5a; `H2_Restoration_Concordance_DeltaPRS.csv`) in `library/H1_H3_core.R`; lagged first-difference profiles (former H6.2) and sound-source slopes adjusted for dBA, UTCI and lux (former H6.3) as `Analysis_combined_timeseries.R --lagdiff-only` and `--sourceadj-only` (outputs `Analysis_combined_timeseries_lagdiff/` and `Analysis_combined_timeseries_sourceadj/`). Earlier outputs remain in `output/statistical_analysis/results/H5_exploratory/` (`H6_*.csv`, `H6_README.txt`). FDR: one family per analysis block, not merged with H1–H6.
+The former H6 script `H6_exploratory.R` was retired on 31 Oct 2026 (archived as `scripts/_archive/H6_exploratory_final_20261031.R`) and is no longer a hypothesis. Its parts now run elsewhere: the sign-flip check (former H6.1a) and restoration concordance (former H6.1b, section 5a; delta-PRS Spearman rows in `H2_Concordance.csv`) in `library/H1_H3_core.R`; lagged first-difference profiles (former H6.2) and sound-source slopes adjusted for dBA, UTCI and lux (former H6.3) as `Analysis_combined_timeseries.R --lagdiff-only` and `--sourceadj-only` (outputs `Analysis_combined_timeseries_lagdiff/` and `Analysis_combined_timeseries_sourceadj/`). Earlier outputs remain in `output/statistical_analysis/results/H5_exploratory/` (`H6_*.csv`, `H6_README.txt`). FDR: one family per analysis block, not merged with H1–H6.
 
 #### 2.3.9 Archived sound pipelines (superseded 1 Nov 2026)
 
@@ -155,9 +167,9 @@ Participant-weighted phase profiles on the merged 10-second dataset: UTCI/PET, s
 
 ### 3.2 H1 — environment within mode
 
-Phase-mean models (§2.3.1); estimates from `H1_Contrasts.csv`. Green phases were associated with **lower square-root-transformed tonic EDA** and skin temperature and with larger pupil diameter (pupil is illumination-sensitive).
+Phase-mean models (§2.3.1); estimates from `H1_H3_Contrasts.csv` (Hypothesis H1). Green phases were associated with **lower square-root-transformed tonic EDA** and skin temperature and with larger pupil diameter (pupil is illumination-sensitive).
 
-Table 3.2. H1 FDR-significant phase-mean contrasts (primary analysis units; `H1_Contrasts.csv`, BH within 26 outcomes × contrast family).
+Table 3.2. H1 FDR-significant phase-mean contrasts (primary analysis units; `H1_H3_Contrasts.csv`, BH within 26 outcomes × contrast family).
 
 | Tests (primary) | FDR q < 0.05 | Representative FDR hits (green − urban direction) |
 | --- | --- | --- |
@@ -174,27 +186,29 @@ Table 3.2. H1 FDR-significant phase-mean contrasts (primary analysis units; `H1_
 
 ### 3.3 H2 — psychophysiological concordance
 
-Repeated-measures correlation (§2.3.2); estimates from `H2_Physio_Psycho_Concordance.csv`. Within-person concordance was weak after FDR correction at participant-phase means (five q < 0.05 pairs in the locked export). Associations are not interpreted as causation.
+Repeated-measures correlation (§2.3.2); estimates from `H2_Concordance.csv` (rmcorr rows). Within-person concordance was weak after FDR correction at participant-phase means (five q < 0.05 pairs in the current export). Associations are not interpreted as causation. Prespecified multiplicity is **468 pairs** (18 questionnaire items × 26 physiological outcomes); the on-disk export still lists **104** fitted rmcorr rows from an earlier four-questionnaire pass—rerun `H1_H3_phaseavg.R` for a full 468-row table before submission.
 
-Table 3.3. H2 FDR-significant psychophysiological pairs (`H2_Physio_Psycho_Concordance.csv`, one BH family over 104 pairs).
+Table 3.3. H2 FDR-significant psychophysiological pairs (`H2_Concordance.csv`, one BH family over **468** prespecified pairs; table rows from current export).
 
 | Tests | FDR q < 0.05 | |
 | --- | --- | --- |
-| 104 questionnaire × physio pairs | 5 | |
+| 468 questionnaire × physio pairs (prespecified) | 5 (current export) | |
 
 | Questionnaire | Physiological outcome | r~rmcorr~ | q~FDR~ |
 | --- | --- | --- | --- |
 | Pleasantness (1–5) | Blink duration | −0.66 | 0.002 |
-| PRS-11 total (1–5) | Skin temperature | −0.63 | 0.002 |
-| PRS-11 total (1–5) | Pupil diameter | 0.67 | 0.002 |
-| PRS-11 total (1–5) | Blink duration | −0.77 | <0.001 |
-| PRS-11 total (1–5) | Fixation duration | 0.56 | 0.029 |
+| PRS-11 total (1–5) † | Skin temperature | −0.63 | 0.002 |
+| PRS-11 total (1–5) † | Pupil diameter | 0.67 | 0.002 |
+| PRS-11 total (1–5) † | Blink duration | −0.77 | <0.001 |
+| PRS-11 total (1–5) † | Fixation duration | 0.56 | 0.029 |
+
+† Legacy roll-up column in the current export; prespecified H2 uses PRS-11 subscales only (§2.3.2).
 
 ### 3.4 H3 — mode within environment
 
-Same phase-mean model shell as H1 (§2.3.3); estimates from `H3_Contrasts.csv`. Walking versus cycling differed in **tonic EDA, skin temperature, fixation rate** and gaze velocity. Results are reported as planned contrasts, not as a global ranking of mode comfort.
+Same phase-mean model shell as H1 (§2.3.3); estimates from `H1_H3_Contrasts.csv` (Hypothesis H3). Walking versus cycling differed in **tonic EDA, skin temperature, fixation rate** and gaze velocity. Results are reported as planned contrasts, not as a global ranking of mode comfort.
 
-Table 3.4. H3 FDR-significant phase-mean contrasts (primary analysis units; `H3_Contrasts.csv`, BH within 26 outcomes × contrast family).
+Table 3.4. H3 FDR-significant phase-mean contrasts (primary analysis units; `H1_H3_Contrasts.csv`, BH within 26 outcomes × contrast family).
 
 | Tests (primary) | FDR q < 0.05 | Representative FDR hits (walk − bike) |
 | --- | --- | --- |
@@ -260,26 +274,16 @@ View-factor models (§2.3.5; `H5_view_model_coefficients.csv`, `H5_view_model_co
 
 ### 3.7 H6 — composite load concordance (exploratory)
 
-Repeated-measures correlation among stress-oriented composites (§2.3.6; `H6_stress_composite/`). 403 of 1,378 fitted composite pairs reached q_FDR < 0.05 in one Benjamini–Hochberg family over 55 composites (`H6_run_manifest.csv`; 1,485 pairs attempted). Rerun on 1 Nov 2026 under the H6 name; all four output files are identical to the 28 Oct H9 run. Four of the significant pairs are definitional (r_rm = 1 after stress orientation: HRV LFnu with HFnu, and dBA, PM2.5 and GPS speed each with their own single-variable environmental group), so 399 pairs are non-trivial. Pairwise detail is in §9; composites do not enter the H1–H4 tests or the combined-exposure model.
+Prespecified within-person coupling LMMs (§2.3.6). **Phase means** (`H6_stress_composite_phaseavg/`): **0** of 9 H6-A and **0** of 9 H6-B tests with q_FDR < 0.05 (`H6_stress_composite_phaseavg_run_manifest.csv`). **10 s epochs** (`H6_stress_composite_timeseries/`): **0** of 9 H6-A; **1** of 9 H6-B (transparent ocular stress index × PRS-11 fascination, q ≈ 0.0039; six other H6-B models failed convergence at 10 s—`H6_stress_composite_timeseries_run_info.csv`). No phase-mean coupling survived FDR; the single timeseries H6-B hit is exploratory only. Retired pairwise rmcorr (403 of 1,378 fitted pairs q < 0.05 in one family over 55 composites) remains under `output/statistical_analysis/results/H6_stress_composite/` for record only.
 
-Table 3.7. H6 pairwise rmcorr FDR summary (`H6_pairwise_rmcorr.csv`, `H6_run_manifest.csv`).
+Table 3.7. H6 prespecified coupling FDR summary (`H6_stress_composite_*_run_manifest.csv` / finalizer manifest in `*_run_info.csv`).
 
-| Metric | Value |
-| --- | --- |
-| Composites | 55 |
-| Pairs attempted / fitted | 1485 / 1378 |
-| FDR q < 0.05 | 403 |
+| Grain | H6-A (env → physio) q < 0.05 | H6-B (psych → physio, env-adj.) q < 0.05 | Prespecified tests per family |
+| --- | --- | --- | --- |
+| Phase means (44 cells) | 0 / 9 | 0 / 9 | 9 + 9 (separate BH families) |
+| 10 s epochs (AR(1)) | 0 / 9 | 1 / 9 | 9 + 9 (separate BH families) |
 
-| Domain_X → Domain_Y (pair category) | FDR-significant pairs |
-| --- | --- |
-| environmental × environmental | 101 |
-| physiological × environmental | 100 |
-| environmental × environmental_group | 68 |
-| physiological × physiological | 53 |
-| physiological × environmental_group | 31 |
-| environmental × ocular_proprietary | 12 |
-| physiological × ocular_proprietary | 12 |
-| All other cross-domain cells | 26 combined |
+Pairwise composite rmcorr tables (`H6_pairwise_rmcorr.csv`) are superseded; detail for current inference is in `*_coupling_env_physio.csv` and `*_coupling_psych_physio.csv` (§9).
 
 ### 3.8 Combined-exposure model (not a hypothesis test)
 
@@ -417,7 +421,7 @@ Federal Highway Administration. Noise barrier design / field measurement guidanc
 
 ## 7 Exploratory directions — micro-mobility weather zones and stress reactivity (not in confirmatory H1–H4)
 
-This section records a follow-on research idea for the thesis or a second paper. It is not part of the locked confirmatory pipeline (`H1_H3_phaseavg.R`, `H4_sound_literature_tests.R`, `Analysis_combined_phaseavg.R`).
+This section records a follow-on research idea for the thesis or a second paper. It is not part of the locked confirmatory pipeline (`H1_H3_phaseavg.R`, `H1_H3_timeseries.R`, `H4_sound_literature_tests.R`, `Analysis_combined_phaseavg.R`, `Analysis_combined_timeseries.R`).
 
 ### 7.1 Motivation and fit with urban-climate literature
 
@@ -689,18 +693,19 @@ Non-goals (this extension): Causal mediation morphology → UTCI → ΔY; Gong c
 
 Implemented (exploratory; `H5_hotspot_weather.R` / `library/H5_hotspot_core.R`): corridor buffer cells from the GeoPackages in §8.0 (walk 11 m, bike 35 m); every assigned cell is a hotspot (no ≥9/11 rule); campaign-centred median outcomes on hotspot-day rows. RH1 (active, `run_rh1_only`): one LMM per PhaseID × outcome — `median_center_Y ~ env_ucm_UTCI_c + hotspot_f + (1|ParticipantID)` (phase-stratified to avoid `PhaseID + hotspot_f` aliasing). 26 physiological outcomes (H1–H3 list). Hotspot-level FDR (exploratory): Benjamini–Hochberg within outcome × phase on `hotspot_f` contrasts. View-factor models (SVF/TVF/BVF or dominance class, UTCI- and lux-adjusted) run at the end of the same script (`H5_view_*.csv`). Outputs: `output/statistical_analysis/results/H5_exploratory/` (`H5_RH1_hotspot_FDR_significant.csv`, `H5_hotspot_weather_models.csv`, `H5_hotspot_inclusion_rule_comparison.csv`, `H5_view_*.csv`). RH2–RH4 paused until `run_rh1_only` is lifted.
 
-## 9 Stress composites — ocular, environmental and physiological concordance (exploratory)
+## 9 Stress composites and H6 coupling indices (exploratory)
 
-This section documents stress-oriented composite indices that sit outside confirmatory H1–H4. It aligns with the exploratory framing in §7–§8 (epoch reactivity, hotspot models) but uses participant × phase means on the matched **eight-minute merge** (`output/merged_all_11participants_8min.csv`) for primary concordance tests, mirroring H2’s repeated-measures correlation spirit (Bakdash & Marusich, 2017). No composite enters locked hypothesis equations; FDR for §9 is a separate exploratory family from H1–H4 (`H6_stress_composite.R`).
+This section documents stress-oriented indices used in exploratory **H6 within-person coupling LMMs** (§2.3.6, §3.7) and the construct definitions behind them. Primary inference is prespecified env→physio (H6-A) and psych→physio (H6-B) models at phase-mean and 10 s grains—not exhaustive pairwise correlation. The retired 55-composite rmcorr grid (`output/statistical_analysis/results/H6_stress_composite/`) is kept for record only. No composite or coupling term enters confirmatory H1–H4 or the combined-exposure model. FDR for §9 follows the separate H6-A and H6-B families in the coupling exports; `Merge_statistical_outputs.R` merges compact H6 tables with H1/H3 via `H1_H3_H6_merged`.
 
 ### 9.1 Scope and data grain
 
 | Element | Convention |
 |---------|------------|
 | Input | Synchronized 10 s epochs, capped per participant at the common matched route duration (**480 s** on four core phases). |
-| Aggregation for §9 primary tests | Participant × phase means (44 cells on four core phases when complete; proprietary ocular composite N = 39 person-phases when eye-tracker coverage gaps apply, e.g. P13). |
-| Multiplicity (current H6 run) | 55 stress-oriented composites → 1,485 ordered pairs attempted, 1,378 rmcorr fits, 403 pairs with q_FDR < 0.05 (one BH family over all fitted pairs; `H6_run_manifest.csv`). |
-| Implementation | `scripts/statistical_analysis/H6_stress_composite.R` (engine: `library/H6_stress_composite_core.R`); outputs under `output/statistical_analysis/results/H6_stress_composite/`. |
+| H6 coupling grains | Phase means (`H6_stress_composite_phaseavg/`) or 10 s epochs with AR(1) (`H6_stress_composite_timeseries/`). |
+| Prespecified tests | H6-A: 9 env→physio; H6-B: 9 psych→physio (env-adjusted); separate BH families. |
+| Archived rmcorr | 55 composites → up to 1,485 ordered pairs in `H6_stress_composite/` (not current H6). |
+| Implementation | `H6_stress_composite_phaseavg.R`, `H6_stress_composite_timeseries.R` (engine `library/H6_coupling_core.R`); outputs as in §2.3.6. |
 
 ### 9.2 Proprietary ocular stress composite (`eyetracker_stress_composite`)
 
@@ -726,7 +731,9 @@ To avoid relying solely on the two-feature proprietary score, H6 builds a four-f
 
 For each feature: apply the locked normalization CSV transform when the column is in the physiological outcome set (`output/statistical_analysis/Normalization & Parameter Screening/Normalization/Normalization_H1toH4_all_parameters.csv`), then within-person z across the four phase means, multiply by stress direction, and take the equal-weight mean. Proprietary and transparent indices are strongly concordant at phase grain (rmcorr r ≈ 0.85, q_FDR < 0.001; `H6_pairwise_rmcorr.csv`).
 
-### 9.4 Environmental stress composites (single factors and groups)
+### 9.4 Environmental stress composites (single factors and groups; archived rmcorr grid)
+
+The tables below describe stress-oriented phase-mean composites used in the **retired** pairwise H6 rmcorr export. Current H6 coupling uses only `thermal_load`, `acoustic_load`, and `restorative_stress` (§2.3.6).
 
 Available environmental fields in the merge (uCM backpack, Atmotube, LYS, CamUp / GVI pipelines), as used in H5 hotspot profiling (`H5_hotspot_weather.R`):
 
@@ -770,45 +777,21 @@ Confirmatory models use individual outcomes with CSV-specified transforms (e.g. 
 
 A multivariate physiological stress index (equal-weight mean across selected Empatica + ocular features) is not prespecified here; H6 reports pairwise concordance so collinearity among EDA, temperature and HRV remains visible. H5’s epoch-level microclimate stress index (MCSI) in `H5_core.R` (`h5_microclimate_stress_index`) combines person-centred UTCI and dBA with study-wide z of ocular composite and questionnaire stressor count — a separate exploratory construct for zone profiles, not duplicated in H6.
 
-### 9.6 Concordance: ocular stress vs environmental composites
+### 9.6 Current H6 coupling results (prespecified LMMs)
 
-Primary analysis (H6): Repeated-measures correlation via `lm(composite_y ~ ParticipantID + composite_x)` on phase-mean tables (`H6_pairwise_rmcorr.csv`); Benjamini–Hochberg q = 0.05 over all fitted pairs (1,378 fit of 1,485 attempted; 403 q-significant per `H6_run_manifest.csv`—many are within-domain redundancies such as UTCI vs thermal group).
+Phase-mean and 10 s exports (`*_coupling_env_physio.csv`, `*_coupling_psych_physio.csv`; §3.7): no H6-A term reached q_FDR < 0.05 at either grain. H6-B: one timeseries hit (transparent ocular × PRS-11 fascination, q ≈ 0.0039); phase-mean H6-B all q ≥ 0.05. Six H6-B timeseries models failed convergence (STAI tense and acoustic comfort on several outcomes).
 
-Proprietary `eyetracker_stress_composite` vs environmental single-factor composites (rmcorr r, 95% CI, q_FDR):
+### 9.7 Archived pairwise rmcorr (retired Nov 2026)
 
-| Environmental composite | r_rm | q_FDR | Note |
-|-------------------------|------|-------|------|
-| GVI (`gvi_50m`, stress-oriented −1) | 0.68 | <0.001 | Higher proprietary ocular composite when lower greenery share |
-| MRT | 0.65 | <0.001 | |
-| UTCI | 0.64 | <0.001 | |
-| PET | 0.64 | 0.001 | |
-| TVF (stress-oriented −1) | 0.60 | 0.003 | |
-| GPS speed | −0.59 | 0.003 | Faster matched phases → lower proprietary ocular composite |
-| Air temperature (`ucm_AIR_temp`) | 0.59 | 0.003 | |
-| Relative humidity | −0.57 | 0.006 | Higher ocular composite when drier person-centred phases |
-| Building view factor | 0.52 | 0.016 | |
-| Global horizontal irradiance | 0.48 | 0.034 | |
-| HUMIDEX | 0.47 | 0.033 | |
-| SVF (stress-oriented −1) | −0.44 | 0.052 | Raw p < 0.05; q slightly above 0.05 |
-| SND dBA | 0.41 | 0.073 | Not FDR-significant |
-| PM2.5 | 0.30 | 0.25 | |
-| Lux / kelvin | 0.18 / 0.11 | >0.5 | Weak |
+The former `H6_stress_composite.R` pairwise grid (`H6_pairwise_rmcorr.csv`, `H6_run_manifest.csv`) reported 403 of 1,378 fitted pairs with q_FDR < 0.05 in one BH family over 55 composites; many are within-domain redundancies (e.g. UTCI vs thermal group). Tables in earlier outline drafts (§9.6 env–ocular r tables) describe that archived export only—not prespecified H6 coupling.
 
-Environmental groups vs proprietary ocular composite: thermal group r = 0.58 (q ≈ 0.001); morphology group r = 0.32 (q ≈ 0.001); motion group r = −0.59 (q ≈ 0.003); acoustic, air-quality and light groups not FDR-significant.
+### 9.8 Limitations
 
-Ocular vs physiological (selected): Proprietary composite correlates with person-centred fixation duration (r ≈ 0.84), blink duration (r ≈ 0.76), fixation rate (r ≈ 0.58), EDA tonic (r ≈ 0.63), and skin temperature (r ≈ 0.54) — several q_FDR < 0.05; pupil diameter shows negative r ≈ −0.53 (q ≈ 0.012), consistent with confirmatory H1 pupil contrasts not mapping one-to-one onto the fixation-based stress score.
-
-Cross-domain examples (physio × env, q_FDR < 0.05): person-centred blink duration tracks thermal and morphology composites (e.g. vs PET r_rm ≈ 0.82, q < 10⁻⁶; vs GVI r_rm ≈ 0.81, q < 10⁻⁶); pupil diameter shows negative concordance with GVI/MRT (r_rm ≈ −0.81, q < 10⁻⁶), paralleling the proprietary ocular–greenery pattern above. Full pairwise table: `H6_pairwise_rmcorr.csv`.
-
-### 9.7 Limitations
-
-1. Exploratory multiplicity — Pairwise rmcorr across tens of composites inflates discovery risk; q_FDR is reported but does not upgrade findings to confirmatory claims.
+1. Exploratory multiplicity — H6-A/H6-B families are small and prespecified; archived pairwise rmcorr multiplied tests and is not confirmatory.
 2. Construct validity — Neither proprietary nor transparent ocular indices are validated clinical stress scales; they summarize visual sampling behaviour under outdoor motion.
 3. Co-exposure — Environmental composites covary along routes (§3.1); partial correlations are not reported in H6.
 4. Eye-tracker dropout — Missing phases (e.g. P13) reduce n; epoch and phase tables differ slightly.
 5. Direction labels — Stress_orientation for humidity, greenery and HRV is heuristic for concordance display; thermal signs align with UTCI/PET literature but do not imply causal stress.
 
-Honest scope: §9 supports hypothesis generation for §7–§8 epoch models (e.g. whether hotspot-level UTCI moderation of `delta_eyetracker_stress_composite` is worth pre-registering), not replacement of outcome-specific H1–H4 inference.
-
-Cross-domain examples (proprietary ocular vs physiology / environment): thermal group ↔ skin temperature r<sub>rm</sub> ≈ 0.68 (q<sub>FDR</sub> < 0.001); thermal group ↔ blink duration r ≈ 0.79; thermal group ↔ pupil r ≈ −0.74. Full pairwise table: `H6_pairwise_rmcorr.csv`; 55 composite indices per `H6_run_manifest.csv`.
+Honest scope: §9 supports hypothesis generation for §7–§8 epoch models (e.g. whether hotspot-level moderation of transparent ocular load is worth pre-registering), not replacement of outcome-specific H1–H4 inference. Archived rmcorr tables in `H6_stress_composite/` may still inform composite construction but are not the locked H6 test.
 

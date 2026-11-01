@@ -47,8 +47,28 @@ h3_hypothesis_spec <- list(physiological_outcome_names = study_wide_spec$physiol
 h2_hypothesis_spec <- list(
   physiological_outcome_names = study_wide_spec$physiological_outcome_names,
   psychological_outcomes = c(
-    "questionnaire_current_comfort_1_7", "questionnaire_pleasantness_1_5",
-    "questionnaire_stai6_mean_1_5", "questionnaire_prs11_total_mean_1_5"
+    # Comfort / affect (single items)
+    "questionnaire_current_comfort_1_7",
+    "questionnaire_space_familiarity_1_5",
+    "questionnaire_pleasantness_1_5",
+    # Environmental comfort (five dimensions; no roll-up mean)
+    "questionnaire_thermal_comfort_1_5",
+    "questionnaire_acoustic_comfort_1_5",
+    "questionnaire_visual_comfort_1_5",
+    "questionnaire_air_quality_comfort_1_5",
+    "questionnaire_odor_comfort_1_5",
+    # STAI-6 (six oriented item scores; no scale mean)
+    "questionnaire_stai_calm_rev_1_5",
+    "questionnaire_stai_tense_1_5",
+    "questionnaire_stai_upset_1_5",
+    "questionnaire_stai_relaxed_rev_1_5",
+    "questionnaire_stai_content_rev_1_5",
+    "questionnaire_stai_worried_1_5",
+    # PRS-11 (four subscales; no total mean)
+    "questionnaire_prs11_fascination_mean_1_5",
+    "questionnaire_prs11_being_away_mean_1_5",
+    "questionnaire_prs11_coherence_mean_1_5",
+    "questionnaire_prs11_scope_mean_1_5"
   )
 )
 
@@ -136,27 +156,26 @@ stopifnot(
   identical(deparse(H1_TimeSeries_Temporal_AR1_10s_LMM[[2]]), deparse(H3_TimeSeries_Temporal_AR1_10s_LMM[[2]]))
 )
 
-run_h1_h3_timeseries <- function() {
+# Shared engine initialization; public run functions below remain available for interactive use.
+initialize_h1_h3_timeseries <- function() {
   assign("PAPER3_TIME_SERIES_ENGINE", TRUE, envir = .GlobalEnv)
   assign("TIME_SERIES_SCRIPT_PATH", H1_H3_TIMESERIES_SCRIPT_PATH, envir = .GlobalEnv)
   source(file.path(LIBRARY_DIR, "H1_H3_core.R"), local = FALSE)
   h1_h3_install_time_series_globals()
+}
+
+run_h1_h3_timeseries <- function() {
+  initialize_h1_h3_timeseries()
   h1_h3_time_series_dispatch_from_env()
 }
 
 run_one_time_series <- function(hypothesis_id) {
-  assign("PAPER3_TIME_SERIES_ENGINE", TRUE, envir = .GlobalEnv)
-  assign("TIME_SERIES_SCRIPT_PATH", H1_H3_TIMESERIES_SCRIPT_PATH, envir = .GlobalEnv)
-  source(file.path(LIBRARY_DIR, "H1_H3_core.R"), local = FALSE)
-  h1_h3_install_time_series_globals()
+  initialize_h1_h3_timeseries()
   h1_h3_run_one_time_series(hypothesis_id)
 }
 
 run_h1_to_h3_time_series <- function(hypotheses = c("H1", "H2", "H3")) {
-  assign("PAPER3_TIME_SERIES_ENGINE", TRUE, envir = .GlobalEnv)
-  assign("TIME_SERIES_SCRIPT_PATH", H1_H3_TIMESERIES_SCRIPT_PATH, envir = .GlobalEnv)
-  source(file.path(LIBRARY_DIR, "H1_H3_core.R"), local = FALSE)
-  h1_h3_install_time_series_globals()
+  initialize_h1_h3_timeseries()
   h1_h3_run_all_time_series(hypotheses)
 }
 
@@ -167,10 +186,7 @@ run_h3_time_series <- function() run_one_time_series("H3")
 if (sys.nframe() == 0L) {
   run_h1_h3_timeseries()
 } else {
-  assign("PAPER3_TIME_SERIES_ENGINE", TRUE, envir = .GlobalEnv)
-  assign("TIME_SERIES_SCRIPT_PATH", H1_H3_TIMESERIES_SCRIPT_PATH, envir = .GlobalEnv)
-  source(file.path(LIBRARY_DIR, "H1_H3_core.R"), local = FALSE)
-  h1_h3_install_time_series_globals()
+  initialize_h1_h3_timeseries()
   h1_h3_time_series_autostart(
     function() h1_h3_run_all_time_series(),
     function(hypothesis_id) h1_h3_run_one_time_series(hypothesis_id)

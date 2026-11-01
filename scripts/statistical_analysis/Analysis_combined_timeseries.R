@@ -1,3 +1,6 @@
+# Reading order: study settings -> explicit equations -> data preparation -> run entry.
+# Shared audit/fitting/report implementation: library/Analysis_combined_core.R.
+# Internal h4_/H4_ names are retained legacy engine identifiers, not the current H4 literature hypothesis.
 # H4 time-series LME — explicit preparation and equations; shared audits/reporting in Analysis_combined_core.R
 # Lagged-difference block (added 2026-10-31; moved here from H6.2 of H6_exploratory.R, now removed): a robustness /
 # exploratory extension of H4, NOT a separate hypothesis. Per person, Pearson r between the 10 s first
@@ -12,7 +15,7 @@
 # (a normal or grouped H4 run does not execute it). Output: output/statistical_analysis/results/Analysis_combined_timeseries_lagdiff/
 # Sound-source-adjusted block (added 2026-10-31; moved here from H6.3 of H6_exploratory.R, now removed; archived as
 # scripts/_archive/H6_exploratory_final_20261031.R): exploratory extension of H4, NOT a separate hypothesis. Unlike the
-# H4 sound run (H4_timeseries_sound.R), where a sound-source proportion REPLACES dBA, here the source term is estimated
+# H4 sound run (the archived sound-substitution time-series analysis), where a sound-source proportion REPLACES dBA, here the source term is estimated
 # CONDITIONAL on loudness, heat and light. Per participant: 10 s rows with complete source, ucm_SND_dBA, ucm_UTCI,
 # lys_lux_avg (same LYS1/LYS2 mean as above) and outcome (>= 60 rows, >= 2 phases); each variable centred within phase
 # and standardised within person; lm(y ~ source + dba + utci + lux); participant dropped if rank-deficient or the source
@@ -80,7 +83,7 @@ h4_equation_table <- data.frame(
   stringsAsFactors = FALSE
 )
 
-# Eq1 primary: UTCI x sound. Random intercept per person and phase. AR(1) within the bout.
+# Eq1 primary: UTCI + sound (additive effects). Random intercept per person and phase. AR(1) within the bout.
 # Y <- PAPER3_APPLY_CSV_TRANSFORM(x, column_name)
 Eq1 <- quote(nlme::lme(
   Y ~ ucm_UTCI_bout_z + ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
@@ -91,7 +94,7 @@ Eq1 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq2: air temperature, humidity, wind, MRT, each x sound
+# Eq2: air temperature, humidity, wind and MRT + sound (additive effects)
 Eq2 <- quote(nlme::lme(
   Y ~ ucm_AIR_T_mid_bout_z + ucm_SND_dBA_bout_z + ucm_AIR_RH_bout_z + ucm_WIND_AWS_bout_z + ucm_MRT_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
@@ -101,7 +104,7 @@ Eq2 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq3: HUMIDEX x sound
+# Eq3: HUMIDEX + sound (additive effects)
 Eq3 <- quote(nlme::lme(
   Y ~ ucm_HUMIDEX_bout_z + ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
@@ -111,7 +114,7 @@ Eq3 <- quote(nlme::lme(
   na.action = na.fail
 ))
 
-# Eq4: PET x sound
+# Eq4: PET + sound (additive effects)
 Eq4 <- quote(nlme::lme(
   Y ~ ucm_PET_bout_z + ucm_SND_dBA_bout_z + ucm_SUN_Gh_bout_z + SVF_bout_z + atmo_pm2.5_avg_bout_z + lys_lux_avg_bout_z + lys_kelvin_avg_bout_z + gvi_50m_bout_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
@@ -389,7 +392,7 @@ H4_EQUATION_FIXED <- list(
   `5` = h4_fixed_terms_from_lme_quote(Eq5),
   `6` = h4_fixed_terms_from_lme_quote(Eq6)
 )
-# MRT × SND_dBA interaction is Eq 2 only; Eq 2 heat air term is mid-height temperature.
+# All six equations exclude MRT-by-sound interaction; Eq2 uses mid-height air temperature.
 MRT_SOUND_INTERACTION <- c("ucm_MRT:ucm_SND_dBA", "ucm_SND_dBA:ucm_MRT")
 stopifnot(
   !any(H4_EQUATION_FIXED[["1"]] %in% MRT_SOUND_INTERACTION),
@@ -602,7 +605,7 @@ h4_sourceadj_run <- function(input_path = RAW_DATA_PATH,
     paste("Participants:", paste(sort(unique(d$ParticipantID)), collapse = ", ")), paste("Core route rows:", nrow(d)),
     "Method: per participant, 10 s rows with complete source, ucm_SND_dBA, ucm_UTCI, lys_lux_avg (mean of available LYS1/LYS2) and outcome (>=60 rows, >=2 phases); each variable centred within phase and standardised within person; lm(y ~ source + dba + utci + lux); participant dropped if rank-deficient or source VIF >= 5; Beta_SD = source slope.",
     "Inference: exact two-sided sign-flip test on the mean participant slope (>=6 people); t-interval; BH across the 4 source x outcome rows.",
-    "Differs from H4_timeseries_sound.R, where the source proportion replaces dBA; here it is adjusted for dBA, UTCI and lux. Raw outcome units (no log)."),
+    "Differs from the archived sound-substitution time-series analysis, where the source proportion replaces dBA; here it is adjusted for dBA, UTCI and lux. Raw outcome units (no log)."),
     file.path(out_dir, "Analysis_combined_timeseries_sourceadj_README.txt"))
   cat("Sound-source-adjusted block finished. Results written to:", out_dir, "\n")
   print(res)
@@ -611,9 +614,16 @@ h4_sourceadj_run <- function(input_path = RAW_DATA_PATH,
 
 if (sys.nframe() == 0L) {
   h4_cli_args <- commandArgs(trailingOnly = TRUE)
-  if ("--sourceadj-only" %in% h4_cli_args) h4_sourceadj_run() else
-  if ("--lagdiff-only" %in% h4_cli_args) h4_lagdiff_run() else run_h4()
+  results_root <- file.path(resolve_project_root(), "output", "statistical_analysis", "results")
+  if ("--sourceadj-only" %in% h4_cli_args) {
+    h4_sourceadj_run()
+    h4_result_folder <- "Analysis_combined_timeseries_sourceadj"
+  } else if ("--lagdiff-only" %in% h4_cli_args) {
+    h4_lagdiff_run()
+    h4_result_folder <- "Analysis_combined_timeseries_lagdiff"
+  } else {
+    run_h4()
+    h4_result_folder <- "Analysis_combined_timeseries"
+  }
+  paper3_standardize_result_directory(file.path(results_root, h4_result_folder))
 }
-
-# Normalize final CSV presentation only after all analysis/report calculations.
-if (sys.nframe() == 0L) paper3_standardize_result_directory(file.path(resolve_project_root(), "output", "statistical_analysis", "results", "Analysis_combined_timeseries"))

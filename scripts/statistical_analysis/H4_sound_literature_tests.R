@@ -48,29 +48,15 @@ bout <- interaction(d$ParticipantID, d$PhaseID, drop = TRUE)
 stopifnot(length(unique(d$ParticipantID)) == 11L, nlevels(bout) == 44L)
 d$Time10 <- as.integer(round((as.numeric(d$Datetime) - ave(as.numeric(d$Datetime), bout, FUN = min)) / 10))
 for (o in outcomes) d[[paste0(o, '__tr')]] <- paper3_apply_csv_transform(d[[o]], o, transforms)
-d$Env <- ifelse(substr(d$PhaseID, 5, 5) == 'G', 'Green', 'Urban')
-d$Mode <- substr(d$PhaseID, 1, 4)
 bh <- function(p) { q <- rep(NA_real_, length(p)); ok <- is.finite(p); q[ok] <- p.adjust(p[ok], 'BH'); q }
 zg <- function(x) (x - mean(x, na.rm = TRUE)) / sd(x, na.rm = TRUE)
 energetic <- function(L) 10 * log10(mean(10^(L / 10), na.rm = TRUE))
-fit_lme <- function(fml, data) tryCatch(nlme::lme(fml, data = data, random = ~ 1 | ParticipantID,
-  method = 'REML', na.action = na.omit, control = nlme::lmeControl(opt = 'optim')), error = function(e) e)
-coef_rows <- function(fit, terms, z_p = FALSE) {
-  tt <- summary(fit)$tTable
-  do.call(rbind, lapply(terms, function(tm) {
-    if (!tm %in% rownames(tt)) return(data.frame(term = tm, beta = NA, se = NA, df = NA, stat = NA, p = NA))
-    b <- tt[tm, 'Value']; se <- tt[tm, 'Std.Error']
-    p <- if (z_p) 2 * pnorm(-abs(b / se)) else tt[tm, 'p-value']
-    data.frame(term = tm, beta = b, se = se, df = tt[tm, 'DF'], stat = b / se, p = p)
-  }))
-}
-
 ctl <- nlme::lmeControl(opt = "optim")
 
 # ==== 1 Jo 2019 ====
 jo_dir <- c(empatica_heart_rate = 'less', empatica_hrv_fd_hf = 'greater', empatica_hrv_fd_lf_hf_ratio = 'less')
 pm <- aggregate(d[paste0(outcomes, '__tr')], d[c('ParticipantID', 'PhaseID')], function(x) mean(x, na.rm = TRUE))
-A <- do.call(rbind, lapply(c('Walk', 'Bike'), function(m) do.call(rbind, lapply(outcomes, function(o) {
+jo_results <- do.call(rbind, lapply(c('Walk', 'Bike'), function(m) do.call(rbind, lapply(outcomes, function(o) {
   g <- pm[pm$PhaseID == paste0(m, 'G'), c('ParticipantID', paste0(o, '__tr'))]
   u <- pm[pm$PhaseID == paste0(m, 'U'), c('ParticipantID', paste0(o, '__tr'))]
   x <- merge(g, u, by = 'ParticipantID'); x <- x[is.finite(x[[2]]) & is.finite(x[[3]]), ]
@@ -87,8 +73,8 @@ A <- do.call(rbind, lapply(c('Walk', 'Bike'), function(m) do.call(rbind, lapply(
   }
   res
 }))))
-A$q_BH_two_sided_52 <- bh(A$p_two_sided)
-A$q_BH_one_sided_Jo_6 <- bh(A$p_one_sided_Jo)
+jo_results$q_BH_two_sided_52 <- bh(jo_results$p_two_sided)
+jo_results$q_BH_one_sided_Jo_6 <- bh(jo_results$p_one_sided_Jo)
 
 # ==== 2 Yousefinezhad 2026 (and 3 Dehghan 2017 Friedman = p_friedman) ====
 cond_levels <- c('Control', 'Heat', 'Noise', 'Heat+Noise')
@@ -96,7 +82,7 @@ ok <- is.finite(d$ucm_UTCI) & is.finite(d$ucm_SND_dBA)
 d$Condition <- NA_character_
 d$Condition[ok] <- cond_levels[1 + (d$ucm_UTCI[ok] > 26) + 2 * (d$ucm_SND_dBA[ok] >= 65)]
 B_n <- as.data.frame.matrix(table(d$ParticipantID, factor(d$Condition, cond_levels)))
-B <- list(); Bp <- list()
+condition_results <- list(); condition_posthoc_results <- list()
 for (o in outcomes) {
   y <- d[[paste0(o, '__tr')]]; keep <- is.finite(y) & !is.na(d$Condition)
   cnt <- tapply(y[keep], list(d$ParticipantID[keep], factor(d$Condition[keep], cond_levels)), length)
@@ -115,7 +101,7 @@ for (o in outcomes) {
     long <- data.frame(y = as.vector(Y), pid = factor(rep(rownames(Y), 4)), cond = factor(rep(cond_levels, each = n), cond_levels))
     av <- summary(aov(y ~ cond + Error(pid / cond), data = long))[['Error: pid:cond']][[1]]
     Fv <- av[['F value']][1]; df1 <- av[['Df']][1]; df2 <- av[['Df']][2]
-    C <- contr.poly(4); S <- cov(Y %*% C); eps <- sum(diag(S))^2 / (3 * sum(S^2))
+    condition_contrasts <- contr.poly(4); condition_covariance <- cov(Y %*% condition_contrasts); eps <- sum(diag(condition_covariance))^2 / (3 * sum(condition_covariance^2))
     mp <- tryCatch(mauchly.test(lm(Y ~ 1), X = ~1)$p.value, error = function(e) NA)
     p_raw <- pf(Fv, df1, df2, lower.tail = FALSE); p_gg <- pf(Fv, df1 * eps, df2 * eps, lower.tail = FALSE)
     fr <- friedman.test(Y)
@@ -126,16 +112,16 @@ for (o in outcomes) {
     row$test_used <- if (normal) (if (use_gg) 'RM-ANOVA (Greenhouse-Geisser)' else 'RM-ANOVA') else 'Friedman'
     row$p_global <- if (normal) (if (use_gg) p_gg else p_raw) else fr$p.value
     pairs <- combn(cond_levels, 2)
-    Bp[[o]] <- do.call(rbind, lapply(seq_len(ncol(pairs)), function(k) {
+    condition_posthoc_results[[o]] <- do.call(rbind, lapply(seq_len(ncol(pairs)), function(k) {
       a <- pairs[1, k]; b <- pairs[2, k]; w <- suppressWarnings(wilcox.test(Y[, b], Y[, a], paired = TRUE, exact = FALSE))
       data.frame(outcome = o, comparison = paste(b, 'vs', a), n_participants = n, median_diff = median(Y[, b] - Y[, a]),
         V = unname(w$statistic), p_wilcoxon = w$p.value, posthoc_reported_by_paper_rule = is.finite(row$p_global) && row$p_global < 0.05)
     }))
   }
-  B[[o]] <- row
+  condition_results[[o]] <- row
 }
-B <- do.call(rbind, B); B$q_BH_global_26 <- bh(B$p_global)
-Bp <- do.call(rbind, Bp)
+condition_results <- do.call(rbind, condition_results); condition_results$q_BH_global_26 <- bh(condition_results$p_global)
+condition_posthoc_results <- do.call(rbind, condition_posthoc_results)
 
 # ==== 4 Molaeifar 2020 paired t ====
 cells <- c('Cool+Quiet', 'Hot+Quiet', 'Cool+Loud', 'Hot+Loud')
@@ -149,19 +135,19 @@ cellmeans <- function(o) {
   full <- rownames(cnt)[apply(cnt, 1, function(r) all(is.finite(r) & r >= 3))]
   mn[full, , drop = FALSE]
 }
-PT <- do.call(rbind, lapply(outcomes, function(o) {
+hot_loud_paired_results <- do.call(rbind, lapply(outcomes, function(o) {
   Y <- cellmeans(o); n <- nrow(Y)
   r <- data.frame(outcome = o, n_participants = n, mean_HotLoud = NA, mean_CoolQuiet = NA, mean_diff = NA, t = NA, df = NA, p_paired_t = NA)
   if (n >= 3 && is.finite(sd(Y[, 'Hot+Loud'] - Y[, 'Cool+Quiet'])) && sd(Y[, 'Hot+Loud'] - Y[, 'Cool+Quiet']) > 0) { tt <- t.test(Y[, 'Hot+Loud'], Y[, 'Cool+Quiet'], paired = TRUE)
     r[c('mean_HotLoud', 'mean_CoolQuiet', 'mean_diff', 't', 'df', 'p_paired_t')] <- list(mean(Y[, 'Hot+Loud']), mean(Y[, 'Cool+Quiet']), unname(tt$estimate), unname(tt$statistic), unname(tt$parameter), tt$p.value) }
   r }))
-PT$q_BH_26 <- bh(PT$p_paired_t)
+hot_loud_paired_results$q_BH_26 <- bh(hot_loud_paired_results$p_paired_t)
 
 # ==== 5 Tohidi 2025 and 6 Abbasi 2020 two-way ANOVA ====
 nearest <- function(x, lv) lv[apply(abs(outer(x, lv, '-')), 1, which.min)]
 designs <- list(Tohidi2025 = list(T = c(20, 25, 30), N = c(55, 65, 75, 85)), Abbasi2020 = list(T = c(22, 26, 30), N = c(55, 75)))
 ok <- is.finite(d$ucm_AIR_temp) & is.finite(d$ucm_SND_dBA)
-R <- list(); CM <- list()
+factorial_result_rows <- list(); factorial_cell_rows <- list()
 for (nm in names(designs)) {
   lv <- designs[[nm]]; Tl <- rep(NA, nrow(d)); Nl <- rep(NA, nrow(d))
   Tl[ok] <- nearest(d$ucm_AIR_temp[ok], lv$T); Nl[ok] <- nearest(d$ucm_SND_dBA[ok], lv$N)
@@ -169,23 +155,24 @@ for (nm in names(designs)) {
     y <- d[[paste0(o, '__tr')]]; k <- ok & is.finite(y)
     g <- aggregate(y[k], list(pid = d$ParticipantID[k], Temp = Tl[k], Noise = Nl[k]), function(v) c(m = mean(v), n = length(v)))
     g <- data.frame(g[1:3], y = g$x[, 'm'], n = g$x[, 'n']); g <- g[g$n >= 3, ]
-    CM[[paste(nm, o)]] <- cbind(design = nm, outcome = o, g)
+    factorial_cell_rows[[paste(nm, o)]] <- cbind(design = nm, outcome = o, g)
     row <- data.frame(design = nm, outcome = o, n_cell_means = nrow(g), n_participants = length(unique(g$pid)),
       n_cells_filled = nrow(unique(g[c('Temp', 'Noise')])), F_Temp = NA, p_Temp = NA, F_Noise = NA, p_Noise = NA, F_TempxNoise = NA, p_TempxNoise = NA)
     if (length(unique(g$Temp)) > 1 && length(unique(g$Noise)) > 1) {
       # Repeated measures: participant is a blocking factor, so each person's cells are not treated as independent.
-      # Type II tests: each main effect is tested last after participant and the other factor; interaction last in the full model.
+      # Additive main-effect F tests adjust for participant and the other factor;
+      # the interaction F test uses the full participant-blocked factorial model.
       g$P <- factor(g$pid); g$TT <- factor(g$Temp); g$NN <- factor(g$Noise)
       ft <- function(fm, t) { a <- anova(lm(fm, data = g)); rn <- trimws(rownames(a)); if (!any(rn == t)) return(c(NA, NA)); c(a[rn == t, 'F value'], a[rn == t, 'Pr(>F)']) }
       row[c('F_Temp', 'p_Temp')] <- as.list(ft(y ~ P + NN + TT, 'TT'))
       row[c('F_Noise', 'p_Noise')] <- as.list(ft(y ~ P + TT + NN, 'NN'))
       row[c('F_TempxNoise', 'p_TempxNoise')] <- as.list(ft(y ~ P + TT * NN, 'TT:NN'))
     }
-    R[[paste(nm, o)]] <- row
+    factorial_result_rows[[paste(nm, o)]] <- row
   }
 }
-AN <- do.call(rbind, R); ANcm <- do.call(rbind, CM); rm(R, CM)
-AN$q_Temp_26 <- ave(AN$p_Temp, AN$design, FUN = bh); AN$q_Noise_26 <- ave(AN$p_Noise, AN$design, FUN = bh); AN$q_TempxNoise_26 <- ave(AN$p_TempxNoise, AN$design, FUN = bh)
+factorial_results <- do.call(rbind, factorial_result_rows); factorial_cell_means <- do.call(rbind, factorial_cell_rows); rm(factorial_result_rows, factorial_cell_rows)
+factorial_results$q_Temp_26 <- ave(factorial_results$p_Temp, factorial_results$design, FUN = bh); factorial_results$q_Noise_26 <- ave(factorial_results$p_Noise, factorial_results$design, FUN = bh); factorial_results$q_TempxNoise_26 <- ave(factorial_results$p_TempxNoise, factorial_results$design, FUN = bh)
 
 # ==== 7 Rodrigues 2026 ====
 trip <- do.call(rbind, lapply(split(seq_len(nrow(d)), bout), function(ix) {
@@ -200,21 +187,21 @@ trip <- do.call(rbind, lapply(split(seq_len(nrow(d)), bout), function(ix) {
 for (v in names(trip)[-(1:2)]) trip[[v]][!is.finite(trip[[v]])] <- NA_real_
 blocks <- list(Noise = c('noise_mean', 'noise_max', 'noise_sd'), Temperature = c('temp_mean', 'temp_max', 'temp_sd'))
 for (v in unlist(blocks)) trip[[paste0(v, '_z')]] <- zg(trip[[v]])
-C <- list()
+rodrigues_results <- list()
 for (bk in names(blocks)) for (st in c('mean', 'sd')) for (o in outcomes) {
   yv <- paste0(o, '__', st); tz <- paste0(blocks[[bk]], '_z')
   fit <- tryCatch(lme(as.formula(paste0('`', yv, '` ~ ', paste(tz, collapse = ' + '))), data = trip,
     random = ~ 1 | ParticipantID, method = 'REML', na.action = na.omit, control = ctl), error = function(e) e)
-  if (inherits(fit, 'error')) { C[[length(C) + 1]] <- data.frame(block = bk, outcome_summary = st, outcome = o, term = tz,
+  if (inherits(fit, 'error')) { rodrigues_results[[length(rodrigues_results) + 1]] <- data.frame(block = bk, outcome_summary = st, outcome = o, term = tz,
     beta = NA, se = NA, z = NA, p = NA, n_obs = NA, note = conditionMessage(fit)); next }
   tt <- summary(fit)$tTable[tz, , drop = FALSE]
-  C[[length(C) + 1]] <- data.frame(block = bk, outcome_summary = st, outcome = o, term = tz, beta = tt[, 'Value'],
+  rodrigues_results[[length(rodrigues_results) + 1]] <- data.frame(block = bk, outcome_summary = st, outcome = o, term = tz, beta = tt[, 'Value'],
     se = tt[, 'Std.Error'], z = tt[, 'Value'] / tt[, 'Std.Error'], p = 2 * pnorm(-abs(tt[, 'Value'] / tt[, 'Std.Error'])),
     n_obs = nobs(fit), note = '')
 }
-C <- do.call(rbind, C); rownames(C) <- NULL
-C$retained_Rodrigues_rule <- is.finite(C$p) & C$p < 0.05 & abs(C$beta) > 0.1
-C$q_BH_26_per_term <- ave(C$p, C$block, C$outcome_summary, C$term, FUN = bh)
+rodrigues_results <- do.call(rbind, rodrigues_results); rownames(rodrigues_results) <- NULL
+rodrigues_results$retained_Rodrigues_rule <- is.finite(rodrigues_results$p) & rodrigues_results$p < 0.05 & abs(rodrigues_results$beta) > 0.1
+rodrigues_results$q_BH_26_per_term <- ave(rodrigues_results$p, rodrigues_results$block, rodrigues_results$outcome_summary, rodrigues_results$term, FUN = bh)
 
 # ==== 8 Kraus 2013 ====
 kraus <- c(HR = 'empatica_heart_rate', SDNN = 'empatica_hrv_td_sdnn', LFnu = 'empatica_hrv_fd_lfnu',
@@ -245,7 +232,7 @@ fit_model <- function(rhs, data, method = 'ML') {
   }
 }
 aicv <- function(m) if (inherits(m, 'error')) Inf else m$aic
-D <- list(); sel <- list()
+kraus_results <- list(); kraus_model_selection <- list()
 for (nm in names(kraus)) {
   o <- kraus[[nm]]; x <- ep[[o]]; logged <- nm != 'HR'
   dd <- ep; dd$Yk <- if (logged) log(x) else x; dd$Yk[!is.finite(dd$Yk)] <- NA
@@ -262,43 +249,48 @@ for (nm in names(kraus)) {
     if (!length(a) || min(a) >= best) break; conf <- c(conf, names(which.min(a))); best <- min(a) }
   rhs <- c(base, mapply(tr, names(form), form), conf)
   fm <- fit_model(rhs, dd, method = if (any(form == 'pspline')) 'REML' else 'REML')
-  sel[[nm]] <- data.frame(outcome = o, label = nm, trend_forms = paste(names(form), form, sep = '=', collapse = '; '),
+  kraus_model_selection[[nm]] <- data.frame(outcome = o, label = nm, trend_forms = paste(names(form), form, sep = '=', collapse = '; '),
     confounders_kept_by_AIC = paste(conf, collapse = '; '), formula = paste('Yk ~', paste(rhs, collapse = ' + ')), n_obs = nrow(dd))
   terms <- c('L_below65_per5', 'L_above65_per5')
-  if (inherits(fm, 'error')) { D[[nm]] <- data.frame(outcome = o, label = nm, log_outcome = logged, term = terms, beta = NA, se = NA, df = NA, t = NA, p = NA, pct_change_per5dB = NA, n_obs = nrow(dd), note = conditionMessage(fm)); next }
+  if (inherits(fm, 'error')) { kraus_results[[nm]] <- data.frame(outcome = o, label = nm, log_outcome = logged, term = terms, beta = NA, se = NA, df = NA, t = NA, p = NA, pct_change_per5dB = NA, n_obs = nrow(dd), note = conditionMessage(fm)); next }
   tt <- summary(fm$lme)$tTable
   rn <- sapply(terms, function(t) grep(paste0('(^|\\.)', t, '$'), rownames(tt), value = TRUE)[1])
-  D[[nm]] <- data.frame(outcome = o, label = nm, log_outcome = logged, term = terms, beta = tt[rn, 'Value'], se = tt[rn, 'Std.Error'],
+  kraus_results[[nm]] <- data.frame(outcome = o, label = nm, log_outcome = logged, term = terms, beta = tt[rn, 'Value'], se = tt[rn, 'Std.Error'],
     df = tt[rn, 'DF'], t = tt[rn, 't-value'], p = tt[rn, 'p-value'],
     pct_change_per5dB = if (logged) 100 * (exp(tt[rn, 'Value']) - 1) else NA, n_obs = nrow(dd), note = '')
 }
-D <- do.call(rbind, D); rownames(D) <- NULL; sel <- do.call(rbind, sel)
-D$q_BH_5_per_term <- ave(D$p, D$term, FUN = bh)
+kraus_results <- do.call(rbind, kraus_results); rownames(kraus_results) <- NULL; kraus_model_selection <- do.call(rbind, kraus_model_selection)
+kraus_results$q_BH_5_per_term <- ave(kraus_results$p, kraus_results$term, FUN = bh)
 
 # ==== 9 FDR (Benjamini-Hochberg) ====
 # BH-FDR within each test family: one family = one paper's test over its set of outcomes.
-Bp$q_BH_26_per_comparison <- ave(Bp$p_wilcoxon, Bp$comparison, FUN = bh)
-B$q_friedman_26 <- bh(B$p_friedman)
+condition_posthoc_results$q_BH_26_per_comparison <- ave(condition_posthoc_results$p_wilcoxon, condition_posthoc_results$comparison, FUN = bh)
+condition_results$q_friedman_26 <- bh(condition_results$p_friedman)
 fam <- function(paper, test, outcome, est, p, q) data.frame(paper = paper, test = test, outcome = outcome, estimate = est, p = p, q_BH = q,
   sig_p05 = is.finite(p) & p < 0.05, survives_FDR_q05 = is.finite(q) & q < 0.05)
 FDR <- rbind(
-  fam('Jo 2019', 'paired one-sided t', paste(A$mode, A$outcome), NA, A$p_one_sided_Jo, A$q_BH_one_sided_Jo_6),
-  fam('Yousefinezhad 2026', 'global 4-condition test', B$outcome, NA, B$p_global, B$q_BH_global_26),
-  fam('Yousefinezhad 2026', paste('Wilcoxon', Bp$comparison), Bp$outcome, NA, Bp$p_wilcoxon, Bp$q_BH_26_per_comparison),
-  fam('Dehghan 2017', 'Friedman 4 conditions', B$outcome, NA, B$p_friedman, B$q_friedman_26),
-  fam('Molaeifar 2020', 'paired t Hot+Loud vs Cool+Quiet', PT$outcome, PT$mean_diff, PT$p_paired_t, PT$q_BH_26),
-  fam(AN$design, 'two-way ANOVA temperature main effect', AN$outcome, AN$F_Temp, AN$p_Temp, AN$q_Temp_26),
-  fam(AN$design, 'two-way ANOVA noise main effect', AN$outcome, AN$F_Noise, AN$p_Noise, AN$q_Noise_26),
-  fam(AN$design, 'two-way ANOVA temperature x noise', AN$outcome, AN$F_TempxNoise, AN$p_TempxNoise, AN$q_TempxNoise_26),
-  fam('Rodrigues 2026', paste(C$block, 'block trip', C$outcome_summary, C$term), C$outcome, C$beta, C$p, C$q_BH_26_per_term),
-  fam('Kraus 2013', D$term, D$label, D$beta, D$p, D$q_BH_5_per_term))
+  fam('Jo 2019', 'paired one-sided t', paste(jo_results$mode, jo_results$outcome), NA, jo_results$p_one_sided_Jo, jo_results$q_BH_one_sided_Jo_6),
+  fam('Yousefinezhad 2026', 'global 4-condition test', condition_results$outcome, NA, condition_results$p_global, condition_results$q_BH_global_26),
+  fam('Yousefinezhad 2026', paste('Wilcoxon', condition_posthoc_results$comparison), condition_posthoc_results$outcome, NA, condition_posthoc_results$p_wilcoxon, condition_posthoc_results$q_BH_26_per_comparison),
+  fam('Dehghan 2017', 'Friedman 4 conditions', condition_results$outcome, NA, condition_results$p_friedman, condition_results$q_friedman_26),
+  fam('Molaeifar 2020', 'paired t Hot+Loud vs Cool+Quiet', hot_loud_paired_results$outcome, hot_loud_paired_results$mean_diff, hot_loud_paired_results$p_paired_t, hot_loud_paired_results$q_BH_26),
+  fam(factorial_results$design, 'two-way ANOVA temperature main effect', factorial_results$outcome, factorial_results$F_Temp, factorial_results$p_Temp, factorial_results$q_Temp_26),
+  fam(factorial_results$design, 'two-way ANOVA noise main effect', factorial_results$outcome, factorial_results$F_Noise, factorial_results$p_Noise, factorial_results$q_Noise_26),
+  fam(factorial_results$design, 'two-way ANOVA temperature x noise', factorial_results$outcome, factorial_results$F_TempxNoise, factorial_results$p_TempxNoise, factorial_results$q_TempxNoise_26),
+  fam('Rodrigues 2026', paste(rodrigues_results$block, 'block trip', rodrigues_results$outcome_summary, rodrigues_results$term), rodrigues_results$outcome, rodrigues_results$beta, rodrigues_results$p, rodrigues_results$q_BH_26_per_term),
+  fam('Kraus 2013', kraus_results$term, kraus_results$label, kraus_results$beta, kraus_results$p, kraus_results$q_BH_5_per_term))
+# Retain the actual omnibus method selected above, so exports never have to guess it.
+FDR$statistic_test <- NA_character_
+omnibus <- FDR$test == 'global 4-condition test'
+selected <- condition_results$test_used[match(FDR$outcome[omnibus], condition_results$outcome)]
+FDR$statistic_test[omnibus] <- ifelse(selected == 'Friedman', 'Friedman test', paste0('f-test (', selected, ')'))
 rownames(FDR) <- NULL
 # Preserve every original p/q. Reporting flags do not alter the published-style tests.
 FDR$reporting_eligible <- TRUE
 FDR$reporting_note <- 'Field adaptation; see METHODS_NOTES.md'
 post_ix <- which(FDR$paper == 'Yousefinezhad 2026' & startsWith(FDR$test, 'Wilcoxon '))
-stopifnot(length(post_ix) == nrow(Bp))
-FDR$reporting_eligible[post_ix] <- Bp$posthoc_reported_by_paper_rule %in% TRUE
+stopifnot(length(post_ix) == nrow(condition_posthoc_results))
+FDR$reporting_eligible[post_ix] <- condition_posthoc_results$posthoc_reported_by_paper_rule %in% TRUE
 FDR$reporting_note[post_ix] <- ifelse(FDR$reporting_eligible[post_ix],
   'Omnibus p<0.05 gate passed', 'Omnibus gate did not pass: do not claim post-hoc significance')
 FDR$reporting_note[FDR$paper %in% c('Tohidi2025','Abbasi2020')] <- 'Participant-blocked linear-model ANOVA; additive main-effect tests and full-model interaction test'
@@ -314,8 +306,8 @@ FDR$reporting_note[review] <- paste(FDR$reporting_note[review], FDR$method_valid
 FDR$reporting_eligible <- FDR$reporting_eligible & is.finite(FDR$p)
 FDR$reportable_sig_p05 <- FDR$sig_p05 & FDR$reporting_eligible
 FDR$reportable_FDR_q05 <- FDR$survives_FDR_q05 & FDR$reporting_eligible
-AN$reporting_status <- 'Participant-blocked linear-model ANOVA'
-D$reporting_status <- 'Phase-level summaries of overlapping 5-min HRV estimates; no lagged outcome'
+factorial_results$reporting_status <- 'Participant-blocked linear-model ANOVA'
+kraus_results$reporting_status <- 'Phase-level summaries of overlapping 5-min HRV estimates; no lagged outcome'
 
 
 # ==== write ====
@@ -331,31 +323,32 @@ writeLines(c('Field adaptations; not exact experimental replications.',
   'reporting_eligible is a reporting gate, not proof of scientific validity. Review-pending branches retain their raw results but are excluded from reportable significance flags.',
   'Constant-difference paired tests are skipped instead of terminating the run.'), file.path(outdir, 'METHODS_NOTES.md'))
 # Only 4 files are saved: SUMMARY, 9_FDR table, METHODS_NOTES.md, run_manifest. Per-paper detail tables are not written
-# (every estimate, p and q is in the 9_FDR table; rerun the script with main = TRUE below to regenerate them).
+# The combined table retains selected estimates/statistics and p/adjusted-p values. It is not a complete
+# model diagnostic archive; per-paper detail writers below are disabled in the compact output mode.
 w <- function(x, f, main = FALSE) if (main) write.csv(x, file.path(outdir, f), row.names = FALSE, na = '')
-w(A, '1_Jo2019_paired_ttests.csv')
-w(B, '2_Yousefinezhad2026_RMANOVA_Friedman.csv'); w(Bp, '2_Yousefinezhad2026_posthoc_wilcoxon.csv')
+w(jo_results, '1_Jo2019_paired_ttests.csv')
+w(condition_results, '2_Yousefinezhad2026_RMANOVA_Friedman.csv'); w(condition_posthoc_results, '2_Yousefinezhad2026_posthoc_wilcoxon.csv')
 w(cbind(ParticipantID = rownames(B_n), B_n), '2_Yousefinezhad2026_epochs_per_condition.csv')
-w(PT, '4_Molaeifar2020_paired_t_HotLoud_vs_CoolQuiet.csv')
-w(AN, '5_6_Tohidi2025_Abbasi2020_twoway_ANOVA.csv'); w(ANcm, '5_6_cell_means.csv')
-w(C, '7_Rodrigues2026_mixed_model.csv'); w(D, '8_Kraus2013_mixed_model.csv'); w(sel, '8_Kraus2013_AIC_selection.csv')
+w(hot_loud_paired_results, '4_Molaeifar2020_paired_t_HotLoud_vs_CoolQuiet.csv')
+w(factorial_results, '5_6_Tohidi2025_Abbasi2020_twoway_ANOVA.csv'); w(factorial_cell_means, '5_6_cell_means.csv')
+w(rodrigues_results, '7_Rodrigues2026_mixed_model.csv'); w(kraus_results, '8_Kraus2013_mixed_model.csv'); w(kraus_model_selection, '8_Kraus2013_AIC_selection.csv')
 row <- function(paper, test, p, q, o) { k <- is.finite(p)
   data.frame(paper = paper, sound_test = test, n_tests = sum(k), n_p_lt_05 = sum(k & p < 0.05), n_q_lt_05 = sum(k & is.finite(q) & q < 0.05),
     significant_p = paste(o[k & p < 0.05], collapse = '; '), surviving_FDR = paste(o[k & is.finite(q) & q < 0.05], collapse = '; ')) }
-Cn <- C[C$block == 'Noise', ]
-S <- rbind(
-  row('Jo 2019', 'paired one-sided t (green vs urban)', A$p_one_sided_Jo, A$q_BH_one_sided_Jo_6, paste(A$mode, A$outcome)),
-  row('Yousefinezhad 2026', 'global 4-condition test', B$p_global, B$q_BH_global_26, B$outcome),
-  do.call(rbind, lapply(unique(Bp$comparison), function(cm) { x <- Bp[Bp$comparison == cm, ]; row('Yousefinezhad 2026', paste('Wilcoxon', cm), ifelse(x$posthoc_reported_by_paper_rule, x$p_wilcoxon, NA_real_), ifelse(x$posthoc_reported_by_paper_rule, x$q_BH_26_per_comparison, NA_real_), x$outcome) })),
-  row('Dehghan 2017', 'Friedman 4 conditions', B$p_friedman, B$q_friedman_26, B$outcome),
-  row('Molaeifar 2020', 'paired t Hot+Loud vs Cool+Quiet', PT$p_paired_t, PT$q_BH_26, PT$outcome),
-  do.call(rbind, lapply(unique(AN$design), function(ds) { x <- AN[AN$design == ds, ]; rbind(
+rodrigues_noise_results <- rodrigues_results[rodrigues_results$block == 'Noise', ]
+significance_summary <- rbind(
+  row('Jo 2019', 'paired one-sided t (green vs urban)', jo_results$p_one_sided_Jo, jo_results$q_BH_one_sided_Jo_6, paste(jo_results$mode, jo_results$outcome)),
+  row('Yousefinezhad 2026', 'global 4-condition test', condition_results$p_global, condition_results$q_BH_global_26, condition_results$outcome),
+  do.call(rbind, lapply(unique(condition_posthoc_results$comparison), function(cm) { x <- condition_posthoc_results[condition_posthoc_results$comparison == cm, ]; row('Yousefinezhad 2026', paste('Wilcoxon', cm), ifelse(x$posthoc_reported_by_paper_rule, x$p_wilcoxon, NA_real_), ifelse(x$posthoc_reported_by_paper_rule, x$q_BH_26_per_comparison, NA_real_), x$outcome) })),
+  row('Dehghan 2017', 'Friedman 4 conditions', condition_results$p_friedman, condition_results$q_friedman_26, condition_results$outcome),
+  row('Molaeifar 2020', 'paired t Hot+Loud vs Cool+Quiet', hot_loud_paired_results$p_paired_t, hot_loud_paired_results$q_BH_26, hot_loud_paired_results$outcome),
+  do.call(rbind, lapply(unique(factorial_results$design), function(ds) { x <- factorial_results[factorial_results$design == ds, ]; rbind(
     row(ds, 'two-way ANOVA noise main effect', x$p_Noise, x$q_Noise_26, x$outcome),
     row(ds, 'two-way ANOVA temperature x noise', x$p_TempxNoise, x$q_TempxNoise_26, x$outcome)) })),
-  do.call(rbind, lapply(split(Cn, paste(Cn$outcome_summary, Cn$term)), function(x) row('Rodrigues 2026', paste('trip', x$outcome_summary[1], x$term[1]), x$p, x$q_BH_26_per_term, x$outcome))),
-  do.call(rbind, lapply(split(D, D$term), function(x) row('Kraus 2013', x$term[1], x$p, x$q_BH_5_per_term, x$label))))
-S$reporting_status <- ifelse(S$paper %in% c('Tohidi2025','Abbasi2020','Rodrigues 2026','Kraus 2013'), 'REVIEW PENDING: raw counts are not approved reporting claims', ifelse(startsWith(S$sound_test, 'Wilcoxon'), 'Post-hoc: counted only when omnibus p < 0.05', 'Field adaptation'))
-w(S, 'SUMMARY_sound_tests_p_and_FDR.csv', main = TRUE); w(FDR, '9_FDR_all_tests_p_and_q.csv', main = TRUE)
+  do.call(rbind, lapply(split(rodrigues_noise_results, paste(rodrigues_noise_results$outcome_summary, rodrigues_noise_results$term)), function(x) row('Rodrigues 2026', paste('trip', x$outcome_summary[1], x$term[1]), x$p, x$q_BH_26_per_term, x$outcome))),
+  do.call(rbind, lapply(split(kraus_results, kraus_results$term), function(x) row('Kraus 2013', x$term[1], x$p, x$q_BH_5_per_term, x$label))))
+significance_summary$reporting_status <- ifelse(significance_summary$paper %in% c('Tohidi2025','Abbasi2020','Rodrigues 2026','Kraus 2013'), 'REVIEW PENDING: raw counts are not approved reporting claims', ifelse(startsWith(significance_summary$sound_test, 'Wilcoxon'), 'Post-hoc: counted only when omnibus p < 0.05', 'Field adaptation'))
+w(significance_summary, 'SUMMARY_sound_tests_p_and_FDR.csv', main = TRUE); w(FDR, '9_FDR_all_tests_p_and_q.csv', main = TRUE)
 md5 <- function(f) unname(tools::md5sum(f))
 w(data.frame(started = format(started), completed = format(Sys.time()), script = .entry, script_md5 = md5(.entry),
   common_md5 = md5(.common), input = input, input_md5 = md5(input), R = R.version.string,
