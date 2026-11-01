@@ -6687,3 +6687,33 @@ e.DOTALL, which accidentally corrupted nested function brackets (step1_mat and 
 
 - 2026-10-25 | User requested portable migration of nine .gemini sources into Paper3_Final/Brain with dependency-path updates for laptop transfer. Moved30files (seven Markdown trackers/instructions, nine email files, six meeting texts and eight screenshots); copied9supporting files including all3original proposal/confirmation/renewal documents. Verified original SHA256 before path rewriting. Updated8textfiles to Brain-relative references; no old moved-location references remain in migrated text. Added repository AGENTS.md/GEMINI.md entry points and Brain/README.md dependency report; seven old .gemini files now compatibility pointers, email/meeting directories are junctions; updated3existing Obsidian reference files. Manifest records original/final hashes. Blockers:16OneDrive questionnaire placeholders unavailable (cloud provider not running), parameter-acronym manual and old Paper3_structure.md missing before migration. Other repositories/raw data/environments not transferred. Authentication files excluded; credential-pattern scan found no matches, but correspondence/signed ethics/proposals remain sensitive. No Git stage/commit/push. See Brain/migration_manifest.csv for exact source/destination paths and pending files. Pending user review and OneDrive hydration before complete laptop-backup claim.
 
+
+## 2026-11-01 — Statistical output naming and consistency final check
+
+User requested consistent statistical column names and a maximum of 3–5 published output files per script.
+
+Changes and scope:
+- Seven active entry scripts use library/Paper3_output_names.R for final output presentation: Analysis_combined_phaseavg.R, Analysis_combined_timeseries.R, H1_H3_phaseavg.R, H1_H3_timeseries.R, H4_sound_literature_tests.R, H5_hotspot_weather.R and H6_stress_composite.R. Paper3_common.R loads the shared helper.
+- Standard result fields include estimate, std_error, p_value, p_value_adjusted, ci_lower/ci_upper, statistic/statistic_type, and significant_unadjusted/significant_adjusted. BH results are explicitly adjusted p-values. Separate correlation CI and SMD CI fields prevent confusion with slope uncertainty. F statistics are stored as statistics rather than effect estimates.
+- Current output layer consolidates metadata, column dictionaries and final file checksums into each folder's *_run_info.csv; fit-status and H5 assignment information are consolidated. Retired former-H6 files and the filtration audit used as an input fingerprint are excluded from presentation rewriting. Source sensor schemas and model calculations retain their native names.
+- Latest fixes changed BH-family validation from a message to a hard finalization failure and reject publication of more than five top-level files. This cap applies to published result folders, not archived versions or internal analysis storage. Optional detail modes may exceed the cap and then fail finalization until consolidated.
+- H4 literature script now correctly describes Kraus-inspired results as phase summaries of overlapping five-minute HRV estimates, not a selected non-overlapping five-minute window. Exposures summarize the full phase; original source lag design is not replicated.
+- Factorial adaptation is labelled participant-blocked linear-model ANOVA rather than an unqualified repeated-measures ANOVA. Original formulas/tests retained by the latest correction.
+- Review-pending Tohidi, Abbasi, Rodrigues and Kraus branches retain raw results but are excluded from automatic reportable-significance approval. Post-hoc reporting follows the omnibus gate. Reporting flags are not a guarantee of scientific validity.
+
+Verification actually completed:
+- All 13 active R files parse; checked dependencies nlme, mgcv, emmeans, ggplot2, statpsych, clubSandwich, car, lme4 and gridExtra are available with the configured R user library.
+- All 15 Python code cells in scripts/Paper3_Figures.ipynb parse; literal referenced result CSV paths were checked. The complete figure notebook was NOT executed/rendered in this final check.
+- Output finalization tested twice on copies for all seven result folders: second run was unchanged. Deliberately invalid BH values and excessive file counts were correctly rejected.
+- Original statistical values and row counts verified across 19 CSV tables in the latest correction. Changes to reporting approval/status text were intentional. Models, estimates, raw p-values, adjusted p-values, correction families and input merged CSV were not refitted/recomputed in this naming/consistency pass.
+- Current final file checksums match all seven consolidated run-info tables.
+- Published top-level file counts: Analysis_combined_phaseavg=3; Analysis_combined_timeseries=5; H1_H3_phaseavg=5; H1_H3_timeseries=4; H4_sound_literature_tests=4; H5_exploratory=5; H6_stress_composite=4.
+
+Backups:
+- archive/output_naming_before_20261101_173158: scripts and results before initial output naming migration.
+- archive/consistency_fix_20261101_181431: scripts and current published outputs before the latest consistency corrections.
+
+Supporting records: scripts/statistical_analysis/OUTPUT_NAMING_STANDARD.md; Experiment papers/Sound_evidence/SOURCE_METHOD_VERIFICATION.md. Final check record in Codex workspace: C:/Users/sanga/Documents/Codex/2026-10-29/d-pranav-docker-paper3-final-scripts/work/final_consistency_fix/FINAL_CHECK.md.
+
+Remaining limits: no full end-to-end model rerun in this final check; no complete figure rendering; literature adaptation/source-method review remains pending where flagged. Passing syntax/schema/checksum checks does not establish scientific validity of every model. H1–H3 time-series versus phase-average FDR family definitions were preserved, not silently harmonized. No Git commit or push performed for this update.
+
