@@ -1131,7 +1131,7 @@ h5s_run_extended_models <- function(spec) {
 }
 
 h5s_rh1_hotspot_coef_table <- function(fit_res, outcome, phase_id = NA_character_, lookup = NULL) {
-  note_p <- "raw two-sided p-values; not FDR-adjusted across hotspot levels"
+  note_p <- "p_value: raw two-sided Wald p (z for lme4 fits, t for nlme fits); p_value_adjusted: BH within outcome x phase_id across hotspot cells"
   if (!fit_res$converged) {
     return(data.frame(
       PhaseID = phase_id,

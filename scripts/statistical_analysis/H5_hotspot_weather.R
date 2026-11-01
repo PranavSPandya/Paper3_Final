@@ -129,6 +129,7 @@ h5_run_view_models <- function(out_dir) {
   input <- file.path(out_dir, "H5_hotspot_day.csv")
   if (!file.exists(input)) stop("Missing hotspot-day input for view models: ", input, call. = FALSE)
   d <- read.csv(input, stringsAsFactors = FALSE, check.names = FALSE)
+  names(d)[names(d) %in% c("participant_id", "phase_id")] <- c(participant_id = "ParticipantID", phase_id = "PhaseID")[names(d)[names(d) %in% c("participant_id", "phase_id")]]  # finalized file uses snake_case ids
   required <- c("ParticipantID", "PhaseID", "hotspot_id", "route_bin", "median_ucm_UTCI",
                 "median_lys_lux_avg", "median_SVF", "median_TVF", "median_BVF")
   stopifnot(all(required %in% names(d)))

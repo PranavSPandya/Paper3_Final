@@ -14,7 +14,7 @@
 # 6 Abbasi et al. 2020: two-factor field adaptation (source also used 18 C), air temperature 22/26/30 C x noise 55/75 dBA (nearest level).
 # 7 Rodrigues et al. 2026: trip-level mixed model, Noise block (mean, max, SD of dBA, z-scored), outcomes
 #   trip mean and SD, REML, Wald z; Temperature block fitted separately (reported, not sound).
-# 8 Kraus-inspired adaptation: one non-overlapping 5-min window per phase, Leq piecewise at 65 dBA per 5 dB, no lag, MET activity,
+# 8 Kraus-inspired adaptation: phase summaries of overlapping 5-min HRV windows, Leq piecewise at 65 dBA per 5 dB, no lag, MET activity,
 #   HR adjustment for HRV, log outcomes except HR, trend form and confounders chosen by AIC; outcomes
 #   HR, SDNN, LFnu, HFnu, LF/HF.
 # Not testable with this data: Li 2025 (hypertension), Chen 2007 (hearing threshold), Bidel 2022 (EMG),
@@ -219,8 +219,8 @@ C$q_BH_26_per_term <- ave(C$p, C$block, C$outcome_summary, C$term, FUN = bh)
 # ==== 8 Kraus 2013 ====
 kraus <- c(HR = 'empatica_heart_rate', SDNN = 'empatica_hrv_td_sdnn', LFnu = 'empatica_hrv_fd_lfnu',
   HFnu = 'empatica_hrv_fd_hfnu', LF_HF = 'empatica_hrv_fd_lf_hf_ratio')
-# Non-overlapping windows: each phase is 7.8 min, so it holds exactly one non-overlapping 5-min HRV window.
-# One observation per participant x phase (44); all exposures and covariates averaged over the same phase.
+# Phase aggregation: one summary per participant x phase. HRV summaries average the available
+# overlapping 5-min-derived estimates; these are NOT newly computed non-overlapping 5-min windows.
 d$Min <- 0L
 k <- d[c('ParticipantID', 'PhaseID', 'Min')]
 ep <- aggregate(d[c(kraus, 'empatica__met', 'ucm_AIR_temp', 'ucm_AIR_RH')], k, function(x) mean(x, na.rm = TRUE))
@@ -301,12 +301,21 @@ stopifnot(length(post_ix) == nrow(Bp))
 FDR$reporting_eligible[post_ix] <- Bp$posthoc_reported_by_paper_rule %in% TRUE
 FDR$reporting_note[post_ix] <- ifelse(FDR$reporting_eligible[post_ix],
   'Omnibus p<0.05 gate passed', 'Omnibus gate did not pass: do not claim post-hoc significance')
-FDR$reporting_note[FDR$paper %in% c('Tohidi2025','Abbasi2020')] <- 'Repeated-measures ANOVA (participant block, Type II)'
-FDR$reporting_note[FDR$paper == 'Kraus 2013'] <- 'One non-overlapping 5-min window per phase (n = 44), no lag'
+FDR$reporting_note[FDR$paper %in% c('Tohidi2025','Abbasi2020')] <- 'Participant-blocked linear-model ANOVA; additive main-effect tests and full-model interaction test'
+FDR$reporting_note[FDR$paper == 'Kraus 2013'] <- 'Phase summaries of overlapping 5-min HRV windows; no lag'
+# A completed fit is not automatic approval for a publication claim.
+FDR$method_validation_status <- 'source_test_adapted_to_field_data'
+review <- FDR$paper %in% c('Tohidi2025','Abbasi2020','Rodrigues 2026','Kraus 2013')
+FDR$reporting_eligible[review] <- FALSE
+FDR$method_validation_status[review] <- ifelse(FDR$paper[review] %in% c('Tohidi2025','Abbasi2020'),
+  'full_source_methods_pending', ifelse(FDR$paper[review]=='Rodrigues 2026',
+  'source_code_and_small_sample_inference_review_pending','phase_summary_adaptation_window_and_model_review_pending'))
+FDR$reporting_note[review] <- paste(FDR$reporting_note[review], FDR$method_validation_status[review], sep='; ')
+FDR$reporting_eligible <- FDR$reporting_eligible & is.finite(FDR$p)
 FDR$reportable_sig_p05 <- FDR$sig_p05 & FDR$reporting_eligible
 FDR$reportable_FDR_q05 <- FDR$survives_FDR_q05 & FDR$reporting_eligible
-AN$reporting_status <- 'Repeated-measures ANOVA: participant block, Type II F tests'
-D$reporting_status <- 'One non-overlapping 5-min window per participant x phase; no lagged outcome'
+AN$reporting_status <- 'Participant-blocked linear-model ANOVA'
+D$reporting_status <- 'Phase-level summaries of overlapping 5-min HRV estimates; no lagged outcome'
 
 
 # ==== write ====
@@ -315,10 +324,11 @@ writeLines(c('Field adaptations; not exact experimental replications.',
   'Jo: full 8-min phases vs 60-s source playback; only HR, HF and LF/HF match the source directional endpoints. The other outcomes are extensions.',
   'Four-condition tests: UTCI > 26 and 65 dBA are our observational cut-offs, not the original WBGT and noise assignments. Omnibus condition differences are not automatically sound-specific effects.',
   'Molaeifar: the source five exposure/workload modes and baseline/time measurements are not reproduced by our two-condition comparison.',
-  'Tohidi/Abbasi: two-way ANOVA on participant cell means at the nearest source level, with participant as a repeated-measures block (Type II F tests). Tohidi abstract reports three factors incl. sound type; Abbasi also used 18 C.',
+  'Tohidi/Abbasi: two-way ANOVA on participant cell means at the nearest source level, with participant as a fixed blocking factor; additive main-effect F tests and full-model interaction F test. Tohidi abstract reports three factors incl. sound type; Abbasi also used 18 C.',
   'Rodrigues: participant-intercept block models; Wald p values.',
-  'Kraus: source used 5-min windows. Each phase here is 7.8 min, so one non-overlapping 5-min window per participant x phase (n = 44); HRV values are means of the 5-min HRV available in that phase, Leq is the energetic mean of the phase. No lagged outcome because consecutive windows are separate phases. Source sound lags are not reproduced.',
+  'Kraus: source used 5-min windows. One observation per participant x phase; HRV is averaged over available overlapping 5-min estimates, while Leq and covariates summarize the full phase. No individual 5-min window is selected or temporally matched here. No lagged outcome because consecutive windows are separate phases. Source sound lags are not reproduced.',
   'Raw p and q values are preserved. BH-FDR is applied within each family (one paper test across its outcomes), not across the whole set of papers.',
+  'reporting_eligible is a reporting gate, not proof of scientific validity. Review-pending branches retain their raw results but are excluded from reportable significance flags.',
   'Constant-difference paired tests are skipped instead of terminating the run.'), file.path(outdir, 'METHODS_NOTES.md'))
 # Only 4 files are saved: SUMMARY, 9_FDR table, METHODS_NOTES.md, run_manifest. Per-paper detail tables are not written
 # (every estimate, p and q is in the 9_FDR table; rerun the script with main = TRUE below to regenerate them).
@@ -344,7 +354,7 @@ S <- rbind(
     row(ds, 'two-way ANOVA temperature x noise', x$p_TempxNoise, x$q_TempxNoise_26, x$outcome)) })),
   do.call(rbind, lapply(split(Cn, paste(Cn$outcome_summary, Cn$term)), function(x) row('Rodrigues 2026', paste('trip', x$outcome_summary[1], x$term[1]), x$p, x$q_BH_26_per_term, x$outcome))),
   do.call(rbind, lapply(split(D, D$term), function(x) row('Kraus 2013', x$term[1], x$p, x$q_BH_5_per_term, x$label))))
-S$reporting_status <- ifelse(startsWith(S$sound_test, 'Wilcoxon'), 'Post-hoc: counted only when omnibus p < 0.05', 'Field adaptation')
+S$reporting_status <- ifelse(S$paper %in% c('Tohidi2025','Abbasi2020','Rodrigues 2026','Kraus 2013'), 'REVIEW PENDING: raw counts are not approved reporting claims', ifelse(startsWith(S$sound_test, 'Wilcoxon'), 'Post-hoc: counted only when omnibus p < 0.05', 'Field adaptation'))
 w(S, 'SUMMARY_sound_tests_p_and_FDR.csv', main = TRUE); w(FDR, '9_FDR_all_tests_p_and_q.csv', main = TRUE)
 md5 <- function(f) unname(tools::md5sum(f))
 w(data.frame(started = format(started), completed = format(Sys.time()), script = .entry, script_md5 = md5(.entry),

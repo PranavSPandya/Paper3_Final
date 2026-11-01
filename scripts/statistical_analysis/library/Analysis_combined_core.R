@@ -41,7 +41,7 @@ H4_WRITE_DETAILS <- identical(Sys.getenv("PAPER3_WRITE_DETAILS", unset = ""), "1
 H4_KEEP_FILES <- h4_file(if (H4_VARIANT == "phaseavg") {
   c("H4_Heat_Noise_Exposures.csv", "H4_phase_contrasts.csv", "H4_run_complete.csv")
 } else {
-  c("H4_Multivariate_Filtration_Results.csv", "H4_fit_records.rds", "H4_fit_status.csv", "H4_hypothesis.csv",
+  c("H4_Multivariate_Filtration_Results.csv", "H4_fit_records.rds", "H4_hypothesis.csv",
     "H4_Report.md", "H4_run_complete.csv")
 })
 H4_DETAIL_DIR <- file.path(tempdir(), paste0(H4_FILE_PREFIX, "_details"))
@@ -761,8 +761,8 @@ h4_write_results <- function(audit_df, step5_result) {
   rep_md <- c("# H4 results report", "", h41_md, "",
     "## Files",
     if (H4_WRITE_DETAILS) sprintf("- %s / %s: H4.1 only", h4_file("H4_Heat_Noise_Exposures.csv"), h4_file("H4_Covariates_and_Phases.csv")) else
-      sprintf("- Saved in results/%s/: %s (heat and sound exposure terms, H4.1); %s (fit status per outcome x equation); %s (file MD5 manifest); %s (Steps 1-4 variable audit, input to the phase-average run); %s (Step 5 resume checkpoint); this report.",
-        basename(RESULT_DIR), h4_file("H4_hypothesis.csv"), h4_file("H4_fit_status.csv"), h4_file("H4_run_complete.csv"),
+      sprintf("- Saved in results/%s/: %s (heat and sound exposure terms, H4.1, with the fit status of each outcome x model); %s (run information: manifest, file MD5 checksums, column dictionary); %s (Steps 1-4 variable audit, input to the phase-average run); %s (Step 5 resume checkpoint); this report.",
+        basename(RESULT_DIR), h4_file("H4_hypothesis.csv"), h4_file("H4_run_info.csv"),
         h4_file("H4_Multivariate_Filtration_Results.csv"), h4_file("H4_fit_records.rds")),
     if (H4_WRITE_DETAILS) sprintf("- %s, %s; working fits in results/%s/", h4_file("H4_Variable_Selection.csv"), h4_file("H4_Selection_Flow.pdf"), basename(RESULT_DIR)) else
       "- Not saved by default (rerun with PAPER3_WRITE_DETAILS=1 to write them): coefficients, Heat_Noise_Exposures, Covariates_and_Phases, Variable_Selection, phase_contrasts, covariance and lag-60 sensitivity, GVIF and design-redundancy diagnostics, audit step tables, Selection_Flow.pdf, hypothesis_readme, session_info. Detail file names mentioned below refer to that mode.", "",
@@ -786,6 +786,8 @@ h4_write_results <- function(audit_df, step5_result) {
   completed$run_complete <- TRUE
   completed$run_scope <- "FULL"
   write.csv(completed, file.path(md, h4_file("H4_run_complete.csv")), row.names = FALSE)
+  # Final names, fit status merge and run_info (Paper3_output_names.R); also reached by H4_STEP5_ONLY, which quits early.
+  if (exists("p3_finalize_directory", mode = "function")) p3_finalize_directory(md)
   cat("[Results] Wrote", length(f), "files to", res_dir, "\n")
 }
 
@@ -2322,7 +2324,7 @@ h4_dispatch_run <- function() {
     quit(save = "no", status = 0)
   }
   if (identical(Sys.getenv("H4_GVIF_ONLY"), "1")) {
-    if (file.exists(file.path(OUT_DIR, h4_file("H4_run_complete.csv"))))
+    if (file.exists(file.path(OUT_DIR, h4_file("H4_run_complete.csv"))) || file.exists(file.path(OUT_DIR, h4_file("H4_run_info.csv"))))
       stop("A completed model bundle exists; rerun Step 5 instead of rewriting GVIF files after hashing.")
     raw_df <- h4_read_merged_analysis_data()
     raw_df <- h4_apply_average_sources(raw_df)
@@ -2331,7 +2333,7 @@ h4_dispatch_run <- function() {
     quit(save = "no", status = 0)
   }
   if (identical(Sys.getenv("H4_FACET_REFRESH"), "1")) {
-    if (!file.exists(file.path(OUT_DIR, h4_file("H4_run_complete.csv")))) {
+    if (!file.exists(file.path(OUT_DIR, h4_file("H4_run_complete.csv"))) && !file.exists(file.path(OUT_DIR, h4_file("H4_run_info.csv")))) {
       raw_df <- h4_read_merged_analysis_data()
       raw_df <- h4_apply_average_sources(raw_df)
       h4_run_gvif_diagnostic(h4_step4_exposure_prep(read.csv(OUT_CSV, stringsAsFactors = FALSE, check.names = FALSE), raw_df))
