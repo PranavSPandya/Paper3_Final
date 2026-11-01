@@ -1189,12 +1189,18 @@ h5s_rh1_hotspot_coef_table <- function(fit_res, outcome, phase_id = NA_character
   )
 }
 
+# Output reduction (2026-11-01): by default H5 saves only H5_RH1_hotspot_FDR_all_tests.csv,
+# H5_RH1_hotspot_FDR_summary.csv, H5_view_model_coefficients.csv, H5_Run_Manifest.csv, H5_corridor_grid_label_map.csv
+# and H5_epoch_buffer_assignment.csv (both read by Paper3_Figures.ipynb) and H5_hotspot_day.csv (input of the view-factor
+# models and of --view-only). PAPER3_WRITE_DETAILS=1 also writes every detail table. Models and FDR are unchanged.
+H5_WRITE_DETAILS <- identical(Sys.getenv("PAPER3_WRITE_DETAILS", unset = ""), "1")
+
 h5s_write_rh1_hotspot_coef_dumps <- function(coef_by_outcome, out_dir, spec) {
   alpha <- spec$exploratory_fdr_alpha
   fam <- h5s_exploratory_fdr_family(spec)
   gc <- h5s_fdr_group_cols(spec, "hotspot_coef")
   note_path <- file.path(out_dir, "RH1_hotspot_coefficients_p_value_note.txt")
-  writeLines(c(
+  if (H5_WRITE_DETAILS) writeLines(c(
     "RH1 hotspot_f fixed-effect coefficients (reference hotspot level omitted by contrast coding).",
     "term / grid_label: corridor buffer cell (route_bin + 1 within PhaseID), e.g. BikeG_grid3.",
     "hotspot_id: internal PhaseID_seg{k}; term_model: raw R fixed-effect name.",
@@ -1232,7 +1238,7 @@ h5s_write_rh1_hotspot_coef_dumps <- function(coef_by_outcome, out_dir, spec) {
       }
     }
     out_path <- file.path(out_dir, paste0("RH1_hotspot_coefficients_", outcome, ".csv"))
-    write.csv(tab, out_path, row.names = FALSE)
+    if (H5_WRITE_DETAILS) write.csv(tab, out_path, row.names = FALSE)
     if ("significant_raw_p05" %in% names(tab)) {
       sig <- tab[tab$significant_raw_p05 %in% TRUE, , drop = FALSE]
       if (nrow(sig)) {
@@ -1240,7 +1246,7 @@ h5s_write_rh1_hotspot_coef_dumps <- function(coef_by_outcome, out_dir, spec) {
       }
     }
   }
-  if (length(sig_raw_rows)) {
+  if (length(sig_raw_rows) && H5_WRITE_DETAILS) {
     write.csv(
       do.call(rbind, sig_raw_rows),
       file.path(out_dir, "RH1_hotspot_coefficients_significant_raw_p05.csv"),
@@ -1254,7 +1260,9 @@ h5s_write_rh1_hotspot_coef_dumps <- function(coef_by_outcome, out_dir, spec) {
       row.names = FALSE
     )
     locked <- all_hs[all_hs$fdr_significant %in% TRUE, , drop = FALSE]
-    if (nrow(locked)) {
+    if (!H5_WRITE_DETAILS) {
+      # FDR-significant rows are the fdr_significant == TRUE rows of H5_RH1_hotspot_FDR_all_tests.csv
+    } else if (nrow(locked)) {
       write.csv(
         locked[order(locked$outcome, locked$PhaseID, locked$p_value_FDR), , drop = FALSE],
         file.path(out_dir, "H5_RH1_hotspot_FDR_significant.csv"),
@@ -1701,8 +1709,9 @@ h5s_dispatch_run <- function(spec, project_root, script_path, raw_data_path) {
   }
   if (inherits(re_fx, "try-error")) re_fx <- data.frame(note = "random-effect extraction failed")
 
-  write.csv(baselines, file.path(out_dir, "H5_participant_campaign_baselines.csv"), row.names = FALSE)
   write.csv(hotspot_day, file.path(out_dir, "H5_hotspot_day.csv"), row.names = FALSE)
+  if (H5_WRITE_DETAILS) {
+  write.csv(baselines, file.path(out_dir, "H5_participant_campaign_baselines.csv"), row.names = FALSE)
   write.csv(audit, file.path(out_dir, "H5_hotspot_cell_audit.csv"), row.names = FALSE)
   write.csv(stability, file.path(out_dir, "H5_hotspot_exposure_stability.csv"), row.names = FALSE)
   write.csv(slope_audit, file.path(out_dir, "H5_hotspot_slope_audit.csv"), row.names = FALSE)
@@ -1712,13 +1721,14 @@ h5s_dispatch_run <- function(spec, project_root, script_path, raw_data_path) {
   write.csv(outliers, file.path(out_dir, "H5_participant_hotspot_outliers.csv"), row.names = FALSE)
   write.csv(criteria, file.path(out_dir, "H5_hotspot_positive_criteria.csv"), row.names = FALSE)
   if (is.data.frame(re_fx)) write.csv(re_fx, file.path(out_dir, "H5_participant_hotspot_random_effects.csv"), row.names = FALSE)
+  }
 
   env_c <- h5s_moderator_term_name(spec)
   inclusion_audit <- try(
     h5s_compare_hotspot_inclusion_audit(spec, project_root, raw_data_path),
     silent = TRUE
   )
-  if (!inherits(inclusion_audit, "try-error")) {
+  if (!inherits(inclusion_audit, "try-error") && H5_WRITE_DETAILS) {
     write.csv(
       inclusion_audit,
       file.path(out_dir, "H5_hotspot_inclusion_rule_comparison.csv"),

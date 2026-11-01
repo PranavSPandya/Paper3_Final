@@ -1,0 +1,2 @@
+n_tests_pooled,n_raw_p_lt_0.05,n_fdr_pooled_q_lt_0.05,n_fdr_within_outcome_q_lt_0.05,n_fdr_within_outcome_x_phase_q_lt_0.05,n_fdr_primary_within_outcome_x_phase_q_lt_0.05,locked_exploratory_family,note
+1267,124,57,70,80,69,within_outcome_x_phase,BH hotspot_f tests; primary family when rh1_stratify_by_phase=TRUE

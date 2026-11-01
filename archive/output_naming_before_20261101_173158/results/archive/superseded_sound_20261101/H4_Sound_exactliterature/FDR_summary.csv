@@ -1,0 +1,18 @@
+"analysis","test","n_tests","n_p_lt_05","n_q_lt_05"
+"A Jo 2019","Green vs Urban, two-sided (52 tests)",52,13,7
+"A Jo 2019","Jo one-sided HR, ln HF, ln LF/HF (6 tests)",6,0,0
+"B Yousefinezhad 2026","global 4-condition test",26,5,3
+"C Rodrigues 2026","Noise noise_max_z",26,2,0
+"C Rodrigues 2026","Noise noise_mean_z",26,3,0
+"C Rodrigues 2026","Noise noise_min_z",26,2,0
+"C Rodrigues 2026","Noise noise_sd_z",26,2,0
+"C Rodrigues 2026","Temperature temp_max_z",26,2,0
+"C Rodrigues 2026","Temperature temp_mean_z",26,4,0
+"C Rodrigues 2026","Temperature temp_min_z",26,5,4
+"D Kraus 2013","L_above65_per5",26,3,0
+"D Kraus 2013","L_below65_per5",26,13,10
+"E group form","dBA_z",26,3,0
+"E group form","EnvGreen",26,5,0
+"E group form","ModeWalk",26,6,6
+"E group form","UTCI_z",26,5,0
+"E group form","UTCI_z:dBA_z",26,5,0

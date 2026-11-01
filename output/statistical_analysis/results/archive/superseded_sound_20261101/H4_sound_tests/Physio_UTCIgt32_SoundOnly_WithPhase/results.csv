@@ -1,0 +1,625 @@
+"outcomes_set","filter","model","phase","outcome","sound_variable","term","n_cells","n_participants","n_rows","Beta","SE","df","p","min_df_model","singular_re","note","q_within_all26","q_all_all26"
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","ucm_SND_dBA","sound",12,6,325,2.58653923329971,2.58962293825183,1.90631979222878,0.427493948433141,1.89063128820865,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","ucm_SND_dBA","sound",12,6,325,0.187514530203931,0.455326566260224,2.1696681339043,0.717623554501366,1.89185467064488,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","ucm_SND_dBA","sound",12,6,325,-0.00106399572396437,0.00112016929637457,1.91575703531651,0.446192965150173,1.91575703531651,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","ucm_SND_dBA","sound",12,6,325,0.914903381115506,0.817821265216282,2.17862843672253,0.371374039044813,1.91936765511695,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","ucm_SND_dBA","sound",12,6,275,0.0735972628141189,0.0180389847651236,2.39623905662935,0.0402833139783035,2.12708169987852,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","ucm_SND_dBA","sound",12,6,302,0.0299195278803892,0.041590600800782,1.84111963617135,0.552143579228583,1.84111963617135,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","ucm_SND_dBA","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","ucm_SND_dBA","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","ucm_SND_dBA","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","ucm_SND_dBA","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","ucm_SND_dBA","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","ucm_SND_dBA","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","ucm_SND_dBA","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","ucm_SND_dBA","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","ucm_SND_dBA","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","ucm_SND_dBA","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","ucm_SND_dBA","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","ucm_SND_dBA","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","ucm_SND_dBA","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","ucm_SND_dBA","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","ucm_SND_dBA","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","ucm_SND_dBA","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","ucm_SND_dBA","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","ucm_SND_dBA","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","ucm_SND_dBA","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","ucm_SND_dBA","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","dominant_frequency_Hz","sound",12,6,325,3.24953721652315,1.34663766307109,2.09672022726288,0.131461943196554,1.24554096045826,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","dominant_frequency_Hz","sound",12,6,325,0.185081594825781,0.61645433814111,2.57643545437292,0.786553262154694,1.79021018938276,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","dominant_frequency_Hz","sound",12,6,325,-0.0015940502166623,0.00154674125718198,2.155136792067,0.404324092700282,1.40083203794972,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","dominant_frequency_Hz","sound",12,6,325,0.152632196385155,0.617052483316539,2.46913933121836,0.823728050588805,1.69967488470777,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","dominant_frequency_Hz","sound",12,6,275,-0.0565814117810805,0.0452472361080246,1.78521124244817,0.350255114246441,1.20281208409174,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","dominant_frequency_Hz","sound",12,6,302,-0.0526190040416627,0.0339563261444193,1.92057065682191,0.266314747181228,1.27277061737433,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","dominant_frequency_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","dominant_frequency_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","dominant_frequency_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","dominant_frequency_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","dominant_frequency_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","dominant_frequency_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","dominant_frequency_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","dominant_frequency_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","dominant_frequency_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","dominant_frequency_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","dominant_frequency_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","dominant_frequency_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","dominant_frequency_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","dominant_frequency_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","dominant_frequency_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","dominant_frequency_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","dominant_frequency_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","dominant_frequency_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","dominant_frequency_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","dominant_frequency_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","freq_proportion_2000_to_20000Hz","sound",12,6,325,0.777042998536973,1.18263586142866,2.1303204405855,0.575018242389418,2.12743569851761,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","freq_proportion_2000_to_20000Hz","sound",12,6,325,-0.821691395176284,0.0909931498385221,1.97477687128454,0.0125286855060404,1.26285139871713,FALSE,"",0.325745823157051,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","freq_proportion_2000_to_20000Hz","sound",12,6,325,-0.00159469504501744,0.00191820511371847,2.14434340845401,0.488092299020107,2.14434340845401,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","freq_proportion_2000_to_20000Hz","sound",12,6,325,0.229039991361647,0.334678952424785,2.31896799888487,0.555768993657042,1.67595746148353,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","freq_proportion_2000_to_20000Hz","sound",12,6,275,-0.0274165333203812,0.0392819478362059,2.1412974912834,0.553251581617254,2.1412974912834,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","freq_proportion_2000_to_20000Hz","sound",12,6,302,0.0497623723267935,0.0621696797199233,2.10176277801775,0.503892015633685,2.10176277801775,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","freq_proportion_2000_to_20000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","freq_proportion_2000_to_20000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","freq_proportion_2000_to_20000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","freq_proportion_2000_to_20000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","freq_proportion_2000_to_20000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","freq_proportion_2000_to_20000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","freq_proportion_2000_to_20000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","freq_proportion_2000_to_20000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","freq_proportion_2000_to_20000Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","freq_proportion_2000_to_20000Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","freq_proportion_2000_to_20000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","freq_proportion_2000_to_20000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","freq_proportion_2000_to_20000Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","freq_proportion_2000_to_20000Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","freq_proportion_2000_to_20000Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","freq_proportion_2000_to_20000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","freq_proportion_2000_to_20000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","freq_proportion_2000_to_20000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","freq_proportion_2000_to_20000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","freq_proportion_2000_to_20000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","freq_proportion_200_to_2000Hz","sound",12,6,325,-2.03481179906579,3.84050823084192,3.25452068812971,0.630267000753537,1.88641439814487,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","freq_proportion_200_to_2000Hz","sound",12,6,325,0.072453935840874,0.72714110379908,2.85881201960988,0.927201189833804,2.33039086743218,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","freq_proportion_200_to_2000Hz","sound",12,6,325,-0.000534561799478319,0.00171621056199501,3.26166917152882,0.774298467674405,2.16936498223853,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","freq_proportion_200_to_2000Hz","sound",12,6,325,0.994908088497637,0.609358531243226,2.99987312216085,0.201037619510872,2.46876551174575,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","freq_proportion_200_to_2000Hz","sound",12,6,275,-0.0287014660724025,0.041165021035639,3.17084146988031,0.533340682091547,1.95673254800483,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","freq_proportion_200_to_2000Hz","sound",12,6,302,0.0463148324485672,0.0720387507330615,3.16909879140889,0.563783344891719,1.89070563170463,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","freq_proportion_200_to_2000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","freq_proportion_200_to_2000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","freq_proportion_200_to_2000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","freq_proportion_200_to_2000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","freq_proportion_200_to_2000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","freq_proportion_200_to_2000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","freq_proportion_200_to_2000Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","freq_proportion_200_to_2000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","freq_proportion_200_to_2000Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","freq_proportion_200_to_2000Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","freq_proportion_200_to_2000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","freq_proportion_200_to_2000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","freq_proportion_200_to_2000Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","freq_proportion_200_to_2000Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","freq_proportion_200_to_2000Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","freq_proportion_200_to_2000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","freq_proportion_200_to_2000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","freq_proportion_200_to_2000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","freq_proportion_200_to_2000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","freq_proportion_200_to_2000Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","freq_proportion_20_to_200Hz","sound",12,6,325,1.69057817150204,3.3730667320932,3.20406705533565,0.64865565981167,1.98686353434262,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","freq_proportion_20_to_200Hz","sound",12,6,325,0.168320087862376,0.771216461812146,2.93738793621712,0.841512722567977,2.31147061477635,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","freq_proportion_20_to_200Hz","sound",12,6,325,0.000698943999337966,0.00176604119231082,3.21531511785771,0.717088443859562,2.2645928324569,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","freq_proportion_20_to_200Hz","sound",12,6,325,-0.893958915137194,0.543948572759371,3.11450043385257,0.195487729002548,2.4718041813305,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","freq_proportion_20_to_200Hz","sound",12,6,275,0.0290283541825422,0.0411833783606613,3.10768289355912,0.530074839650445,2.04065181638043,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","freq_proportion_20_to_200Hz","sound",12,6,302,-0.0477347707160359,0.0695376543938624,3.11387980109164,0.540061150627071,1.99125627761749,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","freq_proportion_20_to_200Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","freq_proportion_20_to_200Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","freq_proportion_20_to_200Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","freq_proportion_20_to_200Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","freq_proportion_20_to_200Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","freq_proportion_20_to_200Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","freq_proportion_20_to_200Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","freq_proportion_20_to_200Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","freq_proportion_20_to_200Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","freq_proportion_20_to_200Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","freq_proportion_20_to_200Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","freq_proportion_20_to_200Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","freq_proportion_20_to_200Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","freq_proportion_20_to_200Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","freq_proportion_20_to_200Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","freq_proportion_20_to_200Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","freq_proportion_20_to_200Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","freq_proportion_20_to_200Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","freq_proportion_20_to_200Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","freq_proportion_20_to_200Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","mechanisms_proportion","sound",12,6,325,-7.0329672258734,6.31157858759102,2.4724148709654,0.361661168359453,1.28875205053688,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","mechanisms_proportion","sound",12,6,325,0.529645888187253,0.33977116169296,1.48368916496099,0.299198972743571,1.25430428678652,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","mechanisms_proportion","sound",12,6,325,0.00136991476519218,0.00085245476958985,2.26037759795648,0.234962953259067,1.33708572569162,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","mechanisms_proportion","sound",12,6,325,0.378175818876789,0.328051939878108,1.68602021487016,0.386475906583982,1.36196805721322,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","mechanisms_proportion","sound",12,6,275,-0.0237778409488204,0.040537629301521,2.48244031814158,0.606491878104604,1.25072769134486,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","mechanisms_proportion","sound",12,6,302,0.0297978739675224,0.0562083795968313,2.77573655813222,0.635474214541739,1.28399337456883,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","mechanisms_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","mechanisms_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","mechanisms_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","mechanisms_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","mechanisms_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","mechanisms_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","mechanisms_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","mechanisms_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","mechanisms_proportion","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","mechanisms_proportion","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","mechanisms_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","mechanisms_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","mechanisms_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","mechanisms_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","mechanisms_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","mechanisms_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","mechanisms_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","mechanisms_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","mechanisms_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","mechanisms_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","octave_proportion_1000_0_Hz","sound",12,6,325,-1.34437497751682,4.25855850162346,2.83964664011932,0.774006689338669,1.61481020976643,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","octave_proportion_1000_0_Hz","sound",12,6,325,0.398716818575474,0.627216107865573,2.76016467540487,0.573736783916854,2.63246069874706,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","octave_proportion_1000_0_Hz","sound",12,6,325,-0.00119063031701409,0.00185928958004653,2.88775746093895,0.56911137121868,1.97514023358657,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","octave_proportion_1000_0_Hz","sound",12,6,325,1.302064947134,0.765242752473613,2.79986892394764,0.193887024330697,2.65581245027848,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","octave_proportion_1000_0_Hz","sound",12,6,275,-0.0269931598818627,0.0459336461478157,2.77633878826789,0.601113421386614,1.63796218347782,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","octave_proportion_1000_0_Hz","sound",12,6,302,0.0325801427467142,0.0726919075582232,2.80390097495955,0.686361218442057,1.59799441839806,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","octave_proportion_1000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","octave_proportion_1000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","octave_proportion_1000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","octave_proportion_1000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","octave_proportion_1000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","octave_proportion_1000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","octave_proportion_1000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","octave_proportion_1000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","octave_proportion_1000_0_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","octave_proportion_1000_0_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","octave_proportion_1000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","octave_proportion_1000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","octave_proportion_1000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","octave_proportion_1000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","octave_proportion_1000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","octave_proportion_1000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","octave_proportion_1000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","octave_proportion_1000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","octave_proportion_1000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","octave_proportion_1000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","octave_proportion_125_0_Hz","sound",12,6,325,-1.2819545281526,2.92320556268457,2.1560515350322,0.701055736778885,2.05994684629713,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","octave_proportion_125_0_Hz","sound",12,6,325,0.253645972922327,0.376932564317828,2.02824366046579,0.569490102630181,1.32126098508654,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","octave_proportion_125_0_Hz","sound",12,6,325,0.00361809426448958,0.00229547571399918,2.27482653091549,0.240743428145442,2.01508641165188,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","octave_proportion_125_0_Hz","sound",12,6,325,-0.00100574721048084,0.177150844964082,2.28839120491932,0.995927045474518,1.6974221111167,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","octave_proportion_125_0_Hz","sound",12,6,275,-0.0218607498692297,0.0651447122391504,1.59989416197057,0.775954980277337,1.51119427673686,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","octave_proportion_125_0_Hz","sound",12,6,302,-0.0607522472970847,0.0768397028640517,1.95832051286512,0.513540195124745,1.92193018197104,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","octave_proportion_125_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","octave_proportion_125_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","octave_proportion_125_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","octave_proportion_125_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","octave_proportion_125_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","octave_proportion_125_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","octave_proportion_125_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","octave_proportion_125_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","octave_proportion_125_0_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","octave_proportion_125_0_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","octave_proportion_125_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","octave_proportion_125_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","octave_proportion_125_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","octave_proportion_125_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","octave_proportion_125_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","octave_proportion_125_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","octave_proportion_125_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","octave_proportion_125_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","octave_proportion_125_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","octave_proportion_125_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","octave_proportion_2000_0_Hz","sound",12,6,325,-1.63849859281971,3.83982463548174,2.80488103748357,0.700202947190631,1.49648434858431,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","octave_proportion_2000_0_Hz","sound",12,6,325,0.182845574203539,0.455842073147581,2.17088573676721,0.724406460643388,2.12148887709321,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","octave_proportion_2000_0_Hz","sound",12,6,325,-0.00178657996923109,0.00230892867101752,2.83184512229515,0.498490669546154,1.85032157892532,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","octave_proportion_2000_0_Hz","sound",12,6,325,1.40738232850287,0.430029418327223,2.0285318608103,0.0804989169030699,1.98552718738602,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","octave_proportion_2000_0_Hz","sound",12,6,275,-0.0151026681705479,0.0578768308936715,2.83730639940079,0.811918286354,1.42510327357945,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","octave_proportion_2000_0_Hz","sound",12,6,302,0.0469656388585513,0.0779474044428114,2.82418481906718,0.591744512964046,1.45747769168412,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","octave_proportion_2000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","octave_proportion_2000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","octave_proportion_2000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","octave_proportion_2000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","octave_proportion_2000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","octave_proportion_2000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","octave_proportion_2000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","octave_proportion_2000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","octave_proportion_2000_0_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","octave_proportion_2000_0_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","octave_proportion_2000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","octave_proportion_2000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","octave_proportion_2000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","octave_proportion_2000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","octave_proportion_2000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","octave_proportion_2000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","octave_proportion_2000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","octave_proportion_2000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","octave_proportion_2000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","octave_proportion_2000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","octave_proportion_250_0_Hz","sound",12,6,325,-3.77000246103347,4.33934883931035,3.47264608732156,0.440860445848216,1.5684502192005,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","octave_proportion_250_0_Hz","sound",12,6,325,0.131573105257932,0.39696355704998,2.32250211888755,0.767872567934806,1.77363710413964,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","octave_proportion_250_0_Hz","sound",12,6,325,-3.20196244609109e-05,0.00192283269014185,3.43879885337253,0.98763415410634,1.73746670679566,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","octave_proportion_250_0_Hz","sound",12,6,325,0.985552276033133,0.584308314887895,2.44713554151609,0.210409327205324,1.87893357664119,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","octave_proportion_250_0_Hz","sound",12,6,275,-0.00526973442859703,0.0538659384315906,3.5924276032465,0.927277685805217,1.80577633336299,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","octave_proportion_250_0_Hz","sound",12,6,302,0.0766401369634011,0.0846491601194536,3.33574744064301,0.425839266886945,1.65117340758567,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","octave_proportion_250_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","octave_proportion_250_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","octave_proportion_250_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","octave_proportion_250_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","octave_proportion_250_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","octave_proportion_250_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","octave_proportion_250_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","octave_proportion_250_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","octave_proportion_250_0_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","octave_proportion_250_0_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","octave_proportion_250_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","octave_proportion_250_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","octave_proportion_250_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","octave_proportion_250_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","octave_proportion_250_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","octave_proportion_250_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","octave_proportion_250_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","octave_proportion_250_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","octave_proportion_250_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","octave_proportion_250_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","octave_proportion_31_5_Hz","sound",12,6,325,4.65889543011525,5.05487052245075,3.11962831131617,0.422302890215505,1.46560259031073,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","octave_proportion_31_5_Hz","sound",12,6,325,-0.268667057292478,0.394519642950552,2.33037798148502,0.557280656377559,1.70946952993856,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","octave_proportion_31_5_Hz","sound",12,6,325,-0.000317665652631512,0.00192745044468778,3.102082156736,0.879250176899787,1.59307053025753,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","octave_proportion_31_5_Hz","sound",12,6,325,-0.908239903217404,0.474635194811546,2.39907351627195,0.174190535444229,1.76860611534777,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","octave_proportion_31_5_Hz","sound",12,6,275,0.00397363524393433,0.0460785292185205,3.21364596895422,0.936374084842511,1.5076234909257,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","octave_proportion_31_5_Hz","sound",12,6,302,-0.0787054612411216,0.0857755107231818,3.08729128655292,0.424765609020323,1.46318810415652,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","octave_proportion_31_5_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","octave_proportion_31_5_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","octave_proportion_31_5_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","octave_proportion_31_5_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","octave_proportion_31_5_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","octave_proportion_31_5_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","octave_proportion_31_5_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","octave_proportion_31_5_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","octave_proportion_31_5_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","octave_proportion_31_5_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","octave_proportion_31_5_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","octave_proportion_31_5_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","octave_proportion_31_5_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","octave_proportion_31_5_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","octave_proportion_31_5_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","octave_proportion_31_5_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","octave_proportion_31_5_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","octave_proportion_31_5_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","octave_proportion_31_5_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","octave_proportion_31_5_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","octave_proportion_4000_0_Hz","sound",12,6,325,-3.16655115152247,4.61571634927383,2.5470907720366,0.549865315677369,1.98470820072318,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","octave_proportion_4000_0_Hz","sound",12,6,325,0.245885231942682,0.795856661981594,2.55934468251665,0.780754911480846,2.01108815625196,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","octave_proportion_4000_0_Hz","sound",12,6,325,-0.00132326900179719,0.00195023851432499,2.5186465634142,0.554487428504697,2.07072516091925,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","octave_proportion_4000_0_Hz","sound",12,6,325,0.896501594175353,0.431538800851603,2.49220815494816,0.147622290865716,2.03208544576385,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","octave_proportion_4000_0_Hz","sound",12,6,275,-0.0249135224845479,0.0488089174068689,2.47087485578954,0.651775326428482,1.98929378714262,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","octave_proportion_4000_0_Hz","sound",12,6,302,0.0733982450115199,0.0769250467697257,2.51779283921123,0.422378911728952,1.93922840278226,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","octave_proportion_4000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","octave_proportion_4000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","octave_proportion_4000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","octave_proportion_4000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","octave_proportion_4000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","octave_proportion_4000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","octave_proportion_4000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","octave_proportion_4000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","octave_proportion_4000_0_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","octave_proportion_4000_0_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","octave_proportion_4000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","octave_proportion_4000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","octave_proportion_4000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","octave_proportion_4000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","octave_proportion_4000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","octave_proportion_4000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","octave_proportion_4000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","octave_proportion_4000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","octave_proportion_4000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","octave_proportion_4000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","octave_proportion_500_0_Hz","sound",12,6,325,-1.56410308956244,2.71555457448184,2.86712533053492,0.606716858994273,2.16693635687689,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","octave_proportion_500_0_Hz","sound",12,6,325,-0.535984196182089,0.643784997483267,2.5389515661247,0.4761088862173,2.01320070158423,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","octave_proportion_500_0_Hz","sound",12,6,325,-0.000320543432011112,0.00157096935200136,2.82461834701698,0.852128394551251,2.3601127743609,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","octave_proportion_500_0_Hz","sound",12,6,325,0.552652277175158,0.546832235381704,2.67914910550721,0.394585864752128,2.25546481815383,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","octave_proportion_500_0_Hz","sound",12,6,275,-0.0334310487794702,0.0346372789072015,2.75218798049709,0.41140823141673,2.17791343437647,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","octave_proportion_500_0_Hz","sound",12,6,302,0.044404500689664,0.0636768120687682,2.78793147985817,0.539250579830125,2.14132290089966,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","octave_proportion_500_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","octave_proportion_500_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","octave_proportion_500_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","octave_proportion_500_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","octave_proportion_500_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","octave_proportion_500_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","octave_proportion_500_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","octave_proportion_500_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","octave_proportion_500_0_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","octave_proportion_500_0_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","octave_proportion_500_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","octave_proportion_500_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","octave_proportion_500_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","octave_proportion_500_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","octave_proportion_500_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","octave_proportion_500_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","octave_proportion_500_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","octave_proportion_500_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","octave_proportion_500_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","octave_proportion_500_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","octave_proportion_63_0_Hz","sound",12,6,325,-3.17820020039185,1.10059085116557,2.6540337205164,0.0731098474747863,1.87430192104933,TRUE,"",0.950428017172222,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","octave_proportion_63_0_Hz","sound",12,6,325,0.693942321703268,0.558455996243141,2.11913016660968,0.333874673336298,1.51394988756147,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","octave_proportion_63_0_Hz","sound",12,6,325,0.000507232955641945,0.00065303718173964,2.67380991657795,0.5001779472812,2.04683810298968,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","octave_proportion_63_0_Hz","sound",12,6,325,0.241501219612643,0.304603506470411,2.6672095816504,0.492307128850832,2.09910806806895,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","octave_proportion_63_0_Hz","sound",12,6,275,0.0706515239212513,0.0110716285596169,2.41455572307339,0.0145189883714392,1.96586134514038,TRUE,"",0.377493697657419,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","octave_proportion_63_0_Hz","sound",12,6,302,0.0391249932645733,0.0249119716921903,2.34984230826591,0.238410201110231,2.00135071607817,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","octave_proportion_63_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","octave_proportion_63_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","octave_proportion_63_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","octave_proportion_63_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","octave_proportion_63_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","octave_proportion_63_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","octave_proportion_63_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","octave_proportion_63_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","octave_proportion_63_0_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","octave_proportion_63_0_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","octave_proportion_63_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","octave_proportion_63_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","octave_proportion_63_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","octave_proportion_63_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","octave_proportion_63_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","octave_proportion_63_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","octave_proportion_63_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","octave_proportion_63_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","octave_proportion_63_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","octave_proportion_63_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","octave_proportion_8000_0_Hz","sound",12,6,325,0.910964564114343,1.55683502896605,1.96419048678099,0.618621715512795,1.88791137798447,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","octave_proportion_8000_0_Hz","sound",12,6,325,-0.752898378125357,0.114084684664523,1.19261009301083,0.0696621447690813,1.15045063163549,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","octave_proportion_8000_0_Hz","sound",12,6,325,-0.000865399582368096,0.00141371113616772,1.95753286339037,0.603942962876656,1.95753286339037,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","octave_proportion_8000_0_Hz","sound",12,6,325,0.0211134177193479,0.309618817198199,2.08214016645615,0.951619266891067,2.08214016645615,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","octave_proportion_8000_0_Hz","sound",12,6,275,-0.0352485752528579,0.0248800419917927,2.00566138354505,0.291935498930274,1.97775013580277,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","octave_proportion_8000_0_Hz","sound",12,6,302,0.042516602488998,0.0611655607051337,1.96765214015638,0.559915806568846,1.89343193769427,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","octave_proportion_8000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","octave_proportion_8000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","octave_proportion_8000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","octave_proportion_8000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","octave_proportion_8000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","octave_proportion_8000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","octave_proportion_8000_0_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","octave_proportion_8000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","octave_proportion_8000_0_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","octave_proportion_8000_0_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","octave_proportion_8000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","octave_proportion_8000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","octave_proportion_8000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","octave_proportion_8000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","octave_proportion_8000_0_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","octave_proportion_8000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","octave_proportion_8000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","octave_proportion_8000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","octave_proportion_8000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","octave_proportion_8000_0_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","rural_natural_proportion","sound",12,6,325,3.61135869264802,4.87976829420118,2.25422438122456,0.528667509975801,1.74326655613002,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","rural_natural_proportion","sound",12,6,325,-0.686821899544528,0.0735934642197543,1.54540454719254,0.0241851412878403,1.1055334201003,FALSE,"",0.628813673483847,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","rural_natural_proportion","sound",12,6,325,-0.000555114243683527,0.000880394210115483,2.26863977558427,0.586004815206194,1.70688077499761,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","rural_natural_proportion","sound",12,6,325,-0.548178891405601,0.574135841918488,2.29447892782153,0.42914307504655,1.33076159300867,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","rural_natural_proportion","sound",12,6,275,-0.0434485242235811,0.015055252300306,2.16526982764852,0.0930674452068094,1.46986431844753,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","rural_natural_proportion","sound",12,6,302,-0.0203604785912871,0.0427208268440782,2.21829437034326,0.676516560173823,1.4750336280923,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","rural_natural_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","rural_natural_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","rural_natural_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","rural_natural_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","rural_natural_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","rural_natural_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","rural_natural_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","rural_natural_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","rural_natural_proportion","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","rural_natural_proportion","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","rural_natural_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","rural_natural_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","rural_natural_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","rural_natural_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","rural_natural_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","rural_natural_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","rural_natural_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","rural_natural_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","rural_natural_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","rural_natural_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","spectral_centroid_Hz","sound",12,6,325,0.651491597690184,1.12376381056073,2.24488550811726,0.615004754438935,2.19674885949606,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","spectral_centroid_Hz","sound",12,6,325,-0.891767085069881,0.0889268515347973,1.81050466214281,0.013518939693273,1.18070152464178,FALSE,"",0.351492432025098,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","spectral_centroid_Hz","sound",12,6,325,-0.00143736676655874,0.00182845780233327,2.25573585278921,0.505931219737485,2.25573585278921,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","spectral_centroid_Hz","sound",12,6,325,0.259545313601907,0.340800671326861,2.42090178466429,0.513558023436142,1.60611910364662,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","spectral_centroid_Hz","sound",12,6,275,-0.028354494990688,0.0373573820278246,2.1971072841105,0.520855732753782,2.1971072841105,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","spectral_centroid_Hz","sound",12,6,302,0.0475658865582472,0.0590942367997085,2.20958046197308,0.498318938306932,2.20958046197308,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","spectral_centroid_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","spectral_centroid_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","spectral_centroid_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","spectral_centroid_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","spectral_centroid_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","spectral_centroid_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","spectral_centroid_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","spectral_centroid_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","spectral_centroid_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","spectral_centroid_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","spectral_centroid_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","spectral_centroid_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","spectral_centroid_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","spectral_centroid_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","spectral_centroid_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","spectral_centroid_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","spectral_centroid_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","spectral_centroid_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","spectral_centroid_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","spectral_centroid_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","spectral_rolloff85_Hz","sound",12,6,325,0.00401111088153702,1.45861844103927,3.35754500494839,0.997961259680542,1.95331218920541,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","spectral_rolloff85_Hz","sound",12,6,325,-0.730117094075025,0.49042317112006,2.03943168278395,0.272678117340913,1.53369363034889,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","spectral_rolloff85_Hz","sound",12,6,325,-0.000489636102506306,0.00188324155612403,3.37064293831926,0.809954530047461,2.17468219669728,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","spectral_rolloff85_Hz","sound",12,6,325,0.564929307574909,0.47684315215294,3.27068506139966,0.315016640832873,2.30649920549305,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","spectral_rolloff85_Hz","sound",12,6,275,-0.0296327851285588,0.0376763201595034,3.40833232294254,0.482619818973845,1.8803114975553,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","spectral_rolloff85_Hz","sound",12,6,302,0.0337674528605711,0.0649786579691807,3.32864252018732,0.635897445076226,1.93163723280278,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","spectral_rolloff85_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","spectral_rolloff85_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","spectral_rolloff85_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","spectral_rolloff85_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","spectral_rolloff85_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","spectral_rolloff85_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","spectral_rolloff85_Hz","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","spectral_rolloff85_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","spectral_rolloff85_Hz","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","spectral_rolloff85_Hz","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","spectral_rolloff85_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","spectral_rolloff85_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","spectral_rolloff85_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","spectral_rolloff85_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","spectral_rolloff85_Hz","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","spectral_rolloff85_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","spectral_rolloff85_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","spectral_rolloff85_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","spectral_rolloff85_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","spectral_rolloff85_Hz","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","unidentify_proportion","sound",12,6,325,-6.02082661411462,4.78065992777335,1.37873722473609,0.380166478953082,1.18240747698172,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","unidentify_proportion","sound",12,6,325,0.196753441547545,0.442489202719876,1.45475043068937,0.713725069880915,1.19912399258682,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","unidentify_proportion","sound",12,6,325,0.00405544513410964,0.000557903011612329,1.45145639172411,0.0408708631201261,1.23873683072049,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","unidentify_proportion","sound",12,6,325,-0.196741007305495,0.394322623838888,1.4363131716672,0.68349574786435,1.34775304712016,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","unidentify_proportion","sound",12,6,275,-0.0334461321154544,0.0290230690279432,1.73312484496383,0.383511494011851,1.53721176392821,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","unidentify_proportion","sound",12,6,302,0.0109141942998818,0.0179785488635227,1.43121221437679,0.625863788269862,1.18877738872361,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","unidentify_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","unidentify_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","unidentify_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","unidentify_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","unidentify_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","unidentify_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","unidentify_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","unidentify_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","unidentify_proportion","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","unidentify_proportion","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","unidentify_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","unidentify_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","unidentify_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","unidentify_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","unidentify_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","unidentify_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","unidentify_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","unidentify_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","unidentify_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","unidentify_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","urban_manmade_negative_proportion","sound",12,6,325,-2.23809389734039,5.05061909999492,1.82487218479197,0.704612225795997,1.20160180761031,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","urban_manmade_negative_proportion","sound",12,6,325,0.17790143051581,0.0887071664745378,1.35670179813078,0.23957529831123,1.16575174463403,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","urban_manmade_negative_proportion","sound",12,6,325,-0.00271584861765017,0.00100804079644927,1.72649759221264,0.133555351164179,1.24272540370465,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","urban_manmade_negative_proportion","sound",12,6,325,0.222469641096393,0.397351945306938,1.51548310363667,0.647026114526658,1.1968455056288,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","urban_manmade_negative_proportion","sound",12,6,275,0.0476879533771471,0.0408561834045601,1.74053500903,0.378336477393168,1.21073904772187,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","urban_manmade_negative_proportion","sound",12,6,302,0.0719086052352591,0.113210884861594,1.78643143318092,0.596966573994169,1.19396694880561,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","urban_manmade_negative_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","urban_manmade_negative_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","urban_manmade_negative_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","urban_manmade_negative_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","urban_manmade_negative_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","urban_manmade_negative_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","urban_manmade_negative_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","urban_manmade_negative_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","urban_manmade_negative_proportion","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","urban_manmade_negative_proportion","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","urban_manmade_negative_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","urban_manmade_negative_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","urban_manmade_negative_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","urban_manmade_negative_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","urban_manmade_negative_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","urban_manmade_negative_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","urban_manmade_negative_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","urban_manmade_negative_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","urban_manmade_negative_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","urban_manmade_negative_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","urban_manmade_neutral_proportion","sound",12,6,325,1.60157771737367,1.7922271074772,1.81509603790902,0.473951990853131,1.72133690048018,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","urban_manmade_neutral_proportion","sound",12,6,325,0.0658076489171809,0.507767033983624,1.68174522419434,0.910678103864028,1.60376568907624,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","urban_manmade_neutral_proportion","sound",12,6,325,0.00317193787067717,0.00271268774486802,1.75312027964146,0.376875931613411,1.71403874257942,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","urban_manmade_neutral_proportion","sound",12,6,325,-0.655927995113768,0.236952317822982,1.68528104063119,0.131622005071403,1.60867944350341,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","urban_manmade_neutral_proportion","sound",12,6,275,-0.0209755391687041,0.068713192562192,1.88967018188074,0.790484571583747,1.88106812863548,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","urban_manmade_neutral_proportion","sound",12,6,302,-0.143486157270503,0.0803335887094338,1.97227561708021,0.217760416082141,1.94023597083415,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","urban_manmade_neutral_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","urban_manmade_neutral_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","urban_manmade_neutral_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","urban_manmade_neutral_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","urban_manmade_neutral_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","urban_manmade_neutral_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","urban_manmade_neutral_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","urban_manmade_neutral_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","urban_manmade_neutral_proportion","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","urban_manmade_neutral_proportion","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","urban_manmade_neutral_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","urban_manmade_neutral_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","urban_manmade_neutral_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","urban_manmade_neutral_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","urban_manmade_neutral_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","urban_manmade_neutral_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","urban_manmade_neutral_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","urban_manmade_neutral_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","urban_manmade_neutral_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","urban_manmade_neutral_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","urban_manmade_positive_proportion","sound",12,6,325,1.12915892885106,1.75697336956718,2.05797135426522,0.584651063071534,1.18721064617121,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","urban_manmade_positive_proportion","sound",12,6,325,-0.163480718706312,0.149000938542562,1.59522692931248,0.410761261609591,1.11881755815458,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","urban_manmade_positive_proportion","sound",12,6,325,0.0024784151768489,0.00224699888350626,1.98886344841721,0.385549397625483,1.20933933891096,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","urban_manmade_positive_proportion","sound",12,6,325,0.154440563341407,0.613138354430405,1.812965151283,0.826768465306002,1.16879366569663,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","urban_manmade_positive_proportion","sound",12,6,275,-0.0348997680958708,0.0435718301980167,1.79702585122492,0.515254083793447,1.18716785339166,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","urban_manmade_positive_proportion","sound",12,6,302,-0.033037371058165,0.0700521728852838,1.98853546911612,0.683883321886261,1.20253805650612,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","urban_manmade_positive_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","urban_manmade_positive_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","urban_manmade_positive_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","urban_manmade_positive_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","urban_manmade_positive_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","urban_manmade_positive_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","urban_manmade_positive_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","urban_manmade_positive_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","urban_manmade_positive_proportion","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","urban_manmade_positive_proportion","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","urban_manmade_positive_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","urban_manmade_positive_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","urban_manmade_positive_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","urban_manmade_positive_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","urban_manmade_positive_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","urban_manmade_positive_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","urban_manmade_positive_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","urban_manmade_positive_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","urban_manmade_positive_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","urban_manmade_positive_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","vehicle_proportion","sound",12,6,325,-3.43063732421316,6.4478254190164,1.8745235213152,0.650972359923318,1.20295768609523,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","vehicle_proportion","sound",12,6,325,0.242269878476453,0.163286062355922,1.43710004733411,0.319703808784774,1.15218971509414,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","vehicle_proportion","sound",12,6,325,-0.00231662564847934,0.0012618802594023,1.81381520952443,0.220586279945344,1.23882343886423,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","vehicle_proportion","sound",12,6,325,0.226113279613253,0.346572011922427,1.58029334541656,0.596048342684498,1.18545858001629,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","vehicle_proportion","sound",12,6,275,0.045191406771676,0.0289279733702889,1.72951802870441,0.277107174066023,1.20836188335183,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","vehicle_proportion","sound",12,6,302,0.0745228292471763,0.105691146408863,1.83690505619717,0.559375874419946,1.20127790144901,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","vehicle_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","vehicle_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","vehicle_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","vehicle_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","vehicle_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","vehicle_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","vehicle_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","vehicle_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","vehicle_proportion","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","vehicle_proportion","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","vehicle_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","vehicle_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","vehicle_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","vehicle_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","vehicle_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","vehicle_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","vehicle_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","vehicle_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","vehicle_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","vehicle_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_heart_rate","wind_proportion","sound",12,6,325,0.597167643136326,2.1374032060843,1.76180928393233,0.809271645741124,1.41110951331135,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_tonic","wind_proportion","sound",12,6,325,0.135274925082156,0.16270979781364,1.24243827760895,0.535256655362873,1.24243827760895,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_eda_phasic","wind_proportion","sound",12,6,325,-0.00192239888335627,0.00207362403295937,1.65727586476292,0.468581122217876,1.57492365953116,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_skin_temperature","wind_proportion","sound",12,6,325,-0.186949731389463,0.645547140907016,1.4199592488107,0.808719454356687,1.4199592488107,FALSE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_sdnn","wind_proportion","sound",12,6,275,0.0355645402482754,0.0376296854301865,1.67120492073525,0.460678716021932,1.39865163286869,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_td_rmssd","wind_proportion","sound",12,6,302,-0.00727012088851131,0.0914936247410213,1.72768664460406,0.944890551681741,1.37706194089797,TRUE,"",1,1
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf","wind_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hf","wind_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lf_hf_ratio","wind_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_lfnu","wind_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_hfnu","wind_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_vlf","wind_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","empatica_hrv_fd_total_power","wind_proportion","sound",11,6,219,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_diameter_avg","wind_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_pupil_change_rate","wind_proportion","sound",9,5,239,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_blink_duration_s","wind_proportion","sound",9,5,232,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_duration_s","wind_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_fixation_rate","wind_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_duration_s","wind_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_amplitude","wind_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_saccade_peak_velocity","wind_proportion","sound",9,5,243,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_velocity","wind_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_dispersion","wind_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_distance_from_center","wind_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_gaze_centrality","wind_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,
+"Physio","UTCIgt32","SoundOnly","WithPhase","eyetracker_eyelid_aperture_avg","wind_proportion","sound",9,5,244,,,,,,,"rank-deficient design or no residual df",,

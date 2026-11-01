@@ -1,5 +1,5 @@
 # Paper3_common.R — shared cohort/outcome/path helpers (H1–H3 and H4 meeting files).
-# Sourced at the top of meeting entry scripts only; H4_core.R stays decoupled from re-sourcing this file.
+# Sourced at the top of meeting entry scripts only; Analysis_combined_core.R stays decoupled from re-sourcing this file.
 
 .paper3_resolve_script_dir <- function() {
   script_arg <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
@@ -298,3 +298,6 @@ paper3_h1_h3_planned_contrast_tables <- function() {
   h3$Contrast <- paste(h3$Reference_PhaseID, h3$Comparison_PhaseID, sep = "_")
   list(h1 = h1, h3 = h3)
 }
+
+# Shared final-result naming; model objects and sensor fields keep their native names.
+source(file.path(paper3_statistical_library_dir(), "Paper3_output_names.R"), local=FALSE)

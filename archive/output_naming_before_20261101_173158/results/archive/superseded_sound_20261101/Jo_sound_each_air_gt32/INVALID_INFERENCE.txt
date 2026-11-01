@@ -1,0 +1,1 @@
+INVALID INFERENCE: only 5 participant-phase cells from 4 participants; only P13 has two cells. Participant-centered sound varies for only one participant. CR2 standard errors and p/q values in results.csv are numerically degenerate and must not be interpreted or reported as evidence. 61 nominal FDR hits are artifacts. Five tests failed. No valid inferential conclusion.

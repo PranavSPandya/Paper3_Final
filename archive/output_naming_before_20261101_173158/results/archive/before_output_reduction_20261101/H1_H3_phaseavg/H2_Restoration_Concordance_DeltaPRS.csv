@@ -1,0 +1,7 @@
+"Mode","Psych","Outcome","Units","N","rho","p","q"
+"Bike","delta_PRS","delta_eyetracker_fixation_rate","per s",10,0.267478439219228,0.454986007954027,0.841760251396407
+"Bike","delta_PRS","delta_eyetracker_fixation_duration_s","s",10,0.109422997862412,0.763482646374149,0.841760251396407
+"Bike","delta_PRS","delta_empatica_eda_tonic","ln(uS)",11,0.113895511894551,0.738801708682205,0.841760251396407
+"Walk","delta_PRS","delta_eyetracker_fixation_rate","per s",9,0.769881216055265,0.015240184856773,0.0914411091406378
+"Walk","delta_PRS","delta_eyetracker_fixation_duration_s","s",9,0.351467511677404,0.353666329808871,0.841760251396407
+"Walk","delta_PRS","delta_empatica_eda_tonic","ln(uS)",11,-0.0683373071367308,0.841760251396407,0.841760251396407

@@ -1,0 +1,3 @@
+First 60 seconds of each phase; paired green vs urban, one-sided HR green < urban; BH across two modes.
+Field environment comparison does not isolate sound. HRV unavailable: merged frequency-domain measures use five-minute windows, not 60 seconds.
+First minute chosen consistently as an assumption; participant-phase means use available 10-second heart-rate values.

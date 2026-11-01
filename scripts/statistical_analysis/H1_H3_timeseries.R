@@ -1,6 +1,8 @@
 # H1–H3 outcome-only time series — meeting spec (engine: H1_H3_core.R)
-# Outputs: output/statistical_analysis/results/H1_H3_timeseries/ (H1_, H2_, H3_ prefixes)
-# H4 time-series bout models: scripts/statistical_analysis/H4_timeseries.R
+# Outputs: output/statistical_analysis/results/H1_H3_timeseries/: H1_H3_Temporal_AR1_10s.csv,
+#   H1_H3_Temporal_AR1_Sensitivity_60s.csv, H1_H3_Planned_Contrasts_and_H2_Concordance.csv, H1_H3_Run_Manifest.csv
+#   (PAPER3_WRITE_DETAILS=1 also writes the per-hypothesis H1_/H2_/H3_ files)
+# H4 time-series bout models: scripts/statistical_analysis/Analysis_combined_timeseries.R
 
 if (!exists("PAPER3_PARTICIPANTS", inherits = FALSE)) {
   .entry <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
@@ -174,3 +176,6 @@ if (sys.nframe() == 0L) {
     function(hypothesis_id) h1_h3_run_one_time_series(hypothesis_id)
   )
 }
+
+# Normalize final CSV presentation only after all analysis/report calculations.
+if (sys.nframe() == 0L) paper3_standardize_result_directory(file.path(resolve_project_root(), "output", "statistical_analysis", "results", "H1_H3_timeseries"))

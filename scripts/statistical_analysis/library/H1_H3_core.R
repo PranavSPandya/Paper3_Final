@@ -179,6 +179,29 @@ write_temporal_sensitivity_fdr_subset <- function(table, path_without_suffix) {
   invisible(fdr_only)
 }
 
+# Output reduction (2026-11-01): by default only combined, reviewable files are saved. PAPER3_WRITE_DETAILS=1 also
+# writes the original per-hypothesis files. Combining only stacks the tables already computed (no estimate, p or
+# q value is recomputed; FDR families stay as fitted).
+H1_H3_WRITE_DETAILS <- identical(Sys.getenv("PAPER3_WRITE_DETAILS", unset = ""), "1")
+h1_h3_bind_fill <- function(tables, label_col = NULL, labels = NULL) {
+  parts <- list()
+  for (i in seq_along(tables)) {
+    t <- tables[[i]]
+    if (is.null(t) || !is.data.frame(t) || !nrow(t)) next
+    if (!is.null(label_col)) {
+      lab <- stats::setNames(data.frame(rep(labels[[i]], nrow(t)), stringsAsFactors = FALSE), label_col)
+      t <- cbind(lab, t)
+    }
+    parts[[length(parts) + 1L]] <- t
+  }
+  if (!length(parts)) return(data.frame())
+  cols <- unique(unlist(lapply(parts, names)))
+  do.call(rbind, lapply(parts, function(t) {
+    for (cc in setdiff(cols, names(t))) t[[cc]] <- NA
+    t[, cols, drop = FALSE]
+  }))
+}
+
 audit_row <- function(analysis, condition, outcome, predictor, status, n_rows, n_participants, warn = "", err = "")
   data.frame(Analysis = analysis, Condition = condition, Outcome = outcome, Predictor = predictor, Status = status,
              N_rows = n_rows, N_participants = n_participants, Temporal_Rho_Not_Used = NA_real_, Warning = warn, Error = err,
@@ -220,6 +243,26 @@ paired_smd <- function(d, outcome, ref, comp) {
   c(g = ci[1, "adj Estimate"], low = ci[1, "LL"], high = ci[1, "UL"])
 }
 
+# Nonparametric sensitivity check (ported from H6.1a, added 31 Oct 2026): exact two-sided sign-flip test on the paired
+# differences (Comparison - Reference) of the same participant-phase values the LMM is fitted on (d$outcome_z).
+# Reported alongside the LMM only; the p/q of record remain the LMM's p_value and q_FDR.
+signflip_paired <- function(d, value_col, ref, comp, beta) {
+  out <- c(p = NA_real_, n = 0, frac = NA_real_)
+  if (!value_col %in% names(d)) return(out)
+  m <- merge(d[ref, c("ParticipantID", value_col)], d[comp, c("ParticipantID", value_col)],
+             by = "ParticipantID", suffixes = c(".ref", ".comp"))
+  x <- as.numeric(m[[2]]); y <- as.numeric(m[[3]])
+  ok <- is.finite(x) & is.finite(y); diff <- y[ok] - x[ok]; n <- length(diff)
+  out["n"] <- n
+  if (n > 0 && is.finite(beta)) out["frac"] <- mean(sign(diff) == sign(beta))
+  if (n >= 2 && any(diff != 0)) {
+    s <- as.matrix(expand.grid(rep(list(c(-1, 1)), n)))   # all 2^n sign vectors; last row = observed (all +1)
+    t_perm <- abs(drop(s %*% diff)) / n
+    out["p"] <- mean(t_perm >= t_perm[nrow(s)] - 1e-12)
+  }
+  out
+}
+
 extract_phase_lmm_contrasts <- function(fit, d, outcome, family_set, value_col) {
   contrast_rows <- rbind(h1_contrasts, h3_contrasts)
   lv <- levels(d$PhaseID)
@@ -239,6 +282,7 @@ extract_phase_lmm_contrasts <- function(fit, d, outcome, family_set, value_col) 
     es <- paired_smd(d, outcome, ref, comp)
     est <- cc$estimate[i]
     beta_ci <- infer_ci95_from_summary_row(cc[i, , drop = FALSE])
+    sf <- signflip_paired(d, "outcome_z", ref, comp, est)   # model response: d$outcome_z = d[[value_col]]
     data.frame(
       Hypothesis = k$Hypothesis, Sub_Hypothesis = k$Sub_Hypothesis, Contrast = k$Contrast,
       Reference_PhaseID = k$Reference_PhaseID, Comparison_PhaseID = k$Comparison_PhaseID,
@@ -256,6 +300,7 @@ extract_phase_lmm_contrasts <- function(fit, d, outcome, family_set, value_col) 
       Interaction_Test = int_txt,
       Normalization = if (startsWith(value_col, "within_person_z__")) "Sensitivity: within-person z-score over the 4 PhaseIDs (after notebook transform)" else "Primary: analysis units (notebook transform), random intercept",
       Family_Set = family_set, Contrast_ID = k$Contrast,
+      SignFlip_p = unname(sf["p"]), N_Complete_Pairs = as.integer(sf["n"]), Fraction_In_Effect_Direction = unname(sf["frac"]),
       stringsAsFactors = FALSE)
   }))
 }
@@ -265,12 +310,14 @@ adjust_by_family <- function(tab, family_size_map) {
   tab$Correction_Family <- paste(tab$Hypothesis, tab$Family_Set, tab$Contrast_ID, tab$Normalization, sep = "__")
   tab$q_FDR <- NA_real_
   tab$Family_Size <- NA_integer_
+  if ("SignFlip_p" %in% names(tab)) tab$SignFlip_q <- NA_real_
   for (fam in unique(tab$Correction_Family)) {
     idx <- which(tab$Correction_Family == fam)
     fs <- as.character(tab$Family_Set[idx[1]])
     planned_n <- max(if (fs %in% names(family_size_map)) as.integer(family_size_map[[fs]]) else 0L, sum(!is.na(tab$p_value[idx])))
     tab$q_FDR[idx] <- p.adjust(tab$p_value[idx], method = "BH", n = planned_n)
     tab$Family_Size[idx] <- planned_n
+    if ("SignFlip_p" %in% names(tab)) tab$SignFlip_q[idx] <- p.adjust(tab$SignFlip_p[idx], method = "BH", n = planned_n)   # same family and n as q_FDR
   }
   tab$FDR_significant <- !is.na(tab$q_FDR) & tab$q_FDR < 0.05
   tab
@@ -300,9 +347,9 @@ fit_ar1_with_fallback <- function(epoch_data, step_variable) {
   fitted_model <- fit_one("optim", TRUE)
   if (!is.null(fitted_model)) return(list(fit = fitted_model, method = "optim (primary)"))
   fitted_model <- fit_one("nlminb", FALSE)
-  if (!is.null(fitted_model)) return(list(fit = fitted_model, method = "nlminb (fallback, as in H4_timeseries.R)"))
+  if (!is.null(fitted_model)) return(list(fit = fitted_model, method = "nlminb (fallback, as in Analysis_combined_timeseries.R)"))
   fitted_model <- fit_one("optim", FALSE)
-  if (!is.null(fitted_model)) return(list(fit = fitted_model, method = "optim (fallback, as in H4_timeseries.R)"))
+  if (!is.null(fitted_model)) return(list(fit = fitted_model, method = "optim (fallback, as in Analysis_combined_timeseries.R)"))
   list(fit = NULL, method = "none (not converged)")
 }
 
@@ -803,6 +850,37 @@ h1_to_h3_pipeline_run <- function() {
       "physiological measures; direction is not uniquely interpretable for context-dependent measures.")
     h2_table$Raw_Direction <- NULL
   }
+  # 5a. Restoration concordance (ported 31 Oct 2026 from H6.1b of the retired H6_exploratory.R, its L109-134): per mode
+  # (Bike, Walk), participant Green-minus-Urban deltas of the participant-phase means in phase_df (the H1/H3 Primary analysis
+  # units: ln(x) for EDA tonic, raw questionnaire scale); Spearman cor.test(exact = FALSE) of delta PRS vs each delta when
+  # n >= 7 and both SDs > 0; one BH-FDR family of the 6 planned tests (n = 6). Exploratory; H2_Restoration_Concordance_DeltaPRS.csv.
+  concord_psych <- "questionnaire_prs11_total_mean_1_5"
+  concord_vars <- c("eyetracker_fixation_rate", "eyetracker_fixation_duration_s", "empatica_eda_tonic")
+  concord_delta <- function(paired, v) {
+    if (all(paste0(v, c("_U", "_G")) %in% names(paired))) paired[[paste0(v, "_G")]] - paired[[paste0(v, "_U")]] else rep(NA_real_, nrow(paired))
+  }
+  concord_rows <- list()
+  for (concord_mode in c("Bike", "Walk")) {
+    concord_U <- phase_df[phase_df$PhaseID == paste0(concord_mode, "U"), , drop = FALSE]
+    concord_G <- phase_df[phase_df$PhaseID == paste0(concord_mode, "G"), , drop = FALSE]
+    concord_pairs <- merge(concord_U, concord_G, by = "ParticipantID", suffixes = c("_U", "_G"))
+    for (v in concord_vars) {
+      a <- concord_delta(concord_pairs, concord_psych)
+      b <- concord_delta(concord_pairs, v)
+      ok <- is.finite(a) & is.finite(b); n_ok <- sum(ok)
+      rho <- pval <- NA_real_
+      if (n_ok >= 7L && sd(a[ok]) > 0 && sd(b[ok]) > 0) {
+        z <- suppressWarnings(cor.test(a[ok], b[ok], method = "spearman", exact = FALSE))
+        rho <- unname(z$estimate); pval <- z$p.value
+      }
+      concord_rows[[length(concord_rows) + 1L]] <- data.frame(Mode = concord_mode, Psych = "delta_PRS", Outcome = paste0("delta_", v),
+        Units = unname(ifelse(!is.na(H2_LOG_UNITS[v]), H2_LOG_UNITS[v], units_of(v))), N = n_ok, rho = rho, p = pval, stringsAsFactors = FALSE)
+    }
+  }
+  concord_table <- safe_rbind(concord_rows)
+  concord_table$q <- NA_real_
+  concord_ok <- is.finite(concord_table$p)
+  concord_table$q[concord_ok] <- p.adjust(concord_table$p[concord_ok], method = "BH", n = 6)
 
   # 5b. H1 & H3 questionnaire contrasts: same participant-phase-mean LMM (H1_PhaseMean_* models, emmeans contrasts) and
   # Bonett paired SMD as the physiological outcomes, on the end-of-phase questionnaires (raw scale points; no CSV transform).
@@ -857,7 +935,8 @@ h1_to_h3_pipeline_run <- function() {
                 "Beta", "SE", "df", "Beta_CI95_low", "Beta_CI95_high", "t_ratio", "p_value", "q_FDR", "FDR_significant", "Family_Size",
                 "SMD_paired_Bonett", "SMD_CI95_low", "SMD_CI95_high",
                 "Reference_Mean_raw", "Comparison_Mean_raw", "N_Participants",
-                "Model_Formula", "Interaction_Test", "Normalization", "Method_Citation")
+                "Model_Formula", "Interaction_Test", "Normalization", "Method_Citation",
+                "SignFlip_p", "SignFlip_q", "N_Complete_Pairs", "Fraction_In_Effect_Direction")   # sign-flip sensitivity columns, appended last (31 Oct 2026)
   phase_lmm_clean_table <- phase_lmm_out[, intersect(phase_lmm_cols, names(phase_lmm_out)), drop = FALSE]
 
   # Questionnaire contrasts (separate BH-FDR family; written to H1_/H3_Questionnaire_Contrasts.csv, not to H1_/H3_Contrasts.csv)
@@ -896,6 +975,8 @@ h1_to_h3_pipeline_run <- function() {
 
   # Per-hypothesis files: H1_/H3_ contrasts split by Hypothesis; H1 and H3 share identical temporal AR(1) shells,
   # so the same temporal tables are written under both prefixes; H2 is its own file.
+  model_audit_df <- safe_rbind(model_audit)
+  if (H1_H3_WRITE_DETAILS) {
   for (hyp in c("H1", "H3")) {
     safe_write_csv(phase_lmm_clean_table[phase_lmm_clean_table$Hypothesis == hyp, , drop = FALSE], pa_out_path(hyp, "Contrasts.csv"))
     safe_write_csv(quest_lmm_clean_table[quest_lmm_clean_table$Hypothesis == hyp, , drop = FALSE], pa_out_path(hyp, "Questionnaire_Contrasts.csv"))
@@ -905,8 +986,20 @@ h1_to_h3_pipeline_run <- function() {
     write_temporal_sensitivity_fdr_subset(temporal_sens_table, sub("\\.csv$", "", sens_path))
   }
   safe_write_csv(h2_clean_table, pa_out_path("H2", "Physio_Psycho_Concordance.csv"))
-  model_audit_df <- safe_rbind(model_audit)
+  safe_write_csv(concord_table, pa_out_path("H2", "Restoration_Concordance_DeltaPRS.csv"))
   safe_write_csv(model_audit_df, pa_out_path("H1_to_H3", "Model_Audit.csv"))
+  }
+  # Combined files (always): H1 + H3 contrasts (physiological + questionnaire; q_FDR from the original families),
+  # H2 concordance (rmcorr + delta-PRS Spearman), and the shared H1/H3 temporal AR(1) tables (10 s + 60 s).
+  safe_write_csv(h1_h3_bind_fill(list(phase_lmm_clean_table, quest_lmm_clean_table), "Outcome_Type",
+    c("Physiological", "Questionnaire")), pa_out_path("H1_H3", "Contrasts.csv"))
+  safe_write_csv(h1_h3_bind_fill(list(h2_clean_table, concord_table), "Test",
+    c("H2_rmcorr_physio_psycho", "H2_restoration_deltaPRS_spearman")), pa_out_path("H2", "Concordance.csv"))
+  temporal_combined <- h1_h3_bind_fill(list(temporal_table, temporal_sens_table), "Analysis",
+    c("10s main", "60s sensitivity"))
+  if (nrow(temporal_combined)) temporal_combined <- data.frame(Hypothesis = "H1 and H3 (shared PhaseID model)",
+    temporal_combined, check.names = FALSE, stringsAsFactors = FALSE)
+  safe_write_csv(temporal_combined, pa_out_path("H1_H3", "Temporal_AR1.csv"))
 
   # 8. Forest Plots -------------------------------------------------------------
   if (MAKE_FIGURES) {
@@ -975,7 +1068,13 @@ h1_to_h3_pipeline_run <- function() {
     H1_Questionnaire_Sensitivity_WPZ_Significant_FDR = sum(quest_lmm_table$Hypothesis == "H1" & quest_lmm_table$Family_Set == "Sensitivity_WPZ" & quest_lmm_table$FDR_significant),
     H3_Questionnaire_Primary_Significant_FDR = sum(quest_lmm_table$Hypothesis == "H3" & quest_lmm_table$Family_Set == "Primary" & quest_lmm_table$FDR_significant),
     H3_Questionnaire_Sensitivity_WPZ_Significant_FDR = sum(quest_lmm_table$Hypothesis == "H3" & quest_lmm_table$Family_Set == "Sensitivity_WPZ" & quest_lmm_table$FDR_significant),
-    Questionnaire_H1_H3_Method = sprintf("%d end-of-phase questionnaires, same lme(<outcome> ~ PhaseID, random = ~1 | ParticipantID) contrasts and Bonett paired SMD as the physiological outcomes; separate BH-FDR family per Hypothesis x Family_Set x Contrast (n = %d); H1_/H3_Questionnaire_Contrasts.csv", length(psych_outcomes), length(psych_outcomes)),
+    Questionnaire_H1_H3_Method = sprintf("%d end-of-phase questionnaires, same lme(<outcome> ~ PhaseID, random = ~1 | ParticipantID) contrasts and Bonett paired SMD as the physiological outcomes; separate BH-FDR family per Hypothesis x Family_Set x Contrast (n = %d); %s", length(psych_outcomes), length(psych_outcomes),
+      if (H1_H3_WRITE_DETAILS) "H1_/H3_Questionnaire_Contrasts.csv" else "H1_H3_Contrasts.csv (Outcome_Type = Questionnaire)"),
+    H2_Restoration_Concordance_DeltaPRS = sprintf("Ported H6.1b: per mode (Bike, Walk) Spearman of participant Green-minus-Urban delta PRS-11 vs delta fixation rate, fixation duration and EDA tonic (H1/H3 Primary phase means; ln EDA tonic); n >= 7; %d tests, one BH family (n = 6); %d with q < 0.05; %s", nrow(concord_table), sum(concord_table$q < 0.05, na.rm = TRUE),
+      if (H1_H3_WRITE_DETAILS) "H2_Restoration_Concordance_DeltaPRS.csv" else "H2_Concordance.csv (Test = H2_restoration_deltaPRS_spearman)"),
+    Output_Files = paste(c("H1_H3_Contrasts.csv", "H2_Concordance.csv", "H1_H3_Temporal_AR1.csv",
+      if (MAKE_FIGURES) "H1_to_H3_Statistical_Results_ForestPlot.jpg", "H1_to_H3_Run_Manifest.csv",
+      if (H1_H3_WRITE_DETAILS) "per-hypothesis detail files (PAPER3_WRITE_DETAILS=1)"), collapse = "; "),
     stringsAsFactors = FALSE
   )
   write.csv(manifest, pa_out_path("H1_to_H3", "Run_Manifest.csv"), row.names = FALSE, na = "")
@@ -985,7 +1084,7 @@ h1_to_h3_pipeline_run <- function() {
   cat(sprintf("   Model Audit Logged: %d total attempted models (%d fits, %d non-fits/skips logged)\n",
               nrow(model_audit_df), sum(model_audit_df$Status == "FIT"),
               sum(model_audit_df$Status != "FIT")))
-  cat("\nSUCCESS: H1 and H3 pipeline finished (H2 included). H4: scripts/statistical_analysis/H4_timeseries.R.\n")
+  cat("\nSUCCESS: H1 and H3 pipeline finished (H2 included). H4: scripts/statistical_analysis/Analysis_combined_timeseries.R.\n")
 }
 
 tag_hypothesis_rows <- function(result_table, hypothesis_id) {
@@ -1052,20 +1151,24 @@ h1_h3_time_series_dispatch_run <- function() {
     }
   }
 
-  cat("[3/3] Writing CSV outputs...\n")
-  safe_write_csv(temporal_table, time_series_output_path("Temporal_TimeSeries_AR1_10s.csv"))
+  cat("[3/3] Collecting outputs (per-hypothesis files only with PAPER3_WRITE_DETAILS=1)...\n")
+  if (H1_H3_WRITE_DETAILS) safe_write_csv(temporal_table, time_series_output_path("Temporal_TimeSeries_AR1_10s.csv"))
   pc <- temporal_fit$planned_contrasts
+  pc_hypothesis <- NULL
   if (!is.null(pc) && nrow(pc) > 0) {
     pc <- pc[pc$Hypothesis == hypothesis_id, , drop = FALSE]
-    if (nrow(pc) > 0) safe_write_csv(pc, time_series_output_path("Planned_Phase_Contrasts.csv"))
+    if (nrow(pc) > 0) {
+      pc_hypothesis <- pc
+      if (H1_H3_WRITE_DETAILS) safe_write_csv(pc, time_series_output_path("Planned_Phase_Contrasts.csv"))
+    }
   }
-  safe_write_csv(temporal_sens_table, time_series_output_path("Temporal_AR1_Sensitivity_60s.csv"))
+  if (H1_H3_WRITE_DETAILS) safe_write_csv(temporal_sens_table, time_series_output_path("Temporal_AR1_Sensitivity_60s.csv"))
+  secondary_csv_name <- get0("TIME_SERIES_SECONDARY_CSV", envir = .GlobalEnv, ifnotfound = "Secondary_Fit.csv")
   if (!is.null(secondary_table) && nrow(secondary_table) > 0) {
-    secondary_csv_name <- get0("TIME_SERIES_SECONDARY_CSV", envir = .GlobalEnv, ifnotfound = "Secondary_Fit.csv")
-    safe_write_csv(secondary_table, time_series_output_path(secondary_csv_name))
+    if (H1_H3_WRITE_DETAILS) safe_write_csv(secondary_table, time_series_output_path(secondary_csv_name))
   }
   model_audit_df <- safe_rbind(model_audit)
-  safe_write_csv(model_audit_df, time_series_output_path("Model_Audit.csv"))
+  if (H1_H3_WRITE_DETAILS) safe_write_csv(model_audit_df, time_series_output_path("Model_Audit.csv"))
 
   manifest <- data.frame(
     Script = normalizePath(TIME_SERIES_SCRIPT_PATH, winslash = "/", mustWork = FALSE),
@@ -1083,10 +1186,34 @@ h1_h3_time_series_dispatch_run <- function() {
   if (!is.null(manifest_extra)) {
     manifest <- cbind(manifest, as.data.frame(as.list(manifest_extra), stringsAsFactors = FALSE))
   }
-  write.csv(manifest, time_series_output_path("Run_Manifest.csv"), row.names = FALSE, na = "")
+  if (H1_H3_WRITE_DETAILS) write.csv(manifest, time_series_output_path("Run_Manifest.csv"), row.names = FALSE, na = "")
 
   cat(sprintf("\nSUCCESS: %s time series finished. Outputs: %s\n", hypothesis_id, OUT_DIR))
-  invisible(list(temporal_table = temporal_table, temporal_sens_table = temporal_sens_table, secondary = secondary_table))
+  invisible(list(hypothesis_id = hypothesis_id, temporal_table = temporal_table, temporal_sens_table = temporal_sens_table,
+    secondary = secondary_table, secondary_name = sub("\\.csv$", "", secondary_csv_name),
+    planned_contrasts = pc_hypothesis, model_audit = model_audit_df, manifest = manifest))
+}
+
+# Combined time-series files (always written): 10 s and 60 s AR(1) tables for all hypotheses run, planned phase
+# contrasts + H2 rmcorr concordance in one table (column Table), and run manifest + model audit in one table
+# (column Record_Type). Tables are stacked as fitted; nothing is recomputed.
+h1_h3_write_time_series_combined <- function(results) {
+  results <- Filter(Negate(is.null), results)
+  ids <- vapply(results, function(r) r$hypothesis_id, character(1))
+  safe_write_csv(h1_h3_bind_fill(lapply(results, `[[`, "temporal_table")), file.path(OUT_DIR, "H1_H3_Temporal_AR1_10s.csv"))
+  safe_write_csv(h1_h3_bind_fill(lapply(results, `[[`, "temporal_sens_table")), file.path(OUT_DIR, "H1_H3_Temporal_AR1_Sensitivity_60s.csv"))
+  contrast_tables <- c(lapply(results, `[[`, "planned_contrasts"), lapply(results, `[[`, "secondary"))
+  contrast_labels <- c(rep("Planned_Phase_Contrasts", length(results)), vapply(results, function(r) r$secondary_name, character(1)))
+  safe_write_csv(h1_h3_bind_fill(contrast_tables, "Table", contrast_labels),
+    file.path(OUT_DIR, "H1_H3_Planned_Contrasts_and_H2_Concordance.csv"))
+  audits <- lapply(results, function(r) if (is.data.frame(r$model_audit) && nrow(r$model_audit))
+    data.frame(Hypothesis = r$hypothesis_id, r$model_audit, check.names = FALSE, stringsAsFactors = FALSE) else NULL)
+  manifests <- lapply(results, `[[`, "manifest")
+  write.csv(h1_h3_bind_fill(c(manifests, audits), "Record_Type",
+    c(rep("Run_Manifest", length(manifests)), rep("Model_Audit", length(audits)))),
+    file.path(OUT_DIR, "H1_H3_Run_Manifest.csv"), row.names = FALSE, na = "")
+  cat(sprintf("Combined time-series files for %s written to %s\n", paste(ids, collapse = ", "), OUT_DIR))
+  invisible(NULL)
 }
 
 h1_h3_phase_sum_design <- function(phase) {
@@ -1188,9 +1315,11 @@ h1_h3_prepare_time_series_hypothesis <- function(hypothesis_id) {
   }
 }
 
-h1_h3_run_one_time_series <- function(hypothesis_id) {
+h1_h3_run_one_time_series <- function(hypothesis_id, write_combined = TRUE) {
   h1_h3_prepare_time_series_hypothesis(hypothesis_id)
-  h1_h3_time_series_dispatch_run()
+  res <- h1_h3_time_series_dispatch_run()
+  if (isTRUE(write_combined)) h1_h3_write_time_series_combined(list(res))
+  invisible(res)
 }
 
 h1_h3_run_all_time_series <- function(hypotheses = c("H1", "H2", "H3")) {
@@ -1202,10 +1331,12 @@ h1_h3_run_all_time_series <- function(hypotheses = c("H1", "H2", "H3")) {
   cat(sprintf("H1 contrasts: %s | H3 contrasts: %s\n\n",
               paste(h1_hypothesis_spec$contrasts$Contrast, collapse = ", "),
               paste(h3_hypothesis_spec$contrasts$Contrast, collapse = ", ")))
+  all_results <- list()
   for (hypothesis_id in hypotheses) {
     cat(sprintf("--- %s ---\n", hypothesis_id))
-    h1_h3_run_one_time_series(hypothesis_id)
+    all_results[[hypothesis_id]] <- h1_h3_run_one_time_series(hypothesis_id, write_combined = FALSE)
   }
+  h1_h3_write_time_series_combined(all_results)
   cat("\nSUCCESS: H1–H3 time series dispatch finished.\n")
 }
 

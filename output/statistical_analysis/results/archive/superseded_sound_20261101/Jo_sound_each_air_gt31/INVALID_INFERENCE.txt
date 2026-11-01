@@ -1,0 +1,1 @@
+UNRELIABLE INFERENCE: very few participants have more than one eligible phase. Participant-centered sound variation is supported by at most two participants. Extremely small reported p/q values are numerical degeneracy, not reportable findings. Do not interpret raw FDR counts.

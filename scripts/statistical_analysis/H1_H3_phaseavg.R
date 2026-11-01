@@ -1,6 +1,8 @@
 # H1–H3 participant-phase (phase-average, non-time-series) inferential analysis — meeting spec (engine: H1_H3_core.R)
-# Outputs: output/statistical_analysis/results/H1_H3_phaseavg/ (files prefixed H1_/H2_/H3_/H1_to_H3_)
-# H4: scripts/statistical_analysis/H4_timeseries.R
+# Outputs: output/statistical_analysis/results/H1_H3_phaseavg/: H1_H3_Contrasts.csv, H2_Concordance.csv,
+#   H1_H3_Temporal_AR1.csv, H1_to_H3_Statistical_Results_ForestPlot.jpg, H1_to_H3_Run_Manifest.csv
+#   (PAPER3_WRITE_DETAILS=1 also writes the per-hypothesis H1_/H2_/H3_ files and H1_to_H3_Model_Audit.csv)
+# H4: scripts/statistical_analysis/Analysis_combined_timeseries.R
 
 if (!exists("PAPER3_PARTICIPANTS", inherits = FALSE)) {
   .entry <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
@@ -158,3 +160,6 @@ run_h1_h3_phaseavg <- function() {
 run_h1_and_h3 <- run_h1_h3_phaseavg
 
 if (sys.nframe() == 0L && !isTRUE(getOption("paper3_skip_auto_run", FALSE))) run_h1_h3_phaseavg()
+
+# Normalize final CSV presentation only after all analysis/report calculations.
+if (sys.nframe() == 0L) paper3_standardize_result_directory(file.path(resolve_project_root(), "output", "statistical_analysis", "results", "H1_H3_phaseavg"))

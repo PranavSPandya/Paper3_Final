@@ -1,0 +1,2 @@
+"outcomes_set","filter","model","phase","fdr_family","K","term","planned_tests","tests_run","n_q_within_lt05","n_q_all_lt05","min_q_within","min_q_all","n_raw_p_lt05","df_min","df_max","n_models_min_df_lt4","n_failed","n_singular_re","rows_kept","cells_kept","participants_kept","n_cells_range","n_participants_range"
+"Physio","AIRgt27","SoundOnly","NoPhase","jo3",3,"sound",66,66,0,0,0.0579514967609516,0.765242414695335,2,1.22165923876538,4.95944216213285,42,0,22,959,25,8,"25-25","8-8"
