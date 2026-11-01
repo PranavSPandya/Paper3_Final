@@ -81,7 +81,7 @@ h3 {
   padding: 14px 18px;
   margin: 14px 0;
   font-family: Consolas, "Courier New", monospace;
-  font-size: 14px;
+  font-size: 1em;
   line-height: 1.6;
   border-radius: 0 4px 4px 0;
 }
@@ -147,12 +147,19 @@ figcaption {
   font-weight: 600;
   font-size: 13.5px;
 }
-code {
+code, pre {
   background: var(--code-bg);
   padding: 2px 5px;
   border-radius: 3px;
   font-family: Consolas, "Courier New", monospace;
-  font-size: 13.5px;
+  font-size: 1em;
+  line-height: 1.5;
+}
+pre {
+  padding: 12px 14px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 .tag {
   display: inline-block;
@@ -424,7 +431,7 @@ code {
     </div>
 
     <p><strong>Exact R Implementation (nlme package via Restricted Maximum Likelihood):</strong><br>
-    <code style="background:#e2e8f0; padding:4px 8px; border-radius:4px; font-size:13.5px; display:inline-block; margin-top:4px;">lme(outcome_z ~ Mode + wpz__ucm_UTCI + wpz__ucm_SND_dBA + wpz__atmo_pm2.5_avg + wpz__lys_lux_avg, random = ~ 1 | ParticipantID, data = d_m, method = "REML")</code></p>
+    <code style="background:#e2e8f0; padding:4px 8px; border-radius:4px; font-size:1em; display:inline-block; margin-top:4px;">lme(outcome_z ~ Mode + wpz__ucm_UTCI + wpz__ucm_SND_dBA + wpz__atmo_pm2.5_avg + wpz__lys_lux_avg, random = ~ 1 | ParticipantID, data = d_m, method = "REML")</code></p>
   </div>
 
   <h4 style="color:#1e293b; margin-top:20px;">Mathematical Notation &amp; Operational Definitions</h4>

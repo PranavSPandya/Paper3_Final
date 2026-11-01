@@ -80,7 +80,7 @@ h3 {
   padding: 14px 18px;
   margin: 14px 0;
   font-family: Consolas, "Courier New", monospace;
-  font-size: 14px;
+  font-size: 1em;
   line-height: 1.6;
   border-radius: 0 4px 4px 0;
 }
@@ -146,12 +146,19 @@ figcaption {
   font-weight: 600;
   font-size: 13.5px;
 }
-code {
+code, pre {
   background: var(--code-bg);
   padding: 2px 5px;
   border-radius: 3px;
   font-family: Consolas, "Courier New", monospace;
-  font-size: 13.5px;
+  font-size: 1em;
+  line-height: 1.5;
+}
+pre {
+  padding: 12px 14px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 .tag {
   display: inline-block;
