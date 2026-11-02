@@ -10,8 +10,8 @@ Start with an entry script in this directory. It specifies the cohort, outcomes,
 | H1_H3_timeseries.R | H1_H3_core.R; time-series counterparts; public run functions also support individual hypotheses |
 | H4_sound_literature_tests.R | Self-contained literature-inspired field adaptations; sections named for the source method |
 | H5_hotspot_weather.R | H5_hotspot_core.R; hotspot and urban-form analyses |
-| H6_stress_composite_phaseavg.R | H6_coupling_core.R; prespecified env/psych coupling LMMs (phase means) |
-| H6_stress_composite_timeseries.R | H6_coupling_core.R; same grid at 10 s epochs with AR(1) |
+| H6_stress_composite_phaseavg.R | H6_stress_composite_core.R; phase-mean composites + pairwise rmcorr |
+| H6_stress_composite_timeseries.R | H6_stress_composite_core.R; 10 s epoch composites + pairwise rmcorr |
 
 Paper3_common.R defines shared cohort, normalization and path helpers. Paper3_output_names.R handles published CSV names, correction-family checks, consolidated metadata and the maximum-five-file publication guard. Review OUTPUT_NAMING_STANDARD.md for the column vocabulary.
 

@@ -13,7 +13,7 @@
 P3_RETIRED_PATTERN <- "^(H6_1_|H6_2_|H6_3_|H6_README)"
 P3_UNTOUCHED_PATTERN <- "Multivariate_Filtration_Results\\.csv$"
 P3_DATA_TABLES <- c("H5_hotspot_day.csv", "H5_epoch_buffer_assignment.csv", "H5_corridor_grid_label_map.csv",
-                    "H5_epoch_hotspot_assignment.csv", "H6_participant_phase_composites.csv")
+                    "H5_epoch_hotspot_assignment.csv", "H6_participant_phase_composites.csv", "H6_epoch_composites.csv")
 P3_DERIVED <- c("statistic_type", "estimate_type", "correlation_type", "confidence_level",
                 "adjustment_method", "adjustment_family", "adjustment_family_size")
 P3_P_COLUMNS <- c("p", "p_value", "q", "q_FDR", "q_BH", "p_value_FDR", "fdr_q", "p_value_adjusted",
