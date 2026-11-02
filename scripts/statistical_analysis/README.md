@@ -8,10 +8,10 @@ Start with an entry script in this directory. It specifies the cohort, outcomes,
 | Analysis_combined_timeseries.R | Analysis_combined_core.R; additive exposure models with within-phase temporal dependence; optional lag/source-adjusted blocks |
 | H1_H3_phaseavg.R | H1_H3_core.R; participant-phase contrasts and physiology/questionnaire concordance |
 | H1_H3_timeseries.R | H1_H3_core.R; time-series counterparts; public run functions also support individual hypotheses |
-| H4_sound_literature_tests.R | Self-contained literature-inspired field adaptations; sections named for the source method |
+| H4_sound_literature_tests.R | `library/H4_sound_literature_helpers.R`; literature-inspired field adaptations; sections named for the source method |
 | H5_hotspot_weather.R | H5_hotspot_core.R; hotspot and urban-form analyses |
-| H6_stress_composite_phaseavg.R | H6_stress_composite_core.R; phase-mean composites + pairwise rmcorr |
-| H6_stress_composite_timeseries.R | H6_stress_composite_core.R; 10 s epoch composites + pairwise rmcorr |
+| H6_stress_composite_phaseavg.R | H6_coupling_core.R; prespecified env/psych→physio coupling LMMs on phase means |
+| H6_stress_composite_timeseries.R | H6_coupling_core.R; same H6-A/H6-B grid on 10 s epochs with AR(1) |
 
 Paper3_common.R defines shared cohort, normalization and path helpers. Paper3_output_names.R handles published CSV names, correction-family checks, consolidated metadata and the maximum-five-file publication guard. Review OUTPUT_NAMING_STANDARD.md for the column vocabulary.
 
@@ -47,3 +47,12 @@ Entirely empty columns are omitted. An individual cell may remain empty when tha
 Published results retain the existing maximum-five-file guard. The compact exporter is transactional and idempotent. Naming consistency does not change inference/reporting eligibility or establish scientific validity. Literature branches marked for review remain marked in inference_note.
 
 Follow-up audit clarification (2026-11-01): the 60-s sensitivity CSV now contains the actual 60-s estimates/p/q, not the 10-s reference columns. References remain in run_info for plotting. If a q-value is unavailable, FDR_significant is blank, never FALSE. Temporal result rows repeated under H1/H2/H3 describe the same fitted coefficients; do not count them as independent results (63 significant60-s rows represent21 distinct coefficient results). Existing saved60-s df/CIs and H4 sample/uncertainty fields may be unavailable; the exporter does not borrow them from another model. Future temporal runs retain the actual60-s df/statistic/participant count. Current merged column counts are20,27,14,23 respectively.
+
+
+## Code readability conventions — 2026-11-02
+
+Use descriptive English names for data tables, file paths, metadata, row selections and callbacks. Reserve p, q, n, df, t, r and z for statistical quantities. In particular, df denotes degrees of freedom; table arguments use descriptive data names. Preserve published sensor/CSV field names and the legacy h4_ interfaces used by checkpoints. A shorter implementation must keep the existing model specification, inference family, exclusion rules, validation and error handling.
+
+The H5 BH helper now delegates to stats::p.adjust on finite p-values. Comparisons against the previous implementation passed for edge cases and every current H5 correction family, with unchanged significance decisions. Removed unused local calculations and corrected obsolete internal-function comments. Existing mathematical x/y notation remains where appropriate.
+
+The active H6 entry scripts use H6_coupling_core.R. H6_stress_composite_core.R is retained for legacy/archived callers; it is not the active coupling engine. Archived scripts were not edited. Existing result and checkpoint code hashes retain their historical fitting provenance; a source cleanup does not rewrite those records.

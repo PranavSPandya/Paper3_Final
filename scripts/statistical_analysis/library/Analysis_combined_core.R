@@ -2,27 +2,22 @@
 # h4_study_spec cohort/outcomes and equation quotes live in the meeting entry scripts.
 
 if (!exists("PROJECT_ROOT", envir = .GlobalEnv, inherits = FALSE)) {
-  stop("PROJECT_ROOT must be set before sourcing Analysis_combined_core.R (source scripts/statistical_analysis/Analysis_combined_timeseries.R).", call. = FALSE)
-}
+  stop("PROJECT_ROOT must be set before sourcing Analysis_combined_core.R (source scripts/statistical_analysis/Analysis_combined_timeseries.R).", call. = FALSE)}
 if (!exists("h4_study_spec", envir = .GlobalEnv, inherits = FALSE)) {
-  stop("h4_study_spec must be set before sourcing Analysis_combined_core.R.", call. = FALSE)
-}
+  stop("h4_study_spec must be set before sourcing Analysis_combined_core.R.", call. = FALSE)}
 h4_study_spec <- paper3_ensure_outcome_normalization(h4_study_spec, PROJECT_ROOT)
 if (is.null(h4_study_spec$all_physiological_outcomes)) {
-  h4_study_spec$all_physiological_outcomes <- h4_study_spec$physiological_outcome_names
-}
+  h4_study_spec$all_physiological_outcomes <- h4_study_spec$physiological_outcome_names}
 h4_study_spec$empatica_hrv_fd_window_outcomes <- attr(h4_study_spec$physiological_outcome_names, "empatica_hrv_fd_window")
 # --- data prep metadata (not part of equation spec) ---
 # outcome_transform: report labels from normalization CSV.
 h4_study_spec$outcome_transform <- setNames(
   ifelse(h4_study_spec$all_physiological_outcomes %in% h4_study_spec$natural_log_outcome_names, "natural log", "native"),
-  h4_study_spec$all_physiological_outcomes
-)
+  h4_study_spec$all_physiological_outcomes)
 # bilateral_sources: left/right sensor columns row-averaged to atmo_pm2.5_avg and lys_lux_avg in h4_prepare_data().
 h4_study_spec$bilateral_sources <- list(
   atmo_pm2.5_avg = c("atmo_lys_atmotube_left__atmotube_pm2.5", "atmo_lys_atmotube_right__atmotube_pm2.5"),
-  lys_lux_avg = c("atmo_lys_LYS1__lys_lux", "atmo_lys_LYS2__lys_lux")
-)
+  lys_lux_avg = c("atmo_lys_LYS1__lys_lux", "atmo_lys_LYS2__lys_lux"))
 
 # --- output paths (flat analysis-specific H4 result folders; not part of meeting spec) ---
 # Variant folders: results/Analysis_combined_timeseries/ or results/Analysis_combined_phaseavg/ (Analysis_combined_timeseries_* / Analysis_combined_phaseavg_* files).
@@ -33,8 +28,7 @@ H4_FILE_PREFIX <- paste0("Analysis_combined_", H4_VARIANT)
 h4_file <- function(filename) sub("^H4_", paste0(H4_FILE_PREFIX, "_"), filename)
 h4_run_info_path <- function(dir = OUT_DIR) p3_run_info_path(dir)
 h4_model_outputs_locked <- function(dir = OUT_DIR) {
-  file.exists(h4_run_info_path(dir)) || file.exists(file.path(dir, h4_file("H4_run_complete.csv")))
-}
+  file.exists(h4_run_info_path(dir)) || file.exists(file.path(dir, h4_file("H4_run_complete.csv")))}
 # Output reduction (2026-11-01): only the reviewable files in H4_KEEP_FILES are saved in the results folder.
 # PAPER3_WRITE_DETAILS=1 also saves every detail table there (pre-reduction behaviour). Without it, detail files
 # are written to a per-session temporary folder (H4_DETAIL_DIR) and read back from there, so every step that
@@ -49,11 +43,23 @@ H4_KEEP_FILES <- h4_file(if (H4_VARIANT == "phaseavg") {
     "H4_Report.md", "H4_run_complete.csv")
 })
 H4_DETAIL_DIR <- file.path(tempdir(), paste0(H4_FILE_PREFIX, "_details"))
+# Ad-hoc VIF scripts must not live in the five-file results folder; prune before publish/finalize.
+h4_auxiliary_result_name_pattern <- paste(
+  c("_gvif_summary\\.csv$", "_eq1_mrt_vif_drop_scenarios\\.csv$", "_eq[0-9]+_vif_drop[^/]*\\.csv$",
+    "_gvif_counterfactuals\\.csv$", "_sun_gvi_vif_.*\\.csv$"),
+  collapse = "|")
+h4_prune_auxiliary_results <- function(dir) {
+  if (!dir.exists(dir)) return(invisible(character()))
+  names_only <- list.files(dir)
+  aux <- names_only[grepl(h4_auxiliary_result_name_pattern, names_only, ignore.case = TRUE)]
+  if (length(aux)) {
+    removed <- file.remove(file.path(dir, aux))
+    cat("[Output] Removed", sum(removed), "auxiliary diagnostic file(s) outside the publish limit\n")}
+  invisible(aux)}
 h4_path <- function(dir, filename) {
   if (H4_WRITE_DETAILS || filename %in% H4_KEEP_FILES) return(file.path(dir, filename))
   dir.create(H4_DETAIL_DIR, recursive = TRUE, showWarnings = FALSE)
-  file.path(H4_DETAIL_DIR, filename)
-}
+  file.path(H4_DETAIL_DIR, filename)}
 H4_RESULTS_ROOT <- file.path(PROJECT_ROOT, "output/statistical_analysis/results")
 H4_OUT_PATHS <- local({
   result_dir <- file.path(H4_RESULTS_ROOT, H4_FILE_PREFIX)
@@ -70,8 +76,7 @@ H4_OUT_PATHS <- local({
     final_outcome_counts_csv = h4_path(work_dir, h4_file("H4_Final_Outcome_Counts.csv")),
     transparency_md = h4_path(work_dir, h4_file("H4_Transparency_Report.md")),
     formula_txt = h4_path(work_dir, h4_file("H4_Multivariate_Formula.txt")),
-    phase_coverage_csv = h4_path(work_dir, h4_file("H4_Phase_Coverage.csv"))
-  )
+    phase_coverage_csv = h4_path(work_dir, h4_file("H4_Phase_Coverage.csv")))
 })
 RESULT_DIR <- H4_OUT_PATHS$result_dir
 OUT_DIR <- H4_OUT_PATHS$work_dir
@@ -104,9 +109,8 @@ average_sources <- list(
   lys_kelvin_avg = c("atmo_lys_LYS1__lys_kelvin", "atmo_lys_LYS2__lys_kelvin"))
 h4_apply_average_sources <- function(raw_df, vars = names(average_sources), missing_only = TRUE) {
   use <- if (missing_only) intersect(vars, setdiff(names(average_sources), names(raw_df))) else intersect(vars, names(average_sources))
-  for (v in use) raw_df[[v]] <- rowMeans(raw_df[, average_sources[[v]], drop = FALSE], na.rm = TRUE)
-  raw_df
-}
+  for (local_values in use) raw_df[[local_values]] <- rowMeans(raw_df[, average_sources[[local_values]], drop = FALSE], na.rm = TRUE)
+  raw_df}
 PARTICIPANTS <- h4_study_spec$participants
 CORE_PHASES <- h4_study_spec$phases
 SOUND_QC_COLUMNS <- c(
@@ -148,39 +152,30 @@ h4_normalize_merged_schema_names <- function(df) {
     octave_proportion_1000_0_Hz = "octave_proportion_1000Hz",
     octave_proportion_2000_0_Hz = "octave_proportion_2000Hz",
     octave_proportion_4000_0_Hz = "octave_proportion_4000Hz",
-    octave_proportion_8000_0_Hz = "octave_proportion_8000Hz"
-  )
+    octave_proportion_8000_0_Hz = "octave_proportion_8000Hz")
   for (from in names(renames)) {
     to <- unname(renames[[from]])
     if (!from %in% names(df)) next
     if (to %in% names(df) && !identical(from, to)) {
-      stop("Column rename conflict: ", from, " and ", to, " both present.", call. = FALSE)
-    }
-    names(df)[names(df) == from] <- to
-  }
-  df
-}
+      stop("Column rename conflict: ", from, " and ", to, " both present.", call. = FALSE)}
+    names(df)[names(df) == from] <- to}
+  df}
 
 h4_read_merged_analysis_data <- function() {
-  h4_normalize_merged_schema_names(read.csv(RAW_DATA_PATH, stringsAsFactors = FALSE, check.names = FALSE))
-}
+  h4_normalize_merged_schema_names(read.csv(RAW_DATA_PATH, stringsAsFactors = FALSE, check.names = FALSE))}
 
 h4_equation_term_order <- function(eq_id) {
   if (!exists("H4_EQUATION_FIXED", envir = .GlobalEnv, inherits = FALSE)) {
-    stop("H4_EQUATION_FIXED not defined; source scripts/statistical_analysis/Analysis_combined_timeseries.R first.", call. = FALSE)
-  }
-  get("H4_EQUATION_FIXED", envir = .GlobalEnv)[[as.character(eq_id)]]
-}
+    stop("H4_EQUATION_FIXED not defined; source scripts/statistical_analysis/Analysis_combined_timeseries.R first.", call. = FALSE)}
+  get("H4_EQUATION_FIXED", envir = .GlobalEnv)[[as.character(eq_id)]]}
 
 h4_equation_thermal_label <- function(row) {
   pm_short <- c(atmo_pm2.5_avg = "PM2.5", atmo_pm1_avg = "PM1", atmo_pm10_avg = "PM10")[row$particulate_matter_column]
   stopifnot(length(pm_short) == 1L, !is.na(pm_short))
-  paste0("Eq", row$equation_number, ": heat = ", row$heat_predictor_label, ", PM = ", unname(pm_short))
-}
+  paste0("Eq", row$equation_number, ": heat = ", row$heat_predictor_label, ", PM = ", unname(pm_short))}
 
 h4_sound_interaction_terms <- function(terms_order) {
-  terms_order[grepl(":", terms_order, fixed = TRUE) & grepl("ucm_SND_dBA", terms_order, fixed = TRUE)]
-}
+  terms_order[grepl(":", terms_order, fixed = TRUE) & grepl("ucm_SND_dBA", terms_order, fixed = TRUE)]}
 
 # Step 3 / Step 4 left-to-right domain order (Thermal -> Greenery); phases then sound interactions.
 h4_domain_var_sequence <- function() unlist(H4_DOMAINS[H4_FLOW_DOMAIN_ORDER], use.names = FALSE)
@@ -188,8 +183,7 @@ h4_domain_var_sequence <- function() unlist(H4_DOMAINS[H4_FLOW_DOMAIN_ORDER], us
 h4_order_mains_by_flow_domain <- function(main_names) {
   main_names <- unique(as.character(main_names))
   seq <- h4_domain_var_sequence()
-  main_names[order(match(main_names, seq), na.last = TRUE)]
-}
+  main_names[order(match(main_names, seq), na.last = TRUE)]}
 
 # Pre-interaction design columns: heat (equation order), sound after first heat main, then other covariates by domain.
 h4_design_main_column_order <- function(heat_vars, env_covars) {
@@ -197,8 +191,7 @@ h4_design_main_column_order <- function(heat_vars, env_covars) {
   env_covars <- unique(as.character(env_covars))
   snd <- intersect("ucm_SND_dBA", env_covars)
   rest <- h4_order_mains_by_flow_domain(setdiff(env_covars, c(heat_vars, snd)))
-  if (length(heat_vars) && length(snd)) c(heat_vars[1L], snd, heat_vars[-1L], rest) else c(heat_vars, snd, rest)
-}
+  if (length(heat_vars) && length(snd)) c(heat_vars[1L], snd, heat_vars[-1L], rest) else c(heat_vars, snd, rest)}
 
 h4_order_terms_by_flow_domain <- function(term_names, heat_vars = character(0)) {
   term_names <- unique(as.character(term_names))
@@ -215,20 +208,16 @@ h4_order_terms_by_flow_domain <- function(term_names, heat_vars = character(0)) 
   ordered_mains <- if (length(heat_mains) && length(snd)) {
     c(heat_mains[1L], snd, heat_mains[-1L], other_mains)
   } else {
-    c(heat_mains, snd, other_mains)
-  }
+    c(heat_mains, snd, other_mains)}
   if (length(interactions)) {
     partners <- vapply(interactions, function(term) {
       setdiff(strsplit(term, ":", fixed = TRUE)[[1]], "ucm_SND_dBA")[1L]
     }, character(1))
-    partner_rank <- function(p) {
-      if (p %in% heat_mains) return(match(p, heat_mains))
-      unname(match(p, domain_seq))
-    }
-    interactions <- interactions[order(vapply(partners, partner_rank, numeric(1)), na.last = TRUE)]
-  }
-  c(ordered_mains, phases, interactions)
-}
+    partner_rank <- function(partner_name) {
+      if (partner_name %in% heat_mains) return(match(partner_name, heat_mains))
+      unname(match(partner_name, domain_seq))}
+    interactions <- interactions[order(vapply(partners, partner_rank, numeric(1)), na.last = TRUE)]}
+  c(ordered_mains, phases, interactions)}
 
 # --- 2. Shared helpers ---
 
@@ -240,17 +229,15 @@ h4_order_terms_by_flow_domain <- function(term_names, heat_vars = character(0)) 
 h4_mean <- function(x) {
   if (!is.numeric(x) && !is.logical(x) && !is.factor(x)) return(NA_real_)
   x <- as.numeric(x)
-  if (any(is.finite(x))) mean(x[is.finite(x)]) else NA_real_
-}
+  if (any(is.finite(x))) mean(x[is.finite(x)]) else NA_real_}
 
-h4_person_mean_center <- function(x, id) ave(as.numeric(x), id, FUN = function(v) if (any(is.finite(v))) v - mean(v[is.finite(v)]) else rep(NA_real_, length(v)))
+h4_person_mean_center <- function(x, id) ave(as.numeric(x), id, FUN = function(local_values) if (any(is.finite(local_values))) local_values - mean(local_values[is.finite(local_values)]) else rep(NA_real_, length(local_values)))
 
 # fmt_md_table
-fmt_md_table <- function(df) {
-  if(!nrow(df)) return("(none)")
+fmt_md_table <- function(input_data) {
+  if(!nrow(input_data)) return("(none)")
   row <- function(x) paste0("| ", paste(gsub("\\|", "/", as.character(x)), collapse = " | "), " |")
-  paste(c(row(names(df)), row(rep("---", ncol(df))), apply(df, 1, row)), collapse = "\n")
-}
+  paste(c(row(names(input_data)), row(rep("---", ncol(input_data))), apply(input_data, 1, row)), collapse = "\n")}
 
 h4_spell_term <- function(term) {
   pretty <- c(ucm_SND_dBA = "sound", SND_dBA = "sound", gvi_50m = "GVI", Clearness_Index = "clearness (excluded in Step 2 as derived)",
@@ -261,8 +248,7 @@ h4_spell_term <- function(term) {
     setNames(paste("Phase:", c("WalkG", "WalkU", "BikeG", "BikeU"), "vs mean of phases"), paste0("PhaseSum", c("WalkG", "WalkU", "BikeG", "BikeU"))))
   parts <- strsplit(term, ":", fixed = TRUE)[[1]]
   parts <- ifelse(parts %in% names(pretty), pretty[parts], parts)
-  if (length(parts) > 1L) paste0("(", parts[1], " x ", parts[2], ")") else parts
-}
+  if (length(parts) > 1L) paste0("(", parts[1], " x ", parts[2], ")") else parts}
 
 # Validator (h4_prepare_data) and Steps 1-3 audit classifiers.
 h4_prepare_data <- function(raw) {
@@ -271,18 +257,17 @@ h4_prepare_data <- function(raw) {
     missing <- setdiff(required, names(raw))
     if (length(missing)) stop("Required H4 input columns missing: ", paste(missing, collapse = ", "))
     raw <- raw[raw$ParticipantID %in% h4_study_spec$participants & raw$PhaseID %in% h4_study_spec$phases, , drop = FALSE]
-    for (v in h4_study_spec$all_physiological_outcomes) {
-        raw[[v]] <- as.numeric(raw[[v]])
-        raw[[v]][!is.finite(raw[[v]])] <- NA_real_
-    }
+    for (local_values in h4_study_spec$all_physiological_outcomes) {
+        raw[[local_values]] <- as.numeric(raw[[local_values]])
+        raw[[local_values]][!is.finite(raw[[local_values]])] <- NA_real_}
     # natural-log outcomes: non-positive values excluded before ln(x) at fit time (see fit_one_outcome)
-    for (v in h4_study_spec$natural_log_outcome_names) raw[[v]][!is.na(raw[[v]]) & raw[[v]] <= 0] <- NA_real_
-    for (v in names(h4_study_spec$bilateral_sources)) raw[[v]] <- rowMeans(raw[, h4_study_spec$bilateral_sources[[v]], drop = FALSE],
+    for (local_values in h4_study_spec$natural_log_outcome_names) raw[[local_values]][!is.na(raw[[local_values]]) & raw[[local_values]] <= 0] <- NA_real_
+    for (local_values in names(h4_study_spec$bilateral_sources)) raw[[local_values]] <- rowMeans(raw[, h4_study_spec$bilateral_sources[[local_values]], drop = FALSE],
         na.rm = TRUE)
-    for (v in c("ucm_UTCI", "ucm_SND_dBA", "atmo_pm2.5_avg", "lys_lux_avg")) raw[[v]][!is.finite(raw[[v]])] <- NA_real_
+    for (local_values in c("ucm_UTCI", "ucm_SND_dBA", "atmo_pm2.5_avg", "lys_lux_avg")) raw[[local_values]][!is.finite(raw[[local_values]])] <- NA_real_
     raw$ucm_SND_dBA[!is.na(raw$ucm_SND_dBA) & raw$ucm_SND_dBA < 0] <- NA_real_
     available <- tolower(as.character(raw$empatica_hrv_fd_5min_available)) %in% c("true", "1")
-    for (v in h4_study_spec$empatica_hrv_fd_window_outcomes) raw[[v]][!available] <- NA_real_
+    for (local_values in h4_study_spec$empatica_hrv_fd_window_outcomes) raw[[local_values]][!available] <- NA_real_
     grid <- expand.grid(ParticipantID = h4_study_spec$participants, PhaseID = h4_study_spec$phases, stringsAsFactors = FALSE)
     grid <- grid[order(match(grid$ParticipantID, h4_study_spec$participants), match(grid$PhaseID, h4_study_spec$phases)), ]
     grid$ParticipantPhase <- paste(grid$ParticipantID, grid$PhaseID, sep = "::")
@@ -292,12 +277,12 @@ h4_prepare_data <- function(raw) {
     groups <- split(seq_len(nrow(raw)), factor(keys, levels = grid$ParticipantPhase))
     variables <- unique(c("ucm_UTCI", "ucm_SND_dBA", "atmo_pm2.5_avg", "lys_lux_avg", "gvi_50m",
         h4_study_spec$all_physiological_outcomes))
-    for (v in variables) grid[[v]] <- vapply(groups, function(ix) h4_mean(raw[[v]][ix]), numeric(1))
-    coverage <- do.call(rbind, lapply(variables, function(v) {
-        n <- vapply(groups, function(ix) sum(is.finite(raw[[v]][ix])), integer(1))
+    for (local_values in variables) grid[[local_values]] <- vapply(groups, function(ix) h4_mean(raw[[local_values]][ix]), numeric(1))
+    coverage <- do.call(rbind, lapply(variables, function(local_values) {
+        n <- vapply(groups, function(ix) sum(is.finite(raw[[local_values]][ix])), integer(1))
         data.frame(ParticipantID = grid$ParticipantID, PhaseID = grid$PhaseID,
-            Measure_Type = if (v %in% h4_study_spec$all_physiological_outcomes) "Outcome" else "Exposure",
-            Measure = v, N_valid = n, N_expected = h4_study_spec$expected_epoch_count,
+            Measure_Type = if (local_values %in% h4_study_spec$all_physiological_outcomes) "Outcome" else "Exposure",
+            Measure = local_values, N_valid = n, N_expected = h4_study_spec$expected_epoch_count,
             Coverage_pct = round(100 * n / h4_study_spec$expected_epoch_count, 1),
             Coverage_pass = n > 0L, stringsAsFactors = FALSE)
     }))
@@ -305,17 +290,15 @@ h4_prepare_data <- function(raw) {
     if (any(lengths(groups) != h4_study_spec$expected_epoch_count))
         warning("Matched-window row counts differ from declared denominator ", h4_study_spec$expected_epoch_count, ": ", paste(names(groups)[lengths(groups) !=
             h4_study_spec$expected_epoch_count], collapse = ", "), call. = FALSE)
-    for (v in c("atmo_pm2.5_avg", "ucm_SND_dBA", "lys_lux_avg")) if (any(grid[[v]] < 0, na.rm = TRUE)) stop("Negative phase-mean values require review: ", v)
+    for (local_values in c("atmo_pm2.5_avg", "ucm_SND_dBA", "lys_lux_avg")) if (any(grid[[local_values]] < 0, na.rm = TRUE)) stop("Negative phase-mean values require review: ", local_values)
     if (any(grid$gvi_50m < 0 | grid$gvi_50m > 100, na.rm = TRUE)) stop("GVI outside 0-100%.")
-    list(data = grid, coverage = coverage)
-}
+    list(data = grid, coverage = coverage)}
 
 is_sound_semantic <- function(x) x %in% c("category", SOUND_CATEGORY_PROP_COLUMNS, sub("_proportion$", "_score", setdiff(SOUND_CATEGORY_PROP_COLUMNS, "unidentify_proportion"))) | grepl("^(sound_(proportion|score)_|yamnet_class_[0-9]{3}_.+_(mean_score|proportion)$)", x)
 
 is_acoustic_frequency <- function(x) {
   grepl("^(dominant_frequency|spectral_centroid|spectral_rolloff85)_hz$", x, ignore.case = TRUE) |
-    grepl("^freq_proportion_", x) | grepl("^octave_proportion_", x)
-}
+    grepl("^freq_proportion_", x) | grepl("^octave_proportion_", x)}
 
 is_svf_exposure <- function(x) x %in% SVF_EXPOSURE_COLUMNS
 
@@ -368,8 +351,7 @@ classify_col_role <- function(c) {
     if(grepl("pm",c)) "\u00b5g/m\u00b3" else if(grepl("lux",c)) "lux" else if(grepl("medi",c)) "medi" else if(grepl("kelvin",c)) "K" else
     if(grepl("gvi|tree|grass|plant|RH",c)) "%" else if(grepl("WIND",c)) "m/s" else if(grepl("_hz$",c)) "Hz" else
     if(is_sound_semantic(c)||grepl("^freq_proportion_|^octave_proportion_",c)) "proportion / score" else if(c=="SVF") "0-1" else if(grepl("_%$",c)) "%" else "Physical unit"
-  info("Environmental Stressor Candidates (X_env)",source,unit,"Retained for Step 2 technical sensor consolidation","RETAINED FOR FILTRATION")
-}
+  info("Environmental Stressor Candidates (X_env)",source,unit,"Retained for Step 2 technical sensor consolidation","RETAINED FOR FILTRATION")}
 
 # h4_step2_representation
 h4_step2_representation <- function(col) {
@@ -402,8 +384,7 @@ h4_step2_representation <- function(col) {
   if (is_svf_exposure(col) && col != "SVF") return("Sky openness represented by SVF; scene percentages are separate secondary constructs, not equivalent exposures")
   # Derived/redundant: ucm_OPT is operative temperature, a function of air temperature and MRT [CityFeel17].
   if (col == "ucm_OPT") return("Derived/redundant: ucm_OPT is operative temperature, derived from air temperature and MRT [CityFeel17]")
-  ""
-}
+  ""}
 
 # classify_step2_consolidation
 classify_step2_consolidation <- function(col, role) {
@@ -436,11 +417,9 @@ classify_step2_consolidation <- function(col, role) {
   if (observed$Available_Phase_Cells < 2L || observed$Available_Participants < 2L || !is.finite(observed$Within_Person_SD) || observed$Within_Person_SD < 1e-12) {
     rat <- sprintf("Only %d of %d participant-phase cells across %d participants have finite phase means; a within-person effect cannot be estimated from one phase per participant or no centered variation. No imputation; rerun eligibility after broader valid coverage.", observed$Available_Phase_Cells, nrow(h4_prepared_for_vif$data), observed$Available_Participants)
     return(if (is_svf_exposure(col)) c("Within-person estimability / availability", "PENDING SVF PROCESSING / MERGE", paste0("SVF pending merge; not rejected. ", rat))
-      else c("Within-person estimability / availability", "INSUFFICIENT WITHIN-PERSON COVERAGE (EXCLUDED)", rat))
-  }
+      else c("Within-person estimability / availability", "INSUFFICIENT WITHIN-PERSON COVERAGE (EXCLUDED)", rat))}
   c(if (col %in% c("ucm_WIND_AWA", "ucm_WIND_TWD", "ucm_SUN_az")) "Circular measurement: joint sine/cosine terms required" else "Available numeric measurement",
-    "Retained", sprintf("Available in %d phase cells across %d participants after declared representation rules. Eligibility is not proof of measurement validity or automatic model inclusion.", observed$Available_Phase_Cells, observed$Available_Participants))
-}
+    "Retained", sprintf("Available in %d phase cells across %d participants after declared representation rules. Eligibility is not proof of measurement validity or automatic model inclusion.", observed$Available_Phase_Cells, observed$Available_Participants))}
 
 # h4_audit_step3
 h4_audit_step3 <- function(raw, candidates) {
@@ -449,17 +428,17 @@ h4_audit_step3 <- function(raw, candidates) {
   cells <- sort(unique(keys))
   indices <- lapply(cells, function(key) which(keys == key))
   id <- sub("::.*", "", cells)
-  blocks <- setNames(lapply(candidates, function(v) matrix(vapply(indices, function(ix) h4_mean(raw[[v]][ix]), numeric(1)), ncol = 1L)), candidates)
+  blocks <- setNames(lapply(candidates, function(local_values) matrix(vapply(indices, function(ix) h4_mean(raw[[local_values]][ix]), numeric(1)), ncol = 1L)), candidates)
   z <- cbind(Mode_Walk = as.numeric(grepl("::Walk", cells)))
   complete <- complete.cases(do.call(cbind, blocks), z)
-  omissions <- data.frame(Cell = cells[!complete], Missing = vapply(which(!complete), function(i) paste(c(names(blocks)[!vapply(blocks,
-    function(b) all(is.finite(b[i, ])), logical(1))], colnames(z)[!is.finite(z[i, ])]), collapse = ", "), character(1)))
+  omissions <- data.frame(Cell = cells[!complete], Missing = vapply(which(!complete), function(local_index) paste(c(names(blocks)[!vapply(blocks,
+    function(second_values) all(is.finite(second_values[local_index, ])), logical(1))], colnames(z)[!is.finite(z[local_index, ])]), collapse = ", "), character(1)))
   if (sum(complete) < 4L || length(unique(id[complete])) < 2L) stop("Insufficient common phase cells for screening.")
   center <- function(x) apply(x[complete, , drop = FALSE], 2L, h4_person_mean_center, id = id[complete])
   blocks <- lapply(blocks, center)
   z <- center(z)
   exposure <- do.call(cbind, blocks)
-  colnames(exposure) <- unlist(lapply(names(blocks), function(v) if (ncol(blocks[[v]]) == 1L) v else paste0(v, "__", colnames(blocks[[v]]))))
+  colnames(exposure) <- unlist(lapply(names(blocks), function(local_values) if (ncol(blocks[[local_values]]) == 1L) local_values else paste0(local_values, "__", colnames(blocks[[local_values]]))))
   if (any(apply(cbind(exposure, z), 2, sd) < 1e-12)) stop("Constant column on the common screening sample; review eligibility.")
   pearson <- cor(exposure)
   spearman <- cor(exposure, method = "spearman")
@@ -468,8 +447,7 @@ h4_audit_step3 <- function(raw, candidates) {
     Pearson_r = pearson[pair_index], Spearman_rho = spearman[pair_index], N_phase_cells = nrow(exposure))
   pairs <- pairs[order(-abs(pairs$Pearson_r)), ]
   stopifnot(setequal(names(blocks), candidates))
-  list(pairs = pairs, omissions = omissions)
-}
+  list(pairs = pairs, omissions = omissions)}
 
 # classify_step3_domain
 classify_step3_domain <- function(col, step2_stat) {
@@ -478,32 +456,30 @@ classify_step3_domain <- function(col, step2_stat) {
   if (is_svf_exposure(col) && step2_stat == "PENDING SVF PROCESSING / MERGE") return(c("Sky View / Urban Morphology", "PLANNED CANDIDATE - PROCESSING PENDING", "SVF pending merge; not in the current model."))
   if (step2_stat != "Retained") return(c("N/A", "N/A", "N/A"))
   dom <- if (is_svf_exposure(col)) "Sky View / Urban Morphology" else if (grepl("gvi|tree|grass|plant", col)) "Greenery" else if (grepl("pm", col)) "Air Pollution" else if (grepl("lux|medi|kelvin", col)) "Visual Light" else if (col == "ucm_SND_dBA" || is_acoustic_frequency(col) || is_sound_semantic(col)) "Acoustic" else "Thermal"
-  return(c(dom, "DATA-ELIGIBLE SCREENING CANDIDATE", "All Step-2 eligible measurements advance. Step 3 reports within-person Pearson/Spearman correlations and full matrix rank on the same complete phase cells; no health outcomes or hand-picked domain representatives enter selection."))
-}
+  return(c(dom, "DATA-ELIGIBLE SCREENING CANDIDATE", "All Step-2 eligible measurements advance. Step 3 reports within-person Pearson/Spearman correlations and full matrix rank on the same complete phase cells; no health outcomes or hand-picked domain representatives enter selection."))}
 
 # build_final_row
-build_final_row <- function(i) {
-  col <- all_variables_pool[i]; role <- step1_mat[i, 2]
-  step2_stat <- step2_mat[i, 2]; dom <- step3_mat[i, 1]; step3_stat <- step3_mat[i, 2]
+build_final_row <- function(local_index) {
+  col <- all_variables_pool[local_index]; role <- step1_mat[local_index, 2]
+  step2_stat <- step2_mat[local_index, 2]; dom <- step3_mat[local_index, 1]; step3_stat <- step3_mat[local_index, 2]
   dash <- function(x) ifelse(grepl("^N/A", x), "-", x)
-  k <- match(role, role_outcomes[, 1])
+  local_key <- match(role, role_outcomes[, 1])
   final <- if (col %in% h4_retained_candidates) c("CANDIDATE AFTER MEASUREMENT AUDIT", paste0("Available candidate in ", dom, ". Measurement dependencies are documented; no automatic VIF or correlation elimination. Model membership remains undecided; outcome models have not been refitted."))
-    else if (step3_stat %in% c("EXPLORATORY SOUNDSCAPE CONSTRUCT", "EXPLORATORY ACOUSTIC-FREQUENCY CONSTRUCT")) c(step3_stat, step3_mat[i, 3])
-    else if (!step2_stat %in% c("N/A", "Retained")) c(if (step2_stat == "CONSOLIDATED RAW CHANNEL (EXCLUDED)") "CONSOLIDATED RAW STREAM (EXCLUDED)" else step2_stat, step2_mat[i, 3])
-    else if (!is.na(k)) c(role_outcomes[k, 2], if (is.na(role_outcomes[k, 3])) step1_mat[i, 4] else role_outcomes[k, 3])
+    else if (step3_stat %in% c("EXPLORATORY SOUNDSCAPE CONSTRUCT", "EXPLORATORY ACOUSTIC-FREQUENCY CONSTRUCT")) c(step3_stat, step3_mat[local_index, 3])
+    else if (!step2_stat %in% c("N/A", "Retained")) c(if (step2_stat == "CONSOLIDATED RAW CHANNEL (EXCLUDED)") "CONSOLIDATED RAW STREAM (EXCLUDED)" else step2_stat, step2_mat[local_index, 3])
+    else if (!is.na(local_key)) c(role_outcomes[local_key, 2], if (is.na(role_outcomes[local_key, 3])) step1_mat[local_index, 4] else role_outcomes[local_key, 3])
     else c("QC METRIC", "Signal quality, missingness verification, or HRV window integrity metric.")
-  data.frame(Variable_Name = col, audit_availability[i, c("Available_Phase_Cells", "Available_Participants", "Within_Person_SD")],
+  data.frame(Variable_Name = col, audit_availability[local_index, c("Available_Phase_Cells", "Available_Participants", "Within_Person_SD")],
     Declared_Average_Replacement = paste(names(average_sources)[vapply(average_sources, function(src) col %in% src, logical(1))], collapse = "; "),
-    Platform_Source = step1_mat[i, 1], Native_Unit = step1_mat[i, 3], Scientific_Domain = dash(dom), Step1_Role = role,
+    Platform_Source = step1_mat[local_index, 1], Native_Unit = step1_mat[local_index, 3], Scientific_Domain = dash(dom), Step1_Role = role,
     Step1_Criterion = paste0(step1_criterion, "; observed role: ", role),
-    Step1_Decision = if (step1_mat[i, 5] == "RETAINED FOR FILTRATION") "Retained" else "-",
-    Step2_Rule = dash(step2_mat[i, 1]), Step2_Status = dash(step2_stat), Step2_Decision = if (step2_stat == "Retained") "Retained" else "-",
+    Step1_Decision = if (step1_mat[local_index, 5] == "RETAINED FOR FILTRATION") "Retained" else "-",
+    Step2_Rule = dash(step2_mat[local_index, 1]), Step2_Status = dash(step2_stat), Step2_Decision = if (step2_stat == "Retained") "Retained" else "-",
     Step3_Status = dash(step3_stat),
     Step3_Criterion = paste0(step3_criterion, "; observed domain: ", dash(dom), "; status: ", dash(step3_stat)),
     Step3_Decision = if (step3_stat == "DATA-ELIGIBLE SCREENING CANDIDATE") "Retained" else "-",
     H4_Screening_Candidate = ifelse(col %in% screening_candidates, "Yes", "No"),
-    Final_Filtration_Outcome = final[1], Scientific_Filtration_Rationale = final[2], stringsAsFactors = FALSE, row.names = NULL)
-}
+    Final_Filtration_Outcome = final[1], Scientific_Filtration_Rationale = final[2], stringsAsFactors = FALSE, row.names = NULL)}
 
 # infer_audit_domain
 infer_audit_domain <- function(var, role, current_domain) {
@@ -511,30 +487,27 @@ infer_audit_domain <- function(var, role, current_domain) {
     if (role != "Environmental Stressor Candidates (X_env)") {
       if (grepl("Physiological", role)) return("8. Physiological")
       if (grepl("Movement", role)) return("Movement")
-      return("Metadata")
-    }
+      return("Metadata")}
     if (var == "ucm_SND_dBA" || is_sound_semantic(var) || is_acoustic_frequency(var)) return("1. UCM Acoustic")
     if (grepl("temp|UTCI|PET|MRT|T_mid|T_bot|T_top|HUMIDEX|OPT|AH|RH|WIND|SUN|Clearness|IR_", var, ignore.case = TRUE)) return("2. UCM Thermal")
     if (is_svf_exposure(var) || var %in% SVF_QC_COLUMNS) return("4. UCM Radiation")
     if (grepl("pm", var, ignore.case = TRUE)) return("5. Atmo Pollution")
     if (grepl("lux|medi|kelvin", var, ignore.case = TRUE)) return("6. LYS Light")
     if (grepl("gvi|tree|grass|plant", var, ignore.case = TRUE)) return("7. GVI Greenery")
-    "3. UCM Index"
-  }
+    "3. UCM Index"}
 
 # count_stage_categories
-count_stage_categories <- function(df, category_col, retained_mask, stage_name, scope_note) {
-  cats <- as.character(df[[category_col]])
+count_stage_categories <- function(input_data, category_col, retained_mask, stage_name, scope_note) {
+  cats <- as.character(input_data[[category_col]])
   cats[is.na(cats) | cats == "" | cats == "-"] <- "Not applicable / unclassified"
-  groups <- split(seq_len(nrow(df)), cats)
+  groups <- split(seq_len(nrow(input_data)), cats)
   do.call(rbind, lapply(names(groups), function(category) {
     ix <- groups[[category]]
     n <- sum(retained_mask[ix], na.rm = TRUE)
     data.frame(Stage = stage_name, Category = category, Total_Entering_Category = length(ix),
       Retained_to_Next_Stage = n, Not_Advanced_from_Stage = length(ix) - n, Scope = scope_note,
       stringsAsFactors = FALSE)
-  }))
-}
+  }))}
 
 # --- 4. Step 4 design and VIF ---
 
@@ -549,23 +522,20 @@ h4_step4_candidates <- function(raw, audit) {
   for (dom in names(H4_DOMAINS)) {
     vars <- intersect(H4_DOMAINS[[dom]], eligible)
     if (!all(vars %in% names(raw))) stop("Missing eligible Step 4 measurements: ", paste(setdiff(vars, names(raw)), collapse = ", "))
-    i <- match(vars, audit$Variable_Name)
-    audit$Step4_Domain[i] <- dom
-    audit$Step4_Category_Role[i] <- if (dom %in% H4_STEP4_THERMAL_CATEGORIES) "thermal equation candidate" else "covariate candidate"
-    audit$Step4_Decision[i] <- "retained candidate; no automatic deletion"
-    audit$Step4_Restriction[i] <- if (dom == "Index") "One heat representation per equation" else
-      if (dom == "Pollution") "One PM representation per candidate equation; all three jointly collinear" else "Full-equation VIF/rank review required"
-  }
+    local_index <- match(vars, audit$Variable_Name)
+    audit$Step4_Domain[local_index] <- dom
+    audit$Step4_Category_Role[local_index] <- if (dom %in% H4_STEP4_THERMAL_CATEGORIES) "thermal equation candidate" else "covariate candidate"
+    audit$Step4_Decision[local_index] <- "retained candidate; no automatic deletion"
+    audit$Step4_Restriction[local_index] <- if (dom == "Index") "One heat representation per equation" else
+      if (dom == "Pollution") "One PM representation per candidate equation; all three jointly collinear" else "Full-equation VIF/rank review required"}
   stopifnot(setequal(eligible, audit$Variable_Name[!is.na(audit$Step4_Domain)]))
-  audit
-}
+  audit}
 
 h4_step4_equation_lines <- function(audit_df, raw_df = NULL, prep = NULL) {
   if (is.null(prep)) {
     if (is.null(raw_df)) raw_df <- h4_read_merged_analysis_data()
     raw_df <- h4_apply_average_sources(raw_df, c("atmo_pm1_avg", "atmo_pm2.5_avg", "atmo_pm10_avg"))
-    prep <- h4_step4_exposure_prep(audit_df, raw_df)
-  }
+    prep <- h4_step4_exposure_prep(audit_df, raw_df)}
   catalog <- prep$catalog
   # Recompute the proposed designs; never attach historical fitted-model VIFs to new equations.
   outcomes <- h4_study_spec$all_physiological_outcomes
@@ -584,8 +554,7 @@ h4_step4_equation_lines <- function(audit_df, raw_df = NULL, prep = NULL) {
     paste0("Eq ", eq_id, ": ", paste(labels, collapse = " + "))
   }, character(1))
   vif_by_eq <- gvif_hr$max_vif_equivalent[match(catalog$equation_id, gvif_hr$equation_id)]
-  list(lines = lines, max_vif = vif_by_eq, checks = checks)
-}
+  list(lines = lines, max_vif = vif_by_eq, checks = checks)}
 
 # Worked example for h4_vif_per_term (design only; the dummy .h4_response does not enter the VIF).
 # Two Df = 1 predictors. Regress x1 on x2 and get R^2 = 0.75.
@@ -615,34 +584,30 @@ h4_vif_per_term <- function(X) {
     if (length(terms) == 1L) gvif[] <- 1 else {
       # The residual scale cancels in car's coefficient correlation; a deterministic dummy response supplies the lm interface.
       d <- data.frame(.h4_response = sin(seq_len(nrow(X))) + cos(seq_len(nrow(X)) * sqrt(2)))
-      for (i in seq_along(terms)) {
-        block <- X[, groups == terms[i], drop = FALSE]
-        d[[paste0("T", i)]] <- if (ncol(block) == 1L) block[, 1L] else I(block)
-      }
+      for (local_index in seq_along(terms)) {
+        block <- X[, groups == terms[local_index], drop = FALSE]
+        d[[paste0("T", local_index)]] <- if (ncol(block) == 1L) block[, 1L] else I(block)}
       result <- car::vif(stats::lm(.h4_response ~ ., data = d))
       keys <- paste0("T", seq_along(terms))
-      gvif <- if (is.matrix(result)) result[keys, "GVIF"] else result[keys]
-    }
+      gvif <- if (is.matrix(result)) result[keys, "GVIF"] else result[keys]}
   }
   score <- setNames(as.numeric(gvif)^(1 / dfs), terms)
   attr(score, "gvif_table") <- data.frame(term = terms, GVIF = as.numeric(gvif), Df = dfs,
     GVIF_root = as.numeric(gvif)^(1 / (2 * dfs)), VIF_equivalent = as.numeric(score))
-  score
-}
+  score}
 
 
 h4_run_gvif_diagnostic <- function(prep, design_outcome = "empatica_heart_rate", vif_threshold = h4_study_spec$variance_inflation_factor_limit, write = TRUE) {
   # Explicit local bindings from the Step 4 preparation (no list2env into this frame).
   raw_df <- prep$raw_df
   centered <- prep$centered
-  selected <- prep$selected
   catalog <- prep$catalog
   make_design <- prep$make_design
   thermal <- prep$thermal
   if (!design_outcome %in% names(raw_df)) stop("GVIF design outcome not in data: ", design_outcome)
   term_rows <- eq_rows <- list()
-  for (i in seq_len(nrow(catalog))) {
-    eq <- catalog[i, ]
+  for (local_index in seq_len(nrow(catalog))) {
+    eq <- catalog[local_index, ]
     ok <- h4_complete_rows(raw_df, design_outcome, eq$equation_id)
     z <- centered[ok, , drop = FALSE]
     phase_vec <- raw_df$PhaseID[ok]
@@ -655,14 +620,13 @@ h4_run_gvif_diagnostic <- function(prep, design_outcome = "empatica_heart_rate",
     mx <- max(vv, na.rm = TRUE)
     id_cols <- data.frame(equation_id = eq$equation_id, heat_form = eq$heat_form, block = eq$block, test = eq$test,
       design_outcome = design_outcome, n_design_rows = n_rows, stringsAsFactors = FALSE)
-    term_rows[[i]] <- data.frame(id_cols, grouped_term = gt$term, GVIF = gt$GVIF, Df = gt$Df, GVIF_root = gt$GVIF_root,
+    term_rows[[local_index]] <- data.frame(id_cols, grouped_term = gt$term, GVIF = gt$GVIF, Df = gt$Df, GVIF_root = gt$GVIF_root,
       VIF_equivalent = gt$VIF_equivalent, flag_vif_gt_threshold = gt$Df == 1L & (gt$VIF_equivalent >= vif_threshold | !is.finite(gt$VIF_equivalent)),
       stringsAsFactors = FALSE, row.names = NULL)
-    eq_rows[[i]] <- data.frame(id_cols, max_vif_equivalent = mx, worst_grouped_term = names(vv)[which.max(vv)],
+    eq_rows[[local_index]] <- data.frame(id_cols, max_vif_equivalent = mx, worst_grouped_term = names(vv)[which.max(vv)],
       phase_GVIF = phase_gt$GVIF, phase_Df = phase_gt$Df, phase_GVIF_root = phase_gt$GVIF_root,
       phase_vif_equivalent = phase_gt$VIF_equivalent, rank = qr(cbind(1, design))$rank, expected_rank = ncol(design) + 1L,
-      full_rank = qr(cbind(1, design))$rank == ncol(design) + 1L, stringsAsFactors = FALSE, row.names = NULL)
-  }
+      full_rank = qr(cbind(1, design))$rank == ncol(design) + 1L, stringsAsFactors = FALSE, row.names = NULL)}
   term_df <- do.call(rbind, term_rows)
   by_equation <- do.call(rbind, eq_rows)
   md_path <- h4_path(OUT_DIR, h4_file("H4_gvif_diagnostic.md"))
@@ -680,10 +644,8 @@ h4_run_gvif_diagnostic <- function(prep, design_outcome = "empatica_heart_rate",
   if (write) {
     dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
     utils::write.csv(term_df, csv_path, row.names = FALSE, na = "")
-    writeLines(md, md_path)
-  }
-  list(terms = term_df, by_equation = by_equation, paths = c(csv = csv_path, md = md_path))
-}
+    writeLines(md, md_path)}
+  list(terms = term_df, by_equation = by_equation, paths = c(csv = csv_path, md = md_path))}
 
 
 # --- 6. Reports (render flow, audit pdf, write results) ---
@@ -704,13 +666,11 @@ h4_archive <- function(paths) {
   stem <- ifelse(nzchar(extension), substr(archived, 1L, nchar(archived) - nchar(extension) - 1L), archived)
   archived <- paste0(stem, "_", format(Sys.time(), "%Y%m%d_%H%M%S"), ifelse(nzchar(extension), paste0(".", extension), ""))
   if (any(file.exists(archived))) stop("Archive destination already exists; refusing to overwrite.")
-  for (i in seq_along(files)) {
-    dir.create(dirname(archived[i]), recursive = TRUE, showWarnings = FALSE)
-    if (!file.rename(files[i], archived[i])) stop("Could not archive: ", files[i])
-  }
+  for (local_index in seq_along(files)) {
+    dir.create(dirname(archived[local_index]), recursive = TRUE, showWarnings = FALSE)
+    if (!file.rename(files[local_index], archived[local_index])) stop("Could not archive: ", files[local_index])}
   for (path in paths[dir.exists(paths)]) unlink(path, recursive = TRUE)
-  cat(sprintf("Archived %d file(s) under %s\n", length(files), file.path(root, "archive")))
-}
+  cat(sprintf("Archived %d file(s) under %s\n", length(files), file.path(root, "archive")))}
 
 h4_write_results <- function(audit_df, step5_result) {
   res_obj <- if (!is.null(step5_result$h4)) step5_result$h4 else if (!is.null(step5_result$h4_1)) step5_result$h4_1 else step5_result
@@ -718,7 +678,7 @@ h4_write_results <- function(audit_df, step5_result) {
     stop("H4 fitting incomplete; refusing to publish final report")
   if (!identical(unname(tools::md5sum(c(H4_SCRIPT_PATH, RAW_DATA_PATH))), H4_START_MD5)) stop("Script or input changed; refusing final publication")
   res_dir <- RESULT_DIR
-  md <- OUT_DIR; rd <- function(f) read.csv(h4_path(md, h4_file(f)), stringsAsFactors = FALSE, check.names = FALSE)
+  md <- OUT_DIR; rd <- function(file_name) read.csv(h4_path(md, h4_file(file_name)), stringsAsFactors = FALSE, check.names = FALSE)
   manifest_path <- file.path(md, h4_file("H4_run_complete.csv"))
   recorded_sources <- unname(tools::md5sum(c(H4_SCRIPT_PATH, RAW_DATA_PATH, OUT_CSV)))
   if (!file.exists(manifest_path)) stop("Missing ", h4_file("H4_run_complete.csv"), "; run Step 5 before publishing")
@@ -731,33 +691,29 @@ h4_write_results <- function(audit_df, step5_result) {
   if (nrow(co)) {
   st$model_note <- trimws(paste(ifelse(st$residual_structure == "independent_fallback", "independent-residual fallback (no q);", ""),
     ifelse(st$boundary_variance %in% TRUE, "boundary random-effect variance;", ""), ifelse(st$high_ar1_flag %in% TRUE, "AR(1) rho > 0.95;", ""), ifelse(st$residual_structure == "ARMA20", "ARMA(2,0) (AR(1) rho > 0.95);", "")))
-  k <- match(paste(co$equation, co$outcome), paste(st$heat_form, st$outcome))
-  co$n <- st$n[k]; co$model_note <- st$model_note[k]
+  local_key <- match(paste(co$equation, co$outcome), paste(st$heat_form, st$outcome))
+  co$n <- st$n[local_key]; co$model_note <- st$model_note[local_key]
   co$analysis_role <- "H4.1: within-bout empatica/eyetracker association (10 s windows)"
   co$independent_unit <- "participant cluster; repeated 10-second windows"
   co$p_method <- "participant-cluster CR2 / Satterthwaite"
-  fb <- co$residual_structure == "independent_fallback"
   co$q_note <- ifelse(co$inference_status == "Tested", co$FDR_scope, co$inference_status)
-  co$q_note[st$high_ar1_flag[k] %in% TRUE] <- "excluded: unresolved high-AR1 covariance after attempted repair"
+  co$q_note[st$high_ar1_flag[local_key] %in% TRUE] <- "excluded: unresolved high-AR1 covariance after attempted repair"
   co$q_note[co$low_df_flag %in% TRUE] <- trimws(paste(co$q_note[co$low_df_flag %in% TRUE], "low df (<4); interpret with caution"))
-  is_th <- co$term_type %in% c("thermal exposure", "sound exposure")
-  heat_table <- co[is_th, ]
+  reportable <- !co$term_type %in% "intercept"
+  heat_table <- co[reportable, ]
   write.csv(heat_table, h4_path(res_dir, h4_file("H4_Heat_Noise_Exposures.csv")), row.names = FALSE, na = "NA")
-  write.csv(co[!is_th, ], h4_path(res_dir, h4_file("H4_Covariates_and_Phases.csv")), row.names = FALSE, na = "NA")
-  }
+  if (H4_WRITE_DETAILS) write.csv(heat_table, h4_path(res_dir, h4_file("H4_Covariates_and_Phases.csv")), row.names = FALSE, na = "NA")}
   th <- if (nrow(co)) unique(co[co$term_type == "thermal exposure" & !grepl(":", co$term), c("term", "equation")]) else data.frame()
   cov <- if (nrow(co)) unique(co$term[co$term_type == "covariate"]) else character()
-  role <- vapply(audit_df$Variable_Name, function(v) {
-    if (v %in% h4_study_spec$all_physiological_outcomes) return("H4.1 physiological sensor outcome (10 s time series)")
-    if (nrow(th) && v %in% th$term) return(paste0("heat term in Eq '", paste(th$equation[th$term == v], collapse = "', '"), "' (+ x sound)"))
-    if (v %in% "ucm_SND_dBA") return("sound main-effect test; see equation-specific results")
-    if (v %in% cov) return(paste("adjustment term in:", paste(unique(co$equation[co$term == v]), collapse = "; ")))
+  role <- vapply(audit_df$Variable_Name, function(local_values) {
+    if (local_values %in% h4_study_spec$all_physiological_outcomes) return("H4.1 physiological sensor outcome (10 s time series)")
+    if (nrow(th) && local_values %in% th$term) return(paste0("heat term in Eq '", paste(th$equation[th$term == local_values], collapse = "', '"), "' (+ x sound)"))
+    if (local_values %in% "ucm_SND_dBA") return("sound main-effect test; see equation-specific results")
+    if (local_values %in% cov) return(paste("adjustment term in:", paste(unique(co$equation[co$term == local_values]), collapse = "; ")))
     "not used" }, character(1))
   keep <- c("Variable_Name", "Platform_Source", "Native_Unit", "Scientific_Domain", "Step1_Decision", "Step2_Rule", "Step2_Decision",
             "Step3_Decision", "Scientific_Filtration_Rationale", "Step4_Domain", "Step4_Category_Role", "Step4_Decision", "Step4_Restriction")
   write.csv(cbind(audit_df[, keep], Step5_Role = role), h4_path(res_dir, h4_file("H4_Variable_Selection.csv")), row.names = FALSE, na = "")
-  ex <- audit_df[audit_df$Step1_Decision == "Retained" & audit_df$Step2_Decision != "Retained", ]
-  ex_tab <- aggregate(Variable_Name ~ Scientific_Filtration_Rationale, ex, function(x) paste(x, collapse = ", "))
   n_tab <- if (nrow(st)) unique(st[, c("outcome", "n", "n_participants")][st$equation_id == 1, ]) else data.frame()
   h41_md <- c("## Physiological sensor models (10-second time series)",
     "Outcomes: 26 empatica + eyetracker columns (see h4_study_spec$physiological_outcome_names). Nested (1 | ParticipantID / PhaseID) with AR(1) within bout.",
@@ -765,7 +721,7 @@ h4_write_results <- function(audit_df, step5_result) {
   rep_md <- c("# H4 results report", "", h41_md, "",
     "## Files",
     if (H4_WRITE_DETAILS) sprintf("- %s / %s: H4.1 only", h4_file("H4_Heat_Noise_Exposures.csv"), h4_file("H4_Covariates_and_Phases.csv")) else
-      sprintf("- Saved in results/%s/: %s (heat and sound exposure terms, H4.1, with the fit status of each outcome x model); %s (run information: manifest, file MD5 checksums, column dictionary); %s (Steps 1-4 variable audit, input to the phase-average run); %s (Step 5 resume checkpoint); this report.",
+      sprintf("- Saved in results/%s/: %s (all non-intercept fixed effects, H4.1, with the fit status of each outcome x model); %s (run information: manifest, file MD5 checksums, column dictionary); %s (Steps 1-4 variable audit, input to the phase-average run); %s (Step 5 resume checkpoint); this report.",
         basename(RESULT_DIR), h4_file("H4_hypothesis.csv"), basename(h4_run_info_path(md)),
         h4_file("H4_Multivariate_Filtration_Results.csv"), h4_file("H4_fit_records.rds")),
     if (H4_WRITE_DETAILS) sprintf("- %s, %s; working fits in results/%s/", h4_file("H4_Variable_Selection.csv"), h4_file("H4_Selection_Flow.pdf"), basename(RESULT_DIR)) else
@@ -773,27 +729,27 @@ h4_write_results <- function(audit_df, step5_result) {
     if (file.exists(h4_path(md, h4_file("H4_hypothesis_readme.txt")))) readLines(h4_path(md, h4_file("H4_hypothesis_readme.txt"))) else character(),
     if (file.exists(h4_path(md, h4_file("H4_gvif_diagnostic.md")))) c("", readLines(h4_path(md, h4_file("H4_gvif_diagnostic.md")))) else character())
   writeLines(rep_md, h4_path(res_dir, h4_file("H4_Report.md")))
-  f <- vapply(h4_file(c("H4_Report.md", "H4_Selection_Flow.pdf", "H4_Variable_Selection.csv")), function(nm) h4_path(res_dir, nm), character(1), USE.NAMES = FALSE)
+  file_name <- vapply(h4_file(c("H4_Report.md", "H4_Selection_Flow.pdf", "H4_Variable_Selection.csv")), function(nm) h4_path(res_dir, nm), character(1), USE.NAMES = FALSE)
   for (nm in h4_file(c("H4_Covariates_and_Phases.csv", "H4_Heat_Noise_Exposures.csv")))
-    if (file.exists(h4_path(res_dir, nm))) f <- c(f, h4_path(res_dir, nm))
-  stopifnot(all(file.exists(f)))
-  f <- f[!startsWith(f, H4_DETAIL_DIR)]  # manifest lists only files saved in the results folder
-  add <- if (nrow(man)) man[rep(1L, length(f)), , drop = FALSE] else
-    data.frame(file = character(length(f)), md5 = character(length(f)), code_md5 = recorded_sources[1L],
+    if (file.exists(h4_path(res_dir, nm))) file_name <- c(file_name, h4_path(res_dir, nm))
+  stopifnot(all(file.exists(file_name)))
+  file_name <- file_name[!startsWith(file_name, H4_DETAIL_DIR)]  # manifest lists only files saved in the results folder
+  add <- if (nrow(man)) man[rep(1L, length(file_name)), , drop = FALSE] else
+    data.frame(file = character(length(file_name)), md5 = character(length(file_name)), code_md5 = recorded_sources[1L],
       input_md5 = recorded_sources[2L], audit_md5 = recorded_sources[3L], spec_md5 = NA_character_,
-      completed_utc = character(length(f)), run_complete = logical(length(f)), run_scope = character(length(f)),
+      completed_utc = character(length(file_name)), run_complete = logical(length(file_name)), run_scope = character(length(file_name)),
       stringsAsFactors = FALSE)
-  add$file <- normalizePath(f, winslash = "/", mustWork = TRUE); add$md5 <- unname(tools::md5sum(f))
-  completed <- rbind(man[!startsWith(man$file, "../") & !basename(man$file) %in% basename(f), , drop = FALSE], add)
+  add$file <- normalizePath(file_name, winslash = "/", mustWork = TRUE); add$md5 <- unname(tools::md5sum(file_name))
+  completed <- rbind(man[!startsWith(man$file, "../") & !basename(man$file) %in% basename(file_name), , drop = FALSE], add)
   if (!identical(unname(tools::md5sum(c(H4_SCRIPT_PATH, RAW_DATA_PATH, OUT_CSV))), recorded_sources)) stop("Sources changed during publication; completion marker remains false")
   completed$completed_utc <- format(Sys.time(), tz = "UTC", format = "%Y-%m-%dT%H:%M:%SZ")
   completed$run_complete <- TRUE
   completed$run_scope <- "FULL"
   write.csv(completed, file.path(md, h4_file("H4_run_complete.csv")), row.names = FALSE)
+  h4_prune_auxiliary_results(md)
   # Final names, fit status merge and run_info (Paper3_output_names.R); also reached by H4_STEP5_ONLY, which quits early.
   if (exists("p3_finalize_directory", mode = "function")) p3_finalize_directory(md)
-  cat("[Results] Wrote", length(f), "files to", res_dir, "\n")
-}
+  cat("[Results] Wrote", length(file_name), "files to", res_dir, "\n")}
 
 render_h4_faceted_flow <- function(audit_all = NULL, prep = NULL) {
   PDF_PATH <- h4_path(RESULT_DIR, h4_file("H4_Selection_Flow.pdf"))
@@ -819,8 +775,7 @@ render_h4_faceted_flow <- function(audit_all = NULL, prep = NULL) {
     c("src", "Solar", "Solar"), c("name", "^empatica_", "Empatica"), c("name", "^eyetracker_", "Eye-tracker"), c("name", "^questionnaire_", "Questionnaire"))
   for (r in seq_len(nrow(sensor_rules))) {
     hit <- if (sensor_rules[r, 1] == "name") grepl(sensor_rules[r, 2], vn) else grepl(sensor_rules[r, 2], sensor, ignore.case = TRUE)
-    sensor[hit & !(sensor_rules[r, 1] == "atmotube" & atmo_raw)] <- sensor_rules[r, 3]
-  }
+    sensor[hit & !(sensor_rules[r, 1] == "atmotube" & atmo_raw)] <- sensor_rules[r, 3]}
   sensor[grepl("Metadata|Demographics|QC|Provenance|Signal Quality", audit$Step1_Role)] <- "Metadata / QC"
   label_rules <- rbind(c("^atmo_lys_atmotube_(left|right)__atmotube_", "\\1 "), c("^atmo_lys_LYS([12])__lys_", "LYS\\1 "),
     c("^dominant_frequency_hz$", "dominant frequency (Hz)"), c("^spectral_centroid_hz$", "spectral centroid (Hz)"),
@@ -901,8 +856,7 @@ render_h4_faceted_flow <- function(audit_all = NULL, prep = NULL) {
   add_note <- function(text, bold = FALSE) {
     wrapped <- strwrap(text, width = 360L)
     note_lines <<- c(note_lines, wrapped)
-    note_bold <<- c(note_bold, rep(bold, length(wrapped)))
-  }
+    note_bold <<- c(note_bold, rep(bold, length(wrapped)))}
   for (source_index in seq_along(sensor_order)) {
     group <- audit[audit$Sensor == sensor_order[source_index], ]
     if (!nrow(group)) next
@@ -923,8 +877,7 @@ render_h4_faceted_flow <- function(audit_all = NULL, prep = NULL) {
     for (why in unique(reason)) {
       rows <- which(reason == why)
       add_note(paste0("- ", paste(omitted$Column[rows], collapse = ", "), ": ", why))
-      explained <- c(explained, omitted$Variable_Name[rows])
-    }
+      explained <- c(explained, omitted$Variable_Name[rows])}
   }
   stopifnot(!anyDuplicated(explained),
     setequal(explained, setdiff(audit$Variable_Name, c(candidate_names, ingredient_names))))
@@ -941,44 +894,40 @@ render_h4_faceted_flow <- function(audit_all = NULL, prep = NULL) {
   pending_svf <- sum(audit$Step2_Status == "PENDING SVF PROCESSING / MERGE")
   for (s in seq_along(sensor_order)) {
     heading <- sub(" (raw|average|imagery)$", "\n\\1", sensor_order[s])
-    text_at(lefts[s] + .06 / page_width, 1 - (8 + LH(FONT_SIZE) + 4) / page_height, heading, FONT_SIZE, TRUE)
-  }
-  for (k in c(1L, 3L)) {
-    d <- stages[[k]]
-    if (k >= 2L && nrow(d) > 0L) d$Row <- ave(seq_len(nrow(d)), interaction(d$Sensor, d$Subcolumn), FUN = function(x) seq_along(x) - 1L)
-    grid.text(titles[k], x = .06 / page_width, y = (band_top[k] - 6) / page_height,
+    text_at(lefts[s] + .06 / page_width, 1 - (8 + LH(FONT_SIZE) + 4) / page_height, heading, FONT_SIZE, TRUE)}
+  for (local_key in c(1L, 3L)) {
+    d <- stages[[local_key]]
+    if (local_key >= 2L && nrow(d) > 0L) d$Row <- ave(seq_len(nrow(d)), interaction(d$Sensor, d$Subcolumn), FUN = function(x) seq_along(x) - 1L)
+    grid.text(titles[local_key], x = .06 / page_width, y = (band_top[local_key] - 6) / page_height,
       just = c("left", "top"), gp = gpar(fontsize = FONT_SIZE, fontface = "bold", col = "#222222", lineheight = 1.2))
-    if (k == 2L && pending_svf > 0L) text_at(lefts[match("SVF imagery", sensor_order)] + .12 / page_width, band_top[k] / page_height,
+    if (local_key == 2L && pending_svf > 0L) text_at(lefts[match("SVF imagery", sensor_order)] + .12 / page_width, band_top[local_key] / page_height,
       "SVF", FONT_SIZE)
-    if (k == 3L) {
+    if (local_key == 3L) {
       category_left <- title_w / page_width
       for (g in seq_along(display_domains)) {
         domain <- names(display_domains)[g]
         category_x <- category_left
         variables <- intersect(display_domains[[g]], candidate_names)
         labels <- audit$Column[match(variables, audit$Variable_Name)]
-        y_b <- band_top[k] - 6
+        y_b <- band_top[local_key] - 6
         heading <- domain
         text_at(category_x, y_b / page_height, heading, FONT_SIZE, TRUE)
-        for (j in seq_along(labels)) text_at(category_x, (y_b - LH(FONT_SIZE) - LH(FONT_SIZE) * (j - 1L)) / page_height, labels[j], FONT_SIZE)
+        for (other_index in seq_along(labels)) text_at(category_x, (y_b - LH(FONT_SIZE) - LH(FONT_SIZE) * (other_index - 1L)) / page_height, labels[other_index], FONT_SIZE)
         if (domain == "Radiation" && pending_svf > 0L) text_at(category_x,
           (y_b - LH(FONT_SIZE) - LH(FONT_SIZE) * length(labels)) / page_height, "SVF", FONT_SIZE)
-        category_left <- category_x + max(convertWidth(grobWidth(textGrob(c(heading, labels), gp = gpar(fontsize = FONT_SIZE))), "npc", TRUE)) + 1.2 / page_width
-      }
-    } else for (j in seq_len(nrow(d))) {
-      label <- d$Column[j]
-      if (k >= 2L && d$Variable_Name[j] %in% h4_study_spec$natural_log_outcome_names) label <- paste0("log(", label, ")")
-      if (k == 3L) label <- paste0(label, " [", d$Measurement_Code[j], "]")
-      label_y <- (band_top[k] - 6 - d$Row[j] * row_px[k]) / page_height
-      retained <- k == 1L && d$Variable_Name[j] %in% c(candidate_names, ingredient_names)
+        category_left <- category_x + max(convertWidth(grobWidth(textGrob(c(heading, labels), gp = gpar(fontsize = FONT_SIZE))), "npc", TRUE)) + 1.2 / page_width}
+    } else for (other_index in seq_len(nrow(d))) {
+      label <- d$Column[other_index]
+      if (local_key >= 2L && d$Variable_Name[other_index] %in% h4_study_spec$natural_log_outcome_names) label <- paste0("log(", label, ")")
+      if (local_key == 3L) label <- paste0(label, " [", d$Measurement_Code[other_index], "]")
+      label_y <- (band_top[local_key] - 6 - d$Row[other_index] * row_px[local_key]) / page_height
+      retained <- local_key == 1L && d$Variable_Name[other_index] %in% c(candidate_names, ingredient_names)
       if (retained) {
         label_width <- convertWidth(grobWidth(textGrob(label, gp = gpar(fontsize = FONT_SIZE))), "npc", TRUE)
-        grid.rect(x = d$X[j], y = label_y, width = label_width + 4 / 72 / page_width,
+        grid.rect(x = d$X[other_index], y = label_y, width = label_width + 4 / 72 / page_width,
           height = LH(FONT_SIZE) / page_height, just = c("left", "top"),
-          gp = gpar(fill = "#FFF2CC", col = NA))
-      }
-      text_at(d$X[j], label_y, label, FONT_SIZE)
-    }
+          gp = gpar(fill = "#FFF2CC", col = NA))}
+      text_at(d$X[other_index], label_y, label, FONT_SIZE)}
   }
   x0 <- title_w / page_width
   draw_step_block <- function(title, lines, y_top) {
@@ -990,20 +939,18 @@ render_h4_faceted_flow <- function(audit_all = NULL, prep = NULL) {
     avail <- .985 - width_npc(vif_lab, FONT_SIZE) - 40 / 72 / page_width - x0
     if (width_npc(unlist(strsplit(lines, "\n", fixed = TRUE)), FONT_SIZE) > avail) stop("Full equation exceeds available PDF width")
     vif_x <- x0 + width_npc(unlist(strsplit(lines, "\n", fixed = TRUE)), FONT_SIZE) + .6 / page_width
-    for (j in seq_along(lines)) {
-      text_at(vif_x, y / page_height, vif_lab[j], FONT_SIZE)
-      for (line in strsplit(lines[j], "\n", fixed = TRUE)[[1L]]) {
+    for (other_index in seq_along(lines)) {
+      text_at(vif_x, y / page_height, vif_lab[other_index], FONT_SIZE)
+      for (line in strsplit(lines[other_index], "\n", fixed = TRUE)[[1L]]) {
         text_at(x0, y / page_height, line, FONT_SIZE)
-        y <- y - LH(FONT_SIZE)
-      }
-      y <- y - 5
-    }
+        y <- y - LH(FONT_SIZE)}
+      y <- y - 5}
   }
   draw_step_block(paste0("STEP 3\nEquations + design VIF\n(6 equations)"), step5$lines, step5_height + 3)
   notes_top <- band_top[2L]
   text_at(x0, (notes_top - 10) / page_height, "Parameters and decisions by source", FONT_SIZE, TRUE)
-  for (j in seq_along(note_lines))
-    text_at(x0, (notes_top - 10 - j * LH(FONT_SIZE)) / page_height, note_lines[j], FONT_SIZE, note_bold[j])
+  for (other_index in seq_along(note_lines))
+    text_at(x0, (notes_top - 10 - other_index * LH(FONT_SIZE)) / page_height, note_lines[other_index], FONT_SIZE, note_bold[other_index])
   grid.lines(x = c(.06 / page_width, .985), y = rep((band_top[3L] + 8) / page_height, 2L), gp = gpar(col = "#222222"))
   dev.off()
   # Refresh only the figure hash and label its scope; fitted tables still identify their original run.
@@ -1016,19 +963,16 @@ render_h4_faceted_flow <- function(audit_all = NULL, prep = NULL) {
       manifest$md5[figure_row] <- unname(tools::md5sum(PDF_PATH))
       if (!"artifact_scope" %in% names(manifest)) manifest$artifact_scope <- "fitted run; consult original code_md5"
       manifest$artifact_scope[figure_row] <- "current Step 4 candidate designs only; not evidence of a new model fit"
-      write.csv(manifest, manifest_path, row.names = FALSE)
-    }
+      write.csv(manifest, manifest_path, row.names = FALSE)}
   }
   cat("Verified stage counts:", paste(vapply(stages, nrow, integer(1)), collapse = " -> "), ". Fixed horizontal positions; zero connectors.\n")
-  cat("Saved figure (1 page):", PDF_PATH, "\n")
-}
+  cat("Saved figure (1 page):", PDF_PATH, "\n")}
 
 render_audit_pdf <- function(audit_df, output_path, preview_path = NULL) {
-    collapse_group <- function(df, mask, new_name) {
-        if (sum(mask) <= 1) return(df)
-        df$Variable_Name[which(mask)[1]] <- sprintf("%s (%d variables)", new_name, sum(mask))
-        df[!(mask & seq_len(nrow(df)) != which(mask)[1]), ]
-    }
+    collapse_group <- function(input_data, mask, new_name) {
+        if (sum(mask) <= 1) return(input_data)
+        input_data$Variable_Name[which(mask)[1]] <- sprintf("%s (%d variables)", new_name, sum(mask))
+        input_data[!(mask & seq_len(nrow(input_data)) != which(mask)[1]), ]}
     audit_df <- collapse_group(audit_df, grepl("yamnet_class", audit_df$Variable_Name), "YAMNet Audio Classes")
     audit_df <- collapse_group(audit_df, grepl("^octave_proportion_", audit_df$Variable_Name), "Octave Frequency Bands")
     is_environment <- audit_df$Step1_Role == "Environmental Stressor Candidates (X_env)"
@@ -1072,8 +1016,7 @@ render_audit_pdf <- function(audit_df, output_path, preview_path = NULL) {
         page_df <- table_df[rows, , drop = FALSE]
         for (column in seq_len(ncol(page_df))) {
             page_df[[column]] <- vapply(as.character(page_df[[column]]), function(value)
-                paste(strwrap(value, width = wrap_widths[column]), collapse = "\n"), character(1))
-        }
+                paste(strwrap(value, width = wrap_widths[column]), collapse = "\n"), character(1))}
         table_grob <- gridExtra::tableGrob(page_df, rows = NULL, theme = gridExtra::ttheme_minimal(base_size = 9, padding = grid::unit(c(3,
             4.5), "mm"), core = list(fg_params = list(hjust = 0, x = 0.02, fontsize = 9), bg_params = list(fill = c("#ffffff",
             "#f8f9fa")[((seq_len(nrow(page_df)) - 1)%%2) + 1], col = NA, lwd = 0)), colhead = list(fg_params = list(fontface = "bold", hjust = 0,
@@ -1082,8 +1025,7 @@ render_audit_pdf <- function(audit_df, output_path, preview_path = NULL) {
         if (page == 1L && !is.null(preview_path)) {
             preview <- gridExtra::arrangeGrob(grid::textGrob("H4 Variable Audit Table", gp = grid::gpar(fontface = "bold",
                 fontsize = 16)), table_grob, ncol = 1, heights = grid::unit(c(0.6, 9.8), "in"))
-            ggplot2::ggsave(preview_path, preview, width = 17, height = 11, dpi = 220, limitsize = FALSE)
-        }
+            ggplot2::ggsave(preview_path, preview, width = 17, height = 11, dpi = 220, limitsize = FALSE)}
         grid::grid.newpage()
         grid::grid.text("H4 Comprehensive Variable Audit", x = 0.5, y = 0.965, gp = grid::gpar(fontface = "bold", fontsize = 15))
         grid::grid.text(subtitle_text, x = 0.5, y = 0.89, just = c("centre", "top"), gp = grid::gpar(fontsize = 8.5, col = "#333333",
@@ -1092,10 +1034,8 @@ render_audit_pdf <- function(audit_df, output_path, preview_path = NULL) {
         grid::grid.draw(table_grob)
         grid::popViewport()
         grid::grid.text(sprintf("Page %d of %d  |  Full machine-readable audit: H4_Multivariate_Filtration_Results.csv",
-            page, length(page_rows)), x = 0.5, y = 0.03, gp = grid::gpar(fontsize = 8, col = "gray40"))
-    }
-    invisible(length(page_rows))
-}
+            page, length(page_rows)), x = 0.5, y = 0.03, gp = grid::gpar(fontsize = 8, col = "gray40"))}
+    invisible(length(page_rows))}
 
 
 # ==============================================================================
@@ -1107,33 +1047,30 @@ h4_phase_design <- function(phase) {
   if (anyNA(phase)) stop("Unknown or missing H4 PhaseID")
   design <- stats::model.matrix(~ phase, contrasts.arg = list(phase = stats::contr.sum(4L)))[, -1L, drop = FALSE]
   colnames(design) <- c("PhaseSumWalkG", "PhaseSumWalkU", "PhaseSumBikeG")
-  design
-}
+  design}
 
 h4_phase_contrast_weights <- function() {
   # Equal weighting of the two modes/environments, not observed row frequencies.
-  w <- rbind(Urban_minus_Green = c(-.5, .5, -.5, .5), Urban_minus_Green_Walk = c(-1, 1, 0, 0), Urban_minus_Green_Bike = c(0, 0, -1, 1),
+  local_weights <- rbind(Urban_minus_Green = c(-.5, .5, -.5, .5), Urban_minus_Green_Walk = c(-1, 1, 0, 0), Urban_minus_Green_Bike = c(0, 0, -1, 1),
              Bike_minus_Walk = c(-.5, -.5, .5, .5), Mode_by_Environment = c(1, -1, -1, 1))
-  w %*% h4_phase_design(c("WalkG", "WalkU", "BikeG", "BikeU"))
-}
+  local_weights %*% h4_phase_design(c("WalkG", "WalkU", "BikeG", "BikeU"))}
 
 h4_phase_contrasts <- function(fit, cluster) {
   beta <- nlme::fixef(fit)
   weights <- h4_phase_contrast_weights()
   V <- clubSandwich::vcovCR(fit, cluster = cluster, type = "CR2")
-  do.call(rbind, lapply(seq_len(nrow(weights)), function(i) {
+  do.call(rbind, lapply(seq_len(nrow(weights)), function(local_index) {
     L <- matrix(0, 1L, length(beta), dimnames = list(NULL, names(beta)))
     stopifnot(all(colnames(weights) %in% names(beta)))
-    L[1L, colnames(weights)] <- weights[i, ]
+    L[1L, colnames(weights)] <- weights[local_index, ]
     test <- clubSandwich::Wald_test(fit, constraints = L, vcov = V, test = "HTZ")
     estimate <- as.numeric(L %*% beta)
     se <- sqrt(as.numeric(L %*% V %*% t(L)))
     df <- as.numeric(test$df_denom)
     if (!is.finite(df) || df <= 0 || !is.finite(se)) stop("Invalid phase-contrast CR2 inference")
-    data.frame(contrast = rownames(weights)[i], estimate = estimate, se = se, df = df, low_df_flag = df < 4,
+    data.frame(contrast = rownames(weights)[local_index], estimate = estimate, se = se, df = df, low_df_flag = df < 4,
                ci_low = estimate - stats::qt(.975, df) * se, ci_high = estimate + stats::qt(.975, df) * se, p_value = as.numeric(test$p_val), stringsAsFactors = FALSE)
-  }))
-}
+  }))}
 
 h4_phase_mean_init_coefficient_frame <- function(equation_id, outcome, design_columns, has_phase, fixed_term_labels) {
   terms_out <- c(ifelse(design_columns == "(Intercept)", "Intercept", design_columns), if (has_phase) "PhaseSumBikeU")
@@ -1144,8 +1081,7 @@ h4_phase_mean_init_coefficient_frame <- function(equation_id, outcome, design_co
         ifelse(terms_out %in% heat_predictors | grepl(":", terms_out, fixed = TRUE), "thermal exposure", "covariate"))))
   data.frame(equation_id = equation_id, equation = h4_equation_thermal_label(h4_equation_table[equation_id, ]),
     outcome = outcome, term = terms_out, term_type = term_type,
-    Beta = NA_real_, SE = NA_real_, df = NA_real_, ci_low = NA_real_, ci_high = NA_real_, p = NA_real_, stringsAsFactors = FALSE)
-}
+    Beta = NA_real_, SE = NA_real_, df = NA_real_, ci_low = NA_real_, ci_high = NA_real_, p = NA_real_, stringsAsFactors = FALSE)}
 
 h4_phase_mean_results <- function(equation_id, outcome, fixed, phase, design, fit, note) {
   # Keep historical coefficient labels, classifications and reporting consumers stable.
@@ -1160,8 +1096,8 @@ h4_phase_mean_results <- function(equation_id, outcome, fixed, phase, design, fi
   if (!is.null(fit)) {
     robust <- tryCatch(withCallingHandlers(
       clubSandwich::coef_test(fit, vcov = "CR2", cluster = phase$ParticipantID, test = "Satterthwaite"),
-      warning = function(w) note <<- c(note, conditionMessage(w)),
-      error = function(e) { note <<- c(note, paste("CR2:", conditionMessage(e))); NULL }))
+      warning = function(warning_condition) note <<- c(note, conditionMessage(warning_condition)),
+      error = function(local_error) { note <<- c(note, paste("CR2:", conditionMessage(local_error))); NULL }))
     if (!is.null(robust)) {
       index <- match(ifelse(result$term == "Intercept", "(Intercept)", result$term), gsub("_phase_z", "", rownames(robust), fixed = TRUE))
       result$Beta <- robust$beta[index]
@@ -1183,11 +1119,10 @@ h4_phase_mean_results <- function(equation_id, outcome, fixed, phase, design, fi
         result$p[row] <- as.numeric(test$p_val)
         result$ci_low[row] <- result$Beta[row] - qt(.975, result$df[row]) * result$SE[row]
         result$ci_high[row] <- result$Beta[row] + qt(.975, result$df[row]) * result$SE[row]
-      }, error = function(e) note <<- c(note, paste("BikeU contrast:", conditionMessage(e))))
+      }, error = function(local_error) note <<- c(note, paste("BikeU contrast:", conditionMessage(local_error))))
       boundary <- as.numeric(nlme::VarCorr(fit)[1L, "Variance"]) < 1e-6 * sigma(fit)^2
       if (has_phase) phase_comparisons <- tryCatch(h4_phase_contrasts(fit, phase$ParticipantID),
-        error = function(e) { note <<- c(note, paste("Phase contrasts:", conditionMessage(e))); NULL })
-    }
+        error = function(local_error) { note <<- c(note, paste("Phase contrasts:", conditionMessage(local_error))); NULL })}
   }
   result$low_df_flag <- is.finite(result$df) & result$df < 4
   result$transformation <- if (outcome %in% h4_study_spec$natural_log_outcome_names) "natural log before phase averaging" else "native"
@@ -1202,20 +1137,18 @@ h4_phase_mean_results <- function(equation_id, outcome, fixed, phase, design, fi
     note = if (length(note)) paste(unique(note), collapse = "; ") else "Completed")
   if (!is.null(phase_comparisons)) {
     phase_comparisons$equation_id <- equation_id
-    phase_comparisons$outcome <- outcome
-  }
+    phase_comparisons$outcome <- outcome}
   coverage <- phase[, c("ParticipantID", "PhaseID", "epochs")]
   coverage$equation_id <- equation_id
   coverage$outcome <- outcome
-  list(coefficients = result, status = status, contrasts = phase_comparisons, coverage = coverage)
-}
+  list(coefficients = result, status = status, contrasts = phase_comparisons, coverage = coverage)}
 
 h4_step4_exposure_prep <- function(audit_df, raw_df) {
   raw_df <- h4_apply_average_sources(raw_df, c("lys_lux_avg", "lys_kelvin_avg", "lys_medi_avg"))
   raw_df <- raw_df[raw_df$ParticipantID %in% h4_study_spec$participants & raw_df$PhaseID %in% h4_study_spec$phases, , drop = FALSE]
   if (!"empatica_hrv_fd_5min_available" %in% names(raw_df)) stop("Missing HRV availability flag")
   available <- tolower(as.character(raw_df$empatica_hrv_fd_5min_available)) %in% c("true", "1")
-  for (v in h4_study_spec$empatica_hrv_fd_window_outcomes) raw_df[[v]][!available] <- NA_real_
+  for (local_values in h4_study_spec$empatica_hrv_fd_window_outcomes) raw_df[[local_values]][!available] <- NA_real_
   # Explicit one-step endpoint approximation: never fill internal gaps or cross a bout boundary.
   bout_order <- order(raw_df$ParticipantID, raw_df$PhaseID, as.POSIXct(raw_df$Datetime, tz = "UTC"))
   bout_sorted <- paste(raw_df$ParticipantID, raw_df$PhaseID)[bout_order]
@@ -1226,38 +1159,36 @@ h4_step4_exposure_prep <- function(audit_df, raw_df) {
     gap <- as.numeric(difftime(as.POSIXct(raw_df$Datetime[last], tz = "UTC"), as.POSIXct(raw_df$Datetime[previous], tz = "UTC"), units = "secs"))
     if (!is.finite(raw_df$SVF[last]) && is.finite(raw_df$SVF[previous]) && is.finite(gap) && gap == 10) {
       raw_df$SVF[last] <- raw_df$SVF[previous]
-      raw_df$SVF_endpoint_carried[last] <- TRUE
-    }
+      raw_df$SVF_endpoint_carried[last] <- TRUE}
   }
   audit_df <- h4_step4_candidates(raw_df, audit_df)
   reps <- audit_df$Variable_Name[audit_df$Step4_Category_Role %in% "covariate candidate"]
   nonthermal <- unique(reps)
   rep_tab <- audit_df[!is.na(audit_df$Step4_Domain), c("Step4_Domain", "Variable_Name", "Step4_Category_Role", "Step4_Decision", "Step4_Restriction")]
-  base_heat <- list(`AIR_T_mid + AIR_RH + WIND_AWS` = c("ucm_AIR_T_mid", "ucm_AIR_RH", "ucm_WIND_AWS"), HUMIDEX = "ucm_HUMIDEX", PET = "ucm_PET", UTCI = "ucm_UTCI")
+  base_heat <- list(`AIR_T_mid + AIR_RH + WIND_AWS` = c("ucm_AIR_T_mid", "ucm_AIR_RH", "ucm_WIND_AWS"),
+    `AIR_T_mid + AIR_RH + WIND_AWS + MRT` = c("ucm_AIR_T_mid", "ucm_AIR_RH", "ucm_WIND_AWS", "ucm_MRT"),
+    MRT = "ucm_MRT", HUMIDEX = "ucm_HUMIDEX", PET = "ucm_PET", UTCI = "ucm_UTCI")
   pm <- intersect(H4_DOMAINS$Pollution, reps)
   if (length(pm) != 3L || !all(c("ucm_MRT", "ucm_SND_dBA") %in% reps)) stop("Step 4 requires three PM alternatives, MRT and sound")
-  # h4_equation_table is the six-row table in the specification block (same ids, heat keys, PM, roles).
+  # h4_equation_table is the seven-row table in the specification block (same ids, heat keys, PM, roles).
   # UTCI + PM2.5 is the pre-specified primary.
   # Heat-form sensitivities stay on PM2.5. PM1 and PM10 are size sensitivities on UTCI only.
-  # MRT Ã— SND_dBA is Eq 2 only (multi-component air/RH/wind heat form).
-  stopifnot(nrow(h4_equation_table) == 6L, identical(h4_equation_table$equation_number, 1:6),
+  # Eq2 uses air/RH/wind + SVF without MRT (phase mean omits sound; SUN/GVI omitted at phase grain); Eq3 uses MRT with sound, PM, and light (no air micro block, no GVI/SVF).
+  stopifnot(nrow(h4_equation_table) == 7L, identical(h4_equation_table$equation_number, 1:7),
             all(h4_equation_table$heat_predictor_label %in% names(base_heat)), all(h4_equation_table$particulate_matter_column %in% pm),
             sum(h4_equation_table$equation_role == "primary") == 1L, !any(h4_equation_table$equation_role == "sound_sensitivity"))
   thermal <- list()
-  for (i in seq_len(nrow(h4_equation_table))) {
-    vars <- base_heat[[h4_equation_table$heat_predictor_label[i]]]
-    attr(vars, "pm") <- h4_equation_table$particulate_matter_column[i]
-    thermal[[h4_equation_thermal_label(h4_equation_table[i, , drop = FALSE])]] <- vars
-  }
+  for (local_index in seq_len(nrow(h4_equation_table))) {
+    vars <- base_heat[[h4_equation_table$heat_predictor_label[local_index]]]
+    attr(vars, "pm") <- h4_equation_table$particulate_matter_column[local_index]
+    thermal[[h4_equation_thermal_label(h4_equation_table[local_index, , drop = FALSE])]] <- vars}
   selected <- unique(c(nonthermal, unlist(thermal, use.names = FALSE)))
-  h4_prepare_bout_design(raw_df, selected, nonthermal, thermal, rep_tab)
-}
+  h4_prepare_bout_design(raw_df, selected, nonthermal, thermal, rep_tab)}
 
 h4_equation_catalog <- function(nonthermal, thermal, h4_equation_table) {
-  stopifnot(nrow(h4_equation_table) == 6L, length(thermal) == 6L)
-  for (i in seq_len(nrow(h4_equation_table))) {
-    stopifnot(identical(names(thermal)[i], h4_equation_thermal_label(h4_equation_table[i, , drop = FALSE])))
-  }
+  stopifnot(nrow(h4_equation_table) == 7L, length(thermal) == 7L)
+  for (local_index in seq_len(nrow(h4_equation_table))) {
+    stopifnot(identical(names(thermal)[local_index], h4_equation_thermal_label(h4_equation_table[local_index, , drop = FALSE])))}
   out <- do.call(rbind, lapply(seq_len(nrow(h4_equation_table)), function(id) {
     vars <- thermal[[id]]
     data.frame(equation_id = h4_equation_table$equation_number[id], heat_form = names(thermal)[id],
@@ -1276,14 +1207,13 @@ h4_equation_catalog <- function(nonthermal, thermal, h4_equation_table) {
       heat_role = if (length(vars) > 1L) "Air temperature + RH + apparent wind" else paste(h4_equation_table$heat_predictor_label[id], "only"),
       fitted = FALSE, stringsAsFactors = FALSE)
   }))
-  stopifnot(nrow(out) == 6L, identical(out$equation_id, 1:6), sum(out$primary) == 1L, out$primary[1],
+  stopifnot(nrow(out) == 7L, identical(out$equation_id, 1:7), sum(out$primary) == 1L, out$primary[1],
             out$role[1] == "primary", !any(out$role == "sound_sensitivity"), !anyDuplicated(out$terms),
-            out$pm_representation[1:4] == "atmo_pm2.5_avg",
-            out$pm_representation[5:6] == c("atmo_pm1_avg", "atmo_pm10_avg"))
+            out$pm_representation[1:5] == "atmo_pm2.5_avg",
+            out$pm_representation[6:7] == c("atmo_pm1_avg", "atmo_pm10_avg"))
   out$analysis_role <- ifelse(out$primary, "pre-specified primary (UTCI + PM2.5)",
     ifelse(out$role == "heat_sensitivity", "heat-form sensitivity (PM2.5)", "PM size sensitivity (UTCI heat form)"))
-  out
-}
+  out}
 
 # --- H4.1: REML fit, CR2 inference, Benjamini-Hochberg FDR ---
 # --- 5. H4.1 fit and FDR ---
@@ -1291,10 +1221,9 @@ h4_equation_catalog <- function(nonthermal, thermal, h4_equation_table) {
 h4_env_int <- function(name, default = NA_integer_) {
   raw <- Sys.getenv(name, unset = "")
   if (!nzchar(raw)) return(default)
-  v <- suppressWarnings(as.integer(raw))
-  if (is.na(v)) stop("Environment variable ", name, " must be an integer, got: ", raw, call. = FALSE)
-  v
-}
+  local_values <- suppressWarnings(as.integer(raw))
+  if (is.na(local_values)) stop("Environment variable ", name, " must be an integer, got: ", raw, call. = FALSE)
+  local_values}
 
 # Slice Step 5 jobs (1-based indices into the 26×6 queue). H4_JOB_END or H4_MAX_JOBS optional.
 h4_step5_job_slice <- function(jobs) {
@@ -1311,26 +1240,21 @@ h4_step5_job_slice <- function(jobs) {
     indices = seq.int(start, end),
     start = start,
     end = end,
-    total = n
-  )
-}
+    total = n)}
 
 h4_step5_load_records <- function(path, n_jobs) {
   empty <- vector("list", n_jobs)
   if (!file.exists(path)) return(empty)
-  x <- tryCatch(readRDS(path), error = function(e) NULL)
+  x <- tryCatch(readRDS(path), error = function(local_error) NULL)
   if (is.null(x)) return(empty)
   if (is.list(x) && identical(x$format, "step5_checkpoint") && is.list(x$records)) {
     rec <- x$records
     if (length(rec) == n_jobs) return(rec)
     if (length(rec) < n_jobs) return(c(rec, vector("list", n_jobs - length(rec))))
-    return(rec[seq_len(n_jobs)])
-  }
+    return(rec[seq_len(n_jobs)])}
   if (is.list(x) && length(x) == n_jobs && !is.null(x[[1L]]) && is.list(x[[1L]]) && "status" %in% names(x[[1L]])) {
-    return(x)
-  }
-  empty
-}
+    return(x)}
+  empty}
 
 h4_step5_write_checkpoint <- function(records, fingerprints, h4_model_dir) {
   path <- h4_path(h4_model_dir, h4_file("H4_fit_records.rds"))
@@ -1338,20 +1262,17 @@ h4_step5_write_checkpoint <- function(records, fingerprints, h4_model_dir) {
     format = "step5_checkpoint",
     records = records,
     fingerprints = fingerprints,
-    updated_utc = format(Sys.time(), tz = "UTC", format = "%Y-%m-%dT%H:%M:%SZ")
-  )
+    updated_utc = format(Sys.time(), tz = "UTC", format = "%Y-%m-%dT%H:%M:%SZ"))
   saveRDS(payload, path, version = 2L)
   status_parts <- lapply(records, function(r) if (is.null(r)) NULL else r$status)
   status_parts <- Filter(Negate(is.null), status_parts)
   if (length(status_parts)) {
     status_df <- do.call(rbind, status_parts)
     utils::write.csv(status_df, h4_path(h4_model_dir, h4_file("H4_fit_status.csv")),
-      row.names = FALSE, na = "NA")
-  }
+      row.names = FALSE, na = "NA")}
   n_done <- sum(!vapply(records, is.null, logical(1L)))
   cat(sprintf("[Step 5 checkpoint] %d/%d jobs saved -> %s\n", n_done, length(records), path))
-  invisible(n_done)
-}
+  invisible(n_done)}
 
 h4_complete_rows <- function(raw_df, outcome, equation_id, natural_log_outcomes = h4_study_spec$natural_log_outcome_names) {
   predictors <- unique(unlist(strsplit(h4_equation_term_order(equation_id), ":", fixed = TRUE)))
@@ -1360,8 +1281,7 @@ h4_complete_rows <- function(raw_df, outcome, equation_id, natural_log_outcomes 
   storage.mode(values) <- "double"
   ok <- rowSums(!is.finite(values)) == 0L
   if (outcome %in% natural_log_outcomes) ok <- ok & raw_df[[outcome]] > 0
-  ok
-}
+  ok}
 
 h4_fit_begin <- function(audit_df = NULL, raw_df = NULL) {
   suppressPackageStartupMessages({
@@ -1371,13 +1291,11 @@ h4_fit_begin <- function(audit_df = NULL, raw_df = NULL) {
   })
   if (is.null(audit_df)) {
     if (!file.exists(OUT_CSV)) stop("Audit results CSV not found: ", OUT_CSV)
-    audit_df <- read.csv(OUT_CSV, check.names = FALSE)
-  }
+    audit_df <- read.csv(OUT_CSV, check.names = FALSE)}
   if (is.null(raw_df)) {
     raw_df <- h4_read_merged_analysis_data()
     # Rebuild the averaged sensor columns (Atmotube PM, LYS) that are not stored in the raw CSV.
-    raw_df <- h4_apply_average_sources(raw_df)
-  }
+    raw_df <- h4_apply_average_sources(raw_df)}
   h4_model_dir <- OUT_DIR
   dir.create(h4_model_dir, recursive = TRUE, showWarnings = FALSE)
   job_start_env <- h4_env_int("H4_JOB_START", 1L)
@@ -1386,8 +1304,7 @@ h4_fit_begin <- function(audit_df = NULL, raw_df = NULL) {
   old_items <- list.files(h4_model_dir, pattern = paste0("^", H4_FILE_PREFIX, "_(coefficients|covariance_sensitivity|design_redundancy_by_outcome|equations|fit_records|fit_status|gvif_diagnostic|hypothesis|phase_contrasts|run_complete|session_info|lag60_sensitivity)"))
   h4_archive(file.path(h4_model_dir, old_items))
   } else {
-    cat(sprintf("[Step 5] Continuing checkpoint (H4_JOB_START=%d or H4_APPEND_BATCH=1); fit_records/fit_status not archived.\n", job_start_env))
-  }
+    cat(sprintf("[Step 5] Continuing checkpoint (H4_JOB_START=%d or H4_APPEND_BATCH=1); fit_records/fit_status not archived.\n", job_start_env))}
   spec_rds <- tempfile(fileext = ".rds")
   saveRDS(h4_study_spec, spec_rds, version = 2L, compress = FALSE)
   # spec_md5 hashes the declared analysis specification, so it changes only when the spec changes.
@@ -1395,8 +1312,7 @@ h4_fit_begin <- function(audit_df = NULL, raw_df = NULL) {
   if (!identical(fingerprints[1:2], H4_START_MD5)) stop("Script or input changed since startup; no models run from inconsistent sources")
   names(fingerprints) <- c("code_md5", "input_md5", "audit_md5", "spec_md5")
   unlink(spec_rds)
-  list(audit_df = audit_df, raw_df = raw_df, h4_model_dir = h4_model_dir, fingerprints = fingerprints)
-}
+  list(audit_df = audit_df, raw_df = raw_df, h4_model_dir = h4_model_dir, fingerprints = fingerprints)}
 
 h4_fit_queue <- function(fit_one_outcome, prep, preflight_df, fingerprints, h4_model_dir, outcomes, fit_equation_ids) {
   catalog <- prep$catalog
@@ -1411,16 +1327,14 @@ h4_fit_queue <- function(fit_one_outcome, prep, preflight_df, fingerprints, h4_m
   records <- h4_step5_load_records(ck_path, length(jobs))
   publish_only <- identical(Sys.getenv("H4_PUBLISH_ONLY", unset = ""), "1")
   if (publish_only && file.exists(ck_path)) {
-    xck <- tryCatch(readRDS(ck_path), error = function(e) NULL)
+    xck <- tryCatch(readRDS(ck_path), error = function(local_error) NULL)
     if (!is.null(xck$fingerprints)) {
       fingerprints <- xck$fingerprints
-      cat("[Step 5] H4_PUBLISH_ONLY=1: using fingerprints stored in fit_records checkpoint.\n")
-    }
+      cat("[Step 5] H4_PUBLISH_ONLY=1: using fingerprints stored in fit_records checkpoint.\n")}
   }
   n_done_pre <- sum(!vapply(records, is.null, logical(1L)))
   if (publish_only && n_done_pre < length(jobs)) {
-    stop(sprintf("H4_PUBLISH_ONLY=1 but checkpoint has only %d/%d jobs.", n_done_pre, length(jobs)), call. = FALSE)
-  }
+    stop(sprintf("H4_PUBLISH_ONLY=1 but checkpoint has only %d/%d jobs.", n_done_pre, length(jobs)), call. = FALSE)}
   cat(sprintf("[Step 5] Job queue: %d total; this run jobs %d-%d (%d jobs).\n",
               slice$total, slice$start, slice$end, length(slice$jobs)))
   # Default serial (1 worker); parallel only when H4_PARALLEL_WORKERS>1 explicitly set.
@@ -1429,53 +1343,44 @@ h4_fit_queue <- function(fit_one_outcome, prep, preflight_df, fingerprints, h4_m
   workers <- if (!is.na(workers_env) && workers_env >= 1L) {
     min(workers_env, length(slice$jobs))
   } else {
-    min(workers_default, length(slice$jobs))
-  }
+    min(workers_default, length(slice$jobs))}
   if (workers > 1L && length(slice$jobs) > 1L) {
     warning("H4_PARALLEL_WORKERS>1 disables per-job logging/checkpoints; forcing serial for this batch.", call. = FALSE)
-    workers <- 1L
-  }
+    workers <- 1L}
   cat(sprintf("[Parallel] %d worker(s); checkpoint after each job in this slice.\n", workers))
   if (publish_only && n_done_pre == length(jobs)) {
-    cat("[Step 5] H4_PUBLISH_ONLY=1: skipping fit loop; publishing completed checkpoint.\n")
-  }
-  for (k in seq_along(slice$jobs)) {
+    cat("[Step 5] H4_PUBLISH_ONLY=1: skipping fit loop; publishing completed checkpoint.\n")}
+  for (local_key in seq_along(slice$jobs)) {
     if (publish_only && n_done_pre == length(jobs)) break
-    job <- slice$jobs[[k]]
-    job_idx <- slice$indices[k]
+    job <- slice$jobs[[local_key]]
+    job_idx <- slice$indices[local_key]
     cat(sprintf("[Step 5 job %d/%d] START outcome=%s equation_id=%d\n",
                 job_idx, slice$total, job$outcome, job$equation_id))
     t0 <- proc.time()[3L]
     res <- tryCatch(
       fit_one_outcome(job),
-      error = function(e) {
+      error = function(local_error) {
         cat(sprintf("[Step 5 job %d/%d] ERROR outcome=%s equation_id=%d: %s\n",
-                    job_idx, slice$total, job$outcome, job$equation_id, conditionMessage(e)))
-        stop(e)
-      }
-    )
+                    job_idx, slice$total, job$outcome, job$equation_id, conditionMessage(local_error)))
+        stop(local_error)})
     cat(sprintf("[Step 5 job %d/%d] DONE outcome=%s equation_id=%d (%.1fs)\n",
                 job_idx, slice$total, job$outcome, job$equation_id, proc.time()[3L] - t0))
     records[[job_idx]] <- res
-    h4_step5_write_checkpoint(records, fingerprints, h4_model_dir)
-  }
+    h4_step5_write_checkpoint(records, fingerprints, h4_model_dir)}
   n_done <- sum(!vapply(records, is.null, logical(1L)))
   if (n_done < length(jobs)) {
     cat(sprintf("[Step 5] Partial: %d/%d jobs complete. Next batch: set H4_JOB_START=%d (or H4_MAX_JOBS=N).\n",
                 n_done, length(jobs), slice$end + 1L))
-    return(invisible(list(records = records, complete = FALSE, n_done = n_done)))
-  }
+    return(invisible(list(records = records, complete = FALSE, n_done = n_done)))}
   fit_results <- records
   attr(fit_results, "fingerprints") <- fingerprints
   h4_step5_write_checkpoint(records, fingerprints, h4_model_dir)
   published <- h4_publish_fits(fit_results, fingerprints, h4_model_dir, outcomes, fit_equation_ids,
     catalog, prep, nonthermal, agreed_common, preflight_df, raw_df)
   # The report writer consumes the published coefficient/status object, alongside the checkpoint metadata.
-  invisible(list(records = fit_results, complete = TRUE, h4 = published))
-}
+  invisible(list(records = fit_results, complete = TRUE, h4 = published))}
 
-# h4_1_fit prepares designs and dispatches jobs.
-# h4_1_fit_equations fits one outcome. h4_1_publish_fits writes the tables.
+# Fit each declared equation for one outcome; publication is handled separately.
 h4_fit_equations <- function(fit_equation_ids, y, catalog, thermal, make_design,
     centered_exposures, lagged_exposures, outcome_rows, outcome_values, transformation,
     raw_df, agreed_common, do_fit_with_fallback, fit_lme, nested, fitted_model) {
@@ -1509,26 +1414,24 @@ for (eq_id in fit_equation_ids) {
   if (is.null(fit)) {
     status_rows[[length(status_rows) + 1]] <- status_row(FALSE, FALSE, "not_fitted",
       paste("AR1 and independent-residual fits failed:", attempt$note))
-    next
-  }
+    next}
   cr2_messages <- character()
   robust <- tryCatch(withCallingHandlers({
     result <- clubSandwich::coef_test(fit, vcov = "CR2", cluster = model_data$ParticipantID, test = "Satterthwaite")
     if (!isTRUE(all.equal(as.numeric(result$beta), as.numeric(nlme::fixef(fit)), tolerance = 1e-8)))
       stop("CR2 coefficient order does not match fixed effects")
     result
-  }, warning = function(w) cr2_messages <<- c(cr2_messages, conditionMessage(w))),
-    error = function(e) { cr2_messages <<- c(cr2_messages, conditionMessage(e)); NULL })
+  }, warning = function(warning_condition) cr2_messages <<- c(cr2_messages, conditionMessage(warning_condition))),
+    error = function(local_error) { cr2_messages <<- c(cr2_messages, conditionMessage(local_error)); NULL })
   if (is.null(robust)) {
     status_rows[[length(status_rows) + 1]] <- status_row(FALSE, TRUE, attempt$residual_structure,
       paste("CR2 estimation failed:", attempt$note, paste(cr2_messages, collapse = "; ")))
-    next
-  }
-  normalized_residuals <- tryCatch(residuals(fit, level = 2, type = "normalized"), error = function(e) NULL)
+    next}
+  normalized_residuals <- tryCatch(residuals(fit, level = 2, type = "normalized"), error = function(local_error) NULL)
   grp <- interaction(model_data$ParticipantID, model_data$PhaseID, drop = TRUE)
   adj <- which(as.character(grp[-1]) == as.character(grp[-length(grp)]) & abs(diff(model_data$Time10) - 1) < 1e-6)
   lag1 <- if (!is.null(normalized_residuals) && length(adj) > 2) stats::cor(normalized_residuals[adj], normalized_residuals[adj + 1L]) else NA_real_
-  rho <- tryCatch(unname(coef(fit$modelStruct$corStruct, unconstrained = FALSE)), error = function(e) NA_real_)
+  rho <- tryCatch(unname(coef(fit$modelStruct$corStruct, unconstrained = FALSE)), error = function(local_error) NA_real_)
   if (length(rho) != 1L) rho <- NA_real_
   centered_normalized_residuals <- if (!is.null(normalized_residuals)) normalized_residuals - mean(normalized_residuals) else NULL
   rms <- if (!is.null(centered_normalized_residuals)) sqrt(mean(centered_normalized_residuals^2)) else NA_real_
@@ -1549,13 +1452,12 @@ for (eq_id in fit_equation_ids) {
       L[1L, phase_cols] <- -1
       wt <- clubSandwich::Wald_test(fit, constraints = L, vcov = V, test = "HTZ")
       list(as.numeric(L %*% nlme::fixef(fit)), sqrt(as.numeric(L %*% V %*% t(L))), as.numeric(wt$df_denom), as.numeric(wt$p_val), NULL)
-    }, error = function(e) list(NA_real_, NA_real_, NA_real_, NA_real_, paste("BikeU contrast failed:", conditionMessage(e))))
+    }, error = function(local_error) list(NA_real_, NA_real_, NA_real_, NA_real_, paste("BikeU contrast failed:", conditionMessage(local_error))))
     pos <- match("PhaseSumBikeG", coefficient_results$term)
     coefficient_results <- rbind(coefficient_results[seq_len(pos), ], coef_frame("PhaseSumBikeU", bikeu[[1]], bikeu[[2]], bikeu[[3]], bikeu[[4]],
       paste(c("Derived contrast: BikeU = -(WalkG + WalkU + BikeG)", bikeu[[5]]), collapse = "; ")),
       coefficient_results[-seq_len(pos), ])
-    rownames(coefficient_results) <- NULL
-  }
+    rownames(coefficient_results) <- NULL}
   coefficient_results$term_category <- "Nonthermal_Covariate"
   coefficient_results$term_category[coefficient_results$term == "Intercept"] <- "Intercept"
   coefficient_results$term_category[startsWith(coefficient_results$term, "Phase")] <- "Phase_Condition"
@@ -1581,8 +1483,8 @@ for (eq_id in fit_equation_ids) {
   coef_rows[[length(coef_rows) + 1]] <- coefficient_results
   contrast_messages <- character()
   phase_tests <- tryCatch(withCallingHandlers(h4_phase_contrasts(fit, model_data$ParticipantID),
-    warning = function(w) contrast_messages <<- c(contrast_messages, conditionMessage(w))),
-    error = function(e) { contrast_messages <<- c(contrast_messages, conditionMessage(e)); NULL })
+    warning = function(warning_condition) contrast_messages <<- c(contrast_messages, conditionMessage(warning_condition))),
+    error = function(local_error) { contrast_messages <<- c(contrast_messages, conditionMessage(local_error)); NULL })
   if (is.null(phase_tests)) phase_tests <- data.frame(contrast = rownames(h4_phase_contrast_weights()), estimate = NA_real_,
     se = NA_real_, df = NA_real_, low_df_flag = NA, ci_low = NA_real_, ci_high = NA_real_, p_value = NA_real_)
   contrast_rows[[length(contrast_rows) + 1L]] <- cbind(phase_tests, outcome = y, residual_structure = attempt$residual_structure,
@@ -1594,17 +1496,14 @@ for (eq_id in fit_equation_ids) {
   lag_part <- h4_lag60_rows(coefficient_results, attempt, fit_lme, fml, nested, make_design,
     centered_exposures, lagged_exposures, outcome_rows, outcome_values, thermal, heat_representation,
     eq_row, original_terms, safe_terms, eq_id, y)
-  if (!is.null(lag_part)) lag_rows[[length(lag_rows) + 1L]] <- lag_part
+  if (!is.null(lag_part)) lag_rows[[length(lag_rows) + 1L]] <- lag_part}
 
-}
 list(
   coef = if (length(coef_rows)) do.call(rbind, coef_rows) else NULL,
   status = if (length(status_rows)) do.call(rbind, status_rows) else NULL,
   contrasts = if (length(contrast_rows)) do.call(rbind, contrast_rows) else NULL,
   sensitivity = if (length(sens_rows)) do.call(rbind, sens_rows) else NULL,
-  lag60 = if (length(lag_rows)) do.call(rbind, lag_rows) else NULL
-)
-}
+  lag60 = if (length(lag_rows)) do.call(rbind, lag_rows) else NULL)}
 
 h4_coefficient_fdr <- function(results, equation, term, p, eligible, outcomes) {
   tested <- term != "Intercept" & term != "(Intercept)"
@@ -1612,13 +1511,11 @@ h4_coefficient_fdr <- function(results, equation, term, p, eligible, outcomes) {
   results$q <- results$q_equation <- NA_real_
   for (key in unique(paste(equation, term))) {
     rows <- which(paste(equation, term) == key & tested & available)
-    if (length(rows)) results$q[rows] <- p.adjust(p[rows], "BH", n = length(outcomes))
-  }
+    if (length(rows)) results$q[rows] <- p.adjust(p[rows], "BH", n = length(outcomes))}
   for (eq in unique(equation)) {
     rows <- which(equation == eq & tested & available)
     planned <- length(unique(term[equation == eq & tested])) * length(outcomes)
-    if (length(rows)) results$q_equation[rows] <- p.adjust(p[rows], "BH", n = planned)
-  }
+    if (length(rows)) results$q_equation[rows] <- p.adjust(p[rows], "BH", n = planned)}
   results$inference_status <- ifelse(!available, "Not estimable: model covariance or coefficient inference unavailable",
     ifelse(!tested, "Not applicable: intercept is not an exposure or phase contrast", "Tested"))
   results$FDR_scope <- ifelse(tested, sprintf("BH per term within equation across %d planned outcomes; q_equation covers all non-intercept terms within equation", length(outcomes)),
@@ -1627,8 +1524,7 @@ h4_coefficient_fdr <- function(results, equation, term, p, eligible, outcomes) {
     ifelse(tested, "Not estimable", "Not applicable"))
   results$FDR_equation_significant <- ifelse(is.finite(results$q_equation), ifelse(results$q_equation < .05, "TRUE", "FALSE"),
     ifelse(tested, "Not estimable", "Not applicable"))
-  results
-}
+  results}
 
 h4_write_phase_results <- function(results, coefficients, status, report, audit, prepared, shared_audit_dir) {
   model_dir <- OUT_DIR
@@ -1651,9 +1547,9 @@ h4_write_phase_results <- function(results, coefficients, status, report, audit,
   coefficients$analysis_role <- "Exploratory VIF-screened phase-mean models; participant-cluster inference"
   coefficients$independent_unit <- "Participant cluster; repeated phase means"
   coefficients$p_method <- "participant-cluster CR2 / Satterthwaite"
-  exposures <- coefficients$term_type %in% c("thermal exposure", "sound exposure")
-  write_table(coefficients[exposures, ], h4_path(RESULT_DIR, h4_file("H4_Heat_Noise_Exposures.csv")))
-  write_table(coefficients[!exposures, ], h4_path(RESULT_DIR, h4_file("H4_Covariates_and_Phases.csv")))
+  reportable <- !coefficients$term_type %in% "intercept"
+  write_table(coefficients[reportable, ], h4_path(RESULT_DIR, h4_file("H4_Heat_Noise_Exposures.csv")))
+  if (H4_WRITE_DETAILS) write_table(coefficients[reportable, ], h4_path(RESULT_DIR, h4_file("H4_Covariates_and_Phases.csv")))
   catalog <- prepared$catalog
   catalog$analysis_role <- paste("Phase-mean sensitivity:", catalog$analysis_role)
   catalog$attempted <- vapply(catalog$equation_id, function(id) sum(status$equation_id == id), integer(1))
@@ -1704,8 +1600,7 @@ h4_write_phase_results <- function(results, coefficients, status, report, audit,
     core_md5 = unname(tools::md5sum(file.path(SCRIPT_DIR, "library", "Analysis_combined_core.R"))), input_md5 = unname(tools::md5sum(RAW_DATA_PATH)),
     completed_utc = format(Sys.time(), tz = "UTC", format = "%Y-%m-%dT%H:%M:%SZ"), run_complete = TRUE, run_scope = "PHASE_AVERAGE")
   write_table(manifest, file.path(model_dir, h4_file("H4_run_complete.csv")))
-  cat("Phase-average output package:", RESULT_DIR, "\n", nrow(manifest), "tracked artifacts plus completion manifest\n")
-}
+  cat("Phase-average output package:", RESULT_DIR, "\n", nrow(manifest), "tracked artifacts plus completion manifest\n")}
 
 h4_phase_publish_results <- function(results, prepared, audit, shared_audit_dir) {
   coefficients <- do.call(rbind, lapply(results, `[[`, "coefficients"))
@@ -1718,9 +1613,9 @@ h4_phase_publish_results <- function(results, prepared, audit, shared_audit_dir)
     "Not estimable: CR2 p-value or degrees of freedom unavailable", paste("Not estimable:", status$note[index[failed]]))
   coefficients$term <- sub("^PhaseSum(.*)$", "Phase: \\1 vs mean of phases", coefficients$term)
   report <- c("# H4 phase-average sensitivity", "",
-    "These exploratory models use the six explicit phase-average formulas in Analysis_combined_phaseavg.R. Each includes sum-to-zero phase adjustment; solar irradiance and GVI are omitted from this variant.",
+    "These exploratory models use the seven explicit phase-average formulas in Analysis_combined_phaseavg.R. Each includes sum-to-zero phase adjustment; solar irradiance and GVI are omitted from this variant.",
     "The declared formulas are fixed across all 26 outcomes. Outcome-specific phase-mean design rank and VIF are reported; VIF flags do not automatically remove variables.",
-    "All six equations include the three sum-to-zero phase contrasts and a participant random intercept.",
+    "All seven equations include the three sum-to-zero phase contrasts and a participant random intercept.",
     "The same matched eight-minute input as Analysis_combined_timeseries.R is averaged over each participant-phase; this does not change to the full-duration input. Participant random intercept, REML, participant-cluster CR2/Satterthwaite inference; no temporal AR(1).",
     "Epoch eligibility uses each original complete equation, preserving the screening comparison sample. SVF endpoint carry-forward follows H4 time-series preparation. Each model averages predictors and outcome over identical observed epochs.",
     "Natural-log outcomes (HRV, EDA tonic) are logged before averaging. Exposures are centered within participant across phase means and scaled by pooled SD before forming interactions.",
@@ -1732,8 +1627,7 @@ h4_phase_publish_results <- function(results, prepared, audit, shared_audit_dir)
     sprintf("Per-term q<.05: %d; equation-wide q<.05: %d. Counts include exploratory adjustment/phase terms.",
       sum(coefficients$q < .05, na.rm = TRUE), sum(coefficients$q_equation < .05, na.rm = TRUE)))
   h4_write_phase_results(results, coefficients, status, report, audit, prepared, shared_audit_dir)
-  invisible(NULL)
-}
+  invisible(NULL)}
 
 h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, fit_equation_ids,
     catalog, prep, nonthermal, agreed_common, preflight_df, raw_df) {
@@ -1757,15 +1651,13 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
   if (!is.null(lag_all)) {
     # Separate exploratory family: BH per equation x term across outcomes; never merged into the primary q.
     lag_all$q_lag60 <- NA_real_
-    for (k in unique(paste(lag_all$equation_id, lag_all$term))) {
-      idx <- which(paste(lag_all$equation_id, lag_all$term) == k & lag_all$inference_eligible & is.finite(lag_all$p_value))
-      if (length(idx)) lag_all$q_lag60[idx] <- p.adjust(lag_all$p_value[idx], "BH", n = length(outcomes))
-    }
+    for (local_key in unique(paste(lag_all$equation_id, lag_all$term))) {
+      idx <- which(paste(lag_all$equation_id, lag_all$term) == local_key & lag_all$inference_eligible & is.finite(lag_all$p_value))
+      if (length(idx)) lag_all$q_lag60[idx] <- p.adjust(lag_all$p_value[idx], "BH", n = length(outcomes))}
     lag_all$FDR_significant <- ifelse(is.finite(lag_all$q_lag60), ifelse(lag_all$q_lag60 < .05, "TRUE", "FALSE"), "Not estimable")
     lag_all$FDR_scope <- "Exploratory lag sensitivity: BH per term/equation across planned outcomes"
     lag_all$inference_status <- ifelse(is.finite(lag_all$q_lag60), "Tested", paste("Not estimable:", lag_all$note))
-    utils::write.csv(lag_all, h4_path(h4_model_dir, h4_file("H4_lag60_sensitivity.csv")), row.names = FALSE, na = "NA")
-  }
+    utils::write.csv(lag_all, h4_path(h4_model_dir, h4_file("H4_lag60_sensitivity.csv")), row.names = FALSE, na = "NA")}
   if (is.null(sens_all)) stop("No covariance sensitivity records returned")
   # Report every non-intercept term; preserve invalid inference as explicitly unavailable.
   primary_cats <- c("Heat_Main_Effect", "Thermal_x_Sound")
@@ -1822,7 +1714,7 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
     FDR_equation_significant = fdr$FDR_equation_significant, FDR_scope = fdr$FDR_scope,
     inference_status = fdr$inference_status,
     covariance_robust = coef_all$covariance_robust, residual_structure = coef_all$residual_structure, stringsAsFactors = FALSE)
-  hypo_df <- coef_out[is_thermal | is_sound, ]
+  hypo_df <- coef_out[!coef_out$term_type %in% "intercept", ]
   postsel <- setdiff(nonthermal, agreed_common)
   rep_lines <- vapply(split(prep$rep_tab, prep$rep_tab$Step4_Domain), function(domain_rows)
     paste0("     * ", domain_rows$Step4_Domain[1], ": ", paste(domain_rows$Variable_Name, collapse = ", "), "; ", domain_rows$Step4_Restriction[1]), character(1))
@@ -1830,8 +1722,8 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
                                     agreed_common, postsel, rep_lines, fingerprints)
   m_primary_txt <- sprintf("m = %d per term", as.integer(m_term))
   pkgs <- c("nlme", "clubSandwich", "car", "ggplot2", "gridExtra")
-  session_lines <- c(capture.output(utils::sessionInfo()), "", paste0(pkgs, " ", vapply(pkgs, function(p)
-    tryCatch(as.character(utils::packageVersion(p)), error = function(e) "not installed"), character(1))))
+  session_lines <- c(capture.output(utils::sessionInfo()), "", paste0(pkgs, " ", vapply(pkgs, function(package_name)
+    tryCatch(as.character(utils::packageVersion(package_name)), error = function(local_error) "not installed"), character(1))))
   bundle <- list(
     H4_equations.csv = catalog,
     H4_fit_status.csv = status_all,
@@ -1840,8 +1732,7 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
     H4_phase_contrasts.csv = setNames(contrast_all, sub("^estimate$", "Beta", sub("^q_value$", "q", names(contrast_all)))),
     H4_covariance_sensitivity.csv = sens_all,
     H4_hypothesis_readme.txt = readme_lines,
-    H4_session_info.txt = session_lines
-  )
+    H4_session_info.txt = session_lines)
   names(bundle) <- h4_file(names(bundle))
   # Sequential publication; the completion manifest is invalidated first (readers must reject a missing manifest).
   manifest_path <- file.path(h4_model_dir, h4_file("H4_run_complete.csv"))
@@ -1853,14 +1744,12 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
     if (publish_only && data_audit_ok) {
       warning("H4 script fingerprint differs from checkpoint; input and audit CSV unchanged — publishing from checkpoint.", call. = FALSE)
     } else {
-    stop("Script, input or audit changed during fitting; checkpoint retained, inconsistent results not published")
-    }
+    stop("Script, input or audit changed during fitting; checkpoint retained, inconsistent results not published")}
   }
   if (file.exists(manifest_path) && !file.remove(manifest_path)) stop("Cannot invalidate old completion manifest")
   for (nm in names(bundle)) {
     target_path <- h4_path(h4_model_dir, nm)
-    if (is.data.frame(bundle[[nm]])) write.csv(bundle[[nm]], target_path, row.names = FALSE, na = "NA") else writeLines(bundle[[nm]], target_path)
-  }
+    if (is.data.frame(bundle[[nm]])) write.csv(bundle[[nm]], target_path, row.names = FALSE, na = "NA") else writeLines(bundle[[nm]], target_path)}
   extra_files <- h4_file(c("H4_fit_records.rds", "H4_gvif_diagnostic.csv", "H4_gvif_diagnostic.md",
                    "H4_design_redundancy_by_outcome.csv", "H4_covariance_sensitivity.csv", "H4_lag60_sensitivity.csv", "H4_session_info.txt"))
   man_files <- unique(c(names(bundle), extra_files[file.exists(file.path(h4_model_dir, extra_files))]))
@@ -1870,12 +1759,11 @@ h4_publish_fits <- function(fit_results, fingerprints, h4_model_dir, outcomes, f
     run_scope = "FULL", stringsAsFactors = FALSE), manifest_path, row.names = FALSE)
   cat(sprintf("[Step 5] Bundle published to %s. Total fitted models: %d, Succeeded: %d, Failed: %d\n",
               h4_model_dir, nrow(status_all), sum(status_all$success), sum(!status_all$success)))
-  cat(sprintf("[H4.1] Heat/sound exposure rows: %d, p < 0.05: %d, q < 0.05: %d (per-term BH; %s)\n",
+  cat(sprintf("[H4.1] Fixed-effect coefficient rows: %d, p < 0.05: %d, q < 0.05: %d (per-term BH; %s)\n",
               nrow(hypo_df), sum(hypo_df$p < 0.05, na.rm = TRUE), sum(hypo_df$q < 0.05, na.rm = TRUE), m_primary_txt))
-  invisible(list(catalog = catalog, status = status_all, coef = coef_all, hypothesis = hypo_df))
-}
+  invisible(list(catalog = catalog, status = status_all, coef = coef_all, hypothesis = hypo_df))}
 
-# share). A rank-deficient design blocks fitting (no predictor removal). Extracted from h4_1_fit.
+# share). A rank-deficient design blocks fitting (no predictor removal). Shared by the equation-fitting engine.
 h4_design_preflight <- function(raw_df, centered, selected, catalog, thermal, make_design, fit_equation_ids, outcomes, natural_log_outcomes) {
   preflight <- list()
   for (check_y in outcomes) {
@@ -1892,8 +1780,8 @@ h4_design_preflight <- function(raw_df, centered, selected, catalog, thermal, ma
       if (!nrow(phase_gt)) phase_gt <- data.frame(GVIF = NA_real_, Df = 3L, GVIF_root = NA_real_, VIF_equivalent = NA_real_)
       exposure_terms <- intersect(colnames(check_x), selected)
       cells <- interaction(raw_df$ParticipantID[valid], check_phase, drop = TRUE)
-      within_share <- vapply(exposure_terms, function(v) {
-        x <- check_x[, v]
+      within_share <- vapply(exposure_terms, function(local_values) {
+        x <- check_x[, local_values]
         total <- sum((x - mean(x))^2)
         if (total <= 0) return(NA_real_)
         sum((x - ave(x, cells, FUN = mean))^2) / total
@@ -1910,11 +1798,9 @@ h4_design_preflight <- function(raw_df, centered, selected, catalog, thermal, ma
         within_participant_phase_variation_share = paste(names(within_share), signif(within_share, 6), sep = "=", collapse = ";"),
         high_vif_terms = paste(names(vv)[!is.finite(vv) | vv >= h4_study_spec$variance_inflation_factor_limit], collapse = ";"),
         condition_index = if (!length(singular) || min(singular) <= 1e-10) Inf else max(singular) / min(singular),
-        passes_check = rr == ncol(check_x) + 1L, vif_flag = is.finite(mx) && mx >= h4_study_spec$variance_inflation_factor_limit, stringsAsFactors = FALSE)
-    }
+        passes_check = rr == ncol(check_x) + 1L, vif_flag = is.finite(mx) && mx >= h4_study_spec$variance_inflation_factor_limit, stringsAsFactors = FALSE)}
   }
-  do.call(rbind, preflight)
-}
+  do.call(rbind, preflight)}
 
 h4_sensitivity_rows <- function(coefficient_results, attempt, boundary, high_ar1, fit_lme, fml, model_data,
     original_terms, safe_terms, nested, eq_id, heat_representation, blk, y) {
@@ -1936,17 +1822,16 @@ h4_sensitivity_rows <- function(coefficient_results, attempt, boundary, high_ar1
       sensitivity_messages <<- c(sensitivity_messages, if (kind == "error") paste0(opt, ": ", msg) else msg))
     alt_robust <- if (!is.null(alt_fit)) {
       tryCatch(clubSandwich::coef_test(alt_fit, vcov = "CR2", cluster = model_data$ParticipantID, test = "Satterthwaite"),
-               error = function(e) { sensitivity_messages <<- c(sensitivity_messages, paste("CR2:", conditionMessage(e))); NULL })
+               error = function(local_error) { sensitivity_messages <<- c(sensitivity_messages, paste("CR2:", conditionMessage(local_error))); NULL })
     } else NULL
     for (i_t in target_idx) {
       t_name <- coefficient_results$term[i_t]
       p_est <- coefficient_results$estimate[i_t]
       alt_idx <- integer(0)
-      k <- match(t_name, original_terms)
-      if (!is.null(alt_robust) && !is.na(k)) {
-        rn_match <- which(rownames(alt_robust) == safe_terms[k])
-        if (length(rn_match) == 1L) alt_idx <- rn_match else if (k + 1L <= nrow(alt_robust)) alt_idx <- k + 1L
-      }
+      local_key <- match(t_name, original_terms)
+      if (!is.null(alt_robust) && !is.na(local_key)) {
+        rn_match <- which(rownames(alt_robust) == safe_terms[local_key])
+        if (length(rn_match) == 1L) alt_idx <- rn_match else if (local_key + 1L <= nrow(alt_robust)) alt_idx <- local_key + 1L}
       a_est <- a_se <- a_df <- a_cil <- a_cih <- a_pval <- NA_real_
       status_txt <- if (is.null(alt_fit)) paste("fit_failed:", paste(sensitivity_messages, collapse = "; ")) else "cr2_failed"
       if (length(alt_idx) == 1L) {
@@ -1956,8 +1841,7 @@ h4_sensitivity_rows <- function(coefficient_results, attempt, boundary, high_ar1
         a_cil <- a_est - qt(0.975, a_df) * a_se
         a_cih <- a_est + qt(0.975, a_df) * a_se
         a_pval <- as.numeric(alt_robust[["p_Satt"]][alt_idx])
-        status_txt <- "success"
-      }
+        status_txt <- "success"}
       sens_rows[[length(sens_rows) + 1L]] <- data.frame(
         equation_id = eq_id, heat_form = heat_representation, block = blk, outcome = y,
         diagnostic_flag = specification$flag,
@@ -1969,11 +1853,9 @@ h4_sensitivity_rows <- function(coefficient_results, attempt, boundary, high_ar1
         alt_ci_low = a_cil, alt_ci_high = a_cih, alt_p_value = a_pval,
         estimate_diff = a_est - p_est, estimate_rel_diff_pct = if (is.finite(a_est) && abs(p_est) > 1e-12) 100 * (a_est - p_est) / abs(p_est) else NA_real_,
         ci_overlap = if (is.finite(a_est)) (coefficient_results$ci_low[i_t] <= a_cih) && (a_cil <= coefficient_results$ci_high[i_t]) else NA,
-        sensitivity_status = status_txt, stringsAsFactors = FALSE)
-    }
+        sensitivity_status = status_txt, stringsAsFactors = FALSE)}
   }
-  if (length(sens_rows)) do.call(rbind, sens_rows) else NULL
-}
+  if (length(sens_rows)) do.call(rbind, sens_rows) else NULL}
 
 h4_lag60_rows <- function(coefficient_results, attempt, fit_lme, fml, nested, make_design,
     centered_exposures, lagged_exposures, outcome_rows, outcome_values, thermal, heat_representation,
@@ -1998,14 +1880,13 @@ h4_lag60_rows <- function(coefficient_results, attempt, fit_lme, fml, nested, ma
       messages <<- c(messages, paste(opt, kind, msg)))
     robust <- if (!is.null(fit)) tryCatch(withCallingHandlers(
       clubSandwich::coef_test(fit, vcov = "CR2", cluster = data$ParticipantID, test = "Satterthwaite"),
-      warning = function(w) messages <<- c(messages, conditionMessage(w))),
-      error = function(e) { messages <<- c(messages, conditionMessage(e)); NULL }) else NULL
+      warning = function(warning_condition) messages <<- c(messages, conditionMessage(warning_condition))),
+      error = function(local_error) { messages <<- c(messages, conditionMessage(local_error)); NULL }) else NULL
     rho <- if (!is.null(fit) && identical(attempt$residual_structure, "AR1"))
       as.numeric(coef(fit$modelStruct$corStruct, unconstrained = FALSE)) else NA_real_
     eligible <- !is.null(robust) && attempt$residual_structure %in% c("AR1", "ARMA20") &&
       !(length(rho) == 1L && is.finite(rho) && rho > .95)
-    list(data = data, robust = robust, eligible = eligible, note = paste(messages, collapse = "; "))
-  }
+    list(data = data, robust = robust, eligible = eligible, note = paste(messages, collapse = "; "))}
   current <- fit_comparison(current_exposures)
   lagged <- fit_comparison(lag_exposures)
   stopifnot(identical(current$data[, c("ParticipantID", "PhaseID", "Time10", "Y")],
@@ -2016,14 +1897,13 @@ h4_lag60_rows <- function(coefficient_results, attempt, fit_lme, fml, nested, ma
     estimate <- result$robust$beta[index]; se <- result$robust$SE[index]; df <- result$robust$df_Satt[index]
     c(estimate = estimate, se = se, df = df, ci_low = estimate - qt(.975, df) * se,
       ci_high = estimate + qt(.975, df) * se,
-      p = if (result$eligible) result$robust$p_Satt[index] else NA_real_)
-  }
-  rows <- lapply(which(coefficient_results$term_category %in% c("Heat_Main_Effect", "Thermal_x_Sound")), function(i) {
-    term <- coefficient_results$term[i]
+      p = if (result$eligible) result$robust$p_Satt[index] else NA_real_)}
+  rows <- lapply(which(coefficient_results$term_category %in% c("Heat_Main_Effect", "Thermal_x_Sound")), function(local_index) {
+    term <- coefficient_results$term[local_index]
     safe_term <- safe_terms[match(term, original_terms)]
     lag_result <- term_result(lagged, safe_term); current_result <- term_result(current, safe_term)
     data.frame(equation_id = eq_id, heat_form = heat_representation, outcome = y, term = term,
-      term_category = coefficient_results$term_category[i], residual_structure = attempt$residual_structure,
+      term_category = coefficient_results$term_category[local_index], residual_structure = attempt$residual_structure,
       n = nrow(lagged$data), estimate = lag_result["estimate"], se = lag_result["se"], df = lag_result["df"],
       ci_low = lag_result["ci_low"], ci_high = lag_result["ci_high"], p_value = lag_result["p"],
       inference_eligible = lagged$eligible,
@@ -2033,12 +1913,10 @@ h4_lag60_rows <- function(coefficient_results, attempt, fit_lme, fml, nested, ma
       same_sample_current_inference_eligible = current$eligible,
       note = paste("Current:", current$note, "Lagged:", lagged$note), row.names = NULL, stringsAsFactors = FALSE)
   })
-  if (length(rows)) do.call(rbind, rows) else NULL
-}
+  if (length(rows)) do.call(rbind, rows) else NULL}
 
 # any alternative estimate lies outside the primary 95% CI, the CIs do not overlap or the sign flips;
 # NA without a successful refit. alt_* report the independent-residual refit (else the boundary refit).
-# Extracted verbatim from h4_1_fit.
 h4_merge_covariance_sensitivity <- function(coef_all, sens_all) {
   coef_all$covariance_robust <- NA; coef_all$alt_estimate <- NA_real_; coef_all$alt_ci_low <- NA_real_
   coef_all$alt_ci_high <- NA_real_; coef_all$alt_structure <- NA_character_
@@ -2049,26 +1927,21 @@ h4_merge_covariance_sensitivity <- function(coef_all, sens_all) {
     key_s <- paste(sens_ok$equation_id, sens_ok$outcome, sens_ok$term)
     key_c <- paste(coef_all$equation_id, coef_all$outcome, coef_all$term)
     has <- key_c %in% key_s
-    coef_all$covariance_robust[has] <- !vapply(key_c[has], function(k) any(sens_ok$fails[key_s == k]), logical(1))
+    coef_all$covariance_robust[has] <- !vapply(key_c[has], function(local_key) any(sens_ok$fails[key_s == local_key]), logical(1))
     pick <- sens_ok[order(sens_ok$sensitivity_specification != "independent_residuals_nested_random_CR2"), , drop = FALSE]
-    j <- match(key_c, paste(pick$equation_id, pick$outcome, pick$term))
-    coef_all$alt_estimate <- pick$alt_estimate[j]; coef_all$alt_ci_low <- pick$alt_ci_low[j]
-    coef_all$alt_ci_high <- pick$alt_ci_high[j]; coef_all$alt_structure <- pick$sensitivity_specification[j]
-  }
+    other_index <- match(key_c, paste(pick$equation_id, pick$outcome, pick$term))
+    coef_all$alt_estimate <- pick$alt_estimate[other_index]; coef_all$alt_ci_low <- pick$alt_ci_low[other_index]
+    coef_all$alt_ci_high <- pick$alt_ci_high[other_index]; coef_all$alt_structure <- pick$sensitivity_specification[other_index]}
   fb_rows <- coef_all$residual_structure %in% "independent_fallback"
   coef_all$covariance_robust[fb_rows] <- NA; coef_all$alt_estimate[fb_rows] <- NA_real_
   coef_all$alt_ci_low[fb_rows] <- NA_real_; coef_all$alt_ci_high[fb_rows] <- NA_real_; coef_all$alt_structure[fb_rows] <- NA_character_
-  coef_all
-}
+  coef_all}
 
 h4_readme_lines <- function(status_all, coef_all, sens_all, catalog, preflight_df, outcomes, raw_df,
                               agreed_common, postsel, rep_lines, fingerprints) {
   primary_cats <- c("Heat_Main_Effect", "Thermal_x_Sound")
   status_index <- match(paste(coef_all$equation_id, coef_all$outcome), paste(status_all$equation_id, status_all$outcome))
   stopifnot(!anyNA(status_index))
-  unresolved_ar1 <- status_all$high_ar1_flag[status_index] %in% TRUE
-  is_correlated_fit <- coef_all$residual_structure %in% c("AR1", "ARMA20") & !unresolved_ar1
-  m_term <- length(outcomes)
   n_rows_fit <- status_all$n[status_all$success]
   n_text <- if (length(n_rows_fit)) sprintf("%d-%d rows per outcome-equation (median %d)", min(n_rows_fit), max(n_rows_fit), as.integer(stats::median(n_rows_fit))) else "no successful fits"
   vif_max <- suppressWarnings(max(preflight_df$max_vif[is.finite(preflight_df$max_vif)]))
@@ -2094,17 +1967,14 @@ h4_readme_lines <- function(status_all, coef_all, sens_all, catalog, preflight_d
       sum(coef_all$q_term[coef_all$term_category == "Thermal_x_Sound"] < .05, na.rm = TRUE)),
     sprintf("Generated: %s UTC | code_md5 %s | input_md5 %s | audit_md5 %s | spec_md5 %s",
             format(Sys.time(), tz = "UTC", format = "%Y-%m-%d %H:%M:%S"),
-            fingerprints["code_md5"], fingerprints["input_md5"], fingerprints["audit_md5"], fingerprints["spec_md5"])
-  )
-}
+            fingerprints["code_md5"], fingerprints["input_md5"], fingerprints["audit_md5"], fingerprints["spec_md5"]))}
 
 # --- Entry: design + fit (after core audit), publish via core ---
 h4_run_models <- function(audit_df, raw_df, prep = NULL) {
   if (is.null(prep)) prep <- h4_step4_exposure_prep(audit_df, raw_df)
   step5_result <- h4_fit(audit_df, raw_df, prep = prep)
   h4_publish_outputs(audit_df, step5_result, prep = prep)
-  invisible(step5_result)
-}
+  invisible(step5_result)}
 
 # --- 7. Pipeline: h4_run_full_pipeline, h4_dispatch_run ---
 
@@ -2117,25 +1987,24 @@ h4_run_audit <- function() {
                           "H4_Selection_Flow.pdf", "H4_Variable_Selection.csv"))))
     h4_archive(h4_regenerated)
     cat("[1/6] Loading canonical 8-minute analysis dataset...\n")
-    df <- h4_read_merged_analysis_data()
-    analysis_keys <- do.call(paste, c(df[c("ParticipantID", "PhaseID", "Datetime")], sep = "::"))
+    input_data <- h4_read_merged_analysis_data()
+    analysis_keys <- do.call(paste, c(input_data[c("ParticipantID", "PhaseID", "Datetime")], sep = "::"))
     if (anyDuplicated(analysis_keys)) stop("Duplicate merge keys in analysis input.")
-    raw_cols_all <- colnames(df)
+    raw_cols_all <- colnames(input_data)
     yamnet_class_columns <- grep("^yamnet_class_[0-9]{3}_.+_(mean_score|prop)$", raw_cols_all, value = TRUE)
     yamnet_class_names <- unique(sub("_(mean_score|prop)$", "", yamnet_class_columns))
     yamnet_class_ids <- unique(sub("^yamnet_class_([0-9]{3})_.*$", "\\1", yamnet_class_names))
     if (length(yamnet_class_names) > 0L && (length(yamnet_class_names) != 521L || !setequal(yamnet_class_ids, sprintf("%03d",
         0:520)))) {
         warning("YAMNet class fields are incomplete (found ", length(yamnet_class_names), " of 521). The physical H4 model does not use YAMNet; the audit will report those fields as unavailable.",
-            call. = FALSE)
-    }
-    df$ParticipantID <- as.character(df$ParticipantID)
-    df$PhaseID <- as.character(df$PhaseID)
-    df <- df[df$ParticipantID %in% PARTICIPANTS, ]
-    df$ParticipantID <- factor(df$ParticipantID, levels = PARTICIPANTS)
-    df <- h4_apply_average_sources(df, missing_only = FALSE)
-    df_core <<- df[df$PhaseID %in% CORE_PHASES, ]
-    cat(sprintf("Loaded %d observations across %d participants (%d core outdoor epochs).\n", nrow(df), length(unique(df$ParticipantID)),
+            call. = FALSE)}
+    input_data$ParticipantID <- as.character(input_data$ParticipantID)
+    input_data$PhaseID <- as.character(input_data$PhaseID)
+    input_data <- input_data[input_data$ParticipantID %in% PARTICIPANTS, ]
+    input_data$ParticipantID <- factor(input_data$ParticipantID, levels = PARTICIPANTS)
+    input_data <- h4_apply_average_sources(input_data, missing_only = FALSE)
+    df_core <<- input_data[input_data$PhaseID %in% CORE_PHASES, ]
+    cat(sprintf("Loaded %d observations across %d participants (%d core outdoor epochs).\n", nrow(input_data), length(unique(input_data$ParticipantID)),
         nrow(df_core)))
     # Exclusion sources ([key]; files under Paper3_Github/Experiment papers/): [Beiglary25] Beiglary et al. 2025 JMIR Aging e72338
     # p.5; [Ishihara25] Ishihara et al. 2025 SLEEP zsaf358 p.1/p.7/p.10; [Sonneborn] Sonneborn & Voss, light field studies p.1;
@@ -2152,7 +2021,7 @@ h4_run_audit <- function() {
         "Retained for Step 2 technical sensor consolidation", "RETAINED FOR FILTRATION") else classify_col_role(col)))
     cat("[3/6] Step 2: Checking explicit replacements, measurement type and within-person availability...\n")
     stopifnot(length(unlist(average_sources)) == 12L, !anyDuplicated(unlist(average_sources)))
-    h4_prepared_for_vif <- h4_prepare_data(df)
+    h4_prepared_for_vif <- h4_prepare_data(input_data)
     audit_phase_groups <- split(seq_len(nrow(df_core)), paste(df_core$ParticipantID, df_core$PhaseID, sep = "::"))
     audit_availability <<- do.call(rbind, lapply(all_variables_pool, function(col) {
       values <- if (is.numeric(df_core[[col]])) vapply(audit_phase_groups, function(ix) h4_mean(df_core[[col]][ix]), numeric(1)) else rep(NA_real_, length(audit_phase_groups))
@@ -2190,8 +2059,7 @@ h4_run_audit <- function() {
         "Step-2 Retained set != expected measurement sources.\nOnly in screening: %s\nOnly in expected: %s",
         paste(sort(setdiff(screening_candidates, .h4_expected_screen)), collapse = ", "),
         paste(sort(setdiff(.h4_expected_screen, screening_candidates)), collapse = ", ")
-      ), call. = FALSE)
-    }
+      ), call. = FALSE)}
     step1_criterion <<- "Role classification: only X_env candidates proceed; metadata, outcomes, QC, and covariates do not enter exposure selection"
     step3_criterion <<- "Measurement provenance and dependencies; within-person correlations and full-design rank are descriptive. All Step-2 candidates remain; no final exposure equation selected"
     role_outcomes <<- rbind(
@@ -2206,8 +2074,7 @@ h4_run_audit <- function() {
     source_index <- match(final_filtration_df$Variable_Name, h4_measurement_sources$Variable_Name)
     for (field in setdiff(names(h4_measurement_sources), "Variable_Name")) {
         final_filtration_df[[field]] <- h4_measurement_sources[[field]][source_index]
-        final_filtration_df[[field]][is.na(final_filtration_df[[field]])] <- "-"
-    }
+        final_filtration_df[[field]][is.na(final_filtration_df[[field]])] <- "-"}
     outcome_order <- c("CANDIDATE AFTER MEASUREMENT AUDIT", "EXPLORATORY SOUNDSCAPE CONSTRUCT", "EXPLORATORY ACOUSTIC-FREQUENCY CONSTRUCT",
         "CONSOLIDATED RAW STREAM (EXCLUDED)", "PHYSIOLOGICAL OUTCOME (Y)",
         "MOVEMENT COVARIATE (Z)", "STUDY METADATA", "DEMOGRAPHIC METADATA", "QC METRIC")
@@ -2256,7 +2123,7 @@ h4_run_audit <- function() {
         "Retained"), 0L))
     report_lines <- c("# H4 measurement audit", "Steps 1-2 retain the complete inventory and declared exposure representations. Step 3 groups candidates without outcome-based deletion.",
         "Step 4 retains all 16 eligible candidates, specifies alternative heat/PM equations, and checks full-design VIF/rank; no automatic deletion.",
-        "Participant is the independent cluster. Step 4 defines six equations (primary UTCI + PM2.5; heat-form sensitivities on PM2.5; PM1/PM10 only with UTCI) including heat x sound and MRT x sound. Step 5 fits all six. Earlier model outputs are historical until a verified rerun succeeds.",
+        "Participant is the independent cluster. Step 4 defines seven additive equations (primary UTCI + PM2.5; heat-form sensitivities on PM2.5 including air/RH/wind without MRT and MRT-primary; PM1/PM10 only with UTCI). Step 5 fits all seven. Earlier model outputs are historical until a verified rerun succeeds.",
         "## Stage totals", fmt_md_table(stage_totals_report), "## Measurement definitions and dependencies", fmt_md_table(h4_measurement_sources),
         "Step 2 representatives and averages are study choices, not automatic literature rules. LYS1 and LYS2 represent different wearers.",
         "fp remains unverified; true wind speed (TWS) excluded (gaps, undocumented correction); SVF from CamUp merge in merged_all_11participants_8min.csv (Step 2 Retained when coverage passes).",
@@ -2268,7 +2135,7 @@ h4_run_audit <- function() {
     print(step3_counts, row.names = FALSE)
     # ---- Step 4: retain candidates and specify/check equations ----
     final_filtration_df <- h4_step4_candidates(df_core, final_filtration_df)
-    tryCatch(write.csv(final_filtration_df, OUT_CSV, row.names = FALSE, na = ""), error = function(e) write.csv(final_filtration_df,
+    tryCatch(write.csv(final_filtration_df, OUT_CSV, row.names = FALSE, na = ""), error = function(local_error) write.csv(final_filtration_df,
         sub(".csv$", "_latest.csv", OUT_CSV), row.names = FALSE, na = ""))
     cat(sprintf("SUCCESS: Exported H4 multivariate audit CSV with %d variables to:\n  %s\n", nrow(final_filtration_df), OUT_CSV))
     selected_step2 <- final_filtration_df$Variable_Name[final_filtration_df$Step2_Decision == "Retained"]
@@ -2281,25 +2148,21 @@ h4_run_audit <- function() {
     writeLines(c("Step 3: measurement categories.", "Step 4: retain 16 candidates; specify 6 equations (primary UTCI + PM2.5); check full-design rank and VIF; MRT x sound is Eq 2 only.",
         "Step 5: mixed-model fitting (all 6 equations); new equations require a new verified fit."), FORMULA_TXT)
 
-    list(audit_df = final_filtration_df, raw_df = df)
-}
+    list(audit_df = final_filtration_df, raw_df = input_data)}
 
 h4_run_full_pipeline <- function() {
     res <- h4_run_audit()
     invisible(h4_run_models(res$audit_df, res$raw_df))
     cat("H4 multivariate full pipeline completed successfully.\n")
-    quit(save = "no", status = 0)
-}
+    quit(save = "no", status = 0)}
 
 h4_publish_outputs <- function(audit_df, step5_result, prep = NULL) {
   render_h4_faceted_flow(prep = prep)
   h4_write_results(audit_df, step5_result)
   if (identical(Sys.getenv("H4_INCLUDE_AUDIT_PDF"), "1")) {
     render_audit_pdf(audit_df, AUDIT_PDF)
-    cat("Included optional wide audit table PDF:", AUDIT_PDF, "\n")
-  }
-  invisible(NULL)
-}
+    cat("Included optional wide audit table PDF:", AUDIT_PDF, "\n")}
+  invisible(NULL)}
 
 # h4_dispatch_run() reads optional environment flags before the default full pipeline.
 # H4_RENDER_FLOW_ONLY: render only the one-page selection-flow figure (H4_Selection_Flow.pdf); no fits or CSV publish.
@@ -2310,23 +2173,19 @@ h4_publish_outputs <- function(audit_df, step5_result, prep = NULL) {
 h4_dispatch_run <- function() {
   if (identical(Sys.getenv("H4_STEP6_PRIMARY"), "1")) stop("The post-hoc UTCI reporting mode is retired; inspect the current Step 5 report.")
   if (identical(Sys.getenv("H4_TIME_SENSITIVITY"), "1")) {
-    stop("Temporal sensitivity is not migrated to the consolidated fitter. No models run: do not use the archived wrapper, which targets a removed script.", call. = FALSE)
-  }
+    stop("Temporal sensitivity is not migrated to the consolidated fitter. No models run: do not use the archived wrapper, which targets a removed script.", call. = FALSE)}
   if (identical(Sys.getenv("H4_RENDER_FLOW_ONLY"), "1")) {
     render_h4_faceted_flow()
-    quit(save = "no", status = 0)
-  }
+    quit(save = "no", status = 0)}
   if (identical(Sys.getenv("H4_AUDIT_PDF_ONLY"), "1")) {
     if (!file.exists(OUT_CSV)) stop("Existing H4 audit CSV not found: ", OUT_CSV, call. = FALSE)
     render_audit_pdf(utils::read.csv(OUT_CSV, stringsAsFactors = FALSE, check.names = FALSE), AUDIT_PDF)
     cat("Rendered audit table PDF only:", AUDIT_PDF, "\n")
-    quit(save = "no", status = 0)
-  }
+    quit(save = "no", status = 0)}
   if (identical(Sys.getenv("H4_STEP4_ONLY"), "1")) {
     render_h4_faceted_flow()
     cat("Step 4 only: updated candidate-equation PDF and scoped figure hash; no model fits or coefficient writes.\n")
-    quit(save = "no", status = 0)
-  }
+    quit(save = "no", status = 0)}
   if (identical(Sys.getenv("H4_GVIF_ONLY"), "1")) {
     if (h4_model_outputs_locked())
       stop("A completed model bundle exists; rerun Step 5 instead of rewriting GVIF files after hashing.")
@@ -2334,17 +2193,14 @@ h4_dispatch_run <- function() {
     raw_df <- h4_apply_average_sources(raw_df)
     out <- h4_run_gvif_diagnostic(h4_step4_exposure_prep(read.csv(OUT_CSV, stringsAsFactors = FALSE, check.names = FALSE), raw_df))
     cat("Wrote GVIF diagnostic:", out$paths["csv"], "\n")
-    quit(save = "no", status = 0)
-  }
+    quit(save = "no", status = 0)}
   if (identical(Sys.getenv("H4_FACET_REFRESH"), "1")) {
     if (!h4_model_outputs_locked()) {
       raw_df <- h4_read_merged_analysis_data()
       raw_df <- h4_apply_average_sources(raw_df)
-      h4_run_gvif_diagnostic(h4_step4_exposure_prep(read.csv(OUT_CSV, stringsAsFactors = FALSE, check.names = FALSE), raw_df))
-    }
+      h4_run_gvif_diagnostic(h4_step4_exposure_prep(read.csv(OUT_CSV, stringsAsFactors = FALSE, check.names = FALSE), raw_df))}
     render_h4_faceted_flow()
-    quit(save = "no", status = 0)
-  }
+    quit(save = "no", status = 0)}
   if (identical(Sys.getenv("H4_STEP5_ONLY"), "1")) {
     if (!file.exists(OUT_CSV)) stop("H4_STEP5_ONLY=1 but no saved Step 4 audit at: ", OUT_CSV, call. = FALSE)
     cat("[Fast Track] Found existing validated Step 4 audit at:", OUT_CSV, "\n")
@@ -2353,7 +2209,5 @@ h4_dispatch_run <- function() {
     raw_df <- h4_apply_average_sources(raw_df)
     invisible(h4_run_models(audit_df, raw_df))
     cat("H4 multivariate Step 5 execution and faceted flow PDF update completed successfully.\n")
-    quit(save = "no", status = 0)
-  }
-  h4_run_full_pipeline()
-}
+    quit(save = "no", status = 0)}
+  h4_run_full_pipeline()}
