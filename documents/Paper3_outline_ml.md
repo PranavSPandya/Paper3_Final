@@ -460,7 +460,7 @@ The primary evidence supports context-dependent psychophysiological associations
 
 **Implemented RH1:** `median_center_Y ~ env_ucm_UTCI_c + hotspot_f + (1|ParticipantID)` on participant × hotspot × day medians, fit by PhaseID × outcome. **Proposed / paused:** RH2–RH4 weather moderation, random slopes, and epoch-level P0 dominance models (design tables in archive)—treat as future work unless `run_rh1_only` is lifted and cell audits support participant×hotspot×day replication.
 
-**Repeated exposure:** Counterbalanced fixed routes give within-person recurrence at the same bins; **do not over-claim** same participant × hotspot × multiple **calendar days**—`H5_hotspot_cell_audit.csv` reports **`n_participant_hotspot_with_2plus_dates = 0`** (see also `H5_hotspot_day.csv`). Day-level weather moderation (RH2–RH4) remains exploratory and is not locked while `run_rh1_only = TRUE`.
+**Repeated exposure:** The fixed routes permit repeated observations at the same spatial bins across participants. However, the dataset contains no verified instances of the same participant revisiting the same hotspot on multiple calendar days (`H5_hotspot_cell_audit.csv`: **`n_participant_hotspot_with_2plus_dates = 0`**; see also `H5_hotspot_day.csv`). Day-level weather moderation (RH2–RH4) is not locked while `run_rh1_only = TRUE`.
 
 **Limitations (H5 — single block):** n = 11; fixed protocol; questionnaires phase-level; UTCI co-exposure circularity if both geometry and uCM UTCI predict physiology; dominance rules adapted from Gong (2019) Beijing street grids—not validated for Brussels greenways; k-means/HDBSCAN in early design notes were **not** the locked hotspot pipeline.
 
