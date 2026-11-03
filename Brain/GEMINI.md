@@ -6,7 +6,7 @@ This document lives in `Paper3_Final/Brain`. Resolve its relative paths from thi
 
 ## Where edits are allowed
 
-Campaign dates for Paper 3 are **3 July to 27 August 2025**. Do not shorten this to August only.
+Campaign dates for Paper 3 are **3 July to 27 August 2025**. Do not shorten this to August only. Inclusion age is **18–60 years**. Do not flag analysed ages inside that range. Route wording: **randomization of route order was planned**. Do not write that routes were counterbalanced.
 
 **`Brain`:** files that sit directly in `C:\Users\sanga\Desktop\Pranav Paper3_Final\Brain\` may be edited (this `GEMINI.md`, `Tasks.md`, `WORK_DIARY.md`, and other files in that folder itself). **Every subfolder of `Brain` is read-only.** Do not create, edit, move, or delete anything under `Brain\email`, `Brain\meeting transcript`, `Brain\skills`, `Brain\source_documents`, or any other nested folder. Those files can be wrong. Read them if needed, then ignore them as edit targets.
 
