@@ -1,0 +1,5 @@
+"covariate","status","reason"
+"ucm_UTCI","included","included (trip mean z-scored in model)"
+"lys_lux_avg","included","included (trip mean z-scored in model)"
+"SVF","included","included (trip mean z-scored in model)"
+"ucm_WIND_AWS","included","included (trip mean z-scored in model)"

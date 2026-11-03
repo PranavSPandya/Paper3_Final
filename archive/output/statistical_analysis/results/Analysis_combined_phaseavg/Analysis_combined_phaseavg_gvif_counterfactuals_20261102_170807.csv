@@ -1,0 +1,3 @@
+"scenario_id","label","max_vif_worst_outcome","worst_outcome","worst_term_worst_outcome","max_vif_heart_rate","worst_term_heart_rate","n_phase_cells_hr","compare_eq1_current","compare_eq2_current"
+"A","Eq2 phaseavg without MRT",11.5276350184993,"eyetracker_pupil_change_rate","ucm_AIR_RH_phase_z",10.512434510708,"ucm_AIR_T_mid_phase_z",44,2.36,-49.08
+"B","Eq1 structure with MRT (not UTCI)",23.6176715670102,"empatica_eda_tonic","ucm_MRT_phase_z",22.5448176123016,"ucm_MRT_phase_z",44,14.45,-36.99

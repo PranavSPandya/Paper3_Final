@@ -1,3 +1,0 @@
-"outcomes_set","filter","model","phase","fdr_family","K","term","planned_tests","tests_run","n_q_within_lt05","n_q_all_lt05","min_q_within","min_q_all","n_raw_p_lt05","df_min","df_max","n_models_min_df_lt4","n_failed","n_singular_re","rows_kept","cells_kept","participants_kept","n_cells_range","n_participants_range"
-"Physio","dBAgt75","SoundxUTCI","WithPhase","all26",26,"sound",624,0,0,0,,,0,,,0,624,0,153,8,8,"",""
-"Physio","dBAgt75","SoundxUTCI","WithPhase","all26",26,"UTCIxsound",624,0,0,0,,,0,,,0,624,0,153,8,8,"",""

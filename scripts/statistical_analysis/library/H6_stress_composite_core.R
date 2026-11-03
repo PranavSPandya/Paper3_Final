@@ -21,8 +21,7 @@ if (is.null(GRAIN) || !nzchar(GRAIN)) GRAIN <- "phaseavg"
 COMPOSITE_TABLE_FILE <- if (identical(GRAIN, "timeseries")) {
   "H6_epoch_composites.csv"
 } else {
-  "H6_participant_phase_composites.csv"
-}
+  "H6_participant_phase_composites.csv"}
 RAW_PATH <- paper3_merged_8min_path(PROJECT_ROOT)
 
 mean_na <- function(x) if (all(is.na(x))) NA_real_ else mean(x, na.rm = TRUE)
@@ -37,18 +36,15 @@ h6_pair_mean_columns <- function(df) {
     if (!all(c(left, right) %in% names(data))) return(rep(NA_real_, nrow(data)))
     z <- rowMeans(cbind(as.numeric(data[[left]]), as.numeric(data[[right]])), na.rm = TRUE)
     z[is.nan(z)] <- NA_real_
-    z
-  }
+    z}
   pair_map <- list(
     atmo_pm1.0_avg = c("atmo_lys_atmotube_left__atmotube_pm1", "atmo_lys_atmotube_right__atmotube_pm1"),
     atmo_pm2.5_avg = c("atmo_lys_atmotube_left__atmotube_pm2.5", "atmo_lys_atmotube_right__atmotube_pm2.5"),
     atmo_pm10_avg = c("atmo_lys_atmotube_left__atmotube_pm10", "atmo_lys_atmotube_right__atmotube_pm10"),
     lys_lux_avg = c("atmo_lys_LYS1__lys_lux", "atmo_lys_LYS2__lys_lux"),
-    lys_kelvin_avg = c("atmo_lys_LYS1__lys_kelvin", "atmo_lys_LYS2__lys_kelvin")
-  )
+    lys_kelvin_avg = c("atmo_lys_LYS1__lys_kelvin", "atmo_lys_LYS2__lys_kelvin"))
   for (nm in names(pair_map)) df[[nm]] <- do.call(safe_pair_mean, c(list(df), pair_map[[nm]]))
-  df
-}
+  df}
 
 h6_load_matched_route <- function() {
   if (!file.exists(RAW_PATH)) stop("Input dataset not found: ", RAW_PATH)
@@ -69,12 +65,10 @@ h6_load_matched_route <- function() {
   phase_durations_wide$Common_cap <- pmin(
     phase_durations_wide$BikeU, phase_durations_wide$BikeG,
     phase_durations_wide$WalkU, phase_durations_wide$WalkG,
-    MATCHED_CAP_SEC, na.rm = FALSE
-  )
+    MATCHED_CAP_SEC, na.rm = FALSE)
   route <- merge(route, phase_durations_wide[c("ParticipantID", "Common_cap")], by = "ParticipantID", all.x = TRUE, sort = FALSE)
   route <- route[!is.na(route$Common_cap) & route$time_in_phase_sec <= route$Common_cap, ]
-  route
-}
+  route}
 
 h6_phase_means <- function(route, value_cols) {
   value_cols <- intersect(value_cols, names(route))
@@ -82,16 +76,14 @@ h6_phase_means <- function(route, value_cols) {
   agg <- aggregate(route[value_cols], by = route[c("ParticipantID", "PhaseID")], FUN = mean_na)
   agg$ParticipantID <- factor(agg$ParticipantID, levels = PARTICIPANTS)
   agg$PhaseID <- factor(agg$PhaseID, levels = CORE_PHASES)
-  agg
-}
+  agg}
 
 h6_stress_oriented_wpz <- function(phase_df, column, stress_direction, transform_fn = NULL) {
   if (!column %in% names(phase_df)) return(rep(NA_real_, nrow(phase_df)))
   x <- phase_df[[column]]
   if (is.function(transform_fn)) x <- transform_fn(x, column)
   z <- paper3_within_person_z(x, phase_df$ParticipantID)
-  as.numeric(stress_direction) * z
-}
+  as.numeric(stress_direction) * z}
 
 h6_build_constituent_wpz <- function(phase_df, constituents_named) {
   # constituents_named: named list of stress_direction or name -> direction vector aligned to columns
@@ -128,8 +120,7 @@ h6_fit_rmcorr <- function(x, y, participant) {
   }
   fit <- tryCatch(
     lm(composite_y ~ ParticipantID + composite_x, data = dat),
-    error = function(e) NULL
-  )
+    error = function(e) NULL)
   if (is.null(fit)) return(list(status = "FAILED", n = nrow(dat), n_pid = n_pid))
   cf <- summary(fit)$coefficients["composite_x", ]
   dfr <- fit$df.residual
@@ -140,8 +131,7 @@ h6_fit_rmcorr <- function(x, y, participant) {
     status = "FIT", n = nrow(dat), n_pid = n_pid,
     beta = cf[["Estimate"]], se = cf[["Std. Error"]], t = t_val, df = dfr,
     p_value = cf[["Pr(>|t|)"]], r_rm = r_rm,
-    ci_low = tanh(z_ci[1]), ci_high = tanh(z_ci[2])
-  )
+    ci_low = tanh(z_ci[1]), ci_high = tanh(z_ci[2]))
 }
 
 `%||%` <- function(a, b) if (!is.null(a)) a else b
@@ -163,8 +153,7 @@ h6_build_composite_tables <- function(raw_df, id_cols = c("ParticipantID", "Phas
     composite_defs[[id]] <- data.frame(
       composite_id = id, domain = "physiological", label = nm,
       constituents = nm, stress_directions = physio_dirs[[nm]],
-      stringsAsFactors = FALSE
-    )
+      stringsAsFactors = FALSE)
   }
 
   env_wpz <- h6_build_constituent_wpz(raw_df, H6_SPEC$env_constituents)
@@ -176,8 +165,7 @@ h6_build_composite_tables <- function(raw_df, id_cols = c("ParticipantID", "Phas
       composite_id = id, domain = "environmental", label = nm,
       constituents = H6_SPEC$env_constituents[[nm]]$column,
       stress_directions = H6_SPEC$env_constituents[[nm]]$stress_direction,
-      stringsAsFactors = FALSE
-    )
+      stringsAsFactors = FALSE)
   }
 
   eye_wpz <- h6_build_constituent_wpz(raw_df, H6_SPEC$transparent_eye_constituents)
@@ -187,21 +175,18 @@ h6_build_composite_tables <- function(raw_df, id_cols = c("ParticipantID", "Phas
     label = "Transparent ocular stress index (4-feature equal weight)",
     constituents = paste(names(H6_SPEC$transparent_eye_constituents), collapse = ";"),
     stress_directions = paste(unlist(H6_SPEC$transparent_eye_constituents), collapse = ";"),
-    stringsAsFactors = FALSE
-  )
+    stringsAsFactors = FALSE)
 
   prop_col <- H6_SPEC$proprietary_eye_column
   if (prop_col %in% names(raw_df)) {
     composite_values$eye__proprietary_stress_composite <- h6_stress_oriented_wpz(
-      raw_df, prop_col, H6_SPEC$proprietary_eye_stress_direction
-    )
+      raw_df, prop_col, H6_SPEC$proprietary_eye_stress_direction)
     composite_defs$eye__proprietary_stress_composite <- data.frame(
       composite_id = "eye__proprietary_stress_composite", domain = "ocular_proprietary",
       label = prop_col,
       constituents = prop_col,
       stress_directions = H6_SPEC$proprietary_eye_stress_direction,
-      stringsAsFactors = FALSE
-    )
+      stringsAsFactors = FALSE)
   }
 
   if (isTRUE(H6_SPEC$include_optional_env_groups)) {
@@ -219,8 +204,7 @@ h6_build_composite_tables <- function(raw_df, id_cols = c("ParticipantID", "Phas
           d <- H6_SPEC$env_constituents[[k]]$stress_direction
           if (is.null(d)) NA_integer_ else d
         }, integer(1)), collapse = ";"),
-        stringsAsFactors = FALSE
-      )
+        stringsAsFactors = FALSE)
     }
   }
 
@@ -237,8 +221,7 @@ h6_dispatch_run <- function() {
   physio_cols <- H6_SPEC$physiological_outcome_names
   extra_cols <- unique(c(
     physio_cols, env_cols, H6_SPEC$proprietary_eye_column,
-    names(H6_SPEC$transparent_eye_constituents)
-  ))
+    names(H6_SPEC$transparent_eye_constituents)))
 
   if (identical(GRAIN, "timeseries")) {
     route$time_10s_step <- as.integer(floor(route$time_in_phase_sec / 10))
@@ -266,8 +249,7 @@ h6_dispatch_run <- function() {
     cx <- composite_cols[i]
     cy <- composite_cols[j]
     fit <- h6_fit_rmcorr(
-      composite_values[[cx]], composite_values[[cy]], composite_values$ParticipantID
-    )
+      composite_values[[cx]], composite_values[[cy]], composite_values$ParticipantID)
     pairs_list[[length(pairs_list) + 1]] <- data.frame(
       Composite_X = cx, Composite_Y = cy,
       Domain_X = def_table$domain[match(cx, def_table$composite_id)],
@@ -284,8 +266,7 @@ h6_dispatch_run <- function() {
       CI95_low = fit$ci_low %||% NA_real_,
       CI95_high = fit$ci_high %||% NA_real_,
       Model = "rmcorr: lm(Y ~ ParticipantID + X), Bakdash & Marusich 2017",
-      stringsAsFactors = FALSE
-    )
+      stringsAsFactors = FALSE)
   }
   pairs_table <- do.call(rbind, pairs_list)
   rownames(pairs_table) <- NULL
@@ -303,8 +284,7 @@ h6_dispatch_run <- function() {
   manifest <- data.frame(
     Metric = c("Analysis_grain", "N_composites", "N_pairs_attempted", "N_pairs_fit", "N_FDR_significant_q05"),
     Value = c(GRAIN, length(composite_cols), nrow(pairs_table), n_fit, n_fdr),
-    stringsAsFactors = FALSE
-  )
+    stringsAsFactors = FALSE)
   safe_write_csv(manifest, file.path(OUT_DIR, "H6_run_manifest.csv"))
 
   cat(sprintf("[H6 4/4] Done. %d composites, %d pairs fit, %d FDR-significant (q < %.2f).\n",

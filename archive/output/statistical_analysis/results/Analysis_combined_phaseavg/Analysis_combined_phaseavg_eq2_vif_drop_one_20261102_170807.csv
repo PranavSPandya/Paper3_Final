@@ -1,0 +1,10 @@
+"dropped_terms","max_vif","worst_term","under_10","n_design_rows"
+"ucm_AIR_T_mid",8.69,"ucm_SND_dBA_phase_z",TRUE,44
+"ucm_WIND_AWS",8.79,"ucm_AIR_T_mid_phase_z",TRUE,44
+"ucm_SND_dBA",9.41,"ucm_AIR_T_mid_phase_z",TRUE,44
+"ucm_AIR_RH",9.67,"ucm_AIR_T_mid_phase_z",TRUE,44
+"SVF",10.1,"ucm_AIR_T_mid_phase_z",FALSE,44
+"atmo_pm2.5_avg",10.21,"ucm_AIR_T_mid_phase_z",FALSE,44
+"lys_kelvin_avg",10.43,"ucm_AIR_T_mid_phase_z",FALSE,44
+"lys_lux_avg",10.5,"ucm_AIR_T_mid_phase_z",FALSE,44
+"(none — Eq2 full)",10.51,"ucm_AIR_T_mid_phase_z",FALSE,44

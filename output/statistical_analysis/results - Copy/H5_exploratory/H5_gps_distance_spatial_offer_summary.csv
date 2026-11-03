@@ -1,5 +1,0 @@
-PhaseID,n_distance_bins,n_epochs_in_bins,n_offers_9of11,max_spatial_cluster,max_participants_in_bin,bin_width_m,spatial_radius_m
-BikeG,187,517,2,11,11,12.0,30
-BikeU,631,527,1,11,11,3.4,30
-WalkG,52,528,0,7,11,12.5,10
-WalkU,52,526,10,9,11,11.5,10

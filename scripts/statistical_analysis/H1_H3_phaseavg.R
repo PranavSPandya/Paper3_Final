@@ -8,20 +8,17 @@ if (!exists("PAPER3_PARTICIPANTS", inherits = FALSE)) {
   .entry <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
   if (!length(.entry)) {
     .trail <- commandArgs(trailingOnly = TRUE)
-    if (length(.trail) && file.exists(.trail[1])) .entry <- .trail[1]
-  }
+    if (length(.trail) && file.exists(.trail[1])) .entry <- .trail[1]}
   if (length(.entry)) {
     source(file.path(dirname(normalizePath(.entry[1], mustWork = FALSE)), "library", "Paper3_common.R"), local = FALSE)
   } else if (file.exists(file.path("library", "Paper3_common.R"))) {
-    source(file.path("library", "Paper3_common.R"), local = FALSE)
-  }
+    source(file.path("library", "Paper3_common.R"), local = FALSE)}
 }
 paper3_source_statistical_common_if_needed()
 paper3_statistical_bootstrap(
   required_packages = c("nlme", "emmeans", "ggplot2", "statpsych"),
   load_packages = c("nlme", "emmeans", "ggplot2", "statpsych"),
-  extra_setup = function() emmeans::emm_options(msg.interaction = FALSE)
-)
+  extra_setup = function() emmeans::emm_options(msg.interaction = FALSE))
 PROJECT_ROOT <- resolve_project_root()
 
 # Shared study settings
@@ -29,16 +26,14 @@ study_wide_spec <- list(
   participants = PAPER3_PARTICIPANTS,
   phases = PAPER3_CORE_PHASES,
   matched_cap_sec = PAPER3_MATCHED_CAP_SEC,
-  physiological_outcome_names = paper3_physiological_outcomes()
-)
+  physiological_outcome_names = paper3_physiological_outcomes())
 
 # Outcome normalization: transformation_in_models in Normalization_H1toH4_all_parameters.csv
 study_wide_spec <- paper3_attach_outcome_normalization(study_wide_spec, PROJECT_ROOT)
 NORMALIZATION_CSV_PATH <- study_wide_spec$normalization_csv_path
 OUTCOME_TRANSFORMS_CSV <- study_wide_spec$outcome_transforms_csv
 PAPER3_APPLY_CSV_TRANSFORM <- function(x, column_name) {
-  paper3_apply_csv_transform(x, column_name, OUTCOME_TRANSFORMS_CSV)
-}
+  paper3_apply_csv_transform(x, column_name, OUTCOME_TRANSFORMS_CSV)}
 # Step B (H1–H3): (x - mean(x | ParticipantID)) / sd(x | ParticipantID)
 PAPER3_OUTCOME_WITHIN_PERSON_Z <- paper3_within_person_z
 
@@ -69,9 +64,7 @@ h2_hypothesis_spec <- list(
     "questionnaire_prs11_fascination_mean_1_5",
     "questionnaire_prs11_being_away_mean_1_5",
     "questionnaire_prs11_coherence_mean_1_5",
-    "questionnaire_prs11_scope_mean_1_5"
-  )
-)
+    "questionnaire_prs11_scope_mean_1_5"))
 
 # Planned contrasts: H1 = green vs urban (within mode); H3 = walk vs bike (within environment).
 planned_h1_h3 <- paper3_h1_h3_planned_contrast_tables()
@@ -88,12 +81,10 @@ h3_hypothesis_spec$contrasts <- planned_h1_h3$h3
 # Y = PAPER3_APPLY_CSV_TRANSFORM(x_raw, <outcome>); Y_within_person_z = Step B after Step A (PAPER3_OUTCOME_WITHIN_PERSON_Z).
 
 H1_PhaseMean_Primary_LMM <- quote(
-  nlme::lme(Y ~ PhaseID, random = ~ 1 | ParticipantID, data = participant_phase_mean_table, method = "REML")
-)
+  nlme::lme(Y ~ PhaseID, random = ~ 1 | ParticipantID, data = participant_phase_mean_table, method = "REML"))
 
 H1_PhaseMean_Sensitivity_WPZ_LMM <- quote(
-  nlme::lme(Y_within_person_z ~ PhaseID, random = ~ 1 | ParticipantID, data = participant_phase_mean_table, method = "REML")
-)
+  nlme::lme(Y_within_person_z ~ PhaseID, random = ~ 1 | ParticipantID, data = participant_phase_mean_table, method = "REML"))
 
 H1_Temporal_AR1_10s_LMM <- quote(
   nlme::lme(
@@ -101,9 +92,7 @@ H1_Temporal_AR1_10s_LMM <- quote(
     random = ~ 1 | ParticipantID,
     correlation = nlme::corAR1(form = ~ time_10s_step | ParticipantID / PhaseID),
     data = ten_second_epoch_table,
-    method = "REML"
-  )
-)
+    method = "REML"))
 
 # H1 — temporal sensitivity: 60 s epoch aggregation (robustness to AR(1) grid)
 H1_Temporal_AR1_60s_LMM <- quote(
@@ -112,21 +101,17 @@ H1_Temporal_AR1_60s_LMM <- quote(
     random = ~ 1 | ParticipantID,
     correlation = nlme::corAR1(form = ~ time_60s_step | ParticipantID / PhaseID),
     data = sixty_second_epoch_table,
-    method = "REML"
-  )
-)
+    method = "REML"))
 
 
 # ==============================================================================
 # EXPLICIT MODELS — H3 (active travel mode contrasts)
 # ==============================================================================
 H3_PhaseMean_Primary_LMM <- quote(
-  nlme::lme(Y ~ PhaseID, random = ~ 1 | ParticipantID, data = participant_phase_mean_table, method = "REML")
-)
+  nlme::lme(Y ~ PhaseID, random = ~ 1 | ParticipantID, data = participant_phase_mean_table, method = "REML"))
 
 H3_PhaseMean_Sensitivity_WPZ_LMM <- quote(
-  nlme::lme(Y_within_person_z ~ PhaseID, random = ~ 1 | ParticipantID, data = participant_phase_mean_table, method = "REML")
-)
+  nlme::lme(Y_within_person_z ~ PhaseID, random = ~ 1 | ParticipantID, data = participant_phase_mean_table, method = "REML"))
 
 H3_Temporal_AR1_10s_LMM <- quote(
   nlme::lme(
@@ -134,9 +119,7 @@ H3_Temporal_AR1_10s_LMM <- quote(
     random = ~ 1 | ParticipantID,
     correlation = nlme::corAR1(form = ~ time_10s_step | ParticipantID / PhaseID),
     data = ten_second_epoch_table,
-    method = "REML"
-  )
-)
+    method = "REML"))
 
 H3_Temporal_AR1_60s_LMM <- quote(
   nlme::lme(
@@ -144,17 +127,14 @@ H3_Temporal_AR1_60s_LMM <- quote(
     random = ~ 1 | ParticipantID,
     correlation = nlme::corAR1(form = ~ time_60s_step | ParticipantID / PhaseID),
     data = sixty_second_epoch_table,
-    method = "REML"
-  )
-)
+    method = "REML"))
 
 
 # ==============================================================================
 # EXPLICIT MODEL — H2 (psychophysiological concurrence)
 # ==============================================================================
 H2_rmcorr <- quote(
-  lm(psychological ~ ParticipantID + physiological, data = participant_phase_mean_table)
-)
+  lm(psychological ~ ParticipantID + physiological, data = participant_phase_mean_table))
 
 # FDR families: H1 primary / H1 WPZ / H3 primary / H3 WPZ (26 outcomes × 2 contrasts each within hypothesis);
 # H2 one family (18 questionnaires × 26 physiological = 468 pairs);
@@ -174,8 +154,7 @@ run_h1_h3_phaseavg <- function() {
   cat(sprintf("H1 contrasts: %s | H3 contrasts: %s\n\n",
               paste(h1_hypothesis_spec$contrasts$Contrast, collapse = ", "),
               paste(h3_hypothesis_spec$contrasts$Contrast, collapse = ", ")))
-  h1_to_h3_pipeline_run()
-}
+  h1_to_h3_pipeline_run()}
 
 run_h1_and_h3 <- run_h1_h3_phaseavg
 

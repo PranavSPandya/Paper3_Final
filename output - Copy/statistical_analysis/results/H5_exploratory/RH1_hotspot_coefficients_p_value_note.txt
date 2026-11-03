@@ -1,6 +1,0 @@
-RH1 hotspot_f fixed-effect coefficients (reference hotspot level omitted by contrast coding).
-term / grid_label: corridor buffer cell (route_bin + 1 within PhaseID), e.g. BikeG_grid3.
-hotspot_id: internal PhaseID_seg{k}; term_model: raw R fixed-effect name.
-p_value_FDR: Benjamini-Hochberg within family 'within_outcome_x_phase' (see spec$exploratory_fdr_family).
-p_value: raw two-sided.
-Compare env_ucm_UTCI_c moderator in H5_hotspot_weather_models.csv (separate FDR family for env term).

@@ -1,0 +1,8 @@
+"equation_id","terms","max_vif_heart_rate","worst_term_heart_rate","n_design_rows_hr","max_vif_worst_outcome","worst_outcome","worst_term_worst_outcome"
+1,"UTCI, sound, SVF, PM2.5, lux, colour temperature, Phase: WalkG vs mean of phases, Phase: WalkU vs mean of phases, Phase: BikeG vs mean of phases",7.95,"ucm_UTCI_phase_z",44,9.2,"empatica_hrv_fd_lf","ucm_UTCI_phase_z"
+2,"air temperature (mid), humidity, apparent wind, SVF, PM2.5, lux, colour temperature, Phase: WalkG vs mean of phases, Phase: WalkU vs mean of phases, Phase: BikeG vs mean of phases",9.29,"ucm_AIR_T_mid_phase_z",44,10.83,"eyetracker_pupil_change_rate","ucm_AIR_RH_phase_z"
+3,"mean radiant temperature, sound, PM2.5, lux, colour temperature, Phase: WalkG vs mean of phases, Phase: WalkU vs mean of phases, Phase: BikeG vs mean of phases",22.48,"ucm_MRT_phase_z",44,22.94,"empatica_eda_tonic","ucm_MRT_phase_z"
+4,"HUMIDEX, sound, SVF, PM2.5, lux, colour temperature, Phase: WalkG vs mean of phases, Phase: WalkU vs mean of phases, Phase: BikeG vs mean of phases",5.52,"ucm_SND_dBA_phase_z",44,7.53,"eyetracker_pupil_change_rate","SVF_phase_z"
+5,"PET, sound, SVF, PM2.5, lux, colour temperature, Phase: WalkG vs mean of phases, Phase: WalkU vs mean of phases, Phase: BikeG vs mean of phases",6.58,"ucm_PET_phase_z",44,7.64,"empatica_hrv_fd_lf","ucm_PET_phase_z"
+6,"UTCI, sound, SVF, PM1, lux, colour temperature, Phase: WalkG vs mean of phases, Phase: WalkU vs mean of phases, Phase: BikeG vs mean of phases",7.73,"ucm_UTCI_phase_z",44,9.03,"empatica_hrv_fd_lf","ucm_UTCI_phase_z"
+7,"UTCI, sound, SVF, PM10, lux, colour temperature, Phase: WalkG vs mean of phases, Phase: WalkU vs mean of phases, Phase: BikeG vs mean of phases",8.28,"ucm_UTCI_phase_z",44,9.46,"empatica_hrv_fd_lf","ucm_UTCI_phase_z"

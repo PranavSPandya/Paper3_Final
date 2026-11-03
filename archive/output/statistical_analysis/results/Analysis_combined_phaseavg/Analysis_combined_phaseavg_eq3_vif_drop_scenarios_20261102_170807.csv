@@ -1,0 +1,24 @@
+"dropped_terms","max_vif","worst_term","under_10","n_design_rows","full_rank"
+"micro block drop: ucm_AIR_T_mid + ucm_AIR_RH + ucm_WIND_AWS + ucm_MRT",5.29,"ucm_SND_dBA_phase_z",TRUE,44,TRUE
+"micro block drop: ucm_AIR_T_mid + ucm_WIND_AWS + ucm_MRT",7.69,"ucm_AIR_RH_phase_z",TRUE,44,TRUE
+"micro block drop: ucm_AIR_RH + ucm_WIND_AWS + ucm_MRT",8.13,"ucm_AIR_T_mid_phase_z",TRUE,44,TRUE
+"micro block drop: ucm_AIR_T_mid + ucm_AIR_RH + ucm_MRT",8.34,"ucm_SND_dBA_phase_z",TRUE,44,TRUE
+"micro block drop: ucm_AIR_T_mid + ucm_MRT",8.69,"ucm_SND_dBA_phase_z",TRUE,44,TRUE
+"micro block drop: ucm_WIND_AWS + ucm_MRT",8.79,"ucm_AIR_T_mid_phase_z",TRUE,44,TRUE
+"micro block drop: ucm_AIR_RH + ucm_MRT",9.67,"ucm_AIR_T_mid_phase_z",TRUE,44,TRUE
+"(none — Eq2 baseline)",10.51,"ucm_AIR_T_mid_phase_z",FALSE,44,TRUE
+"ucm_MRT",10.51,"ucm_AIR_T_mid_phase_z",FALSE,44,TRUE
+"ucm_MRT (→ Eq2-like)",10.51,"ucm_AIR_T_mid_phase_z",FALSE,44,TRUE
+"micro block drop: ucm_AIR_T_mid + ucm_AIR_RH + ucm_WIND_AWS",22.54,"ucm_MRT_phase_z",FALSE,44,TRUE
+"micro block drop: ucm_AIR_T_mid + ucm_WIND_AWS",22.98,"ucm_MRT_phase_z",FALSE,44,TRUE
+"micro block drop: ucm_AIR_T_mid + ucm_AIR_RH",25.79,"ucm_MRT_phase_z",FALSE,44,TRUE
+"ucm_AIR_T_mid",26.26,"ucm_MRT_phase_z",FALSE,44,TRUE
+"atmo_pm2.5_avg",39.66,"ucm_MRT_phase_z",FALSE,44,TRUE
+"lys_kelvin_avg",48.79,"ucm_MRT_phase_z",FALSE,44,TRUE
+"micro block drop: ucm_AIR_RH + ucm_WIND_AWS",59.37,"ucm_MRT_phase_z",FALSE,44,TRUE
+"ucm_AIR_RH",59.67,"ucm_MRT_phase_z",FALSE,44,TRUE
+"ucm_WIND_AWS",60.38,"ucm_MRT_phase_z",FALSE,44,TRUE
+"ucm_SND_dBA",60.47,"ucm_MRT_phase_z",FALSE,44,TRUE
+"SVF",60.5,"ucm_MRT_phase_z",FALSE,44,TRUE
+"lys_lux_avg",60.51,"ucm_MRT_phase_z",FALSE,44,TRUE
+"(none — Eq3 full)",60.61,"ucm_MRT_phase_z",FALSE,44,TRUE

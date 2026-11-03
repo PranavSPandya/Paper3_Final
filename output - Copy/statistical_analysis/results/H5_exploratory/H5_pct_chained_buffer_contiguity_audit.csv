@@ -1,5 +1,0 @@
-PhaseID,n_buffers,width_pp_first,pct_span_0_to_100,max_gap_between_buffers_pp,chain_contiguous
-WalkU,30,3.3980203133654334,100.0,0.0,True
-WalkG,33,3.1186943897806625,100.0,0.0,True
-BikeU,22,4.6670916831492795,100.0,0.0,True
-BikeG,23,4.478539064728773,100.0,0.0,True

@@ -1,0 +1,7 @@
+Registered S3 method overwritten by 'clubSandwich':
+  method    from    
+  bread.mlm sandwich
+Error: OUTPUT LIMIT: Analysis_combined_timeseries would publish 7 files (maximum 5). Consolidate optional outputs before finalization.
+In addition: Warning message:
+Matched-window row counts differ from declared denominator 49: P4::BikeU, P4::BikeG, P4::WalkU, P4::WalkG, P8::BikeU, P8::BikeG, P8::WalkU, P8::WalkG, P9::BikeU, P9::BikeG, P9::WalkU, P9::WalkG, P10::BikeU, P10::BikeG, P10::WalkU, P10::WalkG, P11::BikeU, P11::BikeG, P11::WalkU, P11::WalkG, P12::BikeU, P12::BikeG, P12::WalkU, P12::WalkG, P13::BikeU, P13::BikeG, P13::WalkU, P13::WalkG, P14::BikeU, P14::BikeG, P14::WalkU, P14::WalkG, P15::BikeU, P15::BikeG, P15::WalkU, P15::WalkG, P16::BikeU, P16::BikeG, P16::WalkU, P16::WalkG, P17::BikeU, P17::BikeG, P17::WalkU, P17::WalkG 
+Execution halted

@@ -1,0 +1,19 @@
+"grain","dropped_terms","max_vif","worst_term","under_10","n_design_rows","full_rank"
+"phaseavg","ucm_MRT",5.29,"ucm_SND_dBA_phase_z",TRUE,44,TRUE
+"phaseavg","(none — Eq1 UTCI full)",7.98,"ucm_UTCI_phase_z",TRUE,44,TRUE
+"phaseavg","atmo_pm2.5_avg",16.63,"ucm_MRT_phase_z",FALSE,44,TRUE
+"phaseavg","lys_kelvin_avg",20.74,"ucm_MRT_phase_z",FALSE,44,TRUE
+"phaseavg","SVF",22.2,"ucm_MRT_phase_z",FALSE,44,TRUE
+"phaseavg","ucm_SND_dBA",22.28,"ucm_MRT_phase_z",FALSE,44,TRUE
+"phaseavg","lys_lux_avg",22.38,"ucm_MRT_phase_z",FALSE,44,TRUE
+"phaseavg","(none — Eq1 MRT full)",22.54,"ucm_MRT_phase_z",FALSE,44,TRUE
+"timeseries_10s","ucm_MRT",1.4,"SVF_bout_z",TRUE,2060,TRUE
+"timeseries_10s","ucm_SUN_Gh",1.41,"SVF_bout_z",TRUE,2060,TRUE
+"timeseries_10s","ucm_SND_dBA",2.26,"ucm_MRT_bout_z",TRUE,2060,TRUE
+"timeseries_10s","SVF",2.29,"ucm_MRT_bout_z",TRUE,2066,TRUE
+"timeseries_10s","atmo_pm2.5_avg",2.31,"ucm_MRT_bout_z",TRUE,2060,TRUE
+"timeseries_10s","gvi_50m",2.31,"ucm_MRT_bout_z",TRUE,2067,TRUE
+"timeseries_10s","lys_kelvin_avg",2.31,"ucm_MRT_bout_z",TRUE,2060,TRUE
+"timeseries_10s","(none — Eq1 MRT full)",2.32,"ucm_MRT_bout_z",TRUE,2060,TRUE
+"timeseries_10s","lys_lux_avg",2.32,"ucm_MRT_bout_z",TRUE,2060,TRUE
+"timeseries_10s","(none — Eq1 UTCI full)",2.52,"ucm_SUN_Gh_bout_z",TRUE,2060,TRUE

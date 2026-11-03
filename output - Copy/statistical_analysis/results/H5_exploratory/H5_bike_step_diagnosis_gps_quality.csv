@@ -1,3 +1,0 @@
-PhaseID,median_frac_missing_lat,median_frac_missing_lon,median_hdop,n_sessions,total_negative_route_steps,sessions_with_any_backward,max_backward_m
-BikeU,0,0,1,11,0,0,0
-BikeG,0,0,2,11,1,1,-2232.87085522633

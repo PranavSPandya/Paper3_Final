@@ -1,0 +1,617 @@
+$script_dir
+[1] "C:/Users/sanga/Desktop/Pranav Paper3_Final/scripts/statistical_analysis"
+
+$library_dir
+[1] "C:/Users/sanga/Desktop/Pranav Paper3_Final/scripts/statistical_analysis/library"
+
+$project_root
+[1] "C:/Users/sanga/Desktop/Pranav Paper3_Final"
+
+==============================================================================
+Running H4: Multivariate Models of Noise Amplification on Thermal Discomfort
+==============================================================================
+Participants (11): P4, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17
+Outcomes     (26): 13 empatica + 13 eyetracker (physiological vector)
+Equations    (7): 1 Primary, 4 Heat, 2 PM
+
+Archived 2 file(s) under C:/Users/sanga/Desktop/Pranav Paper3_Final/archive
+[1/6] Loading canonical 8-minute analysis dataset...
+Loaded 5023 observations across 11 participants (2112 core outdoor epochs).
+[2/6] Step 1: Auditing full schema and partitioning analytical roles...
+[3/6] Step 2: Checking explicit replacements, measurement type and within-person availability...
+[4/6] Step 3: Auditing every Step-2 eligible measurement; no domain shortlist...
+Step 3: Tracing measurement sources and within-person dependencies; no predictor elimination...
+
+H4 screening-path counts and domain counts
+  Stage Entering Retained Not_Advanced
+ Step 1      231      128          103
+ Step 2      128       16          112
+ Step 3       16       16            0
+                                     Stage                    Category
+ Step 3 - Within-person design diagnostics                    Acoustic
+ Step 3 - Within-person design diagnostics               Air Pollution
+ Step 3 - Within-person design diagnostics                    Greenery
+ Step 3 - Within-person design diagnostics Sky View / Urban Morphology
+ Step 3 - Within-person design diagnostics                     Thermal
+ Step 3 - Within-person design diagnostics                Visual Light
+ Total_Entering_Category Retained_to_Next_Stage Not_Advanced_from_Stage
+                       1                      1                       0
+                       3                      3                       0
+                       1                      1                       0
+                       1                      1                       0
+                       8                      8                       0
+                       2                      2                       0
+                                       Scope
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+ Only Step-2 retained environmental streams.
+SUCCESS: Exported H4 multivariate audit CSV with 231 variables to:
+  C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_Multivariate_Filtration_Results.csv
+Archived 2 file(s) under C:/Users/sanga/Desktop/Pranav Paper3_Final/archive
+[Step 5] GVIF diagnostic (design outcome empatica_heart_rate): C:\Users\sanga\AppData\Local\Temp\RtmpQD5UI6/Analysis_combined_timeseries_details/Analysis_combined_timeseries_gvif_diagnostic.csv 
+[Step 5] Fitting 7 equations across 26 outcomes in parallel...
+[Step 5] Job queue: 182 total; this run jobs 1-182 (182 jobs).
+[Parallel] 1 worker(s); checkpoint after each job in this slice.
+[Step 5 job 1/182] START outcome=empatica_heart_rate equation_id=1
+[Step 5 job 1/182] DONE outcome=empatica_heart_rate equation_id=1 (10.1s)
+[Step 5 checkpoint] 1/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 2/182] START outcome=empatica_heart_rate equation_id=2
+[Step 5 job 2/182] DONE outcome=empatica_heart_rate equation_id=2 (10.6s)
+[Step 5 checkpoint] 2/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 3/182] START outcome=empatica_heart_rate equation_id=3
+[Step 5 job 3/182] DONE outcome=empatica_heart_rate equation_id=3 (6.4s)
+[Step 5 checkpoint] 3/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 4/182] START outcome=empatica_heart_rate equation_id=4
+[Step 5 job 4/182] DONE outcome=empatica_heart_rate equation_id=4 (11.3s)
+[Step 5 checkpoint] 4/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 5/182] START outcome=empatica_heart_rate equation_id=5
+[Step 5 job 5/182] DONE outcome=empatica_heart_rate equation_id=5 (9.0s)
+[Step 5 checkpoint] 5/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 6/182] START outcome=empatica_heart_rate equation_id=6
+[Step 5 job 6/182] DONE outcome=empatica_heart_rate equation_id=6 (12.7s)
+[Step 5 checkpoint] 6/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 7/182] START outcome=empatica_heart_rate equation_id=7
+[Step 5 job 7/182] DONE outcome=empatica_heart_rate equation_id=7 (30.2s)
+[Step 5 checkpoint] 7/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 8/182] START outcome=empatica_eda_tonic equation_id=1
+[Step 5 job 8/182] DONE outcome=empatica_eda_tonic equation_id=1 (6.9s)
+[Step 5 checkpoint] 8/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 9/182] START outcome=empatica_eda_tonic equation_id=2
+[Step 5 job 9/182] DONE outcome=empatica_eda_tonic equation_id=2 (6.6s)
+[Step 5 checkpoint] 9/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 10/182] START outcome=empatica_eda_tonic equation_id=3
+[Step 5 job 10/182] DONE outcome=empatica_eda_tonic equation_id=3 (8.3s)
+[Step 5 checkpoint] 10/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 11/182] START outcome=empatica_eda_tonic equation_id=4
+[Step 5 job 11/182] DONE outcome=empatica_eda_tonic equation_id=4 (6.0s)
+[Step 5 checkpoint] 11/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 12/182] START outcome=empatica_eda_tonic equation_id=5
+[Step 5 job 12/182] DONE outcome=empatica_eda_tonic equation_id=5 (8.2s)
+[Step 5 checkpoint] 12/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 13/182] START outcome=empatica_eda_tonic equation_id=6
+[Step 5 job 13/182] DONE outcome=empatica_eda_tonic equation_id=6 (8.9s)
+[Step 5 checkpoint] 13/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 14/182] START outcome=empatica_eda_tonic equation_id=7
+[Step 5 job 14/182] DONE outcome=empatica_eda_tonic equation_id=7 (5.1s)
+[Step 5 checkpoint] 14/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 15/182] START outcome=empatica_eda_phasic equation_id=1
+[Step 5 job 15/182] DONE outcome=empatica_eda_phasic equation_id=1 (9.9s)
+[Step 5 checkpoint] 15/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 16/182] START outcome=empatica_eda_phasic equation_id=2
+[Step 5 job 16/182] DONE outcome=empatica_eda_phasic equation_id=2 (10.9s)
+[Step 5 checkpoint] 16/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 17/182] START outcome=empatica_eda_phasic equation_id=3
+[Step 5 job 17/182] DONE outcome=empatica_eda_phasic equation_id=3 (6.6s)
+[Step 5 checkpoint] 17/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 18/182] START outcome=empatica_eda_phasic equation_id=4
+[Step 5 job 18/182] DONE outcome=empatica_eda_phasic equation_id=4 (10.9s)
+[Step 5 checkpoint] 18/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 19/182] START outcome=empatica_eda_phasic equation_id=5
+[Step 5 job 19/182] DONE outcome=empatica_eda_phasic equation_id=5 (17.0s)
+[Step 5 checkpoint] 19/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 20/182] START outcome=empatica_eda_phasic equation_id=6
+[Step 5 job 20/182] DONE outcome=empatica_eda_phasic equation_id=6 (14.5s)
+[Step 5 checkpoint] 20/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 21/182] START outcome=empatica_eda_phasic equation_id=7
+[Step 5 job 21/182] DONE outcome=empatica_eda_phasic equation_id=7 (13.3s)
+[Step 5 checkpoint] 21/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 22/182] START outcome=empatica_skin_temperature equation_id=1
+[Step 5 job 22/182] DONE outcome=empatica_skin_temperature equation_id=1 (14.0s)
+[Step 5 checkpoint] 22/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 23/182] START outcome=empatica_skin_temperature equation_id=2
+[Step 5 job 23/182] DONE outcome=empatica_skin_temperature equation_id=2 (14.0s)
+[Step 5 checkpoint] 23/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 24/182] START outcome=empatica_skin_temperature equation_id=3
+[Step 5 job 24/182] DONE outcome=empatica_skin_temperature equation_id=3 (9.9s)
+[Step 5 checkpoint] 24/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 25/182] START outcome=empatica_skin_temperature equation_id=4
+[Step 5 job 25/182] DONE outcome=empatica_skin_temperature equation_id=4 (8.7s)
+[Step 5 checkpoint] 25/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 26/182] START outcome=empatica_skin_temperature equation_id=5
+[Step 5 job 26/182] DONE outcome=empatica_skin_temperature equation_id=5 (11.7s)
+[Step 5 checkpoint] 26/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 27/182] START outcome=empatica_skin_temperature equation_id=6
+[Step 5 job 27/182] DONE outcome=empatica_skin_temperature equation_id=6 (12.0s)
+[Step 5 checkpoint] 27/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 28/182] START outcome=empatica_skin_temperature equation_id=7
+[Step 5 job 28/182] DONE outcome=empatica_skin_temperature equation_id=7 (12.2s)
+[Step 5 checkpoint] 28/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 29/182] START outcome=empatica_hrv_td_sdnn equation_id=1
+[Step 5 job 29/182] DONE outcome=empatica_hrv_td_sdnn equation_id=1 (8.6s)
+[Step 5 checkpoint] 29/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 30/182] START outcome=empatica_hrv_td_sdnn equation_id=2
+[Step 5 job 30/182] DONE outcome=empatica_hrv_td_sdnn equation_id=2 (9.3s)
+[Step 5 checkpoint] 30/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 31/182] START outcome=empatica_hrv_td_sdnn equation_id=3
+[Step 5 job 31/182] DONE outcome=empatica_hrv_td_sdnn equation_id=3 (10.4s)
+[Step 5 checkpoint] 31/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 32/182] START outcome=empatica_hrv_td_sdnn equation_id=4
+[Step 5 job 32/182] DONE outcome=empatica_hrv_td_sdnn equation_id=4 (8.8s)
+[Step 5 checkpoint] 32/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 33/182] START outcome=empatica_hrv_td_sdnn equation_id=5
+[Step 5 job 33/182] DONE outcome=empatica_hrv_td_sdnn equation_id=5 (8.1s)
+[Step 5 checkpoint] 33/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 34/182] START outcome=empatica_hrv_td_sdnn equation_id=6
+[Step 5 job 34/182] DONE outcome=empatica_hrv_td_sdnn equation_id=6 (7.6s)
+[Step 5 checkpoint] 34/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 35/182] START outcome=empatica_hrv_td_sdnn equation_id=7
+[Step 5 job 35/182] DONE outcome=empatica_hrv_td_sdnn equation_id=7 (7.4s)
+[Step 5 checkpoint] 35/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 36/182] START outcome=empatica_hrv_td_rmssd equation_id=1
+[Step 5 job 36/182] DONE outcome=empatica_hrv_td_rmssd equation_id=1 (4.9s)
+[Step 5 checkpoint] 36/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 37/182] START outcome=empatica_hrv_td_rmssd equation_id=2
+[Step 5 job 37/182] DONE outcome=empatica_hrv_td_rmssd equation_id=2 (6.4s)
+[Step 5 checkpoint] 37/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 38/182] START outcome=empatica_hrv_td_rmssd equation_id=3
+[Step 5 job 38/182] DONE outcome=empatica_hrv_td_rmssd equation_id=3 (7.3s)
+[Step 5 checkpoint] 38/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 39/182] START outcome=empatica_hrv_td_rmssd equation_id=4
+[Step 5 job 39/182] DONE outcome=empatica_hrv_td_rmssd equation_id=4 (6.5s)
+[Step 5 checkpoint] 39/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 40/182] START outcome=empatica_hrv_td_rmssd equation_id=5
+[Step 5 job 40/182] DONE outcome=empatica_hrv_td_rmssd equation_id=5 (5.9s)
+[Step 5 checkpoint] 40/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 41/182] START outcome=empatica_hrv_td_rmssd equation_id=6
+[Step 5 job 41/182] DONE outcome=empatica_hrv_td_rmssd equation_id=6 (8.2s)
+[Step 5 checkpoint] 41/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 42/182] START outcome=empatica_hrv_td_rmssd equation_id=7
+[Step 5 job 42/182] DONE outcome=empatica_hrv_td_rmssd equation_id=7 (5.9s)
+[Step 5 checkpoint] 42/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 43/182] START outcome=empatica_hrv_fd_lf equation_id=1
+[Step 5 job 43/182] DONE outcome=empatica_hrv_fd_lf equation_id=1 (3.7s)
+[Step 5 checkpoint] 43/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 44/182] START outcome=empatica_hrv_fd_lf equation_id=2
+[Step 5 job 44/182] DONE outcome=empatica_hrv_fd_lf equation_id=2 (3.4s)
+[Step 5 checkpoint] 44/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 45/182] START outcome=empatica_hrv_fd_lf equation_id=3
+[Step 5 job 45/182] DONE outcome=empatica_hrv_fd_lf equation_id=3 (2.3s)
+[Step 5 checkpoint] 45/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 46/182] START outcome=empatica_hrv_fd_lf equation_id=4
+[Step 5 job 46/182] DONE outcome=empatica_hrv_fd_lf equation_id=4 (2.8s)
+[Step 5 checkpoint] 46/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 47/182] START outcome=empatica_hrv_fd_lf equation_id=5
+[Step 5 job 47/182] DONE outcome=empatica_hrv_fd_lf equation_id=5 (2.8s)
+[Step 5 checkpoint] 47/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 48/182] START outcome=empatica_hrv_fd_lf equation_id=6
+[Step 5 job 48/182] DONE outcome=empatica_hrv_fd_lf equation_id=6 (3.4s)
+[Step 5 checkpoint] 48/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 49/182] START outcome=empatica_hrv_fd_lf equation_id=7
+[Step 5 job 49/182] DONE outcome=empatica_hrv_fd_lf equation_id=7 (3.1s)
+[Step 5 checkpoint] 49/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 50/182] START outcome=empatica_hrv_fd_hf equation_id=1
+[Step 5 job 50/182] DONE outcome=empatica_hrv_fd_hf equation_id=1 (3.4s)
+[Step 5 checkpoint] 50/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 51/182] START outcome=empatica_hrv_fd_hf equation_id=2
+[Step 5 job 51/182] DONE outcome=empatica_hrv_fd_hf equation_id=2 (3.6s)
+[Step 5 checkpoint] 51/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 52/182] START outcome=empatica_hrv_fd_hf equation_id=3
+[Step 5 job 52/182] DONE outcome=empatica_hrv_fd_hf equation_id=3 (2.4s)
+[Step 5 checkpoint] 52/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 53/182] START outcome=empatica_hrv_fd_hf equation_id=4
+[Step 5 job 53/182] DONE outcome=empatica_hrv_fd_hf equation_id=4 (4.1s)
+[Step 5 checkpoint] 53/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 54/182] START outcome=empatica_hrv_fd_hf equation_id=5
+[Step 5 job 54/182] DONE outcome=empatica_hrv_fd_hf equation_id=5 (3.3s)
+[Step 5 checkpoint] 54/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 55/182] START outcome=empatica_hrv_fd_hf equation_id=6
+[Step 5 job 55/182] DONE outcome=empatica_hrv_fd_hf equation_id=6 (3.7s)
+[Step 5 checkpoint] 55/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 56/182] START outcome=empatica_hrv_fd_hf equation_id=7
+[Step 5 job 56/182] DONE outcome=empatica_hrv_fd_hf equation_id=7 (4.0s)
+[Step 5 checkpoint] 56/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 57/182] START outcome=empatica_hrv_fd_lf_hf_ratio equation_id=1
+[Step 5 job 57/182] DONE outcome=empatica_hrv_fd_lf_hf_ratio equation_id=1 (4.1s)
+[Step 5 checkpoint] 57/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 58/182] START outcome=empatica_hrv_fd_lf_hf_ratio equation_id=2
+[Step 5 job 58/182] DONE outcome=empatica_hrv_fd_lf_hf_ratio equation_id=2 (4.4s)
+[Step 5 checkpoint] 58/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 59/182] START outcome=empatica_hrv_fd_lf_hf_ratio equation_id=3
+[Step 5 job 59/182] DONE outcome=empatica_hrv_fd_lf_hf_ratio equation_id=3 (4.3s)
+[Step 5 checkpoint] 59/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 60/182] START outcome=empatica_hrv_fd_lf_hf_ratio equation_id=4
+[Step 5 job 60/182] DONE outcome=empatica_hrv_fd_lf_hf_ratio equation_id=4 (4.2s)
+[Step 5 checkpoint] 60/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 61/182] START outcome=empatica_hrv_fd_lf_hf_ratio equation_id=5
+[Step 5 job 61/182] DONE outcome=empatica_hrv_fd_lf_hf_ratio equation_id=5 (4.0s)
+[Step 5 checkpoint] 61/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 62/182] START outcome=empatica_hrv_fd_lf_hf_ratio equation_id=6
+[Step 5 job 62/182] DONE outcome=empatica_hrv_fd_lf_hf_ratio equation_id=6 (4.3s)
+[Step 5 checkpoint] 62/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 63/182] START outcome=empatica_hrv_fd_lf_hf_ratio equation_id=7
+[Step 5 job 63/182] DONE outcome=empatica_hrv_fd_lf_hf_ratio equation_id=7 (4.9s)
+[Step 5 checkpoint] 63/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 64/182] START outcome=empatica_hrv_fd_lfnu equation_id=1
+[Step 5 job 64/182] DONE outcome=empatica_hrv_fd_lfnu equation_id=1 (3.8s)
+[Step 5 checkpoint] 64/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 65/182] START outcome=empatica_hrv_fd_lfnu equation_id=2
+[Step 5 job 65/182] DONE outcome=empatica_hrv_fd_lfnu equation_id=2 (4.0s)
+[Step 5 checkpoint] 65/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 66/182] START outcome=empatica_hrv_fd_lfnu equation_id=3
+[Step 5 job 66/182] DONE outcome=empatica_hrv_fd_lfnu equation_id=3 (2.5s)
+[Step 5 checkpoint] 66/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 67/182] START outcome=empatica_hrv_fd_lfnu equation_id=4
+[Step 5 job 67/182] DONE outcome=empatica_hrv_fd_lfnu equation_id=4 (3.8s)
+[Step 5 checkpoint] 67/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 68/182] START outcome=empatica_hrv_fd_lfnu equation_id=5
+[Step 5 job 68/182] DONE outcome=empatica_hrv_fd_lfnu equation_id=5 (3.8s)
+[Step 5 checkpoint] 68/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 69/182] START outcome=empatica_hrv_fd_lfnu equation_id=6
+[Step 5 job 69/182] DONE outcome=empatica_hrv_fd_lfnu equation_id=6 (4.0s)
+[Step 5 checkpoint] 69/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 70/182] START outcome=empatica_hrv_fd_lfnu equation_id=7
+[Step 5 job 70/182] DONE outcome=empatica_hrv_fd_lfnu equation_id=7 (3.8s)
+[Step 5 checkpoint] 70/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 71/182] START outcome=empatica_hrv_fd_hfnu equation_id=1
+[Step 5 job 71/182] DONE outcome=empatica_hrv_fd_hfnu equation_id=1 (4.3s)
+[Step 5 checkpoint] 71/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 72/182] START outcome=empatica_hrv_fd_hfnu equation_id=2
+[Step 5 job 72/182] DONE outcome=empatica_hrv_fd_hfnu equation_id=2 (4.4s)
+[Step 5 checkpoint] 72/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 73/182] START outcome=empatica_hrv_fd_hfnu equation_id=3
+[Step 5 job 73/182] DONE outcome=empatica_hrv_fd_hfnu equation_id=3 (2.6s)
+[Step 5 checkpoint] 73/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 74/182] START outcome=empatica_hrv_fd_hfnu equation_id=4
+[Step 5 job 74/182] DONE outcome=empatica_hrv_fd_hfnu equation_id=4 (4.6s)
+[Step 5 checkpoint] 74/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 75/182] START outcome=empatica_hrv_fd_hfnu equation_id=5
+[Step 5 job 75/182] DONE outcome=empatica_hrv_fd_hfnu equation_id=5 (6.0s)
+[Step 5 checkpoint] 75/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 76/182] START outcome=empatica_hrv_fd_hfnu equation_id=6
+[Step 5 job 76/182] DONE outcome=empatica_hrv_fd_hfnu equation_id=6 (6.4s)
+[Step 5 checkpoint] 76/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 77/182] START outcome=empatica_hrv_fd_hfnu equation_id=7
+[Step 5 job 77/182] DONE outcome=empatica_hrv_fd_hfnu equation_id=7 (6.6s)
+[Step 5 checkpoint] 77/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 78/182] START outcome=empatica_hrv_fd_vlf equation_id=1
+[Step 5 job 78/182] DONE outcome=empatica_hrv_fd_vlf equation_id=1 (2.6s)
+[Step 5 checkpoint] 78/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 79/182] START outcome=empatica_hrv_fd_vlf equation_id=2
+[Step 5 job 79/182] DONE outcome=empatica_hrv_fd_vlf equation_id=2 (3.4s)
+[Step 5 checkpoint] 79/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 80/182] START outcome=empatica_hrv_fd_vlf equation_id=3
+[Step 5 job 80/182] DONE outcome=empatica_hrv_fd_vlf equation_id=3 (4.2s)
+[Step 5 checkpoint] 80/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 81/182] START outcome=empatica_hrv_fd_vlf equation_id=4
+[Step 5 job 81/182] DONE outcome=empatica_hrv_fd_vlf equation_id=4 (4.8s)
+[Step 5 checkpoint] 81/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 82/182] START outcome=empatica_hrv_fd_vlf equation_id=5
+[Step 5 job 82/182] DONE outcome=empatica_hrv_fd_vlf equation_id=5 (5.4s)
+[Step 5 checkpoint] 82/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 83/182] START outcome=empatica_hrv_fd_vlf equation_id=6
+[Step 5 job 83/182] DONE outcome=empatica_hrv_fd_vlf equation_id=6 (5.1s)
+[Step 5 checkpoint] 83/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 84/182] START outcome=empatica_hrv_fd_vlf equation_id=7
+[Step 5 job 84/182] DONE outcome=empatica_hrv_fd_vlf equation_id=7 (3.5s)
+[Step 5 checkpoint] 84/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 85/182] START outcome=empatica_hrv_fd_total_power equation_id=1
+[Step 5 job 85/182] DONE outcome=empatica_hrv_fd_total_power equation_id=1 (4.4s)
+[Step 5 checkpoint] 85/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 86/182] START outcome=empatica_hrv_fd_total_power equation_id=2
+[Step 5 job 86/182] DONE outcome=empatica_hrv_fd_total_power equation_id=2 (6.3s)
+[Step 5 checkpoint] 86/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 87/182] START outcome=empatica_hrv_fd_total_power equation_id=3
+[Step 5 job 87/182] DONE outcome=empatica_hrv_fd_total_power equation_id=3 (2.6s)
+[Step 5 checkpoint] 87/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 88/182] START outcome=empatica_hrv_fd_total_power equation_id=4
+[Step 5 job 88/182] DONE outcome=empatica_hrv_fd_total_power equation_id=4 (3.1s)
+[Step 5 checkpoint] 88/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 89/182] START outcome=empatica_hrv_fd_total_power equation_id=5
+[Step 5 job 89/182] DONE outcome=empatica_hrv_fd_total_power equation_id=5 (2.6s)
+[Step 5 checkpoint] 89/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 90/182] START outcome=empatica_hrv_fd_total_power equation_id=6
+[Step 5 job 90/182] DONE outcome=empatica_hrv_fd_total_power equation_id=6 (3.2s)
+[Step 5 checkpoint] 90/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 91/182] START outcome=empatica_hrv_fd_total_power equation_id=7
+[Step 5 job 91/182] DONE outcome=empatica_hrv_fd_total_power equation_id=7 (2.8s)
+[Step 5 checkpoint] 91/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 92/182] START outcome=eyetracker_pupil_diameter_avg equation_id=1
+[Step 5 job 92/182] DONE outcome=eyetracker_pupil_diameter_avg equation_id=1 (5.9s)
+[Step 5 checkpoint] 92/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 93/182] START outcome=eyetracker_pupil_diameter_avg equation_id=2
+[Step 5 job 93/182] DONE outcome=eyetracker_pupil_diameter_avg equation_id=2 (5.9s)
+[Step 5 checkpoint] 93/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 94/182] START outcome=eyetracker_pupil_diameter_avg equation_id=3
+[Step 5 job 94/182] DONE outcome=eyetracker_pupil_diameter_avg equation_id=3 (3.5s)
+[Step 5 checkpoint] 94/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 95/182] START outcome=eyetracker_pupil_diameter_avg equation_id=4
+[Step 5 job 95/182] DONE outcome=eyetracker_pupil_diameter_avg equation_id=4 (5.1s)
+[Step 5 checkpoint] 95/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 96/182] START outcome=eyetracker_pupil_diameter_avg equation_id=5
+[Step 5 job 96/182] DONE outcome=eyetracker_pupil_diameter_avg equation_id=5 (5.1s)
+[Step 5 checkpoint] 96/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 97/182] START outcome=eyetracker_pupil_diameter_avg equation_id=6
+[Step 5 job 97/182] DONE outcome=eyetracker_pupil_diameter_avg equation_id=6 (4.6s)
+[Step 5 checkpoint] 97/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 98/182] START outcome=eyetracker_pupil_diameter_avg equation_id=7
+[Step 5 job 98/182] DONE outcome=eyetracker_pupil_diameter_avg equation_id=7 (4.5s)
+[Step 5 checkpoint] 98/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 99/182] START outcome=eyetracker_pupil_change_rate equation_id=1
+[Step 5 job 99/182] DONE outcome=eyetracker_pupil_change_rate equation_id=1 (8.2s)
+[Step 5 checkpoint] 99/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 100/182] START outcome=eyetracker_pupil_change_rate equation_id=2
+[Step 5 job 100/182] DONE outcome=eyetracker_pupil_change_rate equation_id=2 (7.8s)
+[Step 5 checkpoint] 100/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 101/182] START outcome=eyetracker_pupil_change_rate equation_id=3
+[Step 5 job 101/182] DONE outcome=eyetracker_pupil_change_rate equation_id=3 (4.7s)
+[Step 5 checkpoint] 101/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 102/182] START outcome=eyetracker_pupil_change_rate equation_id=4
+[Step 5 job 102/182] DONE outcome=eyetracker_pupil_change_rate equation_id=4 (8.0s)
+[Step 5 checkpoint] 102/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 103/182] START outcome=eyetracker_pupil_change_rate equation_id=5
+[Step 5 job 103/182] DONE outcome=eyetracker_pupil_change_rate equation_id=5 (8.4s)
+[Step 5 checkpoint] 103/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 104/182] START outcome=eyetracker_pupil_change_rate equation_id=6
+[Step 5 job 104/182] DONE outcome=eyetracker_pupil_change_rate equation_id=6 (7.4s)
+[Step 5 checkpoint] 104/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 105/182] START outcome=eyetracker_pupil_change_rate equation_id=7
+[Step 5 job 105/182] DONE outcome=eyetracker_pupil_change_rate equation_id=7 (8.2s)
+[Step 5 checkpoint] 105/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 106/182] START outcome=eyetracker_blink_duration_s equation_id=1
+[Step 5 job 106/182] DONE outcome=eyetracker_blink_duration_s equation_id=1 (7.2s)
+[Step 5 checkpoint] 106/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 107/182] START outcome=eyetracker_blink_duration_s equation_id=2
+[Step 5 job 107/182] DONE outcome=eyetracker_blink_duration_s equation_id=2 (7.7s)
+[Step 5 checkpoint] 107/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 108/182] START outcome=eyetracker_blink_duration_s equation_id=3
+[Step 5 job 108/182] DONE outcome=eyetracker_blink_duration_s equation_id=3 (7.4s)
+[Step 5 checkpoint] 108/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 109/182] START outcome=eyetracker_blink_duration_s equation_id=4
+[Step 5 job 109/182] DONE outcome=eyetracker_blink_duration_s equation_id=4 (7.4s)
+[Step 5 checkpoint] 109/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 110/182] START outcome=eyetracker_blink_duration_s equation_id=5
+[Step 5 job 110/182] DONE outcome=eyetracker_blink_duration_s equation_id=5 (9.1s)
+[Step 5 checkpoint] 110/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 111/182] START outcome=eyetracker_blink_duration_s equation_id=6
+[Step 5 job 111/182] DONE outcome=eyetracker_blink_duration_s equation_id=6 (8.9s)
+[Step 5 checkpoint] 111/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 112/182] START outcome=eyetracker_blink_duration_s equation_id=7
+[Step 5 job 112/182] DONE outcome=eyetracker_blink_duration_s equation_id=7 (7.8s)
+[Step 5 checkpoint] 112/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 113/182] START outcome=eyetracker_fixation_duration_s equation_id=1
+[Step 5 job 113/182] DONE outcome=eyetracker_fixation_duration_s equation_id=1 (4.8s)
+[Step 5 checkpoint] 113/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 114/182] START outcome=eyetracker_fixation_duration_s equation_id=2
+[Step 5 job 114/182] DONE outcome=eyetracker_fixation_duration_s equation_id=2 (4.3s)
+[Step 5 checkpoint] 114/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 115/182] START outcome=eyetracker_fixation_duration_s equation_id=3
+[Step 5 job 115/182] DONE outcome=eyetracker_fixation_duration_s equation_id=3 (3.4s)
+[Step 5 checkpoint] 115/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 116/182] START outcome=eyetracker_fixation_duration_s equation_id=4
+[Step 5 job 116/182] DONE outcome=eyetracker_fixation_duration_s equation_id=4 (4.3s)
+[Step 5 checkpoint] 116/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 117/182] START outcome=eyetracker_fixation_duration_s equation_id=5
+[Step 5 job 117/182] DONE outcome=eyetracker_fixation_duration_s equation_id=5 (4.4s)
+[Step 5 checkpoint] 117/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 118/182] START outcome=eyetracker_fixation_duration_s equation_id=6
+[Step 5 job 118/182] DONE outcome=eyetracker_fixation_duration_s equation_id=6 (4.7s)
+[Step 5 checkpoint] 118/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 119/182] START outcome=eyetracker_fixation_duration_s equation_id=7
+[Step 5 job 119/182] DONE outcome=eyetracker_fixation_duration_s equation_id=7 (4.3s)
+[Step 5 checkpoint] 119/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 120/182] START outcome=eyetracker_fixation_rate equation_id=1
+[Step 5 job 120/182] DONE outcome=eyetracker_fixation_rate equation_id=1 (4.2s)
+[Step 5 checkpoint] 120/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 121/182] START outcome=eyetracker_fixation_rate equation_id=2
+[Step 5 job 121/182] DONE outcome=eyetracker_fixation_rate equation_id=2 (5.7s)
+[Step 5 checkpoint] 121/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 122/182] START outcome=eyetracker_fixation_rate equation_id=3
+[Step 5 job 122/182] DONE outcome=eyetracker_fixation_rate equation_id=3 (4.7s)
+[Step 5 checkpoint] 122/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 123/182] START outcome=eyetracker_fixation_rate equation_id=4
+[Step 5 job 123/182] DONE outcome=eyetracker_fixation_rate equation_id=4 (5.4s)
+[Step 5 checkpoint] 123/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 124/182] START outcome=eyetracker_fixation_rate equation_id=5
+[Step 5 job 124/182] DONE outcome=eyetracker_fixation_rate equation_id=5 (4.2s)
+[Step 5 checkpoint] 124/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 125/182] START outcome=eyetracker_fixation_rate equation_id=6
+[Step 5 job 125/182] DONE outcome=eyetracker_fixation_rate equation_id=6 (5.0s)
+[Step 5 checkpoint] 125/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 126/182] START outcome=eyetracker_fixation_rate equation_id=7
+[Step 5 job 126/182] DONE outcome=eyetracker_fixation_rate equation_id=7 (6.1s)
+[Step 5 checkpoint] 126/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 127/182] START outcome=eyetracker_saccade_duration_s equation_id=1
+[Step 5 job 127/182] DONE outcome=eyetracker_saccade_duration_s equation_id=1 (6.4s)
+[Step 5 checkpoint] 127/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 128/182] START outcome=eyetracker_saccade_duration_s equation_id=2
+[Step 5 job 128/182] DONE outcome=eyetracker_saccade_duration_s equation_id=2 (5.3s)
+[Step 5 checkpoint] 128/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 129/182] START outcome=eyetracker_saccade_duration_s equation_id=3
+[Step 5 job 129/182] DONE outcome=eyetracker_saccade_duration_s equation_id=3 (5.3s)
+[Step 5 checkpoint] 129/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 130/182] START outcome=eyetracker_saccade_duration_s equation_id=4
+[Step 5 job 130/182] DONE outcome=eyetracker_saccade_duration_s equation_id=4 (4.6s)
+[Step 5 checkpoint] 130/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 131/182] START outcome=eyetracker_saccade_duration_s equation_id=5
+[Step 5 job 131/182] DONE outcome=eyetracker_saccade_duration_s equation_id=5 (4.5s)
+[Step 5 checkpoint] 131/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 132/182] START outcome=eyetracker_saccade_duration_s equation_id=6
+[Step 5 job 132/182] DONE outcome=eyetracker_saccade_duration_s equation_id=6 (5.8s)
+[Step 5 checkpoint] 132/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 133/182] START outcome=eyetracker_saccade_duration_s equation_id=7
+[Step 5 job 133/182] DONE outcome=eyetracker_saccade_duration_s equation_id=7 (5.3s)
+[Step 5 checkpoint] 133/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 134/182] START outcome=eyetracker_saccade_amplitude equation_id=1
+[Step 5 job 134/182] DONE outcome=eyetracker_saccade_amplitude equation_id=1 (4.1s)
+[Step 5 checkpoint] 134/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 135/182] START outcome=eyetracker_saccade_amplitude equation_id=2
+[Step 5 job 135/182] DONE outcome=eyetracker_saccade_amplitude equation_id=2 (4.3s)
+[Step 5 checkpoint] 135/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 136/182] START outcome=eyetracker_saccade_amplitude equation_id=3
+[Step 5 job 136/182] DONE outcome=eyetracker_saccade_amplitude equation_id=3 (4.4s)
+[Step 5 checkpoint] 136/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 137/182] START outcome=eyetracker_saccade_amplitude equation_id=4
+[Step 5 job 137/182] DONE outcome=eyetracker_saccade_amplitude equation_id=4 (4.4s)
+[Step 5 checkpoint] 137/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 138/182] START outcome=eyetracker_saccade_amplitude equation_id=5
+[Step 5 job 138/182] DONE outcome=eyetracker_saccade_amplitude equation_id=5 (4.8s)
+[Step 5 checkpoint] 138/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 139/182] START outcome=eyetracker_saccade_amplitude equation_id=6
+[Step 5 job 139/182] DONE outcome=eyetracker_saccade_amplitude equation_id=6 (4.5s)
+[Step 5 checkpoint] 139/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 140/182] START outcome=eyetracker_saccade_amplitude equation_id=7
+[Step 5 job 140/182] DONE outcome=eyetracker_saccade_amplitude equation_id=7 (4.3s)
+[Step 5 checkpoint] 140/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 141/182] START outcome=eyetracker_saccade_peak_velocity equation_id=1
+[Step 5 job 141/182] DONE outcome=eyetracker_saccade_peak_velocity equation_id=1 (4.4s)
+[Step 5 checkpoint] 141/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 142/182] START outcome=eyetracker_saccade_peak_velocity equation_id=2
+[Step 5 job 142/182] DONE outcome=eyetracker_saccade_peak_velocity equation_id=2 (4.6s)
+[Step 5 checkpoint] 142/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 143/182] START outcome=eyetracker_saccade_peak_velocity equation_id=3
+[Step 5 job 143/182] DONE outcome=eyetracker_saccade_peak_velocity equation_id=3 (5.4s)
+[Step 5 checkpoint] 143/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 144/182] START outcome=eyetracker_saccade_peak_velocity equation_id=4
+[Step 5 job 144/182] DONE outcome=eyetracker_saccade_peak_velocity equation_id=4 (5.7s)
+[Step 5 checkpoint] 144/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 145/182] START outcome=eyetracker_saccade_peak_velocity equation_id=5
+[Step 5 job 145/182] DONE outcome=eyetracker_saccade_peak_velocity equation_id=5 (6.2s)
+[Step 5 checkpoint] 145/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 146/182] START outcome=eyetracker_saccade_peak_velocity equation_id=6
+[Step 5 job 146/182] DONE outcome=eyetracker_saccade_peak_velocity equation_id=6 (4.7s)
+[Step 5 checkpoint] 146/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 147/182] START outcome=eyetracker_saccade_peak_velocity equation_id=7
+[Step 5 job 147/182] DONE outcome=eyetracker_saccade_peak_velocity equation_id=7 (5.5s)
+[Step 5 checkpoint] 147/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 148/182] START outcome=eyetracker_gaze_velocity equation_id=1
+[Step 5 job 148/182] DONE outcome=eyetracker_gaze_velocity equation_id=1 (5.1s)
+[Step 5 checkpoint] 148/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 149/182] START outcome=eyetracker_gaze_velocity equation_id=2
+[Step 5 job 149/182] DONE outcome=eyetracker_gaze_velocity equation_id=2 (5.3s)
+[Step 5 checkpoint] 149/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 150/182] START outcome=eyetracker_gaze_velocity equation_id=3
+[Step 5 job 150/182] DONE outcome=eyetracker_gaze_velocity equation_id=3 (4.6s)
+[Step 5 checkpoint] 150/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 151/182] START outcome=eyetracker_gaze_velocity equation_id=4
+[Step 5 job 151/182] DONE outcome=eyetracker_gaze_velocity equation_id=4 (4.4s)
+[Step 5 checkpoint] 151/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 152/182] START outcome=eyetracker_gaze_velocity equation_id=5
+[Step 5 job 152/182] DONE outcome=eyetracker_gaze_velocity equation_id=5 (5.0s)
+[Step 5 checkpoint] 152/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 153/182] START outcome=eyetracker_gaze_velocity equation_id=6
+[Step 5 job 153/182] DONE outcome=eyetracker_gaze_velocity equation_id=6 (4.7s)
+[Step 5 checkpoint] 153/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 154/182] START outcome=eyetracker_gaze_velocity equation_id=7
+[Step 5 job 154/182] DONE outcome=eyetracker_gaze_velocity equation_id=7 (4.5s)
+[Step 5 checkpoint] 154/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 155/182] START outcome=eyetracker_gaze_dispersion equation_id=1
+[Step 5 job 155/182] DONE outcome=eyetracker_gaze_dispersion equation_id=1 (4.6s)
+[Step 5 checkpoint] 155/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 156/182] START outcome=eyetracker_gaze_dispersion equation_id=2
+[Step 5 job 156/182] DONE outcome=eyetracker_gaze_dispersion equation_id=2 (4.6s)
+[Step 5 checkpoint] 156/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 157/182] START outcome=eyetracker_gaze_dispersion equation_id=3
+[Step 5 job 157/182] DONE outcome=eyetracker_gaze_dispersion equation_id=3 (3.7s)
+[Step 5 checkpoint] 157/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 158/182] START outcome=eyetracker_gaze_dispersion equation_id=4
+[Step 5 job 158/182] DONE outcome=eyetracker_gaze_dispersion equation_id=4 (5.0s)
+[Step 5 checkpoint] 158/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 159/182] START outcome=eyetracker_gaze_dispersion equation_id=5
+[Step 5 job 159/182] DONE outcome=eyetracker_gaze_dispersion equation_id=5 (4.3s)
+[Step 5 checkpoint] 159/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 160/182] START outcome=eyetracker_gaze_dispersion equation_id=6
+[Step 5 job 160/182] DONE outcome=eyetracker_gaze_dispersion equation_id=6 (4.2s)
+[Step 5 checkpoint] 160/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 161/182] START outcome=eyetracker_gaze_dispersion equation_id=7
+[Step 5 job 161/182] DONE outcome=eyetracker_gaze_dispersion equation_id=7 (4.5s)
+[Step 5 checkpoint] 161/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 162/182] START outcome=eyetracker_distance_from_center equation_id=1
+[Step 5 job 162/182] DONE outcome=eyetracker_distance_from_center equation_id=1 (4.5s)
+[Step 5 checkpoint] 162/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 163/182] START outcome=eyetracker_distance_from_center equation_id=2
+[Step 5 job 163/182] DONE outcome=eyetracker_distance_from_center equation_id=2 (4.2s)
+[Step 5 checkpoint] 163/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 164/182] START outcome=eyetracker_distance_from_center equation_id=3
+[Step 5 job 164/182] DONE outcome=eyetracker_distance_from_center equation_id=3 (5.5s)
+[Step 5 checkpoint] 164/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 165/182] START outcome=eyetracker_distance_from_center equation_id=4
+[Step 5 job 165/182] DONE outcome=eyetracker_distance_from_center equation_id=4 (8.1s)
+[Step 5 checkpoint] 165/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 166/182] START outcome=eyetracker_distance_from_center equation_id=5
+[Step 5 job 166/182] DONE outcome=eyetracker_distance_from_center equation_id=5 (5.5s)
+[Step 5 checkpoint] 166/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 167/182] START outcome=eyetracker_distance_from_center equation_id=6
+[Step 5 job 167/182] DONE outcome=eyetracker_distance_from_center equation_id=6 (5.6s)
+[Step 5 checkpoint] 167/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 168/182] START outcome=eyetracker_distance_from_center equation_id=7
+[Step 5 job 168/182] DONE outcome=eyetracker_distance_from_center equation_id=7 (4.6s)
+[Step 5 checkpoint] 168/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 169/182] START outcome=eyetracker_gaze_centrality equation_id=1
+[Step 5 job 169/182] DONE outcome=eyetracker_gaze_centrality equation_id=1 (5.1s)
+[Step 5 checkpoint] 169/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 170/182] START outcome=eyetracker_gaze_centrality equation_id=2
+[Step 5 job 170/182] DONE outcome=eyetracker_gaze_centrality equation_id=2 (4.6s)
+[Step 5 checkpoint] 170/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 171/182] START outcome=eyetracker_gaze_centrality equation_id=3
+[Step 5 job 171/182] DONE outcome=eyetracker_gaze_centrality equation_id=3 (3.8s)
+[Step 5 checkpoint] 171/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 172/182] START outcome=eyetracker_gaze_centrality equation_id=4
+[Step 5 job 172/182] DONE outcome=eyetracker_gaze_centrality equation_id=4 (4.1s)
+[Step 5 checkpoint] 172/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 173/182] START outcome=eyetracker_gaze_centrality equation_id=5
+[Step 5 job 173/182] DONE outcome=eyetracker_gaze_centrality equation_id=5 (4.5s)
+[Step 5 checkpoint] 173/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 174/182] START outcome=eyetracker_gaze_centrality equation_id=6
+[Step 5 job 174/182] DONE outcome=eyetracker_gaze_centrality equation_id=6 (4.7s)
+[Step 5 checkpoint] 174/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 175/182] START outcome=eyetracker_gaze_centrality equation_id=7
+[Step 5 job 175/182] DONE outcome=eyetracker_gaze_centrality equation_id=7 (4.5s)
+[Step 5 checkpoint] 175/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 176/182] START outcome=eyetracker_eyelid_aperture_avg equation_id=1
+[Step 5 job 176/182] DONE outcome=eyetracker_eyelid_aperture_avg equation_id=1 (4.2s)
+[Step 5 checkpoint] 176/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 177/182] START outcome=eyetracker_eyelid_aperture_avg equation_id=2
+[Step 5 job 177/182] DONE outcome=eyetracker_eyelid_aperture_avg equation_id=2 (4.1s)
+[Step 5 checkpoint] 177/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 178/182] START outcome=eyetracker_eyelid_aperture_avg equation_id=3
+[Step 5 job 178/182] DONE outcome=eyetracker_eyelid_aperture_avg equation_id=3 (3.5s)
+[Step 5 checkpoint] 178/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 179/182] START outcome=eyetracker_eyelid_aperture_avg equation_id=4
+[Step 5 job 179/182] DONE outcome=eyetracker_eyelid_aperture_avg equation_id=4 (4.2s)
+[Step 5 checkpoint] 179/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 180/182] START outcome=eyetracker_eyelid_aperture_avg equation_id=5
+[Step 5 job 180/182] DONE outcome=eyetracker_eyelid_aperture_avg equation_id=5 (4.4s)
+[Step 5 checkpoint] 180/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 181/182] START outcome=eyetracker_eyelid_aperture_avg equation_id=6
+[Step 5 job 181/182] DONE outcome=eyetracker_eyelid_aperture_avg equation_id=6 (4.2s)
+[Step 5 checkpoint] 181/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 job 182/182] START outcome=eyetracker_eyelid_aperture_avg equation_id=7
+[Step 5 job 182/182] DONE outcome=eyetracker_eyelid_aperture_avg equation_id=7 (4.2s)
+[Step 5 checkpoint] 182/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5 checkpoint] 182/182 jobs saved -> C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries/Analysis_combined_timeseries_fit_records.rds
+[Step 5] Bundle published to C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/Analysis_combined_timeseries. Total fitted models: 182, Succeeded: 182, Failed: 0
+[H4.1] Fixed-effect coefficient rows: 2158, p < 0.05: 275, q < 0.05: 151 (per-term BH; m = 26 per term)
+Step 4: 182 outcome-equation designs; full rank 182/182; VIF >= 10: 0; rows 1330-2073.
+ equation_id max_vif_equivalent min_rows max_rows
+           1           2.611214     1330     2060
+           2           1.940347     1330     2060
+           3           1.114182     1334     2073
+           4           1.512592     1330     2060
+           5           2.408698     1330     2060
+           6           2.609814     1330     2060
+           7           2.610118     1330     2060
+Verified stage counts: 231 -> 16 -> 16 . Fixed horizontal positions; zero connectors.
+Saved figure (1 page): C:\Users\sanga\AppData\Local\Temp\RtmpQD5UI6/Analysis_combined_timeseries_details/Analysis_combined_timeseries_Selection_Flow.pdf 

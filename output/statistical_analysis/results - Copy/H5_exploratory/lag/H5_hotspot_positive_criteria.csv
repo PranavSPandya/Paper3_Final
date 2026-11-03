@@ -1,4 +1,0 @@
-"criterion","passed","detail"
-"replication_5plus_participant_hotspot_2dates",FALSE,"n=0"
-"RH1_env_moderator_FDR_sig",TRUE,"n_FDR_sig=7"
-"RH1_env_moderator_raw_p_lt_alpha",TRUE,"n_raw_sig=15"

@@ -1,3 +1,0 @@
-Step 3: measurement categories.
-Step 4: retain 16 candidates; specify 6 equations (primary UTCI + PM2.5); check full-design rank and VIF; MRT x sound is Eq 2 only.
-Step 5: mixed-model fitting (all 6 equations); new equations require a new verified fit.

@@ -1,0 +1,10 @@
+"term","C..with.SUN..with.GVI.","D..no.SUN..with.GVI.","C...with.SUN..no.GVI.","D...no.SUN..no.GVI."
+"ucm_MRT_phase_z",49.11,23.35,38.53,22.61
+"ucm_SND_dBA_phase_z",6.92,6.8,5.42,5.34
+"ucm_SUN_Gh_phase_z",12.08,NA,9.13,NA
+"SVF_phase_z",5.15,3.79,3.95,3.43
+"atmo_pm2.5_avg_phase_z",2.31,2.29,2.21,2.21
+"lys_lux_avg_phase_z",1.77,1.61,1.73,1.61
+"lys_kelvin_avg_phase_z",1.74,1.69,1.62,1.61
+"gvi_50m_phase_z",118.23,89.54,NA,NA
+"PhaseID",9.07,8.5,5.42,5.05

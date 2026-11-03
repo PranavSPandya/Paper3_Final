@@ -1,0 +1,4 @@
+"sound_family","n_sound_columns","n_tests","n_fit","n_failed","n_p_lt_0.05","n_q_lt_0.05","env_covariates"
+"sound_level_reference",1,78,78,0,7,1,"ucm_UTCI;lys_lux_avg;SVF;ucm_WIND_AWS"
+"sound_category_proportion",8,624,624,0,42,10,"ucm_UTCI;lys_lux_avg;SVF;ucm_WIND_AWS"
+"sound_spectral_descriptor",15,1170,1170,0,126,33,"ucm_UTCI;lys_lux_avg;SVF;ucm_WIND_AWS"

@@ -1,8 +1,0 @@
-"metric","value"
-"hotspot_definition","corridor_buffer"
-"hotspot_inclusion_rule_active","buffer_min_participants"
-"min_participants_shared_place","9"
-"n_epochs_in_buffer","1992"
-"n_epochs_unassigned_buffer","120"
-"n_shared_hotspot_id","119"
-"n_shared_phase_seg_cells","119"

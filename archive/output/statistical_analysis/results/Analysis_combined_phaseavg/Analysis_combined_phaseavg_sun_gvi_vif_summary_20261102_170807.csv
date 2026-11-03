@@ -1,0 +1,5 @@
+"model","n_design_rows","max_vif_equivalent","worst_term"
+"C (with SUN, with GVI)",44,118.23,"gvi_50m_phase_z"
+"D (no SUN, with GVI)",44,89.54,"gvi_50m_phase_z"
+"C' (with SUN, no GVI)",44,38.53,"ucm_MRT_phase_z"
+"D' (no SUN, no GVI)",44,22.61,"ucm_MRT_phase_z"

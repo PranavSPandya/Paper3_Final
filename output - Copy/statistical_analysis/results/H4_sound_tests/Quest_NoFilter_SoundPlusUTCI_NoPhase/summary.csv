@@ -1,3 +1,0 @@
-"outcomes_set","filter","model","phase","fdr_family","K","term","planned_tests","tests_run","n_q_within_lt05","n_q_all_lt05","min_q_within","min_q_all","n_raw_p_lt05","df_min","df_max","n_models_min_df_lt4","n_failed","n_singular_re","rows_kept","cells_kept","participants_kept","n_cells_range","n_participants_range"
-"Quest","NoFilter","SoundPlusUTCI","NoPhase","core4",4,"sound",96,96,2,0,0.0028022610728282,0.0672542657478768,9,2.6271366853335,8.96953126066754,12,0,0,2112,44,11,"44-44","11-11"
-"Quest","NoFilter","SoundPlusUTCI","NoPhase","ext10",10,"sound",240,240,8,0,0.00350282634103525,0.084067832184846,29,2.6271366853335,8.96953126066754,30,0,0,2112,44,11,"44-44","11-11"
