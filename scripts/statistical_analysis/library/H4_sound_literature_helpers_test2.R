@@ -1,4 +1,6 @@
 # H4_sound_literature_helpers_test2.R - static function lists for H4_sound_literature_tests_test2.R
+# v2 (2026-11-03): Moshammer on consecutive 2-min sub-periods with preceding-period noise (all phases and
+# walks only); Kraus on consecutive 1-min intervals with lagged outcome and Leq lags 0-3 min.
 # Exact-method rewrite (2026-11-03). Each paper block is one list of static functions
 # (H4_MOSHAMMER, H4_JIN, H4_SONG, H4_RODRIGUES, H4_KRAUS); H4_UTIL and H4_REPORT are shared.
 # Every block fits the source paper's own model on raw outcomes unless the paper itself transformed
@@ -42,20 +44,33 @@ H4_MOSHAMMER <- list(
   outcomes = c(
     RR_distance_ms = 'derived_rr_ms', SDNN_ms = 'empatica_hrv_td_sdnn', RMSSD_ms = 'empatica_hrv_td_rmssd',
     VLF_power = 'empatica_hrv_fd_vlf', LF_power = 'empatica_hrv_fd_lf', HF_power = 'empatica_hrv_fd_hf'),
-  phases = c('WalkG', 'WalkU'),
+  # Paper periods of 15 min scaled to consecutive 2-min sub-periods (4 per 8-min phase, 12 rows of 10 s).
+  subperiod_seconds = 120,
+  phase_sets = list('all phases' = c('BikeG', 'BikeU', 'WalkG', 'WalkU'), 'walking phases (paper setting)' = c('WalkG', 'WalkU')),
   specs = list(
-    'Table A2 unadjusted (noise only)' = 'noise_leq_db',
-    'Methods: temperature as confounder' = c('noise_leq_db', 'air_temp_c')),
-  # One measurement period per walking bout: noise Leq (energy mean) and HRV over the same period.
+    'Table A2 unadjusted (noise only)' = 'noise_leq_prev_db',
+    'Methods: temperature as confounder' = c('noise_leq_prev_db', 'air_temp_c')),
+  # Outcome in sub-period k (k >= 2) regressed on the energy-mean Leq of sub-period k-1 (the preceding
+  # sub-period) and, in the adjusted model, the mean air temperature of sub-period k. A sub-period
+  # value needs >= 2/3 of its 10-s rows.
   period_frame = function(epochs) {
-    walk <- epochs[epochs$PhaseID %in% H4_MOSHAMMER$phases, , drop = FALSE]
-    walk$derived_rr_ms <- ifelse(is.finite(walk$empatica_heart_rate) & walk$empatica_heart_rate > 0, 60000 / walk$empatica_heart_rate, NA_real_)
-    do.call(rbind, lapply(H4_UTIL$bouts(walk), function(rows) {
-      out <- data.frame(ParticipantID = walk$ParticipantID[rows[1]], PhaseID = walk$PhaseID[rows[1]],
-        noise_leq_db = H4_UTIL$energy_mean_db(walk$ucm_SND_dBA[rows]),
-        air_temp_c = H4_UTIL$finite_mean(walk$ucm_AIR_temp[rows]), n_rows = length(rows))
-      for (column_name in unique(H4_MOSHAMMER$outcomes)) out[[column_name]] <- H4_UTIL$finite_mean(walk[[column_name]][rows])
-      out}))},
+    epochs$derived_rr_ms <- ifelse(is.finite(epochs$empatica_heart_rate) & epochs$empatica_heart_rate > 0, 60000 / epochs$empatica_heart_rate, NA_real_)
+    step <- H4_MOSHAMMER$subperiod_seconds
+    do.call(rbind, lapply(H4_UTIL$bouts(epochs), function(rows) {
+      b <- epochs[rows, ]
+      k <- floor(as.numeric(difftime(b$Datetime, min(b$Datetime), units = 'secs')) / step) + 1L
+      need <- (2 / 3) * (step / 10)
+      per <- do.call(rbind, lapply(sort(unique(k)), function(j) {
+        r <- k == j; dba <- b$ucm_SND_dBA[r]
+        out <- data.frame(ParticipantID = b$ParticipantID[1], PhaseID = b$PhaseID[1], subperiod = j,
+          noise_leq_db = if (sum(is.finite(dba)) >= need) H4_UTIL$energy_mean_db(dba) else NA_real_,
+          air_temp_c = H4_UTIL$finite_mean(b$ucm_AIR_temp[r]))
+        for (column_name in unique(H4_MOSHAMMER$outcomes)) {
+          v <- b[[column_name]][r]
+          out[[column_name]] <- if (sum(is.finite(v)) >= need) H4_UTIL$finite_mean(v) else NA_real_}
+        out}))
+      per$noise_leq_prev_db <- per$noise_leq_db[match(per$subperiod - 1L, per$subperiod)]
+      per[per$subperiod >= 2, ]}))},
   # Stata [XT] xtreg Methods and formulas, xtreg re (default sigma_u estimator):
   # sigma_e^2 = SSR_within / (N - n - K + 1); sigma_u^2 = max{0, SSR_b/(n - K) - sigma_e^2 / T_harmonic};
   # theta_i = 1 - sqrt(sigma_e^2 / (T_i sigma_u^2 + sigma_e^2)); OLS of y* on x* and (1 - theta_i);
@@ -88,13 +103,14 @@ H4_MOSHAMMER <- list(
   run = function(epochs) {
     frame <- H4_MOSHAMMER$period_frame(epochs)
     rows <- list()
-    for (outcome_label in names(H4_MOSHAMMER$outcomes)) for (spec_label in names(H4_MOSHAMMER$specs)) {
+    for (set_label in names(H4_MOSHAMMER$phase_sets)) for (outcome_label in names(H4_MOSHAMMER$outcomes)) for (spec_label in names(H4_MOSHAMMER$specs)) {
+      d <- frame[frame$PhaseID %in% H4_MOSHAMMER$phase_sets[[set_label]], ]
       column_name <- H4_MOSHAMMER$outcomes[[outcome_label]]; regressors <- H4_MOSHAMMER$specs[[spec_label]]
-      fit <- H4_MOSHAMMER$xtreg_re(frame[[column_name]], as.matrix(frame[regressors]), frame$ParticipantID)
-      noise_row <- if (is.null(fit)) NULL else fit[fit$term == 'noise_leq_db', ]
+      fit <- H4_MOSHAMMER$xtreg_re(d[[column_name]], as.matrix(d[regressors]), d$ParticipantID)
+      noise_row <- if (is.null(fit)) NULL else fit[fit$term == 'noise_leq_prev_db', ]
       rows[[length(rows) + 1L]] <- data.frame(
-        paper = 'Moshammer 2019', test = paste('random-effects GLS per dB,', spec_label), outcome = outcome_label,
-        source_column = column_name, term = 'noise Leq per 1 dB(A)',
+        paper = 'Moshammer 2019', test = paste0('random-effects GLS per dB, preceding 2-min Leq, ', set_label, ', ', spec_label), outcome = outcome_label,
+        source_column = column_name, term = 'noise Leq of the preceding 2-min sub-period per 1 dB(A)',
         estimate = if (is.null(fit)) NA else noise_row$beta, se = if (is.null(fit)) NA else noise_row$se,
         ci_low = if (is.null(fit)) NA else noise_row$ci_low, ci_high = if (is.null(fit)) NA else noise_row$ci_high,
         statistic = if (is.null(fit)) NA else noise_row$z, df = NA,
@@ -103,8 +119,8 @@ H4_MOSHAMMER <- list(
         statistic_test = 'Wald z-test (random-effects GLS, Stata xtreg re formulas)',
         paper_rule = 'p < 0.05 (Table A2 bold)', paper_rule_met = if (is.null(fit)) NA else noise_row$p < 0.05,
         transformation = 'raw (no transformation)', term_units = 'per 1 dB(A)',
-        model_id = paste(column_name, '~', paste(regressors, collapse = ' + '), '| xtreg re by ParticipantID'),
-        model_details = if (is.null(fit)) 'not estimable' else sprintf('sigma_u=%.6g; sigma_e=%.6g; theta=%.4f-%.4f',
+        model_id = paste(column_name, '[sub-period k] ~', paste(regressors, collapse = ' + '), '| xtreg re by ParticipantID'),
+        model_details = if (is.null(fit)) 'not estimable' else sprintf('2-min sub-periods 2-4 of each phase; sigma_u=%.6g; sigma_e=%.6g; theta=%.4f-%.4f; no autocorrelation term (as in the paper)',
           noise_row$sigma_u, noise_row$sigma_e, noise_row$theta_min, noise_row$theta_max))}
     list(results = do.call(rbind, rows), frame = frame)}
 )
@@ -289,32 +305,35 @@ H4_KRAUS <- list(
   outcomes = c(HR = 'empatica_heart_rate', SDNN = 'empatica_hrv_td_sdnn', LF_nu = 'empatica_hrv_fd_lfnu',
     HF_nu = 'empatica_hrv_fd_hfnu', LF_HF = 'empatica_hrv_fd_lf_hf_ratio'),
   trend_forms = c('linear', 'poly2', 'poly3', 'poly4', 'pspline'),
+  # Paper: 5-min intervals, lagged outcome, Leq lags 0-5, 5-10, 10-15 min. Scaled to the 8-min phase:
+  # consecutive 1-min intervals (6 rows of 10 s), lagged outcome = previous 1-min interval, Leq lags of
+  # 0, 1, 2 and 3 min (analogues of the 0-5, 5-10, 10-15 min lags). Intervals 4-8 of each phase carry
+  # all lags, so every lag model uses the same rows.
+  interval_seconds = 60,
+  lags = 0:3,
   trend_term = function(variable_name, form_name) switch(form_name, linear = variable_name,
     poly2 = sprintf('poly(%s, 2)', variable_name), poly3 = sprintf('poly(%s, 3)', variable_name),
     poly4 = sprintf('poly(%s, 4)', variable_name), pspline = sprintf("s(%s, bs = 'ps', k = 6)", variable_name)),
-  # One complete 5-min interval per bout: the last dataset HRV window lying fully inside the bout.
   interval_frame = function(epochs) {
+    step <- H4_KRAUS$interval_seconds; need <- (2 / 3) * (step / 10)
     do.call(rbind, lapply(H4_UTIL$bouts(epochs), function(rows) {
-      b <- epochs[rows, ]; bout_start <- min(b$Datetime); bout_end <- max(b$Datetime)
-      ok <- b$hrv_window_available & is.finite(b$hrv_seg_start) & is.finite(b$hrv_seg_end) &
-        b$hrv_seg_start >= bout_start & b$hrv_seg_end <= bout_end
-      out <- data.frame(ParticipantID = b$ParticipantID[1], PhaseID = b$PhaseID[1], window_start = NA_character_, window_end = NA_character_)
-      if (!any(ok)) return(out)
-      w <- which(ok)[which.max(as.numeric(b$hrv_seg_end[ok]))]
-      in_window <- b$Datetime >= b$hrv_seg_start[w] & b$Datetime < b$hrv_seg_end[w]
-      beats <- suppressWarnings(as.numeric(b$empatica_hrv_fd_5min_valid_rri_count[w]))
-      dba <- b$ucm_SND_dBA[in_window]
-      out$window_start <- format(b$hrv_seg_start[w]); out$window_end <- format(b$hrv_seg_end[w]); out$beats <- beats
-      out$Leq <- if (sum(is.finite(dba)) >= (2 / 3) * 30) H4_UTIL$energy_mean_db(dba) else NA_real_
-      out$HR <- if (is.finite(beats) && beats >= 200) H4_UTIL$finite_mean(b$empatica_heart_rate[in_window]) else NA_real_
-      out$SDNN <- if (is.finite(beats) && beats >= 200) H4_UTIL$finite_mean(b$empatica_hrv_td_sdnn[in_window]) else NA_real_
-      for (label in c('LF_nu', 'HF_nu', 'LF_HF')) out[[label]] <- if (is.finite(beats) && beats >= 300) b[[H4_KRAUS$outcomes[[label]]]][w] else NA_real_
-      mid <- b$hrv_seg_start[w] + as.numeric(difftime(b$hrv_seg_end[w], b$hrv_seg_start[w], units = 'secs')) / 2
-      out$daily_time_h <- as.numeric(format(mid, '%H')) + as.numeric(format(mid, '%M')) / 60 + as.numeric(format(mid, '%S')) / 3600
-      out$study_day <- as.numeric(as.Date(mid))
-      out$weekday <- weekdays(as.Date(mid))
-      out$activity_category <- ifelse(grepl('^Walk', b$PhaseID[1]), '3 very light to light exertion (slow walking)', '4 moderate exertion (biking)')
-      out}))},
+      b <- epochs[rows, ]
+      k <- floor(as.numeric(difftime(b$Datetime, min(b$Datetime), units = 'secs')) / step) + 1L
+      per <- do.call(rbind, lapply(sort(unique(k)), function(j) {
+        r <- k == j; dba <- b$ucm_SND_dBA[r]; mid <- b$Datetime[r][ceiling(sum(r) / 2)]
+        out <- data.frame(ParticipantID = b$ParticipantID[1], PhaseID = b$PhaseID[1], interval = j,
+          Leq = if (sum(is.finite(dba)) >= need) H4_UTIL$energy_mean_db(dba) else NA_real_)
+        for (label in names(H4_KRAUS$outcomes)) {
+          v <- b[[H4_KRAUS$outcomes[[label]]]][r]
+          out[[label]] <- if (sum(is.finite(v)) >= need) H4_UTIL$finite_mean(v) else NA_real_}
+        out$daily_time_h <- as.numeric(format(mid, '%H')) + as.numeric(format(mid, '%M')) / 60 + as.numeric(format(mid, '%S')) / 3600
+        out$study_day <- as.numeric(as.Date(mid)); out$weekday <- weekdays(as.Date(mid))
+        out}))
+      for (lag in 1:max(H4_KRAUS$lags)) per[[paste0('Leq_lag', lag)]] <- per$Leq[match(per$interval - lag, per$interval)]
+      per$Leq_lag0 <- per$Leq
+      for (label in names(H4_KRAUS$outcomes)) per[[paste0(label, '_prev')]] <- per[[label]][match(per$interval - 1L, per$interval)]
+      per$activity_category <- ifelse(grepl('^Walk', b$PhaseID[1]), '3 very light to light exertion (slow walking)', '4 moderate exertion (biking)')
+      per[per$interval > max(H4_KRAUS$lags), ]}))},
   fit = function(rhs_terms, d, lme_control, method) {
     model_formula <- as.formula(paste('Yk ~', paste(rhs_terms, collapse = ' + ')))
     cs <- corCompSymm(form = ~ 1 | ParticipantID)
@@ -327,55 +346,65 @@ H4_KRAUS <- list(
       if (inherits(m, 'error')) return(m)
       list(lme = m, aic = AIC(m))}},
   aic = function(fit) if (inherits(fit, 'error')) Inf else fit$aic,
+  log_or_raw = function(label, x) if (label == 'HR') x else ifelse(is.finite(x) & x > 0, log(x), NA),
   run = function(epochs, lme_control) {
     intervals <- H4_KRAUS$interval_frame(epochs)
     intervals$study_day <- intervals$study_day - min(intervals$study_day, na.rm = TRUE)
-    intervals$L_below65_per5 <- (pmin(intervals$Leq, 65) - 65) / 5
-    intervals$L_above65_per5 <- (pmax(intervals$Leq, 65) - 65) / 5
+    for (lag in H4_KRAUS$lags) {
+      leq <- intervals[[paste0('Leq_lag', lag)]]
+      intervals[[paste0('L', lag, '_below65_per5')]] <- (pmin(leq, 65) - 65) / 5
+      intervals[[paste0('L', lag, '_above65_per5')]] <- (pmax(leq, 65) - 65) / 5}
     intervals$activity_category <- factor(intervals$activity_category)
     intervals$weekday <- factor(intervals$weekday)
     intervals$HR_cov <- intervals$HR
+    all_lag_terms <- unlist(lapply(H4_KRAUS$lags, function(lag) paste0('L', lag, c('_below65_per5', '_above65_per5'))))
     rows <- list(); selection <- list()
     for (label in names(H4_KRAUS$outcomes)) {
       d <- intervals
-      d$Yk <- if (label == 'HR') d$HR else ifelse(is.finite(d[[label]]) & d[[label]] > 0, log(d[[label]]), NA)
-      forced <- c('L_below65_per5', 'L_above65_per5', 'activity_category', if (label != 'HR') 'HR_cov')
+      d$Yk <- H4_KRAUS$log_or_raw(label, d[[label]]); d$Y_prev <- H4_KRAUS$log_or_raw(label, d[[paste0(label, '_prev')]])
+      base_forced <- c('Y_prev', 'activity_category', if (label != 'HR') 'HR_cov')
       trends <- c(long_term = 'study_day', daily = 'daily_time_h')
-      d <- d[complete.cases(d[c('Yk', forced, trends, 'weekday')]), ]
-      forms <- setNames(rep('linear', length(trends)), trends)
+      d <- d[complete.cases(d[c('Yk', base_forced, all_lag_terms, trends, 'weekday')]), ]
       trend_terms <- function(f) unname(mapply(H4_KRAUS$trend_term, names(f), f))
+      # Trend forms and weekday chosen by AIC (ML) on the lag-0 model; the same confounder set is used for every lag.
+      forced0 <- c('L0_below65_per5', 'L0_above65_per5', base_forced)
+      forms <- setNames(rep('linear', length(trends)), trends)
       for (trend in trends) {
         aic_by_form <- sapply(H4_KRAUS$trend_forms, function(form_name) {
           trial <- forms; trial[trend] <- form_name
-          H4_KRAUS$aic(H4_KRAUS$fit(c(forced, trend_terms(trial)), d, lme_control, 'ML'))})
+          H4_KRAUS$aic(H4_KRAUS$fit(c(forced0, trend_terms(trial)), d, lme_control, 'ML'))})
         forms[trend] <- names(which.min(aic_by_form))}
-      base_aic <- H4_KRAUS$aic(H4_KRAUS$fit(c(forced, trend_terms(forms)), d, lme_control, 'ML'))
-      weekday_aic <- if (nlevels(droplevels(d$weekday)) > 1) H4_KRAUS$aic(H4_KRAUS$fit(c(forced, trend_terms(forms), 'weekday'), d, lme_control, 'ML')) else Inf
+      base_aic <- H4_KRAUS$aic(H4_KRAUS$fit(c(forced0, trend_terms(forms)), d, lme_control, 'ML'))
+      weekday_aic <- if (nlevels(droplevels(d$weekday)) > 1) H4_KRAUS$aic(H4_KRAUS$fit(c(forced0, trend_terms(forms), 'weekday'), d, lme_control, 'ML')) else Inf
       kept <- if (weekday_aic < base_aic) 'weekday' else character(0)
-      final_terms <- c(forced, trend_terms(forms), kept)
-      final <- H4_KRAUS$fit(final_terms, d, lme_control, 'REML')
-      selection[[label]] <- sprintf('trend forms: %s; AIC(ML) base=%.3f, +weekday=%s -> weekday %s; season: single season (August), not evaluable',
-        paste(names(forms), forms, sep = '=', collapse = ', '), base_aic, if (is.finite(weekday_aic)) sprintf('%.3f', weekday_aic) else 'not estimable (weekday aliased with participant/day trend)', if (length(kept)) 'kept' else 'not kept')
-      cs_rho <- if (inherits(final, 'error')) NA else as.numeric(coef(final$lme$modelStruct$corStruct, unconstrained = FALSE))
-      for (term_name in c('L_below65_per5', 'L_above65_per5')) {
-        r <- if (inherits(final, 'error')) data.frame(beta = NA, se = NA, df = NA, t = NA, p_t = NA) else {
-          tt <- summary(final$lme)$tTable; hit <- grep(paste0('^X?', term_name, '$'), rownames(tt), value = TRUE)[1]
-          data.frame(beta = tt[hit, 'Value'], se = tt[hit, 'Std.Error'], df = tt[hit, 'DF'], t = tt[hit, 't-value'], p_t = tt[hit, 'p-value'])}
-        pct <- if (label == 'HR') 100 * r$beta / mean(d$HR) else 100 * (exp(r$beta) - 1)
-        pct_low <- if (label == 'HR') 100 * (r$beta - qt(0.975, r$df) * r$se) / mean(d$HR) else 100 * (exp(r$beta - qt(0.975, r$df) * r$se) - 1)
-        pct_high <- if (label == 'HR') 100 * (r$beta + qt(0.975, r$df) * r$se) / mean(d$HR) else 100 * (exp(r$beta + qt(0.975, r$df) * r$se) - 1)
-        rows[[length(rows) + 1L]] <- data.frame(
-          paper = 'Kraus 2013', test = paste('additive mixed model, 5-dB increase in Leq', if (term_name == 'L_below65_per5') '< 65 dB(A)' else '>= 65 dB(A)'),
-          outcome = label, source_column = H4_KRAUS$outcomes[[label]], term = term_name,
-          estimate = pct, se = NA, ci_low = pct_low, ci_high = pct_high, statistic = r$t, df = r$df, p = r$p_t,
-          n_observations = nrow(d), n_participants = length(unique(d$ParticipantID)),
-          statistic_test = 't-test (mixed-model coefficient)',
-          paper_rule = '95% CI excludes 0 (p < 0.05)', paper_rule_met = if (is.finite(r$p_t)) r$p_t < 0.05 else NA,
-          transformation = if (label == 'HR') 'raw HR; estimate = 100*beta/mean(HR)' else 'natural log; estimate = 100*(exp(beta)-1)',
-          term_units = 'percent change per 5 dB(A)',
-          model_id = paste('Yk ~', paste(final_terms, collapse = ' + '), '| random ~1|ParticipantID, corCompSymm'),
-          model_details = sprintf('beta=%.6g; se(beta)=%.6g; %s; corCompSymm rho=%.4g%s', r$beta, r$se, selection[[label]], cs_rho,
-            if (inherits(final, 'error')) paste('; fit error:', conditionMessage(final)) else ''))}}
+      selection[[label]] <- sprintf('trend forms: %s; AIC(ML) base=%.3f, +weekday=%s -> weekday %s; season: single season (August), not evaluable; n=%d 1-min intervals',
+        paste(names(forms), forms, sep = '=', collapse = ', '), base_aic,
+        if (is.finite(weekday_aic)) sprintf('%.3f', weekday_aic) else 'not estimable (weekday aliased with participant/day trend)',
+        if (length(kept)) 'kept' else 'not kept', nrow(d))
+      for (lag in H4_KRAUS$lags) {
+        lag_terms <- paste0('L', lag, c('_below65_per5', '_above65_per5'))
+        final_terms <- c(lag_terms, base_forced, trend_terms(forms), kept)
+        final <- H4_KRAUS$fit(final_terms, d, lme_control, 'REML')
+        cs_rho <- if (inherits(final, 'error')) NA else as.numeric(coef(final$lme$modelStruct$corStruct, unconstrained = FALSE))
+        for (term_name in lag_terms) {
+          r <- if (inherits(final, 'error')) data.frame(beta = NA, se = NA, df = NA, t = NA, p_t = NA) else {
+            tt <- summary(final$lme)$tTable; hit <- grep(paste0('^X?', term_name, '$'), rownames(tt), value = TRUE)[1]
+            data.frame(beta = tt[hit, 'Value'], se = tt[hit, 'Std.Error'], df = tt[hit, 'DF'], t = tt[hit, 't-value'], p_t = tt[hit, 'p-value'])}
+          ci <- r$beta + c(-1, 1) * qt(0.975, r$df) * r$se
+          scale_pct <- function(x) if (label == 'HR') 100 * x / mean(d$HR) else 100 * (exp(x) - 1)
+          rows[[length(rows) + 1L]] <- data.frame(
+            paper = 'Kraus 2013',
+            test = sprintf('additive mixed model, 1-min intervals, Leq lag %d min, 5-dB increase %s', lag, if (grepl('below', term_name)) '< 65 dB(A)' else '>= 65 dB(A)'),
+            outcome = label, source_column = H4_KRAUS$outcomes[[label]], term = term_name,
+            estimate = scale_pct(r$beta), se = NA, ci_low = scale_pct(ci[1]), ci_high = scale_pct(ci[2]), statistic = r$t, df = r$df, p = r$p_t,
+            n_observations = nrow(d), n_participants = length(unique(d$ParticipantID)),
+            statistic_test = 't-test (mixed-model coefficient)',
+            paper_rule = '95% CI excludes 0 (p < 0.05)', paper_rule_met = if (is.finite(r$p_t)) r$p_t < 0.05 else NA,
+            transformation = if (label == 'HR') 'raw HR; estimate = 100*beta/mean(HR)' else 'natural log; estimate = 100*(exp(beta)-1)',
+            term_units = 'percent change per 5 dB(A)',
+            model_id = paste('Yk ~', paste(final_terms, collapse = ' + '), '| random ~1|ParticipantID, corCompSymm'),
+            model_details = sprintf('beta=%.6g; se(beta)=%.6g; %s; corCompSymm rho=%.4g%s', r$beta, r$se, selection[[label]], cs_rho,
+              if (inherits(final, 'error')) paste('; fit error:', conditionMessage(final)) else ''))}}}
     list(results = do.call(rbind, rows), intervals = intervals, selection = selection)}
 )
 
@@ -405,12 +434,12 @@ H4_REPORT <- list(
       'Each block fits the source paper\'s own model. Where the 8-min / 11-participant data cannot support a step, the closest literal step is used and the limitation is listed here. q_BH (Benjamini-Hochberg within paper x test) is an extra column; each paper\'s own decision rule is reported separately (inference_note).',
       '',
       '## Moshammer et al. 2019 (random-effects GLS, Stata xtreg re)',
-      '- Implemented: outcome ~ noise Leq per 1 dB(A) (Table A2, unadjusted) and outcome ~ noise + air temperature (Methods: temperature as confounder); Stata default Swamy-Arora variance components, GLS transform, conventional VCE, z tests. Raw outcomes, no activity term, no centring.',
-      '- Walking bouts only (WalkG, WalkU; 22 periods, 11 participants), because all source exposures were walks.',
-      '- "Preceding 15 min": the paper averages noise over each 15-min period and reads ECG over that same period (Figure 3 caption). Here one period = one 8-min walking bout (noise Leq and HRV over the same bout). Periods are not 15 min, and only one period per bout exists, so the paper\'s separate after-15/30/45/60-min models reduce to one model.',
-      '- Dust: personal PM2.5 exists (Atmotube), but Table A2 reports single-exposure models ("Unadjusted effect estimates"), so PM is not added to the noise model. PM-only models are air-pollution tests and are out of the H4 sound scope.',
-      '- Temperature: the paper used a stationary meteorological station; here the mobile air temperature (ucm_AIR_temp) bout mean.',
-      '- Outcomes available: RR distance (derived row-wise as 60000 / empatica_heart_rate, then bout mean), SDNN, RMSSD, VLF, LF and HF power. TINN and blood pressure are not in the dataset. HRV values are bout means of the dataset\'s 5-min-window estimates (frequency-domain values masked where the 5-min window is unavailable), not Kubios over the full period.',
+      '- Implemented: outcome in a sub-period ~ noise Leq (energy mean) of the PRECEDING sub-period per 1 dB(A) (Table A2, unadjusted) and + mean air temperature of the outcome sub-period (Methods: temperature as confounder); Stata default Swamy-Arora variance components, GLS transform, conventional VCE, z tests. Raw outcomes, no activity term, no centring.',
+      '- Window mapping: the paper\'s consecutive 15-min periods are scaled to consecutive 2-min sub-periods (12 rows of 10 s; 4 per 8-min phase). Sub-periods 2-4 are outcomes with sub-periods 1-3 as the preceding noise period (up to 132 observations). A sub-period value needs >= 2/3 valid 10-s rows. Fitted on all four phases (walk and bike) and, separately, on walking phases only (the paper\'s setting).',
+      '- The paper models no autocorrelation beyond the participant random effect; none is added here. Sub-periods within a phase are serially correlated, and the HRV values are means of 5-min-window estimates (the dataset\'s rolling windows), so consecutive 2-min sub-periods share data; standard errors are therefore optimistic.',
+      '- Dust: personal PM2.5 exists (Atmotube), but Table A2 reports single-exposure models, so PM is not added to the noise model.',
+      '- Temperature: the paper used a stationary meteorological station; here the mobile air temperature (ucm_AIR_temp).',
+      '- Outcomes: RR distance (derived row-wise as 60000 / empatica_heart_rate), SDNN, RMSSD, VLF, LF and HF power. TINN and blood pressure are not in the dataset.',
       '',
       '## Jin, Jin & Kang 2020 (two-way ANOVA)',
       '- Implemented: two-way ANOVA LAeq level x UTCI category with interaction, no participant block. The paper does not state its SS type; because several LAeq x UTCI cells are empty, Type III marginal hypotheses are not uniquely defined, so main effects are Type II (each adjusted for the other main effect) and the interaction is tested against the additive model (the same F under Type II and Type III).',
@@ -432,12 +461,15 @@ H4_REPORT <- list(
       '- Exposure source differs: their NOISE from the Lisbon Lden map along the route and Temp from the IPMA daily station; here personal dBA and mobile air temperature per trip.',
       '',
       '## Kraus et al. 2013 (additive mixed models)',
-      '- Implemented: outcomes HR, SDNN, LF (normalized units), HF (normalized units) and LF:HF; log except HR; piecewise Leq at 65 dB(A) per 5 dB; categorical physical activity (walk = 3 very light to light exertion, bike = 4 moderate exertion, the paper\'s own category examples); HR adjustment for HRV models; long-term and daily time trends forced in, each modelled as linear, polynomial 2-4 or penalized spline chosen by AIC; weekday tested by AIC; random participant intercept plus compound-symmetry correlation (nlme corCompSymm).',
-      '- One 5-min interval per bout: the last dataset 5-min HRV window lying fully inside the bout; HR and SDNN averaged over that window (>= 200 beats), frequency-domain values from that window (>= 300 beats), Leq from >= 2/3 valid 10-s values.',
-      '- Not supportable: lagged outcome and Leq lags 0-5, 5-10 and 10-15 min. An 8-min bout holds one complete 5-min interval; the preceding 3 min fall below the paper\'s 2/3 availability rule; adjacent bouts are 12-40 min apart and in another mode. Season is constant (August 2025). Weekday is constant within each participant (one session each).',
-      '- With one session per participant, compound symmetry within participant duplicates the random intercept (rho near 0); it is kept because the paper specifies both.',
-      '- AIC for penalized-spline candidates is taken from the mixed-model representation fitted by mgcv::gamm (its lme object, ML); polynomial and linear candidates from nlme::lme (ML).',
+      '- Implemented: outcomes HR, SDNN, LF (normalized units), HF (normalized units) and LF:HF; log except HR; lagged outcome (previous interval); piecewise Leq at 65 dB(A) per 5 dB; categorical physical activity (walk = 3 very light to light exertion, bike = 4 moderate exertion); HR adjustment for HRV models; long-term and daily time trends forced in, each linear, polynomial 2-4 or penalized spline by AIC; weekday tested by AIC; random participant intercept plus compound symmetry (nlme corCompSymm).',
+      '- Window mapping: the paper\'s 5-min intervals are scaled to consecutive 1-min intervals (6 rows of 10 s; 8 per phase, all 44 phases). Leq lags of 0, 1, 2 and 3 min are the analogues of the paper\'s 0-5, 5-10 and 10-15 min lags; each lag is a separate model. Intervals 4-8 of each phase are used so that all lag models share the same rows. Validity: >= 2/3 valid 10-s rows per interval (the paper\'s Leq rule; the 200/300-beat rule cannot be applied to 1-min means).',
+      '- Autocorrelation: as in the paper, handled by the lagged outcome plus participant random effect and compound symmetry. HRV values per minute are means of the dataset\'s 5-min rolling-window estimates, so they overlap adjacent minutes; a 1-min lag is partly contemporaneous for HRV.',
+      '- Trend forms and weekday are selected by AIC (ML) on the lag-0 model and reused for each lag. AIC for spline candidates comes from the mgcv::gamm mixed-model representation (lme object, ML).',
+      '- Season is constant (August 2025); weekday is constant within each participant (one session each).',
       '- Effect scale as the paper: percent change in the outcome mean per 5 dB(A) (HR: 100*beta/mean HR).',
       '- AIC selection per outcome:', paste0('  - ', names(kraus_selection), ': ', unlist(kraus_selection)),
-      sprintf('- Kraus intervals with a complete 5-min window: %d of 44 bouts.', sum(!is.na(kraus_intervals$window_start))))}
+      sprintf('- Kraus 1-min intervals built: %d (intervals 4-8 of %d phases).', nrow(kraus_intervals), length(unique(paste(kraus_intervals$ParticipantID, kraus_intervals$PhaseID)))),
+      '',
+      '## Data source',
+      '- All blocks use the 10-s time-series rows of output/merged_all_11participants_8min.csv (the same input as Analysis_combined_timeseries.R). Song 1-min means and Rodrigues trip MEAN/STD/MAX/MIN are computed from those 10-s rows; Jin uses all 44 phases.')}
 )

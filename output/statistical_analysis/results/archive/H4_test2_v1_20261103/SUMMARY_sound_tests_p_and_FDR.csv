@@ -1,0 +1,13 @@
+"paper","test","paper_decision_rule","n_tests","n_paper_rule_met","outcomes_paper_rule_met","n_significant_unadjusted","n_significant_adjusted","significant_adjusted_outcomes"
+"Moshammer 2019","random-effects GLS per dB, Table A2 unadjusted (noise only)","p < 0.05 (Table A2 bold)","6","0",,"0","0",
+"Moshammer 2019","random-effects GLS per dB, Methods: temperature as confounder","p < 0.05 (Table A2 bold)","6","1","VLF_power","1","0",
+"Jin 2020","two-way ANOVA, LAeq level","p < 0.05","2","0",,"0","0",
+"Jin 2020","two-way ANOVA, UTCI category","p < 0.05","2","0",,"0","0",
+"Jin 2020","two-way ANOVA, LAeq x UTCI","p < 0.05","2","0",,"0","0",
+"Song 2013/2014","one-sided paired t-test, park (WalkG) vs city (WalkU)","P < 0.05 (one sided)","3","0",,"0","0",
+"Rodrigues 2026","Noise block (7.Model_H2.py): NOISE_max","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","2","MAX_Values; MIN_Values","2","1","MIN_Values"
+"Rodrigues 2026","Noise block (7.Model_H2.py): NOISE_std","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","0",,"0","0",
+"Rodrigues 2026","Temperature block (7.Model_H2.py): Temp_max","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","4","STD_bpm; STD_Values; MAX_Values; MIN_Values","4","2","STD_Values; MAX_Values"
+"Rodrigues 2026","Temperature block (7.Model_H2.py): Temp_mean","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","3","STD_bpm; STD_Values; MAX_Values","3","3","STD_bpm; STD_Values; MAX_Values"
+"Kraus 2013","additive mixed model, 5-dB increase in Leq < 65 dB(A)","95% CI excludes 0 (p < 0.05)","5","0",,"0","0",
+"Kraus 2013","additive mixed model, 5-dB increase in Leq >= 65 dB(A)","95% CI excludes 0 (p < 0.05)","5","0",,"0","0",

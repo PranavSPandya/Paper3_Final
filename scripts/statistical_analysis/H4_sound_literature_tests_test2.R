@@ -4,8 +4,9 @@
 # paper's own model, outcomes, scales and decision rule; where the 8-min / 11-participant data cannot
 # support a step, the closest literal step is used and the limitation is written to METHODS_NOTES.md.
 # Sources library/H4_sound_literature_helpers_test2.R. Original script, helpers and outputs are untouched.
-# 1 Moshammer et al. (2019): random-effects GLS (Stata xtreg, re) per 1 dB(A) noise Leq, walking bouts,
-#    raw RR distance / SDNN / RMSSD / VLF / LF / HF; unadjusted (Table A2) and + air temperature (Methods).
+# 1 Moshammer et al. (2019): random-effects GLS (Stata xtreg, re) per 1 dB(A) Leq of the PRECEDING 2-min
+#    sub-period (15-min periods scaled), all phases and walks only, raw RR distance / SDNN / RMSSD / VLF / LF / HF;
+#    unadjusted (Table A2) and + air temperature (Methods).
 # 2 Jin, Jin & Kang (2020): two-way ANOVA, LAeq 55-60/60-65/65-70/70-75 dB(A) x summer UTCI stress
 #    category, thermal comfort and overall comfort votes, no participant block, cell counts reported.
 # 3 Song et al. (2013, 2014): one-sided paired t-test park (WalkG) vs city (WalkU) on heart rate, ln(HF),
@@ -13,9 +14,10 @@
 # 4 Rodrigues et al. (2026): 7.Model_H2.py, Noise [NOISE_max, NOISE_std] and Temperature [Temp_max,
 #    Temp_mean] blocks, fillna(0) + StandardScaler, MixedLM REML per raw trip-summary outcome
 #    (STD/MAX/MEAN/MIN), rule round(p,4) < 0.05 and |round(beta,4)| > 0.1.
-# 5 Kraus et al. (2013): additive mixed model on 5-min intervals, HR / SDNN / LFnu / HFnu / LF:HF (log
+# 5 Kraus et al. (2013): additive mixed model on 1-min intervals, HR / SDNN / LFnu / HFnu / LF:HF (log
 #    except HR), Leq piecewise at 65 dB(A) per 5 dB, categorical activity, HR adjustment for HRV, trends
-#    by AIC, weekday by AIC, random participant + compound symmetry. Lags not supportable (see notes).
+#    by AIC, weekday by AIC, random participant + compound symmetry, lagged outcome; consecutive 1-min
+#    intervals with Leq lags 0-3 min (scaled analogues of the paper's 5-min intervals and 0-15 min lags).
 # q_BH = Benjamini-Hochberg within paper x test across its outcomes: an extra column, not a paper rule.
 # Output: output/statistical_analysis/results/H4_sound_literature_tests_test2/ (stops if not empty):
 # H4_sound_literature_tests.csv, SUMMARY_sound_tests_p_and_FDR.csv, METHODS_NOTES.md, run_info.
@@ -65,7 +67,7 @@ song_block <- H4_SONG$run(epochs)
 # --- Rodrigues et al. (2026): 7.Model_H2.py Noise and Temperature blocks ---------------------------
 rodrigues_block <- H4_RODRIGUES$run(epochs, lme_optim_control)
 
-# --- Kraus et al. (2013): additive mixed models on 5-min intervals --------------------------------
+# --- Kraus et al. (2013): additive mixed models on 1-min intervals --------------------------------
 kraus_block <- H4_KRAUS$run(epochs, lme_optim_control)
 
 # --- Results catalog: paper rule + BH within paper x test ------------------------------------------
