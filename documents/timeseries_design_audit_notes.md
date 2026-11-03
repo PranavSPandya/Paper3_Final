@@ -5,15 +5,11 @@
 
 ---
 
-## 1. Grid–phase aliasing
+## 1. Grid–phase aliasing — not in the current formulas
 
-- `Paper3_corridor_grid.R` assigns corridor buffer labels that **include phase** (e.g. `BikeG_grid1`, `WalkU_grid2`).
-- Time-series combined-exposure formulas (legacy `H4_timeseries.R` / `Analysis_combined_timeseries.R` via `Analysis_combined_core.R`) can enter **both**:
-  - phase-specific corridor **`grid_f`** fixed effects, and  
-  - **`PhaseSumWalkG` / `PhaseSumWalkU` / `PhaseSumBikeG`** route indicators.
-- With one grid cell per phase segment, **phase is reconstructable from grid membership** → design matrix is **rank-deficient**; CR2 *p* / *q* on aliased terms are not interpretable.
-- **Not a fix:** silently dropping coefficients that fail to estimate. The estimand must change.
-- **Allowed direction for a future primary epoch model:** keep **phase contrasts** (or PhaseSum) **without** phase-specific grid fixed effects; fit **spatial structure** in a separate, identifiable model (e.g. grid within phase only, or random corridor effects—not grid + PhaseSum together).
+- Corridor labels such as `BikeG_grid1` exist for **H5** (`H5_corridor_grid_label_map.csv`). They are not a fixed effect in the active `Analysis_combined_timeseries.R` or `H1_H3_timeseries.R` equations. Those files were checked on 3 Nov 2026: no `grid_f` term.
+- An older audit that treated current 10 s models as rank-deficient because of `grid_f` + `PhaseSum` is **out of date**.
+- What the current 10 s H1/H3 export does show: in `H1_H3_Temporal_AR1_10s.csv`, **63 / 546** rows have `stability_flag=rho > 0.95`, and **nine** rows (three heart-rate phase coefficients, repeated) have standard errors above 1,000. Those rows should not be quoted. `success=TRUE` on an Analysis fit-status file does not clear that.
 
 ---
 

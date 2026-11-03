@@ -4,6 +4,26 @@ This document lives in `Paper3_Final/Brain`. Resolve its relative paths from thi
 
 **Canonical repository root (this laptop, after move from `D:\Pranav\docker\Paper3_Final`):** `C:\Users\sanga\Desktop\Pranav Paper3_Final`. Git work path and push workflow: `./PUSH_WORKFLOW.md` (branch `Final`). Treat repo-relative paths (`../output`, `../Experiment papers`, `../scripts`) from Brain as under that root. An older copy may still exist at `D:\Pranav\docker\Paper3_Final`; do not treat it as canonical unless the user explicitly says to work there.
 
+## Where edits are allowed
+
+Campaign dates for Paper 3 are **3 July to 27 August 2025**. Do not shorten this to August only.
+
+**`Brain`:** files that sit directly in `C:\Users\sanga\Desktop\Pranav Paper3_Final\Brain\` may be edited (this `GEMINI.md`, `Tasks.md`, `WORK_DIARY.md`, and other files in that folder itself). **Every subfolder of `Brain` is read-only.** Do not create, edit, move, or delete anything under `Brain\email`, `Brain\meeting transcript`, `Brain\skills`, `Brain\source_documents`, or any other nested folder. Those files can be wrong. Read them if needed, then ignore them as edit targets.
+
+**Do not treat `documents\pending_task.md` or meeting-note files as task lists to update** unless the user explicitly asks for that file.
+
+**These trees may be edited** when the user asks for work there:
+
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\documents`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\Experiment papers`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\Experiment papers_md`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\Figures`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\output`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\PowerBI`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\Presentation material`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\scripts`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\temp`
+
 ## Research skills — read before writing or revising the paper
 
 All research skills for this project are in `./skills`, full path `C:\Users\sanga\Desktop\Pranav Paper3_Final\Brain\skills`. Before drafting or editing `documents/Paper3_outline_ml.md` or any manuscript text, open and follow these files:

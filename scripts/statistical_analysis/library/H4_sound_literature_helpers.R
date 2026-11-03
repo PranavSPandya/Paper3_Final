@@ -429,7 +429,7 @@ H4_KRAUS <- list(
       weekday_aic <- if (nlevels(droplevels(d$weekday)) > 1) H4_KRAUS$aic(H4_KRAUS$fit(c(forced0, trend_terms(forms), 'weekday'), d, lme_control, 'ML')) else Inf
       kept <- if (weekday_aic < base_aic) 'weekday' else character(0)
       lag_note <- if (use_lagged_outcome) '' else '; lagged outcome omitted (no prior 5-min interval within 8-min bout)'
-      selection[[label]] <- sprintf('trend forms: %s; AIC(ML) base=%.3f, +weekday=%s -> weekday %s; season: single season (August), not evaluable; Leq lags 5-10 and 10-15 min not estimable in 8-min bout%s; n=%d 5-min intervals (interval 1 per phase)',
+      selection[[label]] <- sprintf('trend forms: %s; AIC(ML) base=%.3f, +weekday=%s -> weekday %s; season: one summer (3 July to 27 August 2025), not a multi-season contrast; Leq lags 5-10 and 10-15 min not estimable in 8-min bout%s; n=%d 5-min intervals (interval 1 per phase)',
         paste(names(forms), forms, sep = '=', collapse = ', '), base_aic,
         if (is.finite(weekday_aic)) sprintf('%.3f', weekday_aic) else 'not estimable (weekday aliased with participant/day trend)',
         if (length(kept)) 'kept' else 'not kept', lag_note, nrow(d))
@@ -510,7 +510,7 @@ H4_REPORT <- list(
       '',
       '## Jin, Jin & Kang 2020 (two-way ANOVA)',
       '- Implemented: two-way ANOVA LAeq level x UTCI category with interaction, no participant block. The paper does not state its SS type; because several LAeq x UTCI cells are empty, Type III marginal hypotheses are not uniquely defined, so main effects are Type II (each adjusted for the other main effect) and the interaction is tested against the additive model (the same F under Type II and Type III).',
-      '- Levels exactly as the paper: LAeq 55-60, 60-65, 65-70, 70-75 dB(A); UTCI summer stress categories 9-26, 26-32, 32-38, 38-46 C (single season: all sessions in August 2025, analysed as the paper\'s summer).',
+      '- Levels exactly as the paper: LAeq 55-60, 60-65, 65-70, 70-75 dB(A); UTCI summer stress categories 9-26, 26-32, 32-38, 38-46 C (one summer season, campaign 3 July to 27 August 2025, analysed with the paper\'s summer bins).',
       sprintf('- %d of 44 phase cells fall outside the paper\'s LAeq (55-75 dB(A)) or UTCI (9-46 C) ranges and are excluded, not reassigned.', out_of_range),
       '- Outcomes: TCV analogue = questionnaire_thermal_comfort_1_5 (5-point; paper 7-point); OCV analogue = questionnaire_current_comfort_1_7 (General Comfort, 7-point). TSV, subjective loudness and acoustic comfort were not collected. Paper unit = independent respondents; here 44 phase cells from 11 participants (repeated measures, not modelled, as instructed: no block).',
       '- Cell counts (phase cells with phase LAeq and UTCI inside the ranges):', count_lines,
@@ -532,7 +532,7 @@ H4_REPORT <- list(
       '- Window mapping: the paper\'s non-overlapping 5-min intervals with Leq lags 0-5, 5-10 and 10-15 min. An 8-min bout yields one complete 5-min interval (0-5 min); only lag 0 is estimable. Lags 5-10 and 10-15 min require longer bouts and are not run. Lagged outcome (previous interval) is omitted because there is no prior 5-min interval within the bout. Validity: >= 2/3 valid 10-s rows per 5-min interval for Leq, HR and SDNN. LF_nu, HF_nu and LF_HF are themselves 5-min window estimates present only on rows whose window is complete (about half the rows of 0-5 min), so instead of the row rule they take the dataset\'s 5-min window that starts in the interval and ends within one 10-s epoch of its end (windows sit on a 10-s grid offset by one epoch), requiring >= 300 valid beats as in the paper.',
       '- Autocorrelation: compound symmetry and participant random effect as in the paper; without a lagged outcome term, autocorrelation structure differs from the published model.',
       '- Trend forms and weekday are selected by AIC (ML) on the lag-0 model and reused for each lag. AIC for spline candidates comes from the mgcv::gamm mixed-model representation (lme object, ML).',
-      '- Season is constant (August 2025); weekday is constant within each participant (one session each).',
+      '- Season is one summer (campaign 3 July to 27 August 2025), not a within-campaign season contrast; weekday is constant within each participant (one session each).',
       '- Effect scale as the paper: percent change in the outcome mean per 5 dB(A) (HR: 100*beta/mean HR).',
       '- AIC selection per outcome:', paste0('  - ', names(kraus_selection), ': ', unlist(kraus_selection)),
       sprintf('- Kraus 5-min intervals built: %d (interval 1 of %d phases).', nrow(kraus_intervals), length(unique(paste(kraus_intervals$ParticipantID, kraus_intervals$PhaseID)))),
