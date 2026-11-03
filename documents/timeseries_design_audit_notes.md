@@ -1,0 +1,45 @@
+# Time-series design audit (read-only; md-only record)
+
+**Date:** 2026-11-03  
+**Scope:** Epoch-level (10 s) LMMs for H1/H3, Analysis Eq1–7, and related exports—not phase-mean confirmatory H1–H3.
+
+---
+
+## 1. Grid–phase aliasing
+
+- `Paper3_corridor_grid.R` assigns corridor buffer labels that **include phase** (e.g. `BikeG_grid1`, `WalkU_grid2`).
+- Time-series combined-exposure formulas (legacy `H4_timeseries.R` / `Analysis_combined_timeseries.R` via `Analysis_combined_core.R`) can enter **both**:
+  - phase-specific corridor **`grid_f`** fixed effects, and  
+  - **`PhaseSumWalkG` / `PhaseSumWalkU` / `PhaseSumBikeG`** route indicators.
+- With one grid cell per phase segment, **phase is reconstructable from grid membership** → design matrix is **rank-deficient**; CR2 *p* / *q* on aliased terms are not interpretable.
+- **Not a fix:** silently dropping coefficients that fail to estimate. The estimand must change.
+- **Allowed direction for a future primary epoch model:** keep **phase contrasts** (or PhaseSum) **without** phase-specific grid fixed effects; fit **spatial structure** in a separate, identifiable model (e.g. grid within phase only, or random corridor effects—not grid + PhaseSum together).
+
+---
+
+## 2. Fit status and FDR (audit findings)
+
+| Pipeline | Audit finding | Manuscript rule |
+|----------|---------------|-----------------|
+| **H1/H3 time-series** (`H1_H3_timeseries.R`) | User audit: **26 / 26** jobs for the grid+PhaseSum-style epoch specification **failed**; no verified inference export for manuscript. | Do **not** report H1/H3 **10 s** FDR or contrasts as verified. Phase-mean `H1_H3_phaseavg.R` remains primary. |
+| **Analysis / archived H4 time-series** | Config **182** jobs (26 outcomes × 7 Eq); archived `H4_timeseries_fit_status.csv` has **156** rows; **26** jobs unaccounted vs config. User audit: **156** recorded **inference failures** (rank/low df)—`success=TRUE` in CSV does **not** mean publishable inference (many **min_cr2_df ≈ 1**). | Do **not** cite **151/2158** or historical **155** FDR as verified confirmatory evidence. |
+| **Analysis phaseavg** | **182 / 182** models may fit; many **low effective df** / coefficient flags in fit_status. | Exploratory descriptive only—not confirmatory. |
+| **H5 RH1** | **640** exploratory FDR contrasts; **0** same-person multi-day hotspot cells. | Keep exploratory; no multi-day moderation claims. |
+| **H6 composites** | Phase-mean **403 / 1378** exploratory; **H9** label retired. | Cite **H6** paths only; invalid any five-participant **H9** export for full cohort. |
+
+Quick file spot-check (2026-11-03): archived `output/.../before_rename_20261101/H4_timeseries/H4_timeseries_fit_status.csv` — 156 rows, all `success=TRUE`, widespread low `min_cr2_df`; aligns with “optimizer succeeded, inference not verified.”
+
+---
+
+## 3. FDR family consistency (H1/H3 phase-mean)
+
+- **Primary (locked, `H1_H3_core.R`):** BH **within each** green-route contrast over **26** primary physiological outcomes → **two families of n = 26** (H1.1 and H1.2 separate; same for H3).
+- Some code comments describe “26 × two contrasts” as **one** family—that is **inconsistent** with the locked rule; manuscript follows **separate** families.
+- **Sensitivity only:** one pooled BH family over all **52** contrast rows → H1 **11** FDR hits, H3 **9** (e.g. WalkG−WalkU fixation duration *q* ≈ **0.045** pooled vs **0.051** separate)—does **not** replace the primary rule.
+
+---
+
+## 4. Outline cross-references
+
+- Confirmatory core: phase-mean H1–H3, H2 (five FDR pairs—not “zero concordance”), literature H4 on `ucm_SND_dBA`.
+- **§3.9** and **§4.5** in `Paper3_outline_ml.md`: **Not publication-ready — do not send time-series claims.**

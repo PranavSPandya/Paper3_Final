@@ -96,11 +96,17 @@ for (sound in alternative_sounds) {
 FDR <- do.call(H4_REPORT$catalog, c(primary_results, alternative_results))
 significance_summary <- H4_REPORT$summary(FDR)
 
-# --- Write results, SUMMARY, METHODS_NOTES, run_manifest -------------------------------------------
-dir.create(outdir, recursive = TRUE, showWarnings = FALSE)
+# --- Write results, SUMMARY, METHODS_NOTES (no run_info) -----------------------------------------
+# The shared finalizer (Paper3_output_names.R) always writes <folder>_run_info.csv. To keep its schema
+# standardisation and BH validation without publishing a run_info, it runs on a private staging folder
+# with the same name; only the results CSV, SUMMARY and METHODS_NOTES are copied to outdir. Run
+# provenance (MD5s, versions) is written at the end of METHODS_NOTES instead.
+staging <- file.path(tempfile('h4_stage_'), basename(outdir))
+dir.create(staging, recursive = TRUE)
+file_md5 <- function(path) unname(tools::md5sum(path))
 .screening <- file.path(dirname(.entry), 'library', 'H4_papers_screened.md')
 .screening_lines <- if (file.exists(.screening)) c(readLines(.screening, warn = FALSE), '') else character(0)
-writeLines(c(.screening_lines, H4_REPORT$methods_notes(jin_block$counts, jin_block$cells, kraus_block$selection,
+notes <- c(.screening_lines, H4_REPORT$methods_notes(jin_block$counts, jin_block$cells, kraus_block$selection,
   kraus_block$intervals, moshammer_block$frame), c(
   '', '## Alternative sound variables (v3)',
   sprintf('- %d descriptors from test_H4_othersound.R (8 YAMNet sound-category proportions, 15 spectral descriptors), as named in the merged CSV, each substituted for ucm_SND_dBA in every sound-dependent test: %s.', length(alternative_sounds), paste(names(alternative_sounds), collapse = ', ')),
@@ -108,17 +114,22 @@ writeLines(c(.screening_lines, H4_REPORT$methods_notes(jin_block$counts, jin_blo
   '- test_H4_othersound.R only ran the Rodrigues trip block (no thresholds), so thresholds are substituted here: Kraus 65 dB(A) knot -> the descriptor\'s median 5-min value, slope per 5 dB -> per 1 SD of the 5-min values; Jin 5-dB LAeq levels -> quartiles (Q1-Q4) of the 44 phase means, UTCI categories unchanged; Moshammer slope per 1 unit of the descriptor (Hz or proportion 0-1).',
   '- Not repeated: Song (setting contrast, no sound term) and the Rodrigues Temperature block (no sound term).',
   '- FDR: Benjamini-Hochberg within paper x test x sound variable (the sound variable is part of the test label), i.e. the same outcome families as the dBA analysis, applied separately per descriptor. No correction across the 24 sound variables.',
-  '- Rows: sound_variable column (primary dBA = ucm_SND_dBA (primary)); the test label carries [descriptor] for the alternatives.',
-  '- Per-descriptor Kraus knot, scale and AIC trend choices:', alternative_notes)), file.path(outdir, 'METHODS_NOTES.md'))
-write_result_csv <- function(table, filename) write.csv(table, file.path(outdir, filename), row.names = FALSE, na = '')
+  '- Rows: the test label carries [descriptor] for the alternatives (dBA rows have no suffix); SUMMARY has a sound_variable column.',
+  '- Per-descriptor Kraus knot, scale and AIC trend choices:', alternative_notes),
+  H4_REPORT$not_estimable_notes(attr(FDR, 'not_estimable')))
+write_result_csv <- function(table, filename) write.csv(table, file.path(staging, filename), row.names = FALSE, na = '')
 write_result_csv(significance_summary, 'SUMMARY_sound_tests_p_and_FDR.csv')
 write_result_csv(FDR[setdiff(names(FDR), c('paper_rule_met', 'model_details'))], 'H4_sound_literature_tests.csv')
-file_md5 <- function(path) unname(tools::md5sum(path))
-write_result_csv(data.frame(
-  started = format(started), completed = format(Sys.time()), script = .entry, script_md5 = file_md5(.entry),
-  helpers = .h4_helpers, helpers_md5 = file_md5(.h4_helpers), common_md5 = file_md5(.common),
-  output_names_md5 = file_md5(.output_names), input = input, input_md5 = file_md5(input), R = R.version.string,
-  nlme = as.character(packageVersion('nlme')), mgcv = as.character(packageVersion('mgcv'))
-), 'run_manifest.csv')
-cat('SUCCESS', format(Sys.time()), outdir, '\n')
-if (sys.nframe() == 0L) paper3_standardize_result_directory(outdir)
+paper3_standardize_result_directory(staging)
+writeLines(c(notes, '', '## Run provenance (no run_info file is written)',
+  paste0('- started: ', format(started), '; completed: ', format(Sys.time())),
+  paste0('- script: ', .entry, ' (MD5 ', file_md5(.entry), ')'),
+  paste0('- helpers: ', .h4_helpers, ' (MD5 ', file_md5(.h4_helpers), ')'),
+  paste0('- Paper3_common.R MD5 ', file_md5(.common), '; Paper3_output_names.R MD5 ', file_md5(.output_names)),
+  paste0('- input: ', input, ' (MD5 ', file_md5(input), ')'),
+  paste0('- ', R.version.string, '; nlme ', packageVersion('nlme'), '; mgcv ', packageVersion('mgcv'))),
+  file.path(staging, 'METHODS_NOTES.md'))
+dir.create(outdir, recursive = TRUE, showWarnings = FALSE)
+publish <- setdiff(list.files(staging), paste0(basename(staging), '_run_info.csv'))
+stopifnot(all(file.copy(file.path(staging, publish), outdir, overwrite = FALSE)))
+cat('SUCCESS', format(Sys.time()), outdir, paste(publish, collapse = ', '), '\n')

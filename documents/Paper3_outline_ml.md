@@ -2,7 +2,7 @@
 
 ### Abstract
 
-Urban active travel exposes people simultaneously to thermal, acoustic, visual and physical demands, yet these exposures are rarely studied together under naturalistic conditions. This repeated-measures field study examined psychophysiological comfort across cycling and walking phases in impervious urban and green environments in Brussels. Eleven participants completed route phases while wearable physiological, mobile eye-tracking and environmental data were synchronized to 10-second epochs. Linear mixed models tested environment and mode, literature-based tests examined whether noise amplifies thermal stress, and an additive mixed model estimated all exposures together, with repeated measures accounted for and Benjamini-Hochberg correction applied within hypothesis families. Green phases were associated with **lower square-root-transformed tonic electrodermal activity**, lower skin temperature and larger pupil diameter. Walking versus cycling was associated with **tonic electrodermal activity, skin temperature, fixation rate** and gaze velocity. No heat-by-noise interaction survived false-discovery-rate correction in any literature-based test. **Phase-level physiological-perceptual correlations did not survive false-discovery-rate correction**. These findings indicate distinct physiological and visual-attention signatures across mobility contexts, while the small sample, model diagnostics and observational field exposures limit causal and population-level claims.
+Urban active travel exposes people simultaneously to thermal, acoustic, visual and physical demands, yet these exposures are rarely studied together under naturalistic conditions. This repeated-measures field study examined psychophysiological comfort across cycling and walking phases in impervious urban and green environments in Brussels. Eleven participants completed route phases while wearable physiological, mobile eye-tracking and environmental data were synchronized to 10-second epochs. Linear mixed models tested environment and mode, literature-based tests examined whether noise amplifies thermal stress, and an additive mixed model estimated all exposures together, with repeated measures accounted for and Benjamini-Hochberg correction applied within hypothesis families. Green phases were associated with **lower skin temperature** and **larger pupil diameter** (pupil is illumination-sensitive). Walking versus cycling differed mainly in **ocular kinematics** (blink, fixation, gaze velocity) and **skin temperature** in the locked phase-mean export. No heat-by-noise interaction survived false-discovery-rate correction in any literature-based H4 test on calibrated **ucm_SND_dBA**. **Five of 110** fitted questionnaire–physiology pairs reached q_FDR < 0.05 in H2 (`H2_Concordance.csv`; prespecified grid 18×26 = 468; BH within fitted pairs only); broad psychophysiological concordance was not supported. These findings indicate distinct physiological and visual-attention signatures across mobility contexts, while the small sample, model diagnostics and observational field exposures limit causal and population-level claims.
 
 Keywords: active mobility; green infrastructure; thermal comfort; wearable sensing; mobile eye tracking; linear mixed models
 
@@ -46,15 +46,10 @@ Urban-comfort and mobile-exposure papers typically combine design, measurements 
 
 ### 2.1 Study design
 
-A repeated-measures field campaign was conducted in Brussels, Belgium, from **3 July to 27 August 2025**. Each participant completed four core outdoor mobility phases—cycling and walking in impervious urban corridors and in green-park corridors—plus a seated tram phase (descriptive only). Phase labels were BikeU, WalkU, WalkG, **WalkG** and Tram; tram was excluded from the primary 2 × 2 environment-by-mode contrasts.
+A repeated-measures field campaign was conducted in Brussels, Belgium, from **3 July to 27 August 2025**. Each participant completed four core outdoor mobility phases—cycling and walking in impervious urban corridors and in green-park corridors—plus a seated tram phase (descriptive only). Phase labels were BikeU, WalkU, WalkG, BikeG and Tram; tram was excluded from the primary 2 × 2 environment-by-mode contrasts.
 
 Participants followed **counterbalanced** routes with questionnaires before and after each block; wearables and the trailing-researcher uCM backpack were checked at breaks. All streams were time-aligned to **UTC**. The design targets within-person comparisons of environment and mode under naturalistic active mobility; route location, workload, illumination and co-exposures co-vary with phase, so inferential models estimate associations, not single-stressor causation.
 
-**Figure: Experiment timeline**
-
-**Figure: Experiment trajectory**
-
-**Figure: Sensors used in the experiment**
 
 #### 2.1.1 Participants
 
@@ -66,7 +61,7 @@ Archived mixed models that enter those Fit/Not Fit and Active/Inactive labels as
 
 ### 2.2 Data preparation
 
-Micrometeorology and context (uCM, 10 s): air temperature, humidity, mean radiant temperature, global horizontal irradiance, wind, A-weighted sound (dBA), GPS, UTCI and PET. Air quality and light: PM (Atmotube means), lux and colour temperature (LYS means). Scene openness (CamUp / Mapillary pipelines): Holmer annular sky view factor (SVF) for inferential models; tree view factor (TVF) and building view factor (BVF) computed alongside SVF but not co-entered with SVF or GVI in the combined-exposure model (Gong et al., 2018). Greenery: eye-level GVI (`gvi_50m`). Physiology (Empatica): EDA tonic/phasic, heart rate, HRV, wrist temperature. Vision (eye tracker): pupil, blink, fixation and gaze kinematics; proprietary `eyetracker_stress_composite` retained in the merge for exploration only (§9). Perception: end-of-phase comfort and environmental-comfort items, STAI-6 item scores, PRS-11 subscale means (18 questionnaire columns in H2/H1–H3 exports).
+Micrometeorology and context (uCM, 10 s): air temperature, humidity, mean radiant temperature, global horizontal irradiance, wind, A-weighted sound (dBA), GPS, UTCI and PET. Air quality and light: PM (Atmotube means), lux and colour temperature (LYS means). Scene openness (CamUp / Mapillary pipelines): Holmer annular sky view factor (SVF) for inferential models; tree view factor (TVF) and building view factor (BVF) computed alongside SVF but not co-entered with SVF or GVI in the combined-exposure model (Gong et al., 2018). Greenery: eye-level GVI (`gvi_50m`). Physiology (Empatica): EDA tonic/phasic, heart rate, HRV, wrist temperature. Vision (eye tracker): pupil, blink, fixation and gaze kinematics; proprietary `eyetracker_stress_composite` retained in the merge for exploration only (Appendix B). Perception: end-of-phase comfort and environmental-comfort items, STAI-6 item scores, PRS-11 subscale means (18 questionnaire columns in H2/H1–H3 exports).
 
 Streams were synchronized, path-matched and quality-checked, aggregated to 10-second epochs, then—for the phase-mean analyses (H1–H3, H6 and the phase-mean combined-exposure model)—collapsed to participant × phase means on matched **eight-minute segments** (44 cells). Clearness index (k_t) was computed for solar QC; measured irradiance (`ucm_SUN_Gh`) entered models, not derived k_t. Transformations followed the locked normalization CSV.
 
@@ -80,34 +75,35 @@ Primary inference used REML linear mixed models (Pinheiro & Bates, 2000) on part
 
 1. **H1**:
    - Citation: Pinheiro & Bates (2000); Cnaan et al. (1997); Enders & Tofighi (2007); Lenth (2023); Benjamini & Hochberg (1995); Rodrigues et al. (2026); Korkmaz et al. (2025).
-   - Model: Phase-mean REML LMM: `Y ~ PhaseID + (1 | ParticipantID)`; emmeans contrasts; BH FDR within 26 outcomes × contrast family. Sensitivity: within-person z-scored phase means; optional 10 s / 60 s AR(1) (`H1_H3_timeseries.R`).
+   - Model: Phase-mean REML LMM: `Y ~ PhaseID + (1 | ParticipantID)`; emmeans contrasts; BH FDR within **each** contrast over **26** physiological outcomes (H1.1 and H1.2 are **separate** families, n = 26 each—not one pooled family of 52). Questionnaire contrasts use **separate** BH families (18 items × contrast). Sensitivity: within-person z-scored (WPZ) repeats the same family structure. **Not publication-ready:** optional 10 s / 60 s AR(1) (`H1_H3_timeseries.R`)—grid–phase aliasing and fit audit; do **not** report epoch-level H1 FDR or contrasts as verified (§3.9; `documents/timeseries_design_audit_notes.md`).
    - Description & sub-parts: **H1.1** BikeG − BikeU (green vs impervious, cycling). **H1.2** WalkG − WalkU (green vs impervious, walking). Primary grain: participant × phase means on matched 8 min segments (44 cells); 26 physiological and ocular outcomes. Script: `H1_H3_phaseavg.R`; exports `H1_H3_Contrasts.csv`, `H1_H3_Temporal_AR1.csv`.
 2. **H2**:
    - Citation: Bakdash & Marusich (2017); Benjamini & Hochberg (1995).
-   - Model: rmcorr; one BH family over **468** prespecified pairs (18 end-of-phase questionnaire items × 26 phase-mean physiological outcomes; no scale roll-ups).
+   - Model: rmcorr; prespecified grid **18 × 26 = 468** pairs; one BH family over **fitted** pairs only (110 in current export when bout/participant rules pass; `H2_Concordance.csv`).
    - Description & sub-parts: Phase-mean concordance between comfort, environmental comfort, STAI-6 items, PRS-11 subscales and the same 26 outcomes used in H1. Fitted jointly with H1 in `H1_H3_phaseavg.R`; export `H2_Concordance.csv`.
 3. **H3**:
    - Citation: Pinheiro & Bates (2000); Cnaan et al. (1997); Enders & Tofighi (2007); Lenth (2023); Benjamini & Hochberg (1995).
-   - Model: Same phase-mean LMM shell as H1; emmeans; BH FDR within 26 outcomes × contrast family.
+   - Model: Same phase-mean LMM shell as H1; emmeans; BH FDR within **each** mode contrast over **26** physiological outcomes (H3.1 and H3.2 separate families, n = 26 each); questionnaire and WPZ families as for H1.
    - Description & sub-parts: **H3.1** WalkU − BikeU (mode contrast, impervious urban). **H3.2** WalkG − BikeG (mode contrast, green). **Descriptive (not confirmatory):** difference-of-differences (BikeG − BikeU) − (WalkG − WalkU). Exports: `H1_H3_Contrasts.csv` (Hypothesis = H3); sensitivities as H1.
 4. **H4**:
-   - Citation: Moshammer et al. (2019); Song et al. (2013, 2014); Jin, Jin and Kang (2020); Rodrigues et al. (2026); Benjamini & Hochberg (1995); Mansi et al. (2022); Chinazzo et al. (2019).
-   - Model: Literature-adapted tests from the four included sources on field data; screening list below with [Included] / [Excluded] per paper. Script: `H4_sound_literature_test.R`. BH FDR within each included paper’s own test × outcome family (not one family across papers).
-   - Description & sub-parts: Four papers included. Thirty-five excluded because outdoor, sound, thermal, or the outcome is missing.
+   - Citation: Moshammer et al. (2019); Song et al. (2013, 2014); Jin, Jin and Kang (2020); Rodrigues et al. (2026); Kraus et al. (2013); Benjamini & Hochberg (1995); Mansi et al. (2022); Chinazzo et al. (2019).
+   - Model: Five locked literature families on field data (screening list below); script `H4_sound_literature_test.R`. BH FDR within each included paper’s own test × outcome family (not one family across papers).
+   - Description & sub-parts: Moshammer, Song, Jin, Rodrigues, and Kraus slope adaptation; manuscript heat×noise claims use primary **`ucm_SND_dBA`** only (Kraus has no thermal term).
+   - **Not confirmatory H4:** Superseded Eq1–7 sensitivity pipelines (`Analysis_combined_timeseries.R`, `Analysis_combined_phaseavg.R`; archive names `H4_timeseries.R`, `H4_phaseavg.R`) differ by grain in predictors and VIF—exploratory **Analysis** only (§2.3 item 7), not literature-test H4.
 5. **H5**:
    - Citation: Nikolopoulou et al. (2001); Fahy et al. (2025); Korkmaz et al. (2025); Gong et al. (2018); Pinheiro & Bates (2000); Benjamini & Hochberg (1995).
-   - Model: Exploratory REML LMMs; separate FDR families from H1–H4. Hotspot design: fixed-route buffer cells (walk 11 m, bike 35 m; §8.0). Script: `H5_hotspot_weather.R`.
-   - Description & sub-parts: **H5.1 (hotspot thermal):** 10 s epochs → participant × hotspot × day medians; `median_center_Y ~ env_ucm_UTCI_c + hotspot_f + (1 | ParticipantID)` per PhaseID × outcome. **H5.2 (view context):** same grain; centred outcome ~ UTCI + log10(lux + 1) + SVF, TVF, BVF or Gong dominance class; random intercept + AR(1) along route position.
+   - Model: Exploratory REML LMMs; separate FDR families from H1–H4. Hotspot design: fixed-route buffer cells (walk 11 m, bike 35 m; Appendix A). Script: `H5_hotspot_weather.R`.
+   - Description & sub-parts: **H5.1 — implemented RH1 (hotspot thermal):** 10 s epochs → fixed-route buffer cells (walk 11 m, bike 35 m; Appendix A) → participant × hotspot × day medians; `median_center_Y ~ env_ucm_UTCI_c + hotspot_f + (1 | ParticipantID)` per PhaseID × outcome (`H5_hotspot_weather.R`). **RH2–RH4** (weather moderation, random slopes) are design notes only—not in locked exports. **H5.2 (view context):** same grain; centred outcome ~ UTCI + log10(lux + 1) + SVF, TVF, BVF **or Gong dominance class as a morphology predictor** (not hotspot identity); random intercept + AR(1) along route position.
 6. **H6**:
    - Citation: Mansi et al. (2022); Chinazzo et al. (2019); Pinheiro & Bates (2000); Benjamini & Hochberg (1995).
    - Model: Prespecified exploratory coupling LMMs (`library/H6_coupling_core.R`); separate BH families **H6_A_env_physio** and **H6_B_psych_physio_given_env**. Not in H1–H4 or combined-exposure model.
-   - Description & sub-parts: **H6-A:** Three env→physio models per outcome (9 tests): `out_{physio} ~ idx_{index} + PhaseID + (1 | ParticipantID)`, one index at a time. Indices are stress-oriented within-person *z* (WPZ): **thermal load** (`idx_thermal_load` ← `ucm_UTCI`); **acoustic load** (`idx_acoustic_load` ← `ucm_SND_dBA`); **restorative stress** (`idx_restorative_stress` ← equal-weight WPZ of inverted sky view, tree view, and 50 m GVI: `SVF`, `TVF`, `gvi_50m`). Outcomes: CSV-transformed tonic EDA and RMSSD plus equal-weight transparent ocular index (fixation rate, fixation duration, pupil diameter, blink duration). **H6-B:** Nine psych→physio models (env-adjusted): `out_{physio} ~ psy_{scale} + idx_thermal_load + idx_acoustic_load + PhaseID + (1 | ParticipantID)`, where `psy_{scale}` is WPZ of **PRS-11 fascination** (`questionnaire_prs11_fascination_mean_1_5`), **STAI tense** (`questionnaire_stai_tense_1_5`), or **acoustic comfort** (`questionnaire_acoustic_comfort_1_5`). **Grain:** phase means — `H6_stress_composite_phaseavg.R` (44 cells); 10 s — `H6_stress_composite_timeseries.R` (+ AR(1)).
+   - Description & sub-parts: **H6-A:** Three env→physio models per outcome (9 tests): `out_{physio} ~ idx_{index} + PhaseID + (1 | ParticipantID)`, one index at a time. Indices are stress-oriented within-person *z* (WPZ): **thermal load** (`idx_thermal_load` ← `ucm_UTCI`); **acoustic load** (`idx_acoustic_load` ← `ucm_SND_dBA`); **restorative stress** (`idx_restorative_stress` ← equal-weight WPZ of inverted sky view, tree view, and 50 m GVI: `SVF`, `TVF`, `gvi_50m`). Outcomes: CSV-transformed tonic EDA and RMSSD plus equal-weight transparent ocular index (fixation rate, fixation duration, pupil diameter, blink duration). **H6-B:** Nine psych→physio models (env-adjusted): `out_{physio} ~ psy_{scale} + idx_thermal_load + idx_acoustic_load + PhaseID + (1 | ParticipantID)`, where `psy_{scale}` is WPZ of **PRS-11 fascination** (`questionnaire_prs11_fascination_mean_1_5`), **STAI tense** (`questionnaire_stai_tense_1_5`), or **acoustic comfort** (`questionnaire_acoustic_comfort_1_5`). **Grain:** phase means — `H6_stress_composite_phaseavg.R` (44 cells; **403 / 1378** exploratory FDR pairs—confirmatory manuscript cites this path only); 10 s — `H6_stress_composite_timeseries.R` (+ AR(1), exploratory; same epoch identifiability caveats as §3.9). Retired **H9** label: any five-participant or case-study **H9** export is **invalid** for full-cohort claims—use **`H6_stress_composite/`** on **n = 11** only (Appendix B).
 7. **Analysis** (combined exposure model):
    - Citation: Mansi et al. (2022); Chinazzo et al. (2019); Rodrigues et al. (2026); Hamra & Buckley (2018); Marquardt (1970); James et al. (2013); Fox & Monette (1992); Pinheiro & Bates (2000); Benjamini & Hochberg (1995).
    - Model: Additive REML LMMs (main effects only); **not a hypothesis test**. Collinearity: VIF = 1/(1 − R²); Fox–Monette block VIF for PhaseSum route block. Screen max VIF < 10 on heart-rate complete cases per fitted grain (`Analysis_combined_gvif_summary_both_grains.csv`); drop predictors only where that grain fails screening.
-   - Description & sub-parts: **Analysis — timeseries (10 s):** `Analysis_combined_timeseries.R`; one additive LMM per outcome × **Eq1–7**; BH *q* per fixed term within equation × 26 outcomes; includes `ucm_SUN_Gh` and `gvi_50m` where listed; Eq3 primary at this grain (phase Eq3 excluded at max VIF 22.48). **Analysis — phaseavg (phase means):** `Analysis_combined_phaseavg.R`; same Eq1–7 structure on participant × phase means; omits SUN and GVI on all equations; Eq2 phase spec: `ucm_AIR_T_mid`, `ucm_AIR_RH`, `ucm_WIND_AWS` + **SVF** + PM2.5/lux/kelvin + PhaseSum (**no SND**; max VIF 9.29 vs 10 s Eq2 1.61). Shared non-thermal core: sound (10 s only), SVF, PM, lux/kelvin, PhaseSumWalkG/U/BikeG; thermal term rotates (UTCI, air T/RH/wind, MRT, HUMIDEX, PET; Eq6–7 swap PM fraction).
+   - Description & sub-parts: **Analysis — timeseries (10 s):** `Analysis_combined_timeseries.R`; one additive LMM per outcome × **Eq1–7**; BH *q* per fixed term within equation × 26 outcomes (separate families per contrast × outcome set in code—**not verified** for manuscript; §3.9); includes `ucm_SUN_Gh` and `gvi_50m` where listed; Eq3 primary at this grain (phase Eq3 excluded at max VIF 22.48). **Design audit:** corridor **`grid_f`** (phase-embedded labels from `Paper3_corridor_grid.R`) plus **`PhaseSumWalkG/U/BikeG`** is **rank-deficient**—do not treat exported 10 s *q* counts as confirmatory. **Analysis — phaseavg (phase means):** `Analysis_combined_phaseavg.R`; same Eq1–7 structure on participant × phase means (**182 / 182** fitted in audit; many low effective-df coefficient flags—**exploratory**, not confirmatory); omits SUN and GVI on all equations; Eq2 phase spec: `ucm_AIR_T_mid`, `ucm_AIR_RH`, `ucm_WIND_AWS` + **SVF** + PM2.5/lux/kelvin + PhaseSum (**no SND**; max VIF 9.29 vs 10 s Eq2 1.61). Shared non-thermal core: sound (10 s only), SVF, PM, lux/kelvin, PhaseSumWalkG/U/BikeG; thermal term rotates (UTCI, air T/RH/wind, MRT, HUMIDEX, PET; Eq6–7 swap PM fraction). Fixing aliasing requires a **new estimand** (e.g. phase contrasts without phase-specific grid FE, or spatial model without PhaseSum)—not dropping failed coefficients.
 
-**H4 papers screened.** One numbered entry per paper; under each citation, sub-bullets for Measured, Outdoor/Sound/Thermal/Outcome, and Reason, then [Included] or [Excluded] on the citation line. Four included, thirty-five excluded. A missing thermal term is enough to exclude, including Kraus et al. (2013).
+**H4 papers screened.** One numbered entry per paper; under each citation, sub-bullets for Measured, Outdoor/Sound/Thermal/Outcome, and Reason, then [Included] or [Excluded] on the citation line. **Five** papers drive locked H4 tests (items 1–5 below); **34** additional papers excluded.
 
 1. Moshammer et al. (2019) [Included]:
    - Measured: ambulatory ECG on a road and in a park, personal Leq, air temperature, MET, and blood pressure.
@@ -129,10 +125,10 @@ Primary inference used REML linear mixed models (Pinheiro & Bates, 2000) on part
    - Outdoor: present. Sound: present. Thermal: present. Outcome: present (physiology and gaze).
    - Reason: Missing: none. Outdoor, trip noise, heat, and physiology/gaze are all present.
 
-5. Kraus et al. (2013) [Excluded]:
+5. Kraus et al. (2013) [Included — slope adaptation without thermal covariate]:
    - Measured: personal Leq and HRV, with a slope change at 65 dBA. Their model uses activity and time of day.
-   - Outdoor: present (daily life). Sound: present (Leq). Thermal: missing. Outcome: present (heart rate and HRV).
-   - Reason: Missing: thermal term. Air temperature was offered to the model and was not kept for any of the five outcomes, so the slope has no thermal term.
+   - Outdoor: present (daily life). Sound: present (Leq). Thermal: missing in source model. Outcome: present (heart rate and HRV).
+   - Reason: Thermal term absent in source; Leq piecewise slopes at 65 dBA are still adapted on field Leq (five HRV outcomes)—not pooled with the four heat-and-noise families above.
 
 6. Mahecha Nuñez et al. (2018) [Excluded]:
    - Measured: a smartband stress event from skin conductance and skin temperature on cycle paths.
@@ -304,51 +300,25 @@ Primary inference used REML linear mixed models (Pinheiro & Bates, 2000) on part
     - Outdoor: present (roadside). Sound: present as an emission. Thermal: present. Outcome: missing (no person).
     - Reason: Missing: a person-level outcome. The paper models emitted traffic noise.
 
-Benjamini–Hochberg FDR (α = 0.05) was applied within prespecified families for H1–H6 (including separate H6-A and H6-B families and H4 families per literature source). The **Analysis** block fits additive combined-exposure LMMs (Eq1–7) with VIF screening; it is descriptive association modelling, not a confirmatory hypothesis test.
-
-#### 2.3.1 H1 — environment within mode
-
-H1 (green vs impervious urban): Primary inference used participant × phase means on matched ~8 min segments (44 cells) rather than treating every 10 s epoch as an independent unit, so tests target phase-level within-person contrasts and limit pseudo-replication as above. Each of 26 physiological and ocular outcomes was fit with a REML LMM `Y ~ PhaseID + (1 | ParticipantID)` and a random intercept by participant. Planned contrasts BikeG − BikeU and WalkG − WalkU used estimated marginal means and prespecified pairwise comparisons; same Benjamini–Hochberg FDR within each contrast family across outcomes. Sensitivity: within-person z-scored phase means; optional 10 s / 60 s AR(1) time series to acknowledge serial correlation along the route without changing the primary phase-mean estimand (`H1_H3_phaseavg.R`, `H1_H3_timeseries.R`; `H1_H3_Contrasts.csv`, `H1_H3_Temporal_AR1.csv`).
-
-#### 2.3.2 H2 — psychophysiological concordance
-
-H2: Repeated-measures correlation (rmcorr) estimates the common within-person slope between questionnaire and physiological phase means, using each participant’s repeated phase cells as the pairing structure—Pearson *r* on the same 44 rows would treat phases as independent and misstate the effective sample for concordance. rmcorr was applied between 18 end-of-phase questionnaire items (comfort, environmental comfort, STAI-6 items, PRS-11 subscales—no scale roll-ups) and the same 26 physiological phase means as H1 (**468 prespecified pairs**; one BH family over all pairs). Fitted with H1 in `H1_H3_phaseavg.R`; export `H2_Concordance.csv`.
-
-#### 2.3.3 H3 — mode within environment
-
-H3 (walking vs cycling): Mode contrasts reuse the H1 phase-mean REML shell and participant random intercept so walking and cycling are compared at the same participant × phase grain as environment tests. Confirmatory contrasts WalkU − BikeU and WalkG − BikeG used emmeans with the same FDR family rule within the H3 contrast family over 26 outcomes. The difference-of-differences (BikeG − BikeU) − (WalkG − WalkU) is descriptive only—mode × environment interaction was not a prespecified confirmatory contrast (`H1_H3_Contrasts.csv`, Hypothesis = H3).
-
-#### 2.3.4 H4 — sound and heat-plus-sound tests from previous literature
-
-H4 applies published outdoor heat–noise test designs to field data (`H4_sound_literature_tests.R`; 11 participants, four core phases, 26 outcomes). The search was limited to outdoor and naturalistic studies. Climate-chamber experiments were excluded. These are adaptations, not replications: heat and noise are observed (UTCI > 26 °C; dBA ≥ 65), not assigned. Rodrigues et al. (2026) and Kraus et al. (2013) are the ambulatory anchors (Mansi et al., 2022). Because thermal, acoustic and visual context co-vary outdoors, a significant adapted test is an association under naturalistic confounding, not a causal noise effect (Chinazzo et al., 2019).
+**H4 tests applied** (`H4_sound_literature_test.R`; adaptations, not replications; heat/noise observed not assigned):
 
 | Source | Test as applied here | Sound term(s) tested |
 | --- | --- | --- |
-| Moshammer et al. (2019) | (a) Phase-level LMM per 8 cardiovascular outcomes: outcome ~ phase Leq per 5 dB + MET (+ air temperature) + (1 \| Participant), slope reported with and without the temperature term (source robustness claim); (b) road-vs-park analogue: paired WalkG − WalkU phase-mean contrast, unadjusted and adjusted for Δ air temperature (ANCOVA intercept); source BP endpoint unavailable | Per-5 dB Leq slope (2 specifications × 8 outcomes); WalkG − WalkU contrast (2 × 8) |
-| Song et al. (2013, 2014) | Family-size sensitivity of the same WalkG − WalkU contrast, restricted to SDNN and RMSSD (the two outcomes with raw p < 0.05 on the temperature-adjusted contrast in the eight-outcome screen). Two-sided tests. Source used a one-sided unadjusted paired t and did not measure sound level. Not an independent confirmatory test | Unadjusted paired difference; temperature-adjusted intercept (2 outcomes each) |
-| Jin, Jin & Kang (2020) | **Perception family** (separate from the 26 physio outcomes): end-of-phase thermal comfort and environmental comfort ~ dBA bin (≥ 65) × UTCI bin (> 26), participant-blocked ANOVA on 44 phase cells; bins observational, quiet × hot cell n = 3 | dBA main effect; dBA × UTCI interaction |
-| Rodrigues et al. (2026) | Trip-level mixed model with noise block (max and SD of dBA, z-scored; published script), extended with mean for our personal-exposure stream; REML, Wald tests; retention rule p < 0.05 and \|β\| > 0.1 plus our BH-FDR (source Lden map vs logged uCM dBA) | Each noise term |
-| Kraus et al. (2013) | Phase-level summaries with Leq piecewise slopes at 65 dBA per 5 dB above/below; MET and HR adjustment; trend form by AIC; outcomes HR, SDNN, LFnu, HFnu, LF/HF | Per 5 dB above and below 65 dBA |
+| Moshammer et al. (2019) | (a) Phase-level LMM per 8 cardiovascular outcomes: outcome ~ phase Leq per 5 dB + MET (+ air temperature) + (1 \| Participant); (b) road-vs-park analogue: paired WalkG − WalkU phase-mean contrast, unadjusted and adjusted for Δ air temperature | Per-5 dB Leq slope (2 specifications × 8 outcomes); WalkG − WalkU contrast (2 × 8) |
+| Song et al. (2013, 2014) | Two-outcome sensitivity (SDNN, RMSSD) on the temperature-adjusted WalkG − WalkU contrast | Unadjusted paired difference; temperature-adjusted intercept |
+| Jin, Jin & Kang (2020) | End-of-phase thermal and environmental comfort ~ dBA bin (≥ 65) × UTCI bin (> 26), participant-blocked ANOVA on 44 cells | dBA main effect; dBA × UTCI interaction |
+| Rodrigues et al. (2026) | Trip-level mixed model with noise block (max, mean, SD of dBA, z-scored); REML Wald tests + BH-FDR | Each noise term |
+| Kraus et al. (2013) | Phase-level Leq piecewise slopes at 65 dBA per 5 dB; MET and HR adjustment; outcomes HR, SDNN, LFnu, HFnu, LF/HF | Per 5 dB above and below 65 dBA |
 
-FDR: same Benjamini–Hochberg rule within each source’s prespecified sound-term family (8 cardiovascular outcomes for Moshammer; 2 outcomes for the Song sensitivity; 2 perception items for Jin; 26 outcomes for Rodrigues; 5 for Kraus), controlling false discoveries across parallel outcome tests without assuming independence across families. Raw *p* and *q* reported. Which papers were included or excluded, and why, is the numbered screening list under the H1–H6 framework above. Adaptation notes: `METHODS_NOTES.md`. Kraus DOI **10.1289/ehp.1205606**.
+FDR: Benjamini–Hochberg within each source’s prespecified sound-term family (not pooled across sources). Raw *p* and *q* in `output/statistical_analysis/results/H4_sound_literature_test/`.
 
-#### 2.3.5 H5 — shared places and local thermal stress (exploratory)
+Benjamini–Hochberg FDR (α = 0.05) was applied within prespecified families for H1–H6 (including separate H6-A and H6-B families and H4 families per literature source). The **Analysis** block fits additive combined-exposure LMMs (Eq1–7) with VIF screening; BH *q* per **fixed term within equation** across **26** outcomes (10 s and phase-mean grains separately)—descriptive association modelling, **not** a confirmatory hypothesis test; **10 s Analysis FDR row counts are not verified inference** (§3.9).
 
-H5 is exploratory: it asks whether within-person responses differ at GPS-linked corridor cells that repeat on the fixed protocol, extending phase-mean outdoor exposure profiling (Nikolopoulou et al., 2001; Fahy et al., 2025) to local thermal pockets during the same memorized routes (Korkmaz et al., 2025).
+**H1/H3 primary physiological FDR (locked, `H1_H3_core.R`):** BH within **each** contrast over **26** outcomes—**two families of n = 26** (H1.1 vs H1.2; H3.1 vs H3.2), **not** one pooled family of 52. Inline comments that treat “26 × two contrasts” as a single family are inconsistent with this rule. **Sensitivity only:** pooling all 52 contrast rows into one BH family yields **11** H1 and **9** H3 FDR hits (e.g. WalkG − WalkU fixation duration *q* ≈ **0.045** pooled vs **0.051** under separate families)—does **not** replace the primary rule.
 
-**H5.1 (hotspot thermal):** 10 s epochs assigned to fixed-route buffer cells (walk 11 m, bike 35 m; §8), collapsed to participant × hotspot × day medians; per phase × outcome, `median_center_Y ~ env_ucm_UTCI_c + hotspot_f + (1 | ParticipantID)`.
+**FDR reporting in §3:** Main text uses **summary counts** plus **small example tables** for confirmatory H1–H3 (primary physiological families) and the **full five-row** H2 table. H4, H5, H6 composites, and Analysis coefficient screens are **too numerous** for main-text tables (full *q* in CSV exports / supplement)—**excluding verified epoch-level H1/H3 and Analysis 10 s FDR** (§3.9).
 
-**H5.2 (view context):** same grain; centred outcome ~ UTCI + log10(lux + 1) + one site SVF, TVF or BVF (metric definitions: Gong et al., 2018) or Gong dominance class; random intercept by participant, AR(1) along route position. FDR families separate from H1–H4. `H5_hotspot_weather.R`; design detail §7–§8.
-
-#### 2.3.6 H6 — composite load concordance (exploratory)
-
-Prespecified exploratory coupling only (§9—not confirmatory H1–H4 or the combined-exposure block). Phase means or capped 10 s epochs (`H6_stress_composite_phaseavg.R` / `...timeseries.R`). **Environmental load indices** (each = stress-oriented WPZ, then used as a single predictor): thermal load from UTCI; acoustic load from backpack A-weighted level (`ucm_SND_dBA`); restorative stress as the equal-weight mean of WPZ for inverted SVF, inverted TVF, and inverted 50 m GVI (`gvi_50m`). **Physiological outcomes:** CSV-transformed tonic EDA and RMSSD plus a transparent four-feature ocular stress index (not the proprietary two-feature score). Composite loads summarize co-occurring microclimate and morphology pressures in line with field comfort work that treats physiology as a multi-exposure readout rather than a single-index response (Mansi et al., 2022; Chinazzo et al., 2019). **H6-A:** `out_{physio} ~ idx_{thermal|acoustic|restorative} + PhaseID + (1 | ParticipantID)` — three indices × three outcomes (9 tests, family `H6_A_env_physio`). **H6-B:** `out_{physio} ~ psy_{scale} + idx_thermal_load + idx_acoustic_load + PhaseID + (1 | ParticipantID)` for WPZ of PRS-11 fascination, STAI tense, and acoustic comfort (three scales × three outcomes; 9 tests, family `H6_B_psych_physio_given_env`); time-series shells add AR(1).
-
-#### 2.3.7 Combined-exposure model (not a hypothesis test)
-
-One **additive** LMM per outcome × **Eq1–7** (main effects only) to describe adjusted associations when thermal, acoustic, radiative, pollution and route-context terms co-occur during active mobility—motivated by the evidence gap that naturalistic studies rarely partition joint exposures (Mansi et al., 2022; Chinazzo et al., 2019) and by ambulatory models that enter environmental blocks together (Rodrigues et al., 2026). This block is descriptive association modelling, not a confirmatory hypothesis test; correlated exposures are reported transparently rather than interpreted as independent causal drivers (Hamra & Buckley, 2018). Primary grain: `Analysis_combined_timeseries.R` (10 s); sensitivity: `Analysis_combined_phaseavg.R` (phase means). BH **q** per fixed term within equation × 26 outcomes, as above.
-
-**VIF screening** (heart-rate complete cases; `Analysis_combined_gvif_summary_both_grains.csv`): variance inflation factor VIF = 1/(1 − R²) for each fixed effect regressed on the others (Marquardt, 1970; James et al., 2013); the multi-column **PhaseSum** route block uses the Fox–Monette block VIF (Fox & Monette, 1992). We follow James et al. (2013) and screen on **maximum term (or block) VIF < 10** in the design actually fitted. We report that maximum at each grain in the table below; predictors were dropped **only where screening failed for that grain’s fitted model**, not globally across grains.
+#### 2.3.1 Combined-exposure equations and VIF (heart-rate complete cases; `Analysis_combined_gvif_summary_both_grains.csv`): variance inflation factor VIF = 1/(1 − R²) for each fixed effect regressed on the others (Marquardt, 1970; James et al., 2013); the multi-column **PhaseSum** route block uses the Fox–Monette block VIF (Fox & Monette, 1992). We follow James et al. (2013) and screen on **maximum term (or block) VIF < 10** in the design actually fitted. We report that maximum at each grain in the table below; predictors were dropped **only where screening failed for that grain’s fitted model**, not globally across grains.
 
 Collinearity is defined relative to **which design matrix is fit** (James et al., 2013): aggregating to phase means changes *n* and the covariance among exposures and route contrasts, so **10 s and phase-mean specifications may legitimately differ in which covariates enter** (e.g. phase Eq3 excluded at max VIF 22.48 while the 10 s Eq3 remains estimable), with VIF computed only on the terms present in each fitted equation—not as proof that one grain is “more correct.”
 
@@ -373,7 +343,6 @@ Collinearity is defined relative to **which design matrix is fit** (James et al.
 | 7   | `ucm_UTCI + ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm10_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG`                                   | 1.18           | 8.32         |
 
 † **Terms** list 10 s predictors except **Eq2** (row = phase-mean Eq2 without SND/SUN/GVI; 10 s Eq2 adds them). VIF columns: max term or PhaseSum-block VIF on heart-rate complete cases for the design in that row.
-
 ## 3 Results
 
 ### 3.1 Microclimate of the green and impervious routes
@@ -382,13 +351,15 @@ Participant-weighted phase profiles on the merged 10-second dataset: UTCI/PET, s
 
 ### 3.2 H1 — environment within mode
 
-Phase-mean models (§2.3.1); estimates from `H1_H3_Contrasts.csv` (Hypothesis H1). Green phases were associated with **lower square-root-transformed tonic EDA** and skin temperature and with larger pupil diameter (pupil is illumination-sensitive).
+Phase-mean models (§2.3.1); estimates from `H1_H3_Contrasts.csv` (Hypothesis H1). Green phases were associated with **lower skin temperature** and with larger pupil diameter (pupil is illumination-sensitive).
 
-Table 3.2. H1 FDR-significant phase-mean contrasts (primary analysis units; `H1_H3_Contrasts.csv`, BH within 26 outcomes × contrast family).
+Table 3.2. H1 FDR-significant phase-mean contrasts (primary physiological panel; `H1_H3_Contrasts.csv`, BH within **each** contrast over 26 outcomes).
 
-| Tests (primary) | FDR q < 0.05 | Representative FDR hits (green − urban direction) |
+| Tests (primary physio) | FDR q < 0.05 | Representative FDR hits (green − urban direction) |
 | --- | --- | --- |
-| 52 (26 outcomes × BikeG−BikeU and WalkG−WalkU) | **11** | Lower skin temperature (both modes); larger pupil diameter (both); shorter blink duration (both); longer fixation duration (WalkG−WalkU); lower gaze velocity and dispersion (WalkG−WalkU); gaze-centre shift (distance from center, BikeG−BikeU); larger eyelid aperture (BikeG−BikeU). Tonic EDA contrasts did not survive FDR in this export. |
+| 52 rows (2 contrasts × 26 outcomes; **two** BH families of n = 26) | **11** | Lower skin temperature (both modes); larger pupil diameter (both); shorter blink duration (both); longer fixation duration (WalkG−WalkU); lower gaze velocity and dispersion (WalkG−WalkU); gaze-centre shift (distance from center, BikeG−BikeU); larger eyelid aperture (BikeG−BikeU). Square-root tonic EDA contrasts did not survive FDR in primary physio families. Pooled 52-test sensitivity: still **11** H1 hits (not the primary rule; §2.3). |
+
+*Sensitivity:* **33** q < 0.05 across **all** H1 rows in the export (primary + WPZ physio + questionnaire families)—report in supplement, not pooled with the primary physio count above.
 
 | Outcome | Contrast | β | q~FDR~ |
 | --- | --- | --- | --- |
@@ -398,4 +369,147 @@ Table 3.2. H1 FDR-significant phase-mean contrasts (primary analysis units; `H1_
 | eyetracker_pupil_diameter_avg | WalkG − WalkU | 0.95 | <0.001 |
 | eyetracker_blink_duration_s | BikeG − BikeU | −0.009 | <0.001 |
 | eyetracker_blink_duration_s | WalkG − WalkU | −0.013 | <0.001 |
+### 3.3 H2 — psychophysiological concordance
+
+Repeated-measures correlation (§2.3 item 2); export `H2_Concordance.csv` (**110** fitted pairs of prespecified 18×26 grid; one BH family over fitted rows). **Five** pairs reached q_FDR < 0.05—mainly PRS-11 total and pleasantness with ocular and skin outcomes—not broad concordance.
+
+| Tests | FDR q < 0.05 |
+| --- | --- |
+| 110 fitted (468 prespecified) | **5** |
+
+| Questionnaire | Physiological outcome | r~rmcorr~ | q~FDR~ |
+| --- | --- | --- | --- |
+| Pleasantness (1–5) | Blink duration | −0.66 | 0.002 |
+| PRS-11 total (1–5) | Skin temperature | −0.63 | 0.002 |
+| PRS-11 total (1–5) | Pupil diameter | 0.67 | 0.002 |
+| PRS-11 total (1–5) | Blink duration | −0.77 | <0.001 |
+| PRS-11 total (1–5) | Fixation duration | 0.56 | 0.029 |
+### 3.4 H3 — mode within environment
+
+Phase-mean contrasts (§2.3 item 3); `H1_H3_Contrasts.csv` (Hypothesis H3). Walking versus cycling showed **8** FDR-significant **primary physiological** contrasts—predominantly **ocular kinematics**, plus **skin temperature**; **tonic EDA** and **fixation rate** did not survive FDR in primary physio families. Questionnaire contrasts are separate BH families (supplement).
+
+| Tests (primary physio) | FDR q < 0.05 | Representative FDR hits (walk − bike) |
+| --- | --- | --- |
+| 52 rows (2 contrasts × 26 outcomes; two BH families of n = 26) | **8** | Pupil, blink duration, fixation duration, gaze velocity, dispersion, distance from center, gaze centrality, eyelid aperture; skin temperature (selected contrasts). |
+
+*Sensitivity:* **26** q < 0.05 across all H3 export rows (primary + WPZ + questionnaires)—supplement only.
+
+| Outcome | Contrast | β | q~FDR~ |
+| --- | --- | --- | --- |
+| eyetracker_gaze_velocity | WalkU − BikeU | 609.0 | <0.001 |
+| eyetracker_blink_duration_s | WalkU − BikeU | 0.015 | <0.001 |
+| eyetracker_blink_duration_s | WalkG − BikeG | 0.011 | <0.001 |
+| eyetracker_pupil_diameter_avg | WalkU − BikeU | −0.46 | 0.004 |
+| eyetracker_fixation_duration_s | WalkU − BikeU | −0.034 | <0.001 |
+### 3.5 H4 — sound and heat-plus-sound tests from previous literature
+
+**Primary H4 (locked):** `H4_sound_literature_test.R` → `output/statistical_analysis/results/H4_sound_literature_test/` only—not archived `H4_phaseavg` / `H4_timeseries` Eq1–7 exports.
+
+On primary **`ucm_SND_dBA`**, no Jin dBA × UTCI interaction survived FDR (0/2 perception items). Moshammer Leq slopes and Song walk sensitivity had **0** FDR hits. Rodrigues noise block: **1** FDR-adjusted hit (`NOISE_max` on `MIN_Values` under their retention rule). Kraus piecewise slopes: **0** FDR hits on five HRV outcomes. Supplementary sound-class substitutions in the same pipeline are exploratory and not interpreted as calibrated loudness.
+
+Full counts: `output/statistical_analysis/results/H4_sound_literature_test/SUMMARY_sound_tests_p_and_FDR.csv` (filter `sound_variable == ucm_SND_dBA (primary)` for manuscript claims).
+### 3.6 H5 — shared places and local thermal stress (exploratory)
+
+**Implemented RH1 only** (`H5_hotspot_weather.R`; `run_rh1_only = TRUE`): fixed-route **corridor-buffer** cells from local GPKG (walk **11 m**, bike **35 m**; Appendix A)—not 20 m GPS arc bins, k-means, or HDBSCAN IDs. Model `median_center_Y ~ env_ucm_UTCI_c + hotspot_f + (1|ParticipantID)` by PhaseID × outcome on participant × hotspot × day medians. In `H5_RH1_hotspot_FDR_all_tests.csv`, **640** contrasts have `FDR_significant = TRUE` (**981** raw p < 0.05; BH within outcome × phase)—exploratory family separate from H1–H4. **RH2–RH4** are not locked. **`H5_hotspot_cell_audit.csv`** reports **`n_participant_hotspot_with_2plus_dates = 0`**—no verified same-person multi-day hotspot revisit for moderation claims.
+
+**H5.2 view models:** dominance class and continuous SVF/TVF/BVF as predictors (`H5_view_model_coefficients.csv`)—distinct from hotspot bin identity.
+### 3.7 H6 — composite load concordance (exploratory)
+
+Prespecified coupling LMMs (§2.3 item 6) and stress-composite rmcorr (`H6_stress_composite/`). Pairwise composite concordance: **403** of **1,378** fitted pairs with q_FDR < 0.05 (one exploratory family). Detail consolidated in **Appendix B** (single composite setup); composites do not enter H1–H4 or the combined-exposure block.
+### 3.8 Combined-exposure model (not a hypothesis test)
+
+Additive Eq1–7 LMMs (`Analysis_combined_timeseries.R`, `Analysis_combined_phaseavg.R`—successors to archived `H4_timeseries.R` / `H4_phaseavg.R`, **not** confirmatory H4 sound tests); separate specs and VIF by grain (§2.3 item 7). **Exploratory only—do not treat as verified FDR evidence.** Existing CSV row summaries (10 s **`Analysis_combined_timeseries_hypothesis.csv`** **151 / 2158** with q < 0.05; phase-mean **`Analysis_combined_phaseavg_Heat_Noise_Exposures.csv`** **45 / 1820**) are **descriptive audit figures** only: 10 s models share **grid_f + PhaseSum** rank deficiency (§3.9); phase **182 / 182** fits can converge with many **low effective df** flags—neither grain is confirmatory. Do **not** cite archived **155** FDR totals or pre-rename `H4_timeseries_coefficients.csv` for manuscript claims. VIF screening in §2.3 (max term or PhaseSum block **< 10** on heart-rate complete cases). Phase Eq3 excluded at max VIF 22.48; 10 s Eq3 retained. Heat × dBA interactions were removed 1 Nov 2026 and reported once as a tested null in archived interaction exports—not in current additive specs.
+### 3.9–3.11 Supplementary and archived pipelines
+
+**Not publication-ready — do not send time-series claims.** Until epoch-level designs are **identifiable**, do **not** report verified **H1/H3** or **Analysis 10 s** FDR, contrast tables from `H1_H3_timeseries.R`, or combined-exposure time-series *q* counts as primary or supplementary confirmatory results. Phase-mean **H1–H3**, **H2** (five FDR pairs—not zero concordance), and literature **H4** on **`ucm_SND_dBA`** remain the confirmatory core. Details: `documents/timeseries_design_audit_notes.md`.
+
+Restoration/lag/sound-source scripts formerly grouped as H6 are **not** confirmatory hypotheses (outputs under `H5_exploratory/retired_H6_as_found/`). Archived sound-substitution pipelines (`scripts/_archive/superseded_sound_20261101/`) are record-only—report calibrated uCM dBA; optional 5 m/s wind screening; do not treat WAV/YAMNet descriptors as second loudness standards.
+
+**Archived pre-literature H4 Eq1–7:** `output/statistical_analysis/results/archive/before_rename_20261101/H4_timeseries/` and `H4_phaseavg/` (UTCI×dBA interaction era) are audit-only. User audit (2026-11-03): H1 time-series **26 / 26** rank-deficient grid jobs **failed**; archived `H4_timeseries_fit_status.csv` lists **156** rows vs **182** configured jobs (**26** unaccounted)—many low **min_cr2_df** despite `success=TRUE`; **155** historical FDR is **not verified**. Phaseavg **182 / 182** fitted—exploratory with low-df flags. Do **not** cite obsolete “155 FDR” or pre-rename coefficient FDR totals—manuscript H4 = `H4_sound_literature_test/`; multivariable co-exposure = **Analysis** block (§3.8), exploratory only.
+## 4 Discussion
+
+### 4.1 Green versus impervious routes
+
+Green phases showed **lower skin temperature**, together with larger pupil diameter. Their co-occurrence is a response profile, not proof of restoration. Effort, temperature, sensor contact and motion remain plausible alternative readings of autonomic signals (Boucsein et al., 2012). Pupil diameter cannot be read as comfort without ambient light (Mahanama et al., 2021).
+
+### 4.2 Walking versus cycling
+
+Walking versus cycling differed in **skin temperature**, **ocular kinematics**, and several **questionnaire** contrasts in the locked export—not a simple ranking of mode comfort. The two modes differ in speed, stabilisation and hazard monitoring, so gaze metrics are not interpreted as direct comfort scores (Rupi & Krizek, 2019). Lower skin temperature during cycling in green corridors may partly reflect convective airflow rather than preference alone.
+
+### 4.3 Physiology and perceived comfort
+
+H2: **five** of **110** fitted pairs reached q_FDR < 0.05—localized PRS-11/pleasantness–ocular associations, not global concordance. Discuss questionnaire timing, scale grain, and sympathetic signals versus a single comfort vote.
+
+### 4.4 Heat and noise together
+
+**No heat × noise amplification was found** on primary **`ucm_SND_dBA`**: Jin dBA × UTCI interactions were 0/2 after FDR; archived **`H4_phaseavg`** sensitivity interactions were 0/104 FDR-significant at phase means (superseded—not primary H4). Rodrigues trip noise block yielded **one** FDR-adjusted association under their retention rule—not evidence of heat amplifying noise. Moshammer, Song, and Kraus families had **0** FDR hits on calibrated loudness in the current export. Exposures were observed, not assigned, which limits power to detect an interaction.
+
+### 4.5 Limitations
+
+N = 11, one city and season. Route, mode and environment are confounded with location, order, illumination, workload and co-exposures. **Primary inference uses participant × phase means only.** Epoch-level AR(1) / 10 s models (`H1_H3_timeseries.R`, `Analysis_combined_timeseries.R`) are **not publication-ready**: corridor **grid_f** labels embed phase and are **aliased** with **PhaseSum** route indicators in current combined-exposure formulas—exported time-series FDR and fit-status “success” flags do **not** verify inference (§3.9). Wearable and eye-tracking artefacts remain. Multi-outcome testing is exploratory outside locked phase-mean H1–H3 families. Sound: uCM dBA is calibrated, but apparent wind (`ucm_WIND_AWS`) mixes ambient and movement-induced airflow; WAV/YAMNet features from the archived sound pipelines are not level-calibrated like dBA. Wind QC in those pipelines excludes high-AWS epochs only—it is not a validated decibel correction. No causal claims.
+
+## 5 Conclusion
+
+Urban active-mobility exposure produced distinct physiological and visual-attention profiles across environment and travel mode. Green phases differed from impervious urban phases in **skin temperature** and **pupil diameter**; walking differed from cycling mainly in **ocular kinematics** and **skin temperature** in confirmatory phase-mean models.
+
+The primary evidence supports context-dependent psychophysiological associations, not a universal ranking of green versus urban or walking versus cycling. **Broad physiological-perceptual concordance was not confirmed** (five of 110 fitted pairs q_FDR < 0.05), and no heat-noise amplification survived FDR correction in any literature-based test. Larger counterbalanced studies with explicit temporal correlation structures are needed.
+
+## Appendix A — H5 hotspots and exploratory epoch work (not confirmatory H1–H4)
+
+**Authoritative hotspot definition (implemented):** GPS-linked **fixed-route buffer cells** from corridor GPKG (`walk` **11 m**, `bike` **35 m** half-width; `H5_hotspot_weather.R`). Hotspot identity = protocol bin + CamUp morphology medians (SVF/TVF/BVF, derived slope)—**not** k-means/HDBSCAN cluster labels. **Gong dominance class** enters **H5.2** and sensitivity models as a **morphology predictor**, not as the hotspot ID.
+
+**Implemented RH1:** `median_center_Y ~ env_ucm_UTCI_c + hotspot_f + (1|ParticipantID)` on participant × hotspot × day medians, fit by PhaseID × outcome. **Proposed / paused:** RH2–RH4 weather moderation, random slopes, and epoch-level P0 dominance models (design tables in archive)—treat as future work unless `run_rh1_only` is lifted and cell audits support participant×hotspot×day replication.
+
+**Repeated exposure:** Counterbalanced fixed routes give within-person recurrence at the same bins; **do not over-claim** same participant × hotspot × multiple **calendar days**—`H5_hotspot_cell_audit.csv` reports **`n_participant_hotspot_with_2plus_dates = 0`** (see also `H5_hotspot_day.csv`). Day-level weather moderation (RH2–RH4) remains exploratory and is not locked while `run_rh1_only = TRUE`.
+
+**Limitations (H5 — single block):** n = 11; fixed protocol; questionnaires phase-level; UTCI co-exposure circularity if both geometry and uCM UTCI predict physiology; dominance rules adapted from Gong (2019) Beijing street grids—not validated for Brussels greenways; k-means/HDBSCAN in early design notes were **not** the locked hotspot pipeline.
+
+Literature pointers for repeated exposure: Rodrigues et al. (2026); Korkmaz et al. (2025); Fahy et al. (2025). Full design narrative archived in `scripts/_archive/before_rename_20261101/Paper3_outline_ml_before_H5fix_20261101.md` (former §7–§8).
+
+## Appendix B — H6 / stress composites (exploratory)
+
+Single setup: pairwise rmcorr via `library/H6_stress_composite_core.R` (exports label `H6_stress_composite.R`; no active top-level `H9_stress_composite.R` or `results/H9_stress_composite/` folder) on participant × phase means (44 cells; proprietary ocular composite N = 39 when eye coverage gaps). **55** stress-oriented composites → **1,378** fitted pairs, **403** q_FDR < 0.05 (one BH family; `H6_stress_composite/H6_pairwise_rmcorr.csv`, manifest in `H6_stress_composite_run_info.csv`). Archived **`H9_run_manifest.csv`** under `results/archive/before_rename_20261101/H9_stress_composite/` mirrors the same counts—cite **H6** paths only in the manuscript; do **not** headline composites as “H9”. Any **H9**-labeled export from a **five-participant** or case-study cohort is **invalid** for full-cohort (**n = 11**) claims. **H6-A/B** prespecified LMM coupling in §2.3 item 6 uses WPZ indices (thermal, acoustic, restorative load) and selected questionnaire scales—separate FDR families from composites.
+
+Proprietary `eyetracker_stress_composite` = equal-weight min–max fixation count + inverted fixation duration (exploration only). Transparent four-feature ocular index documented in `H6_composite_definitions.csv`. Environmental groups (thermal, acoustic, morphology, etc.) and full pairwise table: `H6_pairwise_rmcorr.csv`. Does not replace outcome-specific H1–H4 inference.
+
+## Appendix C — Legacy tables (illustrative only)
+
+Table C1. Selected H1/H3 rows plus legacy UTCI × dBA interaction coefficients from an **archived** combined model (superseded by H2 rmcorr and additive Eq1–7). Confirm all submission numbers against current CSV exports.
+
+Table C2. **Legacy Spearman table — superseded by `H2_Concordance.csv`.** Retained for audit trail only.
+
+## 6 References
+
+Boucsein, W., et al. (2012). Publication recommendations for electrodermal measurements. Psychophysiology, 49(8), 1017-1034. https://doi.org/10.1111/j.1469-8986.2012.01384.x
+
+Chinazzo, G., Wienold, J., & Andersen, M. (2019). Daylight affects human thermal perception. Scientific Reports, 9, 13690. https://doi.org/10.1038/s41598-019-48963-y
+
+Evans, K. M., Jacobs, R. A., Tarduno, J. A., & Pelz, J. B. (2012). Collecting and analyzing eye-tracking data in outdoor environments. Journal of Eye Movement Research, 5(2), Article 6.
+
+Fahy, J. C., Bachofen, C., Camponovo, R., Gallinelli, P., & Schlaepfer, M. A. (2025). Beyond land surface temperature: Identifying areas of daytime thermal discomfort in cities by combining remote sensing and field measurements. Urban Climate, 61, 102460. https://doi.org/10.1016/j.uclim.2025.102460
+
+Mahanama, B., et al. (2021). Eye movement and pupil measures: A review. Frontiers in Computer Science, 3, 733531. https://doi.org/10.3389/fcomp.2021.733531
+
+Mansi, S. A., Pigliautile, I., Arnesano, M., & Pisello, A. L. (2022). A novel methodology for human thermal comfort decoding via physiological signals measurement and analysis. Building and Environment, 222, 109385. https://doi.org/10.1016/j.buildenv.2022.109385
+
+Nikolopoulou, M., Baker, N., & Steemers, K. (2001). Thermal comfort in outdoor urban spaces: Understanding the human parameter. Solar Energy, 70(3), 227-235. https://doi.org/10.1016/S0038-092X(00)00093-1
+
+Quigley, K. S., et al. (2024). Publication guidelines for human heart rate and heart rate variability studies in psychophysiology - Part 1. Psychophysiology, 61, e14604. https://doi.org/10.1111/psyp.14604
+
+Rupi, F., & Krizek, K. J. (2019). Visual eye gaze while cycling: Analyzing eye tracking at signalized intersections in urban conditions. Sustainability, 11(21), 6089. https://doi.org/10.3390/su11216089
+
+Stuyck, H., Dalla Costa, L., Cleeremans, A., & Van den Bussche, E. (2022). Validity of the Empatica E4 wristband to estimate resting-state heart rate variability in a lab-based context. International Journal of Psychophysiology, 182, 105-118. https://doi.org/10.1016/j.ijpsycho.2022.10.003
+
+Cooper, J., & Evans, T. (2015). Microphone wind speed limits during wind farm noise measurements. Proceedings of the Australian Acoustical Society Conference, Hunter Valley. (Wind-on-microphone limits; 5 m/s exclusion not sufficient alone.)
+
+Zuo, J., Xia, H., Liu, S., & Qiao, Y. (2016). Mapping urban environmental noise using smartphones. Sensors, 16(10), 1692. https://doi.org/10.3390/s16101692 (Mobile noise mapping; windscreens; avoid measurement above ~5 m/s.)
+
+ISO 1996-2:2017. Acoustics — Description, measurement and assessment of environmental noise — Part 2: Determination of sound pressure levels. (Outdoor measurement conditions; local preview in Experiment papers.)
+
+Federal Highway Administration. Noise barrier design / field measurement guidance. https://www.fhwa.dot.gov/environment/noise/ (Windscreens; do not measure when wind at microphone exceeds ~5 m/s.)
+
+
+Gong, F.-Y., et al. (2018). Mapping sky, tree, and building view factors of street canyons. Building and Environment, 134, 155–167. https://doi.org/10.1016/j.buildenv.2018.02.042
+
+Gong, Z., Ma, Q., Kan, C., & Qi, Q. (2019). Classifying street spaces with street view images for a spatial indicator of urban functions. Sustainability, 11(22), 6424. https://doi.org/10.3390/su11226424
 

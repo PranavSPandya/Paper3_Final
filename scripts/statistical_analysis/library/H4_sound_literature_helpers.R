@@ -338,6 +338,7 @@ H4_KRAUS <- list(
   # interval is complete; lags beyond 0 min are not estimable. Lagged outcome requires a prior 5-min
   # interval within the bout (absent here), so Y_prev is omitted with that limitation documented.
   interval_seconds = 300,
+  fd_outcomes = c('LF_nu', 'HF_nu', 'LF_HF'),
   lags = 0L,
   trend_term = function(variable_name, form_name) switch(form_name, linear = variable_name,
     poly2 = sprintf('poly(%s, 2)', variable_name), poly3 = sprintf('poly(%s, 3)', variable_name),
@@ -351,9 +352,20 @@ H4_KRAUS <- list(
         r <- k == j; dba <- b[[sound$column]][r]; mid <- b$Datetime[r][ceiling(sum(r) / 2)]
         out <- data.frame(ParticipantID = b$ParticipantID[1], PhaseID = b$PhaseID[1], interval = j,
           Leq = if (sum(is.finite(dba)) >= need) H4_UTIL$sound_mean(dba, sound$is_db) else NA_real_)
-        for (label in names(H4_KRAUS$outcomes)) {
+        for (label in setdiff(names(H4_KRAUS$outcomes), H4_KRAUS$fd_outcomes)) {
           v <- b[[H4_KRAUS$outcomes[[label]]]][r]
           out[[label]] <- if (sum(is.finite(v)) >= need) H4_UTIL$finite_mean(v) else NA_real_}
+        # Frequency-domain values are themselves 5-min window estimates and exist only on rows whose
+        # window is complete (about 14-15 of the 30 rows in 0-5 min), so the 2/3-row rule cannot apply.
+        # Use the dataset's 5-min window that starts inside this interval and ends within one 10-s epoch
+        # of its end (the dataset's windows sit on a 10-s grid offset by one epoch from the bout start),
+        # latest such window, with the paper's >= 300 beats rule for frequency-domain values.
+        t0 <- min(b$Datetime[r]); t1 <- t0 + step + 10
+        inside <- which(r & b$hrv_window_available & is.finite(b$hrv_seg_start) & is.finite(b$hrv_seg_end) &
+          b$hrv_seg_start >= t0 & b$hrv_seg_end <= t1)
+        w <- if (length(inside)) inside[which.max(as.numeric(b$hrv_seg_end[inside]))] else NA_integer_
+        beats <- if (is.na(w)) NA_real_ else suppressWarnings(as.numeric(b$empatica_hrv_fd_5min_valid_rri_count[w]))
+        for (label in H4_KRAUS$fd_outcomes) out[[label]] <- if (!is.na(w) && is.finite(beats) && beats >= 300) b[[H4_KRAUS$outcomes[[label]]]][w] else NA_real_
         out$daily_time_h <- as.numeric(format(mid, '%H')) + as.numeric(format(mid, '%M')) / 60 + as.numeric(format(mid, '%S')) / 3600
         out$study_day <- as.numeric(as.Date(mid)); out$weekday <- weekdays(as.Date(mid))
         out}))
@@ -451,8 +463,12 @@ H4_KRAUS <- list(
 
 # --- Catalog, summary and METHODS_NOTES -----------------------------------------------------------
 H4_REPORT <- list(
+  # Rows without a p value (fit failed or no data) are not results: they are removed from the results
+  # CSV and listed in METHODS_NOTES with the reason (attribute 'not_estimable').
   catalog = function(...) {
     results <- do.call(rbind, list(...)); rownames(results) <- NULL
+    dropped <- results[!is.finite(results$p), c('paper', 'test', 'outcome', 'n_observations', 'model_details'), drop = FALSE]
+    results <- results[is.finite(results$p), , drop = FALSE]; rownames(results) <- NULL
     results$q_BH <- ave(results$p, paste(results$paper, results$test), FUN = H4_UTIL$bh)
     results$sig_p05 <- is.finite(results$p) & results$p < 0.05
     results$survives_FDR_q05 <- is.finite(results$q_BH) & results$q_BH < 0.05
@@ -460,7 +476,17 @@ H4_REPORT <- list(
       ifelse(is.na(results$paper_rule_met), 'not estimable', ifelse(results$paper_rule_met, 'MET', 'not met')),
       '; q_BH is an extra column (BH within paper x test x sound variable), not the paper rule')
     results$reporting_note <- results$model_details
+    attr(results, 'not_estimable') <- dropped
     results},
+  not_estimable_notes = function(dropped) {
+    if (!nrow(dropped)) return(c('', '## Not estimable', '- None: every planned test returned a p value.'))
+    reason <- ifelse(grepl('fit error', dropped$model_details), sub('^.*fit error: ', 'fit error: ', dropped$model_details), 'not estimable')
+    reason <- trimws(gsub('[[:space:]]+', ' ', sub('[[:space:]]*message =[[:space:]]*$', '', reason)))
+    reason <- sub(';.*$', '', reason)
+    groups <- unique(data.frame(paper = dropped$paper, test = dropped$test, outcome = dropped$outcome, n = dropped$n_observations, reason = reason))
+    c('', '## Not estimable (removed from the results CSV; no p value, so no q value)',
+      sprintf('- %d planned tests returned no p value:', nrow(dropped)),
+      sprintf('  - %s | %s | %s | n=%s | %s', groups$paper, groups$test, groups$outcome, groups$n, groups$reason))},
   summary = function(results) {
     do.call(rbind, lapply(split(results, factor(paste(results$paper, results$test), levels = unique(paste(results$paper, results$test)))), function(r) {
       fin <- is.finite(r$p)
@@ -503,7 +529,7 @@ H4_REPORT <- list(
       '',
       '## Kraus et al. 2013 (additive mixed models)',
       '- Implemented: outcomes HR, SDNN, LF (normalized units), HF (normalized units) and LF:HF; log except HR; lagged outcome (previous interval); piecewise Leq at 65 dB(A) per 5 dB; categorical physical activity (walk = 3 very light to light exertion, bike = 4 moderate exertion); HR adjustment for HRV models; long-term and daily time trends forced in, each linear, polynomial 2-4 or penalized spline by AIC; weekday tested by AIC; random participant intercept plus compound symmetry (nlme corCompSymm).',
-      '- Window mapping: the paper\'s non-overlapping 5-min intervals with Leq lags 0-5, 5-10 and 10-15 min. An 8-min bout yields one complete 5-min interval (0-5 min); only lag 0 is estimable. Lags 5-10 and 10-15 min require longer bouts and are not run. Lagged outcome (previous interval) is omitted because there is no prior 5-min interval within the bout. Validity: >= 2/3 valid 10-s rows per 5-min interval.',
+      '- Window mapping: the paper\'s non-overlapping 5-min intervals with Leq lags 0-5, 5-10 and 10-15 min. An 8-min bout yields one complete 5-min interval (0-5 min); only lag 0 is estimable. Lags 5-10 and 10-15 min require longer bouts and are not run. Lagged outcome (previous interval) is omitted because there is no prior 5-min interval within the bout. Validity: >= 2/3 valid 10-s rows per 5-min interval for Leq, HR and SDNN. LF_nu, HF_nu and LF_HF are themselves 5-min window estimates present only on rows whose window is complete (about half the rows of 0-5 min), so instead of the row rule they take the dataset\'s 5-min window that starts in the interval and ends within one 10-s epoch of its end (windows sit on a 10-s grid offset by one epoch), requiring >= 300 valid beats as in the paper.',
       '- Autocorrelation: compound symmetry and participant random effect as in the paper; without a lagged outcome term, autocorrelation structure differs from the published model.',
       '- Trend forms and weekday are selected by AIC (ML) on the lag-0 model and reused for each lag. AIC for spline candidates comes from the mgcv::gamm mixed-model representation (lme object, ML).',
       '- Season is constant (August 2025); weekday is constant within each participant (one session each).',
