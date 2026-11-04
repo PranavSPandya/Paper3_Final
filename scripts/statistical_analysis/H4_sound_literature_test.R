@@ -13,7 +13,7 @@ for (pk in c('nlme', 'mgcv')) if (!requireNamespace(pk, quietly = TRUE)) stop('R
 suppressPackageStartupMessages({ library(nlme); library(mgcv) })
 root <- resolve_project_root()
 outdir <- file.path(root, 'output', 'statistical_analysis', 'results', 'H4_sound_literature_test')
-if (dir.exists(outdir) && length(list.files(outdir, all.files = TRUE, no.. = TRUE))) stop('Output folder already exists and is not empty: ', outdir)
+if (dir.exists(outdir)) unlink(list.files(outdir, all.files = TRUE, no.. = TRUE, full.names = TRUE))
 outcomes <- paper3_physiological_outcomes()
 input <- paper3_merged_8min_path(root)
 epochs <- read.csv(input, check.names = FALSE)

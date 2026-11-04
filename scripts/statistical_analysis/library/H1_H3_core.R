@@ -68,7 +68,8 @@ fit_phase_lmm <- function(model_call, data) {
   model_call[[2L]][[2L]] <- as.name("model_y")
   model_call$data <- quote(data)
   model_call$na.action <- quote(na.omit)
-  model_call$control <- quote(lmeControl(opt = "optim", maxIter = 300, msMaxIter = 300, returnObject = TRUE))
+  # returnObject = FALSE: a fit that does not converge errors and is reported as not fitted.
+  model_call$control <- quote(lmeControl(opt = "optim", maxIter = 300, msMaxIter = 300, returnObject = FALSE))
   tryCatch(eval(model_call), error = function(local_error) NULL)}
 
 # Enough rows, participants and variation to fit (sparse questionnaire items fail this).
@@ -87,17 +88,21 @@ paired_smd <- function(analysis_data, outcome, ref, comp) {
   ci <- statpsych::ci.stdmean.ps(0.05, mean(y), mean(x), sd(y), sd(x), cor(x, y), length(x))
   c(g = ci[1, "adj Estimate"], low = ci[1, "LL"], high = ci[1, "UL"])}
 
-# Planned H1/H3 contrasts from one phase-mean LMM, plus the descriptive difference of differences.
+# Planned H1/H3 contrasts from one phase-mean LMM, plus the descriptive difference of differences (NA rows when not fitted).
 extract_phase_lmm_contrasts <- function(fit, analysis_data, outcome, family_set, normalization) {
   contrast_rows <- rbind(planned_h1_h3$h1, planned_h1_h3$h3)
   lv <- levels(analysis_data$PhaseID)
   wvec <- function(plus, minus) { w <- setNames(rep(0, length(lv)), lv); w[plus] <- 1; w[minus] <- -1; unname(w) }
-  em <- emmeans(fit, ~ PhaseID)
-  cm <- setNames(lapply(seq_len(nrow(contrast_rows)), function(index)
-    wvec(contrast_rows$Comparison_PhaseID[index], contrast_rows$Reference_PhaseID[index])), contrast_rows$Contrast)
-  did <- list(DiD = wvec(c("BikeG", "WalkU"), c("BikeU", "WalkG")))
-  cc <- rbind(as.data.frame(summary(contrast(em, method = cm), infer = c(TRUE, TRUE))),
-    as.data.frame(summary(contrast(em, method = did), infer = c(TRUE, TRUE))))
+  fitted <- !is.null(fit)
+  cc <- data.frame(estimate = rep(NA_real_, nrow(contrast_rows) + 1L), SE = NA_real_, df = NA_real_, t.ratio = NA_real_,
+    p.value = NA_real_, lower.CL = NA_real_, upper.CL = NA_real_)
+  if (fitted) {
+    em <- emmeans(fit, ~ PhaseID)
+    cm <- setNames(lapply(seq_len(nrow(contrast_rows)), function(index)
+      wvec(contrast_rows$Comparison_PhaseID[index], contrast_rows$Reference_PhaseID[index])), contrast_rows$Contrast)
+    did <- list(DiD = wvec(c("BikeG", "WalkU"), c("BikeU", "WalkG")))
+    cc <- rbind(as.data.frame(summary(contrast(em, method = cm), infer = c(TRUE, TRUE))),
+      as.data.frame(summary(contrast(em, method = did), infer = c(TRUE, TRUE))))}
   ids <- analysis_data$ParticipantID
   n_pairs <- vapply(seq_len(nrow(contrast_rows)), function(index) length(intersect(ids[analysis_data$PhaseID == contrast_rows$Reference_PhaseID[index]],
     ids[analysis_data$PhaseID == contrast_rows$Comparison_PhaseID[index]])), integer(1))
@@ -110,7 +115,9 @@ extract_phase_lmm_contrasts <- function(fit, analysis_data, outcome, family_set,
     Beta_CI95_low = cc$lower.CL, Beta_CI95_high = cc$upper.CL, N_Participants = c(n_pairs, length(unique(ids))),
     SMD_paired_Bonett = c(smd[, "g"], NA), SMD_CI95_low = c(smd[, "low"], NA), SMD_CI95_high = c(smd[, "high"], NA),
     Normalization = normalization, Family_Set = family_set, N_Complete_Pairs = c(n_pairs, NA),
-    Effect_Note = c(rep(NA, nrow(contrast_rows)), "descriptive difference of differences, not FDR-adjusted"), stringsAsFactors = FALSE)}
+    Status = if (fitted) "FIT" else "NOT_FIT_NO_CONVERGENCE",
+    Effect_Note = if (fitted) c(rep(NA, nrow(contrast_rows)), "descriptive difference of differences, not FDR-adjusted") else
+      "model did not converge: no estimate, p or q", stringsAsFactors = FALSE)}
 
 # Phase-mean LMMs for one outcome set (Primary and within-person z), BH within hypothesis x set x contrast x normalization.
 fit_phase_contrasts <- function(phase_df, outcomes, normalization) {
@@ -121,7 +128,7 @@ fit_phase_contrasts <- function(phase_df, outcomes, normalization) {
     analysis_data$model_y <- analysis_data[[value_col]]
     if (!model_data_ok(analysis_data, 24, 8)) next
     fit <- fit_phase_lmm(if (family_set == "Primary") H1_PhaseMean_Primary_LMM else H1_PhaseMean_Sensitivity_WPZ_LMM, analysis_data)
-    if (!is.null(fit)) rows[[length(rows) + 1L]] <- extract_phase_lmm_contrasts(fit, analysis_data, outcome, family_set, normalization[[family_set]])}
+    rows[[length(rows) + 1L]] <- extract_phase_lmm_contrasts(fit, analysis_data, outcome, family_set, normalization[[family_set]])}
   tab <- do.call(rbind, rows)
   planned <- tab$Hypothesis %in% c("H1", "H3")
   key <- paste(tab$Hypothesis, tab$Family_Set, tab$Contrast, tab$Normalization)
@@ -139,7 +146,7 @@ h1_h3_degenerate_fit <- function(t_table) {
 fit_ar1_with_fallback <- function(epoch_data, model_call) {
   ar1_formula <- formula(eval(model_call$correlation))
   fit_one <- function(optimizer, is_primary) {
-    control_settings <- if (is_primary) lmeControl(opt = "optim", maxIter = 200, msMaxIter = 200, returnObject = TRUE) else
+    control_settings <- if (is_primary) lmeControl(opt = "optim", maxIter = 200, msMaxIter = 200, returnObject = FALSE) else
       lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE, opt = optimizer)
     ar1_correlation <- if (is_primary) corAR1(form = ar1_formula) else corAR1(value = 0.2, form = ar1_formula)
     model_call[[2L]][[2L]] <- as.name("model_y")
@@ -225,11 +232,11 @@ h1_h3_fit_temporal_ar1 <- function(route_epoch_data) {
       n_participants_60s = length(unique(epoch_data_60s$ParticipantID)))
 
     t_table_10s <- if (!is.null(fit_10s$fit)) summary(fit_10s$fit)$tTable
-    status <- if (is.null(t_table_10s)) "FAILED_CONVERGENCE" else if (h1_h3_degenerate_fit(t_table_10s)) "DEGENERATE_FIT" else "FIT"
+    status <- if (is.null(t_table_10s)) "NOT_FIT_NO_CONVERGENCE" else if (h1_h3_degenerate_fit(t_table_10s)) "DEGENERATE_FIT" else "FIT"
     # Degenerate fits are reported (estimates, SE) but not tested: p left blank and excluded from BH.
     if (status == "DEGENERATE_FIT") t_table_10s[, "p-value"] <- NA_real_
-    if (status != "FAILED_CONVERGENCE" && use_phase_sum_coding) planned_rows[[length(planned_rows) + 1L]] <- h1_h3_sum_contrasts(fit_10s$fit, outcome, status)
-    terms <- if (status != "FAILED_CONVERGENCE") setdiff(rownames(t_table_10s), "(Intercept)") else all_terms
+    if (status != "NOT_FIT_NO_CONVERGENCE" && use_phase_sum_coding) planned_rows[[length(planned_rows) + 1L]] <- h1_h3_sum_contrasts(fit_10s$fit, outcome, status)
+    terms <- if (status != "NOT_FIT_NO_CONVERGENCE") setdiff(rownames(t_table_10s), "(Intercept)") else all_terms
     temporal_rows[[length(temporal_rows) + 1L]] <- data.frame(
       term_rows(outcome, terms, t_table_10s, c(Beta = "Value", SE = "Std.Error", t_stat = "t-value", df = "DF", p_value = "p-value")),
       Normalization = "Within-Person Z-score", Duration = "Matched_start_8min", AR1_phi = ar1_rho(fit_10s$fit),
@@ -239,7 +246,7 @@ h1_h3_fit_temporal_ar1 <- function(route_epoch_data) {
   temporal <- do.call(rbind, temporal_rows)
   temporal$Family_Size <- family_size
   temporal$q_FDR <- ave(temporal$p_value, temporal$Term, FUN = function(p) p.adjust(p, method = "BH", n = family_size))
-  temporal$Stability_Flag <- ifelse(temporal$Status == "FAILED_CONVERGENCE", "not converged: no p, not in BH family",
+  temporal$Stability_Flag <- ifelse(temporal$Status == "NOT_FIT_NO_CONVERGENCE", "not converged: no p, not in BH family",
     ifelse(temporal$Status == "DEGENERATE_FIT", paste0(H1_H3_DEGENERATE_NOTE, ": no p, not in BH family"),
     ifelse(!is.na(temporal$AR1_phi) & temporal$AR1_phi > 0.95, "rho > 0.95, interpret cautiously", "")))
   temporal[c("Beta_CI95_low", "Beta_CI95_high")] <- ci95(temporal$Beta, temporal$SE, temporal$df)
@@ -257,7 +264,7 @@ h1_h3_fit_temporal_ar1 <- function(route_epoch_data) {
       ifelse(planned$Effect == "phase_level", "phase difference at the mean analysed time (time_min centred)", "difference in per-minute slope"))}
   list(temporal = temporal, sensitivity = sensitivity, planned = planned)}
 
-# Matched 8-min route rows with transformed outcomes and within-person z columns.
+# Matched 8-min route rows with transformed outcomes.
 h1_h3_load_route_data <- function() {
   route <- read.csv(paper3_merged_8min_path(PROJECT_ROOT), check.names = FALSE, stringsAsFactors = FALSE)
   route <- route[route$ParticipantID %in% study_wide_spec$participants & route$PhaseID %in% CORE_PHASES, ]
@@ -269,10 +276,7 @@ h1_h3_load_route_data <- function() {
   route$time_in_phase_sec <- ave(as.numeric(route$Datetime), route$ParticipantPhaseID, FUN = function(x) x - min(x, na.rm = TRUE))
   route$time_min <- route$time_in_phase_sec / 60
   route <- paper3_merge_common_cap(route, CORE_PHASES, study_wide_spec$matched_cap_sec)
-  # Within-person z on the analysed (matched-cap) rows only.
   route <- route[!is.na(route$Common_cap) & route$time_in_phase_sec <= route$Common_cap, ]
-  for (outcome in c(SENSOR_OUTCOMES, PSYCH_OUTCOMES))
-    route[[paste0("within_person_z__", outcome)]] <- paper3_within_person_z(route[[outcome]], route$ParticipantID)
   route}
 
 h1_h3_write <- function(tables) {
@@ -281,7 +285,11 @@ h1_h3_write <- function(tables) {
 
 # Time-series run: the 10 s / 60 s AR(1) tables and the planned 10 s phase contrasts.
 h1_h3_run_timeseries <- function() {
-  temporal <- h1_h3_fit_temporal_ar1(h1_h3_load_route_data())
+  route <- h1_h3_load_route_data()
+  # 10 s models z-score each person's 10 s values, because those rows are what the model fits.
+  for (outcome in SENSOR_OUTCOMES)
+    route[[paste0("within_person_z__", outcome)]] <- paper3_within_person_z(route[[outcome]], route$ParticipantID)
+  temporal <- h1_h3_fit_temporal_ar1(route)
   label <- function(table) data.frame(Hypothesis = "H1/H3", Analysis_Entry = "H1_H3_time_series_shared_model", table)
   planned <- temporal$planned[order(temporal$planned$Hypothesis != "H1"), ]
   h1_h3_write(list(H1_H3_Temporal_AR1_10s.csv = label(temporal$temporal), H1_H3_Temporal_AR1_Sensitivity_60s.csv = label(temporal$sensitivity),
@@ -291,10 +299,13 @@ h1_h3_run_timeseries <- function() {
 h1_h3_run_phaseavg <- function() {
   route <- h1_h3_load_route_data()
   # Participant-phase means: one row per participant x phase (N = 44); questionnaires are constant within a phase.
-  phase_vars <- unique(c(SENSOR_OUTCOMES, PSYCH_OUTCOMES, paste0("within_person_z__", SENSOR_OUTCOMES), paste0("within_person_z__", PSYCH_OUTCOMES)))
+  phase_vars <- unique(c(SENSOR_OUTCOMES, PSYCH_OUTCOMES))
   phase_df <- aggregate(route[phase_vars], by = route[c("ParticipantID", "PhaseID")], FUN = mean_na)
   phase_df$ParticipantID <- factor(phase_df$ParticipantID, levels = study_wide_spec$participants)
   phase_df$PhaseID <- factor(phase_df$PhaseID, levels = CORE_PHASES)
+  # Sensitivity z-scores each person's phase means after the means exist. Averaging 10 s z-scores would use the epoch SD and is a different number. Primary contrasts stay in recorded units.
+  for (outcome in c(SENSOR_OUTCOMES, PSYCH_OUTCOMES))
+    phase_df[[paste0("within_person_z__", outcome)]] <- paper3_within_person_z(phase_df[[outcome]], phase_df$ParticipantID)
   physio <- fit_phase_contrasts(phase_df, SENSOR_OUTCOMES, c(Primary = "Primary: transformed outcome (normalization CSV), random intercept",
     Sensitivity_WPZ = "Sensitivity: within-person z-score over the 4 phases (after the normalization-CSV transform)"))
   quest <- fit_phase_contrasts(phase_df, PSYCH_OUTCOMES, c(Primary = "Primary: raw questionnaire scale (no transform), random intercept",
@@ -344,15 +355,14 @@ h1_h3_run_phaseavg <- function() {
       if (sum(ok) >= 7L && sd(psych_delta[ok]) > 0 && sd(outcome_delta[ok]) > 0) {
         z <- suppressWarnings(cor.test(psych_delta[ok], outcome_delta[ok], method = "spearman", exact = FALSE))
         rho <- unname(z$estimate); p_value <- z$p.value}
-      concord_rows[[length(concord_rows) + 1L]] <- data.frame(Mode = concord_mode, Psych = "delta_PRS", Outcome = paste0("delta_", concord_var),
+      concord_rows[[length(concord_rows) + 1L]] <- data.frame(Mode = concord_mode, Psych = "delta_PRS_fascination", Outcome = paste0("delta_", concord_var),
         Units = unname(ifelse(!is.na(H2_LOG_UNITS[concord_var]), H2_LOG_UNITS[concord_var], units_of(concord_var))), N = sum(ok), rho = rho, p = p_value)}}
   concord <- do.call(rbind, concord_rows)
   concord$q <- NA_real_
   tested <- is.finite(concord$p)
   concord$q[tested] <- p.adjust(concord$p[tested], method = "BH", n = 6)
 
-  temporal <- h1_h3_fit_temporal_ar1(route)
-  temporal_combined <- data.table::rbindlist(list(`10s main` = temporal$temporal, `60s sensitivity` = temporal$sensitivity), fill = TRUE, idcol = "Analysis")
+  # Temporal AR(1) tables are exported by H1_H3_timeseries.R into the timeseries folder.
+  # Do not duplicate them here; phaseavg exports only contrasts and concordance.
   h1_h3_write(list(H1_H3_Contrasts.csv = contrasts,
-    H2_Concordance.csv = data.table::rbindlist(list(H2_rmcorr_physio_psycho = h2, H2_restoration_deltaPRS_spearman = concord), fill = TRUE, idcol = "Test"),
-    H1_H3_Temporal_AR1.csv = data.frame(Hypothesis = "H1 and H3 (shared PhaseID model)", temporal_combined, check.names = FALSE)))}
+    H2_Concordance.csv = data.table::rbindlist(list(H2_rmcorr_physio_psycho = h2, H2_restoration_deltaPRS_spearman = concord), fill = TRUE, idcol = "Test")))}

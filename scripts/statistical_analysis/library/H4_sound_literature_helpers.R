@@ -55,12 +55,12 @@ H4_MOSHAMMER <- list(
   specs = list(
     'Table A2 unadjusted (noise only)' = 'noise_leq_prev_db',
     'Methods: temperature as confounder' = c('noise_leq_prev_db', 'air_temp_c')),
-  # Native beat-to-beat intervals from the Empatica build (01_empatica_build.py): the project copy if present, else the Paper3_Github export.
-  rri_files = c('output/empatica_files/01_empatica_rri_native.csv', 'D:/Pranav/docker/Paper3_Github/output/empatica_files/01_empatica_rri_native.csv'),
+  # Native beat-to-beat intervals from the Empatica build (01_empatica_build.py).
+  rri_file = 'output/empatica_files/01_empatica_rri_native.csv',
   read_rri = function() {
-    path <- Filter(file.exists, c(file.path(resolve_project_root(), H4_MOSHAMMER$rri_files[1]), H4_MOSHAMMER$rri_files[-1]))
-    if (!length(path)) stop('Moshammer LF/HF: native RRI file not found: ', paste(H4_MOSHAMMER$rri_files, collapse = ' or '))
-    rri <- read.csv(path[1])
+    path <- file.path(resolve_project_root(), H4_MOSHAMMER$rri_file)
+    if (!file.exists(path)) stop('Moshammer LF/HF: native RRI file not found: ', path)
+    rri <- read.csv(path)
     rri$peak_time <- as.POSIXct(rri$peak_time, tz = 'UTC', format = '%Y-%m-%d %H:%M:%OS')
     split(rri[c('peak_time', 'rri_ms')], rri$ParticipantID)},
   # Artifact rule of the build: drop beats more than 0.45 s from the centred 11-beat median.
@@ -74,7 +74,7 @@ H4_MOSHAMMER <- list(
     n_raw <- sum(w_in); t <- peak_time[w_in]; v <- rri_ms[w_in]
     ok <- is.finite(v) & v >= 250 & v <= 2500; t <- t[ok]; v <- v[ok]
     keep <- H4_MOSHAMMER$rri_keep(v); t <- t[keep]; v <- v[keep]; n <- length(v)
-    if (!n_raw || n < 40 || 100 * (n_raw - n) / n_raw > 25) return(c(lf = NA_real_, hf = NA_real_, n_beats = n))
+    if (!n_raw || n < 40 || 100 * (n_raw - n) / n_raw > 25) return(c(lf = NA_real_, hf = NA_real_, sdnn = NA_real_, rmssd = NA_real_, rr_mean = NA_real_, n_beats = n))
     x <- as.numeric(difftime(t, t[1], units = 'secs'))
     knots <- c(rep(x[1], 3), ((x[-1] + x[-n]) / 2)[2:(n - 2)], rep(x[n], 3))
     grid <- seq(0, by = 0.25, length.out = ceiling((x[n] + 0.25) / 0.25))
@@ -90,14 +90,14 @@ H4_MOSHAMMER <- list(
       i <- f >= min_f & f <= 0.5 & f >= lo & f < hi
       p <- if (sum(i) > 1) sum(diff(f[i]) * (psd[i][-1] + psd[i][-sum(i)]) / 2) else 0
       if (p == 0) NA_real_ else p}
-    c(lf = band(0.04, 0.15), hf = band(0.15, 0.4), n_beats = n)},
-  # Outcome window on the first-5-min Leq (+ air temperature); rows need >= 2/3 of expected rows, LF/HF come from the beats in 5-8 min.
+    c(lf = band(0.04, 0.15), hf = band(0.15, 0.4),
+      sdnn = sd(v), rmssd = sqrt(mean(diff(v)^2)), rr_mean = mean(v),
+      n_beats = n)},
+  # Outcome window on the first-5-min Leq (+ air temperature); rows need >= 2/3 of expected rows. LF/HF, SDNN, RMSSD, and mean RR all come from raw beats in the 5-8 min window.
   period_frame = function(epochs, sound = H4_SOUND$primary) {
-    epochs$derived_rr_ms <- ifelse(is.finite(epochs$empatica_heart_rate) & epochs$empatica_heart_rate > 0, 60000 / epochs$empatica_heart_rate, NA_real_)
     exp_sec <- H4_MOSHAMMER$exposure_seconds
     exp_need <- (2 / 3) * (exp_sec / 10)
     cap_sec <- get0('PAPER3_MATCHED_CAP_SEC', ifnotfound = 480)
-    out_need <- (2 / 3) * ((cap_sec - exp_sec) / 10)
     rri <- H4_MOSHAMMER$read_rri()
     do.call(rbind, lapply(H4_UTIL$bouts(epochs), function(rows) {
       b <- epochs[rows, ]
@@ -108,14 +108,13 @@ H4_MOSHAMMER <- list(
       noise_leq_prev_db <- if (sum(is.finite(dba_exp)) >= exp_need) H4_UTIL$sound_mean(dba_exp, sound$is_db) else NA_real_
       out <- data.frame(ParticipantID = b$ParticipantID[1], PhaseID = b$PhaseID[1],
         noise_leq_prev_db = noise_leq_prev_db, air_temp_c = H4_UTIL$finite_mean(b$ucm_AIR_temp[out_r]))
-      for (column_name in setdiff(H4_MOSHAMMER$outcomes, c('empatica_hrv_fd_lf', 'empatica_hrv_fd_hf'))) {
-        v <- b[[column_name]][out_r]
-        out[[column_name]] <- if (sum(is.finite(v)) >= out_need) H4_UTIL$finite_mean(v) else NA_real_}
       # 10 s rows are epoch starts, so the matched bout ends at the first row + 480 s.
+      # LF/HF, SDNN, RMSSD, and mean RR are all computed from raw beats in the 5-8 min outcome window.
       beats <- rri[[as.character(b$ParticipantID[1])]]
       t0 <- min(b$Datetime) + exp_sec; t1 <- min(min(b$Datetime) + cap_sec, max(b$Datetime) + 10)
-      p <- if (is.null(beats)) c(lf = NA_real_, hf = NA_real_, n_beats = 0) else H4_MOSHAMMER$lf_hf(beats$peak_time, beats$rri_ms, t0, t1)
+      p <- if (is.null(beats)) c(lf = NA_real_, hf = NA_real_, sdnn = NA_real_, rmssd = NA_real_, rr_mean = NA_real_, n_beats = 0) else H4_MOSHAMMER$lf_hf(beats$peak_time, beats$rri_ms, t0, t1)
       out$empatica_hrv_fd_lf <- p[['lf']]; out$empatica_hrv_fd_hf <- p[['hf']]; out$n_beats_lf_hf <- p[['n_beats']]
+      out$empatica_hrv_td_sdnn <- p[['sdnn']]; out$empatica_hrv_td_rmssd <- p[['rmssd']]; out$derived_rr_ms <- p[['rr_mean']]
       out}))},
   # Stata xtreg re (Swamy-Arora): theta_i = 1 - sqrt(sigma_e^2 / (T_i sigma_u^2 + sigma_e^2)), then OLS on the quasi-demeaned data.
   xtreg_re = function(y, X, id) {
@@ -486,12 +485,11 @@ H4_REPORT <- list(
       '## Moshammer et al. 2019 (random-effects GLS, Stata xtreg re)',
       '- Implemented: outcome in a sub-period ~ noise Leq (energy mean) of the PRECEDING sub-period per 1 dB(A) (Table A2, unadjusted) and + mean air temperature of the outcome sub-period (Methods: temperature as confounder); Stata default Swamy-Arora variance components, GLS transform, conventional VCE, z tests. Raw outcomes, no activity term, no centring.',
       '- Window mapping: the paper uses consecutive 15-min periods with noise from the preceding 15 min; that cannot be fit within one 8-min bout. Here: energy-mean Leq of the first 5 min as exposure and phase-mean outcomes over the remainder (5-8 min), one row per phase (up to 44 rows). A window needs >= 2/3 of its expected 10-s rows (exposure 30 rows, outcome 18 rows). Fitted on all four phases and, separately, on walking phases only.',
-      '- LF and HF power are recomputed per phase from the native beat-to-beat intervals (01_empatica_rri_native.csv) in the outcome window only (5-8 min of the matched bout, after the exposure and inside the bout), with the Empatica build method: beats 250-2500 ms, beats more than 0.45 s from the centred 11-beat median removed, >= 40 valid beats and <= 25 % removed, NeuroKit2 hrv_frequency (4 Hz quadratic-spline resampling, mean removed, Welch with Hann half-length segments, LF 0.04-0.15 Hz, HF 0.15-0.40 Hz). 180 s exceeds the Task Force (1996) minimums (about 1 min for HF, 2 min for LF). VLF is dropped: it needs more than 5 min.',
-      '- Time-domain SDNN and RMSSD are short-window 10-s row values; rows just after 5 min can still include up to about 1 min of the exposure window, so exposure and outcome are not fully separated for these two outcomes. RR distance (from heart rate) does not overlap.',
+      '- All HRV outcomes (LF and HF power, SDNN, RMSSD, and mean RR distance) are recomputed per phase from the native beat-to-beat intervals (01_empatica_rri_native.csv) in the outcome window only (5-8 min of the matched bout, strictly after the 0-5 min exposure window), with the Empatica build method: beats 250-2500 ms, beats more than 0.45 s from the centred 11-beat median removed, >= 40 valid beats and <= 25 % removed. Resampling at 4 Hz quadratic-spline and Welch PSD for LF/HF; sample SD and RMSSD on the filtered beat intervals. This eliminates any overlap with the exposure window for all outcomes. 180 s exceeds the Task Force (1996) minimums (about 1 min for HF, 2 min for LF). VLF is dropped: it needs more than 5 min.',
       '- The paper models no autocorrelation beyond the participant random effect; none is added here. Serial correlation within a participant may remain; standard errors may be optimistic.',
       '- Dust: personal PM2.5 exists (Atmotube), but Table A2 reports single-exposure models, so PM is not added to the noise model.',
       '- Temperature: the paper used a stationary meteorological station; here the mobile air temperature (ucm_AIR_temp).',
-      '- Outcomes: RR distance (derived row-wise as 60000 / empatica_heart_rate), SDNN, RMSSD, LF and HF power (VLF dropped, see above). TINN and blood pressure are not in the dataset.',
+      '- Outcomes: RR distance (mean RR from native beats), SDNN, RMSSD, LF and HF power (VLF dropped, see above). TINN and blood pressure are not in the dataset.',
       '',
       '## Jin, Jin & Kang 2020 (two-way ANOVA)',
       '- Implemented: two-way ANOVA LAeq level x UTCI category with interaction, no participant block. The paper does not state its SS type; because several LAeq x UTCI cells are empty, Type III marginal hypotheses are not uniquely defined, so main effects are Type II (each adjusted for the other main effect) and the interaction is tested against the additive model (the same F under Type II and Type III). All F tests use the full (interaction) model residual mean square and df as error term, as car::Anova(type = 2).',

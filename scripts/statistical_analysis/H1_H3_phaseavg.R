@@ -30,23 +30,6 @@ H1_PhaseMean_Primary_LMM <- quote(
 H1_PhaseMean_Sensitivity_WPZ_LMM <- quote(
   nlme::lme(Y_within_person_z ~ PhaseID, random = ~ 1 | ParticipantID, data = participant_phase_mean_table, method = "REML"))
 
-Temporal_AR1_10s_LMM <- quote(
-  nlme::lme(
-    Y_within_person_z ~ PhaseID * time_min,
-    random = ~ 1 | ParticipantID,
-    correlation = nlme::corAR1(form = ~ time_10s_step | ParticipantID / PhaseID),
-    data = ten_second_epoch_table,
-    method = "REML"))
-
-# Temporal sensitivity: the same AR(1) model on 60 s epochs
-Temporal_AR1_60s_LMM <- quote(
-  nlme::lme(
-    Y_within_person_z ~ PhaseID * time_min,
-    random = ~ 1 | ParticipantID,
-    correlation = nlme::corAR1(form = ~ time_60s_step | ParticipantID / PhaseID),
-    data = sixty_second_epoch_table,
-    method = "REML"))
-
 # ---- H2 model (psychophysiological concurrence) ----
 H2_rmcorr <- quote(
   lm(psychological ~ ParticipantID + physiological, data = participant_phase_mean_table))
