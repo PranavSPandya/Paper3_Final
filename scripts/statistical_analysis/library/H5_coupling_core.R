@@ -1,22 +1,22 @@
-# H6_coupling_core.R — prespecified within-person coupling LMMs (phase means or 10 s epochs).
-# Sourced by H6_stress_composite_phaseavg.R and H6_stress_composite_timeseries.R after H6_SPEC is set.
+# H5_coupling_core.R — prespecified within-person coupling LMMs (phase means or 10 s epochs).
+# Sourced by H5_stress_composite_phaseavg.R and H5_stress_composite_timeseries.R after H5_SPEC is set.
 
 if (!exists("PROJECT_ROOT", envir = .GlobalEnv, inherits = FALSE)) {
-  stop("PROJECT_ROOT must be set before sourcing H6_coupling_core.R.", call. = FALSE)}
-if (!exists("H6_SPEC", envir = .GlobalEnv, inherits = FALSE)) {
-  stop("H6_SPEC must be set before sourcing H6_coupling_core.R.", call. = FALSE)}
+  stop("PROJECT_ROOT must be set before sourcing H5_coupling_core.R.", call. = FALSE)}
+if (!exists("H5_SPEC", envir = .GlobalEnv, inherits = FALSE)) {
+  stop("H5_SPEC must be set before sourcing H5_coupling_core.R.", call. = FALSE)}
 
 RESULTS_ROOT <- file.path(PROJECT_ROOT, "output", "statistical_analysis", "results")
-OUT_DIR <- file.path(RESULTS_ROOT, H6_SPEC$results_subdir)
+OUT_DIR <- file.path(RESULTS_ROOT, H5_SPEC$results_subdir)
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 
-PARTICIPANTS <- H6_SPEC$participants
-CORE_PHASES <- H6_SPEC$phases
-MATCHED_CAP_SEC <- H6_SPEC$matched_cap_sec
+PARTICIPANTS <- H5_SPEC$participants
+CORE_PHASES <- H5_SPEC$phases
+MATCHED_CAP_SEC <- H5_SPEC$matched_cap_sec
 RAW_PATH <- paper3_merged_8min_path(PROJECT_ROOT)
-GRAIN <- H6_SPEC$analysis_grain
-ENTRY_SCRIPT <- H6_SPEC$entry_script
-FILE_PREFIX <- H6_SPEC$file_prefix
+GRAIN <- H5_SPEC$analysis_grain
+ENTRY_SCRIPT <- H5_SPEC$entry_script
+FILE_PREFIX <- H5_SPEC$file_prefix
 
 mean_na <- function(x) if (all(is.na(x))) NA_real_ else mean(x, na.rm = TRUE)
 
@@ -25,7 +25,7 @@ safe_write_csv <- function(data, path) {
     warning("Could not write ", path, ": ", conditionMessage(local_error))
   })}
 
-h6_pair_mean_columns <- function(input_data) {
+h5_pair_mean_columns <- function(input_data) {
   safe_pair_mean <- function(data, left, right) {
     if (!all(c(left, right) %in% names(data))) return(rep(NA_real_, nrow(data)))
     z <- rowMeans(cbind(as.numeric(data[[left]]), as.numeric(data[[right]])), na.rm = TRUE)
@@ -40,22 +40,22 @@ h6_pair_mean_columns <- function(input_data) {
   for (nm in names(pair_map)) input_data[[nm]] <- do.call(safe_pair_mean, c(list(input_data), pair_map[[nm]]))
   input_data}
 
-h6_wpz <- function(x, pid) {
+h5_wpz <- function(x, pid) {
   fn <- get0("PAPER3_OUTCOME_WITHIN_PERSON_Z", envir = .GlobalEnv, ifnotfound = paper3_within_person_z)
   fn(x, pid)}
 
-h6_oriented_wpz <- function(x, pid, stress_direction, transform_fn = NULL, col = NULL) {
+h5_oriented_wpz <- function(x, pid, stress_direction, transform_fn = NULL, col = NULL) {
   if (is.function(transform_fn) && !is.null(col)) x <- transform_fn(x, col)
-  as.numeric(stress_direction) * h6_wpz(x, pid)}
+  as.numeric(stress_direction) * h5_wpz(x, pid)}
 
-h6_composite_rowmean <- function(mat) {
+h5_composite_rowmean <- function(mat) {
   if (is.null(mat) || ncol(mat) == 0) return(rep(NA_real_, nrow(mat)))
   rowMeans(as.matrix(mat), na.rm = TRUE)}
 
-h6_load_matched_route <- function() {
+h5_load_matched_route <- function() {
   if (!file.exists(RAW_PATH)) stop("Input dataset not found: ", RAW_PATH)
   input_data <- read.csv(RAW_PATH, check.names = FALSE, stringsAsFactors = FALSE)
-  input_data <- h6_pair_mean_columns(input_data)
+  input_data <- h5_pair_mean_columns(input_data)
   input_data$ParticipantID <- as.character(input_data$ParticipantID)
   input_data$PhaseID <- as.character(input_data$PhaseID)
   route <- input_data[input_data$ParticipantID %in% PARTICIPANTS & input_data$PhaseID %in% CORE_PHASES, ]
@@ -79,14 +79,14 @@ h6_load_matched_route <- function() {
   route$time_10s_step <- round(route$time_in_phase_sec / 10)
   route}
 
-h6_build_analysis_frame <- function(route) {
+h5_build_analysis_frame <- function(route) {
   tf <- get0("PAPER3_APPLY_CSV_TRANSFORM", envir = .GlobalEnv, ifnotfound = NULL)
-  physio_cols <- H6_SPEC$physio_outcomes
-  transform_physio <- H6_SPEC$physiological_outcome_names %||% physio_cols
-  eye_const <- H6_SPEC$transparent_eye_constituents
-  env_single <- H6_SPEC$env_index_constituents
-  psych_cols <- H6_SPEC$psych_outcomes
-  morph <- H6_SPEC$restorative_constituents
+  physio_cols <- H5_SPEC$physio_outcomes
+  transform_physio <- H5_SPEC$physiological_outcome_names %||% physio_cols
+  eye_const <- H5_SPEC$transparent_eye_constituents
+  env_single <- H5_SPEC$env_index_constituents
+  psych_cols <- H5_SPEC$psych_outcomes
+  morph <- H5_SPEC$restorative_constituents
 
   need_raw <- unique(c(
     unlist(lapply(env_single, `[[`, "column")),
@@ -102,18 +102,18 @@ h6_build_analysis_frame <- function(route) {
   # Prespecified environmental load indices (WPZ, stress-oriented).
   for (nm in names(env_single)) {
     spec <- env_single[[nm]]
-    base[[paste0("idx_", nm)]] <- h6_oriented_wpz(base[[spec$column]], pid, spec$stress_direction)}
+    base[[paste0("idx_", nm)]] <- h5_oriented_wpz(base[[spec$column]], pid, spec$stress_direction)}
   morph_wpz <- list()
   for (col in morph) {
-    dir <- H6_SPEC$morphology_stress_direction[[col]]
-    morph_wpz[[col]] <- h6_oriented_wpz(base[[col]], pid, dir)}
-  base$idx_restorative_stress <- h6_composite_rowmean(as.data.frame(morph_wpz))
+    dir <- H5_SPEC$morphology_stress_direction[[col]]
+    morph_wpz[[col]] <- h5_oriented_wpz(base[[col]], pid, dir)}
+  base$idx_restorative_stress <- h5_composite_rowmean(as.data.frame(morph_wpz))
 
   # Physio outcomes (transform then WPZ).
   for (col in physio_cols) {
     x <- base[[col]]
     if (is.function(tf)) x <- tf(x, col)
-    base[[paste0("out_", col)]] <- h6_wpz(x, pid)}
+    base[[paste0("out_", col)]] <- h5_wpz(x, pid)}
 
   # Transparent ocular stress index.
   eye_mat <- list()
@@ -121,16 +121,16 @@ h6_build_analysis_frame <- function(route) {
     if (!cn %in% names(base)) next
     x <- base[[cn]]
     if (cn %in% transform_physio && is.function(tf)) x <- tf(x, cn)
-    eye_mat[[cn]] <- as.numeric(eye_const[[cn]]) * h6_wpz(x, pid)}
-  base$out_transparent_ocular <- h6_composite_rowmean(as.data.frame(eye_mat))
+    eye_mat[[cn]] <- as.numeric(eye_const[[cn]]) * h5_wpz(x, pid)}
+  base$out_transparent_ocular <- h5_composite_rowmean(as.data.frame(eye_mat))
 
   for (col in psych_cols) {
     if (!col %in% names(base)) next
-    base[[paste0("psy_", col)]] <- h6_wpz(base[[col]], pid)}
+    base[[paste0("psy_", col)]] <- h5_wpz(base[[col]], pid)}
 
   base}
 
-h6_fit_lmm_row <- function(dat, y_col, fixed_rhs, timeseries = FALSE) {
+h5_fit_lmm_row <- function(dat, y_col, fixed_rhs, timeseries = FALSE) {
   req <- unique(c(y_col, unlist(strsplit(fixed_rhs, " + ", fixed = TRUE)), "ParticipantID", "PhaseID"))
   if (timeseries) req <- c(req, "time_10s_step")
   req <- intersect(req, names(dat))
@@ -176,7 +176,7 @@ h6_fit_lmm_row <- function(dat, y_col, fixed_rhs, timeseries = FALSE) {
   tt <- summary(fit)$tTable
   list(status = "FIT", n_obs = n_obs, n_pid = n_pid, fit = fit, tTable = tt)}
 
-h6_extract_term <- function(fit_obj, term) {
+h5_extract_term <- function(fit_obj, term) {
   if (is.null(fit_obj$fit) || !term %in% rownames(fit_obj$tTable)) {
     return(list(
       estimate = NA_real_, std_error = NA_real_, df = NA_real_,
@@ -189,16 +189,16 @@ h6_extract_term <- function(fit_obj, term) {
     statistic = cf[1, "t-value"],
     p_value = cf[1, "p-value"])}
 
-h6_apply_fdr <- function(tbl, family_col = "analysis_family") {
+h5_apply_fdr <- function(tbl, family_col = "analysis_family") {
   if (!nrow(tbl)) return(tbl)
   tbl$q_FDR <- NA_real_
   for (fam in unique(tbl[[family_col]])) {
     index <- which(tbl[[family_col]] == fam & tbl$fit_status == "FIT" & is.finite(tbl$p_value))
     if (length(index)) tbl$q_FDR[index] <- p.adjust(tbl$p_value[index], method = "BH")}
-  tbl$FDR_significant <- !is.na(tbl$q_FDR) & tbl$q_FDR < H6_SPEC$fdr_alpha
+  tbl$FDR_significant <- !is.na(tbl$q_FDR) & tbl$q_FDR < H5_SPEC$fdr_alpha
   tbl}
 
-h6_purge_stale_outputs <- function() {
+h5_purge_stale_outputs <- function() {
   if (!dir.exists(OUT_DIR)) return(invisible(NULL))
   keep <- c(
     paste0(FILE_PREFIX, "_coupling_env_physio.csv"),
@@ -208,8 +208,8 @@ h6_purge_stale_outputs <- function() {
     paste0(FILE_PREFIX, "_run_info.csv"),
     paste0(basename(OUT_DIR), "_run_info.csv"))
   stale_pat <- paste0(
-    "^(H6_coupling_|H6_pairwise_rmcorr|H6_composite_definitions|",
-    "H6_participant_phase_composites|H6_epoch_composites|H6_run_manifest)[.]csv$")
+    "^(H5_coupling_|H5_pairwise_rmcorr|H5_composite_definitions|",
+    "H5_participant_phase_composites|H5_epoch_composites|H5_run_manifest)[.]csv$")
   for (path in list.files(OUT_DIR, full.names = TRUE)) {
     bn <- basename(path)
     if (bn %in% keep) next
@@ -219,15 +219,15 @@ h6_purge_stale_outputs <- function() {
   }
   invisible(NULL)}
 
-h6_coupling_run <- function() {
-  cat(sprintf("[H6 coupling / %s] Loading matched 8-min data...\n", GRAIN))
-  h6_purge_stale_outputs()
-  route <- h6_load_matched_route()
-  dat <- h6_build_analysis_frame(route)
+h5_coupling_run <- function() {
+  cat(sprintf("[H5 coupling / %s] Loading matched 8-min data...\n", GRAIN))
+  h5_purge_stale_outputs()
+  route <- h5_load_matched_route()
+  dat <- h5_build_analysis_frame(route)
 
-  env_idx <- H6_SPEC$env_index_names
+  env_idx <- H5_SPEC$env_index_names
   phys_y_cols <- c(
-    stats::setNames(paste0("out_", H6_SPEC$physio_outcomes), H6_SPEC$physio_outcomes),
+    stats::setNames(paste0("out_", H5_SPEC$physio_outcomes), H5_SPEC$physio_outcomes),
     transparent_ocular = "out_transparent_ocular")
 
   rows_a <- list()
@@ -236,11 +236,11 @@ h6_coupling_run <- function() {
     for (x_id in env_idx) {
       x_col <- paste0("idx_", x_id)
       rhs <- paste(x_col, "PhaseID", sep = " + ")
-      fit <- h6_fit_lmm_row(dat, y_col, rhs, timeseries = GRAIN == "timeseries")
-      ex <- h6_extract_term(fit, x_col)
+      fit <- h5_fit_lmm_row(dat, y_col, rhs, timeseries = GRAIN == "timeseries")
+      ex <- h5_extract_term(fit, x_col)
       rows_a[[length(rows_a) + 1L]] <- data.frame(
-        hypothesis = "H6",
-        analysis_family = "H6_A_env_physio",
+        hypothesis = "H5",
+        analysis_family = "H5_A_env_physio",
         analysis_grain = GRAIN,
         outcome = y_id,
         term = x_id,
@@ -261,19 +261,19 @@ h6_coupling_run <- function() {
         p_value = ex$p_value,
         stringsAsFactors = FALSE)}
   }
-  tbl_a <- h6_apply_fdr(do.call(rbind, rows_a))
+  tbl_a <- h5_apply_fdr(do.call(rbind, rows_a))
 
   rows_b <- list()
   for (y_id in names(phys_y_cols)) {
     y_col <- phys_y_cols[[y_id]]
-    for (p_col in H6_SPEC$psych_outcomes) {
+    for (p_col in H5_SPEC$psych_outcomes) {
       psy_col <- paste0("psy_", p_col)
       rhs <- paste(psy_col, "idx_thermal_load", "idx_acoustic_load", "PhaseID", sep = " + ")
-      fit <- h6_fit_lmm_row(dat, y_col, rhs, timeseries = GRAIN == "timeseries")
-      ex <- h6_extract_term(fit, psy_col)
+      fit <- h5_fit_lmm_row(dat, y_col, rhs, timeseries = GRAIN == "timeseries")
+      ex <- h5_extract_term(fit, psy_col)
       rows_b[[length(rows_b) + 1L]] <- data.frame(
-        hypothesis = "H6",
-        analysis_family = "H6_B_psych_physio_given_env",
+        hypothesis = "H5",
+        analysis_family = "H5_B_psych_physio_given_env",
         analysis_grain = GRAIN,
         outcome = y_id,
         term = p_col,
@@ -294,7 +294,7 @@ h6_coupling_run <- function() {
         p_value = ex$p_value,
         stringsAsFactors = FALSE)}
   }
-  tbl_b <- h6_apply_fdr(do.call(rbind, rows_b))
+  tbl_b <- h5_apply_fdr(do.call(rbind, rows_b))
 
   grid <- rbind(
     tbl_a[, c("analysis_family", "outcome", "term")],
@@ -307,7 +307,7 @@ h6_coupling_run <- function() {
   manifest <- data.frame(
     Metric = c(
       "analysis_grain", "entry_script", "n_env_physio_tests", "n_psych_physio_tests",
-      "H6_A_FDR_significant", "H6_B_FDR_significant"
+      "H5_A_FDR_significant", "H5_B_FDR_significant"
     ),
     Value = c(
       GRAIN, ENTRY_SCRIPT,
@@ -319,12 +319,12 @@ h6_coupling_run <- function() {
   safe_write_csv(manifest, file.path(OUT_DIR, paste0(FILE_PREFIX, "_run_manifest.csv")))
 
   cat(sprintf(
-    "[H6 coupling / %s] Done. H6-A: %d/%d FDR q<%.2f; H6-B: %d/%d FDR q<%.2f.\nOutputs: %s\n",
+    "[H5 coupling / %s] Done. H5-A: %d/%d FDR q<%.2f; H5-B: %d/%d FDR q<%.2f.\nOutputs: %s\n",
     GRAIN,
     sum(tbl_a$FDR_significant %in% TRUE, na.rm = TRUE), sum(tbl_a$fit_status == "FIT"),
-    H6_SPEC$fdr_alpha,
+    H5_SPEC$fdr_alpha,
     sum(tbl_b$FDR_significant %in% TRUE, na.rm = TRUE), sum(tbl_b$fit_status == "FIT"),
-    H6_SPEC$fdr_alpha,
+    H5_SPEC$fdr_alpha,
     OUT_DIR))
   invisible(list(env_physio = tbl_a, psych_physio = tbl_b))}
 

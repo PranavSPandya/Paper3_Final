@@ -14,8 +14,8 @@ root<-option('root', resolve_project_root())
 input<-option('input',file.path(root,'output/statistical_analysis/results'))
 out<-option('out',file.path(root,'output/merged'))
 groups<-list(Analysis_combined_merged=c('Analysis_combined_phaseavg','Analysis_combined_timeseries'),
- H1_H3_H6_merged=c('H1_H3_phaseavg','H1_H3_timeseries','H6_stress_composite_phaseavg','H6_stress_composite_timeseries'),
- H4_sound_results='H4_sound_literature_test',H5_grid_results='H5_exploratory')
+ H1_H3_H5_merged=c('H1_H3_phaseavg','H1_H3_timeseries','H5_stress_composite_phaseavg','H5_stress_composite_timeseries'),
+ H4_sound_results='H4_sound_literature_test')
 read<-function(source_path)read.csv(source_path,colClasses='character',check.names=FALSE,na.strings=c('','NA','NaN'),stringsAsFactors=FALSE)
 nonblank<-function(input_values)!is.na(input_values)&nzchar(input_values)
 outputs<-list();sources<-character();hashes<-character()

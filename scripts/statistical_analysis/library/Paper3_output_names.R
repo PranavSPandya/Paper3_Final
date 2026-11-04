@@ -13,7 +13,7 @@
 P3_RETIRED_PATTERN <- "^(H6_1_|H6_2_|H6_3_|H6_README)"
 P3_UNTOUCHED_PATTERN <- "Multivariate_Filtration_Results\\.csv$"
 P3_DATA_TABLES <- c("H5_hotspot_day.csv", "H5_epoch_buffer_assignment.csv", "H5_corridor_grid_label_map.csv",
-                    "H5_epoch_hotspot_assignment.csv", "H6_participant_phase_composites.csv", "H6_epoch_composites.csv")
+                    "H5_epoch_hotspot_assignment.csv", "H5_participant_phase_composites.csv", "H5_epoch_composites.csv")
 P3_DERIVED <- c("statistic_type", "estimate_type", "correlation_type", "confidence_level",
                 "adjustment_method", "adjustment_family", "adjustment_family_size")
 P3_P_COLUMNS <- c("p", "p_value", "q", "q_FDR", "q_BH", "p_value_FDR", "fdr_q", "p_value_adjusted",
@@ -160,15 +160,15 @@ p3_family <- function(results, file) {
     key <- ifelse(has, "pooled", NA); size <- rep(sum(has), n)
     res <- list(key = key, size = size, forced = FALSE, text = sprintf(
       "BH pooled across all %d phase_id x outcome x view-factor (SVF, TVF, BVF) exposure terms; class and covariate terms not adjusted", size))
-  } else if (grepl("H6_stress_composite_(phaseavg|timeseries)_coupling_env_physio", file)) {
+  } else if (grepl("H5_stress_composite_(phaseavg|timeseries)_coupling_env_physio", file)) {
     key <- col("analysis_family"); size <- count_tests(key, finite_p)
     res <- list(key = key, size = size, forced = FALSE,
       text = sprintf("BH within %s across prespecified env-to-physio coupling tests", key))
-  } else if (grepl("H6_stress_composite_(phaseavg|timeseries)_coupling_psych_physio", file)) {
+  } else if (grepl("H5_stress_composite_(phaseavg|timeseries)_coupling_psych_physio", file)) {
     key <- col("analysis_family"); size <- count_tests(key, finite_p)
     res <- list(key = key, size = size, forced = FALSE,
       text = sprintf("BH within %s across prespecified psych-to-physio tests (env-adjusted)", key))
-  } else if (grepl("H6_pairwise_rmcorr", file)) {
+  } else if (grepl("H5_pairwise_rmcorr", file)) {
     key <- ifelse(has, "pooled", NA); size <- rep(sum(has), n)
     res <- list(key = key, size = size, forced = FALSE, text = sprintf("BH across all %d fitted composite pairs", size))}
   if (is.null(res)) return(NULL)
@@ -356,7 +356,7 @@ p3_finalize_directory_staged <- function(directory, detail_dir = get0("H4_DETAIL
     if (!is_data) x <- p3_finalize_table(x, file_name)
     if (!is_data && 'p_value' %in% names(x)) {
       public <- p3_public_result(x, file_name)
-      if(folder %in% c('H1_H3_phaseavg','H1_H3_timeseries','H6_stress_composite_phaseavg','H6_stress_composite_timeseries')) public$script_name <- rep(paste0(folder,'.R'),nrow(public))
+      if(folder %in% c('H1_H3_phaseavg','H1_H3_timeseries','H5_stress_composite_phaseavg','H5_stress_composite_timeseries')) public$script_name <- rep(paste0(folder,'.R'),nrow(public))
       removed_fields <- setdiff(names(x), c(names(public),'p_value_adjusted','significant_adjusted','term','hotspot_id','n_hotspots','statistic'))
       # Store compacted model context in the existing run_info, not extra output CSVs.
       for(column_name in removed_fields) {
@@ -516,8 +516,9 @@ p3_public_result <- function(source_results,file) {
   join<-function(keys){context_values<-rep('',n);for(column_name in keys){z<-get(column_name);selected_rows<-p3_nb(z);context_values[selected_rows]<-paste0(context_values[selected_rows],ifelse(nzchar(context_values[selected_rows]),'; ',''),column_name,'=',z[selected_rows])};context_values}
   script<-if(grepl('^Analysis_combined_phaseavg',file))'Analysis_combined_phaseavg.R' else
     if(grepl('^Analysis_combined_timeseries',file))'Analysis_combined_timeseries.R' else
-    if(grepl('^H5_',file))'H5_hotspot_weather.R' else
-    if(grepl('^H6_',file))'H6_stress_composite.R' else
+    if(grepl('^H5_stress_composite_timeseries',file))'H5_stress_composite_timeseries.R' else
+    if(grepl('^H5_stress_composite_phaseavg',file))'H5_stress_composite_phaseavg.R' else
+    if(grepl('^H5_stress_composite',file))'H5_stress_composite.R' else
     if(grepl('^(9_FDR|H4_sound_literature_tests\\.csv$)',file))'H4_sound_literature_tests.R' else ''
   # The H1/H3 filenames overlap between variants; provenance is set by the directory finalizer.
   if(!nzchar(script))script<-get0('P3_EXPORT_SCRIPT',ifnotfound='H1_H3_phaseavg.R')

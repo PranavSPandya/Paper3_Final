@@ -1,6 +1,6 @@
-# H6 10 s epochs — prespecified within-person coupling LMMs with AR(1) (exploratory).
-# Engine: library/H6_coupling_core.R
-# Outputs: output/statistical_analysis/results/H6_stress_composite_timeseries/
+# H5 10 s epochs — prespecified within-person coupling LMMs with AR(1) (exploratory).
+# Engine: library/H5_coupling_core.R
+# Outputs: output/statistical_analysis/results/H5_stress_composite_timeseries/
 
 if (!exists("PAPER3_PARTICIPANTS", inherits = FALSE)) {
   .entry <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
@@ -20,11 +20,11 @@ PROJECT_ROOT <- resolve_project_root()
 LIBRARY_DIR <- paper3_statistical_library_dir()
 physio_all <- paper3_physiological_outcomes()
 
-H6_SPEC <- list(
+H5_SPEC <- list(
   analysis_grain = "timeseries",
-  results_subdir = "H6_stress_composite_timeseries",
-  entry_script = "H6_stress_composite_timeseries.R",
-  file_prefix = "H6_stress_composite_timeseries",
+  results_subdir = "H5_stress_composite_timeseries",
+  entry_script = "H5_stress_composite_timeseries.R",
+  file_prefix = "H5_stress_composite_timeseries",
   participants = PAPER3_PARTICIPANTS,
   phases = PAPER3_CORE_PHASES,
   matched_cap_sec = PAPER3_MATCHED_CAP_SEC,
@@ -50,17 +50,17 @@ H6_SPEC <- list(
   ),
   fdr_alpha = 0.05)
 
-H6_SPEC <- paper3_attach_outcome_normalization(H6_SPEC, PROJECT_ROOT)
+H5_SPEC <- paper3_attach_outcome_normalization(H5_SPEC, PROJECT_ROOT)
 PAPER3_APPLY_CSV_TRANSFORM <- function(x, column_name) {
-  paper3_apply_csv_transform(x, column_name, H6_SPEC$outcome_transforms_csv)}
+  paper3_apply_csv_transform(x, column_name, H5_SPEC$outcome_transforms_csv)}
 
-run_h6_stress_composite_timeseries <- function() {
-  source(file.path(LIBRARY_DIR, "H6_coupling_core.R"), local = FALSE)
-  cat("Running H6 prespecified coupling LMMs (10 s epochs, AR(1))...\n")
-  h6_coupling_run()}
+run_h5_stress_composite_timeseries <- function() {
+  source(file.path(LIBRARY_DIR, "H5_coupling_core.R"), local = FALSE)
+  cat("Running H5 prespecified coupling LMMs (10 s epochs, AR(1))...\n")
+  h5_coupling_run()}
 
-if (sys.nframe() == 0L) run_h6_stress_composite_timeseries()
+if (sys.nframe() == 0L) run_h5_stress_composite_timeseries()
 
 if (sys.nframe() == 0L) {
   paper3_standardize_result_directory(
-    file.path(PROJECT_ROOT, "output", "statistical_analysis", "results", "H6_stress_composite_timeseries"))}
+    file.path(PROJECT_ROOT, "output", "statistical_analysis", "results", "H5_stress_composite_timeseries"))}
