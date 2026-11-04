@@ -1,0 +1,5 @@
+START	Analysis_combined_timeseries	2026-11-03 22.46.33
+PID	Analysis_combined_timeseries	76624
+END	Analysis_combined_timeseries	2026-11-03 23.04.59	exit=	sec=1106
+START	Analysis_combined_phaseavg	2026-11-03 23.04.59
+PID	Analysis_combined_phaseavg	42008

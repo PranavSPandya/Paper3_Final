@@ -1,0 +1,19 @@
+11.30.13 start Analysis_combined_timeseries 
+11.34.52 end Analysis_combined_timeseries exit=0 secs=279
+11.34.52 start Analysis_combined_timeseries --supplementary-only
+11.34.57 end Analysis_combined_timeseries.supp exit=0 secs=5
+11.34.57 start Analysis_combined_phaseavg 
+11.35.13 end Analysis_combined_phaseavg exit=0 secs=15
+11.35.13 start H1_H3_phaseavg 
+11.35.48 end H1_H3_phaseavg exit=0 secs=35
+11.35.48 start H1_H3_timeseries 
+11.36.19 end H1_H3_timeseries exit=0 secs=31
+11.36.19 start H5_stress_composite_phaseavg 
+11.36.23 end H5_stress_composite_phaseavg exit=0 secs=3
+11.36.23 start H5_stress_composite_timeseries 
+11.36.37 end H5_stress_composite_timeseries exit=0 secs=14
+11.36.37 start H4_sound_literature_test 
+11.39.55 end H4_sound_literature_test exit=0 secs=198
+11.39.55 start Merge_statistical_outputs 
+11.39.57 end Merge_statistical_outputs exit=0 secs=2
+ALL DONE

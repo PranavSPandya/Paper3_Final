@@ -1,0 +1,40 @@
+Registered S3 method overwritten by 'clubSandwich':
+  method    from    
+  bread.mlm sandwich
+02:09:55 empatica_heart_rate
+02:10:12 empatica_eda_tonic
+02:10:24 empatica_eda_phasic
+02:10:41 empatica_skin_temperature
+02:11:07 empatica_hrv_td_sdnn
+02:11:29 empatica_hrv_td_rmssd
+02:11:38 empatica_hrv_fd_lf
+02:11:43 empatica_hrv_fd_hf
+02:11:49 empatica_hrv_fd_lf_hf_ratio
+02:11:56 empatica_hrv_fd_lfnu
+02:12:03 empatica_hrv_fd_hfnu
+02:12:10 empatica_hrv_fd_vlf
+02:12:15 empatica_hrv_fd_total_power
+02:12:19 eyetracker_pupil_diameter_avg
+02:12:27 eyetracker_pupil_change_rate
+02:12:40 eyetracker_blink_duration_s
+02:12:54 eyetracker_fixation_duration_s
+02:13:01 eyetracker_fixation_rate
+02:13:10 eyetracker_saccade_duration_s
+02:13:18 eyetracker_saccade_amplitude
+02:13:26 eyetracker_saccade_peak_velocity
+02:13:36 eyetracker_gaze_velocity
+02:13:44 eyetracker_gaze_dispersion
+02:13:53 eyetracker_distance_from_center
+09:06:09 eyetracker_gaze_centrality
+09:06:34 eyetracker_eyelid_aperture_avg
+Error in file.copy(original_files, original_dir, copy.date = TRUE) : 
+  more 'from' files than 'to' files
+Calls: h4_fit_timeseries ... h4_write_tables -> p3_finalize_directory -> file.copy
+In addition: Warning messages:
+1: In dir.create(workspace) :
+  cannot create dir 'C:\Users\sanga\AppData\Local\Temp\Rtmpq499Un\paper3_output_transaction_7e2c40e918ff', reason 'No such file or directory'
+2: In dir.create(original_dir) :
+  cannot create dir 'C:\Users\sanga\AppData\Local\Temp\Rtmpq499Un\paper3_output_transaction_7e2c40e918ff\original', reason 'No such file or directory'
+3: In dir.create(staged_dir) :
+  cannot create dir 'C:\Users\sanga\AppData\Local\Temp\Rtmpq499Un\paper3_output_transaction_7e2c40e918ff\Analysis_combined_timeseries', reason 'No such file or directory'
+Execution halted
