@@ -1,17 +1,7 @@
-# H4_sound_literature_helpers.R - static function lists for H4_sound_literature_test.R
-# v3 (2026-11-03): every sound-dependent block also accepts one of the 23 alternative sound descriptors of
-# test_H4_othersound.R in place of ucm_SND_dBA (argument `sound`; see H4_SOUND).
-# v4 (2026-11-03): Moshammer on preceding 5-min Leq and outcome in remainder of 8-min bout (15-min paper
-# periods not feasible per bout); Kraus on 5-min intervals, Leq lag 0 only (lags 5-10 / 10-15 min not
-# feasible in 8 min); lagged outcome omitted when no prior 5-min interval exists within the bout.
-# Exact-method rewrite (2026-11-03). Each paper block is one list of static functions
-# (H4_MOSHAMMER, H4_JIN, H4_SONG, H4_RODRIGUES, H4_KRAUS); H4_UTIL and H4_REPORT are shared.
-# Every block fits the source paper's own model on raw outcomes unless the paper itself transformed
-# them. Data limitations are recorded in METHODS_NOTES.md by H4_REPORT$methods_notes().
+# Helpers for H4_sound_literature_test.R: one function list per paper (H4_MOSHAMMER, H4_JIN, H4_SONG, H4_RODRIGUES, H4_KRAUS) plus H4_UTIL and H4_REPORT.
+# Each block fits the paper's own model; data limitations go to METHODS_NOTES.md.
 
-# --- Shared utilities --------------------------------------------------------------------------
-# Sound variables: ucm_SND_dBA is the primary exposure; the alternatives are the category and spectral
-# columns of test_H4_othersound.R (SOUND_CATEGORY_COLUMNS, SOUND_SPECTRAL_COLUMNS), as named in the merged CSV.
+# Shared utilities; ucm_SND_dBA is the main sound exposure, the alternatives are the category and spectral columns.
 H4_SOUND <- list(
   primary = list(column = 'ucm_SND_dBA', is_db = TRUE, family = 'sound_level_reference'),
   category = c('wind_proportion', 'rural_natural_proportion', 'vehicle_proportion', 'urban_manmade_neutral_proportion',
@@ -24,11 +14,10 @@ H4_SOUND <- list(
     out <- list()
     for (family in c('category', 'spectral')) for (column in intersect(H4_SOUND[[family]], available_columns))
       out[[column]] <- list(column = column, is_db = FALSE, family = paste0('sound_', family, if (family == 'category') '_proportion' else '_descriptor'))
-    out}
-)
+    out})
 
 H4_UTIL <- list(
-  # dB levels are averaged on the energy scale; other descriptors arithmetically (as test_H4_othersound.R).
+  # dB levels are averaged on the energy scale, other descriptors arithmetically.
   sound_mean = function(x, is_db) if (is_db) H4_UTIL$energy_mean_db(x) else H4_UTIL$finite_mean(x),
   bh = function(p) {
     q <- rep(NA_real_, length(p)); finite_p <- is.finite(p)
@@ -53,50 +42,82 @@ H4_UTIL <- list(
       if (!term_name %in% rownames(tt)) return(c(beta = NA, se = NA, df = NA, t = NA, p_t = NA))
       c(beta = tt[term_name, 'Value'], se = tt[term_name, 'Std.Error'], df = tt[term_name, 'DF'],
         t = tt[term_name, 't-value'], p_t = tt[term_name, 'p-value'])})
-    out <- as.data.frame(do.call(rbind, rows)); out$term <- terms; out}
-)
+    out <- as.data.frame(do.call(rbind, rows)); out$term <- terms; out})
 
-# --- Moshammer et al. (2019): random-effects GLS (Stata xtreg, re; default Swamy-Arora) ---------
-# Paper: "Cardiovascular markers were assessed every 15 min separately and applied to a random effects
-# GLS regression. Exposures in the preceding 15 min (noise and dust) served as independent variables.
-# The temperature was included in the models as a confounder." Table A2: "Unadjusted effect estimates
-# (p-value): change in cardiovascular parameters per ... dB". Appendix: "Controlling for temperature ...
-# For consistency reasons, only unadjusted results are shown."
+# Moshammer et al. (2019): random-effects GLS (Stata xtreg, re), unadjusted and temperature-adjusted
 H4_MOSHAMMER <- list(
   outcomes = c(
     RR_distance_ms = 'derived_rr_ms', SDNN_ms = 'empatica_hrv_td_sdnn', RMSSD_ms = 'empatica_hrv_td_rmssd',
-    VLF_power = 'empatica_hrv_fd_vlf', LF_power = 'empatica_hrv_fd_lf', HF_power = 'empatica_hrv_fd_hf'),
-  # Paper: 15-min periods with noise from the preceding 15 min. An 8-min bout cannot contain two full
-  # 15-min windows; we use the first 5 min for exposure and the remainder (5-8 min) for outcomes.
+    LF_power = 'empatica_hrv_fd_lf', HF_power = 'empatica_hrv_fd_hf'),
+  # The paper uses 15-min periods; here the first 5 min are the exposure and 5-8 min the outcome.
   exposure_seconds = 300,
   phase_sets = list('all phases' = c('BikeG', 'BikeU', 'WalkG', 'WalkU'), 'walking phases (paper setting)' = c('WalkG', 'WalkU')),
   specs = list(
     'Table A2 unadjusted (noise only)' = 'noise_leq_prev_db',
     'Methods: temperature as confounder' = c('noise_leq_prev_db', 'air_temp_c')),
-  # Outcome in the post-exposure window regressed on the energy-mean Leq of the first 5 min and, in the
-  # adjusted model, mean air temperature in the outcome window. Each window needs >= 2/3 valid 10-s rows.
+  # Native beat-to-beat intervals from the Empatica build (01_empatica_build.py): the project copy if present, else the Paper3_Github export.
+  rri_files = c('output/empatica_files/01_empatica_rri_native.csv', 'D:/Pranav/docker/Paper3_Github/output/empatica_files/01_empatica_rri_native.csv'),
+  read_rri = function() {
+    path <- Filter(file.exists, c(file.path(resolve_project_root(), H4_MOSHAMMER$rri_files[1]), H4_MOSHAMMER$rri_files[-1]))
+    if (!length(path)) stop('Moshammer LF/HF: native RRI file not found: ', paste(H4_MOSHAMMER$rri_files, collapse = ' or '))
+    rri <- read.csv(path[1])
+    rri$peak_time <- as.POSIXct(rri$peak_time, tz = 'UTC', format = '%Y-%m-%d %H:%M:%OS')
+    split(rri[c('peak_time', 'rri_ms')], rri$ParticipantID)},
+  # Artifact rule of the build: drop beats more than 0.45 s from the centred 11-beat median.
+  rri_keep = function(v) {
+    if (length(v) < 5) return(rep(TRUE, length(v)))
+    ref <- vapply(seq_along(v), function(i) median(v[max(1L, i - 5L):min(length(v), i + 5L)]), 0)
+    abs(v - ref) <= 450},
+  # NeuroKit2 hrv_frequency as in the build: 4 Hz quadratic spline, Welch (Hann, half-length segments), LF 0.04-0.15 Hz, HF 0.15-0.40 Hz.
+  lf_hf = function(peak_time, rri_ms, start, end) {
+    w_in <- peak_time >= start & peak_time < end
+    n_raw <- sum(w_in); t <- peak_time[w_in]; v <- rri_ms[w_in]
+    ok <- is.finite(v) & v >= 250 & v <= 2500; t <- t[ok]; v <- v[ok]
+    keep <- H4_MOSHAMMER$rri_keep(v); t <- t[keep]; v <- v[keep]; n <- length(v)
+    if (!n_raw || n < 40 || 100 * (n_raw - n) / n_raw > 25) return(c(lf = NA_real_, hf = NA_real_, n_beats = n))
+    x <- as.numeric(difftime(t, t[1], units = 'secs'))
+    knots <- c(rep(x[1], 3), ((x[-1] + x[-n]) / 2)[2:(n - 2)], rep(x[n], 3))
+    grid <- seq(0, by = 0.25, length.out = ceiling((x[n] + 0.25) / 0.25))
+    y <- rep(v[n], length(grid)); inside <- grid <= x[n]
+    y[inside] <- splines::splineDesign(knots, grid[inside], ord = 3) %*% solve(splines::splineDesign(knots, x, ord = 3), v)
+    y <- y - mean(y); N <- length(y)
+    min_f <- 2 * 4 / (N / 2); nseg <- trunc(2 / min_f * 4); if (nseg > N / 2) nseg <- trunc(N / 2)
+    win <- 0.5 - 0.5 * cos(2 * pi * (seq_len(nseg) - 1) / nseg); nfft <- 2 * nseg; half <- nfft / 2 + 1
+    seg <- seq(1, N - nseg + 1, by = nseg - nseg %/% 2)
+    psd <- rowMeans(vapply(seg, function(s) Mod(fft(c(y[s:(s + nseg - 1)] * win, numeric(nfft - nseg)))[1:half])^2, numeric(half)))
+    psd <- psd / (4 * sum(win^2)); psd[2:(half - 1)] <- 2 * psd[2:(half - 1)]; f <- (seq_len(half) - 1) * 4 / nfft
+    band <- function(lo, hi) {
+      i <- f >= min_f & f <= 0.5 & f >= lo & f < hi
+      p <- if (sum(i) > 1) sum(diff(f[i]) * (psd[i][-1] + psd[i][-sum(i)]) / 2) else 0
+      if (p == 0) NA_real_ else p}
+    c(lf = band(0.04, 0.15), hf = band(0.15, 0.4), n_beats = n)},
+  # Outcome window on the first-5-min Leq (+ air temperature); rows need >= 2/3 of expected rows, LF/HF come from the beats in 5-8 min.
   period_frame = function(epochs, sound = H4_SOUND$primary) {
     epochs$derived_rr_ms <- ifelse(is.finite(epochs$empatica_heart_rate) & epochs$empatica_heart_rate > 0, 60000 / epochs$empatica_heart_rate, NA_real_)
     exp_sec <- H4_MOSHAMMER$exposure_seconds
     exp_need <- (2 / 3) * (exp_sec / 10)
+    cap_sec <- get0('PAPER3_MATCHED_CAP_SEC', ifnotfound = 480)
+    out_need <- (2 / 3) * ((cap_sec - exp_sec) / 10)
+    rri <- H4_MOSHAMMER$read_rri()
     do.call(rbind, lapply(H4_UTIL$bouts(epochs), function(rows) {
       b <- epochs[rows, ]
       secs <- as.numeric(difftime(b$Datetime, min(b$Datetime), units = 'secs'))
       exp_r <- secs < exp_sec; out_r <- secs >= exp_sec
       if (!any(out_r)) return(NULL)
-      out_need <- (2 / 3) * sum(out_r)
       dba_exp <- b[[sound$column]][exp_r]
       noise_leq_prev_db <- if (sum(is.finite(dba_exp)) >= exp_need) H4_UTIL$sound_mean(dba_exp, sound$is_db) else NA_real_
       out <- data.frame(ParticipantID = b$ParticipantID[1], PhaseID = b$PhaseID[1],
         noise_leq_prev_db = noise_leq_prev_db, air_temp_c = H4_UTIL$finite_mean(b$ucm_AIR_temp[out_r]))
-      for (column_name in unique(H4_MOSHAMMER$outcomes)) {
+      for (column_name in setdiff(H4_MOSHAMMER$outcomes, c('empatica_hrv_fd_lf', 'empatica_hrv_fd_hf'))) {
         v <- b[[column_name]][out_r]
         out[[column_name]] <- if (sum(is.finite(v)) >= out_need) H4_UTIL$finite_mean(v) else NA_real_}
+      # 10 s rows are epoch starts, so the matched bout ends at the first row + 480 s.
+      beats <- rri[[as.character(b$ParticipantID[1])]]
+      t0 <- min(b$Datetime) + exp_sec; t1 <- min(min(b$Datetime) + cap_sec, max(b$Datetime) + 10)
+      p <- if (is.null(beats)) c(lf = NA_real_, hf = NA_real_, n_beats = 0) else H4_MOSHAMMER$lf_hf(beats$peak_time, beats$rri_ms, t0, t1)
+      out$empatica_hrv_fd_lf <- p[['lf']]; out$empatica_hrv_fd_hf <- p[['hf']]; out$n_beats_lf_hf <- p[['n_beats']]
       out}))},
-  # Stata [XT] xtreg Methods and formulas, xtreg re (default sigma_u estimator):
-  # sigma_e^2 = SSR_within / (N - n - K + 1); sigma_u^2 = max{0, SSR_b/(n - K) - sigma_e^2 / T_harmonic};
-  # theta_i = 1 - sqrt(sigma_e^2 / (T_i sigma_u^2 + sigma_e^2)); OLS of y* on x* and (1 - theta_i);
-  # conventional VCE; z statistics with normal p values. K counts columns of X including the constant.
+  # Stata xtreg re (Swamy-Arora): theta_i = 1 - sqrt(sigma_e^2 / (T_i sigma_u^2 + sigma_e^2)), then OLS on the quasi-demeaned data.
   xtreg_re = function(y, X, id) {
     keep <- is.finite(y) & apply(X, 1, function(r) all(is.finite(r)))
     y <- y[keep]; X <- X[keep, , drop = FALSE]; id <- as.character(id[keep])
@@ -145,14 +166,9 @@ H4_MOSHAMMER <- list(
         model_id = paste(column_name, '[5-8 min outcome] ~', paste(regressors, collapse = ' + '), '| xtreg re by ParticipantID'),
         model_details = if (is.null(fit)) 'not estimable' else sprintf('one row per phase: exposure=first 5 min, outcome=remainder of 8-min bout; n=%d; sigma_u=%.6g; sigma_e=%.6g; theta=%.4f-%.4f; 15-min paper periods not feasible in 8 min',
           noise_row$n_obs, noise_row$sigma_u, noise_row$sigma_e, noise_row$theta_min, noise_row$theta_max))}
-    list(results = do.call(rbind, rows), frame = frame)}
-)
+    list(results = do.call(rbind, rows))})
 
-# --- Jin, Jin & Kang (2020): two-way ANOVA LAeq level x UTCI stress category ---------------------
-# Paper: LAeq "divided into four levels by a unit of 5 dB: 55~60 dB(A), 60~65 dB(A), 65~70 dB(A), and
-# 70~75 dB(A)"; UTCI "divided into four levels corresponding to four different stress categories"
-# (Table 3/4; summer: no thermal stress, moderate, strong, very strong heat stress); "The analysis of
-# variance (ANOVA) ... main effect ... and ... interaction of UTCI and LAeq", analysed by season.
+# Jin, Jin & Kang (2020): two-way ANOVA of 5-dB LAeq levels x summer UTCI stress categories
 H4_JIN <- list(
   laeq_breaks = c(55, 60, 65, 70, 75),
   laeq_labels = c('55-60 dB(A)', '60-65 dB(A)', '65-70 dB(A)', '70-75 dB(A)'),
@@ -171,10 +187,7 @@ H4_JIN <- list(
       br <- unique(quantile(cells$laeq_db, c(0, 0.25, 0.5, 0.75, 1), na.rm = TRUE))
       if (length(br) < 3) factor(rep(NA, nrow(cells))) else cut(cells$laeq_db, br, paste0('Q', seq_len(length(br) - 1)), include.lowest = TRUE)}
     cells},
-  # Two-way ANOVA by model comparison. The paper does not state its SS type. With empty cells (here
-  # several LAeq x UTCI combinations) Type III marginal hypotheses are not uniquely defined, so main
-  # effects are tested Type II (each adjusted for the other main effect) and the interaction against the
-  # additive model (identical under Type II and Type III).
+  # Type II main effects and interaction vs the additive model, all against the full model's residual mean square (as car::Anova type 2).
   anova_type2 = function(y, a, b) {
     a <- droplevels(a); b <- droplevels(b)
     labels <- c('LAeq level', 'UTCI category', 'LAeq x UTCI')
@@ -182,14 +195,14 @@ H4_JIN <- list(
     rss <- function(X) { q <- qr(X); list(rss = sum(qr.resid(q, y)^2), rank = q$rank) }
     full <- rss(model.matrix(~ a * b)); additive <- rss(model.matrix(~ a + b))
     only_b <- rss(model.matrix(~ b)); only_a <- rss(model.matrix(~ a))
-    df_res_full <- length(y) - full$rank; df_res_add <- length(y) - additive$rank
-    one <- function(label, reduced, larger, df_res) {
+    df_res_full <- length(y) - full$rank
+    one <- function(label, reduced, larger) {
       df_term <- larger$rank - reduced$rank
-      if (df_term < 1 || df_res < 1) return(data.frame(effect = label, df_term = df_term, df_resid = df_res, F = NA, p = NA))
-      F_value <- ((reduced$rss - larger$rss) / df_term) / (larger$rss / df_res)
-      data.frame(effect = label, df_term = df_term, df_resid = df_res, F = F_value, p = pf(F_value, df_term, df_res, lower.tail = FALSE))}
-    rbind(one(labels[1], only_b, additive, df_res_add), one(labels[2], only_a, additive, df_res_add),
-      one(labels[3], additive, full, df_res_full))},
+      if (df_term < 1 || df_res_full < 1) return(data.frame(effect = label, df_term = df_term, df_resid = df_res_full, F = NA, p = NA))
+      F_value <- ((reduced$rss - larger$rss) / df_term) / (full$rss / df_res_full)
+      data.frame(effect = label, df_term = df_term, df_resid = df_res_full, F = F_value, p = pf(F_value, df_term, df_res_full, lower.tail = FALSE))}
+    rbind(one(labels[1], only_b, additive), one(labels[2], only_a, additive),
+      one(labels[3], additive, full))},
   run = function(epochs, sound = H4_SOUND$primary) {
     cells <- H4_JIN$cell_frame(epochs, sound)
     counts <- as.data.frame(table(laeq_level = cells$laeq_level, utci_category = cells$utci_category, useNA = 'no'))
@@ -214,14 +227,9 @@ H4_JIN <- list(
         paper_rule = 'p < 0.05', paper_rule_met = if (is.finite(tab$p[k])) tab$p[k] < 0.05 else NA,
         transformation = 'raw questionnaire score', term_units = 'factor levels as in the paper',
         model_id = paste(column_name, '~ LAeq_level * UTCI_category'), model_details = note)}
-    list(results = do.call(rbind, rows), cells = cells, counts = counts)}
-)
+    list(results = do.call(rbind, rows), cells = cells, counts = counts)})
 
-# --- Song et al. (2013 winter; 2014 spring): one-sided paired t, park vs city walk ---------------
-# 2014: "The heart rate and HRV data were collected at 1-minute intervals ... and the 15-minute average
-# was compared between sites"; "we used natural logarithmic transformed values"; "A paired t-test was
-# used to compare the mean physiological parameters between the two walking sites"; "P < 0.05 (one
-# sided) was considered statistically significant". Outcomes: heart rate, ln(HF), ln(LF/HF).
+# Song et al. (2013, 2014): one-sided paired t-test, park vs city walk, on HR, ln(HF) and ln(LF/HF)
 H4_SONG <- list(
   outcomes = list(
     heart_rate_bpm = list(column = 'empatica_heart_rate', log = FALSE, alternative = 'less'),
@@ -256,13 +264,9 @@ H4_SONG <- list(
         transformation = if (spec$log) 'natural log of 1-min values, then bout mean' else 'raw, mean of 1-min values',
         term_units = 'park minus city', model_id = paste('t.test(park, city, paired = TRUE, alternative =', spec$alternative, ')'),
         model_details = sprintf('mean park=%.6g; mean city=%.6g', mean(wide$value_park), mean(wide$value_city)))}
-    list(results = do.call(rbind, rows))}
-)
+    list(results = do.call(rbind, rows))})
 
-# --- Rodrigues et al. (2026): 7.Model_H2.py (Zenodo 10.5281/zenodo.16092878) -------------------
-# blocks = {"Noise": ["NOISE_max", "NOISE_std"], "Temperature": ["Temp_max", "Temp_mean"], ...};
-# df[predictors].fillna(0); StandardScaler(); smf.mixedlm(var ~ predictors, groups = INDIVID).fit();
-# retained if round(p, 4) < 0.05 and abs(round(beta, 4)) > 0.1.
+# Rodrigues et al. (2026): 7.Model_H2.py blocks, fillna(0) + StandardScaler, MixedLM; kept if round(p,4) < 0.05 and |round(beta,4)| > 0.1
 H4_RODRIGUES <- list(
   blocks = list(Noise = c('NOISE_max', 'NOISE_std'), Temperature = c('Temp_max', 'Temp_mean')),
   unavailable_blocks = c(
@@ -316,27 +320,14 @@ H4_RODRIGUES <- list(
             transformation = 'raw trip summary (no transformation)', term_units = 'per 1 SD (population SD, StandardScaler)',
             model_id = paste(name, '~', paste(predictors, collapse = ' + '), '+ (1 | ParticipantID)'),
             model_details = paste0('system=', system, if (block == 'Temperature') '; exposure=temperature block (not a sound term; fitted because the authors fit it)' else '', if (inherits(fit, 'error')) paste('; fit error:', conditionMessage(fit)) else ''))}}}
-    list(results = do.call(rbind, rows), trips = trips)}
-)
+    list(results = do.call(rbind, rows), trips = trips)})
 
-# --- Kraus et al. (2013): additive mixed models on 5-min intervals --------------------------------
-# Paper: "additive mixed models with a random participant effect ... compound symmetry covariance
-# structure and included the lagged outcome"; "Except for HR, all outcome variables were log-transformed";
-# "confounders that minimized Akaike's information criterion. Long-term and daily time trend were forced
-# into all models, along with physical activity. Trend variables were modeled as untransformed linear
-# variables or, using penalized splines or polynomials (up to 4 degrees)"; "Weekday and season were
-# evaluated as potential confounders"; "all HRV parameter models were adjusted for HR"; "Leq lagged in
-# 5-min intervals up to 15 min"; "piecewise linear term with a cut-off point at 65 dB(A) ... 5-dB(A)
-# increase". Outcomes: HR, SDNN, LF power (normalized units), HF power (normalized units), LF:HF ratio
-# (RMSSD not reported). Activity categories: 3) very light to light exertion (e.g. slow walking),
-# 4) moderate exertion (e.g. biking).
+# Kraus et al. (2013): additive mixed models on 5-min intervals, piecewise Leq at 65 dB(A), log outcomes except HR
 H4_KRAUS <- list(
   outcomes = c(HR = 'empatica_heart_rate', SDNN = 'empatica_hrv_td_sdnn', LF_nu = 'empatica_hrv_fd_lfnu',
     HF_nu = 'empatica_hrv_fd_hfnu', LF_HF = 'empatica_hrv_fd_lf_hf_ratio'),
   trend_forms = c('linear', 'poly2', 'poly3', 'poly4', 'pspline'),
-  # Paper: 5-min intervals, Leq lags 0-5, 5-10, 10-15 min. In an 8-min bout only the first 5-min
-  # interval is complete; lags beyond 0 min are not estimable. Lagged outcome requires a prior 5-min
-  # interval within the bout (absent here), so Y_prev is omitted with that limitation documented.
+  # Only lag 0 fits in an 8-min bout and there is no prior interval, so the lagged outcome is left out.
   interval_seconds = 300,
   fd_outcomes = c('LF_nu', 'HF_nu', 'LF_HF'),
   lags = 0L,
@@ -355,11 +346,7 @@ H4_KRAUS <- list(
         for (label in setdiff(names(H4_KRAUS$outcomes), H4_KRAUS$fd_outcomes)) {
           v <- b[[H4_KRAUS$outcomes[[label]]]][r]
           out[[label]] <- if (sum(is.finite(v)) >= need) H4_UTIL$finite_mean(v) else NA_real_}
-        # Frequency-domain values are themselves 5-min window estimates and exist only on rows whose
-        # window is complete (about 14-15 of the 30 rows in 0-5 min), so the 2/3-row rule cannot apply.
-        # Use the dataset's 5-min window that starts inside this interval and ends within one 10-s epoch
-        # of its end (the dataset's windows sit on a 10-s grid offset by one epoch from the bout start),
-        # latest such window, with the paper's >= 300 beats rule for frequency-domain values.
+        # Frequency-domain values: use the dataset's 5-min window ending at this interval's end (>= 300 beats).
         t0 <- min(b$Datetime[r]); t1 <- t0 + step + 10
         inside <- which(r & b$hrv_window_available & is.finite(b$hrv_seg_start) & is.finite(b$hrv_seg_end) &
           b$hrv_seg_start >= t0 & b$hrv_seg_end <= t1)
@@ -369,7 +356,7 @@ H4_KRAUS <- list(
         out$daily_time_h <- as.numeric(format(mid, '%H')) + as.numeric(format(mid, '%M')) / 60 + as.numeric(format(mid, '%S')) / 3600
         out$study_day <- as.numeric(as.Date(mid)); out$weekday <- weekdays(as.Date(mid))
         out}))
-      for (lag in 1:max(H4_KRAUS$lags, 0L)) if (lag > 0) per[[paste0('Leq_lag', lag)]] <- per$Leq[match(per$interval - lag, per$interval)]
+      for (lag in setdiff(H4_KRAUS$lags, 0L)) per[[paste0('Leq_lag', lag)]] <- per$Leq[match(per$interval - lag, per$interval)]
       per$Leq_lag0 <- per$Leq
       if (max(H4_KRAUS$lags, 0L) >= 1L) for (label in names(H4_KRAUS$outcomes)) per[[paste0(label, '_prev')]] <- per[[label]][match(per$interval - 1L, per$interval)]
       per$activity_category <- ifelse(grepl('^Walk', b$PhaseID[1]), '3 very light to light exertion (slow walking)', '4 moderate exertion (biking)')
@@ -389,8 +376,7 @@ H4_KRAUS <- list(
   log_or_raw = function(label, x) if (label == 'HR') x else ifelse(is.finite(x) & x > 0, log(x), NA),
   run = function(epochs, lme_control, sound = H4_SOUND$primary) {
     intervals <- H4_KRAUS$interval_frame(epochs, sound)
-    # dBA: knot 65 dB(A), slope per 5 dB (paper). Other descriptors: knot = median and slope per 1 SD of the
-    # descriptor's 5-min interval values (pooled over all intervals used).
+    # dBA: knot at 65 dB(A), slope per 5 dB; other descriptors: knot at the median, slope per 1 SD.
     knot <- if (sound$is_db) 65 else stats::median(intervals$Leq_lag0, na.rm = TRUE)
     step <- if (sound$is_db) 5 else stats::sd(intervals$Leq_lag0, na.rm = TRUE)
     intervals$study_day <- intervals$study_day - min(intervals$study_day, na.rm = TRUE)
@@ -412,12 +398,11 @@ H4_KRAUS <- list(
         base_forced <- c('Y_prev', 'activity_category', if (label != 'HR') 'HR_cov')
       } else {
         d$Y_prev <- NA_real_
-        base_forced <- c('activity_category', if (label != 'HR') 'HR_cov')
-      }
+        base_forced <- c('activity_category', if (label != 'HR') 'HR_cov')}
       trends <- c(long_term = 'study_day', daily = 'daily_time_h')
       d <- d[complete.cases(d[c('Yk', base_forced, all_lag_terms, trends, 'weekday')]), ]
       trend_terms <- function(f) unname(mapply(H4_KRAUS$trend_term, names(f), f))
-      # Trend forms and weekday chosen by AIC (ML) on the lag-0 model; the same confounder set is used for every lag.
+      # Trend forms and weekday chosen by AIC (ML) on the lag-0 model, then used for every lag.
       forced0 <- c('L0_below65_per5', 'L0_above65_per5', base_forced)
       forms <- setNames(rep('linear', length(trends)), trends)
       for (trend in trends) {
@@ -458,13 +443,11 @@ H4_KRAUS <- list(
             model_id = paste('Yk ~', paste(final_terms, collapse = ' + '), '| random ~1|ParticipantID, corCompSymm'),
             model_details = sprintf('beta=%.6g; se(beta)=%.6g; %s; corCompSymm rho=%.4g%s', r$beta, r$se, selection[[label]], cs_rho,
               if (inherits(final, 'error')) paste('; fit error:', conditionMessage(final)) else ''))}}}
-    list(results = do.call(rbind, rows), intervals = intervals, selection = selection, knot = knot, step = step)}
-)
+    list(results = do.call(rbind, rows), intervals = intervals, selection = selection, knot = knot, step = step)})
 
-# --- Catalog, summary and METHODS_NOTES -----------------------------------------------------------
+# Catalog, summary and METHODS_NOTES
 H4_REPORT <- list(
-  # Rows without a p value (fit failed or no data) are not results: they are removed from the results
-  # CSV and listed in METHODS_NOTES with the reason (attribute 'not_estimable').
+  # Rows without a p value are dropped from the results and listed in METHODS_NOTES.
   catalog = function(...) {
     results <- do.call(rbind, list(...)); rownames(results) <- NULL
     dropped <- results[!is.finite(results$p), c('paper', 'test', 'outcome', 'n_observations', 'model_details'), drop = FALSE]
@@ -494,25 +477,27 @@ H4_REPORT <- list(
         n_paper_rule_met = sum(r$paper_rule_met %in% TRUE), outcomes_paper_rule_met = paste(r$outcome[r$paper_rule_met %in% TRUE], collapse = '; '),
         n_p_lt_05 = sum(fin & r$p < 0.05), n_q_lt_05 = sum(fin & is.finite(r$q_BH) & r$q_BH < 0.05),
         surviving_FDR = paste(r$outcome[fin & is.finite(r$q_BH) & r$q_BH < 0.05], collapse = '; '))}))},
-  methods_notes = function(jin_counts, jin_cells, kraus_selection, kraus_intervals, moshammer_frame) {
+  methods_notes = function(jin_counts, jin_cells, kraus_selection, kraus_intervals) {
     count_lines <- apply(jin_counts, 1, function(r) sprintf('  - %s | %s: n = %s', r[['laeq_level']], r[['utci_category']], r[['n_phase_cells']]))
     out_of_range <- sum(is.na(jin_cells$laeq_level) | is.na(jin_cells$utci_category))
-    c('# H4 sound literature tests - exact-method rewrite (2026-11-03)',
+    c('# H4 sound literature tests',
       'Each block fits the source paper\'s own model. Where the 8-min / 11-participant data cannot support a step, the closest literal step is used and the limitation is listed here. q_BH (Benjamini-Hochberg within paper x test) is an extra column; each paper\'s own decision rule is reported separately (inference_note).',
       '',
       '## Moshammer et al. 2019 (random-effects GLS, Stata xtreg re)',
       '- Implemented: outcome in a sub-period ~ noise Leq (energy mean) of the PRECEDING sub-period per 1 dB(A) (Table A2, unadjusted) and + mean air temperature of the outcome sub-period (Methods: temperature as confounder); Stata default Swamy-Arora variance components, GLS transform, conventional VCE, z tests. Raw outcomes, no activity term, no centring.',
-      '- Window mapping: the paper uses consecutive 15-min periods with noise from the preceding 15 min; that cannot be fit within one 8-min bout. Here: energy-mean Leq of the first 5 min as exposure and phase-mean outcomes over the remainder (5-8 min), one row per phase (up to 44 rows). A window needs >= 2/3 valid 10-s rows. Fitted on all four phases and, separately, on walking phases only.',
-      '- The paper models no autocorrelation beyond the participant random effect; none is added here. Outcome and exposure windows are non-overlapping but serial correlation within a participant may remain; standard errors may be optimistic.',
+      '- Window mapping: the paper uses consecutive 15-min periods with noise from the preceding 15 min; that cannot be fit within one 8-min bout. Here: energy-mean Leq of the first 5 min as exposure and phase-mean outcomes over the remainder (5-8 min), one row per phase (up to 44 rows). A window needs >= 2/3 of its expected 10-s rows (exposure 30 rows, outcome 18 rows). Fitted on all four phases and, separately, on walking phases only.',
+      '- LF and HF power are recomputed per phase from the native beat-to-beat intervals (01_empatica_rri_native.csv) in the outcome window only (5-8 min of the matched bout, after the exposure and inside the bout), with the Empatica build method: beats 250-2500 ms, beats more than 0.45 s from the centred 11-beat median removed, >= 40 valid beats and <= 25 % removed, NeuroKit2 hrv_frequency (4 Hz quadratic-spline resampling, mean removed, Welch with Hann half-length segments, LF 0.04-0.15 Hz, HF 0.15-0.40 Hz). 180 s exceeds the Task Force (1996) minimums (about 1 min for HF, 2 min for LF). VLF is dropped: it needs more than 5 min.',
+      '- Time-domain SDNN and RMSSD are short-window 10-s row values; rows just after 5 min can still include up to about 1 min of the exposure window, so exposure and outcome are not fully separated for these two outcomes. RR distance (from heart rate) does not overlap.',
+      '- The paper models no autocorrelation beyond the participant random effect; none is added here. Serial correlation within a participant may remain; standard errors may be optimistic.',
       '- Dust: personal PM2.5 exists (Atmotube), but Table A2 reports single-exposure models, so PM is not added to the noise model.',
       '- Temperature: the paper used a stationary meteorological station; here the mobile air temperature (ucm_AIR_temp).',
-      '- Outcomes: RR distance (derived row-wise as 60000 / empatica_heart_rate), SDNN, RMSSD, VLF, LF and HF power. TINN and blood pressure are not in the dataset.',
+      '- Outcomes: RR distance (derived row-wise as 60000 / empatica_heart_rate), SDNN, RMSSD, LF and HF power (VLF dropped, see above). TINN and blood pressure are not in the dataset.',
       '',
       '## Jin, Jin & Kang 2020 (two-way ANOVA)',
-      '- Implemented: two-way ANOVA LAeq level x UTCI category with interaction, no participant block. The paper does not state its SS type; because several LAeq x UTCI cells are empty, Type III marginal hypotheses are not uniquely defined, so main effects are Type II (each adjusted for the other main effect) and the interaction is tested against the additive model (the same F under Type II and Type III).',
+      '- Implemented: two-way ANOVA LAeq level x UTCI category with interaction, no participant block. The paper does not state its SS type; because several LAeq x UTCI cells are empty, Type III marginal hypotheses are not uniquely defined, so main effects are Type II (each adjusted for the other main effect) and the interaction is tested against the additive model (the same F under Type II and Type III). All F tests use the full (interaction) model residual mean square and df as error term, as car::Anova(type = 2).',
       '- Levels exactly as the paper: LAeq 55-60, 60-65, 65-70, 70-75 dB(A); UTCI summer stress categories 9-26, 26-32, 32-38, 38-46 C (one summer season, campaign 3 July to 27 August 2025, analysed with the paper\'s summer bins).',
       sprintf('- %d of 44 phase cells fall outside the paper\'s LAeq (55-75 dB(A)) or UTCI (9-46 C) ranges and are excluded, not reassigned.', out_of_range),
-      '- Outcomes: TCV analogue = questionnaire_thermal_comfort_1_5 (5-point; paper 7-point); OCV analogue = questionnaire_current_comfort_1_7 (General Comfort, 7-point). TSV, subjective loudness and acoustic comfort were not collected. Paper unit = independent respondents; here 44 phase cells from 11 participants (repeated measures, not modelled, as instructed: no block).',
+      '- Outcomes: TCV analogue = questionnaire_thermal_comfort_1_5 (5-point; paper 7-point); OCV analogue = questionnaire_current_comfort_1_7 (General Comfort, 7-point). TSV, subjective loudness and acoustic comfort were not collected. Paper unit = independent respondents; here 44 phase cells from 11 participants (repeated measures, not modelled, as in the paper: no participant block).',
       '- Cell counts (phase cells with phase LAeq and UTCI inside the ranges):', count_lines,
       '- Empty or small cells are reported as they are; levels are not collapsed.',
       '',
@@ -528,7 +513,7 @@ H4_REPORT <- list(
       '- Exposure source differs: their NOISE from the Lisbon Lden map along the route and Temp from the IPMA daily station; here personal dBA and mobile air temperature per trip.',
       '',
       '## Kraus et al. 2013 (additive mixed models)',
-      '- Implemented: outcomes HR, SDNN, LF (normalized units), HF (normalized units) and LF:HF; log except HR; lagged outcome (previous interval); piecewise Leq at 65 dB(A) per 5 dB; categorical physical activity (walk = 3 very light to light exertion, bike = 4 moderate exertion); HR adjustment for HRV models; long-term and daily time trends forced in, each linear, polynomial 2-4 or penalized spline by AIC; weekday tested by AIC; random participant intercept plus compound symmetry (nlme corCompSymm).',
+      '- Implemented: outcomes HR, SDNN, LF (normalized units), HF (normalized units) and LF:HF; log except HR; piecewise Leq at 65 dB(A) per 5 dB; categorical physical activity (walk = 3 very light to light exertion, bike = 4 moderate exertion); HR adjustment for HRV models; long-term and daily time trends forced in, each linear, polynomial 2-4 or penalized spline by AIC; weekday tested by AIC; random participant intercept plus compound symmetry (nlme corCompSymm).',
       '- Window mapping: the paper\'s non-overlapping 5-min intervals with Leq lags 0-5, 5-10 and 10-15 min. An 8-min bout yields one complete 5-min interval (0-5 min); only lag 0 is estimable. Lags 5-10 and 10-15 min require longer bouts and are not run. Lagged outcome (previous interval) is omitted because there is no prior 5-min interval within the bout. Validity: >= 2/3 valid 10-s rows per 5-min interval for Leq, HR and SDNN. LF_nu, HF_nu and LF_HF are themselves 5-min window estimates present only on rows whose window is complete (about half the rows of 0-5 min), so instead of the row rule they take the dataset\'s 5-min window that starts in the interval and ends within one 10-s epoch of its end (windows sit on a 10-s grid offset by one epoch), requiring >= 300 valid beats as in the paper.',
       '- Autocorrelation: compound symmetry and participant random effect as in the paper; without a lagged outcome term, autocorrelation structure differs from the published model.',
       '- Trend forms and weekday are selected by AIC (ML) on the lag-0 model and reused for each lag. AIC for spline candidates comes from the mgcv::gamm mixed-model representation (lme object, ML).',
@@ -538,5 +523,4 @@ H4_REPORT <- list(
       sprintf('- Kraus 5-min intervals built: %d (interval 1 of %d phases).', nrow(kraus_intervals), length(unique(paste(kraus_intervals$ParticipantID, kraus_intervals$PhaseID)))),
       '',
       '## Data source',
-      '- All blocks use the 10-s time-series rows of output/merged_all_11participants_8min.csv (the same input as Analysis_combined_timeseries.R). Song 1-min means and Rodrigues trip MEAN/STD/MAX/MIN are computed from those 10-s rows; Jin uses all 44 phases.')}
-)
+      '- All blocks use the 10-s time-series rows of output/merged_all_11participants_8min.csv (the same input as Analysis_combined_timeseries.R). Song 1-min means and Rodrigues trip MEAN/STD/MAX/MIN are computed from those 10-s rows; Jin uses all 44 phases.')})
