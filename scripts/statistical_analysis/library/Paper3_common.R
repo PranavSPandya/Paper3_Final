@@ -72,6 +72,7 @@ paper3_statistical_bootstrap <- function(
   extra_setup = NULL
 ) {
   info <- paper3_attach_statistical_common()
+
   paper3_entry_load_packages(
     required_packages = required_packages,
     load_packages = load_packages,
@@ -185,6 +186,29 @@ paper3_phase_sum_design <- function(phase) {
   design <- stats::model.matrix(~ phase, contrasts.arg = list(phase = stats::contr.sum(4L)))[, -1L, drop = FALSE]
   colnames(design) <- c("PhaseSumWalkG", "PhaseSumWalkU", "PhaseSumBikeG")
   design}
+
+# End-of-phase questionnaire columns for H2 / H1 questionnaire contrasts and Analysis Eq8 (no STAI-6 or env-comfort roll-up means).
+paper3_psych_questionnaire_outcomes <- function() {
+  c(
+    "questionnaire_current_comfort_1_7",
+    "questionnaire_space_familiarity_1_5",
+    "questionnaire_pleasantness_1_5",
+    "questionnaire_thermal_comfort_1_5",
+    "questionnaire_acoustic_comfort_1_5",
+    "questionnaire_visual_comfort_1_5",
+    "questionnaire_air_quality_comfort_1_5",
+    "questionnaire_odor_comfort_1_5",
+    "questionnaire_stai_calm_rev_1_5",
+    "questionnaire_stai_tense_1_5",
+    "questionnaire_stai_upset_1_5",
+    "questionnaire_stai_relaxed_rev_1_5",
+    "questionnaire_stai_content_rev_1_5",
+    "questionnaire_stai_worried_1_5",
+    "questionnaire_prs11_fascination_mean_1_5",
+    "questionnaire_prs11_being_away_mean_1_5",
+    "questionnaire_prs11_coherence_mean_1_5",
+    "questionnaire_prs11_scope_mean_1_5"
+  )}
 
 # Cohort, phases and the 26 physiological outcomes for both Analysis_combined entry scripts.
 paper3_combined_study_spec <- function(root = resolve_project_root()) {
@@ -333,12 +357,14 @@ p3_family <- function(results, file) {
     key <- paste(mid, col("term")); size <- count_distinct(key, col("outcome"))
     res <- list(key = key, size = size, forced = TRUE, text = sprintf(
       "BH within model x term across the %d planned outcomes; p_value_adjusted_equation: BH within model across all non-intercept terms x outcomes", size))
+
   } else if (grepl("phase_contrasts\\.csv$", file)) {
     mid <- if ("model_id" %in% names(results)) col("model_id") else col("model_label")
     key <- paste(mid, col("contrast")); size <- count_distinct(key, col("outcome"))
     eq <- count_distinct(mid, col("contrast")) * count_distinct(mid, col("outcome"))
     res <- list(key = key, size = size, forced = TRUE, text = sprintf(
       "BH within model x contrast across the %d planned outcomes; p_value_adjusted_equation: BH within model across %d contrast x outcome tests", size, eq))
+
   } else if (grepl("H1_H3_Contrasts\\.csv$", file)) {
     key <- paste(col("outcome_type"), col("hypothesis"), col("normalization"), col("contrast"))
     size <- as.integer(col("adjustment_family_size"))
@@ -370,6 +396,10 @@ p3_family <- function(results, file) {
     key <- col("analysis_family"); size <- count_tests(key, finite_p)
     res <- list(key = key, size = size, forced = FALSE,
       text = sprintf("BH within %s across prespecified psych-to-physio tests (env-adjusted)", key))
+  } else if (grepl("H5_literature_(johnson|rodrigues|vandoren)", file)) {
+    key <- col("analysis_family"); size <- count_tests(key, finite_p)
+    res <- list(key = key, size = size, forced = FALSE,
+      text = sprintf("BH within %s (literature-style sensitivity; one family per source x test type)", key))
   } else if (grepl("Analysis_combined_timeseries_supplementary_blocks", file)) {
     key <- col("table"); size <- count_tests(key, finite_p)
     res <- list(key = key, size = size, forced = FALSE, text = sprintf("BH within supplementary block (%s) across its %d tests", key, size))}
@@ -454,7 +484,7 @@ p3_finalize_directory <- function(directory) {
     x <- p3_finalize_table(x, file_name)
     if ('p_value' %in% names(x)) {
       x <- p3_public_result(x, file_name)
-      if (folder %in% c('H1_H3_phaseavg', 'H1_H3_timeseries', 'H5_stress_composite_phaseavg', 'H5_stress_composite_timeseries'))
+      if (folder %in% c('H1_H3_phaseavg', 'H1_H3_timeseries'))
         x$script_name <- rep(paste0(folder, '.R'), nrow(x))}
     p3_write(x, path)}
   remaining <- list.files(directory)
@@ -481,12 +511,11 @@ p3_public_result <- function(source_results, file) {
       selected_rows <- p3_nb(z)
       context_values[selected_rows] <- paste0(context_values[selected_rows], ifelse(nzchar(context_values[selected_rows]), '; ', ''), column_name, '=', z[selected_rows])}
     context_values}
-  script <- if (grepl('^Analysis_combined_phaseavg', file)) 'Analysis_combined_phaseavg.R' else
+  script <- if (grepl('^Analysis_combined_phaseavg_physiology_questionnaire', file)) 'Analysis_combined_phaseavg_physiology_questionnaire.R' else
+    if (grepl('^Analysis_combined_phaseavg', file)) 'Analysis_combined_phaseavg.R' else
     if (grepl('^Analysis_combined_timeseries', file)) 'Analysis_combined_timeseries.R' else
-    if (grepl('^H5_stress_composite_timeseries', file)) 'H5_stress_composite_timeseries.R' else
-    if (grepl('^H5_stress_composite_phaseavg', file)) 'H5_stress_composite_phaseavg.R' else
     if (grepl('H4_sound_literature_tests\\.csv$', file)) 'H4_sound_literature_test.R' else ''
-  # H1/H3 and H5 folders get script_name from the directory finalizer.
+  # H1/H3 folders get script_name from the directory finalizer.
   public_results <- data.frame(script_name = rep(script, n), source_table = rep(file, n), stringsAsFactors = FALSE)
   public_results$model_id <- fill(get('model_id'), get('model_label'))
   public_results$context <- join(c('hypothesis', 'analysis', 'analysis_entry', 'table', 'mode', 'duration', 'outcome_type', 'block'))

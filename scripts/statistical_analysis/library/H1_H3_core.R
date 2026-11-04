@@ -1,29 +1,7 @@
 # Shared code for H1-H3: phase-mean contrasts, H2 rmcorr and temporal AR(1) models; sourced by H1_H3_phaseavg.R and H1_H3_timeseries.R.
 
-# End-of-phase questionnaire items (H2 rmcorr; H1/H3 questionnaire contrasts).
-PSYCH_OUTCOMES <- c(
-  # Comfort / affect (single items)
-  "questionnaire_current_comfort_1_7",
-  "questionnaire_space_familiarity_1_5",
-  "questionnaire_pleasantness_1_5",
-  # Environmental comfort (five dimensions, no overall mean)
-  "questionnaire_thermal_comfort_1_5",
-  "questionnaire_acoustic_comfort_1_5",
-  "questionnaire_visual_comfort_1_5",
-  "questionnaire_air_quality_comfort_1_5",
-  "questionnaire_odor_comfort_1_5",
-  # STAI-6 items (higher = more anxiety; the overall mean is left out)
-  "questionnaire_stai_calm_rev_1_5",
-  "questionnaire_stai_tense_1_5",
-  "questionnaire_stai_upset_1_5",
-  "questionnaire_stai_relaxed_rev_1_5",
-  "questionnaire_stai_content_rev_1_5",
-  "questionnaire_stai_worried_1_5",
-  # PRS-11 (four subscales; no total mean)
-  "questionnaire_prs11_fascination_mean_1_5",
-  "questionnaire_prs11_being_away_mean_1_5",
-  "questionnaire_prs11_coherence_mean_1_5",
-  "questionnaire_prs11_scope_mean_1_5")
+# End-of-phase questionnaire items (H2 rmcorr; H1/H3 questionnaire contrasts; shared with Analysis Eq8).
+PSYCH_OUTCOMES <- paper3_psych_questionnaire_outcomes()
 
 SENSOR_OUTCOMES <- study_wide_spec$physiological_outcome_names
 CORE_PHASES <- study_wide_spec$phases
@@ -94,15 +72,15 @@ extract_phase_lmm_contrasts <- function(fit, analysis_data, outcome, family_set,
   lv <- levels(analysis_data$PhaseID)
   wvec <- function(plus, minus) { w <- setNames(rep(0, length(lv)), lv); w[plus] <- 1; w[minus] <- -1; unname(w) }
   fitted <- !is.null(fit)
-  cc <- data.frame(estimate = rep(NA_real_, nrow(contrast_rows) + 1L), SE = NA_real_, df = NA_real_, t.ratio = NA_real_,
+  contrast_estimates <- data.frame(estimate = rep(NA_real_, nrow(contrast_rows) + 1L), SE = NA_real_, df = NA_real_, t.ratio = NA_real_,
     p.value = NA_real_, lower.CL = NA_real_, upper.CL = NA_real_)
   if (fitted) {
-    em <- emmeans(fit, ~ PhaseID)
-    cm <- setNames(lapply(seq_len(nrow(contrast_rows)), function(index)
+    phase_emmeans <- emmeans(fit, ~ PhaseID)
+    planned_weights <- setNames(lapply(seq_len(nrow(contrast_rows)), function(index)
       wvec(contrast_rows$Comparison_PhaseID[index], contrast_rows$Reference_PhaseID[index])), contrast_rows$Contrast)
-    did <- list(DiD = wvec(c("BikeG", "WalkU"), c("BikeU", "WalkG")))
-    cc <- rbind(as.data.frame(summary(contrast(em, method = cm), infer = c(TRUE, TRUE))),
-      as.data.frame(summary(contrast(em, method = did), infer = c(TRUE, TRUE))))}
+    did_weights <- list(DiD = wvec(c("BikeG", "WalkU"), c("BikeU", "WalkG")))
+    contrast_estimates <- rbind(as.data.frame(summary(contrast(phase_emmeans, method = planned_weights), infer = c(TRUE, TRUE))),
+      as.data.frame(summary(contrast(phase_emmeans, method = did_weights), infer = c(TRUE, TRUE))))}
   ids <- analysis_data$ParticipantID
   n_pairs <- vapply(seq_len(nrow(contrast_rows)), function(index) length(intersect(ids[analysis_data$PhaseID == contrast_rows$Reference_PhaseID[index]],
     ids[analysis_data$PhaseID == contrast_rows$Comparison_PhaseID[index]])), integer(1))
@@ -111,8 +89,9 @@ extract_phase_lmm_contrasts <- function(fit, analysis_data, outcome, family_set,
   data.frame(
     Hypothesis = c(contrast_rows$Hypothesis, "H3 descriptive DiD"), Contrast = c(contrast_rows$Contrast, "(BikeG - BikeU) - (WalkG - WalkU)"),
     Reference_PhaseID = c(contrast_rows$Reference_PhaseID, NA), Comparison_PhaseID = c(contrast_rows$Comparison_PhaseID, NA),
-    Outcome = outcome, Units = units_of(outcome), Beta = cc$estimate, SE = cc$SE, df = cc$df, t_ratio = cc$t.ratio, p_value = cc$p.value,
-    Beta_CI95_low = cc$lower.CL, Beta_CI95_high = cc$upper.CL, N_Participants = c(n_pairs, length(unique(ids))),
+    Outcome = outcome, Units = units_of(outcome), Beta = contrast_estimates$estimate, SE = contrast_estimates$SE, df = contrast_estimates$df,
+    t_ratio = contrast_estimates$t.ratio, p_value = contrast_estimates$p.value,
+    Beta_CI95_low = contrast_estimates$lower.CL, Beta_CI95_high = contrast_estimates$upper.CL, N_Participants = c(n_pairs, length(unique(ids))),
     SMD_paired_Bonett = c(smd[, "g"], NA), SMD_CI95_low = c(smd[, "low"], NA), SMD_CI95_high = c(smd[, "high"], NA),
     Normalization = normalization, Family_Set = family_set, N_Complete_Pairs = c(n_pairs, NA),
     Status = if (fitted) "FIT" else "NOT_FIT_NO_CONVERGENCE",
@@ -188,6 +167,7 @@ h1_h3_sum_contrasts <- function(fit, outcome, status) {
     spec <- H1_H3_SUM_CONTRASTS[index, ]
     L <- setNames(rep(0, nrow(tt)), rownames(tt))
     suffix <- if (effect == "phase_slope") ":time_min" else ""
+    # Linear combination of contr.sum phase columns (weights in H1_H3_SUM_CONTRASTS).
     for (column in c("PhaseSumWalkG", "PhaseSumWalkU", "PhaseSumBikeG")) L[paste0(column, suffix)] <- spec[[column]]
     beta <- sum(L * tt[, "Value"])
     se <- sqrt(as.numeric(t(L) %*% V %*% L))

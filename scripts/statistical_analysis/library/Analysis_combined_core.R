@@ -90,13 +90,14 @@ combined_cr2 <- function(fit, cluster, planned = FALSE) {
   list(coefficients = rbind(as_rows(coefs, coefs$beta), as_rows(contrasts[1L, ], contrasts$Est[1L])),
     contrasts = if (planned) cbind(contrast = rownames(L)[-1L], as_rows(contrasts[-1L, ], contrasts$Est[-1L])))}
 
-# BH per term (or contrast) within equation across the 26 planned outcomes.
-combined_fdr <- function(results, family) {
+# BH per term (or contrast) within equation across outcomes, or within Eq8 model family.
+combined_fdr <- function(results, family, bh_m = length(COMBINED_OUTCOMES)) {
   results$q <- NA_real_
   tested <- is.finite(results$p_value)
   for (key in unique(family[tested])) {
     rows <- which(family == key & tested)
-    results$q[rows] <- p.adjust(results$p_value[rows], "BH", n = length(COMBINED_OUTCOMES))}
+    m <- if (length(bh_m) == 1L && is.na(bh_m)) length(rows) else bh_m
+    results$q[rows] <- p.adjust(results$p_value[rows], "BH", n = m)}
   results$inference_status <- ifelse(tested, "Tested", "Not estimable: model covariance or coefficient inference unavailable")
   results}
 

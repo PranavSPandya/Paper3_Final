@@ -1,0 +1,6 @@
+"Metric","Value"
+"Analysis_grain","phaseavg"
+"N_composites","55"
+"N_pairs_attempted","1485"
+"N_pairs_fit","1485"
+"N_FDR_significant_q05","411"

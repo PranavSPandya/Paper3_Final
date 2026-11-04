@@ -11,7 +11,7 @@ input <- option('input', file.path(root, 'output/statistical_analysis/results'))
 out <- option('out', file.path(root, 'output/merged'))
 groups <- list(
   Analysis_combined_merged = c('Analysis_combined_phaseavg', 'Analysis_combined_timeseries'),
-  H1_H3_H5_merged = c('H1_H3_phaseavg', 'H1_H3_timeseries', 'H5_stress_composite_phaseavg', 'H5_stress_composite_timeseries'),
+  H1_H3_merged = c('H1_H3_phaseavg', 'H1_H3_timeseries'),
   H4_sound_results = 'H4_sound_literature_test')
 read <- function(source_path) {
   read.csv(source_path, colClasses = 'character', check.names = FALSE, na.strings = c('', 'NA', 'NaN'), stringsAsFactors = FALSE)}
@@ -20,6 +20,7 @@ nonblank <- function(input_values) !is.na(input_values) & nzchar(input_values)
 outputs <- list()
 for (group_name in names(groups)) {
   parts <- list()
+
   for (folder in groups[[group_name]]) {
     source_directory <- file.path(input, folder)
     if (!dir.exists(source_directory)) stop('Missing source directory: ', source_directory)
@@ -39,6 +40,7 @@ for (group_name in names(groups)) {
       if (any(!nonblank(source_table$script_name))) stop('Missing script_name: ', source_path)
       parts[[length(parts) + 1L]] <- source_table}}
   if (!length(parts)) stop('No statistical tables for ', group_name)
+
   cols <- unique(unlist(lapply(parts, names)))
   parts <- lapply(parts, function(source_table) {
     for (column_name in setdiff(cols, names(source_table))) source_table[[column_name]] <- NA_character_
@@ -48,6 +50,7 @@ for (group_name in names(groups)) {
   outputs[[group_name]] <- merged_table}
 
 dir.create(out, recursive = TRUE, showWarnings = FALSE)
+
 recognized <- paste0(names(groups), '.csv')
 extra <- setdiff(list.files(out), recognized)
 if (length(extra)) stop('Unexpected files in merge destination: ', paste(extra, collapse = ', '))

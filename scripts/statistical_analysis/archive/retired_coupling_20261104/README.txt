@@ -1,0 +1,1 @@
+Retired 2026-11-04: exploratory stress-composite / coupling scripts and cores moved here with matching CSV outputs under output/statistical_analysis/results/archive/retired_coupling_20261104/. Not part of the Paper 3 manuscript pipeline (H1–H4 + Analysis).

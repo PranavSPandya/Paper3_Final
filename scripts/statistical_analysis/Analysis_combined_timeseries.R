@@ -108,6 +108,7 @@ combined_fit_timeseries <- function() {
   fixed_terms <- lapply(equations, combined_fixed_terms)
   centered <- combined_bout_centre(raw_df, setdiff(unique(unlist(fixed_terms)), COMBINED_PHASE_SUM_COLS))
   coefficients <- vif <- list()
+
   for (y in COMBINED_OUTCOMES) {
     message(format(Sys.time(), "%H:%M:%S "), y)
     for (eq_id in seq_along(equations)) {
@@ -142,6 +143,7 @@ combined_fit_timeseries <- function() {
       if (!attempt$residual_structure %in% c("AR1", "ARMA20") || results$high_ar1_flag[1]) results$p_value <- NA_real_
       coefficients[[length(coefficients) + 1L]] <- results[-1L, ]}}
   hypothesis <- do.call(rbind, coefficients)
+
   hypothesis <- combined_fdr(hypothesis, paste(hypothesis$equation_id, hypothesis$term))
   hypothesis$term <- combined_phase_term_labels(hypothesis$term)
   combined_write_vif(do.call(rbind, vif))
@@ -191,6 +193,7 @@ combined_lagdiff_run <- function(input_path = RAW_DATA_PATH) {  # results are wr
         ok <- is.finite(dy) & is.finite(dx)
         if (sum(ok)) obs[[length(obs) + 1L]] <- data.frame(ParticipantID = x$ParticipantID[1], dy = dy[ok], dx = dx[ok])}
       if (!length(obs)) next
+
       allobs <- do.call(rbind, obs)
       rows <- list()
       for (id in unique(allobs$ParticipantID)) {

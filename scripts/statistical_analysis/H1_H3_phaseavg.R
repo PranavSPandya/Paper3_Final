@@ -37,5 +37,6 @@ H2_rmcorr <- quote(
 # BH families: each H1/H3 contrast is its own family over the 26 outcomes (primary and WPZ separately);
 # H2 is one family over the fitted pairs; the temporal models have one family per term.
 if (sys.nframe() == 0L) {
+
   source(file.path(LIBRARY_DIR, "H1_H3_core.R"), local = FALSE)
   h1_h3_run_phaseavg()}

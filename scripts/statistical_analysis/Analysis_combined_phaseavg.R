@@ -77,6 +77,7 @@ combined_fit_phaseavg <- function() {
   raw_df <- combined_read_input()
   equations <- list(Eq1, Eq2, Eq3, Eq4, Eq5, Eq6, Eq7)
   coefficients <- contrasts <- vif <- list()
+
   for (equation_id in seq_along(equations)) for (outcome in COMBINED_OUTCOMES) {
     fixed <- as.formula(equations[[equation_id]][[2L]])
     exposures <- setdiff(combined_fixed_terms(equations[[equation_id]]), COMBINED_PHASE_SUM_COLS)
@@ -103,6 +104,7 @@ combined_fit_phaseavg <- function() {
       transformation = if (outcome %in% combined_study_spec$natural_log_outcome_names) "natural log before phase averaging" else "native",
       n = nrow(model_data), n_participants = nlevels(model_data$ParticipantID))
     contrasts[[length(contrasts) + 1L]] <- data.frame(equation_id = equation_id, outcome = outcome, cr2$contrasts)}
+
   coefficients <- do.call(rbind, coefficients)
   coefficients <- combined_fdr(coefficients, paste(coefficients$equation_id, coefficients$term))
   coefficients$term <- combined_phase_term_labels(coefficients$term)

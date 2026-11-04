@@ -1,4 +1,4 @@
-# H5 10 s epochs: prespecified within-person coupling LMMs with AR(1) (exploratory; shared code: library/H5_coupling_core.R).
+# H5 10 s epochs: peak-centered env exposure + env-index/physio LMMs (AR(1); no questionnaires).
 # Output: output/statistical_analysis/results/H5_stress_composite_timeseries/
 
 source(file.path(

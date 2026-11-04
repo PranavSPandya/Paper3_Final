@@ -1,4 +1,4 @@
-# H5 phase means: prespecified within-person coupling LMMs (exploratory; shared code: library/H5_coupling_core.R).
+# H5 phase means: peak-centered summaries + env-index/physio LMMs (no questionnaires).
 # Output: output/statistical_analysis/results/H5_stress_composite_phaseavg/
 
 source(file.path(
