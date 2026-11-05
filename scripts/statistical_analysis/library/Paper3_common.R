@@ -511,8 +511,7 @@ p3_public_result <- function(source_results, file) {
       selected_rows <- p3_nb(z)
       context_values[selected_rows] <- paste0(context_values[selected_rows], ifelse(nzchar(context_values[selected_rows]), '; ', ''), column_name, '=', z[selected_rows])}
     context_values}
-  script <- if (grepl('^Analysis_combined_phaseavg_physiology_questionnaire', file)) 'Analysis_combined_phaseavg_physiology_questionnaire.R' else
-    if (grepl('^Analysis_combined_phaseavg', file)) 'Analysis_combined_phaseavg.R' else
+  script <- if (grepl('^Analysis_combined_phaseavg', file)) 'Analysis_combined_phaseavg.R' else
     if (grepl('^Analysis_combined_timeseries', file)) 'Analysis_combined_timeseries.R' else
     if (grepl('H4_sound_literature_tests\\.csv$', file)) 'H4_sound_literature_test.R' else ''
   # H1/H3 folders get script_name from the directory finalizer.
