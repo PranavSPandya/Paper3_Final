@@ -27,9 +27,10 @@ Eq2 <- quote(nlme::lme(
   na.action = na.fail,
   control = nlme::lmeControl(maxIter = 100, msMaxIter = 150, returnObject = FALSE)))
 
-# Eq3: MRT + sound + PM2.5 + light + route phase contrasts (additive; no interactions)
+# Eq3: MRT plus sound, PM2.5, light, green view and route contrasts.
+# ucm_SUN_Gh and SVF are omitted because MRT is already a radiation term.
 Eq3 <- quote(nlme::lme(
-  Y ~ ucm_MRT_phase_z + ucm_SND_dBA_phase_z + atmo_pm2.5_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
+  Y ~ ucm_MRT_phase_z + ucm_SND_dBA_phase_z + atmo_pm2.5_avg_phase_z + lys_lux_avg_phase_z + lys_kelvin_avg_phase_z + gvi_50m_phase_z + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG,
   data = model_data,
   random = ~ 1 | ParticipantID,
   method = "REML",

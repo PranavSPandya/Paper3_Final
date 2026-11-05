@@ -64,32 +64,27 @@ Streams were synchronized, path-matched and quality-checked, aggregated to 10-se
 
 Sound exposure (two streams): Primary loudness is the uCM calibrated A-weighted level `ucm_SND_dBA` (10 s medians on the backpack stream). Supplementary descriptors from phase WAVs include YAMNet source-type proportions/scores, Welch band energy shares, octave summaries, and spectral centroids (`Sound spectrum in field experiment.md`). These are not interchangeable with calibrated dBA; low-frequency band fractions can correlate with classifier “wind” labels and with apparent wind on the body during cycling—interpret as type/frequency structure, not as a second loudness standard.
 
-Wind and microphones: Outdoor noise guidance (FHWA field measurement practice; ISO 1996-2:2017 measurement context; mobile mapping: Zuo et al., 2016) treats high wind as a measurement-condition issue even with windscreens. A 5 m/s apparent-wind exclusion on `ucm_WIND_AWS` was implemented as an optional sensitivity for supplementary sound models only (not a decibel correction). Literature (Cooper & Evans, 2015) cautions that a 5 m/s cutoff alone does not guarantee absence of wind-on-microphone artefacts. Windscreen type and microphone placement on the uCM should be stated from field notes in the final manuscript.
+Wind and microphones: Outdoor noise guidance treats high wind as a measurement-condition issue even with windscreens (Federal Highway Administration, n.d.; International Organization for Standardization, 2017; Zuo et al., 2016). A 5 m/s apparent-wind exclusion on `ucm_WIND_AWS` was implemented as an optional sensitivity for supplementary sound models only (not a decibel correction). Literature (Cooper & Evans, 2015) cautions that a 5 m/s cutoff alone does not guarantee absence of wind-on-microphone artefacts. Windscreen type and microphone placement on the uCM should be stated from field notes in the final manuscript.
 
 ### 2.3 Statistical analysis
 
 Primary inference used REML linear mixed models (Pinheiro & Bates, 2000) on participant × phase means to target within-person contrasts and limit pseudo-replication from epoch-level counts (Cnaan et al., 1997; Enders & Tofighi, 2007), with planned contrasts from estimated marginal means (Lenth, 2023) and questionnaire–physiology coupling via repeated-measures correlation (Bakdash & Marusich, 2017). Benjamini–Hochberg FDR (α = 0.05; Benjamini & Hochberg, 1995) was applied within prespecified hypothesis families. Unbalanced repeated-measures field designs follow ambulatory precedent (Rodrigues et al., 2026; Korkmaz et al., 2025).
 
 1. **H1 — Green versus impervious comfort**:
-   - Citation: Pinheiro & Bates (2000); Cnaan et al. (1997); Enders & Tofighi (2007); Lenth (2023); Benjamini & Hochberg (1995); Rodrigues et al. (2026); Korkmaz et al. (2025).
    - Model: Phase-mean REML LMM: `Y ~ PhaseID + (1 | ParticipantID)`; emmeans contrasts; BH FDR within **each** contrast over **26** physiological outcomes (H1.1 and H1.2 are **separate** families, n = 26 each—not one pooled family of 52). Questionnaire contrasts use **separate** BH families (18 items × contrast). Sensitivity: within-person z-scored (WPZ) repeats the same family structure. Optional 10 s / 60 s AR(1) models: `H1_H3_timeseries.R`. In `H1_H3_Temporal_AR1_10s.csv`, 14 of 182 coefficient rows (tonic EDA and skin temperature) are flagged `rho > 0.95`, and the 7 heart-rate rows are a degenerate fit (phase-term standard errors about 3.8 × 10⁶ on the z scale), reported without *p* or *q*. Do not quote those rows. Phase-mean H1 does not use this file.
    - Description & sub-parts: **H1.1** BikeG − BikeU (green vs impervious, cycling). **H1.2** WalkG − WalkU (green vs impervious, walking). Primary grain: participant × phase means on matched 8 min segments (44 cells); 26 physiological and ocular outcomes. Script: `H1_H3_phaseavg.R`; exports `H1_H3_Contrasts.csv`, `H1_H3_Temporal_AR1.csv`.
 2. **H2 — Physiological and perceived concordance**:
-   - Citation: Bakdash & Marusich (2017); Benjamini & Hochberg (1995).
    - Model: rmcorr; prespecified grid **18 × 26 = 468** pairs (18 questionnaire items × 26 physiological outcomes); one BH family over **fitted** pairs only (a pair needs ≥ 20 participant × phase means from ≥ 8 participants; all 468 are fitted; `H2_Concordance.csv`).
    - Description & sub-parts: Phase-mean concordance between 18 questionnaire items (current comfort, space familiarity, pleasantness; five environmental comfort dimensions: thermal, acoustic, visual, air quality, odour; six oriented STAI-6 items; four PRS-11 subscale means; no roll-up means) and the same 26 outcomes used in H1. Fitted jointly with H1 in `H1_H3_phaseavg.R`; export `H2_Concordance.csv`.
 3. **H3 — Cycling versus walking**:
-   - Citation: Pinheiro & Bates (2000); Cnaan et al. (1997); Enders & Tofighi (2007); Lenth (2023); Benjamini & Hochberg (1995).
    - Model: Same phase-mean LMM shell as H1; emmeans; BH FDR within **each** mode contrast over **26** physiological outcomes (H3.1 and H3.2 separate families, n = 26 each); questionnaire and WPZ families as for H1.
    - Description & sub-parts: **H3.1** WalkU − BikeU (mode contrast, impervious urban). **H3.2** WalkG − BikeG (mode contrast, green). **Descriptive (not confirmatory):** difference-of-differences (BikeG − BikeU) − (WalkG − WalkU). Exports: `H1_H3_Contrasts.csv` (Hypothesis = H3); sensitivities as H1.
 4. **H4 — Noise and thermal discomfort**:
-   - Citation: Moshammer et al. (2019); Song et al. (2013, 2014); Jin, Jin and Kang (2020); Rodrigues et al. (2026); Kraus et al. (2013); Benjamini & Hochberg (1995); Mansi et al. (2022); Chinazzo et al. (2019).
    - Model: Literature-derived tests in `H4_sound_literature_test.R` (not a preregistered protocol). BH FDR within each paper’s own test × outcome family. Screening (`documents/H4_papers_screened.md`): four papers included under the thermal-and-sound rule (Moshammer, Song, Jin, Rodrigues); Kraus excluded from that rule for lacking a thermal term but its Leq piecewise slopes are still fitted and reported separately.
    - Description & sub-parts: Moshammer, Song (park-versus-city one-sided paired t-test on HR, ln HF and ln LF/HF; no dBA term in the source), Jin (the heat × sound ANOVA), Rodrigues (noise-block mixed model), Kraus (piecewise Leq slopes). Heat × noise claims use Jin on `**ucm_SND_dBA**`. Jin’s ANOVA has no participant block, matching the source paper’s independent-respondent analysis; that is written on the test label.
    - **Not part of H4:** the Eq1–7 combined-exposure models (`Analysis_combined_timeseries.R`, `Analysis_combined_phaseavg.R`) are the exploratory **Analysis** block (§2.3 item 5), not a literature test.
 5. **Analysis — Combined exposure**:
-   - Citation: Mansi et al. (2022); Chinazzo et al. (2019); Rodrigues et al. (2026); Hamra & Buckley (2018); Marquardt (1970); James et al. (2013); Fox & Monette (1992); Pinheiro & Bates (2000); Benjamini & Hochberg (1995).
-   - Model: Additive REML LMMs (main effects only); **not a hypothesis test**. Collinearity: `car::vif` GVIF^(1/Df) per term (equal to VIF = 1/(1 − R²) for one-column terms; the three PhaseSum columns are one route term; GVIF^(1/Df) is the square of Fox–Monette GVIF^(1/(2Df))). Screen max VIF < 10 on heart-rate complete cases per fitted grain (`Analysis_combined_gvif_summary_both_grains.csv`); drop predictors only where that grain fails screening.
+   - Model: Additive REML LMMs, main effects only (Hamra & Buckley, 2018); not a hypothesis test. Collinearity: `car::vif` GVIF^(1/Df) per term (equal to VIF = 1/(1 − R²) for one-column terms; the three PhaseSum columns are one route term; GVIF^(1/Df) is the square of Fox–Monette GVIF^(1/(2Df))). Screen max VIF < 10 on heart-rate complete cases per fitted grain (`Analysis_combined_gvif_summary_both_grains.csv`); drop predictors only where that grain fails screening.
    - Description & sub-parts: **Analysis — timeseries (10 s):** `Analysis_combined_timeseries.R`; one additive LMM per outcome × **Eq1–7**; BH *q* per fixed term within equation over the 26 outcomes (`library/Analysis_combined_core.R`: one family per equation × term, n = 26); the supplementary blocks in `Analysis_combined_timeseries_supplementary_blocks.csv` have their own BH families (lagged 10 s first-difference correlations: 3 exposure–outcome pairs × 4 lags = 12 rows; sound-source-adjusted slopes: 4 rows); includes `ucm_SUN_Gh` and `gvi_50m` where listed; Eq3 primary at this grain (phase Eq3 excluded at max VIF 22.48). Quote coefficient rows only when the standard error and the low-df and boundary-variance flags are usable. **Analysis — phaseavg (phase means):** `Analysis_combined_phaseavg.R`; same Eq1–7 structure on participant × phase means (all **182** outcome × equation models fitted; many low effective-df coefficient flags—**exploratory**, not confirmatory); omits SUN and GVI on all equations; Eq2 phase spec: `ucm_AIR_T_mid`, `ucm_AIR_RH`, `ucm_WIND_AWS` + **SVF** + PM2.5/lux/kelvin + PhaseSum (**no SND**; max VIF 9.29 vs 10 s Eq2 1.88). Shared non-thermal core: sound (10 s only), SVF, PM, lux/kelvin, PhaseSumWalkG/U/BikeG; thermal term rotates (UTCI, air T/RH/wind, MRT, HUMIDEX, PET; Eq6–7 swap PM fraction). 
 
 H4 paper-by-paper screening (included and excluded) is in `documents/H4_Screening_Literature_Guide.md`.
@@ -100,7 +95,7 @@ H4 paper-by-paper screening (included and excluded) is in `documents/H4_Screenin
 | --- | --- | --- |
 | Moshammer et al. (2019) | Random-effects GLS (Stata xtreg re): outcome mean over 5–8 min ~ energy-mean Leq of the first 5 min per 1 dB(A), unadjusted and + mean air temperature of the outcome window; 5 outcomes (RR distance, SDNN, RMSSD, LF, HF power); all phases and walking phases only. All HRV outcomes (LF and HF power, SDNN, RMSSD, and mean RR distance) are recomputed per phase from the native beat-to-beat intervals in 5–8 min only (180 s, strictly after the 0–5 min exposure and inside the matched bout) with the Empatica build method (beats 250–2500 ms; beats > 0.45 s from the centred 11-beat median removed; ≥ 40 valid beats, ≤ 25 % removed; NeuroKit2 `hrv_frequency` for LF/HF; sample SD and RMSSD on filtered intervals), eliminating exposure overlap; 43 of 44 phases have values. 180 s meets the Task Force (1996) minimums (about 1 min for HF, 2 min for LF); VLF is dropped because it needs more than 5 min. | Per-dB Leq slope (2 specifications × 2 phase sets × 5 outcomes) |
 | Song et al. (2013, 2014) | One-sided paired t-test, park (WalkG) vs city (WalkU), on heart rate, ln HF and ln LF/HF (1-min means over the walk) | Setting contrast (no sound-level term) |
-| Jin, Jin & Kang (2020) | Thermal comfort and general comfort ~ LAeq level (55–60, 60–65, 65–70, 70–75 dB(A)) × UTCI category (9–26, 26–32, 32–38, 38–46 °C), two-way ANOVA with no participant block on phase cells inside those ranges; Type II main effects, all F tests against the full-model residual mean square | LAeq main effect; UTCI main effect; LAeq × UTCI interaction |
+| Jin et al. (2020) | Thermal comfort and general comfort ~ LAeq level (55–60, 60–65, 65–70, 70–75 dB(A)) × UTCI category (9–26, 26–32, 32–38, 38–46 °C), two-way ANOVA with no participant block on phase cells inside those ranges; Type II main effects, all F tests against the full-model residual mean square | LAeq main effect; UTCI main effect; LAeq × UTCI interaction |
 | Rodrigues et al. (2026) | Trip-level mixed model with noise block (max and SD of dBA, z-scored); REML Wald tests + BH-FDR | Each noise term |
 | Kraus et al. (2013) | Additive mixed model on the first complete 5-min interval of each phase (Leq lag 0 only; no lagged outcome): piecewise Leq at 65 dB(A) per 5 dB, activity category, HR adjustment for HRV, AIC-selected time trends, compound symmetry; outcomes HR, SDNN, LFnu, HFnu, LF/HF (log except HR) | Per 5 dB below and above 65 dB(A) |
 
@@ -261,35 +256,69 @@ Phase-mean models of a Brussels summer active-mobility campaign show **environme
 
 ## 6 References
 
-Boucsein, W., et al. (2012). Publication recommendations for electrodermal measurements. Psychophysiology, 49(8), 1017-1034. https://doi.org/10.1111/j.1469-8986.2012.01384.x
+Bakdash, J. Z., & Marusich, L. R. (2017). Repeated measures correlation. Frontiers in Psychology, 8, 456. https://doi.org/10.3389/fpsyg.2017.00456
+
+Benjamini, Y., & Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. Journal of the Royal Statistical Society: Series B (Methodological), 57(1), 289–300.
+
+Bent, B., Goldstein, B. A., Kibbe, W. A., & Dunn, J. P. (2020). Investigating sources of inaccuracy in wearable optical heart rate sensors. npj Digital Medicine, 3, 18. https://doi.org/10.1038/s41746-020-0226-6
+
+Boucsein, W., et al. (2012). Publication recommendations for electrodermal measurements. Psychophysiology, 49(8), 1017–1034. https://doi.org/10.1111/j.1469-8986.2012.01384.x
 
 Chinazzo, G., Wienold, J., & Andersen, M. (2019). Daylight affects human thermal perception. Scientific Reports, 9, 13690. https://doi.org/10.1038/s41598-019-48963-y
+
+Cnaan, A., Laird, N. M., & Slasor, P. (1997). Using the general linear mixed model to analyse unbalanced repeated measures and longitudinal data. Statistics in Medicine, 16(20), 2349–2380.
+
+Cooper, J., & Evans, T. (2015). Microphone wind speed limits during wind farm noise measurements. Proceedings of the Australian Acoustical Society Conference, Hunter Valley.
+
+Enders, C. K., & Tofighi, D. (2007). Centering predictor variables in cross-sectional multilevel models: A new look at an old issue. Psychological Methods, 12(2), 121–138. https://doi.org/10.1037/1082-989X.12.2.121
 
 Evans, K. M., Jacobs, R. A., Tarduno, J. A., & Pelz, J. B. (2012). Collecting and analyzing eye-tracking data in outdoor environments. Journal of Eye Movement Research, 5(2), Article 6.
 
 Fahy, J. C., Bachofen, C., Camponovo, R., Gallinelli, P., & Schlaepfer, M. A. (2025). Beyond land surface temperature: Identifying areas of daytime thermal discomfort in cities by combining remote sensing and field measurements. Urban Climate, 61, 102460. https://doi.org/10.1016/j.uclim.2025.102460
 
+Federal Highway Administration. (n.d.). Highway traffic noise. https://www.fhwa.dot.gov/environment/noise/
+
+Fox, J., & Monette, G. (1992). Generalized collinearity diagnostics. Journal of the American Statistical Association, 87(417), 178–183. https://doi.org/10.1080/01621459.1992.10475190
+
+Gong, F.-Y., et al. (2018). Mapping sky, tree, and building view factors of street canyons. Building and Environment, 134, 155–167. https://doi.org/10.1016/j.buildenv.2018.02.042
+
+Hamra, G. B., & Buckley, J. P. (2018). Environmental exposure mixtures: Questions and methods to address them. Current Epidemiology Reports, 5(2), 160–165. https://doi.org/10.1007/s40471-018-0145-0
+
+International Organization for Standardization. (2017). ISO 1996-2:2017. Acoustics — Description, measurement and assessment of environmental noise — Part 2: Determination of sound pressure levels.
+
+James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning: With applications in R. Springer.
+
+Jin, Y., Jin, H., & Kang, J. (2020). Combined effects of the thermal-acoustic environment on subjective evaluations in urban squares. Building and Environment, 168, 106517. https://doi.org/10.1016/j.buildenv.2019.106517
+
+Korkmaz, D., Knauth, K., Brands, A., Schmeck, M., Büning, P., & Peters, J. (2025). Ambulatory physiological measures obtained under naturalistic urban mobility conditions have acceptable reliability. Scientific Reports, 15, 28940. https://doi.org/10.1038/s41598-025-13216-8
+
+Kraus, U., Schneider, A., Breitner, S., Hampel, R., Rückerl, R., Pitz, M., Geruschkat, U., Belcredi, P., Radon, K., & Peters, A. (2013). Individual daytime noise exposure during routine activities and heart rate variability in adults: A repeated measures study. Environmental Health Perspectives, 121(5), 607–612. https://doi.org/10.1289/ehp.1205606
+
+Lenth, R. V. (2023). emmeans: Estimated marginal means, aka least-squares means (R package). https://CRAN.R-project.org/package=emmeans
+
 Mahanama, B., et al. (2021). Eye movement and pupil measures: A review. Frontiers in Computer Science, 3, 733531. https://doi.org/10.3389/fcomp.2021.733531
 
 Mansi, S. A., Pigliautile, I., Arnesano, M., & Pisello, A. L. (2022). A novel methodology for human thermal comfort decoding via physiological signals measurement and analysis. Building and Environment, 222, 109385. https://doi.org/10.1016/j.buildenv.2022.109385
 
-Nikolopoulou, M., Baker, N., & Steemers, K. (2001). Thermal comfort in outdoor urban spaces: Understanding the human parameter. Solar Energy, 70(3), 227-235. https://doi.org/10.1016/S0038-092X(00)00093-1
+Marquardt, D. W. (1970). Generalized inverses, ridge regression, biased linear estimation, and nonlinear estimation. Technometrics, 12(3), 591–612.
 
-Quigley, K. S., et al. (2024). Publication guidelines for human heart rate and heart rate variability studies in psychophysiology - Part 1. Psychophysiology, 61, e14604. https://doi.org/10.1111/psyp.14604
+Moshammer, H., Panholzer, J., Ulbing, L., Udvarhelyi, E., Ebenbauer, B., & Peter, S. (2019). Acute effects of air pollution and noise from road traffic in a panel of young healthy adults. International Journal of Environmental Research and Public Health, 16(5), 788. https://doi.org/10.3390/ijerph16050788
+
+Nikolopoulou, M., Baker, N., & Steemers, K. (2001). Thermal comfort in outdoor urban spaces: Understanding the human parameter. Solar Energy, 70(3), 227–235. https://doi.org/10.1016/S0038-092X(00)00093-1
+
+Pinheiro, J. C., & Bates, D. M. (2000). Mixed-effects models in S and S-PLUS. Springer.
+
+Quigley, K. S., et al. (2024). Publication guidelines for human heart rate and heart rate variability studies in psychophysiology—Part 1. Psychophysiology, 61, e14604. https://doi.org/10.1111/psyp.14604
+
+Rodrigues, A. L., da Conceição, M. S. A., Ramusga, R. A. L., Lima Azevedo, C., & Morgado, P. (2026). The influence of urban context on emotions and bodily responses during walking. Journal of Urban Health, 103, 344–356. https://doi.org/10.1007/s11524-025-01051-1
 
 Rupi, F., & Krizek, K. J. (2019). Visual eye gaze while cycling: Analyzing eye tracking at signalized intersections in urban conditions. Sustainability, 11(21), 6089. https://doi.org/10.3390/su11216089
 
-Stuyck, H., Dalla Costa, L., Cleeremans, A., & Van den Bussche, E. (2022). Validity of the Empatica E4 wristband to estimate resting-state heart rate variability in a lab-based context. International Journal of Psychophysiology, 182, 105-118. https://doi.org/10.1016/j.ijpsycho.2022.10.003
+Song, C., Joung, D., Ikei, H., Igarashi, M., Aga, M., Park, B.-J., Miwa, M., Takagaki, M., & Miyazaki, Y. (2013). Physiological and psychological effects of walking on young males in urban parks in winter. Journal of Physiological Anthropology, 32, 18. http://www.jphysiolanthropol.com/content/32/1/18
 
-Cooper, J., & Evans, T. (2015). Microphone wind speed limits during wind farm noise measurements. Proceedings of the Australian Acoustical Society Conference, Hunter Valley. (Wind-on-microphone limits; 5 m/s exclusion not sufficient alone.)
+Song, C., Ikei, H., Igarashi, M., Miwa, M., Takagaki, M., & Miyazaki, Y. (2014). Physiological and psychological responses of young males during spring-time walks in urban parks. Journal of Physiological Anthropology, 33, 8. http://www.jphysiolanthropol.com/content/33/1/8
 
-Zuo, J., Xia, H., Liu, S., & Qiao, Y. (2016). Mapping urban environmental noise using smartphones. Sensors, 16(10), 1692. https://doi.org/10.3390/s16101692 (Mobile noise mapping; windscreens; avoid measurement above ~5 m/s.)
+Stuyck, H., Dalla Costa, L., Cleeremans, A., & Van den Bussche, E. (2022). Validity of the Empatica E4 wristband to estimate resting-state heart rate variability in a lab-based context. International Journal of Psychophysiology, 182, 105–118. https://doi.org/10.1016/j.ijpsycho.2022.10.003
 
-ISO 1996-2:2017. Acoustics — Description, measurement and assessment of environmental noise — Part 2: Determination of sound pressure levels. (Outdoor measurement conditions; local preview in Experiment papers.)
-
-Federal Highway Administration. Noise barrier design / field measurement guidance. https://www.fhwa.dot.gov/environment/noise/ (Windscreens; do not measure when wind at microphone exceeds ~5 m/s.)
-
-Gong, F.-Y., et al. (2018). Mapping sky, tree, and building view factors of street canyons. Building and Environment, 134, 155–167. https://doi.org/10.1016/j.buildenv.2018.02.042
-
-Gong, Z., Ma, Q., Kan, C., & Qi, Q. (2019). Classifying street spaces with street view images for a spatial indicator of urban functions. Sustainability, 11(22), 6424. https://doi.org/10.3390/su11226424
+Zuo, J., Xia, H., Liu, S., & Qiao, Y. (2016). Mapping urban environmental noise using smartphones. Sensors, 16(10), 1692. https://doi.org/10.3390/s16101692
 
