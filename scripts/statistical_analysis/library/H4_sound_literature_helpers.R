@@ -1,6 +1,7 @@
-# Helpers for H4_sound_literature_test.R: one function list per paper (H4_MOSHAMMER, H4_JIN, H4_BIEL, H4_RODRIGUES, H4_KORPILO, H4_KRAUS, H4_PIGLIAUTILE, H4_CHIUCCHIU) plus H4_UTIL, H4_AL, H4_REPORT;
+# Helpers for H4_sound_literature_test.R: one function list per paper (H4_MOSHAMMER, H4_JIN, H4_BIEL, H4_RODRIGUES, H4_KORPILO, H4_KRAUS, H4_PIGLIAUTILE, H4_CHIUCCHIU) plus H4_UTIL, H4_AL, H4_REPORT, H4_PRIMARY;
 # outdoor blocks h4_outdoor_phase_cells, h4_scopus_outdoor_tests, h4_additional_outdoor_tests (§3 Cureau/Chen and Scopus-listed papers).
 # Source-inspired tests and explicit adaptations; data limitations go to METHODS_NOTES.md. Song et al. (2013, 2014) is not fitted: no sound level and no thermal term in the source.
+# Literature search + partial porting narrative: documents/H4_papers_screened_final.md §0.6; Paper 3 H4 primary rows: §0.3 via H4_PRIMARY$subset().
 
 # Shared utilities; ucm_SND_dBA is the main sound exposure, the alternatives are the category and spectral columns.
 H4_SOUND <- list(
@@ -895,6 +896,52 @@ H4_REPORT <- list(
       data.frame(sound_variable = r$sound_variable[1], paper = r$paper[1], test = r$test[1], paper_decision_rule = r$paper_rule[1], n_tests = sum(fin),
         n_paper_rule_met = sum(r$paper_rule_met %in% TRUE), outcomes_paper_rule_met = paste(r$outcome[r$paper_rule_met %in% TRUE], collapse = '; '),
         n_p_lt_05 = sum(fin & r$p < 0.05))}))})
+
+# Pre-specified Paper 3 H4 interaction estimands (documents/H4_papers_screened_final.md §0.3–0.6).
+H4_PRIMARY <- list(
+  guide = 'documents/H4_papers_screened_final.md section 0.3',
+  mask = function(catalog) {
+    if (!nrow(catalog)) return(logical(0))
+    with(catalog,
+      (paper == 'Jin 2020' & sound_variable == 'ucm_SND_dBA' & term == 'LAeq x UTCI' &
+          grepl('source-spaced sound bands', test, fixed = TRUE)) |
+        (paper == 'Chen 2023 (adapted)' & sound_variable == 'dba' & term == 'utci_z:dba_z' & outcome == 'thermal_comfort') |
+        (paper == 'Wu 2025' & sound_variable == 'dba' & term == 'loud60:utci_z' & grepl('dBA>=60', test, fixed = TRUE)) |
+        (paper == 'Mohammadzadeh 2023' & sound_variable == 'dba' & term == 'utci_z:sound_z') |
+        (paper == 'Li 2025' & sound_variable == 'dba' & term == 'utci:dba' & grepl('interaction LMM', test, fixed = TRUE)) |
+        (paper == 'Zhen 2025' & sound_variable == 'dba' & term == 'utci:dba' & outcome == 'thermal_comfort'))
+  },
+  subset = function(catalog) {
+    keep <- H4_PRIMARY$mask(catalog)
+    out <- catalog[keep, , drop = FALSE]
+    order_specs <- data.frame(
+      paper = c('Jin 2020', 'Jin 2020', 'Jin 2020', 'Chen 2023 (adapted)', 'Wu 2025',
+        'Mohammadzadeh 2023', 'Li 2025', 'Li 2025', 'Li 2025', 'Zhen 2025'),
+      outcome = c('thermal_comfort', 'acoustic_comfort', 'overall_comfort', 'thermal_comfort', 'thermal_comfort',
+        'acoustic_comfort', 'thermal_comfort', 'acoustic_comfort', 'overall_comfort', 'thermal_comfort'),
+      term = c(rep('LAeq x UTCI', 3), 'utci_z:dba_z', 'loud60:utci_z', 'utci_z:sound_z',
+        rep('utci:dba', 3), 'utci:dba'),
+      stringsAsFactors = FALSE)
+    keys <- paste(out$paper, out$outcome, out$term, sep = '\t')
+    rank_keys <- paste(order_specs$paper, order_specs$outcome, order_specs$term, sep = '\t')
+    out$primary_estimand_order <- match(keys, rank_keys)
+    out[order(out$primary_estimand_order, out$paper, out$outcome), , drop = FALSE]
+  },
+  methods_notes = function(primary) {
+    c('', '## Paper 3 H4 primary estimands (layer A; partial literature port, not full study replication)',
+      '- Guide: documents/H4_papers_screened_final.md section 0.3, 0.6.',
+      '- Literature search: Scopus title/abstract/keywords therm* AND outdoor AND sound* (see scripts/_scopus_export_text.txt).',
+      '- Each included source: closest feasible test family only; omitted source analyses listed in screened guide section 3 item 10.',
+      sprintf('- Primary interaction rows in this run: %d (expect 10 if all estimable).', nrow(primary)),
+      if (nrow(primary)) sprintf('- Paper-rule MET: %d / %d', sum(primary$paper_rule_met %in% TRUE), nrow(primary)) else
+        '- Paper-rule MET: 0 / 0 (no rows matched filters — check H4_PRIMARY$mask).',
+      '',
+      '### Primary rows (pre-specified interactions on comfort votes)',
+      if (nrow(primary)) apply(primary, 1, function(r) sprintf(
+        '- #%s %s | %s | %s | p=%.4g | %s', r[['primary_estimand_order']],
+        r[['paper']], r[['outcome']], r[['term']], as.numeric(r[['p']]),
+        ifelse(isTRUE(r[['paper_rule_met']]), 'MET', 'not met'))) else '- (none)')
+  })
 
 # -----------------------------------------------------------------------------
 # Outdoor comfort replications (formerly H4_scopus_outdoor_methods.R and

@@ -1,9 +1,9 @@
-# H4 literature replications (screened guide items 6 and 9, all 24 papers in section 3)
+# H4 literature-aligned partial ports (documents/H4_papers_screened_final.md sections 0.6 and 3)
 Phases: BikeU, WalkU, BikeG, WalkG ; walk-only papers use WalkG, WalkU ; Biel/Kraus use all four; Ueberham uses BikeG, BikeU
 Input MD5: a3c4f9388b61def82e5b97b4232315be
-Code MD5: H4_sound_literature_test.R 0b582445316c1f43eb6ea8b57aa751c7
+Code MD5: H4_sound_literature_test.R e9ed5c811524a64a9bd2c6a7d2c8f775
 Code MD5: Paper3_common.R 2fd13e4345abd183a405f5d1d9f0f324
-Code MD5: H4_sound_literature_helpers.R 417dadc8ea9f0a331eaf947baeb7592c
+Code MD5: H4_sound_literature_helpers.R a650d52a88ed95eaac5d35077c667feb
 Source PDF MD5: H4 Sound literature test/Included - Sound - Rodrigues2026 - Repeated hotspot exposures Lisbon walks LMM.pdf 4d68efe729200a15976f6033e481781b
 Source PDF MD5: H4 Sound literature test/Included - Sound - Combined effects of the thermal-acoustic environment on subjective evaluations in urban squares.pdf 37a32046416c89267ade534dff21d769
 Source PDF MD5: Sound_evidence/Sound - Multi-domain human-oriented approach to evaluate human comfort in outdoor environments.pdf bcd044129f93e4b9983482e6e3653913
@@ -26,7 +26,7 @@ Source PDF MD5: Sound_evidence/Sound - Zhang2026 - historic spaces thermoacousti
 Source PDF MD5: Sound_evidence/Sound - Tang2026 - soundscape diversity thermo physiological sex dimorphic.pdf ac1b73fbac9ad5fe5356c2f998c24ef4
 Source PDF MD5: Sound_evidence/Sound - Peng2026 - Multisensory greenway plazas openness.pdf 336eb1dad640d4728e0cb66c278a46e2
 Source PDF MD5: Sound_evidence/Sound - Simsek2026 - auditory comfort thermal visual urban parks.pdf 59ff2b0bf16bfb48ceb1b0a8a240593a
-Run time: 108.8 s
+Run time: 109.8 s
 
 ## Rows per paper (finite p)
 - Pigliautile 2021: 44
@@ -62,6 +62,26 @@ Run time: 108.8 s
 - Ueberham: Spearman within BikeG and within BikeU; optional polr not fitted.
 - Encodings 2-4 and 15 spectral descriptors substituted on Moshammer, Jin, Biel, Rodrigues, Kraus, and Korpilo (§1.1).
 - Inference: each row's paper_rule only (documents/H4_papers_screened_final.md §1.4); no catalogue-wide BH/FDR in this run.
+- Outputs: H4_primary_estimands_results.csv = Paper 3 H4 layer A (§0.3); H4_sound_literature_tests.csv = full catalogue layer B.
+
+## Paper 3 H4 primary estimands (layer A; partial literature port, not full study replication)
+- Guide: documents/H4_papers_screened_final.md section 0.3, 0.6.
+- Literature search: Scopus title/abstract/keywords therm* AND outdoor AND sound* (see scripts/_scopus_export_text.txt).
+- Each included source: closest feasible test family only; omitted source analyses listed in screened guide section 3 item 10.
+- Primary interaction rows in this run: 10 (expect 10 if all estimable).
+- Paper-rule MET: 0 / 10
+
+### Primary rows (pre-specified interactions on comfort votes)
+- # 1 Jin 2020 | thermal_comfort | LAeq x UTCI | p=0.5565 | not met
+- # 2 Jin 2020 | acoustic_comfort | LAeq x UTCI | p=0.6775 | not met
+- # 3 Jin 2020 | overall_comfort | LAeq x UTCI | p=0.5851 | not met
+- # 4 Chen 2023 (adapted) | thermal_comfort | utci_z:dba_z | p=0.1102 | not met
+- # 5 Wu 2025 | thermal_comfort | loud60:utci_z | p=0.605 | not met
+- # 6 Mohammadzadeh 2023 | acoustic_comfort | utci_z:sound_z | p=0.5808 | not met
+- # 7 Li 2025 | thermal_comfort | utci:dba | p=0.3733 | not met
+- # 8 Li 2025 | acoustic_comfort | utci:dba | p=0.5808 | not met
+- # 9 Li 2025 | overall_comfort | utci:dba | p=0.5805 | not met
+- #10 Zhen 2025 | thermal_comfort | utci:dba | p=0.3733 | not met
 
 ## Fit and support notes
 Jin observed sound x UTCI category counts (walk only):

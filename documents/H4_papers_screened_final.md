@@ -6,6 +6,75 @@
 
 **Inference (source-aligned, not catalogue-wide).** For each paper, apply **only** the decision rule stated in that paper’s item **5** / item **9** (typically two-sided *p* < 0.05 where the source uses it; otherwise the rule named there, e.g. Rodrigues *p* < 0.05 **and** |β| > 0.1). **Do not** attribute Benjamini–Hochberg, FDR, or a global correction across all 24 blocks to the source authors. In prose and thesis tables, report **p** (and coefficients) against **that paper’s rule**; see **§1.4**.
 
+## 0. Paper 3 hypothesis H4 — what to test vs what the catalogue is
+
+### 0.1 Thesis hypothesis (one sentence)
+
+**H4 (Paper 3):** When the environment is **already thermally stressful**, **higher sound exposure** is associated with **greater discomfort** than thermal stress alone — i.e. **amplification** or a **sound × thermal-stress interaction** on **subjective comfort** (thermal, acoustic, and/or overall), not merely “the urban walk was hotter and louder than the green walk.”
+
+**Statistical form used here:** interaction terms (or equivalent high-sound × UTCI structures) on **comfort votes**, borrowed from the field literature. **Main effects** (warmer bouts feel worse; louder bouts feel worse; votes correlate across domains) are **related** but **do not prove** amplification.
+
+### 0.2 Two layers — do not mix them in the Results chapter
+
+| Layer | What it is | Role in the thesis |
+| --- | --- | --- |
+| **A. Primary H4 estimands** | Pre-specified **sound × thermal-stress** tests on **comfort votes**, **primary dBA encoding** (`ucm_SND_dBA`) where the source uses LAeq/dBA (§0.3 table) | **Answers H4** in the main text: one small table + short interpretation (MET / not MET / not estimable). |
+| **B. Full literature catalogue** | All **24** source blocks × outcomes × encodings 2–4 × spectral substitutes → `H4_sound_literature_tests.csv` (**~2,300+** rows after `H4_sound_literature_test.R`) | **Methods transparency / appendix.** Shows how source families behave on our cohort. **Not** counted as “24 papers confirmed H4.” |
+
+**You do not need every test in §3 to answer H4.** You **do** need **layer A** reported honestly. Layer B supports “we screened widely” without upgrading every MET row to the hypothesis.
+
+### 0.3 Primary H4 estimands (pre-specified; filter the CSV)
+
+After each run, use `H4_primary_estimands_results.csv` (same filters as the table below) or filter `H4_sound_literature_tests.csv` manually. Judge **`paper_rule` MET** only for these rows in **main-text H4**. Use **primary dBA** unless the row below says otherwise. Encodings 2–4 and spectral rows are **exploratory for H4** (report in appendix if at all).
+
+| # | Source block | Outcome(s) | How to find rows in CSV (`paper`, `sound_variable`, `predictor` / `context`) |
+| ---: | --- | --- | --- |
+| 1 | **Jin 2020** §3.5 primary | Thermal, acoustic, overall comfort | `Jin 2020`, `ucm_SND_dBA`, `predictor == LAeq x UTCI`, context contains `Two-way ANOVA: source-spaced sound bands` (outcomes: `thermal_comfort`, `acoustic_comfort`, `overall_comfort`) |
+| 2 | **Chen 2023** §3.10 primary | `thermal_comfort` | `Chen 2023 (adapted)`, `dba`, `predictor == utci_z:dba_z` |
+| 3 | **Wu 2025** §3.16 | `thermal_comfort` | `Wu 2025`, `dba`, context contains `dBA>=60`, `predictor == loud60:utci_z` |
+| 4 | **Mohammadzadeh 2023** §3.14 primary dBA | `acoustic_comfort` | `Mohammadzadeh 2023`, `dba`, `predictor == utci_z:sound_z` |
+| 5 | **Li 2025** §3.12 interaction | Thermal / acoustic / overall (as fitted) | `Li 2025`, `dba`, context contains `interaction LMM`, `predictor == utci:dba` |
+| 6 | **Zhen 2025** §3.18 primary | `thermal_comfort` | `Zhen 2025`, `dba`, `predictor == utci:dba` |
+
+**Secondary (thesis Discussion only, not H4 pass/fail):** Pigliautile/Chiucchiù warm−cool votes (thermal main effect, no sound term); Peng/Chiucchiù thermal–acoustic Spearman; Wu/Chen **main effects** of `utci_z` or `dba_z` without significant **interaction**; Qin sound×**RH**; Gao PRS×UTCI×sound (restoration, not discomfort amplification).
+
+### 0.4 Audit snapshot (`H4_primary_estimands_results.csv` — refresh after re-run)
+
+Primary **interaction** rows, source rule *p* < 0.05:
+
+| Primary block | MET? | Notes |
+| --- | ---: | --- |
+| Jin LAeq × UTCI (dBA), thermal / acoustic / overall | **No** | *p* ≈ 0.56, 0.68, 0.59 |
+| Chen `utci_z:dba_z` → thermal comfort | **No** | *p* ≈ 0.11 |
+| Wu `loud60:utci_z` → thermal comfort | **No** | *p* ≈ 0.61 |
+| Mohammad `utci_z:sound_z` → acoustic comfort | **No** | *p* ≈ 0.58 |
+| Li `utci:dba` (interaction block) | **No** | *p* ≈ 0.37 (each outcome in block) |
+| Zhen `utci:dba` → thermal comfort | **No** | *p* ≈ 0.37 |
+
+**Interpretation for Paper 3:** On pre-specified literature-style **interactions**, this cohort **does not** show significant **sound × thermal-stress amplification** on comfort votes at *p* < 0.05. That is a **valid H4 result** (null on primary estimands), not a failed pipeline. Cite **§4** (power, 8-min bouts, corridor–heat coupling).
+
+### 0.5 Reporting rules (reviewer-safe)
+
+- **Do** state primary table (§0.3–0.4) in **Results**; put full CSV in **appendix**.
+- **Do not** write “H4 supported because 18/24 papers had ≥1 MET” or “2,344 tests.”
+- **Do not** cite Rodrigues/Moshammer/Kraus physiology MET rows as **comfort amplification**.
+- **Do not** treat Jin **quartile/YAMNet** interaction METs as **primary** Jin replication without labeling them **exploratory**.
+- Per-row significance remains **`paper_rule` only** (§1.4); no catalogue-wide FDR.
+- **Do not** cherry-pick replication to source-significant sound findings only; port the **pre-specified test family** (§0.3) whether or not the original paper reported a significant sound effect.
+
+### 0.6 Literature identification and partial porting (Methods wording)
+
+**Purpose:** Position H4 for reviewers as **benchmarking against published thermo-acoustic field evidence**, not as repeating entire foreign study protocols.
+
+| Step | What we did |
+| --- | --- |
+| **Search** | Scopus title/abstract/keywords: **`therm*`** AND **`outdoor`** AND **`sound*`** (209 documents, export `scripts/_scopus_export_text.txt`, snapshots `H4Scopus_therm_outdoor_sound.pdf`). |
+| **Screen** | Retain papers with **measured sound** (LAeq/dBA or accepted analogue), **thermal exposure** (UTCI, air temperature, PET, etc.), and **outcomes we collected** (domain comfort votes and/or wearables during outdoor mobility). Drop blocks with **no sound and no thermal** in the source test (e.g. Song park vs city — item 10). |
+| **Port** | Per retained source, fit **one closest statistical family** that our 11-person, 8-min bout data can support (§3 items **8–9**). Item **10** lists everything **not** ported (personality inventories, pollutants, EEG/SHAP, chamber-only arms, subjective loudness scales we did not ask, etc.). |
+| **Hypothesis layer** | **§0.3** defines **Paper 3 H4** (sound × thermal-stress → comfort). The **24-paper catalogue** (§3) is **sensitivity / transparency** — analogous to supplementary literature-aligned models, **not** 24 independent confirmations of H4. |
+
+**Thesis Methods (one paragraph):** Literature search → inclusion on joint outdoor thermo-acoustic measurement → **partial method porting** with omissions in Appendix [`H4_papers_screened_final.md`](H4_papers_screened_final.md) §3 item 10. **Results:** main text = `H4_primary_estimands_results.csv` only; full catalogue = appendix.
+
 ## 1. Data available to H4
 
 | Available analysis data | Four active phases | With Tram |
@@ -73,8 +142,10 @@ The proportion columns come from `D:\Pranav\docker\Analysis\analysis_scripts\Upd
 
 | Layer | What to use |
 | --- | --- |
+| **Paper 3 H4 hypothesis** | **§0.3–0.6** primary interaction table only in main Results; full catalogue = appendix. |
+| **Runner outputs** | `H4_primary_estimands_results.csv` (layer A, **10** rows) and `H4_sound_literature_tests.csv` (layer B catalogue) under `output/statistical_analysis/results/H4_sound_literature_test/`; produced by `H4_sound_literature_test.R` via `H4_PRIMARY` filters in `H4_sound_literature_helpers.R`. |
 | **Source paper** | Significance rule in §3 **item 5** (and any stricter rule in **item 9**, e.g. Wu/Gao/Jin *p* < 0.05, Rodrigues *p* < 0.05 and |standardized β| > 0.1). |
-| **Our replication row** | Compare **p** (and estimate) to that row’s **`paper_rule`** in `H4_sound_literature_tests.csv`. `paper_rule_met` is **MET** / **not met** under **that source-style rule only**. |
+| **Our replication row** | Compare **p** (and estimate) to that row’s **`paper_rule`** in the CSV. `inference_note` **MET** / **not met** = that row only. **≥1 MET per paper** or **≥1 MET in 2,344 rows** is **not** sufficient to claim H4 or “literature replicated.” |
 | **Thesis / paper prose** | Cite **test family + p + coefficient** per block. Name the **source** decision rule when discussing “significance.” **Do not** write that Jin, Chen, Xu, etc. “used FDR” or BH correction unless the PDF explicitly does (most selected blocks do not). |
 
 **Outputs:** [H4_sound_literature_tests.csv](../output/statistical_analysis/results/H4_sound_literature_test/H4_sound_literature_tests.csv), `SUMMARY_sound_tests_paper_rule.csv`, and `METHODS_NOTES.md` after `H4_sound_literature_test.R`. Refresh after each run.
@@ -533,11 +604,13 @@ Each subsection: **1** citation → **10** what cannot be matched. **Pisello AL*
 
 ---
 
-**No entire source study is replicated exactly.** Some statistical procedures match, but our design/measurements differ. This is not a reason to abandon the data; it determines the claim and the adaptations that must be reported. The direct question “does sound worsen perceived thermal comfort?” uses **TC as outcome**. A physiology model answers a different question.
+**No entire source study is replicated exactly.** Some statistical procedures match, but our design/measurements differ. This is not a reason to abandon the data; it determines the claim and the adaptations that must be reported.
+
+**Paper 3 H4** is **not** “did every §3 block match its PDF?” It is **§0.3**: did **sound × thermal-stress** on **comfort votes** reach the source rule? Physiology blocks (Moshammer, Rodrigues, Kraus, Tang), vote–vote Fisher/Spearman, and sound×**RH** (Qin) answer **other questions** — cite them only as **context** unless explicitly framed as secondary.
 
 ## 4. Cross-paper limitations of the data used
 
-- **Same data, many adaptations.** Every fitted paper reuses the same 11 people and 44 bouts (22 walking trips for Rodrigues and Moshammer walking-only). Results under different paper labels are not independent replications, and each encoding is a separate adapted hypothesis. Duplicate model families are dropped per **§6.1**.
+- **Same data, many adaptations.** Every fitted paper reuses the same 11 people and 44 bouts (22 walking trips for Rodrigues and Moshammer walking-only). Results under different paper labels are not independent replications, and each encoding is a separate adapted hypothesis. Duplicate model families are dropped per **§6.1**. **H4 hypothesis tests** use only **§0.3**; the rest is catalogue sensitivity.
 - **Potential mode confounding.** Moshammer all-phase, Biel and vote models without mode adjustment can mix within-mode and between-mode associations. Kraus does include a mode-derived activity covariate; Rodrigues and Moshammer walking-only restrict the mode. A mode-driven explanation has not been established by these fits.
 - **Temperature–corridor coupling.** Urban bouts are almost always the warmer ones. This affects Rodrigues (noise block without temperature), the Pigliautile/Chiucchiù stratum tests and every corridor contrast.
 - **Rodrigues** uses asymptotic Wald z and zero-imputes missing predictors before scaling. **Source rule:** *p* < 0.05 and |β| > 0.1 on the retained term — not a global FDR rule across the catalogue.

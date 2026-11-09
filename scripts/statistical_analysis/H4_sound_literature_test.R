@@ -1,4 +1,5 @@
-# H4: replication tests aligned with documents/H4_papers_screened_final.md (§1.1 encodings/spectral, item 6 phases, item 9 tests) for all 24 papers in §3.
+# H4: literature-aligned partial ports per documents/H4_papers_screened_final.md (§0.6 screen; §3 items 6/8–10; item 9 tests) for 24 source blocks.
+# Paper 3 H4 hypothesis: §0.3 primary interactions -> H4_primary_estimands_results.csv; full catalogue -> H4_sound_literature_tests.csv.
 # Walk-only papers use WalkG/WalkU; Biel and Kraus use all four core phases; Ueberham uses BikeG/BikeU only.
 
 options(stringsAsFactors = FALSE)
@@ -551,8 +552,10 @@ results$simsek <- scopus_block('Simsek')
 
 results <- Filter(function(block) is.data.frame(block) && nrow(block), results)
 catalog <- do.call(H4_REPORT$catalog, unname(results))
+primary_estimands <- H4_PRIMARY$subset(catalog)
 significance_summary <- H4_REPORT$summary(catalog)
 stopifnot(all(is.finite(catalog$p)), all(catalog$p >= 0 & catalog$p <= 1))
+if (nrow(primary_estimands)) stopifnot(all(is.finite(primary_estimands$p)))
 paper_counts <- table(factor(catalog$paper, levels = unique(catalog$paper)))
 expected_papers <- c('Pigliautile 2021', 'Cureau 2022', 'Chiucchiù 2026', 'Moshammer 2019', 'Jin 2020', 'Biel 2020',
   'Rodrigues 2026', 'Kraus 2013', 'Korpilo 2024', 'Chen 2023 (adapted)', 'Ueberham 2019', 'Li 2025', 'Qin 2024',
@@ -561,7 +564,7 @@ expected_papers <- c('Pigliautile 2021', 'Cureau 2022', 'Chiucchiù 2026', 'Mosh
 missing_papers <- setdiff(expected_papers, names(paper_counts))
 if (length(missing_papers)) warning('No estimable rows for: ', paste(missing_papers, collapse = ', '))
 
-notes <- c('# H4 literature replications (screened guide items 6 and 9, all 24 papers in section 3)',
+notes <- c('# H4 literature-aligned partial ports (documents/H4_papers_screened_final.md sections 0.6 and 3)',
   paste('Phases:', paste(analysis_phases, collapse = ', '), '; walk-only papers use', paste(H4_PHASE_WALK, collapse = ', '),
     '; Biel/Kraus use all four; Ueberham uses', paste(H4_PHASE_BIKE, collapse = ', ')),
   paste('Input MD5:', unname(input_fingerprint)),
@@ -579,6 +582,8 @@ notes <- c('# H4 literature replications (screened guide items 6 and 9, all 24 p
   '- Ueberham: Spearman within BikeG and within BikeU; optional polr not fitted.',
   '- Encodings 2-4 and 15 spectral descriptors substituted on Moshammer, Jin, Biel, Rodrigues, Kraus, and Korpilo (§1.1).',
   '- Inference: each row\'s paper_rule only (documents/H4_papers_screened_final.md §1.4); no catalogue-wide BH/FDR in this run.',
+  '- Outputs: H4_primary_estimands_results.csv = Paper 3 H4 layer A (§0.3); H4_sound_literature_tests.csv = full catalogue layer B.',
+  H4_PRIMARY$methods_notes(primary_estimands),
   '', '## Fit and support notes', fit_notes, chen$notes,
   H4_REPORT$not_estimable_notes(attr(catalog, 'not_estimable')))
 
@@ -589,12 +594,15 @@ staged_outdir <- tempfile('H4_results_')
 dir.create(staged_outdir, recursive = TRUE)
 write.csv(catalog[setdiff(names(catalog), c('paper_rule_met', 'model_details'))],
   file.path(staged_outdir, 'H4_sound_literature_tests.csv'), row.names = FALSE, na = '')
+primary_export <- primary_estimands[setdiff(names(primary_estimands), c('paper_rule_met', 'model_details'))]
+write.csv(primary_export, file.path(staged_outdir, 'H4_primary_estimands_results.csv'), row.names = FALSE, na = '')
 write.csv(significance_summary, file.path(staged_outdir, 'SUMMARY_sound_tests_paper_rule.csv'), row.names = FALSE, na = '')
 writeLines(notes, file.path(staged_outdir, 'METHODS_NOTES.md'))
 p3_finalize_directory(staged_outdir)
 dir.create(outdir, recursive = TRUE, showWarnings = FALSE)
 output_files <- list.files(staged_outdir, full.names = TRUE)
-stopifnot(length(output_files) == 3L)
+stopifnot(length(output_files) == 4L)
 if (!all(file.copy(output_files, outdir, overwrite = TRUE))) stop('Failed to publish H4 files')
-step_log(sprintf('%d rows from %d papers', nrow(catalog), length(paper_counts)))
+step_log(sprintf('%d catalogue rows (%d primary H4 estimands) from %d papers',
+  nrow(catalog), nrow(primary_estimands), length(paper_counts)))
 cat('Done:', outdir, paste(basename(output_files), collapse = ', '), '\n')
