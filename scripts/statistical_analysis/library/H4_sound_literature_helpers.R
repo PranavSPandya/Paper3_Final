@@ -1,5 +1,6 @@
-# Helpers for H4_sound_literature_test.R: one function list per paper (H4_MOSHAMMER, H4_JIN, H4_SONG, H4_RODRIGUES, H4_KRAUS) plus H4_UTIL and H4_REPORT.
-# Each block fits the paper's own model; data limitations go to METHODS_NOTES.md.
+# Helpers for H4_sound_literature_test.R: one function list per paper (H4_MOSHAMMER, H4_JIN, H4_BIEL, H4_RODRIGUES, H4_KORPILO, H4_KRAUS, H4_PIGLIAUTILE, H4_CHIUCCHIU) plus H4_UTIL, H4_AL, H4_REPORT;
+# outdoor blocks h4_outdoor_phase_cells, h4_scopus_outdoor_tests, h4_additional_outdoor_tests (§3 Cureau/Chen and Scopus-listed papers).
+# Source-inspired tests and explicit adaptations; data limitations go to METHODS_NOTES.md. Song et al. (2013, 2014) is not fitted: no sound level and no thermal term in the source.
 
 # Shared utilities; ucm_SND_dBA is the main sound exposure, the alternatives are the category and spectral columns.
 H4_SOUND <- list(
@@ -14,15 +15,27 @@ H4_SOUND <- list(
     out <- list()
     for (family in c('category', 'spectral')) for (column in intersect(H4_SOUND[[family]], available_columns))
       out[[column]] <- list(column = column, is_db = FALSE, family = paste0('sound_', family, if (family == 'category') '_proportion' else '_descriptor'))
+    out},
+  attach_encodings = function(epochs) {
+    epochs$sound_corridor_urban <- ifelse(epochs$PhaseID %in% c('WalkU', 'BikeU'), 1,
+      ifelse(epochs$PhaseID %in% c('WalkG', 'BikeG'), 0, NA_real_))
+    if (all(c('vehicle_proportion', 'rural_natural_proportion') %in% names(epochs)))
+      # Two-minority head-to-head, not 8-class majority: urban_manmade_positive dominates the recordings.
+      epochs$sound_yamnet_majority_traffic <- as.numeric(epochs$vehicle_proportion > epochs$rural_natural_proportion)
+    epochs},
+  four_ways = function(available_columns) {
+    out <- list()
+    if ('sound_corridor_urban' %in% available_columns)
+      out$sound_corridor_urban <- list(column = 'sound_corridor_urban', is_db = FALSE, family = 'sound_corridor', binary = TRUE)
+    if ('sound_yamnet_majority_traffic' %in% available_columns)
+      out$sound_yamnet_majority_traffic <- list(column = 'sound_yamnet_majority_traffic', is_db = FALSE, family = 'sound_yamnet_vehicle_vs_rural', binary = TRUE)
+    for (column in intersect(H4_SOUND$category, available_columns))
+      out[[column]] <- list(column = column, is_db = FALSE, family = 'sound_category_proportion')
     out})
 
 H4_UTIL <- list(
   # dB levels are averaged on the energy scale, other descriptors arithmetically.
   sound_mean = function(x, is_db) if (is_db) H4_UTIL$energy_mean_db(x) else H4_UTIL$finite_mean(x),
-  bh = function(p) {
-    q <- rep(NA_real_, length(p)); finite_p <- is.finite(p)
-    q[finite_p] <- p.adjust(p[finite_p], 'BH')
-    q},
   energy_mean_db = function(level_db) {
     level_db <- level_db[is.finite(level_db)]
     if (!length(level_db)) return(NA_real_)
@@ -169,31 +182,43 @@ H4_MOSHAMMER <- list(
 
 # Jin, Jin & Kang (2020): two-way ANOVA of 5-dB LAeq levels x summer UTCI stress categories
 H4_JIN <- list(
+  # Quartiles of the 44 phase means, so a quiet or cool bout is not dropped. Physical source categories are not reproduced by these quantiles.
   laeq_breaks = c(55, 60, 65, 70, 75),
   laeq_labels = c('55-60 dB(A)', '60-65 dB(A)', '65-70 dB(A)', '70-75 dB(A)'),
   utci_breaks = c(9, 26, 32, 38, 46),
   utci_labels = c('No thermal stress (9-26 C)', 'Moderate heat stress (26-32 C)', 'Strong heat stress (32-38 C)', 'Very strong heat stress (38-46 C)'),
-  outcomes = c(TCV_thermal_comfort = 'questionnaire_thermal_comfort_1_5', OCV_overall_comfort = 'questionnaire_current_comfort_1_7'),
+  outcomes = c(
+    TCV_thermal_comfort = 'questionnaire_thermal_comfort_1_5',
+    ACV_acoustic_comfort = 'questionnaire_acoustic_comfort_1_5',
+    OCV_overall_comfort = 'questionnaire_current_comfort_1_7'),
   cell_frame = function(epochs, sound = H4_SOUND$primary) {
     cells <- do.call(rbind, lapply(H4_UTIL$bouts(epochs), function(rows) {
       out <- data.frame(ParticipantID = epochs$ParticipantID[rows[1]], PhaseID = epochs$PhaseID[rows[1]],
         laeq_db = H4_UTIL$sound_mean(epochs[[sound$column]][rows], sound$is_db), utci_c = H4_UTIL$finite_mean(epochs$ucm_UTCI[rows]))
       for (column_name in H4_JIN$outcomes) out[[column_name]] <- H4_UTIL$first_finite(epochs[[column_name]][rows])
-      out$utci_category <- cut(out$utci_c, H4_JIN$utci_breaks, H4_JIN$utci_labels, right = FALSE)
+      out$utci_category <- NA
       out}))
-    # dBA: the paper's 5-dB LAeq levels. Other descriptors have no paper bins: quartiles of the 44 phase means (Q1-Q4).
-    cells$laeq_level <- if (sound$is_db) cut(cells$laeq_db, H4_JIN$laeq_breaks, H4_JIN$laeq_labels, right = FALSE) else {
-      br <- unique(quantile(cells$laeq_db, c(0, 0.25, 0.5, 0.75, 1), na.rm = TRUE))
-      if (length(br) < 3) factor(rep(NA, nrow(cells))) else cut(cells$laeq_db, br, paste0('Q', seq_len(length(br) - 1)), include.lowest = TRUE)}
+    quartile_cut <- function(x, prefix) {
+      br <- unique(quantile(x, c(0, 0.25, 0.5, 0.75, 1), na.rm = TRUE))
+      if (length(br) < 3) return(factor(rep(NA, length(x))))
+      cut(x, br, paste0(prefix, seq_len(length(br) - 1)), include.lowest = TRUE)}
+    n_sound <- length(unique(round(cells$laeq_db, 10)[is.finite(cells$laeq_db)]))
+    cells$laeq_level <- if (n_sound <= 2)
+      factor(cells$laeq_db) else quartile_cut(cells$laeq_db, 'Q')
+    cells$utci_category <- quartile_cut(cells$utci_c, 'T')
     cells},
   # Type II main effects and interaction vs the additive model, all against the full model's residual mean square (as car::Anova type 2).
-  anova_type2 = function(y, a, b) {
+  anova_type2 = function(y, a, b, participant = NULL) {
     a <- droplevels(a); b <- droplevels(b)
     labels <- c('LAeq level', 'UTCI category', 'LAeq x UTCI')
     if (nlevels(a) < 2 || nlevels(b) < 2) return(NULL)
     rss <- function(X) { q <- qr(X); list(rss = sum(qr.resid(q, y)^2), rank = q$rank) }
-    full <- rss(model.matrix(~ a * b)); additive <- rss(model.matrix(~ a + b))
-    only_b <- rss(model.matrix(~ b)); only_a <- rss(model.matrix(~ a))
+    if (is.null(participant)) participant <- factor(rep('one block', length(y)))
+    participant <- factor(participant)
+    block <- if (nlevels(participant) > 1L) model.matrix(~ participant) else matrix(1, length(y), 1L)
+    design <- function(formula) cbind(block, model.matrix(formula)[, -1, drop = FALSE])
+    full <- rss(design(~ a * b)); additive <- rss(design(~ a + b))
+    only_b <- rss(design(~ b)); only_a <- rss(design(~ a))
     df_res_full <- length(y) - full$rank
     one <- function(label, reduced, larger) {
       df_term <- larger$rank - reduced$rank
@@ -213,56 +238,152 @@ H4_JIN <- list(
       d <- cells[use, ]
       observed <- table(droplevels(d$laeq_level), droplevels(d$utci_category))
       empty_cells <- sum(observed == 0); small_cells <- sum(observed > 0 & observed < 3)
-      tab <- H4_JIN$anova_type2(d[[column_name]], d$laeq_level, d$utci_category)
-      note <- sprintf(paste0('%d of 44 phase cells inside the ', if (sound$is_db) 'paper LAeq/UTCI ranges' else 'UTCI ranges (sound level = quartile of phase means)', '; %d observed LAeq levels x %d UTCI categories; %d empty and %d cells with n<3 among observed levels'),
+      tab <- H4_JIN$anova_type2(d[[column_name]], d$laeq_level, d$utci_category, d$ParticipantID)
+      note <- sprintf('%d phase cells in this run (quartiles of phase means, not source 5 dB / UTCI stress bins); %d sound x %d UTCI quartiles; %d empty and %d cells with n<3',
         nrow(d), nlevels(droplevels(d$laeq_level)), nlevels(droplevels(d$utci_category)), empty_cells, small_cells)
       if (is.null(tab)) tab <- data.frame(effect = c('LAeq level', 'UTCI category', 'LAeq x UTCI'), df_term = NA, df_resid = NA, F = NA, p = NA)
       for (k in seq_len(nrow(tab))) rows[[length(rows) + 1L]] <- data.frame(
-        paper = 'Jin 2020', test = paste('two-way ANOVA,', tab$effect[k]), outcome = outcome_label,
+        paper = 'Jin 2020', test = paste('participant-blocked two-way ANOVA,', tab$effect[k]), outcome = outcome_label,
         source_column = column_name, term = tab$effect[k], estimate = NA, se = NA, ci_low = NA, ci_high = NA,
         statistic = tab$F[k], df = if (is.na(tab$df_term[k])) NA else paste0(tab$df_term[k], ', ', tab$df_resid[k]),
         p = tab$p[k], n_observations = nrow(d), n_participants = length(unique(d$ParticipantID)),
-        statistic_test = if (k < 3) 'f-test (two-way ANOVA main effect, Type II SS, no participant block)' else 'f-test (two-way ANOVA interaction vs additive model, no participant block)',
+        statistic_test = if (k < 3) 'f-test (two-way ANOVA main effect, Type II SS, participant fixed block)' else 'f-test (two-way ANOVA interaction vs additive model, participant fixed block)',
         paper_rule = 'p < 0.05', paper_rule_met = if (is.finite(tab$p[k])) tab$p[k] < 0.05 else NA,
-        transformation = 'raw questionnaire score', term_units = 'factor levels as in the paper',
-        model_id = paste(column_name, '~ LAeq_level * UTCI_category'), model_details = note)}
+        transformation = 'raw questionnaire score', term_units = 'our sound/UTCI quantile factors; not source physical categories',
+        model_id = paste(column_name, '~ ParticipantID + LAeq_level * UTCI_category'), model_details = note)}
     list(results = do.call(rbind, rows), cells = cells, counts = counts)})
 
-# Song et al. (2013, 2014): one-sided paired t-test, park vs city walk, on HR, ln(HF) and ln(LF/HF)
-H4_SONG <- list(
+# Biel et al. 2020, Scientific Reports 10:16703: acute cardiovascular effects of air pollutants and noise.
+# 30-min mean personal noise -> HRV at the end of the interval, linear term for mean air temperature,
+# RH/caffeine/alcohol as potential confounders (kept if they change the coefficient by >= 10%); random subject intercepts.
+# Here: one 8-min phase cell per participant x phase; energy-mean dBA per IQR; ln for LF, HF and LF:HF as in the paper.
+H4_BIEL <- list(
   outcomes = list(
-    heart_rate_bpm = list(column = 'empatica_heart_rate', log = FALSE, alternative = 'less'),
-    ln_HF = list(column = 'empatica_hrv_fd_hf', log = TRUE, alternative = 'greater'),
-    ln_LF_HF = list(column = 'empatica_hrv_fd_lf_hf_ratio', log = TRUE, alternative = 'less')),
-  bout_value = function(values, times, log_values) {
-    minute <- floor(as.numeric(difftime(times, min(times), units = 'secs')) / 60)
-    minute_means <- tapply(values, minute, H4_UTIL$finite_mean)
-    if (log_values) minute_means <- ifelse(is.finite(minute_means) & minute_means > 0, log(minute_means), NA)
-    H4_UTIL$finite_mean(minute_means)},
-  run = function(epochs) {
-    walk <- epochs[epochs$PhaseID %in% c('WalkG', 'WalkU'), , drop = FALSE]
+    HR = list(column = 'empatica_heart_rate', log = FALSE),
+    SDNN = list(column = 'empatica_hrv_td_sdnn', log = FALSE),
+    RMSSD = list(column = 'empatica_hrv_td_rmssd', log = FALSE),
+    LF_power = list(column = 'empatica_hrv_fd_lf', log = TRUE),
+    HF_power = list(column = 'empatica_hrv_fd_hf', log = TRUE),
+    LF_HF_ratio = list(column = 'empatica_hrv_fd_lf_hf_ratio', log = TRUE)),
+  phase_frame = function(epochs, sound = H4_SOUND$primary) {
+    do.call(rbind, lapply(H4_UTIL$bouts(epochs), function(rows) {
+      out <- data.frame(ParticipantID = epochs$ParticipantID[rows[1]], PhaseID = epochs$PhaseID[rows[1]],
+        noise = H4_UTIL$sound_mean(epochs[[sound$column]][rows], sound$is_db),
+        air_temp_c = H4_UTIL$finite_mean(epochs$ucm_AIR_temp[rows]),
+        air_rh = H4_UTIL$finite_mean(epochs$ucm_AIR_RH[rows]))
+      for (name in names(H4_BIEL$outcomes)) out[[name]] <- H4_UTIL$finite_mean(epochs[[H4_BIEL$outcomes[[name]]$column]][rows])
+      out}))},
+  run = function(epochs, lme_control, sound = H4_SOUND$primary) {
+    cells <- H4_BIEL$phase_frame(epochs, sound)
+    noise_iqr <- IQR(cells$noise, na.rm = TRUE)
     rows <- list()
-    for (outcome_label in names(H4_SONG$outcomes)) {
-      spec <- H4_SONG$outcomes[[outcome_label]]
-      bout_values <- do.call(rbind, lapply(H4_UTIL$bouts(walk), function(r) data.frame(
-        ParticipantID = walk$ParticipantID[r[1]], PhaseID = walk$PhaseID[r[1]],
-        value = H4_SONG$bout_value(walk[[spec$column]][r], walk$Datetime[r], spec$log))))
-      wide <- merge(bout_values[bout_values$PhaseID == 'WalkG', c('ParticipantID', 'value')],
-        bout_values[bout_values$PhaseID == 'WalkU', c('ParticipantID', 'value')], by = 'ParticipantID', suffixes = c('_park', '_city'))
-      wide <- wide[is.finite(wide$value_park) & is.finite(wide$value_city), ]
-      tt <- if (nrow(wide) >= 3) t.test(wide$value_park, wide$value_city, paired = TRUE, alternative = spec$alternative) else NULL
+    for (name in names(H4_BIEL$outcomes)) {
+      spec <- H4_BIEL$outcomes[[name]]
+      d <- cells[is.finite(cells[[name]]) & is.finite(cells$noise) & is.finite(cells$air_temp_c), , drop = FALSE]
+      if (spec$log) d <- d[d[[name]] > 0, , drop = FALSE]
+      if (spec$log) d[[name]] <- log(d[[name]])
+      fit <- tryCatch(lme(as.formula(paste(name, '~ noise + air_temp_c')), data = d,
+        random = ~ 1 | ParticipantID, method = 'REML', control = lme_control), error = function(e) e)
+      # Their confounder rule: RH kept only if it changes the coefficient of interest by >= 10%.
+      kept_rh <- FALSE
+      if (!inherits(fit, 'error')) {
+        beta0 <- H4_UTIL$lme_fixed_rows(fit, 'noise')$beta
+        fit_rh <- tryCatch(lme(as.formula(paste(name, '~ noise + air_temp_c + air_rh')), data = d,
+          random = ~ 1 | ParticipantID, method = 'REML', control = lme_control), error = function(e) e)
+        if (!inherits(fit_rh, 'error')) {
+          beta_rh <- H4_UTIL$lme_fixed_rows(fit_rh, 'noise')$beta
+          if (is.finite(beta0) && is.finite(beta_rh) && abs(beta_rh - beta0) >= 0.10 * abs(beta0)) { fit <- fit_rh; kept_rh <- TRUE }}}
+      coef_row <- if (inherits(fit, 'error')) data.frame(beta = NA, se = NA, df = NA, t = NA, p_t = NA) else H4_UTIL$lme_fixed_rows(fit, 'noise')
+      beta_iqr <- coef_row$beta * noise_iqr; se_iqr <- coef_row$se * noise_iqr
+      tcrit <- if (is.finite(coef_row$df)) qt(0.975, coef_row$df) else NA_real_
       rows[[length(rows) + 1L]] <- data.frame(
-        paper = 'Song 2013/2014', test = 'one-sided paired t-test, park (WalkG) vs city (WalkU)', outcome = outcome_label,
-        source_column = spec$column, term = paste0('WalkG - WalkU (H1: ', spec$alternative, ' than 0)'),
-        estimate = if (is.null(tt)) NA else unname(tt$estimate), se = if (is.null(tt)) NA else unname(tt$stderr),
-        ci_low = if (is.null(tt)) NA else tt$conf.int[1], ci_high = if (is.null(tt)) NA else tt$conf.int[2],
-        statistic = if (is.null(tt)) NA else unname(tt$statistic), df = if (is.null(tt)) NA else unname(tt$parameter),
-        p = if (is.null(tt)) NA else tt$p.value, n_observations = 2L * nrow(wide), n_participants = nrow(wide),
-        statistic_test = 'one-sided paired t-test',
-        paper_rule = 'P < 0.05 (one sided)', paper_rule_met = if (is.null(tt)) NA else tt$p.value < 0.05,
-        transformation = if (spec$log) 'natural log of 1-min values, then bout mean' else 'raw, mean of 1-min values',
-        term_units = 'park minus city', model_id = paste('t.test(park, city, paired = TRUE, alternative =', spec$alternative, ')'),
-        model_details = sprintf('mean park=%.6g; mean city=%.6g', mean(wide$value_park), mean(wide$value_city)))}
+        paper = 'Biel 2020', test = 'concurrent personal-noise LMM (per IQR), air temperature term', outcome = name,
+        source_column = spec$column, term = paste0('noise (phase mean of ', sound$column, ', per IQR)'),
+        estimate = beta_iqr, se = se_iqr, ci_low = beta_iqr - tcrit * se_iqr, ci_high = beta_iqr + tcrit * se_iqr,
+        statistic = coef_row$t, df = coef_row$df, p = coef_row$p_t,
+        n_observations = nrow(d), n_participants = length(unique(d$ParticipantID)),
+        statistic_test = 't-test (REML LMM, random participant intercept)',
+        paper_rule = 'p < 0.05 (LMM Wald)', paper_rule_met = is.finite(coef_row$p_t) && coef_row$p_t < 0.05,
+        transformation = paste0(if (spec$log) 'natural log of the phase mean' else 'raw phase mean',
+          '; noise scaled per IQR of the phase means', if (is.finite(noise_iqr)) sprintf(' (IQR = %.4g)' , noise_iqr) else ''),
+        term_units = paste0('per 1 IQR', if (is.finite(noise_iqr)) sprintf(' (%.4g)', noise_iqr) else '',
+          ' of phase-mean ', sound$column, '; outcome on the modelled scale'),
+        model_id = paste(name, '~ noise + air_temp_c', if (kept_rh) ' + air_rh' else '', '+ (1 | ParticipantID)'),
+        model_details = paste0('8-min phase cells, not 30-min windows; random intercept only (their 30-min models add slopes and AR(1));',
+          ' RH kept by their >=10% coefficient-change rule: ', kept_rh,
+          '; caffeine and alcohol not recorded; frequency-domain outcomes are means of the 5-min window estimates'))}
+    list(results = do.call(rbind, rows))})
+
+# Biel et al. (2020), repeated-window specification: the source models consecutive short exposure windows within a person
+# with random subject intercepts and slopes plus a first-order autoregressive error. Here each 8-min bout is cut into
+# consecutive 2-min windows (>= 60% of the expected 10-s rows), each window gets its own energy-mean dBA and air temperature,
+# and the model adds corCAR1() within participant using elapsed 2-min units. This is the same design question at the repeated-observation grain.
+H4_BIEL_REPEATED <- list(
+  outcomes = list(
+    HR = list(column = 'empatica_heart_rate', log = FALSE),
+    SDNN = list(column = 'empatica_hrv_td_sdnn', log = FALSE),
+    RMSSD = list(column = 'empatica_hrv_td_rmssd', log = FALSE),
+    LF_power = list(column = 'empatica_hrv_fd_lf', log = TRUE),
+    HF_power = list(column = 'empatica_hrv_fd_hf', log = TRUE),
+    LF_HF_ratio = list(column = 'empatica_hrv_fd_lf_hf_ratio', log = TRUE)),
+  window_seconds = 120,
+  # Consecutive windows inside each bout, with the window index used as the AR(1) time variable.
+  window_frame = function(epochs, sound = H4_SOUND$primary) {
+    out <- list()
+    for (rows in H4_UTIL$bouts(epochs)) {
+      bout <- epochs[rows, , drop = FALSE]
+      secs <- as.numeric(difftime(bout$Datetime, min(bout$Datetime), units = 'secs'))
+      idx <- floor(secs / H4_BIEL_REPEATED$window_seconds)
+      need <- (2 / 3) * (H4_BIEL_REPEATED$window_seconds / 10)
+      for (k in sort(unique(idx))) {
+        in_win <- idx == k & is.finite(secs)
+        if (sum(in_win) < need) next
+        w <- data.frame(ParticipantID = bout$ParticipantID[in_win][1], PhaseID = bout$PhaseID[in_win][1],
+          window_start = min(bout$Datetime[in_win]),
+          noise = H4_UTIL$sound_mean(bout[[sound$column]][in_win], sound$is_db),
+          air_temp_c = H4_UTIL$finite_mean(bout$ucm_AIR_temp[in_win]))
+        for (name in names(H4_BIEL_REPEATED$outcomes))
+          w[[name]] <- H4_UTIL$finite_mean(bout[[H4_BIEL_REPEATED$outcomes[[name]]$column]][in_win])
+        out[[length(out) + 1L]] <- w}}
+    frame <- do.call(rbind, out)
+    # corAR1 needs one strictly increasing clock per participant; phases share window numbers, so use real start times.
+    frame <- frame[order(frame$ParticipantID, frame$window_start), , drop = FALSE]
+    frame$window_index <- (as.numeric(frame$window_start) - stats::ave(as.numeric(frame$window_start), frame$ParticipantID, FUN = min)) / 120
+    frame},
+  run = function(epochs, lme_control, sound = H4_SOUND$primary) {
+    cells <- H4_BIEL_REPEATED$window_frame(epochs, sound)
+    noise_iqr <- IQR(cells$noise, na.rm = TRUE)
+    rows <- list()
+    for (name in names(H4_BIEL_REPEATED$outcomes)) {
+      spec <- H4_BIEL_REPEATED$outcomes[[name]]
+      d <- cells[is.finite(cells[[name]]) & is.finite(cells$noise) & is.finite(cells$air_temp_c), , drop = FALSE]
+      if (spec$log) d <- d[d[[name]] > 0, , drop = FALSE]
+      if (spec$log) d[[name]] <- log(d[[name]])
+      d <- d[order(d$ParticipantID, d$window_index), , drop = FALSE]
+      fit <- tryCatch(lme(as.formula(paste(name, '~ noise + air_temp_c')), data = d,
+        random = ~ 1 | ParticipantID, correlation = nlme::corCAR1(form = ~ window_index | ParticipantID),
+        method = 'REML', control = lme_control), error = function(e) e)
+      rho <- if (inherits(fit, 'error')) NA_real_ else {
+        cf <- tryCatch(as.numeric(nlme::coef(fit$modelStruct$corStruct, unconstrained = FALSE)), error = function(e) NA_real_); cf[1]}
+      coef_row <- if (inherits(fit, 'error')) data.frame(beta = NA, se = NA, df = NA, t = NA, p_t = NA) else H4_UTIL$lme_fixed_rows(fit, 'noise')
+      beta_iqr <- coef_row$beta * noise_iqr; se_iqr <- coef_row$se * noise_iqr
+      tcrit <- if (is.finite(coef_row$df)) qt(0.975, coef_row$df) else NA_real_
+      rows[[length(rows) + 1L]] <- data.frame(
+        paper = 'Biel 2020', test = 'repeated 2-min window LMM with AR(1) (per IQR), air temperature term', outcome = name,
+        source_column = spec$column, term = paste0('noise (2-min window mean of ', sound$column, ', per IQR)'),
+        estimate = beta_iqr, se = se_iqr, ci_low = beta_iqr - tcrit * se_iqr, ci_high = beta_iqr + tcrit * se_iqr,
+        statistic = coef_row$t, df = coef_row$df, p = coef_row$p_t,
+        n_observations = nrow(d), n_participants = length(unique(d$ParticipantID)),
+        statistic_test = 't-test (REML LMM, random participant intercept, continuous-time AR(1) errors)',
+        paper_rule = 'p < 0.05 (LMM Wald)', paper_rule_met = is.finite(coef_row$p_t) && coef_row$p_t < 0.05,
+        transformation = paste0(if (spec$log) 'natural log of the window mean' else 'raw window mean',
+          '; noise scaled per IQR of the window means', if (is.finite(noise_iqr)) sprintf(' (IQR = %.4g)', noise_iqr) else ''),
+        term_units = paste0('per 1 IQR', if (is.finite(noise_iqr)) sprintf(' (%.4g)', noise_iqr) else '',
+          ' of 2-min window-mean ', sound$column, '; outcome on the modelled scale'),
+        model_id = paste(name, '~ noise + air_temp_c + (1 | ParticipantID) + corCAR1'),
+        model_details = paste0('consecutive 2-min windows inside the 8-min bout (source: consecutive 30-min windows); continuous AR(1) uses actual elapsed time in 2-min units, including between-bout gaps;',
+          ' AR(1) rho = ', if (is.finite(rho)) sprintf('%.3f', rho) else 'not estimable',
+          '; random slope not fitted in this adaptation (at most four windows per bout); caffeine and alcohol not recorded'))}
     list(results = do.call(rbind, rows))})
 
 # Rodrigues et al. (2026): 7.Model_H2.py blocks, fillna(0) + StandardScaler, MixedLM; kept if round(p,4) < 0.05 and |round(beta,4)| > 0.1
@@ -321,14 +442,58 @@ H4_RODRIGUES <- list(
             model_details = paste0('system=', system, if (block == 'Temperature') '; exposure=temperature block (not a sound term; fitted because the authors fit it)' else '', if (inherits(fit, 'error')) paste('; fit error:', conditionMessage(fit)) else ''))}}}
     list(results = do.call(rbind, rows), trips = trips)})
 
+# Korpilo et al. 2024, Urban Forestry & Urban Greening 95:128286: stress recovery in neighbourhood nature.
+# Beta-logit GLMM on an EDA index with NDSI, temperature and relative humidity as covariates.
+# Here: Gaussian LMM on ln phase-mean tonic EDA with an NDSI analogue from the merged frequency-band proportions.
+H4_KORPILO <- list(
+  eda_column = 'empatica_eda_tonic',
+  ndsi_epoch = function(anthro, bio) { s <- anthro + bio; ifelse(is.finite(s) & s > 0, (bio - anthro) / s, NA_real_) },
+  phase_frame = function(epochs, sound = NULL) {
+    do.call(rbind, lapply(H4_UTIL$bouts(epochs), function(rows) {
+      eda_mean <- H4_UTIL$finite_mean(epochs$empatica_eda_tonic[rows])
+      sound_x <- if (is.null(sound)) H4_UTIL$finite_mean(H4_KORPILO$ndsi_epoch(epochs$freq_proportion_200_to_2000Hz[rows], epochs$freq_proportion_2000_to_20000Hz[rows]))
+        else H4_UTIL$sound_mean(epochs[[sound$column]][rows], sound$is_db)
+      data.frame(ParticipantID = epochs$ParticipantID[rows[1]], PhaseID = epochs$PhaseID[rows[1]],
+        eda_ln = if (is.finite(eda_mean) && eda_mean > 0) log(eda_mean) else NA_real_,
+        sound_x = sound_x,
+        air_temp_c = H4_UTIL$finite_mean(epochs$ucm_AIR_temp[rows]),
+        air_rh = H4_UTIL$finite_mean(epochs$ucm_AIR_RH[rows]))}))},
+  run = function(epochs, lme_control, sound = NULL) {
+    cells <- H4_KORPILO$phase_frame(epochs, sound)
+    d <- cells[is.finite(cells$eda_ln) & is.finite(cells$sound_x) & is.finite(cells$air_temp_c) & is.finite(cells$air_rh), , drop = FALSE]
+    fit <- tryCatch(lme(eda_ln ~ sound_x + air_temp_c + air_rh + PhaseID, data = d,
+      random = ~ 1 | ParticipantID, method = 'REML', control = lme_control), error = function(e) e)
+    coef_row <- if (inherits(fit, 'error')) data.frame(beta = NA, se = NA, df = NA, t = NA, p_t = NA) else H4_UTIL$lme_fixed_rows(fit, 'sound_x')
+    tcrit <- if (is.finite(coef_row$df)) qt(0.975, coef_row$df) else NA_real_
+    sound_name <- if (is.null(sound)) 'NDSI analogue' else sound$column
+    results <- data.frame(
+      paper = 'Korpilo 2024', test = paste0('EDA level GLMM analogue (', sound_name, ' + temperature + RH + phase)'), outcome = 'ln tonic EDA',
+      source_column = 'empatica_eda_tonic (phase mean, natural log)',
+      term = sound_name,
+      estimate = coef_row$beta, se = coef_row$se,
+      ci_low = coef_row$beta - tcrit * coef_row$se, ci_high = coef_row$beta + tcrit * coef_row$se,
+      statistic = coef_row$t, df = coef_row$df, p = coef_row$p_t,
+      n_observations = nrow(d), n_participants = length(unique(d$ParticipantID)),
+      statistic_test = 't-test (REML LMM, random participant intercept)',
+      paper_rule = 'p < 0.05 (GLMM Wald)', paper_rule_met = is.finite(coef_row$p_t) && coef_row$p_t < 0.05,
+      transformation = 'natural log of the phase-mean tonic EDA (uS)',
+      term_units = if (is.null(sound)) 'per 1 unit of NDSI (from -1 anthrophonic to +1 biophonic)' else paste('per 1 unit of', sound_name),
+      model_id = paste('eda_ln ~ sound_x + air_temp_c + air_rh + PhaseID + (1 | ParticipantID); sound_x =', sound_name),
+      model_details = paste0('Source: beta-logit GLMM on a normalised EDA index with respondent, group and order random effects;',
+        ' this campaign has no group or stop-order structure and tonic EDA in uS, so a Gaussian LMM on ln tonic EDA with a participant intercept is fitted. ',
+        if (is.null(sound)) 'NDSI analogue = (freq_proportion_2000_to_20000Hz - freq_proportion_200_to_2000Hz) / (their sum), phase mean of the 10-s rows.'
+        else paste('Sound encoding', sound_name, 'replaces NDSI in the same LMM (four-way sound encodings).'),
+        if (inherits(fit, 'error')) paste(' Fit error:', conditionMessage(fit)) else ''))
+    list(results = results, cells = cells)})
+
 # Kraus et al. (2013): additive mixed models on 5-min intervals, piecewise Leq at 65 dB(A), log outcomes except HR
 H4_KRAUS <- list(
-  outcomes = c(HR = 'empatica_heart_rate', SDNN = 'empatica_hrv_td_sdnn', LF_nu = 'empatica_hrv_fd_lfnu',
-    HF_nu = 'empatica_hrv_fd_hfnu', LF_HF = 'empatica_hrv_fd_lf_hf_ratio'),
+  outcomes = c(HR = 'empatica_heart_rate', SDNN = 'empatica_hrv_td_sdnn', LF_power = 'empatica_hrv_fd_lf',
+    HF_power = 'empatica_hrv_fd_hf', LF_HF = 'empatica_hrv_fd_lf_hf_ratio'),
   trend_forms = c('linear', 'poly2', 'poly3', 'poly4', 'pspline'),
   # Only lag 0 fits in an 8-min bout and there is no prior interval, so the lagged outcome is left out.
   interval_seconds = 300,
-  fd_outcomes = c('LF_nu', 'HF_nu', 'LF_HF'),
+  fd_outcomes = c('LF_power', 'HF_power', 'LF_HF'),
   lags = 0L,
   trend_term = function(variable_name, form_name) switch(form_name, linear = variable_name,
     poly2 = sprintf('poly(%s, 2)', variable_name), poly3 = sprintf('poly(%s, 3)', variable_name),
@@ -444,19 +609,274 @@ H4_KRAUS <- list(
               if (inherits(final, 'error')) paste('; fit error:', conditionMessage(final)) else ''))}}}
     list(results = do.call(rbind, rows), intervals = intervals, selection = selection, knot = knot, step = step)})
 
-# Catalog, summary and METHODS_NOTES
+# Shared bout labels for Pigliautile 2021 and Chiucchiù 2026 (same NEXT.ROOM protocol, different statistics).
+# Thermal: cooler vs warmer than that person's own mean air temperature (C0 ~21 C then C1 ~23 C analogue).
+# Soundscape is tested three ways at phase means: (1) vehicle vs rural_natural share (not 8-class majority);
+# (2) corridor / phaseavg: WalkG and BikeG = nature, WalkU and BikeU = traffic;
+# (3) continuous phase-mean YAMNet class proportions (all eight category columns).
+# No 65 dB or 26 C drop. Headphones, assigned 21/23 C, the eight ISO soundscape descriptors, and Big Five are not in this campaign.
+H4_AL <- list(
+  votes = c(
+    acoustic_comfort = 'questionnaire_acoustic_comfort_1_5',
+    pleasantness = 'questionnaire_pleasantness_1_5',
+    thermal_comfort = 'questionnaire_thermal_comfort_1_5',
+    visual_comfort = 'questionnaire_visual_comfort_1_5',
+    air_quality_comfort = 'questionnaire_air_quality_comfort_1_5'),
+  physio = c(
+    heart_rate = 'empatica_heart_rate',
+    tonic_eda = 'empatica_eda_tonic',
+    skin_temperature = 'empatica_skin_temperature'),
+  bout_frame = function(epochs) {
+    nature_col <- if ('rural_natural_proportion' %in% names(epochs)) 'rural_natural_proportion' else NA_character_
+    traffic_col <- if ('vehicle_proportion' %in% names(epochs)) 'vehicle_proportion' else NA_character_
+    cells <- do.call(rbind, lapply(H4_UTIL$bouts(epochs), function(rows) {
+      out <- data.frame(ParticipantID = epochs$ParticipantID[rows[1]], PhaseID = epochs$PhaseID[rows[1]],
+        air_temp_c = H4_UTIL$finite_mean(epochs$ucm_AIR_temp[rows]),
+        nature_share = if (is.na(nature_col)) NA_real_ else H4_UTIL$finite_mean(epochs[[nature_col]][rows]),
+        traffic_share = if (is.na(traffic_col)) NA_real_ else H4_UTIL$finite_mean(epochs[[traffic_col]][rows]),
+        heart_rate = H4_UTIL$finite_mean(epochs$empatica_heart_rate[rows]),
+        tonic_eda = H4_UTIL$finite_mean(epochs$empatica_eda_tonic[rows]),
+        skin_temperature = H4_UTIL$finite_mean(epochs$empatica_skin_temperature[rows]),
+        ucm_SND_dBA = H4_UTIL$energy_mean_db(epochs$ucm_SND_dBA[rows]))
+      for (col in intersect(H4_SOUND$category, names(epochs))) out[[col]] <- H4_UTIL$finite_mean(epochs[[col]][rows])
+      for (name in names(H4_AL$votes)) out[[name]] <- H4_UTIL$first_finite(epochs[[H4_AL$votes[[name]]]][rows])
+      out}))
+    cells$person_mean_t <- ave(cells$air_temp_c, cells$ParticipantID, FUN = function(x) mean(x, na.rm = TRUE))
+    cells$thermal <- factor(ifelse(cells$air_temp_c > cells$person_mean_t, 'warmer', 'cooler'), levels = c('cooler', 'warmer'))
+    cells$soundscape_yamnet <- factor(ifelse(cells$traffic_share > cells$nature_share, 'traffic', 'nature'), levels = c('nature', 'traffic'))
+    corridor <- ifelse(cells$PhaseID %in% c('WalkG', 'BikeG'), 'nature', ifelse(cells$PhaseID %in% c('WalkU', 'BikeU'), 'traffic', NA_character_))
+    cells$soundscape_corridor <- factor(corridor, levels = c('nature', 'traffic'))
+    cells},
+  schemes = list(
+    yamnet = list(col = 'soundscape_yamnet', tag = 'YAMNet vehicle vs rural_natural',
+      sound_variable = 'YAMNet vehicle vs rural_natural (phase mean; not 8-class majority)',
+      details = 'traffic if phase-mean vehicle_proportion > rural_natural_proportion; urban_manmade_positive is not the base'),
+    corridor = list(col = 'soundscape_corridor', tag = 'green vs urban corridor',
+      sound_variable = 'green vs urban corridor (WalkG/BikeG vs WalkU/BikeU)',
+      details = 'WalkG and BikeG = nature; WalkU and BikeU = traffic; Tram excluded')),
+  proportion_cols = function(cells) intersect(H4_SOUND$category, names(cells)),
+  attach_sound = function(row, sound_variable) { row$sound_variable <- sound_variable; row },
+  person_pair = function(cells, y_col, by = 'thermal', a = 'cooler', b = 'warmer', subset = NULL) {
+    if (is.null(subset)) subset <- rep(TRUE, nrow(cells))
+    d <- cells[subset & is.finite(cells[[y_col]]) & !is.na(cells[[by]]), , drop = FALSE]
+    ids <- unique(as.character(d$ParticipantID))
+    v_a <- v_b <- numeric(0); pid <- character(0)
+    for (id in ids) {
+      s <- d[as.character(d$ParticipantID) == id, , drop = FALSE]
+      ya <- H4_UTIL$finite_mean(s[[y_col]][as.character(s[[by]]) == a])
+      yb <- H4_UTIL$finite_mean(s[[y_col]][as.character(s[[by]]) == b])
+      if (is.finite(ya) && is.finite(yb)) { v_a <- c(v_a, ya); v_b <- c(v_b, yb); pid <- c(pid, id) }
+    }
+    list(a = v_a, b = v_b, n = length(v_a), ids = pid)},
+  paired_t_row = function(pair, paper, test, outcome, source_column, term, term_units, model_id, details_prefix) {
+    n <- pair$n
+    empty <- data.frame(
+      paper = paper, test = test, outcome = outcome, source_column = source_column, term = term,
+      estimate = NA_real_, se = NA_real_, ci_low = NA_real_, ci_high = NA_real_,
+      statistic = NA_real_, df = NA_real_, p = NA_real_,
+      n_observations = n, n_participants = n,
+      statistic_test = 'paired t-test (person means)',
+      paper_rule = 'p < 0.05', paper_rule_met = NA,
+      transformation = 'raw', term_units = term_units, model_id = model_id,
+      model_details = paste0(details_prefix, '; not estimable (need >= 3 people with both levels)'))
+    if (n < 3) return(empty)
+    diff <- pair$b - pair$a
+    if (!any(diff != 0)) {
+      empty$estimate <- 0
+      empty$se <- 0
+      empty$ci_low <- 0
+      empty$ci_high <- 0
+      empty$statistic <- 0
+      empty$df <- n - 1
+      empty$p <- 1
+      empty$paper_rule_met <- FALSE
+      empty$model_details <- paste0(details_prefix, sprintf('; n_pairs=%d [%s]; all paired diffs are 0', n, paste(pair$ids, collapse = ',')))
+      return(empty)
+    }
+    tt <- tryCatch(stats::t.test(pair$b, pair$a, paired = TRUE), error = function(e) e)
+    if (inherits(tt, 'error') || !is.finite(tt$p.value)) {
+      empty$model_details <- paste0(details_prefix, '; fit error: ', if (inherits(tt, 'error')) conditionMessage(tt) else 'non-finite p')
+      return(empty)
+    }
+    se <- stats::sd(diff) / sqrt(n)
+    d_cohen <- if (stats::sd(diff) > 0) mean(diff) / stats::sd(diff) else NA_real_
+    data.frame(
+      paper = paper, test = test, outcome = outcome, source_column = source_column, term = term,
+      estimate = unname(tt$estimate), se = se, ci_low = unname(tt$conf.int[1]), ci_high = unname(tt$conf.int[2]),
+      statistic = unname(tt$statistic), df = unname(tt$parameter), p = unname(tt$p.value),
+      n_observations = n, n_participants = n,
+      statistic_test = 'paired t-test (person means)',
+      paper_rule = 'p < 0.05', paper_rule_met = is.finite(tt$p.value) && tt$p.value < 0.05,
+      transformation = 'raw', term_units = term_units, model_id = model_id,
+      model_details = sprintf('%s; n_pairs=%d [%s]; Cohen d=%.3g (mean of paired diffs / SD of paired diffs)',
+        details_prefix, n, paste(pair$ids, collapse = ','), d_cohen))},
+  spearman_row = function(x, y, paper, test, outcome, source_column, term, model_id, details_prefix, n_participants, participant_ids) {
+    stopifnot(length(participant_ids) == length(x), length(x) == length(y))
+    valid <- is.finite(x) & is.finite(y) & !is.na(participant_ids)
+    ids <- unique(as.character(participant_ids[valid]))
+    x_mean <- vapply(ids, function(id) mean(x[valid & participant_ids == id]), 0.0)
+    y_mean <- vapply(ids, function(id) mean(y[valid & participant_ids == id]), 0.0)
+    x <- unname(x_mean); y <- unname(y_mean); n_participants <- length(ids)
+    test <- gsub('phase mean', 'participant mean', test, fixed = TRUE)
+    model_id <- paste(model_id, '[one paired mean per participant]')
+    details_prefix <- paste(details_prefix, '; adapted Spearman on participant means: between-person association, not pooled phase association')
+    ok <- is.finite(x) & is.finite(y)
+    n <- sum(ok)
+    empty <- data.frame(
+      paper = paper, test = test, outcome = outcome, source_column = source_column, term = term,
+      estimate = NA_real_, se = NA_real_, ci_low = NA_real_, ci_high = NA_real_,
+      statistic = NA_real_, df = NA_real_, p = NA_real_,
+      n_observations = n, n_participants = n_participants,
+      statistic_test = 'Spearman rank correlation (independent participant means)',
+      paper_rule = 'p < 0.05', paper_rule_met = NA,
+      transformation = 'raw questionnaire score', term_units = 'Spearman rho',
+      model_id = model_id, model_details = paste0(details_prefix, '; not estimable'))
+    if (n < 4) return(empty)
+    ct <- tryCatch(stats::cor.test(x[ok], y[ok], method = 'spearman', exact = FALSE), error = function(e) e)
+    if (inherits(ct, 'error')) {
+      empty$model_details <- paste0(details_prefix, '; fit error: ', conditionMessage(ct))
+      return(empty)
+    }
+    data.frame(
+      paper = paper, test = test, outcome = outcome, source_column = source_column, term = term,
+      estimate = unname(ct$estimate), se = NA_real_, ci_low = NA_real_, ci_high = NA_real_,
+      statistic = unname(ct$statistic), df = NA_real_, p = unname(ct$p.value),
+      n_observations = n, n_participants = n_participants,
+      statistic_test = 'Spearman rank correlation (independent participant means)',
+      paper_rule = 'p < 0.05', paper_rule_met = is.finite(ct$p.value) && ct$p.value < 0.05,
+      transformation = 'raw questionnaire score', term_units = 'Spearman rho',
+      model_id = model_id, model_details = sprintf('%s; n=%d independent participant means', details_prefix, n))})
+
+# Pigliautile et al. 2021 (CISBAT / J. Phys. Conf. Ser. 2042 012136): means at C0 vs C1, and woodland vs busy street at each temperature.
+# The source reports those plots; it does not fit an LMM. Here: paired t on person means.
+H4_PIGLIAUTILE <- list(
+  run = function(epochs) {
+    cells <- H4_AL$bout_frame(epochs)
+    rows <- list()
+    no_sound <- 'warmer vs cooler (no sound-source label)'
+    for (name in c('thermal_comfort', 'visual_comfort', 'acoustic_comfort', 'air_quality_comfort')) {
+      pair <- H4_AL$person_pair(cells, name, by = 'thermal', a = 'cooler', b = 'warmer')
+      rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$paired_t_row(pair, 'Pigliautile 2021',
+        'paired C0 vs C1 analogue, comfort votes', name, H4_AL$votes[[name]],
+        'warmer minus cooler', 'vote points (warmer minus cooler person mean)',
+        paste(name, 'warmer - cooler | paired t by ParticipantID'),
+        'Fig 3a analogue; all bouts; no 65 dB or 26 C drop; thermal contrast only'), no_sound)
+    }
+    for (scheme in H4_AL$schemes) {
+      sound_col <- scheme$col
+      for (name in c('pleasantness', 'acoustic_comfort')) {
+        pair <- H4_AL$person_pair(cells, name, by = sound_col, a = 'nature', b = 'traffic')
+        rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$paired_t_row(pair, 'Pigliautile 2021',
+          paste0('nature vs traffic, phase mean (', scheme$tag, ')'),
+          name, H4_AL$votes[[name]],
+          'traffic minus nature', 'vote points (traffic minus nature person mean)',
+          paste(name, 'traffic - nature |', scheme$tag),
+          sprintf('phase-mean analogue of #2 woodlands vs #7 busy street; %s', scheme$details)), scheme$sound_variable)
+      }
+      for (thermal_level in c('cooler', 'warmer')) {
+        for (name in c('pleasantness', 'acoustic_comfort')) {
+          pair <- H4_AL$person_pair(cells, name, by = sound_col, a = 'nature', b = 'traffic', subset = cells$thermal == thermal_level)
+          rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$paired_t_row(pair, 'Pigliautile 2021',
+            paste0('nature vs traffic at ', thermal_level, ' (Fig 3b analogue, ', scheme$tag, ')'),
+            name, H4_AL$votes[[name]],
+            'traffic minus nature', 'vote points (traffic minus nature person mean)',
+            paste(name, 'traffic - nature |', thermal_level, '|', scheme$tag),
+            sprintf('Fig 3b analogue at %s; %s; eight ISO soundscape descriptors not collected', thermal_level, scheme$details)), scheme$sound_variable)
+        }
+      }
+    }
+    n_people <- length(unique(cells$ParticipantID))
+    continuous_cols <- c('ucm_SND_dBA', H4_AL$proportion_cols(cells))
+    for (col in continuous_cols) {
+      for (name in c('pleasantness', 'acoustic_comfort')) {
+        # Full-session vote/sound correlations are canonical Chiucchiu rows.
+        # Keep only the distinct thermal-stratum questions in this block.
+        for (thermal_level in c('cooler', 'warmer')) {
+          use <- cells$thermal == thermal_level
+          rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$spearman_row(cells[[name]][use], cells[[col]][use], 'Pigliautile 2021',
+            paste0('Spearman vote vs ', col, ' at ', thermal_level), name,
+            paste(H4_AL$votes[[name]], col, sep = ', '),
+            'Spearman rho', paste('spearman(', name, ',', col, ') |', thermal_level),
+            sprintf('Fig 3b analogue at %s with the continuous share or dBA, not a majority cut', thermal_level),
+            length(unique(as.character(cells$ParticipantID[use]))), cells$ParticipantID[use]), col)
+        }
+      }
+    }
+    list(results = do.call(rbind, rows), cells = cells)})
+
+# Chiucchiù, Gnecco, Pigliautile & Pisello 2026 (Building and Environment 290:114140): paired t C0 vs C1 on Empatica, Spearman across domains, C0 vs C1 deltas per soundscape.
+# Personality (IPIP-NEO-120 k-means) is not recorded and is not fitted. Not an LMM.
+H4_CHIUCCHIU <- list(
+  run = function(epochs) {
+    cells <- H4_AL$bout_frame(epochs)
+    n_people <- length(unique(cells$ParticipantID))
+    no_sound <- 'warmer vs cooler (no sound-source label)'
+    rows <- list()
+    for (name in names(H4_AL$physio)) {
+      pair <- H4_AL$person_pair(cells, name, by = 'thermal', a = 'cooler', b = 'warmer')
+      rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$paired_t_row(pair, 'Chiucchiù 2026',
+        'paired C0 vs C1 analogue, physiology', name, H4_AL$physio[[name]],
+        'warmer minus cooler', 'person-mean phase value (warmer minus cooler)',
+        paste(name, 'warmer - cooler | paired t by ParticipantID'),
+        'source: paired t-test plus Cohen d on mean EDAt, HR and ST at C0 vs C1; no 65 dB or 26 C drop'), no_sound)
+    }
+    pair_tsv <- H4_AL$person_pair(cells, 'thermal_comfort', by = 'thermal', a = 'cooler', b = 'warmer')
+    rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$paired_t_row(pair_tsv, 'Chiucchiù 2026',
+      'paired C0 vs C1 analogue, subjective thermal (source TSV)', 'thermal_comfort', H4_AL$votes[['thermal_comfort']],
+      'warmer minus cooler', 'vote points (warmer minus cooler person mean)',
+      'thermal_comfort warmer - cooler | paired t by ParticipantID',
+      'source paired C0 vs C1 on thermal sensation; outcome = domain thermal comfort (§2)'), no_sound)
+    rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$spearman_row(cells$thermal_comfort, cells$acoustic_comfort, 'Chiucchiù 2026',
+      'Spearman thermal vs acoustic votes', 'thermal_comfort vs acoustic_comfort',
+      'questionnaire_thermal_comfort_1_5, questionnaire_acoustic_comfort_1_5',
+      'Spearman rho', 'spearman(thermal_comfort, acoustic_comfort) on independent participant means',
+      'source: Spearman among perceptual domains, particularly thermal and acoustic; personality correlations not fitted', n_people, cells$ParticipantID), no_sound)
+    rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$spearman_row(cells$thermal_comfort, cells$pleasantness, 'Chiucchiù 2026',
+      'Spearman thermal vs acoustic votes', 'thermal_comfort vs pleasantness',
+      'questionnaire_thermal_comfort_1_5, questionnaire_pleasantness_1_5',
+      'Spearman rho', 'spearman(thermal_comfort, pleasantness) on independent participant means',
+      'pleasantness is the closest collected analogue of the ISO pleasant descriptor', n_people, cells$ParticipantID), no_sound)
+    for (scheme in H4_AL$schemes) {
+      sound_col <- scheme$col
+      for (sc in c('nature', 'traffic')) {
+        for (name in c('pleasantness', 'acoustic_comfort')) {
+          pair <- H4_AL$person_pair(cells, name, by = 'thermal', a = 'cooler', b = 'warmer', subset = as.character(cells[[sound_col]]) == sc)
+          rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$paired_t_row(pair, 'Chiucchiù 2026',
+            paste0('paired C0 vs C1 analogue within ', sc, ' (Table 5 analogue, ', scheme$tag, ')'),
+            name, H4_AL$votes[[name]],
+            'warmer minus cooler', 'vote points (warmer minus cooler person mean)',
+            paste(name, 'warmer - cooler |', sc, '|', scheme$tag),
+            sprintf('Table 5 / Fig 7 analogue; C0 vs C1 on %s bouts only; %s; eight ISO descriptors not collected; Big Five not recorded', sc, scheme$details)), scheme$sound_variable)
+        }
+      }
+    }
+    continuous_cols <- c('ucm_SND_dBA', H4_AL$proportion_cols(cells))
+    for (col in continuous_cols) {
+      for (name in c('thermal_comfort', 'pleasantness', 'acoustic_comfort')) {
+        rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$spearman_row(cells[[name]], cells[[col]], 'Chiucchiù 2026',
+          paste0('Spearman vote vs ', col, ', phase mean'), name,
+          paste(H4_AL$votes[[name]], col, sep = ', '),
+          'Spearman rho', paste('spearman(', name, ',', col, ') on participant means'),
+          'continuous YAMNet class share or dBA; not a majority label; personality not fitted; one paired mean per participant across walks', n_people, cells$ParticipantID), col)
+      }
+    }
+    list(results = do.call(rbind, rows), cells = cells)})
+
+# Catalog, summary, and not-estimable notes (METHODS_NOTES are assembled in H4_sound_literature_test.R)
 H4_REPORT <- list(
   # Rows without a p value are dropped from the results and listed in METHODS_NOTES.
   catalog = function(...) {
     results <- do.call(rbind, list(...)); rownames(results) <- NULL
     dropped <- results[!is.finite(results$p), c('paper', 'test', 'outcome', 'n_observations', 'model_details'), drop = FALSE]
     results <- results[is.finite(results$p), , drop = FALSE]; rownames(results) <- NULL
-    results$q_BH <- ave(results$p, paste(results$paper, results$test), FUN = H4_UTIL$bh)
+    results$sound_variable[results$paper == 'Rodrigues 2026' & grepl('^Temperature block', results$test)] <- 'temperature-only (no sound term)'
+    results$sound_variable[results$paper == 'Cureau 2022'] <- 'comfort-domain association (no measured sound predictor)'
+    results$sound_variable[grepl('^Spearman thermal vs acoustic', results$test)] <- 'comfort-domain association (no measured sound predictor)'
     results$sig_p05 <- is.finite(results$p) & results$p < 0.05
-    results$survives_FDR_q05 <- is.finite(results$q_BH) & results$q_BH < 0.05
-    results$inference_status <- paste0('paper decision rule [', results$paper_rule, ']: ',
-      ifelse(is.na(results$paper_rule_met), 'not estimable', ifelse(results$paper_rule_met, 'MET', 'not met')),
-      '; q_BH is an extra column (BH within paper x test x sound variable), not the paper rule')
+    results$paper_rule[results$paper == 'Pigliautile 2021'] <- 'analysis-added p < 0.05; source comparison descriptive'
+    results$paper_rule[results$paper == 'Korpilo 2024'] <- 'analysis p < 0.05; source model selection alpha 0.10'
+    results$inference_status <- paste0('analysis decision rule [', results$paper_rule, ']: ',
+      ifelse(is.na(results$paper_rule_met), 'not estimable', ifelse(results$paper_rule_met, 'MET', 'not met')))
     results$reporting_note <- results$model_details
     attr(results, 'not_estimable') <- dropped
     results},
@@ -466,7 +886,7 @@ H4_REPORT <- list(
     reason <- trimws(gsub('[[:space:]]+', ' ', sub('[[:space:]]*message =[[:space:]]*$', '', reason)))
     reason <- sub(';.*$', '', reason)
     groups <- unique(data.frame(paper = dropped$paper, test = dropped$test, outcome = dropped$outcome, n = dropped$n_observations, reason = reason))
-    c('', '## Not estimable (removed from the results CSV; no p value, so no q value)',
+    c('', '## Not estimable (removed from the results CSV; no finite p value)',
       sprintf('- %d planned tests returned no p value:', nrow(dropped)),
       sprintf('  - %s | %s | %s | n=%s | %s', groups$paper, groups$test, groups$outcome, groups$n, groups$reason))},
   summary = function(results) {
@@ -474,51 +894,631 @@ H4_REPORT <- list(
       fin <- is.finite(r$p)
       data.frame(sound_variable = r$sound_variable[1], paper = r$paper[1], test = r$test[1], paper_decision_rule = r$paper_rule[1], n_tests = sum(fin),
         n_paper_rule_met = sum(r$paper_rule_met %in% TRUE), outcomes_paper_rule_met = paste(r$outcome[r$paper_rule_met %in% TRUE], collapse = '; '),
-        n_p_lt_05 = sum(fin & r$p < 0.05), n_q_lt_05 = sum(fin & is.finite(r$q_BH) & r$q_BH < 0.05),
-        surviving_FDR = paste(r$outcome[fin & is.finite(r$q_BH) & r$q_BH < 0.05], collapse = '; '))}))},
-  methods_notes = function(jin_counts, jin_cells, kraus_selection, kraus_intervals) {
-    count_lines <- apply(jin_counts, 1, function(r) sprintf('  - %s | %s: n = %s', r[['laeq_level']], r[['utci_category']], r[['n_phase_cells']]))
-    out_of_range <- sum(is.na(jin_cells$laeq_level) | is.na(jin_cells$utci_category))
-    c('# H4 sound literature tests',
-      'Each block fits the source paper\'s own model. Where the 8-min / 11-participant data cannot support a step, the closest literal step is used and the limitation is listed here. q_BH (Benjamini-Hochberg within paper x test) is an extra column; each paper\'s own decision rule is reported separately (inference_note).',
-      '',
-      '## Moshammer et al. 2019 (random-effects GLS, Stata xtreg re)',
-      '- Implemented: outcome in a sub-period ~ noise Leq (energy mean) of the PRECEDING sub-period per 1 dB(A) (Table A2, unadjusted) and + mean air temperature of the outcome sub-period (Methods: temperature as confounder); Stata default Swamy-Arora variance components, GLS transform, conventional VCE, z tests. Raw outcomes, no activity term, no centring.',
-      '- Window mapping: the paper uses consecutive 15-min periods with noise from the preceding 15 min; that cannot be fit within one 8-min bout. Here: energy-mean Leq of the first 5 min as exposure and phase-mean outcomes over the remainder (5-8 min), one row per phase (up to 44 rows). A window needs >= 2/3 of its expected 10-s rows (exposure 30 rows, outcome 18 rows). Fitted on all four phases and, separately, on walking phases only.',
-      '- All HRV outcomes (LF and HF power, SDNN, RMSSD, and mean RR distance) are recomputed per phase from the native beat-to-beat intervals (01_empatica_rri_native.csv) in the outcome window only (5-8 min of the matched bout, strictly after the 0-5 min exposure window), with the Empatica build method: beats 250-2500 ms, beats more than 0.45 s from the centred 11-beat median removed, >= 40 valid beats and <= 25 % removed. Resampling at 4 Hz quadratic-spline and Welch PSD for LF/HF; sample SD and RMSSD on the filtered beat intervals. This eliminates any overlap with the exposure window for all outcomes. 180 s exceeds the Task Force (1996) minimums (about 1 min for HF, 2 min for LF). VLF is dropped: it needs more than 5 min.',
-      '- The paper models no autocorrelation beyond the participant random effect; none is added here. Serial correlation within a participant may remain; standard errors may be optimistic.',
-      '- Dust: personal PM2.5 exists (Atmotube), but Table A2 reports single-exposure models, so PM is not added to the noise model.',
-      '- Temperature: the paper used a stationary meteorological station; here the mobile air temperature (ucm_AIR_temp).',
-      '- Outcomes: RR distance (mean RR from native beats), SDNN, RMSSD, LF and HF power (VLF dropped, see above). TINN and blood pressure are not in the dataset.',
-      '',
-      '## Jin, Jin & Kang 2020 (two-way ANOVA)',
-      '- Implemented: two-way ANOVA LAeq level x UTCI category with interaction, no participant block. The paper does not state its SS type; because several LAeq x UTCI cells are empty, Type III marginal hypotheses are not uniquely defined, so main effects are Type II (each adjusted for the other main effect) and the interaction is tested against the additive model (the same F under Type II and Type III). All F tests use the full (interaction) model residual mean square and df as error term, as car::Anova(type = 2).',
-      '- Levels exactly as the paper: LAeq 55-60, 60-65, 65-70, 70-75 dB(A); UTCI summer stress categories 9-26, 26-32, 32-38, 38-46 C (one summer season, campaign 3 July to 27 August 2025, analysed with the paper\'s summer bins).',
-      sprintf('- %d of 44 phase cells fall outside the paper\'s LAeq (55-75 dB(A)) or UTCI (9-46 C) ranges and are excluded, not reassigned.', out_of_range),
-      '- Outcomes: TCV analogue = questionnaire_thermal_comfort_1_5 (5-point; paper 7-point); OCV analogue = questionnaire_current_comfort_1_7 (General Comfort, 7-point). TSV, subjective loudness and acoustic comfort were not collected. Paper unit = independent respondents; here 44 phase cells from 11 participants (repeated measures, not modelled, as in the paper: no participant block).',
-      '- Cell counts (phase cells with phase LAeq and UTCI inside the ranges):', count_lines,
-      '- Empty or small cells are reported as they are; levels are not collapsed.',
-      '',
-      '## Song et al. 2013 (winter) / 2014 (spring) (one-sided paired t-test)',
-      '- Source: J Physiol Anthropol 32:18 and 33:8 (open access; PDFs saved in Experiment papers/H4 Sound literature test/).',
-      '- Implemented: heart rate, ln(HF), ln(LF/HF); 1-min values averaged over the walk; one-sided paired t-test park (WalkG) vs city (WalkU), P < 0.05 one-sided. Direction as in the papers: HR lower, ln(HF) higher, ln(LF/HF) lower in the park.',
-      '- Limitations: walks are 8 min, not 15 min; 1-min HRV values are means of the dataset\'s 10-s rows of 5-min-window estimates (MemCalc beat-to-beat analysis not available); Song is a park-vs-city setting contrast, not a sound-level test.',
-      '',
-      '## Rodrigues et al. 2026 (7.Model_H2.py)',
-      '- Implemented: Noise block [NOISE_max, NOISE_std] and Temperature block [Temp_max, Temp_mean], each in its own model; predictors fillna(0) then StandardScaler (population SD); REML mixed model with participant intercept; Wald z p; retention rule round(p,4) < 0.05 and |round(beta,4)| > 0.1.',
-      '- Outcomes (their code order): STD/MAX/MEAN/MIN of bpm, LF_HF_ratio, RMSSD and STD/MAX/MIN of skin temperature, raw (no transformation), over walking trips (WalkG, WalkU; 22 trips).',
-      paste('- Not available:', H4_RODRIGUES$unavailable_outcomes, '; blocks Infrastructure, Functional POIs and Mapillary Visuals (Mapillary/OSM features not in the dataset).'),
-      '- Exposure source differs: their NOISE from the Lisbon Lden map along the route and Temp from the IPMA daily station; here personal dBA and mobile air temperature per trip.',
-      '',
-      '## Kraus et al. 2013 (additive mixed models)',
-      '- Implemented: outcomes HR, SDNN, LF (normalized units), HF (normalized units) and LF:HF; log except HR; piecewise Leq at 65 dB(A) per 5 dB; categorical physical activity (walk = 3 very light to light exertion, bike = 4 moderate exertion); HR adjustment for HRV models; long-term and daily time trends forced in, each linear, polynomial 2-4 or penalized spline by AIC; weekday tested by AIC; random participant intercept plus compound symmetry (nlme corCompSymm).',
-      '- Window mapping: the paper\'s non-overlapping 5-min intervals with Leq lags 0-5, 5-10 and 10-15 min. An 8-min bout yields one complete 5-min interval (0-5 min); only lag 0 is estimable. Lags 5-10 and 10-15 min require longer bouts and are not run. Lagged outcome (previous interval) is omitted because there is no prior 5-min interval within the bout. Validity: >= 2/3 valid 10-s rows per 5-min interval for Leq, HR and SDNN. LF_nu, HF_nu and LF_HF are themselves 5-min window estimates present only on rows whose window is complete (about half the rows of 0-5 min), so instead of the row rule they take the dataset\'s 5-min window that starts in the interval and ends within one 10-s epoch of its end (windows sit on a 10-s grid offset by one epoch), requiring >= 300 valid beats as in the paper.',
-      '- Autocorrelation: compound symmetry and participant random effect as in the paper; without a lagged outcome term, autocorrelation structure differs from the published model.',
-      '- Trend forms and weekday are selected by AIC (ML) on the lag-0 model and reused for each lag. AIC for spline candidates comes from the mgcv::gamm mixed-model representation (lme object, ML).',
-      '- Season is one summer (campaign 3 July to 27 August 2025), not a within-campaign season contrast; weekday is constant within each participant (one session each).',
-      '- Effect scale as the paper: percent change in the outcome mean per 5 dB(A) (HR: 100*beta/mean HR).',
-      '- AIC selection per outcome:', paste0('  - ', names(kraus_selection), ': ', unlist(kraus_selection)),
-      sprintf('- Kraus 5-min intervals built: %d (interval 1 of %d phases).', nrow(kraus_intervals), length(unique(paste(kraus_intervals$ParticipantID, kraus_intervals$PhaseID)))),
-      '',
-      '## Data source',
-      '- All blocks use the 10-s time-series rows of output/merged_all_11participants_8min.csv (the same input as Analysis_combined_timeseries.R). Song 1-min means and Rodrigues trip MEAN/STD/MAX/MIN are computed from those 10-s rows; Jin uses all 44 phases.')})
+        n_p_lt_05 = sum(fin & r$p < 0.05))}))})
+
+# -----------------------------------------------------------------------------
+# Outdoor comfort replications (formerly H4_scopus_outdoor_methods.R and
+# H4_additional_outdoor_methods.R; archived under library/archive/merged_into_helpers_20261109/).
+# -----------------------------------------------------------------------------
+
+h4_outdoor_phase_cells <- function(epochs) {
+  ratings <- c(
+    thermal_comfort = 'questionnaire_thermal_comfort_1_5',
+    acoustic_comfort = 'questionnaire_acoustic_comfort_1_5',
+    visual_comfort = 'questionnaire_visual_comfort_1_5',
+    overall_comfort = 'questionnaire_current_comfort_1_7')
+  prs <- c(
+    prs_fascination = 'questionnaire_prs11_fascination_mean_1_5',
+    prs_being_away = 'questionnaire_prs11_being_away_mean_1_5',
+    prs_coherence = 'questionnaire_prs11_coherence_mean_1_5',
+    prs_scope = 'questionnaire_prs11_scope_mean_1_5')
+  cells <- do.call(rbind, lapply(H4_UTIL$bouts(epochs), function(rows) {
+    frame <- data.frame(
+      ParticipantID = as.character(epochs$ParticipantID[rows[1]]),
+      PhaseID = as.character(epochs$PhaseID[rows[1]]),
+      utci = H4_UTIL$finite_mean(epochs$ucm_UTCI[rows]),
+      pet = H4_UTIL$finite_mean(epochs$ucm_PET[rows]),
+      rh = H4_UTIL$finite_mean(epochs$ucm_AIR_RH[rows]),
+      air_temp_c = H4_UTIL$finite_mean(epochs$ucm_AIR_temp[rows]),
+      dba = H4_UTIL$energy_mean_db(epochs$ucm_SND_dBA[rows]),
+      sound_corridor_urban = H4_UTIL$finite_mean(if ('sound_corridor_urban' %in% names(epochs)) epochs$sound_corridor_urban[rows] else NA_real_),
+      sound_yamnet_majority_traffic = H4_UTIL$finite_mean(if ('sound_yamnet_majority_traffic' %in% names(epochs)) epochs$sound_yamnet_majority_traffic[rows] else NA_real_),
+      nature = H4_UTIL$finite_mean(if ('rural_natural_proportion' %in% names(epochs)) epochs$rural_natural_proportion[rows] else NA_real_),
+      wind_aws = if ('ucm_WIND_AWS' %in% names(epochs)) H4_UTIL$finite_mean(epochs$ucm_WIND_AWS[rows]) else NA_real_,
+      hr = H4_UTIL$finite_mean(epochs$empatica_heart_rate[rows]),
+      sdnn = H4_UTIL$finite_mean(epochs$empatica_hrv_td_sdnn[rows]),
+      rmssd = H4_UTIL$finite_mean(epochs$empatica_hrv_td_rmssd[rows]))
+    for (col in intersect(H4_SOUND$category, names(epochs))) frame[[col]] <- H4_UTIL$finite_mean(epochs[[col]][rows])
+    props <- vapply(intersect(H4_SOUND$category, names(epochs)), function(col) frame[[col]], NA_real_)
+    props <- props[is.finite(props) & props >= 0]
+    frame$soundscape_diversity <- if (length(props) && sum(props) > 0) {
+      p <- props / sum(props); p <- p[p > 0]; -sum(p * log(p))
+    } else NA_real_
+    for (name in names(ratings)) frame[[name]] <- H4_UTIL$finite_mean(epochs[[ratings[[name]]]][rows])
+    for (name in names(prs)) frame[[name]] <- H4_UTIL$finite_mean(epochs[[prs[[name]]]][rows])
+    frame$prs_mean <- rowMeans(frame[names(prs)], na.rm = TRUE)
+    frame
+  }))
+  attr(cells, 'ratings') <- ratings
+  attr(cells, 'prs') <- prs
+  cells
+}
+
+h4_phase_lmm_rows <- function(data, formula, terms, paper, test_prefix, outcome, source_column, sound_variable, note) {
+  data$ParticipantID <- factor(data$ParticipantID)
+  fit <- tryCatch(
+    nlme::lme(formula, data = data, random = ~ 1 | ParticipantID, method = 'REML', na.action = na.fail,
+      control = nlme::lmeControl(opt = 'optim', returnObject = FALSE)),
+    error = function(e) e)
+  empty <- setNames(rep(NA_real_, 5), c('Value', 'Std.Error', 'DF', 't-value', 'p-value'))
+  rows <- lapply(terms, function(term) {
+    coefficient <- if (!inherits(fit, 'error') && term %in% rownames(summary(fit)$tTable)) summary(fit)$tTable[term, ] else empty
+    critical <- if (is.finite(coefficient[['DF']])) qt(0.975, coefficient[['DF']]) else NA_real_
+    data.frame(
+      paper = paper, test = paste(test_prefix, term), outcome = outcome, source_column = source_column, term = term,
+      estimate = unname(coefficient[['Value']]), se = unname(coefficient[['Std.Error']]),
+      ci_low = unname(coefficient[['Value']] - critical * coefficient[['Std.Error']]),
+      ci_high = unname(coefficient[['Value']] + critical * coefficient[['Std.Error']]),
+      statistic = unname(coefficient[['t-value']]), df = unname(coefficient[['DF']]), p = unname(coefficient[['p-value']]),
+      n_observations = nrow(data), n_participants = nlevels(data$ParticipantID),
+      statistic_test = 't-test (REML LMM, random participant intercept)',
+      paper_rule = 'p < 0.05', paper_rule_met = is.finite(coefficient[['p-value']]) && coefficient[['p-value']] < 0.05,
+      transformation = 'raw questionnaire score', term_units = 'see model_details',
+      model_id = paste(deparse(formula), collapse = ' '),
+      model_details = paste(note, if (inherits(fit, 'error')) conditionMessage(fit) else ''),
+      sound_variable = sound_variable)
+  })
+  do.call(rbind, rows)
+}
+
+h4_kruskal_row <- function(y, group, paper, test, outcome, source_column, sound_variable, note) {
+  d <- data.frame(y = y, g = group)
+  d <- d[is.finite(d$y) & !is.na(d$g), , drop = FALSE]
+  d$g <- droplevels(factor(d$g))
+  if (nrow(d) < 3L || nlevels(d$g) < 2L) {
+    return(data.frame(
+      paper = paper, test = test, outcome = outcome, source_column = source_column, term = 'factor levels',
+      estimate = NA_real_, se = NA_real_, ci_low = NA_real_, ci_high = NA_real_,
+      statistic = NA_real_, df = NA_real_, p = NA_real_,
+      n_observations = nrow(d), n_participants = NA_integer_,
+      statistic_test = 'Kruskal-Wallis H-test',
+      paper_rule = 'p < 0.05', paper_rule_met = NA,
+      transformation = 'phase mean', term_units = 'H statistic',
+      model_id = paste(outcome, '~ group (Kruskal-Wallis)'),
+      model_details = paste(note, 'not estimable (fewer than two groups or n < 3).'),
+      sound_variable = sound_variable))
+  }
+  fit <- tryCatch(stats::kruskal.test(y ~ g, data = d), error = function(e) e)
+  data.frame(
+    paper = paper, test = test, outcome = outcome, source_column = source_column, term = 'factor levels',
+    estimate = NA_real_, se = NA_real_, ci_low = NA_real_, ci_high = NA_real_,
+    statistic = if (inherits(fit, 'error')) NA_real_ else unname(fit$statistic),
+    df = if (inherits(fit, 'error')) NA_real_ else unname(fit$parameter),
+    p = if (inherits(fit, 'error')) NA_real_ else fit$p.value,
+    n_observations = nrow(d), n_participants = NA_integer_,
+    statistic_test = 'Kruskal-Wallis H-test',
+    paper_rule = 'p < 0.05', paper_rule_met = is.finite(fit$p.value) && fit$p.value < 0.05,
+    transformation = 'phase mean', term_units = 'H statistic',
+    model_id = paste(outcome, '~ group (Kruskal-Wallis)'),
+    model_details = paste(note, if (inherits(fit, 'error')) conditionMessage(fit) else ''),
+    sound_variable = sound_variable)
+}
+
+h4_pearson_row <- function(x, y, paper, test, outcome, predictor, source_column, sound_variable, note, n_participants = NA_integer_) {
+  ok <- is.finite(x) & is.finite(y)
+  n <- sum(ok)
+  empty <- data.frame(
+    paper = paper, test = test, outcome = outcome, source_column = source_column, term = predictor,
+    estimate = NA_real_, se = NA_real_, ci_low = NA_real_, ci_high = NA_real_,
+    statistic = NA_real_, df = NA_real_, p = NA_real_,
+    n_observations = n, n_participants = n_participants,
+    statistic_test = 'Pearson correlation (two-sided)',
+    paper_rule = 'p < 0.05', paper_rule_met = NA,
+    transformation = 'raw / phase mean', term_units = 'Pearson r',
+    model_id = paste('cor.test(', outcome, ',', predictor, ')'),
+    model_details = paste(note, 'not estimable.'),
+    sound_variable = sound_variable)
+  if (n < 3L || stats::sd(x[ok]) == 0 || stats::sd(y[ok]) == 0) return(empty)
+  fit <- tryCatch(stats::cor.test(x[ok], y[ok], method = 'pearson'), error = function(e) e)
+  if (inherits(fit, 'error')) {
+    empty$model_details <- paste(note, conditionMessage(fit))
+    return(empty)
+  }
+  data.frame(
+    paper = paper, test = test, outcome = outcome, source_column = source_column, term = predictor,
+    estimate = unname(fit$estimate), se = NA_real_,
+    ci_low = if (!is.null(fit$conf.int)) unname(fit$conf.int[1]) else NA_real_,
+    ci_high = if (!is.null(fit$conf.int)) unname(fit$conf.int[2]) else NA_real_,
+    statistic = unname(fit$statistic), df = unname(fit$parameter), p = unname(fit$p.value),
+    n_observations = n, n_participants = n_participants,
+    statistic_test = 'Pearson correlation (two-sided)',
+    paper_rule = 'p < 0.05', paper_rule_met = is.finite(fit$p.value) && fit$p.value < 0.05,
+    transformation = 'raw / phase mean', term_units = 'Pearson r',
+    model_id = paste('cor.test(', outcome, ',', predictor, ')'),
+    model_details = note,
+    sound_variable = sound_variable)
+}
+
+h4_scopus_outdoor_tests <- function(epochs, papers = c('Qin', 'Mohammadzadeh', 'Gao', 'Wu', 'Xu', 'Zhen', 'ZhangSciRep', 'ZhangBSim', 'Tang', 'Peng', 'Simsek')) {
+  ratings <- c(
+    thermal_comfort = 'questionnaire_thermal_comfort_1_5',
+    acoustic_comfort = 'questionnaire_acoustic_comfort_1_5',
+    overall_comfort = 'questionnaire_current_comfort_1_7')
+  prs <- c(
+    prs_fascination = 'questionnaire_prs11_fascination_mean_1_5',
+    prs_being_away = 'questionnaire_prs11_being_away_mean_1_5',
+    prs_coherence = 'questionnaire_prs11_coherence_mean_1_5',
+    prs_scope = 'questionnaire_prs11_scope_mean_1_5')
+  cells <- h4_outdoor_phase_cells(epochs)
+  sound_cols <- intersect(c('dba', 'sound_corridor_urban', 'sound_yamnet_majority_traffic', H4_SOUND$category), names(cells))
+  results <- list(); index <- 0L
+  add <- function(row) { index <<- index + 1L; results[[index]] <<- row }
+  lmm_terms <- function(data, formula, terms, paper, test_prefix, outcome, source_column, sound_variable, note) {
+    add(h4_phase_lmm_rows(data, formula, terms, paper, test_prefix, outcome, source_column, sound_variable, note))
+  }
+
+  test_Qin <- function() {
+    # Qin 2024: TCV ~ sound x humidity. Not UTCI x dBA (that is Jin/Chen).
+    for (sound_col in sound_cols) {
+      data <- cells[complete.cases(cells[, c('thermal_comfort', sound_col, 'rh')]), ]
+      if (nrow(data) < 8L || length(unique(data[[sound_col]])) < 2L) next
+      data$sound_z <- as.numeric(scale(data[[sound_col]]))
+      data$rh_z <- as.numeric(scale(data$rh))
+      lmm_terms(data, thermal_comfort ~ sound_z * rh_z, c('sound_z', 'rh_z', 'sound_z:rh_z'),
+        'Qin 2024', paste('TC ~ sound x RH |', sound_col), 'thermal_comfort', ratings[['thermal_comfort']], sound_col,
+        'Adapted from Qin humidity-stratified sound effects on TCV/TSV (§2 subjective thermal = thermal_comfort). Four-way sound encoding replaces LAeq bins. Summer only.')
+    }
+  }
+
+  test_Mohammadzadeh <- function() {
+    # Mohammadzadeh 2023: acoustic comfort as outcome of thermal (reverse arrow).
+    data <- cells[complete.cases(cells[, c('acoustic_comfort', 'utci')]), ]
+    data$utci_z <- as.numeric(scale(data$utci))
+    lmm_terms(data, acoustic_comfort ~ utci_z, 'utci_z',
+      'Mohammadzadeh 2023', 'AC ~ UTCI', 'acoustic_comfort', ratings[['acoustic_comfort']], 'temperature-only (thermal to acoustic)',
+      'Source Pearson/regression of TSV, TCV, PET onto acoustic quality/loudness. Subjective thermal = thermal_comfort; AC ~ zUTCI is the thermal-to-acoustic analogue.')
+    data <- cells[complete.cases(cells[, c('acoustic_comfort', 'thermal_comfort')]), ]
+    lmm_terms(data, acoustic_comfort ~ thermal_comfort, 'thermal_comfort',
+      'Mohammadzadeh 2023', 'AC ~ TC', 'acoustic_comfort', ratings[['acoustic_comfort']], 'comfort-domain association (no measured sound predictor)',
+      'Source TCV-acoustic correlations. Vote-to-vote, not measured dBA.')
+    for (sound_col in intersect('dba', sound_cols)) {
+      data <- cells[complete.cases(cells[, c('acoustic_comfort', 'utci', sound_col)]), ]
+      if (nrow(data) < 8L || length(unique(data[[sound_col]])) < 2L) next
+      data$utci_z <- as.numeric(scale(data$utci))
+      data$sound_z <- as.numeric(scale(data[[sound_col]]))
+      lmm_terms(data, acoustic_comfort ~ utci_z * sound_z, c('utci_z', 'sound_z', 'utci_z:sound_z'),
+        'Mohammadzadeh 2023', paste('AC ~ UTCI x sound |', sound_col), 'acoustic_comfort', ratings[['acoustic_comfort']], sound_col,
+        'Thermal-to-acoustic claim with measured sound as moderator. AC is the outcome. Only the dBA specification is added here; alternative-encoding AC interactions are already fitted by Chen and are not duplicated.')
+    }
+  }
+
+  test_Gao <- function() {
+    # Gao & Zhu 2025: restoration ~ thermal x acoustic. PRS-11 subscales stand in for ROS.
+    prs_outcomes <- c(prs, prs_mean = 'prs_mean')
+    prs_sources <- c(prs, prs_mean = 'mean of four PRS-11 subscale means')
+    for (sound_col in sound_cols) for (outcome in names(prs_outcomes)) {
+      needed <- c(outcome, 'utci', sound_col)
+      data <- cells[complete.cases(cells[, needed]), ]
+      if (nrow(data) < 8L || length(unique(data[[sound_col]])) < 2L) next
+      data$utci_z <- as.numeric(scale(data$utci))
+      data$sound_z <- as.numeric(scale(data[[sound_col]]))
+      data$Y <- data[[outcome]]
+      lmm_terms(data, Y ~ utci_z * sound_z, c('utci_z', 'sound_z', 'utci_z:sound_z'),
+        'Gao 2025', paste('PRS ~ UTCI x sound |', sound_col), outcome, prs_sources[[outcome]], sound_col,
+        'Source ROS two-way ANOVA / weighted regression of restoration on UTCI and LAeq. PRS-11 subscale means replace ROS. Not a thermal-comfort test.')
+    }
+    gao_cells <- cells[complete.cases(cells[, c('prs_mean', 'utci', 'dba', 'ParticipantID')]), ]
+    gao_cells$laeq_level <- if (length(unique(round(gao_cells$dba, 10))) <= 2) factor(gao_cells$dba) else {
+      br <- unique(quantile(gao_cells$dba, c(0, 0.25, 0.5, 0.75, 1), na.rm = TRUE))
+      cut(gao_cells$dba, br, include.lowest = TRUE)
+    }
+    gao_cells$utci_category <- {
+      br <- unique(quantile(gao_cells$utci, c(0, 0.25, 0.5, 0.75, 1), na.rm = TRUE))
+      cut(gao_cells$utci, br, include.lowest = TRUE)
+    }
+    for (outcome in names(prs_outcomes)) {
+      use <- is.finite(gao_cells[[outcome]]) & !is.na(gao_cells$laeq_level) & !is.na(gao_cells$utci_category)
+      d <- gao_cells[use, ]
+      tab <- H4_JIN$anova_type2(d[[outcome]], d$laeq_level, d$utci_category, d$ParticipantID)
+      if (is.null(tab)) next
+      for (k in seq_len(nrow(tab))) add(data.frame(
+        paper = 'Gao 2025', test = paste('participant-blocked two-way ANOVA on PRS,', tab$effect[k]),
+        outcome = outcome, source_column = prs_sources[[outcome]], term = tab$effect[k],
+        estimate = NA_real_, se = NA_real_, ci_low = NA_real_, ci_high = NA_real_,
+        statistic = tab$F[k], df = if (is.na(tab$df_term[k])) NA else paste0(tab$df_term[k], ', ', tab$df_resid[k]),
+        p = tab$p[k], n_observations = nrow(d), n_participants = length(unique(d$ParticipantID)),
+        statistic_test = if (k < 3) 'f-test (two-way ANOVA main effect, Type II SS, participant fixed block)' else 'f-test (two-way ANOVA interaction vs additive model, participant fixed block)',
+        paper_rule = 'p < 0.05', paper_rule_met = is.finite(tab$p[k]) && tab$p[k] < 0.05,
+        transformation = 'raw PRS-11 subscale / mean', term_units = 'our sound/UTCI quantile factors; not source LAeq bands',
+        model_id = paste(outcome, '~ ParticipantID + LAeq_level * UTCI_category'),
+        model_details = 'Gao two-way ANOVA of restoration on thermal x acoustic categories. Quartiles replace 5 dB LAeq / UTCI stress bins. ROS replaced by PRS-11.',
+        sound_variable = 'dba'))
+    }
+  }
+
+  test_Wu <- function() {
+    # Wu 2025: OCV ~ UTCI + LAeq; LAeq >= 60 dB on thermal comfort.
+    for (sound_col in sound_cols) {
+      data <- cells[complete.cases(cells[, c('overall_comfort', 'utci', sound_col)]), ]
+      if (nrow(data) < 8L || length(unique(data[[sound_col]])) < 2L) next
+      data$utci_z <- as.numeric(scale(data$utci))
+      data$sound_z <- as.numeric(scale(data[[sound_col]]))
+      lmm_terms(data, overall_comfort ~ utci_z + sound_z, c('utci_z', 'sound_z'),
+        'Wu 2025', paste('OC ~ UTCI + sound |', sound_col), 'overall_comfort', ratings[['overall_comfort']], sound_col,
+        'Source multiple regression of OCV on UTCI and LAeq (they also entered TCV and ACV; those vote predictors are omitted here to keep the environmental terms). Summer only.')
+    }
+    data <- cells[complete.cases(cells[, c('thermal_comfort', 'utci', 'dba')]), ]
+    data$loud60 <- as.numeric(data$dba >= 60)
+    data$utci_z <- as.numeric(scale(data$utci))
+    if (length(unique(data$loud60)) > 1L)
+      lmm_terms(data, thermal_comfort ~ loud60 * utci_z, c('loud60', 'utci_z', 'loud60:utci_z'),
+        'Wu 2025', 'TC ~ I(dBA>=60) x UTCI', 'thermal_comfort', ratings[['thermal_comfort']], 'dba',
+        'Source: LAeq >= 60 dB(A) exacerbates thermal discomfort; subjective thermal = domain thermal comfort (§2). Cutoff is the published 60 dB(A), not a data-driven knot.')
+    for (sound_col in setdiff(sound_cols, 'dba')) {
+      data <- cells[complete.cases(cells[, c('thermal_comfort', 'utci', sound_col)]), ]
+      if (nrow(data) < 8L || length(unique(data[[sound_col]])) < 2L) next
+      knot <- stats::median(data[[sound_col]], na.rm = TRUE)
+      data$loud <- as.numeric(data[[sound_col]] >= knot)
+      if (length(unique(data$loud)) < 2L) next
+      data$utci_z <- as.numeric(scale(data$utci))
+      lmm_terms(data, thermal_comfort ~ loud * utci_z, c('loud', 'utci_z', 'loud:utci_z'),
+        'Wu 2025', paste('TC ~ high-sound x UTCI |', sound_col), 'thermal_comfort', ratings[['thermal_comfort']], sound_col,
+        paste0('Wu 60 dB cutoff analogue: encoding split at median ', format(knot, digits = 4), '. Not LAeq.'))
+    }
+  }
+
+  test_Xu <- function() {
+    # Xu et al. (2026), DOI: 10.1007/s10668-026-08213-4.
+    # Source ACV has no significant breakpoint: do not impose the ASV 64.8-dB knot.
+    # Linear AC association below is an explicit random-intercept adaptation.
+    for (sound_col in sound_cols) {
+      data <- cells[complete.cases(cells[, c('acoustic_comfort', sound_col)]), ]
+      if (nrow(data) < 8L || length(unique(data[[sound_col]])) < 2L) next
+      data$sound_z <- as.numeric(scale(data[[sound_col]]))
+      lmm_terms(data, acoustic_comfort ~ sound_z, 'sound_z',
+        'Xu 2026', paste('linear AC ~ sound |', sound_col),
+        'acoustic_comfort', ratings[['acoustic_comfort']], sound_col,
+        'Source ACV declined without a significant breakpoint. Linear participant-LMM adaptation; ASV unrecorded, so the 64.8-dB ASV breakpoint is not fitted to AC.')
+    }
+    # Source combined-exposure condition: air temperature >32 C AND sound >65 dB.
+    # DOI above, section 6.2. UTCI is not substituted for air temperature.
+    data <- cells[complete.cases(cells[, c('thermal_comfort', 'air_temp_c', 'dba')]), ]
+    data$hot <- as.numeric(data$air_temp_c > 32)
+    data$loud <- as.numeric(data$dba > 65)
+    counts <- table(factor(data$hot, levels = 0:1), factor(data$loud, levels = 0:1))
+    xu_cell_note <<- paste('Xu >32 C air temperature x >65 dBA cell counts (rows cool/hot, columns quieter/louder):', paste(as.vector(t(counts)), collapse = ', '))
+    if (all(counts > 0L)) {
+      lmm_terms(data, thermal_comfort ~ hot * loud, c('hot', 'loud', 'hot:loud'),
+        'Xu 2026', 'TC ~ I(air_temp_c>32) x I(dBA>65)',
+        'thermal_comfort', ratings[['thermal_comfort']], 'dba',
+        paste('Source >32 C air-temperature / >65 dB combined condition; participant-LMM adaptation to repeated phases, not source CART/SHAP.', xu_cell_note))
+    } else {
+      xu_cell_note <<- paste(xu_cell_note, '; interaction NOT ESTIMABLE: an empty 2x2 cell aliases the factorial coefficients. No substituted cutoff was searched.')
+    }
+  }
+
+  test_Zhen <- function() {
+    # Zhen et al. (2025), DOI: 10.1016/j.buildenv.2024.112327.
+    # Primary dBA model lacks Chen's additional natural-share covariate.
+    # Retain that distinct sensitivity; omit duplicate alternative encodings.
+    data <- cells[complete.cases(cells[, c('thermal_comfort', 'utci', 'dba')]), ]
+    lmm_terms(data, thermal_comfort ~ utci * dba,
+      c('utci', 'dba', 'utci:dba'),
+      'Zhen 2025', 'TC ~ UTCI x sound | dba', 'thermal_comfort',
+      ratings[['thermal_comfort']], 'dba',
+      'Source TSV–UTCI stratum slopes: subjective thermal = thermal_comfort (§2). Primary dBA sensitivity omits Chen natural-share covariate. Alternative encodings are canonical Chen fits, not duplicated.')
+  }
+
+  test_ZhangSciRep <- function() {
+    # Zhang 2026 Sci Rep: TCV ~ AcCV x PET. Aesthetics omitted.
+    data <- cells[complete.cases(cells[, c('thermal_comfort', 'acoustic_comfort', 'pet')]), ]
+    data$ac_z <- as.numeric(scale(data$acoustic_comfort))
+    data$pet_z <- as.numeric(scale(data$pet))
+    lmm_terms(data, thermal_comfort ~ ac_z * pet_z, c('ac_z', 'pet_z', 'ac_z:pet_z'),
+      'Zhang 2026 SciRep', 'TC ~ AC x PET', 'thermal_comfort', ratings[['thermal_comfort']], 'comfort-domain association (perceived AC x PET)',
+      'Source ordered logit TCV ~ AcCV x PET; Gaussian LMM adaptation; aesthetic satisfaction not collected.')
+  }
+
+  test_ZhangBSim <- function() {
+    # Zhang 2026 Building Simulation: Spearman by site of comfort vs sound. ENVI-met/CadnaA not fitted.
+    for (phase in unique(cells$PhaseID)) for (outcome in names(ratings)) {
+      data <- cells[cells$PhaseID == phase, ]
+      row <- H4_AL$spearman_row(data$dba, data[[outcome]], 'Zhang 2026 BSim',
+        paste('Spearman', outcome, 'vs dBA, phase', phase), outcome,
+        paste(ratings[[outcome]], 'ucm_SND_dBA', sep = ', '), 'Spearman rho',
+        paste('spearman(', outcome, ', dBA) within phase as site analogue'),
+        'Source Spearman by historic-space type. ENVI-met/CadnaA/HIA not fitted. Person-mean Spearman.',
+        length(unique(data$ParticipantID)), data$ParticipantID)
+      row$sound_variable <- 'dba'
+      add(row)
+    }
+  }
+
+  test_Tang <- function() {
+    # Tang et al. 2026 Build Environ 114742: physiology ~ dBA x PET; diversity x PET; Kruskal dBA quartiles x PET half.
+    tang_physio <- c(hr = 'empatica_heart_rate', sdnn = 'empatica_hrv_td_sdnn', rmssd = 'empatica_hrv_td_rmssd')
+    walk <- cells[cells$PhaseID %in% c('WalkG', 'WalkU'), , drop = FALSE]
+    pet_med <- stats::median(walk$pet, na.rm = TRUE)
+    walk$thermal_stratum <- ifelse(is.finite(walk$pet) & walk$pet >= pet_med, 'warmer', 'cooler')
+    for (outcome in names(tang_physio)) {
+      col <- outcome
+      data <- walk[complete.cases(walk[, c(col, 'dba', 'pet', 'ParticipantID')]), ]
+      if (nrow(data) < 8L) next
+      data$Y <- data[[col]]
+      data$dba_z <- as.numeric(scale(data$dba))
+      data$pet_z <- as.numeric(scale(data$pet))
+      lmm_terms(data, Y ~ dba_z * pet_z, c('dba_z', 'pet_z', 'dba_z:pet_z'),
+        'Tang 2026', paste('Physiology ~ dBA x PET |', outcome), outcome, tang_physio[[outcome]], 'dba',
+        'Source outdoor playback factorial not reproduced. Pooled field LMM on 8-min phase means; Wald t replaces ANOVA; PET stratum per source.')
+      if (any(is.finite(walk$soundscape_diversity))) {
+        d2 <- walk[complete.cases(walk[, c(col, 'soundscape_diversity', 'pet')]), ]
+        if (nrow(d2) >= 8L && length(unique(d2$soundscape_diversity)) > 1L) {
+          d2$Y <- d2[[col]]
+          d2$div_z <- as.numeric(scale(d2$soundscape_diversity))
+          d2$pet_z <- as.numeric(scale(d2$pet))
+          lmm_terms(d2, Y ~ div_z * pet_z, c('div_z', 'pet_z', 'div_z:pet_z'),
+            'Tang 2026', paste('Physiology ~ Shannon diversity x PET |', outcome), outcome, tang_physio[[outcome]], 'YAMNet proportion entropy (phase)',
+            'Soundscape diversity = Shannon entropy of phase-mean YAMNet class shares; not source SDI from labelled sources.')
+        }
+      }
+      for (stratum in c('cooler', 'warmer')) {
+        d <- walk[walk$thermal_stratum == stratum & is.finite(walk[[col]]), ]
+        if (nrow(d) < 4L) next
+        br <- stats::quantile(d$dba, probs = c(0, 0.25, 0.5, 0.75, 1), na.rm = TRUE)
+        br <- unique(br[is.finite(br)])
+        if (length(br) < 3L) next
+        d$dba_q <- cut(d$dba, br, include.lowest = TRUE)
+        row <- h4_kruskal_row(d[[col]], d$dba_q, 'Tang 2026',
+          paste('Kruskal-Wallis physiology across dBA quartiles |', stratum, '|', outcome),
+          outcome, tang_physio[[outcome]], 'dba',
+          paste('Source one-way ANOVA/Kruskal across six assigned soundscapes within PET stratum;', stratum, 'PET split at median. Field dBA quartiles.'))
+        row$n_participants <- length(unique(d$ParticipantID))
+        add(row)
+      }
+    }
+  }
+
+  test_Peng <- function() {
+    # Peng et al. 2026 Urban Sci 10:60: Kruskal WalkG vs WalkU; Spearman VE/AE/TE; OC regression analogue.
+    comfort_cols <- c('thermal_comfort', 'acoustic_comfort', 'visual_comfort', 'overall_comfort')
+    phase_ratings <- attr(cells, 'ratings')
+    walk <- cells[cells$PhaseID %in% c('WalkG', 'WalkU'), , drop = FALSE]
+    for (var in c('dba', 'utci', comfort_cols)) {
+      data <- walk[!is.na(walk$PhaseID) & is.finite(walk[[var]]), ]
+      if (nrow(data) < 4L) next
+      row <- h4_kruskal_row(data[[var]], data$PhaseID, 'Peng 2026',
+        paste('Kruskal-Wallis WalkG vs WalkU |', var), var,
+        if (var %in% names(phase_ratings)) phase_ratings[[var]] else var,
+        if (var == 'dba') 'dba' else 'phase context (not sound level)',
+        'WalkG and WalkU only (item 6); source Kruskal on openness groups.')
+      row$n_participants <- length(unique(data$ParticipantID))
+      add(row)
+    }
+  for (pair in list(c('thermal_comfort', 'acoustic_comfort'), c('thermal_comfort', 'visual_comfort'),
+                    c('acoustic_comfort', 'visual_comfort'), c('acoustic_comfort', 'dba'), c('thermal_comfort', 'dba'))) {
+    if (!all(pair %in% names(cells))) next
+    row <- H4_AL$spearman_row(walk[[pair[1]]], walk[[pair[2]]], 'Peng 2026',
+      paste('Spearman', pair[1], 'vs', pair[2]), pair[1],
+      paste(phase_ratings[[pair[1]]], pair[2], sep = ', '), 'Spearman rho',
+      paste('spearman(', pair[1], ',', pair[2], ') on phase cells'),
+      'Source Spearman among VE/AE/TE and behaviour; participant-mean adaptation.',
+      length(unique(walk$ParticipantID)), walk$ParticipantID)
+    row <- H4_AL$attach_sound(row, if (pair[2] == 'dba') 'dba' else 'comfort-domain association (no measured sound predictor)')
+    add(row)
+  }
+    data <- walk[complete.cases(walk[, c('overall_comfort', 'thermal_comfort', 'acoustic_comfort', 'visual_comfort', 'ParticipantID')]), ]
+    if (nrow(data) >= 8L) {
+      lmm_terms(data, overall_comfort ~ thermal_comfort + acoustic_comfort + visual_comfort,
+        c('thermal_comfort', 'acoustic_comfort', 'visual_comfort'),
+        'Peng 2026', 'OC ~ thermal + acoustic + visual votes', 'overall_comfort', phase_ratings[['overall_comfort']],
+        'comfort-domain association (no measured sound predictor)',
+        'Source multiple regression of observed behaviour on VE/AE/TE; behaviour not collected — OC ~ votes analogue.')
+    }
+  }
+
+  test_Simsek <- function() {
+    # Simsek 2026 SREES 11113: Pearson within WalkG/WalkU; pooled LMM on walk cells.
+    phase_ratings <- attr(cells, 'ratings')
+    walk <- cells[cells$PhaseID %in% c('WalkG', 'WalkU'), , drop = FALSE]
+    preds <- c(dba = 'ucm_SND_dBA', utci = 'ucm_UTCI', rh = 'ucm_AIR_RH', wind_aws = 'ucm_WIND_AWS')
+    for (phase in c('WalkG', 'WalkU')) {
+      data <- walk[walk$PhaseID == phase & is.finite(walk$acoustic_comfort), ]
+      np <- length(unique(data$ParticipantID))
+      for (pred in names(preds)) {
+        if (!pred %in% names(data)) next
+        add(h4_pearson_row(data[[pred]], data$acoustic_comfort, 'Simsek 2026',
+          paste('Pearson AC vs', pred, 'within phase', phase), 'acoustic_comfort', pred,
+          phase_ratings[['acoustic_comfort']], if (pred == 'dba') 'dba' else pred,
+          paste('Source stage-1 Pearson within park analogue;', phase, 'n =', nrow(data), 'phase cells.'),
+          np))
+      }
+    }
+    use_preds <- intersect(names(preds), names(cells))
+    need <- c('acoustic_comfort', use_preds, 'ParticipantID')
+    data <- walk[complete.cases(walk[, need]), ]
+    if (nrow(data) >= 8L) {
+      for (pred in use_preds) data[[paste0(pred, '_z')]] <- as.numeric(scale(data[[pred]]))
+      rhs <- paste(paste0(use_preds, '_z'), collapse = ' + ')
+      form <- stats::as.formula(paste('acoustic_comfort ~', rhs))
+      terms <- paste0(use_preds, '_z')
+      lmm_terms(data, form, terms, 'Simsek 2026', 'AC ~ multivariate env (LMM)', 'acoustic_comfort',
+        phase_ratings[['acoustic_comfort']], 'dba',
+        paste('Source stage-2 multiple regression of auditory comfort on SPL, thermal and wind;',
+          'vertical illuminance absent; participant intercept adapts to repeated phases.'))
+    }
+  }
+
+  # Explicit paper order, also callable one paper at a time from the entry script.
+  xu_cell_note <- 'Xu combined-condition block not requested.'
+  for (paper in papers) {
+    switch(paper,
+      Qin = test_Qin(),
+      Mohammadzadeh = test_Mohammadzadeh(),
+      Gao = test_Gao(),
+      Wu = test_Wu(),
+      Xu = test_Xu(),
+      Zhen = test_Zhen(),
+      ZhangSciRep = test_ZhangSciRep(),
+      ZhangBSim = test_ZhangBSim(),
+      Tang = test_Tang(),
+      Peng = test_Peng(),
+      Simsek = test_Simsek(),
+      stop('Unknown outdoor paper: ', paper)
+    )
+  }
+
+  note_lines <- list(
+    Tang = '- Tang2026: WalkG/WalkU. LMM physiology ~ z(dBA)*z(PET) and ~ z(Shannon diversity)*z(PET); Kruskal-Wallis dBA quartiles within median PET half.',
+    Peng = '- Peng2026: WalkG/WalkU. Kruskal-Wallis; Spearman among votes and dBA; LMM OC ~ thermal + acoustic + visual.',
+    Simsek = '- Simsek2026: WalkG/WalkU. Pearson AC vs dBA/UTCI/RH/wind within phase; LMM AC ~ z(env predictors).')
+  notes <- c('', '## Outdoor replications (this run)', unlist(note_lines[intersect(names(note_lines), papers)]))
+  list(results = if (length(results)) do.call(rbind, results) else data.frame(), notes = notes)
+}
+
+h4_additional_outdoor_tests <- function(epochs, papers = c('Cureau', 'Chen'), include_scopus = TRUE) {
+  thermal_comfort_col <- 'questionnaire_thermal_comfort_1_5'
+  acoustic_comfort_col <- 'questionnaire_acoustic_comfort_1_5'
+  visual_comfort_col <- 'questionnaire_visual_comfort_1_5'
+  overall_comfort_col <- 'questionnaire_current_comfort_1_7'
+  ratings <- c(
+    thermal_comfort = thermal_comfort_col,
+    acoustic_comfort = acoustic_comfort_col,
+    visual_comfort = visual_comfort_col,
+    overall_comfort = overall_comfort_col)
+  cells <- do.call(rbind, lapply(H4_UTIL$bouts(epochs), function(rows) {
+    frame <- data.frame(
+      ParticipantID = as.character(epochs$ParticipantID[rows[1]]),
+      PhaseID = as.character(epochs$PhaseID[rows[1]]),
+      utci = H4_UTIL$finite_mean(epochs$ucm_UTCI[rows]),
+      dba = H4_UTIL$energy_mean_db(epochs$ucm_SND_dBA[rows]),
+      nature = H4_UTIL$finite_mean(epochs$rural_natural_proportion[rows]),
+      sound_corridor_urban = H4_UTIL$finite_mean(if ('sound_corridor_urban' %in% names(epochs)) epochs$sound_corridor_urban[rows] else NA_real_),
+      sound_yamnet_majority_traffic = H4_UTIL$finite_mean(if ('sound_yamnet_majority_traffic' %in% names(epochs)) epochs$sound_yamnet_majority_traffic[rows] else NA_real_),
+      thermal_comfort = H4_UTIL$finite_mean(epochs[[thermal_comfort_col]][rows]),
+      acoustic_comfort = H4_UTIL$finite_mean(epochs[[acoustic_comfort_col]][rows]),
+      visual_comfort = H4_UTIL$finite_mean(epochs[[visual_comfort_col]][rows]),
+      overall_comfort = H4_UTIL$finite_mean(epochs[[overall_comfort_col]][rows]))
+    for (col in intersect(H4_SOUND$category, names(epochs))) frame[[col]] <- H4_UTIL$finite_mean(epochs[[col]][rows])
+    frame
+  }))
+  results <- list()
+  make_row <- function(paper, test, outcome, term, estimate = NA_real_, se = NA_real_, low = NA_real_, high = NA_real_,
+                       stat = NA_real_, df = NA_real_, p = NA_real_, n = 0L, np = 0L, statistic_test, model_id, note,
+                       sound_variable = 'measured dBA / acoustic comfort / nature share') {
+    data.frame(
+      paper = paper, test = test, outcome = outcome, source_column = ratings[[outcome]], term = term,
+      estimate = estimate, se = se, ci_low = low, ci_high = high, statistic = stat, df = df, p = p,
+      n_observations = n, n_participants = np, statistic_test = statistic_test,
+      paper_rule = 'p < 0.05', paper_rule_met = if (is.finite(p)) p < .05 else NA,
+      transformation = 'raw questionnaire score', term_units = 'see model_details',
+      model_id = model_id, model_details = note, sound_variable = sound_variable)
+  }
+
+  if ('Cureau' %in% papers) {
+  # ---------------------------------------------------------------------------
+  # Cureau, Pigliautile, Pioppi and Pisello (2022). Int J Biometeorol.
+  # Source: Fisher exact tests between comfort-domain categories, separately by park.
+  # Phase is the site analogue. Each participant contributes once within each test.
+  # ---------------------------------------------------------------------------
+  for (phase in unique(cells$PhaseID)) {
+    for (pair in combn(names(ratings), 2, simplify = FALSE)) {
+      data <- cells[cells$PhaseID == phase & is.finite(cells[[pair[1]]]) & is.finite(cells[[pair[2]]]), ]
+      contingency <- table(data[[pair[1]]], data[[pair[2]]])
+      fit <- if (nrow(contingency) > 1L && ncol(contingency) > 1L) {
+        tryCatch(fisher.test(contingency, workspace = 2e7), error = function(e) e)
+      } else simpleError('Only one observed response category')
+      results[[length(results) + 1L]] <- make_row(
+        'Cureau 2022', paste('Fisher exact comfort-domain association, phase', phase),
+        pair[1], pair[2],
+        p = if (inherits(fit, 'error')) NA_real_ else fit$p.value,
+        n = nrow(data), np = length(unique(data$ParticipantID)),
+        statistic_test = 'Fisher exact test (contingency-table association)',
+        model_id = paste(pair, collapse = ' versus '),
+        note = paste(
+          'Cureau et al. 2022. Source Fisher exact method; phase treated as site; six domain pairs per phase.',
+          'Overall item is 7-point here, 5-point in source.',
+          if (inherits(fit, 'error')) conditionMessage(fit) else ''),
+        sound_variable = 'comfort-domain association (no measured sound predictor)')
+    }
+  }
+
+  }
+
+  if ('Chen' %in% papers) {
+  # ---------------------------------------------------------------------------
+  # Chen, Chen, Lin et al. (2023). Forests 14(6):1161.
+  # Source RM-ANOVA with ranked dominant-source factor cannot be reconstructed.
+  # Adaptation: rating ~ zUTCI * zdBA + zNaturalShare + (1|participant).
+  # ---------------------------------------------------------------------------
+  for (outcome in c('thermal_comfort', 'acoustic_comfort', 'overall_comfort')) {
+    data <- cells[complete.cases(cells[, c(outcome, 'utci', 'dba', 'nature')]), ]
+    data$utci_z <- as.numeric(scale(data$utci))
+    data$dba_z <- as.numeric(scale(data$dba))
+    data$nature_z <- as.numeric(scale(data$nature))
+    data$ParticipantID <- factor(data$ParticipantID)
+    fit <- tryCatch(
+      nlme::lme(reformulate(c('utci_z * dba_z', 'nature_z'), response = outcome), data = data,
+        random = ~ 1 | ParticipantID, method = 'REML', na.action = na.fail,
+        control = nlme::lmeControl(opt = 'optim', returnObject = FALSE)),
+      error = function(e) e)
+    for (term in c('utci_z', 'dba_z', 'nature_z', 'utci_z:dba_z')) {
+      coefficient <- if (!inherits(fit, 'error') && term %in% rownames(summary(fit)$tTable)) summary(fit)$tTable[term, ] else rep(NA_real_, 5)
+      critical <- if (is.finite(coefficient[3])) qt(.975, coefficient[3]) else NA_real_
+      results[[length(results) + 1L]] <- make_row(
+        'Chen 2023 (adapted)', paste('Continuous participant LMM:', term), outcome, term,
+        coefficient[1], coefficient[2], coefficient[1] - critical * coefficient[2], coefficient[1] + critical * coefficient[2],
+        coefficient[4], coefficient[3], coefficient[5], nrow(data), nlevels(data$ParticipantID),
+        't-test (random-intercept LMM coefficient)',
+        paste(outcome, '~ utci_z * dba_z + nature_z + (1|ParticipantID)'),
+        paste(
+          'Chen et al. 2023 Forests 14:1161. Adaptation, NOT the published ANOVA.',
+          'Natural share substitutes for unavailable ranked dominant-source factor.',
+          if (inherits(fit, 'error')) conditionMessage(fit) else ''),
+        sound_variable = 'dba')
+    }
+  }
+  chen_other <- intersect(c('sound_corridor_urban', 'sound_yamnet_majority_traffic', H4_SOUND$category), names(cells))
+  for (sound_col in chen_other) {
+    for (outcome in c('thermal_comfort', 'acoustic_comfort', 'overall_comfort')) {
+      data <- cells[complete.cases(cells[, c(outcome, 'utci', sound_col)]), ]
+      if (!nrow(data) || length(unique(data[[sound_col]])) < 2L) next
+      data$utci_z <- as.numeric(scale(data$utci))
+      data$sound_z <- as.numeric(scale(data[[sound_col]]))
+      data$ParticipantID <- factor(data$ParticipantID)
+      fit <- tryCatch(
+        nlme::lme(reformulate('utci_z * sound_z', response = outcome), data = data,
+          random = ~ 1 | ParticipantID, method = 'REML', na.action = na.fail,
+          control = nlme::lmeControl(opt = 'optim', returnObject = FALSE)),
+        error = function(e) e)
+      for (term in c('utci_z', 'sound_z', 'utci_z:sound_z')) {
+        coefficient <- if (!inherits(fit, 'error') && term %in% rownames(summary(fit)$tTable)) summary(fit)$tTable[term, ] else rep(NA_real_, 5)
+        critical <- if (is.finite(coefficient[3])) qt(.975, coefficient[3]) else NA_real_
+        results[[length(results) + 1L]] <- make_row(
+          'Chen 2023 (adapted)', paste('Continuous participant LMM:', term, '|', sound_col), outcome, term,
+          coefficient[1], coefficient[2], coefficient[1] - critical * coefficient[2], coefficient[1] + critical * coefficient[2],
+          coefficient[4], coefficient[3], coefficient[5], nrow(data), nlevels(data$ParticipantID),
+          't-test (random-intercept LMM coefficient)',
+          paste(outcome, '~ utci_z * sound_z + (1|ParticipantID); sound =', sound_col),
+          paste('Chen 2023 adaptation with', sound_col, 'in place of dBA. Not the published ANOVA.',
+            if (inherits(fit, 'error')) conditionMessage(fit) else ''),
+          sound_variable = sound_col)
+      }
+    }
+  }
+
+  }
+
+  # Ueberham et al. (2019): not fitted (no subjective exposure-intensity items).
+  # Li, Li and Wang (2025): not fitted (no arrival/departure or SLV).
+
+  notes <- c('',
+    '## Additional outdoor papers (verified 2026-11-06)',
+    '- Cureau2022: Fisher exact comfort-domain method by phase/site analogue. Seven-point overall comfort differs from source five-point item. No independent-local-sample Mann-Whitney; this cohort is paired.',
+    '- Cureau2022 multinomial models NOT copied.',
+    '- Chen2023: continuous participant-LMM adaptation rating ~ zUTCI * zdBA + zNaturalShare + (1|ParticipantID), plus encodings 2-4 without the nature-share term. Not the published ANOVA.',
+    '- Ueberham2019: subjective exposure-intensity items absent; NOT fitted.',
+    '- Li2025: arrival/departure and subjective loudness not collected; NOT fitted.',
+    '- New model and outcome choices are post-hoc additions; source p<.05 decision rule per row (no catalogue-wide BH in H4_sound_literature_test.R).')
+  extra <- if (include_scopus) h4_scopus_outdoor_tests(epochs) else list(results = data.frame(), notes = character())
+  list(results = rbind(do.call(rbind, results), extra$results), notes = c(notes, extra$notes))
+}
