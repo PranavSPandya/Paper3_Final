@@ -1,9 +1,9 @@
 # H4 literature-aligned partial ports (documents/H4_papers_screened_final.md sections 0.6 and 3)
 Phases: BikeU, WalkU, BikeG, WalkG ; walk-only papers use WalkG, WalkU ; Biel/Kraus use all four; Ueberham uses BikeG, BikeU
 Input MD5: a3c4f9388b61def82e5b97b4232315be
-Code MD5: H4_sound_literature_test.R e9ed5c811524a64a9bd2c6a7d2c8f775
+Code MD5: H4_sound_literature_test.R c2be6e20cffece4436ab02bff4534bde
 Code MD5: Paper3_common.R 2fd13e4345abd183a405f5d1d9f0f324
-Code MD5: H4_sound_literature_helpers.R a650d52a88ed95eaac5d35077c667feb
+Code MD5: H4_sound_literature_helpers.R 775871dd8cf886320e55cece4c6a27ef
 Source PDF MD5: H4 Sound literature test/Included - Sound - Rodrigues2026 - Repeated hotspot exposures Lisbon walks LMM.pdf 4d68efe729200a15976f6033e481781b
 Source PDF MD5: H4 Sound literature test/Included - Sound - Combined effects of the thermal-acoustic environment on subjective evaluations in urban squares.pdf 37a32046416c89267ade534dff21d769
 Source PDF MD5: Sound_evidence/Sound - Multi-domain human-oriented approach to evaluate human comfort in outdoor environments.pdf bcd044129f93e4b9983482e6e3653913
@@ -26,7 +26,7 @@ Source PDF MD5: Sound_evidence/Sound - Zhang2026 - historic spaces thermoacousti
 Source PDF MD5: Sound_evidence/Sound - Tang2026 - soundscape diversity thermo physiological sex dimorphic.pdf ac1b73fbac9ad5fe5356c2f998c24ef4
 Source PDF MD5: Sound_evidence/Sound - Peng2026 - Multisensory greenway plazas openness.pdf 336eb1dad640d4728e0cb66c278a46e2
 Source PDF MD5: Sound_evidence/Sound - Simsek2026 - auditory comfort thermal visual urban parks.pdf 59ff2b0bf16bfb48ceb1b0a8a240593a
-Run time: 109.8 s
+Run time: 114.3 s
 
 ## Rows per paper (finite p)
 - Pigliautile 2021: 44
@@ -62,7 +62,21 @@ Run time: 109.8 s
 - Ueberham: Spearman within BikeG and within BikeU; optional polr not fitted.
 - Encodings 2-4 and 15 spectral descriptors substituted on Moshammer, Jin, Biel, Rodrigues, Kraus, and Korpilo (§1.1).
 - Inference: each row's paper_rule only (documents/H4_papers_screened_final.md §1.4); no catalogue-wide BH/FDR in this run.
-- Outputs: H4_primary_estimands_results.csv = Paper 3 H4 layer A (§0.3); H4_sound_literature_tests.csv = full catalogue layer B.
+- Outputs: H4_route_contrast_results.csv = layer A1 (§0.7); H4_primary_estimands_results.csv = layer A2 interactions (§0.3); H4_sound_literature_tests.csv = catalogue layer B.
+
+## Paper 3 H4 route contrast (layer A1; paired WalkU minus WalkG)
+- Pre-specified in documents/H4_papers_screened_final.md section 0.7.
+- Literature analogues (partial port, not full replication): Song; Moshammer park vs road; Pigliautile route nature vs traffic.
+- Rows in H4_route_contrast_results.csv: 6
+- Paper-rule MET: 4 / 6
+
+### Route contrast rows
+- thermal_comfort | WalkU minus WalkG | estimate=-1.091 | p=0.009745 | not met
+- acoustic_comfort | WalkU minus WalkG | estimate=-0.8182 | p=0.09485 | not met
+- overall_comfort | WalkU minus WalkG | estimate=-0.3636 | p=0.2674 | not met
+- visual_comfort | WalkU minus WalkG | estimate=-1 | p=0.001607 | not met
+- dba | WalkU minus WalkG | estimate=5.836 | p=7.951e-05 | not met
+- utci | WalkU minus WalkG | estimate=6.494 | p=1.853e-06 | not met
 
 ## Paper 3 H4 primary estimands (layer A; partial literature port, not full study replication)
 - Guide: documents/H4_papers_screened_final.md section 0.3, 0.6.

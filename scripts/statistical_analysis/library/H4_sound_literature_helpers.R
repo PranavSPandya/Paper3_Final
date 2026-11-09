@@ -897,6 +897,59 @@ H4_REPORT <- list(
         n_paper_rule_met = sum(r$paper_rule_met %in% TRUE), outcomes_paper_rule_met = paste(r$outcome[r$paper_rule_met %in% TRUE], collapse = '; '),
         n_p_lt_05 = sum(fin & r$p < 0.05))}))})
 
+# Pre-specified paired green vs urban walk (documents/H4_papers_screened_final.md §0.7).
+# Literature analogues: Song park vs city; Moshammer park vs road; Pigliautile nature vs traffic route.
+H4_ROUTE <- list(
+  run = function(cells_walk) {
+    if (!nrow(cells_walk)) return(NULL)
+    cells <- cells_walk[cells_walk$PhaseID %in% c('WalkG', 'WalkU'), , drop = FALSE]
+    cells$route <- as.character(cells$PhaseID)
+    comfort <- list(
+      thermal_comfort = 'questionnaire_thermal_comfort_1_5',
+      acoustic_comfort = 'questionnaire_acoustic_comfort_1_5',
+      overall_comfort = 'questionnaire_current_comfort_1_7',
+      visual_comfort = 'questionnaire_visual_comfort_1_5')
+    prefix <- paste(
+      'Pre-specified route contrast A1 (section 0.7). WalkG = green corridor; WalkU = urban corridor.',
+      'One comfort vote per bout. Analogue families: Song park vs city walk; Moshammer park vs road;',
+      'Pigliautile nature vs traffic. Co-exposure shift (dBA and UTCI rise together on WalkU);',
+      'not a sound x thermal interaction test.')
+    rows <- list()
+    add <- function(pair, outcome, source_column, label) {
+      rows[[length(rows) + 1L]] <<- H4_AL$attach_sound(
+        H4_AL$paired_t_row(pair, 'Paper 3 H4 (route contrast)',
+          'paired WalkU minus WalkG | end-of-phase vote', outcome, source_column,
+          'WalkU minus WalkG', 'paired difference in vote points (positive = higher score on WalkU)',
+          paste(label, 'WalkU - WalkG | paired t by ParticipantID'), prefix),
+        'route contrast (WalkG vs WalkU); exposure not isolated')
+    }
+    for (oname in names(comfort)) {
+      if (!oname %in% names(cells)) next
+      pair <- H4_AL$person_pair(cells, oname, by = 'route', a = 'WalkG', b = 'WalkU')
+      add(pair, oname, comfort[[oname]], oname)
+    }
+    for (col in c('dba', 'utci')) {
+      if (!col %in% names(cells)) next
+      pair <- H4_AL$person_pair(cells, col, by = 'route', a = 'WalkG', b = 'WalkU')
+      add(pair, col, col, paste0('exposure ', col))
+    }
+    if (!length(rows)) return(NULL)
+    do.call(rbind, rows)
+  },
+  methods_notes = function(route) {
+    c('', '## Paper 3 H4 route contrast (layer A1; paired WalkU minus WalkG)',
+      '- Pre-specified in documents/H4_papers_screened_final.md section 0.7.',
+      '- Literature analogues (partial port, not full replication): Song; Moshammer park vs road; Pigliautile route nature vs traffic.',
+      sprintf('- Rows in H4_route_contrast_results.csv: %d', nrow(route)),
+      if (nrow(route)) sprintf('- Paper-rule MET: %d / %d', sum(route$paper_rule_met %in% TRUE), nrow(route)) else '- No rows',
+      '',
+      '### Route contrast rows',
+      if (nrow(route)) apply(route, 1, function(r) sprintf(
+        '- %s | %s | estimate=%.4g | p=%.4g | %s', r[['outcome']], r[['term']],
+        as.numeric(r[['estimate']]), as.numeric(r[['p']]),
+        ifelse(isTRUE(r[['paper_rule_met']]), 'MET', 'not met'))) else '- (none)')
+  })
+
 # Pre-specified Paper 3 H4 interaction estimands (documents/H4_papers_screened_final.md §0.3–0.6).
 H4_PRIMARY <- list(
   guide = 'documents/H4_papers_screened_final.md section 0.3',

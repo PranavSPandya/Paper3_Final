@@ -14,14 +14,29 @@
 
 **Statistical form used here:** interaction terms (or equivalent high-sound × UTCI structures) on **comfort votes**, borrowed from the field literature. **Main effects** (warmer bouts feel worse; louder bouts feel worse; votes correlate across domains) are **related** but **do not prove** amplification.
 
-### 0.2 Two layers — do not mix them in the Results chapter
+### 0.2 Three layers — do not mix them in the Results chapter
 
 | Layer | What it is | Role in the thesis |
 | --- | --- | --- |
-| **A. Primary H4 estimands** | Pre-specified **sound × thermal-stress** tests on **comfort votes**, **primary dBA encoding** (`ucm_SND_dBA`) where the source uses LAeq/dBA (§0.3 table) | **Answers H4** in the main text: one small table + short interpretation (MET / not MET / not estimable). |
-| **B. Full literature catalogue** | All **24** source blocks × outcomes × encodings 2–4 × spectral substitutes → `H4_sound_literature_tests.csv` (**~2,300+** rows after `H4_sound_literature_test.R`) | **Methods transparency / appendix.** Shows how source families behave on our cohort. **Not** counted as “24 papers confirmed H4.” |
+| **A1. Route contrast (main H4 field result)** | Pre-specified **paired WalkU − WalkG** on **end-of-phase comfort votes** (and paired ΔdBA, ΔUTCI), *n* = 11 within-person pairs. Literature **analogue** families: Song (park vs city walk), Moshammer (park vs road), Pigliautile (nature vs traffic route) — **partial port**, not full replication. | **`H4_route_contrast_results.csv`** → **main Results table** for “urban vs green walking discomfort” on questionnaires. |
+| **A2. Interaction estimands (strict amplification)** | Pre-specified **sound × thermal-stress** tests on **comfort votes** (§0.3), primary dBA. | **`H4_primary_estimands_results.csv`** → Results or Discussion: **did loud×hot add beyond main effects?** (currently null). |
+| **B. Full literature catalogue** | All **24** source blocks × encodings → `H4_sound_literature_tests.csv` | **Appendix** only. |
 
-**You do not need every test in §3 to answer H4.** You **do** need **layer A** reported honestly. Layer B supports “we screened widely” without upgrading every MET row to the hypothesis.
+**Reviewer-safe wording:** A1 = **corridor shift** (louder, hotter, urban — together). A2 = **interaction** (literature Jin/Chen/Wu style). Do not claim A1 proves “noise amplifies heat.”
+
+### 0.7 Route contrast A1 (pre-specified; `H4_route_contrast_results.csv`)
+
+| # | Outcome | Test |
+| ---: | --- | --- |
+| 1 | `thermal_comfort` | Paired **WalkU − WalkG** (11 pairs), two-sided *p* < 0.05 |
+| 2 | `acoustic_comfort` | Same |
+| 3 | `overall_comfort` | Same |
+| 4 | `visual_comfort` | Same |
+| 5–6 | Phase-mean **dBA**, **UTCI** | Paired **WalkU − WalkG** (documents **exposure shift**, not hypotheses on votes) |
+
+**Scale:** comfort 1–5 and 1–7 — **higher = more comfortable**. Negative **WalkU − WalkG** ⇒ urban walk rated **less** comfortable.
+
+**You do not need every test in §3 to answer H4.** Report **A1 + A2** honestly; layer B is supplementary.
 
 ### 0.3 Primary H4 estimands (pre-specified; filter the CSV)
 
@@ -38,7 +53,19 @@ After each run, use `H4_primary_estimands_results.csv` (same filters as the tabl
 
 **Secondary (thesis Discussion only, not H4 pass/fail):** Pigliautile/Chiucchiù warm−cool votes (thermal main effect, no sound term); Peng/Chiucchiù thermal–acoustic Spearman; Wu/Chen **main effects** of `utci_z` or `dba_z` without significant **interaction**; Qin sound×**RH**; Gao PRS×UTCI×sound (restoration, not discomfort amplification).
 
-### 0.4 Audit snapshot (`H4_primary_estimands_results.csv` — refresh after re-run)
+### 0.4 Audit snapshot (refresh after re-run)
+
+**A1 — `H4_route_contrast_results.csv`** (paired WalkU − WalkG; higher comfort score = better):
+
+| Outcome | MET? | Notes |
+| --- | ---: | --- |
+| Thermal comfort | **Yes** | *p* ≈ 0.010; mean difference ≈ −1.09 (urban lower) |
+| Acoustic comfort | No | *p* ≈ 0.095 |
+| Overall comfort | No | *p* ≈ 0.27 |
+| Visual comfort | **Yes** | *p* ≈ 0.0016; mean difference ≈ −1.0 |
+| ΔdBA, ΔUTCI | exposure | Urban higher on both (~6 dB, ~6.5 °C UTCI) |
+
+**A2 — `H4_primary_estimands_results.csv`** (interaction amplification):
 
 Primary **interaction** rows, source rule *p* < 0.05:
 
@@ -143,7 +170,7 @@ The proportion columns come from `D:\Pranav\docker\Analysis\analysis_scripts\Upd
 | Layer | What to use |
 | --- | --- |
 | **Paper 3 H4 hypothesis** | **§0.3–0.6** primary interaction table only in main Results; full catalogue = appendix. |
-| **Runner outputs** | `H4_primary_estimands_results.csv` (layer A, **10** rows) and `H4_sound_literature_tests.csv` (layer B catalogue) under `output/statistical_analysis/results/H4_sound_literature_test/`; produced by `H4_sound_literature_test.R` via `H4_PRIMARY` filters in `H4_sound_literature_helpers.R`. |
+| **Runner outputs** | `H4_route_contrast_results.csv` (**A1**), `H4_primary_estimands_results.csv` (**A2**), `H4_sound_literature_tests.csv` (**B**) in `output/statistical_analysis/results/H4_sound_literature_test/`; from `H4_sound_literature_test.R` (`H4_ROUTE`, `H4_PRIMARY`). |
 | **Source paper** | Significance rule in §3 **item 5** (and any stricter rule in **item 9**, e.g. Wu/Gao/Jin *p* < 0.05, Rodrigues *p* < 0.05 and |standardized β| > 0.1). |
 | **Our replication row** | Compare **p** (and estimate) to that row’s **`paper_rule`** in the CSV. `inference_note` **MET** / **not met** = that row only. **≥1 MET per paper** or **≥1 MET in 2,344 rows** is **not** sufficient to claim H4 or “literature replicated.” |
 | **Thesis / paper prose** | Cite **test family + p + coefficient** per block. Name the **source** decision rule when discussing “significance.” **Do not** write that Jin, Chen, Xu, etc. “used FDR” or BH correction unless the PDF explicitly does (most selected blocks do not). |

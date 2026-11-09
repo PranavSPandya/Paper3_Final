@@ -550,6 +550,11 @@ results$peng <- scopus_block('Peng')
 step_log('3.24 Simsek 2026')
 results$simsek <- scopus_block('Simsek')
 
+# Paper 3 H4 layer A1: pre-specified paired WalkU minus WalkG (route contrast; §0.7).
+step_log('H4 route contrast (WalkU minus WalkG)')
+route_contrast <- H4_ROUTE$run(cells_walk)
+if (is.null(route_contrast)) route_contrast <- data.frame()
+
 results <- Filter(function(block) is.data.frame(block) && nrow(block), results)
 catalog <- do.call(H4_REPORT$catalog, unname(results))
 primary_estimands <- H4_PRIMARY$subset(catalog)
@@ -582,7 +587,8 @@ notes <- c('# H4 literature-aligned partial ports (documents/H4_papers_screened_
   '- Ueberham: Spearman within BikeG and within BikeU; optional polr not fitted.',
   '- Encodings 2-4 and 15 spectral descriptors substituted on Moshammer, Jin, Biel, Rodrigues, Kraus, and Korpilo (§1.1).',
   '- Inference: each row\'s paper_rule only (documents/H4_papers_screened_final.md §1.4); no catalogue-wide BH/FDR in this run.',
-  '- Outputs: H4_primary_estimands_results.csv = Paper 3 H4 layer A (§0.3); H4_sound_literature_tests.csv = full catalogue layer B.',
+  '- Outputs: H4_route_contrast_results.csv = layer A1 (§0.7); H4_primary_estimands_results.csv = layer A2 interactions (§0.3); H4_sound_literature_tests.csv = catalogue layer B.',
+  if (nrow(route_contrast)) H4_ROUTE$methods_notes(route_contrast) else c('', '## Paper 3 H4 route contrast', '- No estimable rows.'),
   H4_PRIMARY$methods_notes(primary_estimands),
   '', '## Fit and support notes', fit_notes, chen$notes,
   H4_REPORT$not_estimable_notes(attr(catalog, 'not_estimable')))
@@ -596,13 +602,15 @@ write.csv(catalog[setdiff(names(catalog), c('paper_rule_met', 'model_details'))]
   file.path(staged_outdir, 'H4_sound_literature_tests.csv'), row.names = FALSE, na = '')
 primary_export <- primary_estimands[setdiff(names(primary_estimands), c('paper_rule_met', 'model_details'))]
 write.csv(primary_export, file.path(staged_outdir, 'H4_primary_estimands_results.csv'), row.names = FALSE, na = '')
+route_export <- if (nrow(route_contrast)) route_contrast[setdiff(names(route_contrast), c('paper_rule_met', 'model_details'))] else route_contrast
+write.csv(route_export, file.path(staged_outdir, 'H4_route_contrast_results.csv'), row.names = FALSE, na = '')
 write.csv(significance_summary, file.path(staged_outdir, 'SUMMARY_sound_tests_paper_rule.csv'), row.names = FALSE, na = '')
 writeLines(notes, file.path(staged_outdir, 'METHODS_NOTES.md'))
 p3_finalize_directory(staged_outdir)
 dir.create(outdir, recursive = TRUE, showWarnings = FALSE)
 output_files <- list.files(staged_outdir, full.names = TRUE)
-stopifnot(length(output_files) == 4L)
+stopifnot(length(output_files) == 5L)
 if (!all(file.copy(output_files, outdir, overwrite = TRUE))) stop('Failed to publish H4 files')
-step_log(sprintf('%d catalogue rows (%d primary H4 estimands) from %d papers',
-  nrow(catalog), nrow(primary_estimands), length(paper_counts)))
+step_log(sprintf('%d catalogue rows (%d route contrast, %d interaction estimands) from %d papers',
+  nrow(catalog), if (is.null(route_contrast)) 0L else nrow(route_contrast), nrow(primary_estimands), length(paper_counts)))
 cat('Done:', outdir, paste(basename(output_files), collapse = ', '), '\n')
