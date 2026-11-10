@@ -1,7 +1,8 @@
 # Helpers for H4_sound_literature_test.R: one function list per paper (H4_MOSHAMMER, H4_JIN, H4_BIEL, H4_RODRIGUES, H4_KORPILO, H4_KRAUS, H4_PIGLIAUTILE, H4_CHIUCCHIU) plus H4_UTIL, H4_AL, H4_REPORT, H4_PRIMARY;
+# H4_ROUTE is legacy (Paper 3 WalkU−WalkG); not invoked by the current runner — report §3 ports from the catalogue only.
 # outdoor blocks h4_outdoor_phase_cells, h4_scopus_outdoor_tests, h4_additional_outdoor_tests (§3 Cureau/Chen and Scopus-listed papers).
 # Source-inspired tests and explicit adaptations; data limitations go to METHODS_NOTES.md. Song et al. (2013, 2014) is not fitted: no sound level and no thermal term in the source.
-# Literature search + partial porting narrative: documents/H4_papers_screened_final.md §0.6; Paper 3 H4 primary rows: §0.3 via H4_PRIMARY$subset().
+# H4_PRIMARY$subset: §0.3 manuscript highlight mask on the catalogue (METHODS_NOTES only).
 
 # Shared utilities; ucm_SND_dBA is the main sound exposure, the alternatives are the category and spectral columns.
 H4_SOUND <- list(
@@ -750,19 +751,36 @@ H4_AL <- list(
 
 # Pigliautile et al. 2021 (CISBAT / J. Phys. Conf. Ser. 2042 012136): means at C0 vs C1, and woodland vs busy street at each temperature.
 # The source reports those plots; it does not fit an LMM. Here: paired t on person means.
+# IBPC 2018 poster (NEXT.ROOM precursor): warm vs cool vote contrasts only (descriptive poster → paired-t analogue).
+H4_IBPC <- list(
+  run = function(epochs) {
+    cells <- H4_AL$bout_frame(epochs)
+    rows <- list()
+    no_sound <- 'warmer vs cooler (no sound-source label)'
+    for (name in c('thermal_comfort', 'visual_comfort', 'acoustic_comfort', 'pleasantness')) {
+      src <- H4_AL$votes[[name]]
+      pair <- H4_AL$person_pair(cells, name, by = 'thermal', a = 'cooler', b = 'warmer')
+      rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$paired_t_row(pair, 'IBPC 2018 poster',
+        'NEXT.ROOM warm vs cool vote analogue (poster figures)', name, src,
+        'warmer minus cooler', 'vote points (warmer minus cooler person mean)',
+        paste(name, 'warmer - cooler | paired t by ParticipantID'),
+        'IBPC 2018 poster: chamber warm/cool steps; field analogue = person median air-temp split on WalkG/WalkU; source poster is descriptive'), no_sound)
+    }
+    list(results = do.call(rbind, rows), cells = cells)
+  })
+
 H4_PIGLIAUTILE <- list(
   run = function(epochs) {
     cells <- H4_AL$bout_frame(epochs)
     rows <- list()
     no_sound <- 'warmer vs cooler (no sound-source label)'
-    for (name in c('thermal_comfort', 'visual_comfort', 'acoustic_comfort', 'air_quality_comfort')) {
-      pair <- H4_AL$person_pair(cells, name, by = 'thermal', a = 'cooler', b = 'warmer')
-      rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$paired_t_row(pair, 'Pigliautile 2021',
-        'paired C0 vs C1 analogue, comfort votes', name, H4_AL$votes[[name]],
-        'warmer minus cooler', 'vote points (warmer minus cooler person mean)',
-        paste(name, 'warmer - cooler | paired t by ParticipantID'),
-        'Fig 3a analogue; all bouts; no 65 dB or 26 C drop; thermal contrast only'), no_sound)
-    }
+  # Fig 3a warm-cool for air-quality domain only here; thermal/visual/acoustic warm-cool → H4_IBPC (§3.3).
+    pair_aq <- H4_AL$person_pair(cells, 'air_quality_comfort', by = 'thermal', a = 'cooler', b = 'warmer')
+    rows[[length(rows) + 1L]] <- H4_AL$attach_sound(H4_AL$paired_t_row(pair_aq, 'Pigliautile 2021',
+      'paired C0 vs C1 analogue, comfort votes', 'air_quality_comfort', H4_AL$votes[['air_quality_comfort']],
+      'warmer minus cooler', 'vote points (warmer minus cooler person mean)',
+      paste('air_quality_comfort warmer - cooler | paired t by ParticipantID'),
+      'Fig 3a analogue (air-quality domain); WalkG/WalkU; cooler/warmer = person median phase air temperature'), no_sound)
     for (scheme in H4_AL$schemes) {
       sound_col <- scheme$col
       for (name in c('pleasantness', 'acoustic_comfort')) {
@@ -875,6 +893,7 @@ H4_REPORT <- list(
     results$sound_variable[grepl('^Spearman thermal vs acoustic', results$test)] <- 'comfort-domain association (no measured sound predictor)'
     results$sig_p05 <- is.finite(results$p) & results$p < 0.05
     results$paper_rule[results$paper == 'Pigliautile 2021'] <- 'analysis-added p < 0.05; source comparison descriptive'
+    results$paper_rule[results$paper == 'IBPC 2018 poster'] <- 'analysis-added p < 0.05; poster descriptive analogue'
     results$paper_rule[results$paper == 'Korpilo 2024'] <- 'analysis p < 0.05; source model selection alpha 0.10'
     results$inference_status <- paste0('analysis decision rule [', results$paper_rule, ']: ',
       ifelse(is.na(results$paper_rule_met), 'not estimable', ifelse(results$paper_rule_met, 'MET', 'not met')))
@@ -899,6 +918,15 @@ H4_REPORT <- list(
 
 # Pre-specified paired green vs urban walk (documents/H4_papers_screened_final.md §0.7).
 # Literature analogues: Song park vs city; Moshammer park vs road; Pigliautile nature vs traffic route.
+H4_UTIL$rule_met_flag <- function(flag, p, rule = 'p < 0.05') {
+  if (length(flag) && !is.na(flag)) return(isTRUE(flag) || identical(as.character(flag), 'TRUE'))
+  if (!is.finite(p)) return(NA)
+  if (grepl('\\|', rule, fixed = FALSE) && grepl('beta', rule, ignore.case = TRUE)) {
+    return(is.finite(p) && p < 0.05)
+  }
+  is.finite(p) && p < 0.05
+}
+
 H4_ROUTE <- list(
   run = function(cells_walk) {
     if (!nrow(cells_walk)) return(NULL)
@@ -937,9 +965,9 @@ H4_ROUTE <- list(
     do.call(rbind, rows)
   },
   methods_notes = function(route) {
-    c('', '## Paper 3 H4 route contrast (layer A1; paired WalkU minus WalkG)',
-      '- Pre-specified in documents/H4_papers_screened_final.md section 0.7.',
-      '- Literature analogues (partial port, not full replication): Song; Moshammer park vs road; Pigliautile route nature vs traffic.',
+    c('', '## Paper 3 H4 exploratory corridor (§0.7; NOT literature Tier 1)',
+      '- Paired WalkU minus WalkG only. screened guide section 0.7 — not H4_primary_estimands_results.csv.',
+      '- Method analogue only (not validation): Song park vs city walk; Moshammer park vs road; Pigliautile nature vs traffic route.',
       sprintf('- Rows in H4_route_contrast_results.csv: %d', nrow(route)),
       if (nrow(route)) sprintf('- Paper-rule MET: %d / %d', sum(route$paper_rule_met %in% TRUE), nrow(route)) else '- No rows',
       '',
@@ -947,33 +975,32 @@ H4_ROUTE <- list(
       if (nrow(route)) apply(route, 1, function(r) sprintf(
         '- %s | %s | estimate=%.4g | p=%.4g | %s', r[['outcome']], r[['term']],
         as.numeric(r[['estimate']]), as.numeric(r[['p']]),
-        ifelse(isTRUE(r[['paper_rule_met']]), 'MET', 'not met'))) else '- (none)')
+        ifelse(isTRUE(H4_UTIL$rule_met_flag(r[['paper_rule_met']], as.numeric(r[['p']]), r[['paper_rule']])),
+          'MET (exploratory)', 'not met (exploratory)'))) else '- (none)')
   })
 
-# Pre-specified Paper 3 H4 interaction estimands (documents/H4_papers_screened_final.md §0.3–0.6).
+# Manuscript highlight rows (subset of catalogue; documents/H4_papers_screened_final.md §0.3).
 H4_PRIMARY <- list(
   guide = 'documents/H4_papers_screened_final.md section 0.3',
   mask = function(catalog) {
     if (!nrow(catalog)) return(logical(0))
     with(catalog,
-      (paper == 'Jin 2020' & sound_variable == 'ucm_SND_dBA' & term == 'LAeq x UTCI' &
-          grepl('source-spaced sound bands', test, fixed = TRUE)) |
-        (paper == 'Chen 2023 (adapted)' & sound_variable == 'dba' & term == 'utci_z:dba_z' & outcome == 'thermal_comfort') |
-        (paper == 'Wu 2025' & sound_variable == 'dba' & term == 'loud60:utci_z' & grepl('dBA>=60', test, fixed = TRUE)) |
-        (paper == 'Mohammadzadeh 2023' & sound_variable == 'dba' & term == 'utci_z:sound_z') |
-        (paper == 'Li 2025' & sound_variable == 'dba' & term == 'utci:dba' & grepl('interaction LMM', test, fixed = TRUE)) |
-        (paper == 'Zhen 2025' & sound_variable == 'dba' & term == 'utci:dba' & outcome == 'thermal_comfort'))
+      (paper == 'IBPC 2018 poster' & outcome == 'thermal_comfort' & term == 'warmer minus cooler') |
+        (paper == 'Chiucchiù 2026' & outcome == 'thermal_comfort' & term == 'warmer minus cooler') |
+        (paper == 'Cureau 2022' & grepl('WalkU', test, fixed = TRUE) & outcome == 'thermal_comfort' & term == 'acoustic_comfort') |
+        (paper == 'Grapas 2026' & outcome == 'acoustic_comfort' & term == 'Pearson r' & grepl('dBA', test, fixed = TRUE)) |
+        (paper == 'Moshammer 2019 (comfort adaptation)' & outcome == 'acoustic_comfort' & term == 'dba') |
+        (paper == 'Rodrigues 2026 (comfort adaptation)' & outcome == 'acoustic_comfort' & term == 'NOISE_max'))
   },
   subset = function(catalog) {
     keep <- H4_PRIMARY$mask(catalog)
     out <- catalog[keep, , drop = FALSE]
     order_specs <- data.frame(
-      paper = c('Jin 2020', 'Jin 2020', 'Jin 2020', 'Chen 2023 (adapted)', 'Wu 2025',
-        'Mohammadzadeh 2023', 'Li 2025', 'Li 2025', 'Li 2025', 'Zhen 2025'),
-      outcome = c('thermal_comfort', 'acoustic_comfort', 'overall_comfort', 'thermal_comfort', 'thermal_comfort',
-        'acoustic_comfort', 'thermal_comfort', 'acoustic_comfort', 'overall_comfort', 'thermal_comfort'),
-      term = c(rep('LAeq x UTCI', 3), 'utci_z:dba_z', 'loud60:utci_z', 'utci_z:sound_z',
-        rep('utci:dba', 3), 'utci:dba'),
+      paper = c('IBPC 2018 poster', 'Chiucchiù 2026', 'Cureau 2022', 'Grapas 2026',
+        'Moshammer 2019 (comfort adaptation)', 'Rodrigues 2026 (comfort adaptation)'),
+      outcome = c('thermal_comfort', 'thermal_comfort', 'thermal_comfort', 'acoustic_comfort',
+        'acoustic_comfort', 'acoustic_comfort'),
+      term = c('warmer minus cooler', 'warmer minus cooler', 'acoustic_comfort', 'Pearson r', 'dba', 'NOISE_max'),
       stringsAsFactors = FALSE)
     keys <- paste(out$paper, out$outcome, out$term, sep = '\t')
     rank_keys <- paste(order_specs$paper, order_specs$outcome, order_specs$term, sep = '\t')
@@ -981,24 +1008,22 @@ H4_PRIMARY <- list(
     out[order(out$primary_estimand_order, out$paper, out$outcome), , drop = FALSE]
   },
   methods_notes = function(primary) {
-    c('', '## Paper 3 H4 primary estimands (layer A; partial literature port, not full study replication)',
-      '- Guide: documents/H4_papers_screened_final.md section 0.3, 0.6.',
-      '- Literature search: Scopus title/abstract/keywords therm* AND outdoor AND sound* (see scripts/_scopus_export_text.txt).',
-      '- Each included source: closest feasible test family only; omitted source analyses listed in screened guide section 3 item 10.',
-      sprintf('- Primary interaction rows in this run: %d (expect 10 if all estimable).', nrow(primary)),
-      if (nrow(primary)) sprintf('- Paper-rule MET: %d / %d', sum(primary$paper_rule_met %in% TRUE), nrow(primary)) else
-        '- Paper-rule MET: 0 / 0 (no rows matched filters — check H4_PRIMARY$mask).',
+    c('', '## Manuscript highlight rows (§0.3; same tests as catalogue, not a separate tier)',
+      '- Comfort-shaped §3 ports cited in the manuscript: IBPC warm-cool, Chiucchiù warm-cool, Cureau Fisher WalkU, Grapas dBA Pearson, Moshammer additive dBA, Rodrigues noise block.',
+      sprintf('- Rows matching H4_PRIMARY$mask in this run: %d (expect up to 6).', nrow(primary)),
+      if (nrow(primary)) sprintf('- Nominal paper_rule MET among highlights: %d / %d', sum(primary$paper_rule_met %in% TRUE), nrow(primary)) else
+        '- No rows matched H4_PRIMARY$mask.',
       '',
-      '### Primary rows (pre-specified interactions on comfort votes)',
+      '### Highlight rows',
       if (nrow(primary)) apply(primary, 1, function(r) sprintf(
         '- #%s %s | %s | %s | p=%.4g | %s', r[['primary_estimand_order']],
         r[['paper']], r[['outcome']], r[['term']], as.numeric(r[['p']]),
-        ifelse(isTRUE(r[['paper_rule_met']]), 'MET', 'not met'))) else '- (none)')
+        ifelse(isTRUE(H4_UTIL$rule_met_flag(r[['paper_rule_met']], as.numeric(r[['p']]), r[['paper_rule']])),
+          'MET', 'not met'))) else '- (none)')
   })
 
 # -----------------------------------------------------------------------------
-# Outdoor comfort replications (formerly H4_scopus_outdoor_methods.R and
-# H4_additional_outdoor_methods.R; archived under library/archive/merged_into_helpers_20261109/).
+# Outdoor comfort method ports (formerly H4_scopus_outdoor_methods.R; archived library/archive/...).
 # -----------------------------------------------------------------------------
 
 h4_outdoor_phase_cells <- function(epochs) {
@@ -1471,7 +1496,7 @@ h4_scopus_outdoor_tests <- function(epochs, papers = c('Qin', 'Mohammadzadeh', '
     Tang = '- Tang2026: WalkG/WalkU. LMM physiology ~ z(dBA)*z(PET) and ~ z(Shannon diversity)*z(PET); Kruskal-Wallis dBA quartiles within median PET half.',
     Peng = '- Peng2026: WalkG/WalkU. Kruskal-Wallis; Spearman among votes and dBA; LMM OC ~ thermal + acoustic + visual.',
     Simsek = '- Simsek2026: WalkG/WalkU. Pearson AC vs dBA/UTCI/RH/wind within phase; LMM AC ~ z(env predictors).')
-  notes <- c('', '## Outdoor replications (this run)', unlist(note_lines[intersect(names(note_lines), papers)]))
+  notes <- c('', '## Outdoor method ports (this run)', unlist(note_lines[intersect(names(note_lines), papers)]))
   list(results = if (length(results)) do.call(rbind, results) else data.frame(), notes = notes)
 }
 
@@ -1612,13 +1637,146 @@ h4_additional_outdoor_tests <- function(epochs, papers = c('Cureau', 'Chen'), in
   # Li, Li and Wang (2025): not fitted (no arrival/departure or SLV).
 
   notes <- c('',
-    '## Additional outdoor papers (verified 2026-11-06)',
-    '- Cureau2022: Fisher exact comfort-domain method by phase/site analogue. Seven-point overall comfort differs from source five-point item. No independent-local-sample Mann-Whitney; this cohort is paired.',
-    '- Cureau2022 multinomial models NOT copied.',
-    '- Chen2023: continuous participant-LMM adaptation rating ~ zUTCI * zdBA + zNaturalShare + (1|ParticipantID), plus encodings 2-4 without the nature-share term. Not the published ANOVA.',
-    '- Ueberham2019: subjective exposure-intensity items absent; NOT fitted.',
-    '- Li2025: arrival/departure and subjective loudness not collected; NOT fitted.',
-    '- New model and outcome choices are post-hoc additions; source p<.05 decision rule per row (no catalogue-wide BH in H4_sound_literature_test.R).')
+    '## Cureau §3.5 port (screened guide)',
+    '- Fisher exact comfort-domain cross-tabs per WalkG and WalkU.',
+    '- Seven-point overall comfort here vs five-point items in source.',
+    '- Multinomial comfort models not ported; per-row paper_rule only (no catalogue FDR).')
   extra <- if (include_scopus) h4_scopus_outdoor_tests(epochs) else list(results = data.frame(), notes = character())
   list(results = rbind(do.call(rbind, results), extra$results), notes = c(notes, extra$notes))
 }
+
+# -----------------------------------------------------------------------------
+# Screened guide §3.1 Grapas Pearson; §3.7–§3.8 Moshammer/Rodrigues comfort LMMs.
+# -----------------------------------------------------------------------------
+
+H4_EUROPE_PORTS <- list(
+  grapas_pearson = function(cells) {
+    comforts <- c('thermal_comfort', 'acoustic_comfort', 'overall_comfort')
+    rows <- list()
+    for (out in comforts) {
+      x <- cells$dba
+      y <- cells[[out]]
+      ok <- is.finite(x) & is.finite(y)
+      if (sum(ok) < 5L) next
+      ct <- tryCatch(stats::cor.test(x[ok], y[ok], method = 'pearson'), error = function(e) e)
+      rows[[length(rows) + 1L]] <- data.frame(
+        paper = 'Grapas 2026',
+        test = paste('Pearson phase-mean dBA vs', out, '(SOR analogue)'),
+        outcome = out, source_column = paste0('questionnaire_', out, if (out == 'overall_comfort') '_1_7' else '_1_5'),
+        term = 'Pearson r',
+        estimate = if (inherits(ct, 'error')) NA_real_ else unname(ct$estimate),
+        se = NA_real_, ci_low = if (inherits(ct, 'error')) NA_real_ else unname(ct$conf.int[1]),
+        ci_high = if (inherits(ct, 'error')) NA_real_ else unname(ct$conf.int[2]),
+        statistic = if (inherits(ct, 'error')) NA_real_ else unname(ct$statistic),
+        df = if (inherits(ct, 'error')) NA_real_ else unname(ct$parameter),
+        p = if (inherits(ct, 'error')) NA_real_ else ct$p.value,
+        n_observations = sum(ok), n_participants = length(unique(cells$ParticipantID[ok])),
+        statistic_test = 'Pearson correlation (two-sided)',
+        paper_rule = 'p < 0.05 (exploratory edge; source uses network FDR)',
+        paper_rule_met = !inherits(ct, 'error') && ct$p.value < 0.05,
+        transformation = 'raw questionnaire score', term_units = 'Pearson r',
+        model_id = paste('cor(dba,', out, ')'),
+        model_details = '22 walk cells pooled; not time-series SOR bootstrap.',
+        sound_variable = 'ucm_SND_dBA (phase energy mean)',
+        stringsAsFactors = FALSE)
+    }
+    if (length(rows)) do.call(rbind, rows) else data.frame()
+  },
+  additive_comfort_lmm = function(cells, lme_control) {
+    rows <- list()
+    for (out in c('thermal_comfort', 'acoustic_comfort', 'overall_comfort')) {
+      d <- cells[stats::complete.cases(cells[, c(out, 'dba', 'utci', 'air_temp_c')]), ]
+      if (nrow(d) < 3L) next
+      d$ParticipantID <- factor(d$ParticipantID)
+      fit <- tryCatch(
+        nlme::lme(stats::reformulate(c('dba', 'utci'), response = out), data = d,
+          random = ~ 1 | ParticipantID, method = 'REML', control = lme_control),
+        error = function(e) e)
+      for (term in c('dba', 'utci')) {
+        if (inherits(fit, 'error') || !term %in% rownames(summary(fit)$tTable)) {
+          rows[[length(rows) + 1L]] <- data.frame(
+            paper = 'Moshammer 2019 (comfort adaptation)', test = 'LMM comfort ~ dBA + UTCI (walk cells)',
+            outcome = out, source_column = NA_character_, term = term, estimate = NA_real_, se = NA_real_,
+            ci_low = NA_real_, ci_high = NA_real_, statistic = NA_real_, df = NA_real_, p = NA_real_,
+            n_observations = nrow(d), n_participants = length(unique(d$ParticipantID)),
+            statistic_test = 't-test (REML LMM fixed effect)', paper_rule = 'p < 0.05',
+            paper_rule_met = FALSE, transformation = 'raw questionnaire score', term_units = 'model coefficient',
+            model_id = paste(out, '~ dba + utci + (1|ParticipantID)'),
+            model_details = if (inherits(fit, 'error')) conditionMessage(fit) else 'missing term',
+            sound_variable = if (term == 'dba') 'ucm_SND_dBA' else 'ucm_UTCI', stringsAsFactors = FALSE)
+          next
+        }
+        r <- summary(fit)$tTable[term, ]
+        rows[[length(rows) + 1L]] <- data.frame(
+          paper = 'Moshammer 2019 (comfort adaptation)', test = 'LMM comfort ~ dBA + UTCI (walk cells)',
+          outcome = out, source_column = NA_character_, term = term, estimate = r[1], se = r[2],
+          ci_low = NA_real_, ci_high = NA_real_, df = r[3], statistic = r[4], p = r[5],
+          n_observations = nrow(d), n_participants = length(unique(d$ParticipantID)),
+          statistic_test = 't-test (REML LMM fixed effect)', paper_rule = 'p < 0.05',
+          paper_rule_met = is.finite(r[5]) && r[5] < 0.05,
+          transformation = 'raw questionnaire score', term_units = 'model coefficient',
+          model_id = paste(out, '~ dba + utci + (1|ParticipantID)'),
+          model_details = 'Comfort analogue to Moshammer Leq + Ta on physiology; additive mains only.',
+          sound_variable = if (term == 'dba') 'ucm_SND_dBA' else 'ucm_UTCI', stringsAsFactors = FALSE)
+      }
+    }
+    if (length(rows)) do.call(rbind, rows) else data.frame()
+  },
+  rodrigues_comfort_blocks = function(cells, epochs, lme_control) {
+    bout_stats <- do.call(rbind, lapply(H4_UTIL$bouts(epochs), function(rows) {
+      data.frame(
+        ParticipantID = as.character(epochs$ParticipantID[rows[1]]),
+        PhaseID = as.character(epochs$PhaseID[rows[1]]),
+        NOISE_max = H4_UTIL$finite_max(epochs$ucm_SND_dBA[rows]),
+        NOISE_std = H4_UTIL$finite_sd(epochs$ucm_SND_dBA[rows]),
+        Temp_max = H4_UTIL$finite_max(epochs$ucm_AIR_temp[rows]),
+        Temp_mean = H4_UTIL$finite_mean(epochs$ucm_AIR_temp[rows]))
+    }))
+    d <- merge(cells, bout_stats, by = c('ParticipantID', 'PhaseID'), all.x = TRUE)
+    scaler <- H4_RODRIGUES$standard_scaler
+    rows <- list()
+    for (out in c('thermal_comfort', 'acoustic_comfort', 'overall_comfort')) {
+      for (block in c('Noise', 'Temperature')) {
+        preds <- if (block == 'Noise') c('NOISE_max', 'NOISE_std') else c('Temp_max', 'Temp_mean')
+        dd <- d[stats::complete.cases(d[, c(out, preds)]), ]
+        for (pred in preds) dd[[pred]] <- scaler(dd[[pred]])
+        dd$ParticipantID <- factor(dd$ParticipantID)
+        fit <- tryCatch(
+          nlme::lme(stats::as.formula(paste(out, '~', paste(preds, collapse = ' + '))),
+            data = dd, random = ~ 1 | ParticipantID, method = 'REML', control = lme_control),
+          error = function(e) e)
+        for (pred in preds) {
+          base <- list(
+            paper = 'Rodrigues 2026 (comfort adaptation)',
+            test = paste(block, 'block on comfort vote (source: physiology)'),
+            outcome = out, source_column = NA_character_, term = pred,
+            estimate = NA_real_, se = NA_real_, ci_low = NA_real_, ci_high = NA_real_,
+            statistic = NA_real_, df = NA_real_, p = NA_real_,
+            n_observations = nrow(dd), n_participants = length(unique(dd$ParticipantID)),
+            statistic_test = 'Wald z (mixed model)',
+            paper_rule = 'round(p,4) < 0.05 and |round(beta,4)| > 0.1', paper_rule_met = FALSE,
+            transformation = 'raw questionnaire score', term_units = 'scaled coefficient',
+            model_id = paste(out, '~', paste(preds, collapse = ' + '), '+ (1|ParticipantID)'),
+            model_details = if (inherits(fit, 'error')) conditionMessage(fit) else 'fitted',
+            sound_variable = if (pred %in% c('NOISE_max', 'NOISE_std')) 'ucm_SND_dBA' else 'temperature-only (no sound term)')
+          if (inherits(fit, 'error')) {
+            rows[[length(rows) + 1L]] <- as.data.frame(base, stringsAsFactors = FALSE)
+            next
+          }
+          coef_row <- H4_UTIL$lme_fixed_rows(fit, pred)
+          z <- coef_row$beta / coef_row$se
+          p <- 2 * stats::pnorm(-abs(z))
+          rule <- is.finite(p) && round(p, 4) < 0.05 && abs(round(coef_row$beta, 4)) > 0.1
+          base$estimate <- coef_row$beta
+          base$se <- coef_row$se
+          base$statistic <- z
+          base$p <- p
+          base$paper_rule_met <- rule
+          base$model_details <- paste0('Rodrigues', block, ' block on comfort; scaled predictors')
+          rows[[length(rows) + 1L]] <- as.data.frame(base, stringsAsFactors = FALSE)
+        }
+      }
+    }
+    if (length(rows)) do.call(rbind, rows) else data.frame()
+  }
+)

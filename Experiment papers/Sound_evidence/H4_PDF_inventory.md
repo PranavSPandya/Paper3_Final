@@ -49,3 +49,11 @@ Legal/OA channels only (publisher, MDPI, Nature, PMC, institutional mirrors). **
 | 7 | Zhang et al. 2026 — thermal × acoustic × aesthetic parks (*Sci Rep*) | [10.1038/s41598-026-39787-8](https://doi.org/10.1038/s41598-026-39787-8) | **downloaded** | `Experiment papers/Sound_evidence/Sound - Zhang2026 - thermal acoustic aesthetic parks.pdf` (~5.7 MB; Nature Sci Reports OA `_reference.pdf`; PMC indexed PMC12976342 but PDF fetch blocked here). |
 
 **Not the same as local Sci Reports PDF:** `Sound - Yousefinezhad2026...pdf` is DOI [10.1038/s41598-026-41251-6](https://doi.org/10.1038/s41598-026-41251-6) (chamber Yousefinezhad), not Zhang #7.
+
+## Scopus screen add-on (2026-11-08)
+
+| Citation (short) | DOI | Status | Saved path / notes |
+|------------------|-----|--------|---------------------|
+| Peng et al. 2026 — greenway plaza openness × multisensory × behavior (*Urban Science*) | [10.3390/urbansci10010060](https://doi.org/10.3390/urbansci10010060) | **downloaded** | `Sound - Peng2026 - Multisensory greenway plazas openness.pdf` (~2.6 MB; MDPI `mdpi-res.com` mirror; `%PDF` verified 2026-11-08). |
+| Şimşek 2026 — auditory comfort, parks, thermal/visual (*SREES*) | [10.22630/srees.11113](https://doi.org/10.22630/srees.11113) | **downloaded** | `Sound - Simsek2026 - auditory comfort thermal visual urban parks.pdf` (~2.0 MB; [srees.sggw.edu.pl](https://srees.sggw.edu.pl/article/download/11113/10024); `%PDF` verified 2026-11-08). |
+| Tang et al. 2026 — soundscape diversity × thermal stress, HR/BP/EEG (*Build Environ*) | [10.1016/j.buildenv.2026.114742](https://doi.org/10.1016/j.buildenv.2026.114742) | **downloaded (user-saved)** | `Sound - Tang2026 - soundscape diversity thermo physiological sex dimorphic.pdf` (~22 MB; ScienceDirect `S0360132326005470`; verified 2026-11-08). |
