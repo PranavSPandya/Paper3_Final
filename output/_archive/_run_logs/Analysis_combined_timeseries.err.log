@@ -1,0 +1,30 @@
+Registered S3 method overwritten by 'clubSandwich':
+  method    from    
+  bread.mlm sandwich
+17:18:05 empatica_heart_rate
+17:18:21 empatica_eda_tonic
+17:18:34 empatica_eda_phasic
+17:18:50 empatica_skin_temperature
+17:19:15 empatica_hrv_td_sdnn
+17:19:37 empatica_hrv_td_rmssd
+17:19:45 empatica_hrv_fd_lf
+17:19:51 empatica_hrv_fd_hf
+17:19:56 empatica_hrv_fd_lf_hf_ratio
+17:20:03 empatica_hrv_fd_lfnu
+17:20:10 empatica_hrv_fd_hfnu
+17:20:17 empatica_hrv_fd_vlf
+17:20:20 empatica_hrv_fd_total_power
+17:20:24 eyetracker_pupil_diameter_avg
+17:20:32 eyetracker_pupil_change_rate
+17:20:45 eyetracker_blink_duration_s
+17:20:58 eyetracker_fixation_duration_s
+17:21:06 eyetracker_fixation_rate
+17:21:14 eyetracker_saccade_duration_s
+17:21:22 eyetracker_saccade_amplitude
+17:21:30 eyetracker_saccade_peak_velocity
+17:21:39 eyetracker_gaze_velocity
+17:21:47 eyetracker_gaze_dispersion
+17:21:55 eyetracker_distance_from_center
+17:22:03 eyetracker_gaze_centrality
+17:22:10 eyetracker_eyelid_aperture_avg
+Hypothesis rows: 2158, q < .05: 151

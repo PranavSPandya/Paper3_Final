@@ -1,0 +1,1701 @@
+
+
+===== PAGE 1 =====
+Citation: Chen, Y.; Liu, F.; Lin, X.; Liu,
+J.; Chen, Z.; Shi, K.; Li, J.; Dong, J.
+Combined Effects of the Thermal-
+Acoustic Environment on Subjective
+Evaluations in Urban Park Based on
+Sensory-Walking. Forests 2023, 14,
+1161. https://doi.org/10.3390/
+f14061161
+Academic Editors: Chi Yung Jim and
+Timothy A. Martin
+Received: 8 April 2023
+Revised: 24 May 2023
+Accepted: 3 June 2023
+Published: 5 June 2023
+Copyright:
+© 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+Article
+Combined Effects of the Thermal-Acoustic Environment on
+Subjective Evaluations in Urban Park Based on
+Sensory-Walking
+Ye Chen
+, Fan Liu, Xinya Lin, Jing Liu, Ziyi Chen, Kailong Shi, Junyi Li and Jianwen Dong *
+College of Landscape Architecture and Art, Fujian Agriculture and Forestry University, 15 Shangxiadian Rd.,
+Fuzhou 350000, China; 2191775001@fafu.edu.cn (Y.C.); 2221775007@fafu.edu.cn (F.L.);
+1201775025@fafu.edu.cn (X.L.); 1211775034@fafu.edu.cn (J.L.); 3211726008@fafu.edu.cn (Z.C.);
+3211775025@fafu.edu.cn (K.S.); 3191726026@fafu.edu.cn (J.L.)
+* Correspondence: fjdjw@fafu.edn.cn
+Abstract: Studying the impact of various factors on environmental perception is crucial because
+humans live in an environment where these factors interact and blend. The thermal-acoustic envi-
+ronment is the major factor that affects the overall perception of urban parks. This study focuses
+on urban parks in the subtropical region, with Xihu Park in Fuzhou, China, as the research area.
+Through measurements and questionnaires, this study explores the effects of the thermal-acoustic
+environment in urban parks on subjective evaluation (thermal assessment, acoustic assessment, and
+overall environmental assessment). The results reveal that: (1) a higher temperature signiﬁcantly
+increases the sensation of heat and lowers thermal comfort, heat acceptance, and overall thermal
+environment evaluation scores. The type of sound source has a signiﬁcant positive impact on thermal
+assessment, and the higher the ranking of the sound source type, the greater its positive impact on
+thermal assessment. (2) Regarding acoustic evaluation, higher sound pressure level is associated
+with more negative subjective ratings of loudness, harshness, intensity, and excitement. In contrast,
+positive sound sources can enhance comfort, preference, disorder, coordination, and overall sound-
+scape evaluation. Additionally, temperature increases tend to result in more negative harshness,
+intensity, and coordination ratings. The interaction between temperature and sound pressure level
+also signiﬁcantly affects subjective loudness, harshness, and intensity. (3) Overall environmental
+evaluation is also affected by temperature, with increasing temperatures leading to decreased comfort
+and satisfaction while increasing irritation. High sound pressure environments result in worse overall
+irritation ratings, while positive sound sources can signiﬁcantly enhance overall comfort, irritation,
+and satisfaction ratings. Furthermore, the interaction between temperature and sound pressure level
+signiﬁcantly impacts overall irritation and satisfaction ratings. These ﬁndings are signiﬁcant for
+managing and improving the park’s thermal environment and soundscape, providing a practical
+framework for landscape architects.
+Keywords: urban park; combined effects; temperature; acoustic; subjective evaluations; Fuzhou
+city; soundscape
+1. Introduction
+With the acceleration of the urbanization process as a phenomenon of the 21st century,
+a variety of environmental problems have arisen, including water scarcity [1,2], industrial
+and community waste [3], soil pollution [4], population density increase [5], noise discom-
+fort [6,7], and climate change [8,9]. In this regard, outdoor noise exposure impacts human
+health, such as hearing loss, sleep disruption, and cardiovascular and mental health disor-
+ders [10–12]. On the other hand, the direct impact of climate change on people’s quality
+of life and the emergence of a phenomenon called the Urban Heat Island (UHI) have led
+to thermal discomfort in urban space [13–15]. Therefore, urban parks are considered an
+Forests 2023, 14, 1161. https://doi.org/10.3390/f14061161
+https://www.mdpi.com/journal/forests
+
+
+===== PAGE 2 =====
+Forests 2023, 14, 1161
+2 of 21
+integral part of the complex urban ecosystem network, providing various advantages for
+city residents [16]. Open green spaces in urban parks can improve physical and mental
+health by reducing exposure to air and noise pollution and extreme heat and providing
+psychological relaxation and stress relief [17].
+Despite extensive research on subjective evaluations linking human perception and
+comfort levels to speciﬁc environmental factors in various urban parks, the study of
+comprehensive inﬂuences of different factors remains insufﬁcient [18–20]. As people
+engage in recreational activities within a multi-faceted, interactive park environment,
+studying the impact of individual factors on human perception [21] or comfort [22] level
+fails to represent their genuine environmental evaluations fully. Therefore, it is necessary
+to investigate the effects of multiple factors on assessing urban park environments.
+The soundscape refers to the combination of all sound elements within a speciﬁc area,
+which reﬂects the cultural, social, and ecological characteristics of that area and can impact
+individuals’ emotional behavior and health status, soundscape should be considered a
+natural resource that is worthy of management and protection, and therefore suitable
+measures must be taken [23–26]. Kang (2023) discussed soundscape research’s current state
+and development and explored a framework for using soundscape methodology in urban
+sound design and planning processes [27]. Francesco, A (2023) integrated smart growth
+concepts, urban design, and soundscape in a groundbreaking manner. He emphasizes
+the potential of the soundscape to effectively tackle common noise issues in residential
+areas [28]. Extensive research has been conducted by scholars from both domestic and
+international ﬁelds on the impact of multiple factors on environmental evaluation [29], par-
+ticularly on soundscape evaluation [30]. Studies have shown that human visual perception
+affects auditory perception and the coordination and coherence between sound and image
+inﬂuence preference [31].
+Furthermore, sound can serve as supplementary information to visual stimulation [32].
+This highlights the crucial role of the relationship between audio and visual elements in
+creating a comprehensive and effective multimedia experience. With the increase in urban
+scenery, auditory experiences have become even more complicated. However, research
+has found that integrating and coordinating auditory and visual elements can enhance
+aesthetic preferences. Matching soundscapes with visual landscapes can produce a broader
+and more cohesive sensory experience [33].
+Meanwhile, past research has indicated that the thermal environment signiﬁcantly
+impacts soundscape evaluation. Factors such as temperature, humidity, lighting, wind,
+and changes in visual and auditory elements may also affect soundscape assessment,
+with environmental factors being the most prominent [34,35]. Other scholars have also
+researched the inﬂuence of smell on auditory perception. Through virtual reality experi-
+ments, it was discovered that smell could affect the evaluation of road trafﬁc environments,
+demonstrating its potential to regulate noise and visual landscape perception in speciﬁc
+contexts [36]. Ba and Kang (2019) demonstrated that the presence of smell has almost no
+impact on the evaluation of bird songs or low-volume sounds, but under certain conditions,
+a higher concentration of smell leads to more positive evaluations [37]. Several scholars
+have researched the combined impact of thermal and acoustic environments on physical
+comfort regarding the comprehensive inﬂuence of thermal acoustics. Zhou et al. (2021)
+discovered that exposure to temperature, noise, and vibration can signiﬁcantly affect the
+overall satisfaction of study participants [38].
+Regarding the impact of a thermal, acoustic environment on human comfort, Pellerin
+Nicolas et al. (2003) found that although the combined effect of noise and temperature
+does not affect physiological data, their research results indicate that noise may alter ther-
+mal comfort under warm conditions [39]. Moreover, various factors, such as temperature
+and noise, have been studied by scholars for their impact on human comfort. Wu et al.
+discovered that temperature has a signiﬁcant effect on most subjective and objective param-
+eters, while illumination has a weaker impact. Temperature and illumination are the two
+primary environmental factors that affect comfort. Furthermore, research has found that
+
+
+===== PAGE 3 =====
+Forests 2023, 14, 1161
+3 of 21
+the interaction between color temperature and the temperature has a signiﬁcant effect on
+several evaluation parameters [40]. Li et al. (2012) suggest that both temperature and noise
+satisfaction hold veto power over overall indoor environmental satisfaction, signiﬁcantly
+outweighing the importance of lighting satisfaction signiﬁcantly [41].
+A summary of previous research methods indicates that researchers often opt for
+laboratory or controlled indoor environments as research settings to explore the impact of
+thermal and acoustic environments on human subjective evaluations. As a result of the
+relatively stable thermal environment and the ability to effectively control various factors
+in these venues, currently, there is a lack of research on the subjective evaluation of humans
+under different thermal-acoustic conditions in real park environments. Urban parks are
+a signiﬁcant component of urban construction and an important part of urban ecological
+systems and city landscapes. They provide a place for urban residents to meet their leisure
+needs, relax, exercise, socialise, and hold various cultural activities. Therefore, they were
+chosen as the outdoor research site for this study. Generally, urban parks are located around
+urban arterials and are often affected by trafﬁc noise at their boundaries.
+Additionally, the diverse spatial types within the park and the signiﬁcant differences
+in thermal environments inﬂuence visitors’ environmental evaluations. Therefore, con-
+sidering factors such as the number of visitors, thermal acoustic environment conditions,
+and improvement needs, urban parks are conducive to investigating tourists’ subjective
+evaluations under different thermal and acoustic conditions. Finally, it is worth noting that
+although the activity status of urban park visitors impacts environmental evaluations, in
+this study, all participants were required to stand or sit [42] when answering the question-
+naire. Thus, the instantaneous thermal, acoustic environment has a more signiﬁcant impact
+on subjective evaluations.
+Considering the limitations of previous research and the necessity of improving the
+thermal and acoustic environment in urban parks, the present study aims to explore the
+following aspects: (1) Subjective evaluation of different spaces in the park’s environment
+will be conducted through sensory walks and questionnaires. (2) Objective data such as
+temperature, global temperature, relative humidity, average wind speed (Va), equivalent
+continuous sound level (LAeq), as well as dominant sound sources will be collected through
+monitoring devices to comprehensively understand the park’s actual environment and
+differences in the thermal-acoustic of different areas. This will lay the foundation for
+the analysis section. (3) Furthermore, this study aims to explore the impact of thermal
+acoustic on the subjective evaluation of the park. The questionnaires will be analysed to
+investigate how thermal acoustics affect sound and thermal evaluations as well as overall
+environmental evaluations of the park. Through these explorations, we hope to provide
+more scientiﬁc suggestions for improving the urban park’s thermal acoustics environment.
+2. Materials and Methods
+2.1. Study Site Overview
+This research was conducted in Fuzhou, a typical city in the humid subtropical region
+of China. Fuzhou has a pleasant and humid climate with evergreen seasons, abundant
+sunshine, rainfall, and a short winter and long summer. The frost-free period reaches up to
+326 days annually. The average annual sunshine hours are between 1700 and 1980, and the
+average annual rainfall is between 900 and 2100 mm. The average annual temperature is
+20–25 ◦C, with the coldest month being December and an average temperature of 6–10 ◦C,
+and the hottest month being July and August with an average temperature of 33–37 ◦C.
+Extreme temperatures range from 2.5 to 42.3 ◦C annually. The average relative humidity
+is about 77%, and the city often experiences the urban heat island effect due to its basin
+topography, where the temperature can reach over 36 ◦C at noon in summer. The dominant
+wind direction is northeast, with south wind prevailing in summer [43]. The research site
+was selected based on whether it had common sound sources and thermal environments in
+urban parks. To investigate the effect of the thermal, acoustic environment on subjective
+
+
+===== PAGE 4 =====
+Forests 2023, 14, 1161
+4 of 21
+evaluations of urban parks, considering factors such as the park area and its accessibility,
+the Xihu Park, located in the city center, was ﬁnally chosen.
+Xihu Park is located in the northwest part of Gulou District, Fuzhou City, and is
+situated at the city’s center, adjacent to residential, commercial, and ofﬁce areas in the city
+center. It’s only 700 m away from the main transportation artery Yangqiao East Road and
+can be reached by a 10-min walk. With a history of more than 1700 years, it is the most
+well-preserved classical garden in Fuzhou, and it is renowned as the “Pearl of Fujian Gar-
+dens”, ranking among the top 36 West Lakes in the country. Currently, it covers an area of
+42.51 hectares, with a land area of 12.21 hectares and a water area of 30.3 hectares. The veg-
+etation composition in Xihu Park is complex, dominated by forests, grasslands, shrub beds
+and ﬂower gardens. The forest area is relatively large, consisting primarily of deciduous
+and mixed coniferous forests. The deciduous broad-leaved forest in the Huxin Mountain is
+the most typical, characterized by dominant tree species such as nanmu, camphor, banyan,
+and paulownia, forming a natural, primitive, and spectacular ecosystem. The grasslands
+consist of common lawn grass and some wildﬂowers, while the shrubs comprise ﬂower
+bushes and climbing plants. The rich and diverse vegetation composition of Xihu Park is
+functionally complete, providing an ideal place for urban ecological construction and for
+citizens to relax, exercise and enjoy their leisure time [44].
+There are a total of 12 sample sites in Xihu Park. The panoramic view of these sites can
+be seen in the accompanying Figure 1. In addition, on a representative date of the summer
+season (5 September), a subjective questionnaire survey will be conducted to monitor the
+thermal and acoustic environment.
+Figure 1. (a) Location of Fuzhou city in China map; (b) Xihu Park in Fuzhou city; (c) 12 sample sites
+within Xihu Park.
+
+
+===== PAGE 5 =====
+Forests 2023, 14, 1161
+5 of 21
+2.2. Procedures
+Regarding the evaluation indicators for the acoustic environment, due to the disconti-
+nuity of sound in the park area, this study has opted for the LAeq (weighted equivalent
+continuous sound level) as the primary evaluation indicator. Moreover, given the variety
+of sound types in the park, the primary ranking of the dominant sound source type based
+on the First Impression Sound Source (TP) will be selected as the evaluation indicator
+through voting. The index ranks in ascending order through positive and negative effects
+on the sound source, presented as categorical variables [45–49]. As for the evaluation
+indicators for the thermal environment, due to the instability of the outdoor thermal envi-
+ronment, this study has selected the Universal Thermal Climate Index (UTCI) to evaluate
+the thermal physiological effects of the thermal environment. The UTCI represents the
+equivalent environmental temperature of the reference environment and provides the same
+physiological response as the reference person in the actual environment. This indicator
+integrates subjective factors and objective environmental parameters while considering the
+human body’s thermal adaptability [50–53]. The UTCI value is derived from the thermal
+environmental parameters gathered in the questionnaire survey. Once data on radiation
+temperature, air temperature, relative humidity, wind speed, and global temperature are
+prepared, the UTCI can be calculated using either the BioKlima2.6 software or the Fortran
+program available on the ofﬁcial website (http://www.utci.org, accessed on 1 December
+2022). The deviation of UTCI from air temperature is determined by actual air temperature
+(Ta), mean radiant temperature (Tmrt), wind speed (Va), and relative humidity (Rh). This
+can be expressed by a formula [54].
+UTCI = Ta + Offset (Ta, Tmrt, Va, Rh) = f (Ta, Tmrt, Va, Rh)
+(1)
+In the formula, Ta represents the temperature of a 2 m air column, Va represents the
+wind speed of 10 ms, Pa represents the relative humidity, and Tmrt represents the average
+radiative temperature.
+2.3. Questionnaire Survey and Analysis
+Sensory Walk [55] was primarily used as the main research method in this experiment,
+involving various urban park spatial environments throughout the entire walking route
+to explore the pattern of acoustic-thermal interaction under different spatial environment
+conditions. The core of the Sensory Walk is to listen and feel the entire environment. After
+walking along the designated route and listening to the surroundings, a 5-point Likert scale
+was adopted to evaluate the thermal, acoustic, and overall environment subjectively. As
+shown in Tables 1–3, the participants were evaluated based on their subjective loudness
+vote (SLV), acoustic comfort vote (ACV), acoustic coordination vote (ACoV) [56], acoustic
+preference vote (APV) [57], acoustic harshness vote (AHV), acoustic pleasure vote (APlV),
+acoustic familiarity vote (AFV), acoustic intensity vote (AIV), acoustic excitability vote
+(AEV), acoustic disorder vote (ADV) [58], overall acoustic vote (OAV) [59], thermal sen-
+sation vote (TSV), thermal comfort vote (TCV), thermal acceptance vote (TAV), overall
+thermal vote (OTV) [60], overall comfort vote (OCV), overall annoyance vote (OAnV), and
+overall satisfaction vote (OSV) [61]. The data were collected to assess various aspects of
+the acoustic and thermal environment, including subjective evaluation of sound proper-
+ties, temperature perception, and overall comfort, annoyance, and satisfaction levels. The
+questionnaire survey as Appendix A.
+
+
+===== PAGE 6 =====
+Forests 2023, 14, 1161
+6 of 21
+Table 1. Subjective evaluations of the questionnaire surveys (TSV, TCV, TAV, OTV).
+Scores
+Thermal Sensation
+Thermal Comfort
+Thermal Acceptance
+Overall Thermal
+1
+Cold
+Uncomfortable
+unacceptable
+Bad
+2
+cool
+Slightly Uncomfortable
+Slightly unacceptable
+Slightly bad
+3
+Neutral
+Neutral
+Neutral
+Neutral
+4
+warm
+Slightly Comfortable
+Slightly acceptable
+Slightly good
+5
+Hot
+Comfortable
+acceptable
+Good
+Table 2. Subjective evaluations of the questionnaire surveys (SLV, ACV, APV, AHV, APlV, AFV, AIV,
+AEV, ADV, ACoV, OAV).
+Scores
+Subjective
+Loudness
+Acoustic
+Comfort
+Acoustic
+Preference
+Acoustic
+Harshness
+Acoustic
+Pleasure
+Acoustic
+Familiar-
+ity
+Acoustic
+Intensity
+Acoustic
+Excitabil-
+ity
+Acoustic
+Disorder
+Acoustic
+Coordina-
+tion
+Overall
+Acoustic
+1
+Quiet
+Uncom-
+fortable
+Unlike
+Gentle
+Unhappy
+Strange
+Weak
+Calm
+Monotonous Incoordinate
+Bad
+2
+Slightly
+quiet
+Slightly
+Uncom-
+fortable
+Slightly
+unlike
+Slightly
+Gentle
+Slightly
+Unhappy
+Slightly
+Strange
+Slightly
+weak
+Slightly
+Calm
+Slightly
+monotonous
+Slightly
+incoordi-
+nate
+Slightly
+bad
+3
+Neutral
+Neutral
+Neutral
+Neutral
+Neutral
+Neutral
+Neutral
+Neutral
+Neutral
+Neutral
+Neutral
+4
+Slightly
+Loud
+Slightly
+Comfort-
+able
+Slightly like
+Slightly
+harsh
+Slightly
+happy
+Slightly
+familiar
+Slightly
+strong
+Slightly
+excited
+Slightly
+disor-
+dered
+Slightly
+coordi-
+nate
+Slightly
+good
+5
+Loud
+Comfortable
+Like
+Harsh
+Happy
+Familiar
+Strong
+Excited
+Disordered
+Coordinate
+Good
+Table 3. Subjective evaluations of the questionnaire surveys (OCV, OAnV, OSV).
+Scores
+Overall Comfort
+Overall Annoyance
+Overall Satisfaction
+1
+Uncomfortable
+Peaceful
+Bad
+2
+Slightly Uncomfortable
+Slightly Peaceful
+Slightly bad
+3
+Neutral
+Neutral
+Neutral
+4
+Slightly Comfortable
+Slightly annoying
+Slightly good
+5
+Comfortable
+annoying
+Good
+2.4. Measurements
+The Kestrel 5500 portable weather station was utilized to record temperature, relative
+humidity, and wind speed. The BES-01 temperature logger was chosen to measure global
+temperature with a diameter of 0.08m and a surface material scattering coefﬁcient of 0.95.
+Additionally, the BES-02 temperature and humidity logger was employed to measure air
+temperature and humidity. The BSWA801 noise and vibration analyzer was utilized to
+record sound pressure levels in the park environment. All instruments were calibrated
+before operation. The temperature logger was placed inside a radiation shield to avoid
+interference from solar radiation and wind.
+Meanwhile, the microphone of the analyzer was placed inside a windscreen for more
+accurate recordings. The instruments were set up according to ISO 772628 [62] and securely
+mounted on a tripod approximately 1.2 m above ground level. Instrument speciﬁcations
+are detailed in Table 4.
+Table 4. The characteristics of the instruments.
+Type
+Range
+Precision
+Kestrel 5500
+0.4~40 m/s
+±0.1 m/s
+weather station
+BES-01 temperature
+−30 ◦C~50 ◦C
+±0.5 ◦C
+recorder
+BES-02 temperature
+−30 ◦C~50 ◦C
+±0.5 ◦C
+And humidity recorder
+0%~99% RH
+±3% RH
+BSWA801 noise
+19 dB(A)~137 dB(A)
+<0.7dB (A)
+vibration analyser
+
+
+===== PAGE 7 =====
+Forests 2023, 14, 1161
+7 of 21
+2.5. Subjects
+The current study involved 30 subjects, from whom 360 valid questionnaires were
+collected. All individuals were approached in a park, informed about the purpose of the
+survey, and voluntarily agreed to participate. Of the subjects, 56.67% were male, and
+43.33% were female, with 80% falling between 18 and 30. Moreover, 83.33% (25 individuals)
+reported residing in Fuzhou for over one year. The subjects had a metabolic equivalent of
+1.2 met, and their average clothing insulation was 0.48 clo.
+2.6. Experimental Process
+Firstly, the study’s leader provided face-to-face training for all 30 subjects, explaining
+the basic concept of soundscape, the signiﬁcance of the experiment, and how to ﬁll out the
+questionnaire, including the explanation of soundscape questions and answers. Secondly,
+the leader led the participants through a sensory walk experiment in 12 different areas.
+The participants were divided into three groups, each supervised by a leader. To avoid
+overcrowding, there was a 10m distance between each group, and the leading participant
+controlled the distance [63].
+During the sensory-walking experiment, the participants were not allowed to speak,
+eat or drink to reduce human noise. Finally, they walked through each designated sensory
+walking area along a speciﬁed route. The group stopped at each site for ﬁve minutes,
+standing or sitting while carefully listening to sound elements and feeling the thermal
+environment, then ﬁlled out a questionnaire online. The experimental process is shown
+in Figure 2. The primary leader was also responsible for using equipment to collect
+data, including temperature, global temperature, humidity, wind speed, and the LAeq (a
+weighted equivalent continuous sound level), for a continuous period of 5 min [64].
+Figure 2. Experimental process.
+2.7. Analysis Method
+The experimental results were free of missing values, and any outliers were eliminated
+or replaced to ensure the accuracy and reliability of the data. Following data collection and
+organization, objective parameters were standardized to calculate each variable’s mean
+and standard deviation.
+In both production activities and scientiﬁc experiments, the generation of results is
+often inﬂuenced by multiple factors with varying degrees of impact. ANOVA, a statistical
+method, infers whether one or more factors have a signiﬁcant impact on the experimental
+results when they change at different levels. The study utilized the SPSS27.0 statistical
+analysis software to analyze subjective perception data of the environment. The variance
+analysis method (ANOVA) was employed to explore the differences in the impact of
+thermal-acoustic elements on subjective perception, and the Mauchly sphericity test was
+conducted. When the results did not satisfy the sphericity assumption (p < 0.05), a correction
+was needed. The Greenhouse-Geisser correction was chosen when Epsilon < 0.75, while
+the Huynh-Feldt correction was selected in other situations [65]. The ﬁnal experimental
+data passed validation before analysis.
+3. Results
+3.1. Basic Environmental Conditions
+The researchers conducted a sensory walk experiment in 12 different areas under the
+guidance of local experts and research teams, following a pre-established plan. Table 5
+illustrates the basic thermal-acoustic data acquired through equipment in the 12 areas.
+
+
+===== PAGE 8 =====
+Forests 2023, 14, 1161
+8 of 21
+Table 5. Sample thermal-acoustic environment situation.
+Plot
+Ta (◦C)
+Ts (◦C)
+Humidity (%)
+Va (m/s)
+UTCI (◦C)
+LAeq (dB)
+Source Type
+1
+30.30
+30.50
+57.50
+0.00
+31.35
+53.90
+2 (bird song)
+2
+31.10
+31.20
+54.40
+0.40
+32.16
+64.60
+5 (conversations)
+3
+31.40
+31.70
+55.60
+0.00
+32.50
+58.60
+5 (conversations)
+4
+31.60
+31.80
+70.10
+0.20
+34.68
+52.90
+3 (rustling leaves)
+5
+32.00
+33.10
+68.20
+0.00
+35.03
+61.10
+4 (broadcasting music)
+6
+31.90
+32.80
+73.10
+0.10
+35.77
+71.50
+1 (water)
+7
+32.30
+33.50
+68.20
+0.30
+35.89
+51.10
+2 (bird song)
+8
+32.60
+33.50
+68.10
+0.30
+36.16
+59.40
+4 (radio music)
+9
+32.80
+34.60
+65.20
+0.10
+36.19
+54.20
+2 (bird song)
+10
+33.80
+35.50
+62.60
+0.80
+37.56
+59.50
+4 (broadcasting music)
+11
+34.10
+36.20
+65.70
+0.10
+38.26
+63.50
+1 (water)
+12
+34.80
+36.80
+61.00
+0.60
+38.92
+77.80
+6 (Construction noise)
+3.2. Comprehensive Impact of Thermal Acoustic Environment on Thermal Assessment
+The impact of the thermal and acoustic environment on thermal assessment includes
+the effects on TSV, TCV, TAV, and OTV. Table 6 demonstrates the signiﬁcance of the indi-
+cators under main effects and interaction effects (TSV, TCV, TAV, and OTV). The analysis
+of variance (ANOVA) indicates that the main effects of UTCI signiﬁcantly inﬂuence TSV
+(p < 0.01), TCV (p < 0.05), TAV (p < 0.05), and OTV (p < 0.1). On the other hand, the
+interaction effect between LAeqUTCI and LAeq has no signiﬁcant impact on all thermal
+assessments (p > 0.1), while the main effects of TP signiﬁcantly inﬂuence TSV, TCV, and
+OTV (p < 0.01).
+Table 6. The signiﬁcance of the indicators under the main effect and interaction (TSV, TCV, TAV, and
+OTV).
+Subjective Evaluation
+UTCI
+LAeq
+UTCI × LAeq
+TP
+TSV
+0.003
+0.196
+0.12
+0
+TCV
+0.016
+0.298
+0.221
+0.001
+TAV
+0.039
+0.219
+0.155
+0.225
+OTV
+0.059
+0.611
+0.458
+0.007
+Note: Bold indicates signiﬁcant correlation within 0.1.
+Figure 3 illustrates the TSV values of 12 sample sites. Concerning the impact of
+the thermal environment on TSV, there is a signiﬁcant increasing trend in TSV as UTCI
+increases. When UTCI is lower than 36, TSV is concentrated in the moderate range, while
+the deviation of TSV is greater when UTCI is above 36. As for the inﬂuence of noise
+environment on TSV, LAeq has little effect on TSV as a whole. However, when UTCI is
+below 34 or above 37, TP can affect TSV and the degree of deviation increases.
+Figure 3. The values of TSV under different conditions of the thermal-acoustic environment.
+Figure 4 demonstrates the TCV values of the 12 sample sites. Regarding the impact
+of the thermal environment on TCV, there is an obvious decreasing trend in TCV as
+UTCI increases. When UTCI is around or below 35.5, TCV is relatively comfortable, and
+discomfort rises when UTCI exceeds 36. As for the impact of noise environment on TCV,
+LAeq has little effect on TCV as a whole. Nevertheless, positive TP can increase TCV when
+UTCI is below 36.
+
+
+===== PAGE 9 =====
+Forests 2023, 14, 1161
+9 of 21
+Figure 4. The values of TCV under different conditions of the thermal-acoustic environment.
+Figure 5 illustrates the TAV values of 12 sample sites. Regarding the impact of the
+thermal environment on TAV, there is a signiﬁcant decrease in TAV with the increase of
+UTCI. When the UTCI value is below 36, the TAV score is higher, while the degree of
+thermal comfort signiﬁcantly reduces when the UTCI value exceeds 36. As for the impact
+of the acoustic environment on TAV, LAeq and TP have no signiﬁcant inﬂuence on TAV as
+a whole.
+Figure 5. The values of TAV under different conditions of the thermal-acoustic environment.
+Figure 6 displays the OTV values of 12 sample sites. Concerning the impact of the
+thermal environment on OTV, there is a signiﬁcant decrease in OTV with the increase
+of UTCI. When the UTCI value is below 36, the OTV score is higher than neutral, but it
+falls below neutral when the UTCI value exceeds 36. As for the impact of the acoustic
+environment on OTV, LAeq has no signiﬁcant inﬂuence on OTV as a whole. However,
+when UTCI is around 35.5, the positive TP can increase the OTV score.
+Figure 6. The values of OTV under different conditions of the thermal-acoustic environment.
+3.3. Comprehensive Inﬂuence of Thermal Acoustic Environment on Acoustic Assessment
+To ensure the consistency of the results and avoid misleading situations, the inversion
+of the rating procedure is adopted before statistical analysis, with the parameters of ACV,
+APV, AFV, and OAV being ﬂipped [66]. The impact of the thermal, acoustic environment
+on acoustic assessment includes its effect on 11 indicators, namely, SLV, ACV, APVA, HVA,
+PlVAF, VAIV, AEV, ADV, ACoV and OAV. Table 7 demonstrates the signiﬁcance of the
+main effects and interactions of these indicators. Variance analysis reveals that UTCI has
+a signiﬁcant main effect on AHV (p < 0.1), AIV (p < 0.01) and AEV (p < 0.1). LAeq has a
+signiﬁcant main effect on SLV (p < 0.01), AHV (p < 0.01), AIV (p < 0.01) and AEV (p < 0.05).
+The interaction effect of UTCI and LAeq has a signiﬁcant impact on SLV (p < 0.05), AHV
+
+
+===== PAGE 10 =====
+Forests 2023, 14, 1161
+10 of 21
+(p < 0.05), AIV (p < 0.01), and AEV (p < 0.05). Meanwhile, TP has a signiﬁcant main effect
+on ACV, APVA, DVO and OAV (p < 0.1).
+Table 7. The signiﬁcance of the indicators under the main effect and interaction (SLV, ACV, APVA,
+HVA, PlVAF, VAIV, AEV, ADV, ACoV and OAV).
+Subjective Evaluation
+UTCI
+LAeq
+UTCI × LAeq
+TP
+SLV
+0.133
+0.007
+0.034
+0.12
+ACV
+0.209
+0.129
+0.133
+0.001
+APV
+0.699
+0.474
+0.513
+0.019
+AHV
+0.086
+0.007
+0.027
+0.418
+APlV
+0.577
+0.394
+0.441
+0.26
+AFV
+0.969
+0.858
+0.887
+0.581
+AIV
+0.006
+0
+0.001
+0.222
+AEV
+0.058
+0.014
+0.034
+0.137
+ADV
+0.518
+0.417
+0.333
+0.002
+ACoV
+0.093
+0.135
+0.147
+0.042
+OAV
+0.724
+0.748
+0.739
+0.082
+Note: Bold indicates signiﬁcant correlation within 0.1.
+Figure 7 illustrates the SLV values of 12 different sample sites, showing a significant
+increase in SLV with an increasing LAeq due to the influence of noise. When the LAeq exceeds
+53 dB(A), SLV values are consistently higher than the neutral level. In terms of the impact of
+the thermal environment on SLV, the UTCI has no significant effect on the overall SLV.
+Figure 7. The values of SLV under different conditions of the thermal-acoustic environment.
+Figure 8 displays the ACV values of the same 12 sample sites, indicating that the ACV
+value decreases to some extent when the TP is below four due to the inﬂuence of noise.
+Regarding the impact of the thermal environment on ACV, the UTCI has no signiﬁcant
+effect on the overall ACV.
+Figure 8. The values of ACV under different conditions of the thermal-acoustic environment.
+Figure 9 illustrates the APV values at 12 different sites. Regarding the impact of a
+sound environment on APV, values tend to decrease when TP is below 4. As for the effect
+of the thermal environment on APV, UTCI does not have a signiﬁcant overall impact.
+
+
+===== PAGE 11 =====
+Forests 2023, 14, 1161
+11 of 21
+Figure 9. The values of APV under different conditions of the thermal-acoustic environment.
+Figure 10 reveals the AHV values at the same 12 sites. Regarding the inﬂuence of a
+sound environment on AHV, values tend to increase when TP is below 4. In terms of the
+effect of the thermal environment on AHV, UTCI leads to an increase in deviation.
+Figure 10. The values of AHV under different conditions of the thermal-acoustic environment.
+Figure 11 displays the APlV values at the same 12 sites. Regarding the impact of a
+sound environment on APlV, SLV signiﬁcantly increases as LAeq increases. When LAeq is
+over 53 dB(A), SLV exceeds the neutral level. As for the effect of the thermal environment
+on APlV, UTCI does not have a signiﬁcant overall impact.
+Figure 11. The values of APlV under different conditions of the thermal-acoustic environment.
+Figure 12 exhibits the AFV values at the same 12 sites. Again, neither sound nor
+thermal environment has a signiﬁcant overall impact on AFV.
+Figure 12. The values of AFV under different conditions of the thermal-acoustic environment.
+Figure 13 illustrates the AIV values of 12 plots. Regarding the impact of the acoustic
+environment on AIV, AIV significantly increases with the increase of LAeq. Concerning the
+impact of the thermal environment on AIV, as the UTCI grows, AIV’s deviation becomes larger.
+
+
+===== PAGE 12 =====
+Forests 2023, 14, 1161
+12 of 21
+Figure 13. The values of AIV under different conditions of the thermal-acoustic environment.
+Figure 14 depicts the AEV values of 12 plots. Concerning the impact of the acoustic
+environment on AEV, SLV significantly increases with the increase of LAeq. Regarding the
+impact of the thermal environment on AEV, as the UTCI grows, AEV’s deviation becomes larger.
+Figure 14. The values of AEV under different conditions of the thermal-acoustic environment.
+Figure 15 shows the ADV values of 12 plots. Regarding the impact of the acoustic
+environment on ADV, LAeq has little effect. However, positive TP reduces ADV. Concern-
+ing the impact of the thermal environment on ADV, UTCI has no signiﬁcant impact on the
+overall ADV.
+Figure 15. The values of ADV under different conditions of the thermal-acoustic environment.
+Figure 16 displays the ACoV values for 12 plots. Regarding the impact of the acoustic
+environment on ACoV, LAeq has a negligible effect. However, positive TP reduces ACoV.
+Regarding the inﬂuence of the thermal environment on ACoV, an increase in UTCI results
+in higher ACoV deviations.
+Figure 16. The values of ACoV under different conditions of the thermal-acoustic environment.
+Figure 17 exhibits the OAV values for the same 12 plots. In terms of the effect of the
+acoustic environment on OAV, LAeq has no signiﬁcant effect. Nevertheless, positive TP
+
+
+===== PAGE 13 =====
+Forests 2023, 14, 1161
+13 of 21
+increased OAV. Regarding the effect of the thermal environment on OAV, UTCI has little
+overall impact on OAV.
+Figure 17. The values of OAV under different conditions of the thermal-acoustic environment.
+3.4. Comprehensive Inﬂuence of Thermal Acoustic Environment on the Overall
+Environmental Assessment
+To ensure consistency of the results and avoid misleading situations, the inversion
+of rating was implemented for OCV and OSV parameters. The impact of the thermal
+environment on overall environmental assessment includes three indicators: OCV, OAnV,
+and OSV. Table 8 presents the signiﬁcance of these indicators under main effects and
+interaction effects (OCV, OAnV, OSV). The main effect of UTCI is signiﬁcant on OCV
+(p < 0.05), OAnV (p < 0.01) and OSV (p < 0.05). The main impact of LAeq is signiﬁcant on
+OAnV (p < 0.05). Moreover, the interaction effect of UTCI × LAeq is signiﬁcant on OAnV
+(p < 0.05) and OSV (p < 0.1). Finally, TP signiﬁcantly affects all three overall indicators
+(p < 0.01).
+Table 8. The signiﬁcance of the indicators under the main effect and interaction (OCV, OAnV and
+OSV).
+Subjective Evaluation
+UTCI
+LAeq
+UTCI × LAeq
+TP
+OCV
+0.015
+0.252
+0.158
+0
+OAnV
+0.004
+0.026
+0.018
+0
+OSV
+0.02
+0.11
+0.086
+0.003
+Note: Bold indicates signiﬁcant correlation within 0.1.
+Figure 18 illustrates the OCV values under various thermal and acoustic conditions.
+Regarding the inﬂuence of the thermal environment on OCV, a higher UTCI value cor-
+responds to an overall upward trend in OCV. This escalation in discomfort is evident.
+Regarding the impact of the acoustic environment on OCV, LAeq does not appear to have
+a signiﬁcant effect on the overall OCV trend. However, when UTCI is less than 34 or
+greater than 37, TP impacts OCV, leading to a greater deviation. Moreover, when UTCI
+falls between 34 and 37, TP ≤4 tends to have a lower score for OCV.
+Figure 18. The values of OCV under different conditions of the thermal-acoustic environment.
+Figure 19 presents the OAnV values under different thermal and acoustic conditions.
+Regarding the impact of the thermal environment on OAnV, as UTCI increases, OAnV
+demonstrates a signiﬁcant upward trend. As for the inﬂuence of the acoustic environment
+on OAnV, higher values of LAeq and TP correspond to an overall increase in OAnV.
+
+
+===== PAGE 14 =====
+Forests 2023, 14, 1161
+14 of 21
+Figure 19. The values of OAnV under different conditions of the thermal-acoustic environment.
+Figure 20 illustrates the OSV values under various thermal and acoustic environmental
+conditions. Although, regarding the impact of the thermal environment on OSV, there is a
+signiﬁcant increase in OSV with an increase in UTCI, dissatisfaction with the manifestation
+is mounting. As for the impact of the acoustic environment on OSV, LAeq has little effect
+on OSV overall. However, when UTCI is less than 34 or greater than 37, TP can affect OSV
+and increase the deviation.
+Figure 20. The values of OSV under different conditions of the thermal-acoustic environment.
+4. Discussion
+4.1. Interactions of the Thermal and Acoustic Environment
+Comfort is a signiﬁcant aspect in the design of urban parks as it inﬂuences the behavior
+of visitors and the comfort of the park environment. Varying environmental factors, espe-
+cially the thermal and acoustic environment, can improve the park space experience. This
+study investigates the impact of outdoor thermal and acoustic environment interactions
+and related indicators in 12 sample locations within a city park (Xihu Park, Fuzhou City).
+(1) The ﬁndings of this study indicate that the thermal soundscape impacts the SLV,
+AHV, AIV, AEV evaluation of urban parks. The results indicate that people perceive
+higher soundscape quality in comfortable and cool environments during summer. The
+effect of LAeq on SLV, AHV, AIV, AEV depends on the different UTCI levels. When UTCI
+is below 36, SLV is concentrated near a neutral level. However, when UTCI exceeds
+36, the diversity of SLV, AHV, AIV, AEV signiﬁcantly increases. Moreover, research has
+found that positive sound sources, such as wind blowing through leaves, water, and
+birdsong, can signiﬁcantly improve the overall rating of sound evaluation. This can
+be explained by the fact that this diverse range of sounds can make people’s auditory
+systems more active and sensitive [67]. Additionally, these natural soundscape sources
+stem from comfortable environments. Extensive empirical research suggests that the
+auditory stimuli individuals receive within natural surroundings promote greater physical
+and mental health and comfort compared to indoor environments. From a physiological
+perspective, natural sounds lower stress hormone levels, improve sleep quality, strengthen
+immune system functionality, and positively impact emotions and cognition [68]. Hearing
+natural sounds also enhances feelings of comfort and tranquility [69]. Therefore, hearing
+natural sounds can make people feel more comfortable and peaceful. Increasing vegetation
+cover and regulating environmental temperature in urban parks can signiﬁcantly enhance
+acoustic quality. The urban heat island effect and other modern urban environmental
+issues have worsened the acoustic environment in urban parks due to noise pollution
+
+
+===== PAGE 15 =====
+Forests 2023, 14, 1161
+15 of 21
+and temperature rise. Reasonable vegetation arrangements, such as vegetation and tree
+conﬁguration, can reduce the thermal resistance caused by building surface pavement and
+other hard surfaces, thus helping to alleviate the impact of temperature rise. In addition,
+with economic development and technological advancements, the artiﬁcial intervention
+has become a new method for adjusting the thermal environment of urban parks, such as
+using artiﬁcial wetting and increasing reﬂectivity. Furthermore, natural elements, especially
+trees, in the urban park environment create a variety of positive soundscapes, making
+the environment more pleasant [70,71]. These research ﬁndings are similar to previous
+studies [35,70,72–74]. During hot seasons, low-level thermal sensation (environmental
+cooling), high-level thermal comfort, and positive sound sources signiﬁcantly enhance
+soundscape quality. Therefore, these research results can provide important reference
+information for urban park planning and construction.
+(2) In this study, it was found that although there was no interaction between UTCI
+and LAeq in terms of heat evaluation, positive sound sources (TP) had a signiﬁcant impact
+on TSV, TCV and OTV. Within the inner area of the park, vegetation was able to shield
+noise pollution, resulting in a relatively stable range of LAeq readings. Thus, the type of
+sound source in the park became the primary factor affecting heat evaluation, a ﬁnding
+also supported by other researchers [70,75,76]. Particularly during hot seasons, positive
+sound sources were effective in reducing TSV and increasing TCV and OTV. The type
+of sound source plays a signiﬁcant role in regulating the sensory experience of humans
+in urban park environments. One can argue that positive acoustic environments, with
+their gradual and soft sound characteristics, aid in relaxation, easing the pressure of the
+heat on the body, and enhancing a cool and pleasurable feeling, ultimately improving
+the evaluation of thermal comfort and overall thermal environment. For instance, in an
+outdoor recreational area, the soothing and tranquil natural sounds, such as birds chirping,
+cicadas, or rustling leaves, enable people to withstand the discomfort of heat waves,
+thereby improving thermal comfort and overall evaluation of the thermal environment.
+Additionally, in urban park environments, it is vital to consider the ratio of acoustic
+landscapes to buildings, among other factors, to achieve the gradual variation of sound
+and ensure smooth sound transmission throughout the park [77]. This highlights the need
+to control and manage sound sources in the park’s inner area to reduce visitor perceptions
+of heat during hot seasons. Furthermore, with increasing urbanization, noise pollution
+in urban parks is expected to worsen. Thus, improving the acoustic environment within
+parks will become an important task for park management in the future.
+(3) We conducted an analysis of the overall environmental assessment, focusing on
+the interaction between UTCI and LAeq, and discovered a signiﬁcant positive correlation
+between this interaction and OAnV and OSV. Speciﬁcally, as the deviation from the neutral
+temperature sound level increased, the overall annoyance votes also increased. This result
+is consistent with previous studies [75,78], indicating that in parks, the overall sense of
+annoyance and satisfaction of the human body are simultaneously affected by temperature
+and sound pressure. This is mainly because the human body is a highly sensitive biological
+organism, and various factors in the environment, such as sound, light, smell, and tempera-
+ture, can stimulate the human nervous system and body. In a park, temperature and sound
+pressure changes can cause varying degrees of physiological and psychological changes in
+the human body, thereby affecting people’s moods and emotions [79]. In terms of the actual
+environment, we also found other details. For example, in hot weather during the summer,
+more people tend to gather in the shaded and comfortable areas of the park. When noise
+levels reach a certain point, people feel even more annoyed, ultimately affecting the park’s
+overall satisfaction level [80]. Based on these ﬁndings, we recommend implementing mea-
+sures to reduce the impact of environmental factors on the human body when designing
+and managing parks. For instance, incorporating some shading facilities [81] to mitigate
+the temperature impact during summer and regulating noise sources like grass cutting [82]
+and trafﬁc can signiﬁcantly enhance the park’s overall satisfaction and service quality.
+
+
+===== PAGE 16 =====
+Forests 2023, 14, 1161
+16 of 21
+4.2. Shortcomings and Prospects
+There are certain limitations to this study. Firstly, it was conducted within a limited
+time frame (summer 2022). Thus, its scope and applicability may be conﬁned to warm
+environmental conditions. Secondly, the inﬂuence of other relevant variables, such as
+the SVF index, may contribute towards the analysis and accuracy of results. Thirdly, in
+future research, including other effective factors like soil moisture content could enhance
+the accuracy of conclusions concerning plant community spatial partitioning. Fourthly,
+regarding factors inﬂuencing shade provision by trees, the correlation between the cooling
+effect and thermal comfort may be more signiﬁcant than acoustic comfort and can be
+explored in future analyses. Fifthly, although our experiments recruited healthy subjects,
+there were still some atypical groups among the tourist population, such as those who
+suffered from depression or hearing impairment. These groups perceive the environment
+differently from healthy individuals. Therefore, future research should focus on exploring
+the inﬂuence of the acoustic and thermal environment on the perception of atypical groups.
+Lastly, considering their unique ecological and environmental characteristics and the
+socioeconomic and cultural differences among users, conducting more research in different
+climatic locations is necessary.
+5. Conclusions
+This study utilized questionnaire surveys and monitoring of distinct thermal and
+acoustic environments to analyze whether these environments impact subjective evaluation
+and attempted to determine the effects of thermal, and acoustic environments on thermal,
+acoustic, and overall environmental evaluations.
+(1) Regarding thermal evaluation, the results showed that the thermal environment
+signiﬁcantly impacted thermal sensation, thermal comfort, thermal acception and overall
+thermal vote. The thermal sensation increased signiﬁcantly as the temperature rose, while
+thermal comfort, thermal acception and overall thermal vote declined signiﬁcantly. Re-
+garding acoustic environments, since the park is located in a low-noise environment with
+minimal noise ﬂuctuation, LAeq had no signiﬁcant impact on the thermal environment;
+its impact was only manifest in the TP’s impact on thermal sensation, thermal comfort
+and overall thermal vote. Amongst the six major sound sources (water, bird song, rustling
+leaves, broadcasting music, conversations, and construction noise), those ranking higher
+positively impacted thermal evaluation. However, there was no interaction between UTCI
+and LAeq on thermal assessment.
+(2) Regarding acoustic evaluation, it can be observed that LAeq in the sound environ-
+ment signiﬁcantly impacts the subjective loudness, acoustic harshness, acoustic Intensity,
+and acoustic Excitability of the sampling site. As the Laeq value increases, the negative
+evaluation of Subjective loudness, acoustic Harshness, acoustic Intensity, and acoustic
+Excitability also increases. Furthermore, the acoustic Comfort, acoustic Preference, acoustic
+Disorder, acoustic Coordination, and overall acoustic Vote in the sampling site are also
+signiﬁcantly affected by TP. The higher the rank of TP, the higher the positive evaluation
+of acoustic Comfort, acoustic Preference, acoustic Disorder, acoustic Coordination, and
+overall acoustic Vote. The thermal environment also affects acoustic Harshness, acoustic
+Intensity, acoustic Excitability, and acoustic Coordination. As the temperature rises, the
+corresponding indicators tend to have negative evaluations. Moreover, the interaction effect
+between UTCI and Laeq signiﬁcantly impacts Subjective loudness, acoustic Harshness,
+acoustic Intensity, and acoustic Excitability. As UTCI and LAeq values increase, they will
+move away from the neutral level.
+(3) In terms of overall environmental assessment, the hot environment signiﬁcantly
+inﬂuences the overall comfort vote, overall Annoyance vote and overall satisfaction vote
+in all sample sites. As the temperature rises, there is a trend of negative evaluation in the
+overall comfort vote, annoyance vote, and satisfaction vote. Regarding the sound environ-
+ment, LAeq impacts the assessment of overall annoyance vote in the sample sites, and its
+evaluation increases in environments with higher sound pressure levels. TP signiﬁcantly
+
+
+===== PAGE 17 =====
+Forests 2023, 14, 1161
+17 of 21
+inﬂuences the overall comfort vote, overall annoyance vote and overall satisfaction vote in
+all sample sites, and the more prominent rankings of TP result in more positive evaluations.
+In addition, the interaction between UTCI and LAeq also affects the evaluation of the
+overall annoyance vote and overall satisfaction vote, wherein as UTCI and LAeq increase,
+their evaluations tend to be negative and move away from the neutral level.
+Author Contributions: Conceptualization, Y.C. and J.D.; methodology, Y.C., F.L. and X.L.; software,
+Y.C., J.L. (Jing Liu) and Z.C.; validation, Y.C., J.L. (Junyi Li) and K.S.; formal analysis, Y.C. and F.L.;
+investigation, Y.C., F.L., X.L., J.L. (Jing Liu), Z.C., K.S. and J.L. (Junyi Li); resources, Y.C.; data curation,
+Y.C.; writing—original draft preparation, Y.C.; writing—review and editing, Y.C. All authors have
+read and agreed to the published version of the manuscript.
+Funding: This research was funded by (1) Unit: Ministry of Science and Technology of the People’s
+Republic of China. Green Urbanization across China and Europe: Collaborative Research on Key
+Technological Advances in Urban Forests, funding number 2021YFE0193200; (2) Unit: Ministry of
+Science and Technology of the People’s Republic of China. Horizon 2020 strategic plan: CLEARING
+HOUSE-Collaborative Learning in Research, Information sharing, and Governance on How Urban
+tree-based solutions support Sino-European urban futures, funding number 821242.
+Data Availability Statement: The data used to support the ﬁndings of this study are available from
+the corresponding author upon request.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+Appendix A
+Table A1. Basic information of subjects.
+No.
+Gender
+Age
+Time Living in Fuzhou
+No.
+Gender
+Age
+Time Living in Fuzhou
+01
+Male
+31~40
+16
+16
+Male
+18~24
+6
+02
+Female
+31~40
+12
+17
+Female
+18~24
+7
+03
+Male
+25~30
+Less than 1 year
+18
+Female
+18~24
+Less than 1 year
+04
+Female
+25~30
+10
+19
+Male
+25~30
+Local
+05
+Male
+31~40
+11
+20
+Female
+25~30
+12
+06
+Male
+31~40
+12
+21
+Female
+31~40
+Less than 1 year
+07
+Male
+25~30
+Less than 1 year
+22
+Male
+18~24
+Local
+08
+Male
+25~30
+12
+23
+Male
+25~30
+7
+09
+Male
+25~30
+2
+24
+Female
+18~24
+Local
+10
+Male
+31~40
+Local
+25
+Female
+25~30
+Local
+11
+Male
+25~30
+8
+26
+Female
+25~30
+12
+12
+Male
+18~24
+5
+27
+Male
+25~30
+7
+13
+Female
+18~24
+5
+28
+Male
+25~30
+Less than 1 year
+14
+Male
+25~30
+9
+29
+Female
+18~24
+Local
+15
+Female
+25~30
+7
+30
+Female
+18~24
+Local
+Table A2. Subjective evaluations of the questionnaire surveys (TSV, TCV, TAV, OTV).
+Please Tick off One Response
+Alternatives for the Surrounding
+Thermal Environment
+1
+2
+3
+4
+5
+Thermal Sensation
+□
+□
+□
+□
+□
+Cold
+Cool
+Neutral
+warm
+Hot
+Thermal Comfort
+□
+□
+□
+□
+□
+Uncomfortable
+Slightly Uncomfortable
+Neutral
+Slightly Comfortable
+Comfortable
+Thermal Acceptance
+□
+□
+□
+□
+□
+Unacceptable
+Slightly unacceptable
+Neutral
+Slightly acceptable
+Acceptable
+Overall Thermal
+□
+□
+□
+□
+□
+Bad
+Slightly bad
+Neutral
+Slightly good
+Good
+
+
+===== PAGE 18 =====
+Forests 2023, 14, 1161
+18 of 21
+Table A3. Subjective evaluations of the questionnaire surveys (SLV, ACV, APV, AHV, APlV, AFV, AIV,
+AEV, ADV, ACoV, OAV).
+Please Tick off the 11 Options That
+Match Your Feelings about the
+Surrounding Sound Environment
+1
+2
+3
+4
+5
+Subjective Loudness
+□
+□
+□
+□
+□
+Quiet
+Slightly quiet
+Neutral
+Slightly Loud
+Loud
+Acoustic Comfort
+□
+□
+□
+□
+□
+Uncomfortable
+Slightly
+Uncomfortable
+Neutral
+Slightly Comfortable
+Comfortable
+Acoustic Preference
+□
+□
+□
+□
+□
+Unlike
+Slightly unlike
+Neutral
+Slightly like
+Like
+Acoustic Harshness
+□
+□
+□
+□
+□
+Gentle
+Slightly Gentle
+Neutral
+Slightly harsh
+Harsh
+Acoustic Pleasure
+□
+□
+□
+□
+□
+Unhappy
+Slightly Unhappy
+Neutral
+Slightly happy
+Happy
+Acoustic Familiarity
+□
+□
+□
+□
+□
+Strange
+Slightly Strange
+Neutral
+Slightly familiar
+Familiar
+Acoustic Intensity
+□
+□
+□
+□
+□
+Weak
+Slightly weak
+Neutral
+Slightly strong
+Strong
+Acoustic Excitability
+□
+□
+□
+□
+□
+Calm
+Slightly Calm
+Neutral
+Slightly excited
+Excited
+Acoustic Disorder
+□
+□
+□
+□
+□
+Monotonous
+Slightly monotonous
+Neutral
+Slightly disordered
+Disordered
+Acoustic Coordination
+□
+□
+□
+□
+□
+Incoordinate
+Slightly incoordinate
+Neutral
+Slightly coordinate
+Coordinate
+Overall Acoustic
+□
+□
+□
+□
+□
+Bad
+Slightly bad
+Neutral
+Slightly good
+Good
+Table A4. Subjective evaluations of the questionnaire surveys (OCV, OAnV, OSV).
+Overall, How Would You Describe
+the Present Surroundings
+Acoustic-Thermal Environment?
+1
+2
+3
+4
+5
+Overall Comfort
+□
+□
+□
+□
+□
+Uncomfortable
+Slightly
+Uncomfortable
+Neutral
+Slightly Comfortable
+Comfortable
+Overall Annoyance
+□
+□
+□
+□
+□
+Peaceful
+Slightly Peaceful
+Neutral
+Slightly annoying
+Annoying
+Overall Satisfaction
+□
+□
+□
+□
+□
+Bad
+Slightly bad
+Neutral
+Slightly good
+Good
+References
+1.
+Ma, T.; Sun, S.; Fu, G.; Hall, J.W.; Ni, Y.; He, L.; Yi, J.; Zhao, N.; Du, Y.; Pei, T. Pollution exacerbates China’s water scarcity and its
+regional inequality. Nat. Commun. 2020, 1, 650. [CrossRef] [PubMed]
+2.
+Sun, S.; Zheng, X.; Liu, X.; Wang, Z.; Liang, L. Global pattern and drivers of water scarcity research: A combined bibliometric and
+geographic detector study. Environ. Monit. Assess. 2022, 194, 523. [CrossRef] [PubMed]
+3.
+Awasthi, A.K.; Li, J.; Koh, L.; Ogunseitan, O.A. Circular economy and electronic waste. Nat. Electron. 2019, 2, 86–89. [CrossRef]
+4.
+Fucheng, Y.; Jichang, Y.; Yuehong, W.; Dawei, C. Site environmental assessment to an old paint factory in China. Environ. Monit.
+Assess. 2008, 139, 93–106.
+5.
+Kastner, J. The new baby boom. Soap Perfum. Cosmet. 2016, 89, 19.
+6.
+Huang, Y.; Grifﬁn, M.J. The discomfort produced by noise and whole-body vertical vibration presented separately and in
+combination. Ergonomics 2014, 57, 1724–1738. [CrossRef] [PubMed]
+7.
+Huang, Y.; Grifﬁn, M.J. The effects of sound level and vibration magnitude on the relative discomfort of noise and vibration.
+J. Acoust. Soc. Am. 2012, 131, 4558. [CrossRef]
+8.
+Wang, C.; Geng, L.; Rodríguez-Casallas, J.D. How and when higher climate change risk perception promotes less climate change
+inaction. J. Clean. Prod. 2021, 321, 128952. [CrossRef]
+9.
+Lai, H.F.; Huntley, R. Communicating about climate change–Who is listening, who isn’t and why: Implications for medical
+professionals. J. Paediatr. Child Health 2021, 57, 1826–1829.
+10.
+Daniel, S.; David, W.; Dirks, K.N.; Renata, M. Exploring the relationship between noise sensitivity, annoyance and Health-Related
+quality of life in a sample of adults exposed to environmental noise. Int. J. Environ. Res. Public Health 2010, 7, 3579.
+11.
+King, R.P.; Davis, J.R. Community noise: Health effects and management. Int. J. Hyg. Environ. Health 2003, 206, 123–131.
+[CrossRef] [PubMed]
+12.
+Fes, A.; Jt, B.; Tm, B. Mapping of transportation noise-induced health risks as an alternative tool for risk communication with
+local residents. Appl. Acoust. 2021, 178, 107987.
+13.
+Giannaros, T.M.; Melas, D. Study of the urban heat island in a coastal Mediterranean City: The case study of Thessaloniki, Greece.
+Atmos. Res. 2012, 118, 103–120. [CrossRef]
+
+
+===== PAGE 19 =====
+Forests 2023, 14, 1161
+19 of 21
+14.
+Yang, B.; Yang, X.; Leung, L.R.; Zhong, S.; Qian, Y.; Zhao, C.; Chen, F.; Zhang, Y.; Qi, J. Modeling the impacts of urbanization on
+summer thermal comfort: The role of urban land use and anthropogenic heat. J. Geophys. Res. D Atmos. JGR 2019, 124, 6681–6697.
+[CrossRef]
+15.
+de Souza e Silva, R.; da Silva, R.M.; de Freitas, A.F.; Dos Santos, J.S.; Santos, C.A.; de Lima, E.R. Thermal comfort conditions at
+microclimate scale and surface urban heat island in a tropical city: A study on Joao Pessoa city, Brazil. Int. J. Biometeorol. J. Int.
+Soc. Biometeorol. 2022, 66, 1079–1093. [CrossRef]
+16.
+Loures, L.; Santos, R.; Panagopoulos, T. Urban parks and sustainable city Planning-The case of portimão, portugal. WSEAS Trans.
+Environ. Dev. 2007, 3, 171–180.
+17.
+Di, L.; Yan, S.; Yue, Y.; Yi, H.; Chengyang, X. Urban park use and self-reported physical, mental, and social health during the
+COVID-19 pandemic: An on-site survey in Beijing, China. Urban For. Urban Green. 2023, 79, 127804.
+18.
+Xu, M.; Hong, B.; Mi, J.; Yan, S. Outdoor thermal comfort in an urban park during winter in cold regions of China. Sustain. Cities
+Soc. 2018, 43, 208–220. [CrossRef]
+19.
+Dong, W.; Ly, A.; Zb, C.; Yi, L.D.; Hy, E. Variations in outdoor thermal comfort in an urban park in the hot-summer and cold-winter
+region of China. Sustain. Cities Soc. 2021, 77, 103535.
+20.
+Cureau, R.J.; Pigliautile, I.; Kousis, I.; Pisello, A.L. Multi-domain human-oriented approach to evaluate human comfort in outdoor
+environments. Int. J. Biometeorol. 2022, 66, 2033–2045. [CrossRef]
+21.
+Yao, Y.A.; Jw, B.; Ye, H.C.; Chen, Q.D.; Qg, A.; Xun, L.A.; Ld, A.; Jz, E. Discovering the homogeneous geographic domain of
+human perceptions from street view images. Landsc. Urban Plan. 2021, 212, 104125. [CrossRef]
+22.
+Stathopoulos, T.; Wu, H.; Zacharias, J. Outdoor human comfort in an urban climate. Build. Environ. 2004, 39, 297–305. [CrossRef]
+23.
+Dumyahn, S.L.; Pijanowski, B.C. Soundscape conservation. Landsc. Ecol. 2011, 26, 1327–1344. [CrossRef]
+24.
+Hong, X.; Cheng, S.; Liu, J.; Dang, E.; Wang, J.; Cheng, Y. The physiological restorative role of soundscape in different forest
+structures. Forests 2022, 13, 1920. [CrossRef]
+25.
+Chen, Z.; Zhu, T.; Liu, J.; Hong, X. Before becoming a world heritage: Spatiotemporal dynamics and spatial dependency of the
+soundscapes in kulangsu scenic area, china. Forests 2022, 13, 1526. [CrossRef]
+26.
+Hu, F.; Wang, Z.; Sheng, G.; Lia, X.; Chen, C.; Geng, D.; Hong, X.; Xu, N.; Zhu, Z.; Zhang, Z.; et al. Impacts of national park
+tourism sites: A perceptual analysis from residents of three spatial levels of local communities in Banff national park. Environ.
+Dev. Sustain. 2022, 24, 3126–3145. [CrossRef]
+27.
+Kang, J. Soundscape in city and built environment: Current developments and design potentials. City Built Environ. 2023, 1, 1.
+[CrossRef]
+28.
+Schulte-Fortkamp, B.; Fiebig, A.; Sisneros, J.A.; Popper, A.N.; Fay, R.R. (Eds.) Soundscapes: Humans and Their Acoustic Environment;
+Springer International Publishing: Berlin/Heidelberg, Germany, 2023.
+29.
+Nikolopoulou, M. Designing Open Spaces in the Urban Environment: A Bioclimatic Approach; Centre for Renewable Energy Sources:
+Hong Kong, China, 2004.
+30.
+Hong, X.; Liu, J.; Wang, G. Soundscape in urban forests. Forests 2022, 13, 2056. [CrossRef]
+31.
+Carles, J.L.; Barrio, I.L.; de Lucio, J.V. Sound inﬂuence on landscape values. Landsc. Urban Plan. 1999, 43, 191–200. [CrossRef]
+32.
+Carles, J.; Bernáldez, F.; Lucio, J.D. Audio-visual interactions and soundscape preferences. Landsc. Res. 1992, 17, 52–56. [CrossRef]
+33.
+Wang, R.; Zhao, J. A good sound in the right place: Exploring the effects of auditory-visual combinations on aesthetic preference.
+Urban For. Urban Green. 2019, 43, 126356. [CrossRef]
+34.
+Mei, Z.; Jian, K. Towards the evaluation, description, and creation of soundscapes in urban open spaces. Environ. Plan. B Plan.
+Des. 2007, 34, 68–86.
+35.
+Yu, L.; Kang, J. Modeling subjective evaluation of soundscape quality in urban open spaces: An artiﬁcial neural network approach.
+J. Acoust. Soc. Am. 2009, 126, 1163–1174. [CrossRef] [PubMed]
+36.
+Jiang, L.; Masullo, M.; Maffei, L. Effect of odour on multisensory environmental evaluations of road trafﬁc. Environ. Impact Assess.
+Rev. 2016, 60, 126–133. [CrossRef]
+37.
+Ba, M.; Jian, K. A laboratory study of the sound-odour interaction in urban environments. Build. Environ. 2019, 147, 314–326.
+[CrossRef]
+38.
+Zhou, X.; Liu, Y.; Luo, M.; Zheng, S.; Zhang, X. Overall and thermal comfort under different temperature, noise, and vibration
+exposures. Indoor Air 2021, 32, e12915. [CrossRef]
+39.
+Pellerin, N.; Candas, V. Combined effects of temperature and noise on human discomfort. Physiol. Behav. 2003, 78, 99–106.
+[CrossRef]
+40.
+Yeyu, W.; Xiaodong, C.; Hui, L.; Xin, Z.; Xiang, Y.; Xian, D.; Xianting, L.; Bin, C. Inﬂuence of thermal and lighting factors on
+human perception and work performance in simulated underground environment. Sci. Total Environ. 2022, 828, 154455.
+41.
+Li, H.; Zhu, Y.; Qin, O.; Cao, B. A study on the effects of thermal, luminous, and acoustic environments on indoor environmental
+comfort in ofﬁces. Build. Environ. 2012, 49, 304–309.
+42.
+Kaplan, S. Meditation, restoration, and the management of mental fatigue. Environ. Behav. 2001, 33, 480–506. [CrossRef]
+43.
+Yao, X.; Yu, K.; Zeng, X.; Lin, Y.; Ye, B.; Shen, X.; Liu, J. How can urban parks be planned to mitigate urban heat island effect in
+“Furnace cities” ? An accumulation perspective. J. Clean. Prod. 2022, 330, 129852. [CrossRef]
+44.
+Junyi, L.; Ziluo, H.; Dulai, Z.; Yujie, Z.; Peilin, H.; Shanjun, H.; Wenqiang, F.; Weicong, F.; Zhipeng, Z. Effect of landscape elements
+on public psychology in urban park waterfront green space: A quantitative study by semantic segmentation. Forests 2023, 14, 244.
+
+
+===== PAGE 20 =====
+Forests 2023, 14, 1161
+20 of 21
+45.
+Lavandier, C.; Defréville, B. The contribution of sound source characteristics in the assessment of urban soundscapes. Acta Acust.
+United Acust. 2006, 92, 912–921.
+46.
+Istvandity, L. Combining music and reminiscence therapy interventions for wellbeing in elderly populations: A systematic review.
+Complement. Ther. Clin. Pract. 2017, 28, 18–25. [CrossRef]
+47.
+Blood, A.J.; Zatorre, R.J. Intensely pleasurable responses to music correlate with activity in brain regions implicated in reward
+and emotion. Proc. Natl. Acad. Sci. USA 2001, 98, 11818–11823. [CrossRef]
+48.
+Ratcliffe, E.; Gatersleben, B.; Sowden, P.T. Bird sounds and their contributions to perceived attention restoration and stress
+recovery. J. Environ. Psychol. 2013, 36, 221–228. [CrossRef]
+49.
+Zl, A.; Jian, K. Sensitivity analysis of changes in human physiological indicators observed in soundscapes. Landsc. Urban Plan.
+2019, 190, 103593.
+50.
+Jendritzky, G.; De, D.R.; Havenith, G. UTCI—Why another thermal index? Int. J. Biometeorol. 2012, 56, 421–428. [CrossRef]
+51.
+Blazejczyk, K.; Epstein, Y.; Jendritzky, G.; Staiger, H.; Tinz, B. Comparison of UTCI to selected thermal indices. Int. J. Biometeorol. J.
+Int. Soc. Biometeorol. 2012, 56, 515–535. [CrossRef]
+52.
+Pantavou, K.; Theoharatos, G.; Santamouris, M.; Asimakopoulos, D. Outdoor thermal sensation of pedestrians in a Mediterranean
+climate and a comparison with UTCI. Build. Environ. 2013, 66, 82–95. [CrossRef]
+53.
+Fang, Z.; Lin, Z.; Mak, C.M.; Niu, J.; Tse, K.T. Investigation into sensitivities of factors in outdoor thermal comfort indices. Build.
+Environ. 2017, 128, 129–142. [CrossRef]
+54.
+Peter, B.; Dusan, F.; Krzysztof, B.; Ingvar, H.; Gerd, J.; Bernhard, K.; Birger, T.; George, H. Deriving the operational procedure for
+the Universal Thermal Climate Index (UTCI). Int. J. Biometeorol. 2012, 56, 481–494.
+55.
+Henshaw, V.A.; MCox, T.J. Route Planning a Sensory Walk: Snifﬁng out the Issues. In Proceedings of the Royal Geographical
+Society Annual Conference, Oxford, UK, 26–28 August 2009.
+56.
+Tarlao, C.; Steffens, J.; Guastavino, C. Investigating contextual inﬂuences on urban soundscape evaluations with structural
+equation modeling. Build. Environ. 2020, 188, 107490. [CrossRef]
+57.
+Ge, J.; Hokao, K. Research on the sound environment of urban open space from the viewpoint of soundscape-a case study of Saga
+Forest Park, Japan. Acta Acust. United Acust. 2004, 90, 555–563.
+58.
+Kang, J.; Zhang, M. Semantic differential analysis of the soundscape in urban open public spaces. Build. Environ. 2010, 45, 150–157.
+[CrossRef]
+59.
+Du, M.; Hong, B.; Gu, C.; Li, Y.; Wang, Y. Multiple effects of visual-acoustic-thermal perceptions on the overall comfort of elderly
+adults in residential outdoor environments. Energy Build. 2023, 283, 112813. [CrossRef]
+60.
+Lam, C.; Yang, H.; Yang, X.; Liu, J.; Hang, J. Cross-modal effects of thermal and visual conditions on outdoor thermal and visual
+comfort perception. Build. Environ. 2020, 186, 107297. [CrossRef]
+61.
+Tingkai, Y.; Yumeng, J.; Hong, J. Combined effects of the visual-thermal environment on the subjective evaluation of urban
+pedestrian streets in severely cold regions of China. Build. Environ. 2023, 228, 109895.
+62.
+International Standard 7726; Ergonomics of the Thermal Environment Instruments and Method for Measuring Physical Quantities.
+IOS: Geneva, Switzerland, 1998.
+63.
+Çeven, E.A.; Belkayali, N. Experiencing Urban Smells when Walking: Kastamonu city case. Int. J. Urban Reg. Res. 2023, 47,
+237–257. [CrossRef]
+64.
+Gage, S.H.; Axel, A.C. Visualization of temporal change in soundscape power of a Michigan lake habitat over a 4-year period.
+Ecol. Inform. 2014, 21, 100–109. [CrossRef]
+65.
+Wang, F.; Huang, G.H.; Fan, Y.; Li, Y.P. Robust subsampling ANOVA methods for sensitivity analysis of water resource and
+environmental models. Water Resour. Manag. 2020, 34, 3199–3217. [CrossRef]
+66.
+Vaus, D. Surveys in Social Research; Routledge: Oxford, UK, 1986.
+67.
+Callan, A.; Callan, D.E.; Ando, H. Neural correlates of sound externalization. Neuroimage 2013, 66, 22–27. [CrossRef] [PubMed]
+68.
+Lee, H.M.; Liu, Y.; Lee, H.P. Assessment of acoustical environment condition at urban landscape. Appl. Acoust. 2020, 160, 107126.
+[CrossRef]
+69.
+Taghipour, A.; Sievers, T.; Eggenschwiler, K. Acoustic comfort in virtual inner yards with various building facades. Int. J. Environ.
+Res. Public Health 2019, 16, 249. [CrossRef] [PubMed]
+70.
+Ma, K.W.; Mak, C.M.; Wong, H.M. Effects of environmental sound quality on soundscape preference in a public urban space.
+Appl. Acoust. 2021, 171, 107570. [CrossRef]
+71.
+Steele, D.; Bild, E.; Tarlao, C.; Guastavino, C. Soundtracking the public space: Outcomes of the musikiosk soundscape intervention.
+Int. J. Environ. Res. Public Health 2019, 16, 1865. [CrossRef]
+72.
+Jin, Y.; Jin, H.; Kang, J. Combined effects of the thermal-acoustic environment on subjective evaluations in urban squares. Build.
+Environ. 2020, 168, 106517. [CrossRef]
+73.
+Hao, Y.; Kang, J.; Wörtche, H. Assessment of the masking effects of birdsong on the road trafﬁc noise environment. J. Acoust. Soc.
+Am. 2016, 140, 978–987. [CrossRef]
+74.
+Mohammadzadeh, N.; Karimi, A.; Brown, R.D. The inﬂuence of outdoor thermal comfort on acoustic comfort of urban parks
+based on plant communities. Build. Environ. 2023, 228, 109884. [CrossRef]
+75.
+Yang, W.; Moon, H.J. Cross-modal effects of noise and thermal conditions on indoor environmental perception and speech
+recognition. Appl. Acoust. 2018, 141, 1–8. [CrossRef]
+
+
+===== PAGE 21 =====
+Forests 2023, 14, 1161
+21 of 21
+76.
+Chen, H.; Hong, B.; Qu, H.; Geng, Y.; Su, M. Effects of Acoustic Perception on Outdoor Thermal Comfort in Campus Open Spaces
+in China’s Cold Region. Buildings 2022, 12, 1518. [CrossRef]
+77.
+Cerwn, G. Urban soundscapes: A quasi-experiment in landscape architecture. Landsc. Res. 2016, 41, 481–494. [CrossRef]
+78.
+Nagano, K.; Horikoshi, T. New comfort index during combined conditions of moderate low ambient temperature and trafﬁc
+noise. Energy Build. 2005, 37, 287–294. [CrossRef]
+79.
+Son, Y.J.; Chun, C. Research on electroencephalogram to measure thermal pleasure in thermal alliesthesia in temperature
+step-change environment. Indoor Air 2018, 28, 916–923. [CrossRef] [PubMed]
+80.
+Yu, T.H.; Behm, H.; Bill, R.; Kang, J. Validity of VR technology on the smartphone for the study of wind park soundscapes. ISPRS
+Int. J. Geo Inf. 2018, 7, 152. [CrossRef]
+81.
+Lin, T.P.; Tsai, K.T.; Liao, C.C.; Huang, Y.C. Effects of thermal comfort and adaptation on park attendance regarding different
+shading levels and activity types. Build. Environ. 2013, 59, 599–611. [CrossRef]
+82.
+Mallick, Z.; Badruddin, I.A.; Hussain, M.; Ahmed, N.; Kanesan, J. Noise characteristics of grass-trimming machine engines and
+their effect on operators. Noise Health 2009, 11, 98–102.
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.

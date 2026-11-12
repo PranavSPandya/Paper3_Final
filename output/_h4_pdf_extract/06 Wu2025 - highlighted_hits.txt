@@ -1,0 +1,123 @@
+FILE: 06 Wu2025 - highlighted.pdf
+PAGES: 19
+CHARS: 99486
+
+ecture, Zhangjiakou 075000 Hebei, China A R T I C L E I N F O Keywords: Outdoor thermal comfort Acoustic comfort Overall comfort Cold regions Urban parks A B S T R A C T Urban parks play a crucial role in enhancing
+---
+mal perception, natural sounds significantly reduce heat stress by lowering the thermal sensation vote and improving thermal comfort, whereas artificial sounds exacerbate it. Additionally, high sound pressure levels
+---
+cantly reduce heat stress by lowering the thermal sensation vote and improving thermal comfort, whereas artificial sounds exacerbate it. Additionally, high sound pressure levels (LAeq ≥60 dB(A)) exacerbate thermal
+---
+eas artificial sounds exacerbate it. Additionally, high sound pressure levels (LAeq ≥60 dB(A)) exacerbate thermal discomfort, making individuals feel hotter in summer and colder in winter, thereby reduc
+---
+aking individuals feel hotter in summer and colder in winter, thereby reducing thermal comfort. Regarding acoustic perception, a thermally comfortable environment en­ hances the acoustic sensation vote and improves
+---
+t vote is negatively correlated with both the Universal Thermal Climate Index (UTCI) and sound pressure levels, while in winter, overall comfort vote is positively correlated with UTCI but negatively co
+---
+ure levels, while in winter, overall comfort vote is positively correlated with UTCI but negatively correlated with sound pressure levels. The analysis of equivalent overall comfort vote further reveals
+---
+er and transitional seasons, rising temperatures under extreme heat conditions (UTCI ≥ 35◦C) have a more pronounced negative impact on overall comfort vote than decreasing temperatures in winter. Convers
+---
+transitional seasons. This study addresses a research gap in understanding the interaction between thermal and acoustic environments in cold-region urban parks and provides valuable in­ sights for the future pl
+---
+enhancing quality of life, improving residential comfort, and fostering social interactions [1]. High-quality outdoor environments not only provide opportunities for contact with nature and physical and menta
+---
+[14]. In the context of intensifying urban heat island effects [15], improving thermal comfort in outdoor spaces has become increasingly critical. Similarly, an unfa­ vorable acoustic environment not only causes d
+---
+at island effects [15], improving thermal comfort in outdoor spaces has become increasingly critical. Similarly, an unfa­ vorable acoustic environment not only causes direct harm to the audi­ tory system bu
+---
+ent years, with rapid urbanization and the rise in traffic and social activity noise, optimizing the acoustic environment has become a crit­ ical aspect of improving outdoor space quality [20,21]. Therefo
+---
+r and health, is of great significance. Such research not only contributes to increased outdoor space utilization but also provides a scientific basis for future urban planning and environmental managemen
+---
+on­ ments separately, research on environmental evaluation under multi- factor interactions remains insufficient. In recent years, increasing attention has been given to the study of thermal-acoustic interacti
+---
+uation under multi- factor interactions remains insufficient. In recent years, increasing attention has been given to the study of thermal-acoustic interactions, with various environmental contexts explor
+---
+nt years, increasing attention has been given to the study of thermal-acoustic interactions, with various environmental contexts explored to understand their underlying mechanisms, as summarized in Table 1. H
+---
+comprehensive understanding of the unique char­ acteristics of thermal-acoustic interactions under extreme climatic conditions. Second, previous studies have predominantly examined urban functional areas such
+---
+oustic environments on comfort, with relatively superficial discussions on the interaction mechanisms be­ tween these factors. Moreover, existing studies have predominantly focused on the independent effects o
+---
+ealth and overall well-being. A deeper investigation into the thermal-acoustic interactions in urban parks in cold regions can not only bridge existing research gaps but also provide scientific insights for e
+---
+gaps but also provide scientific insights for enhancing environmental comfort, increasing the attractiveness of out­ door spaces during winter, and supporting the sustainable development of cold-region cit
+---
+he sustainable development of cold-region cities [31]. Therefore, studying the interaction mecha­ nisms of thermal-acoustic environments in urban parks in cold regions is of great theoretical significance and
+---
+pport improvements in outdoor comfort in cold re­ gions. (2) To investigate the interaction between thermal and acoustic perception in open spaces of urban parks in cold regions. This includes analyzing the dy
+---
+te goal of this study is to develop a scientifically grounded thermal-acoustic interaction model based on the unique climatic and soundscape characteristics of cold regions. This model will provide theoretica
+---
+July. The city has an annual average precipitation of 357 mm and Nomenclature UTCI Universal Thermal Climate Index LAeq Equivalent continuous sound level (dB(A)) SPL Sound pressure level Ta Air Temperat
+---
+precipitation of 357 mm and Nomenclature UTCI Universal Thermal Climate Index LAeq Equivalent continuous sound level (dB(A)) SPL Sound pressure level Ta Air Temperature (℃) RH Relative Humidity (%) Tg G
+---
+Universal Thermal Climate Index LAeq Equivalent continuous sound level (dB(A)) SPL Sound pressure level Ta Air Temperature (℃) RH Relative Humidity (%) Tg Globe Temperature (℃) Va Wind Speed (m/s) TSV T
+---
+ature (℃) RH Relative Humidity (%) Tg Globe Temperature (℃) Va Wind Speed (m/s) TSV Thermal Sensation Vote TCV Thermal Comfort Vote ASV Acoustic Sensation Vote ACV Acoustic Comfort Vote OCV Overall Comfo
+---
+e (℃) RH Relative Humidity (%) Tg Globe Temperature (℃) Va Wind Speed (m/s) TSV Thermal Sensation Vote TCV Thermal Comfort Vote ASV Acoustic Sensation Vote ACV Acoustic Comfort Vote OCV Overall Comfort Vote P1 Fitness
+---
+ity (%) Tg Globe Temperature (℃) Va Wind Speed (m/s) TSV Thermal Sensation Vote TCV Thermal Comfort Vote ASV Acoustic Sensation Vote ACV Acoustic Comfort Vote OCV Overall Comfort Vote P1 Fitness Activity
+---
+(%) Tg Globe Temperature (℃) Va Wind Speed (m/s) TSV Thermal Sensation Vote TCV Thermal Comfort Vote ASV Acoustic Sensation Vote ACV Acoustic Comfort Vote OCV Overall Comfort Vote P1 Fitness Activity Area P2 Ecologi
+---
+y frequented by local residents, making it an ideal site for investigating the interaction between thermal and acoustic comfort in urban parks of cold regions. Urban sounds can be broadly categorized into thre
+---
+ation and is located near urban roads, where artificial sounds such as traffic noise and construction machinery are prominent. In contrast, the fitness activity area (P1) has minimal tree cover, and the
+---
+nimal tree cover, and the primary environmental sounds include human-generated noises such as con­ versation and exercise-related activities. Details of these selected spaces are presented in Fig. 1. The
+---
+ban public space Birdsong, dog bark, conversation, traffic, slow/fast music; SPL: 41.8–63.4 dB(A) Winter (0◦C), transitional seasons (20◦C), summer (30◦C) Birdsong and slow music improved comfort in
+---
+en spaces Music, birdsong, water, wind/insects, crowd, machines (60–70 dB(A)) UTCI: Strong (>41.9◦C), Moderate (22.2–41.9◦C), None (12.3–22.2◦C); seasonal: Summer 27.1◦C, Winter 0.5◦C Music and natur
+---
+tural sounds improved thermal comfort in cooler conditions; machine and crowd noise worsened perception in heat; lighting and visual comfort also influenced thermal responses. Y. Chen, et al. [34] 2023
+---
+rban park Six sound types: water, birds, leaves, music, voices, construction; SPL: 52.9–77.8 dB(A) UTCI: 31.35–38.92◦C High temperature and noise lowered comfort; natural sounds improved acoustic and
+---
+ypes: water, birds, leaves, music, voices, construction; SPL: 52.9–77.8 dB(A) UTCI: 31.35–38.92◦C High temperature and noise lowered comfort; natural sounds improved acoustic and thermal acceptance; s
+---
+s, construction; SPL: 52.9–77.8 dB(A) UTCI: 31.35–38.92◦C High temperature and noise lowered comfort; natural sounds improved acoustic and thermal acceptance; sound-heat interaction intensified discomf
+---
+comfort; natural sounds improved acoustic and thermal acceptance; sound-heat interaction intensified discomfort. H. Chen, et al. [35] 2022 Campus open spaces in cold regions Five sound types: music, wate
+---
+Five sound types: music, water & birdsong, wind & insects, crowd, machinery; SPL: 60–70 dB(A) Autumn: 10.4–20.1◦C; Winter: −0.2–11.2◦C Pleasant sounds improved both thermal and acoustic comfort; neu
+---
+0.2–11.2◦C Pleasant sounds improved both thermal and acoustic comfort; neutral PET varied with sound type; thermal and acoustic comfort were positively related. Y. Yin, et al. [3] 2022 Campus open s
+---
+comfort were positively related. Y. Yin, et al. [3] 2022 Campus open spaces SPL: 40–75 dB(A); sound sources: conversation, fountain, insects, wind, leaves Autumn: 13.15–28.29◦C; Winter: 10.10–47.2
+---
+47.28◦C Acoustic comfort matters most in extreme thermal conditions; moderate noise (60–70 dB(A)) yields best comfort; thermal factors dominate overall comfort. M. Zhen, et al. [36] 2023 Outdoor campus
+---
+ors dominate overall comfort. M. Zhen, et al. [36] 2023 Outdoor campus spaces SPL: 40–65 dB(A) PET ranging from 8.2◦C to 27.6◦C (cool to slightly warm conditions) Thermal comfort was influenced by PET
+---
+rall comfort. M. Zhen, et al. [36] 2023 Outdoor campus spaces SPL: 40–65 dB(A) PET ranging from 8.2◦C to 27.6◦C (cool to slightly warm conditions) Thermal comfort was influenced by PET; acoustic comfo
+---
+0–65 dB(A) PET ranging from 8.2◦C to 27.6◦C (cool to slightly warm conditions) Thermal comfort was influenced by PET; acoustic comfort by LAeq. Interaction effects varied by site. Best overall comfort at PET 18–
+---
+to 27.6◦C (cool to slightly warm conditions) Thermal comfort was influenced by PET; acoustic comfort by LAeq. Interaction effects varied by site. Best overall comfort at PET 18–23◦C and LAeq ~ 50 dB(
+---
+ly warm conditions) Thermal comfort was influenced by PET; acoustic comfort by LAeq. Interaction effects varied by site. Best overall comfort at PET 18–23◦C and LAeq ~ 50 dB(A). K.K.-L. Lau, C.Y. Choi
+---
+m conditions) Thermal comfort was influenced by PET; acoustic comfort by LAeq. Interaction effects varied by site. Best overall comfort at PET 18–23◦C and LAeq ~ 50 dB(A). K.K.-L. Lau, C.Y. Choi. [37] 2021
+---
+c comfort by LAeq. Interaction effects varied by site. Best overall comfort at PET 18–23◦C and LAeq ~ 50 dB(A). K.K.-L. Lau, C.Y. Choi. [37] 2021 Urban open spaces Dominated by traffic noise Summer
+---
+. Interaction effects varied by site. Best overall comfort at PET 18–23◦C and LAeq ~ 50 dB(A). K.K.-L. Lau, C.Y. Choi. [37] 2021 Urban open spaces Dominated by traffic noise Summer temperatures typi
+---
+A). K.K.-L. Lau, C.Y. Choi. [37] 2021 Urban open spaces Dominated by traffic noise Summer temperatures typically > 31◦C, average ~27.8◦C; evaluated using UTCI Better acoustic and aesthetic quality im
+---
+noise Summer temperatures typically > 31◦C, average ~27.8◦C; evaluated using UTCI Better acoustic and aesthetic quality improves outdoor thermal comfort and tolerance. M. Du, et al. [38] 2023 Resid
+---
+; evaluated using UTCI Better acoustic and aesthetic quality improves outdoor thermal comfort and tolerance. M. Du, et al. [38] 2023 Residential outdoor spaces Five sound types: birdsong, music, opera, conver
+---
+tdoor spaces Five sound types: birdsong, music, opera, conversations, traffic; SPL: 60–80 dB(A) PET: 13.80–46.16◦C (neutral: 13.80–29.98◦C) High PET and traffic noise caused discomfort; thermal comfo
+---
+sound types: birdsong, music, opera, conversations, traffic; SPL: 60–80 dB(A) PET: 13.80–46.16◦C (neutral: 13.80–29.98◦C) High PET and traffic noise caused discomfort; thermal comfort dominated in su
+---
+s, traffic; SPL: 60–80 dB(A) PET: 13.80–46.16◦C (neutral: 13.80–29.98◦C) High PET and traffic noise caused discomfort; thermal comfort dominated in summer, acoustic comfort in spring; comfort model
+---
+60–80 dB(A) PET: 13.80–46.16◦C (neutral: 13.80–29.98◦C) High PET and traffic noise caused discomfort; thermal comfort dominated in summer, acoustic comfort in spring; comfort model had 84.7 % accurac

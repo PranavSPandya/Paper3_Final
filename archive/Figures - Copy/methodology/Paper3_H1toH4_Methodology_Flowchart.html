@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper3 H1–H4 Methodological Flowchart</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#ffffff',
+                primaryTextColor: '#1a1a1a',
+                primaryBorderColor: '#444444',
+                lineColor: '#555555',
+                secondaryColor: '#f5f5f5',
+                tertiaryColor: '#fafafa',
+                fontFamily: 'Arial, sans-serif',
+                fontSize: '12px'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                rankSpacing: 12,
+                nodeSpacing: 8
+            }
+        });
+    </script>
+    <style>
+        @page { size: A4 landscape; margin: 6mm; }
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 297mm;
+            min-height: 210mm;
+            height: auto;
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+            background: #fff;
+            color: #1a1a1a;
+        }
+        .page {
+            width: 100%;
+            min-height: 210mm;
+            padding: 5mm 6mm;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2mm;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 15pt;
+            color: #2c5f7c;
+            line-height: 1.2;
+        }
+        .header p {
+            margin: 1mm 0 0 0;
+            font-size: 8.5pt;
+            color: #555;
+            font-style: italic;
+        }
+
+        .hypotheses {
+            display: flex;
+            gap: 2mm;
+            margin-bottom: 2mm;
+        }
+        .hyp-card {
+            flex: 1;
+            padding: 2mm 3mm;
+            border: 1px solid #999;
+            border-radius: 2mm;
+            font-size: 8pt;
+            line-height: 1.2;
+        }
+        .hyp-card h3 {
+            margin: 0 0 1mm 0;
+            font-size: 9pt;
+        }
+        .hyp-card p { margin: 0; }
+        .h1 { background: #d4edda; border-color: #155724; }
+        .h2 { background: #cce5ff; border-color: #004085; }
+        .h3 { background: #fff3cd; border-color: #856404; }
+        .h4 { background: #f8d7da; border-color: #721c24; }
+        .h1 h3 { color: #155724; }
+        .h2 h3 { color: #004085; }
+        .h3 h3 { color: #856404; }
+        .h4 h3 { color: #721c24; }
+
+        .common {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f0f4f7;
+            border: 1px solid #2c5f7c;
+            border-radius: 2mm;
+            padding: 2mm 3mm;
+            margin-bottom: 2mm;
+            font-size: 8pt;
+        }
+        .common-step {
+            text-align: center;
+            flex: 1;
+            padding: 0 1mm;
+        }
+        .common-arrow {
+            color: #2c5f7c;
+            font-weight: bold;
+            font-size: 11pt;
+            line-height: 1;
+        }
+
+        .fdr-note {
+            background: #fff8e1;
+            border: 1px solid #f9a825;
+            border-radius: 2mm;
+            padding: 2mm 3mm;
+            margin-bottom: 2mm;
+            font-size: 8.5pt;
+            line-height: 1.3;
+        }
+        .fdr-note strong { color: #856404; }
+
+        .diag-standards {
+            background: #f1f8e9;
+            border: 1px solid #558b2f;
+            border-radius: 2mm;
+            padding: 2mm 3mm;
+            margin-bottom: 2mm;
+            font-size: 8pt;
+            line-height: 1.35;
+        }
+        .diag-standards strong { color: #33691e; display: block; margin-bottom: 1mm; }
+        .diag-standards span { display: block; }
+        .diag-standards span + span { margin-top: 1mm; }
+
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            flex: 1;
+            min-height: 0;
+            border-top: 1px solid #999;
+            border-bottom: 1px solid #999;
+        }
+        .column {
+            padding: 2mm 3mm;
+            border-left: 1px dashed #999;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+        .column:first-child { border-left: none; }
+        .col-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 11pt;
+            color: #2c5f7c;
+            margin-bottom: 1mm;
+            padding-bottom: 1mm;
+            border-bottom: 1.5px solid #2c5f7c;
+        }
+        .col-subtitle {
+            text-align: center;
+            font-size: 9pt;
+            color: #555;
+            margin-bottom: 2mm;
+        }
+        .diagram {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1mm 0;
+        }
+        .mermaid {
+            width: 100%;
+            max-height: 100%;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 2mm;
+            font-size: 8pt;
+            color: #444;
+            gap: 3mm;
+        }
+        .footer-left { flex: 1.2; }
+        .footer-right { flex: 1; }
+        .footer strong { color: #2c5f7c; }
+        .references {
+            margin-top: 2mm;
+            padding-top: 2mm;
+            border-top: 1px solid #ccc;
+            font-size: 9pt;
+            color: #444;
+            line-height: 1.35;
+        }
+        .references strong {
+            color: #2c5f7c;
+            display: block;
+            margin-bottom: 1mm;
+        }
+        code {
+            font-family: "Courier New", Courier, monospace;
+            background: #f0f0f0;
+            padding: 0 1mm;
+            border-radius: 1mm;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>Paper3 H1–H4 Methodological Flowchart</h1>
+            <p>Analysis pipeline from <code>script\Paper3_H1 to H4.ipynb</code></p>
+        </div>
+
+        <div class="hypotheses">
+            <div class="hyp-card h1">
+                <h3>(H1) Green vs. Urban</h3>
+                <p>Do body responses differ between Green and Urban routes?</p>
+            </div>
+            <div class="hyp-card h2">
+                <h3>(H2) Body–Mind Agreement</h3>
+                <p>Do sensor measures match subjective questionnaire ratings?</p>
+            </div>
+            <div class="hyp-card h3">
+                <h3>(H3) Walk vs. Bike</h3>
+                <p>Do body responses differ between Walking and Biking?</p>
+            </div>
+            <div class="hyp-card h4">
+                <h3>(H4) Heat × Noise Interaction</h3>
+                <p>Do heat and noise together change body responses?</p>
+            </div>
+        </div>
+
+        <div class="common">
+            <div class="common-step">Load data<br/>11 participants</div>
+            <div class="common-arrow">→</div>
+            <div class="common-step">Label routes<br/>Bike/Walk + Green/Urban</div>
+            <div class="common-arrow">→</div>
+            <div class="common-step">Prepare body signals<br/>heart rate, EDA, skin temp, eye tracking</div>
+            <div class="common-arrow">→</div>
+            <div class="common-step">Prepare environment<br/>heat (UTCI) &amp; noise (SND)</div>
+            <div class="common-arrow">→</div>
+            <div class="common-step">Run 3 robustness checks<br/>full data / equal length / baseline-adjusted</div>
+        </div>
+
+        <div class="fdr-note">
+            <strong>Why report both raw and FDR-adjusted p-values?</strong>
+            Every test first produces a raw p-value. FDR then adjusts those raw p-values to account for testing many measures and hypotheses. Because FDR-adjusted p-values are always at least as large as raw p-values, if <strong>p_FDR < 0.05</strong> then <strong>p < 0.05</strong> too. The notebook reports both, and a result is flagged significant only when both are below 0.05.
+        </div>
+
+        <div class="diag-standards">
+            <strong>Diagnostic standards</strong>
+            <span><strong>LMM residuals (H1/H3/H4):</strong> Shapiro-Wilk test on residuals, caution if <em>p</em> < 0.01; |cor(abs(residual), fitted)| > 0.20 flags residual-spread caution (informal screen, not Breusch-Pagan).</span>
+            <span><strong>H2 correlation:</strong> Spearman rank correlation computed only when <em>n</em> ≥ 8 phase-mean pairs; scatterplots inspected for monotonicity.</span>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="col-title">H1 / H3</div>
+                <div class="col-subtitle">Mixed-effects model comparing environments &amp; travel modes</div>
+                <div class="diagram">
+                    <div class="mermaid">
+flowchart TD
+    A[Check data quality<br/>7 body measures] --> B[Run mixed-effects model]
+    B --> C[Check residuals<br/>Shapiro + spread]
+    C --> D{Residuals OK?}
+    D -- Yes --> E[Estimate effects<br/>H1 Green − Urban<br/>H3 Walk − Bike]
+    D -- Caution --> F[Flag caution<br/>still report]
+    E --> G[Report effect size<br/>+ p-values raw &amp; FDR]
+    F --> G
+    G --> H[Apply FDR correction]
+    H --> I{Significant?<br/>p < 0.05 &amp; p_FDR < 0.05}
+
+    classDef box fill:#fff,stroke:#444,stroke-width:1px
+    classDef decision fill:#fff3e0,stroke:#e65100,stroke-width:1.5px
+    classDef caution fill:#ffebee,stroke:#c62828,stroke-width:1.5px
+    class A,B,C,E,G,H box
+    class D,I decision
+    class F caution
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="col-title">H4</div>
+                <div class="col-subtitle">Mixed-effects model testing heat–noise interaction</div>
+                <div class="diagram">
+                    <div class="mermaid">
+flowchart TD
+    A[Check data quality<br/>7 body measures] --> B[Run mixed-effects model]
+    B --> C[Check residuals<br/>Shapiro + spread]
+    C --> D{Residuals OK?}
+    D -- Yes --> E[Estimate effect<br/>heat × noise interaction]
+    D -- Caution --> F[Flag caution<br/>still report]
+    E --> G[Report effect size<br/>+ p-values raw &amp; FDR]
+    F --> G
+    G --> H[Apply FDR correction]
+    H --> I{Significant?<br/>p < 0.05 &amp; p_FDR < 0.05}
+
+    classDef box fill:#fff,stroke:#444,stroke-width:1px
+    classDef decision fill:#f8d7da,stroke:#c62828,stroke-width:1.5px
+    classDef caution fill:#ffebee,stroke:#c62828,stroke-width:1.5px
+    class A,B,C,E,G,H box
+    class D,I decision
+    class F caution
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="col-title">H2</div>
+                <div class="col-subtitle">Correlation between body measures and questionnaires</div>
+                <div class="diagram">
+                    <div class="mermaid">
+flowchart TD
+    A[Use full data only] --> B[Average each<br/>person-route segment]
+    B --> C[Compute correlations<br/>sensor vs questionnaire]
+    C --> D[Spearman rank<br/>n ≥ 8 pairs]
+    D --> E{Scatterplot<br/>monotonic?}
+    E -- Yes --> F[Report correlation<br/>+ p-values raw &amp; FDR]
+    E -- Caution --> G[Flag caution<br/>still report]
+    F --> H[Apply FDR correction]
+    G --> H
+    H --> I{Significant?<br/>p < 0.05 &amp; p_FDR < 0.05}
+
+    classDef box fill:#fff,stroke:#444,stroke-width:1px
+    classDef decision fill:#cce5ff,stroke:#004085,stroke-width:1.5px
+    classDef caution fill:#ffebee,stroke:#c62828,stroke-width:1.5px
+    class A,B,C,D,F,H box
+    class E,I decision
+    class G caution
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-left">
+                <strong>Outputs:</strong> results table, model-check table, and 42 diagnostic plots.
+            </div>
+            <div class="footer-right">
+                <strong>Model diagnostics are not filters:</strong> they flag models where assumptions may be violated, but they do not remove data or hide results.
+            </div>
+        </div>
+
+        <div class="references">
+            <strong>Key references</strong>
+            Benjamini &amp; Hochberg (1995) — FDR correction, <em>JRSS B</em>;
+            Enders &amp; Tofighi (2007) — person-mean centering, <em>Psychological Methods</em>;
+            Cnaan et al. (1997) — LMM for unbalanced repeated measures, <em>Statistics in Medicine</em>;
+            Nobre &amp; Singer (2007) — residual diagnostics for LMMs, <em>Biometrical Journal</em>;
+            Gidlow et al. (2016) — outdoor walking HRV/cortisol paradigm, <em>Journal of Environmental Psychology</em>.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1391 @@
+
+
+===== PAGE 1 =====
+Soundscape diversity governs thermo-physiological and psychological 
+states in a sexually dimorphic manner
+Zihan Tang a, Wenxia Huang a, Miaosen Zhang a, Pei Deng a, Bo Hong a,b,c,*
+a College of Landscape Architecture & Arts, Northwest A&F University, Yangling 712100, China
+b Key Laboratory of Eco-Planning and Green Building (Tsinghua University), Ministry of Education, Beijing, 100084, China
+c Key Laboratory of National Forestry and Grassland Administration on Forest Therapy & Wellness, Yangling 712100, China
+A R T I C L E I N F O
+Keywords:
+Outdoor thermal comfort
+Soundscape diversity
+Thermal stress
+Physio-psychological responses
+Sex differences
+Electroencephalogram (EEG)
+A B S T R A C T
+Although soundscapes modulate outdoor thermal perception, sex differences in physiological and psychological 
+mechanisms under thermal stress remain elusive. This study examined thermo-acoustic interactions across six 
+acoustic conditions that varied in diversity (low/medium/high) and environmental context (nature-dominant 
+versus anthropogenic-dominant) in male and female participants exposed to graded thermal stress. Physiological 
+indicators (blood pressure, heart rate, and eardrum temperature), electroencephalographic (EEG) activity, and 
+psychological metrics were continuously monitored alongside microclimatic parameters. Results demonstrate 
+marked sexual dimorphism in thermo-acoustic perception, primarily within nature-dominant environments. 
+Males exhibited cardiovascular attenuation under slight thermal stress, with systolic pressure declining 6.08 
+mmHg (medium diversity) and diastolic pressure 6.61 mmHg (high diversity) versus low diversity (p < 0.05), 
+though physiological responsivity diminished as thermal stress escalated. Females conversely demonstrated 
+intensified physiological reactions with increasing thermal load, including reduced heart rate under no thermal 
+stress conditions in anthropogenic settings (p < 0.05). In nature-dominant sound environments, low soundscape 
+diversity attenuated male δ power while potentiating α power, consistent with diminished somnolence and 
+heightened relaxation; elevated female θ power, conversely, indexed enhanced positive affect. Psychologically, 
+males demonstrated consistently higher sensitivity, while females exhibited a biphasic pattern of initial atten­
+uation followed by enhancement. In anthropogenic-dominant environments, males displayed heightened phys­
+iological and psychological sensitivity to acoustic diversity, whereas females showed asynchronous patterns: 
+physiological responses weakened then strengthened, while psychological responses progressively intensified 
+with increasing thermal stress. Our findings inform sex-sensitive acoustic optimization frameworks for urban 
+design, advancing evidence-based healthy built environment strategies.
+1. Introduction
+1.1. Background
+Human environmental perception is mediated through five sensory 
+modalities, with vision dominantly governing spatial cognition and 
+audition serving as the secondary influential channel [1]. Multisensory 
+integration research demonstrates that perceptual modalities function 
+synergistically rather than independently, converging to construct ho­
+listic environmental experiences [2]. The soundscape, defined as the 
+acoustic environment perceived, experienced, and understood within 
+specific 
+contexts, 
+significantly 
+modulates 
+both 
+physiological 
+homeostasis and psychological states [3]. Biophilic acoustic stimuli 
+promote psychophysiological restoration and affective regulation [4–6], 
+whereas anthropogenic noise, particularly traffic-related emissions, 
+elicits annoyance and compromises wellbeing [7,8]. Consequently, 
+outdoor environmental research that privileges visual parameters while 
+neglecting acoustic dimensions remains fundamentally incomplete.
+Outdoor thermal perception emerges from the interplay of meteo­
+rological parameters and non-thermal environmental modulators, with 
+the acoustic environment serving as a critical regulatory factor [9]. 
+Empirical evidence indicates that biophilic acoustic stimuli mitigate 
+thermal discomfort and enhance environmental acceptability, whereas 
+anthropogenic noise exacerbates thermal stress [10]. Notably, this 
+thermo-acoustic interaction exhibits thermal-intensity dependence: 
+* Corresponding author.
+E-mail addresses: hongbo@nwsuaf.edu.cn, hongbo@nwafu.edu.cn (B. Hong). 
+Contents lists available at ScienceDirect
+Building and Environment
+journal homepage: www.elsevier.com/locate/buildenv
+https://doi.org/10.1016/j.buildenv.2026.114742
+Received 12 April 2026; Received in revised form 8 May 2026; Accepted 13 May 2026  
+Building and Environment 301 (2026) 114742 
+Available online 14 May 2026 
+0360-1323/© 2026 Elsevier Ltd. All rights are reserved, including those for text and data mining, AI training, and similar technologies. 
+
+
+===== PAGE 2 =====
+soundscape benefits are amplified under heat stress but attenuated 
+during cold or neutral exposure [11].
+Soundscape-mediated thermal mitigation has emerged as a pivotal 
+research frontier in landscape architecture and built environment 
+studies. As a perceptual regulatory strategy, acoustic optimization offers 
+a cost-effective alternative to energy-intensive physical cooling in­
+terventions [12]. Systematic elucidation of these thermo-acoustic 
+mechanisms and their translation into spatial design strategies thus 
+hold substantial implications for advancing urban environmental 
+quality.
+1.2. Literature review
+Soundscapes modulate autonomic function beyond subjective 
+perception, operating through central and peripheral pathways to in­
+fluence cardiovascular and electrodermal activity, as well as affective 
+dimensions of valence and arousal [13]. These psychophysiological ef­
+fects are source-dependent: natural stimuli generally facilitate stress 
+recovery, whereas anthropogenic noise elicits adverse autonomic and 
+emotional responses [14–16]. Sound pressure level represents a critical 
+physical determinant of these responses [17,18].
+As soundscape assessment has shifted from unidimensional metrics 
+to multidimensional structural complexity, soundscape diversity has 
+emerged as a key indicator of environmental information richness [19]. 
+Particularly within urban green spaces, diversity significantly mediates 
+acoustic preference, affective quality, and overall soundscape appraisal, 
+serving as a critical bridge between spatial characteristics and percep­
+tual evaluation [20,21]. Elevated biophonic diversity promotes psy­
+chophysiological restoration [22]; however, this relationship follows an 
+inverted-U pattern, wherein excessive acoustic layering attenuates 
+beneficial effects [23].
+Thermal environments modulate cognitive and affective states, 
+thereby governing perceptual processing of ambient stimuli [24]. 
+Thermal stress activates autonomic thermoregulatory mechanisms, 
+manifesting as altered cardiovascular activity, cutaneous temperature, 
+and endocrine profiles [25]. In actual outdoor contexts, thermal and 
+acoustic parameters exert synergistic effects on environmental percep­
+tion and comfort evaluation [12]. Elevated sound pressure levels 
+amplify thermal sensation and compromise thermal comfort, whereas 
+biophilic soundscapes attenuate perceived warmth relative to anthro­
+pogenic 
+acoustic 
+environments 
+[26,27]. 
+This 
+thermo-acoustic 
+interaction is stress-dependent: under moderate thermal loads, acous­
+tically pleasant environments significantly diminish subjective warmth 
+sensation [24], while acoustic dissatisfaction predicts heightened heat 
+discomfort [28]. Reciprocally, microclimatic parameters, encompassing 
+air temperature, humidity, and solar radiation, critically shape sound­
+scape appraisal in open-space settings [29,30].
+Sex constitutes a critical individual difference variable mediating 
+psychophysiological reactivity to acoustic environments [31,32]. Fe­
+males demonstrate heightened auditory sensitivity and noise suscepti­
+bility, whereas males exhibit exaggerated cardiovascular and autonomic 
+responses to acoustic stimulation [33]. Sexual dimorphism extends to 
+soundscape preferences; for example, females demonstrate particular 
+affinity for wind sounds [34].
+These disparities persist under thermal challenge. Females display 
+enhanced thermal sensitivity and more volatile subjective thermal 
+evaluations than males under identical microclimatic conditions [35], 
+potentially reflecting fundamental differences in adipose distribution 
+and metabolic thermoregulation [36]. Consequently, females exhibit 
+elevated vulnerability to thermal fatigue and negative affective states. 
+Thus, soundscape diversity effects likely manifest sexually dimorphic 
+patterns across thermal stress gradients, necessitating systematic 
+investigation.
+1.3. Research gap
+Extant research on soundscape-thermo-physiological interactions 
+has predominantly examined acoustic intensity and source typologies, 
+yet remains largely unidimensional, neglecting structural complexity 
+and diversity effects. Critically, the mechanisms by which soundscape 
+diversity modulates psychophysiological responses across thermal stress 
+gradients remain elusive. Furthermore, the moderating effects of sex on 
+these restorative effects has been largely overlooked, with sexual 
+dimorphism in diversity perception and thermo-physiological reactivity 
+poorly characterized. This necessitates a systematic, sex-differentiated 
+investigation of soundscape diversity mechanisms to inform nuanced, 
+sex-sensitive design interventions for urban open spaces, ultimately 
+advancing population health and wellbeing.
+1.4. Research objectives
+This study was conducted across three typologically distinct urban 
+Nomenclature
+Ta
+Air temperature
+RH
+Relative humidity
+Va
+Wind speed
+Tg
+Global temperature
+Tmrt
+Mean radiant temperature
+PET
+Physiological equivalent temperature
+TSV
+Thermal sensation vote
+MTSV
+Mean thermal sensation vote
+TCV
+Thermal comfort vote
+SDV
+Soundscape diversity sensation vote
+SPV
+Soundscape diversity pleasantness vote
+OS
+Open space
+PS
+Partially shaded space
+SS
+Shaded space
+SVF
+Sky view factor
+ROS
+Restoration Outcome Scale
+PANAS
+Positive and Negative Affect Schedule
+EEG
+Electroencephalogram
+PSD
+Power spectral density
+ICA
+Independent component analysis
+BP
+Blood pressure
+SBP
+Systolic blood pressure
+DBP
+Diastolic blood pressure
+HR
+Heart rate
+ET
+Eardrum temperature
+SDI
+Soundscape diversity index
+SRI
+Soundscape richness index
+SDO
+Soundscape dominance index
+SEI
+Soundscape evenness index
+ND
+Nature-dominant
+AD
+Anthropogenic-dominant
+LSD
+Low soundscape diversity
+MSD
+Medium soundscape diversity
+HSD
+High soundscape diversity
+PLS-VIP
+Partial least square-variable importance in projection
+VIP
+Variable Importance in Projection
+SCS
+Slight cold stress
+NTS
+No thermal stress
+STS
+Slight thermal stress
+MTS
+Moderate thermal stress
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+2 
+
+
+===== PAGE 3 =====
+spaces in Xi'an (cold-climate region, China), characterized by gradient 
+shading intensities. A multimodal assessment protocol was deployed, 
+integrating microclimatic characterization, psychometric evaluation, 
+cardiovascular and thermal physiology monitoring, and electroenceph­
+alographic (EEG) recording. Six acoustic conditions, encompassing low 
+(LSD), medium (MSD), and high (HSD) diversity within both nature- 
+dominant and anthropogenic-dominant contexts, were experimentally 
+manipulated. Sex-differentiated perceptual, physiological, and psycho­
+logical responses were systematically characterized, and the relative 
+contributions of acoustic diversity versus microclimatic parameters 
+were quantified. Specifically, this research sought to: (1) elucidate sex­
+ual dimorphism in perceptual responses to acoustic diversity across 
+thermal stress gradients; (2) characterize physiological and psycholog­
+ical correlates of soundscape diversity exposure; and (3) ascertain the 
+relative influence weights of acoustic versus microclimatic determinants 
+on thermo-acoustic perception and psychophysiological outcomes. 
+These findings advance theoretical understanding of sex-specific 
+thermo-acoustic mechanisms, informing evidence-based, sex-sensitive 
+soundscape design strategies for urban thermal mitigation and sustain­
+able built environment development.
+2. Method
+2.1. Experimental design
+2.1.1. Study site
+Xi’an occupies the K¨oppen climate boundary between cold semi-arid 
+(BSk) and humid subtropical (Cwa) regimes, exhibiting a semi-humid 
+continental monsoon climate with pronounced seasonal contrast, 
+characterized by hot, rainy summers and cold, dry winters [37]. Local 
+climatological records indicate maximum monthly mean air tempera­
+ture (Ta) of 28.08 ◦C in July (absolute maximum 39.33 ◦C), and mini­
+mum monthly mean Ta of 0.62 ◦C in January (absolute minimum −8.01 
+◦C), with annual relative humidity (RH) ranging 51.28–73.68 % [38].
+The trials were conducted at a 170 ha university campus in Xi'an 
+(34◦15′44″N, 108◦04′37″E), selected for its morphological heterogeneity. 
+Three microclimatic contexts, including open (OS), partially shaded 
+(PS), and shaded (SS), were stratified by landscape configuration and 
+Sky View Factor (SVF), with site selection prioritizing acoustic isolation 
+to preclude ambient noise interference (Fig. 1). SVF was quantified via 
+hemispherical photography (Canon EOS 6D; EF 8–15 mm f/4 L fisheye 
+lens) and subsequent RayMan analysis.
+2.1.2. Soundscape selection
+Soundscape diversity and source typology significantly modulate 
+emotional appraisal and overall acoustic evaluation [20,24,39,40]. 
+Accordingly, six experimental conditions were synthesized via orthog­
+onal combination of three diversity levels (LSD, MSD, and HSD) and two 
+dominant source contexts: natural versus anthropogenic. Ten elemental 
+sources were curated: five natural (birdsong, flowing water, insect 
+chirps, wind, and frog croaks) and five anthropogenic (traffic, human 
+conversation, children’s play, horn sounds, and construction noise), 
+obtained from open-access acoustic repositories (https://www.freesfx. 
+co.uk/soundeffects; https://freesound.org). Using Adobe Audition 
+2024, these were mixed to achieve distinct Soundscape Diversity Index 
+(SDI), Richness Index (SRI), Dominance Index (SDO), and Evenness 
+Index (SEI) indices while maintaining consistent source typology per 
+condition. Each 15-minute stimulus was normalized for sound pressure 
+Fig. 1. The study area and measured sites.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+3 
+
+
+===== PAGE 4 =====
+level to ensure perceptual clarity without auditory masking (Table 1, 
+Fig. 2). Prior research demonstrates that perceived acoustic comfort is 
+independent of sound pressure level within the 65–70 dBA range [2,41]. 
+Accordingly, playback levels were calibrated to 65–70 dBA using an 
+AWA5688 multifunction sound level meter. The campus environment, 
+designated for teaching and learning, inherently maintains low ambient 
+noise with negligible traffic intrusion, ensuring comparable background 
+sound pressure levels across experimental sites. To control for extra­
+neous acoustic interference, trials were temporally isolated from campus 
+events, and pedestrian access near the experimental areas was restricted 
+by research personnel during data collection.
+2.1.3. Participants selection
+A total of 864 right-handed participants (Male:Female = 1:1.2; Ap­
+pendix Table A) were recruited under stringent inclusion criteria: normal 
+auditory and cognitive function; non-native English proficiency suffi­
+cient for psychometric assessment; capacity for independent procedural 
+comprehension and questionnaire completion; stable metabolic status 
+(adequate sleep, balanced diet); 3 h pre-testing abstention from psy­
+choactive substances (nicotine, caffeine, alcohol); and clean scalp for 
+optimal EEG signal acquisition.
+2.1.4. Experimental procedure
+Experimental data were acquired during two seasonal campaigns (30 
+July–4 August and 2–8 November 2025), encompassing 12 clear-sky 
+days with eight daily sessions. Consistent sunny and calm conditions 
+within each season standardized thermal parameters. Each session 
+randomized nine participants across three microclimatic contexts to one 
+of six acoustic conditions; participants underwent single-condition 
+exposure per session (Appendix Table B). Conditions were counter­
+balanced via a modified Latin-square design and evenly distributed 
+across contexts [42]. Prior to each session, loudspeakers were concealed 
+from view and preloaded with acoustic stimuli. Loudspeaker placement, 
+participant distance, exposure duration, and procedural parameters 
+were standardized across participants. The protocol comprised three 
+standardized phases:
+Stage 1: Acclimatization (15 min). Following informed consent and 
+EEG electrode placement, participants underwent seated rest with 
+standardized visual fixation (viewfinder-controlled landscape element 
+ratios) to stabilize autonomic tone. Five-minute basal electroencepha­
+lographic recording preceded demographic data collection and triplicate 
+autonomic assessment (blood pressure [BP], heart rate [HR], ear tem­
+perature [ET]), with mean values derived for baseline metrics.
+Stage 2: Stress Induction (5 min). Participants completed an English- 
+language stressor task, an established psychophysiological stressor, with 
+continuous EEG monitoring. Post-task psychometric evaluation and 
+triplicate autonomic measurements followed [43].
+Stage 3: Acoustic Restoration (15 min). Randomized exposure to one 
+of six soundscape conditions was administered with concurrent EEG 
+recording. The protocol concluded with post-intervention psychometric 
+assessment and final triplicate autonomic measurements (Fig. 3).
+2.2. Measurements
+2.2.1. Meteorological measurements
+During the experiment, Ta, RH, wind speed (Va), and global tem­
+perature (Tg) were measured on site. Ta and RH were recorded using a 
+HOBO Onset U23–001 recorder (ONSET, USA), while Va and Tg were 
+measured using a Kestrel 5500 (Nielsen-Kellerman Co., USA) and a Delta 
+OHM HD2017.2 (Delta OHM, Italy), respectively (Appendix Table C; 
+Appendix Table D). All instruments were set to record at 1-min intervals 
+and were positioned at a height of 1.1 m above ground level. Mean 
+radiant temperature (Tmrt) was calculated according to ISO Standard 
+7726 (ISO, 1998): 
+Tmrt =
+[(
+Tg + 273
+)4 + 1.10 × 108V0.6
+a
+εD0.4
+(
+Tg −Ta
+)]1
+4
+−273
+(1) 
+where ε is the reflectivity of the black globe (ε = 0.95); D is the diameter 
+of the black globe (D = 0.05 m).
+2.2.2. Questionnaire survey
+The questionnaire comprised three sections: demographic informa­
+tion, subjective perception votes, and emotion scales (Appendix Fig. A). 
+Demographic data encompassed age, sex, stature, body mass, and 
+clothing insulation [44], collected once during thermal acclimatization 
+with participants remaining seated. Perceptual assessment included 
+Thermal Sensation Vote (TSV; 7-point ASHRAE Standard 55 scale; 
+ASHRAE, 2020), Thermal Comfort Vote (TCV; 5-point symmetric scale), 
+Soundscape Diversity Vote (SDV; 7-point richness scale), and Sound­
+scape Diversity Pleasantness Vote (SPV; 7-point hedonic scale).
+Affective states were evaluated using the Restoration Outcome Scale 
+(ROS) and Positive and Negative Affect Schedule (PANAS). ROS, vali­
+dated for environmental restoration research [45,46], comprises six 
+items assessing stress regulation, attentional recovery, and cognitive 
+clarity (7-point Likert scale; 1 = strongly disagree, 7 = strongly agree), 
+with mean scores representing restorative experience magnitude. 
+PANAS quantified orthogonal positive and negative affect via twenty 
+adjectives (ten per dimension) on 5-point scales (1 = very slightly/not at 
+all, 5 = extremely) [47,48]. Operational clarifications were provided for 
+ambiguous items to ensure valid construct measurement.
+2.2.3. Physiological measurements
+Cardiovascular (systolic/diastolic blood pressure [SBP/DBP], heart 
+rate [HR]) and thermal (eardrum temperature [ET]) metrics were 
+quantified via automated oscillometry (Omron HEM-7211, Japan) and 
+infrared tympanic thermometry (Braun IRT6520), respectively. Blood 
+pressure assessment followed standardized seated protocols: arm sup­
+ported at heart level with cuff positioned 1–2 cm above the antecubital 
+fossa [49]. Tympanic temperature was measured with probe orientation 
+toward the nasal bridge to ensure alignment with the tympanic mem­
+brane [50]. Triplicate measurements were obtained per condition, with 
+mean values retained for statistical analysis.
+2.2.4. Psychological measurements
+Electroencephalography (EEG) provides validated assessment of 
+psychophysiological states [51–53]. Spectral power was quantified 
+across four functionally defined frequency bands: δ (1–4 Hz; somno­
+lence/fatigue), θ (4–8 Hz; affective processing), α (8–14 Hz; relaxation), 
+and β (14–30 Hz; attention/arousal) [52,54]. Neural signals were ac­
+quired using a 14-channel EPOC X wireless headset (EMOTIV Inc., USA; 
+AF3, AF4, F3, F4, F7, F8, FC5, FC6, T7, T8, P7, P8, O1, O2) with bilateral 
+references (CMS, DRL), arranged according to the International 10–20 
+system [55]. Data were sampled at 2048 Hz, downsampled to 128 Hz 
+(7.8-ms resolution), and wirelessly transmitted to a tablet interface 
+(Fig. 4). Throughout recording, participants maintained postural 
+immobility and abstained from verbalization and electronic device 
+usage to minimize motion and electromagnetic artifacts. Sensor felts 
+Table 1 
+The formula and implications of soundscape diversity indices.
+Name
+Formula
+Implication
+SDI
+SDI = −
+∑S
+i=1 Pi(lnPi)
+Reflects the number of sound source species and the 
+uniformity of individual distribution in the species.
+SRI
+SRI = S
+Reflects the number of types of sounds.
+SEI
+SEI = SDI /lnS
+Reflects the evenness of the distribution of 
+individual numbers of sound source types.
+SDO
+SDO =
+∑S
+i=1 P2
+i
+Reflects the dominance of sound sources in the site.
+Notes: Pi is the ratio of the i th sound source individual number to the total 
+number of all sound source individuals in the site; S is the number of types of 
+sound sources in the site.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+4 
+
+
+===== PAGE 5 =====
+were hydrated with 0.9 % saline to optimize conductivity. Neural data 
+were acquired via EmotivPRO with real-time quality monitoring and 
+exported to MATLAB for spectral decomposition.
+2.3. Thermal index
+Mean thermal sensation votes (MTSV) were computed across 
+experimental phases (baseline, stress, restoration) within 1 ◦C Physio­
+logical Equivalent Temperature (PET) strata to parameterize thermal 
+comfort functions [52]. Thermal stress categories were operationalized 
+via PET thresholds: slight cold stress (SCS; −1.5 ≤TSV < −0.5; PET 
+0.54–15.82 ◦C), no thermal stress (NTS; −0.5 ≤TSV < 0.5; PET 
+15.82–31.09 ◦C), slight thermal stress (STS; 0.5 ≤TSV < 1.5; PET 
+31.09–46.36 ◦C), and moderate thermal stress (MTS; 1.5 ≤TSV < 2.5; 
+PET 46.36–61.63 ◦C) (Fig. 5).
+2.4. Statistical analysis
+Data preprocessing entailed outlier detection and missing value 
+treatment. Differential effects of soundscape diversity across thermal 
+stress gradients and dominant source contexts were analyzed via para­
+metric (one-way ANOVA) or nonparametric (Kruskal–Wallis) proced­
+ures, contingent upon distributional properties (SPSS v26.0).
+2.4.1. EEG
+EEG preprocessing was conducted in MATLAB using EEGLAB 
+v14.0.0 [56]. Artifacts were attenuated via visual inspection, band-pass 
+filtration (1–30 Hz, encompassing δ, θ, α, β bands), and independent 
+component analysis (ICA) to remove ocular and myogenic activity. 
+Cardiac artifacts were automatically detected and rejected using the 
+ADJUST algorithm. Power spectral density (PSD) was subsequently 
+derived via fast Fourier transform (FFT) [57]. 
+F[k] =
+∑
+N−1
+n=0
+x[n]e−j2πkn
+N k= 0, …,N−1
+(2) 
+P(k) = lim
+n→∞
+(|F(k)|
+N
+)2
+(3) 
+where F is the Fourier transform, x is the signal, and P is the PSD.
+Power spectral analyses employed normalized (relative) power es­
+timates to account for inter-subject variability [58]. Relative power 
+values were derived for the δ, θ, α, and β bands across all 14 channels as 
+follows: 
+Pnor =
+Pi
+∑
+i∈(δ,θ,α,β)Pi
+(4) 
+Fig. 2. Soundscape diversity.
+Fig. 3. Experimental procedure.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+5 
+
+
+===== PAGE 6 =====
+where Pi represents the absolute power of each frequency band, and the 
+normalized power spectrum is the ratio of each frequency band to the 
+sum of the absolute power of four frequency bands (δ, θ, α, and β).
+2.4.2. Partial least square-variable importance in projection
+Partial least squares–variable importance in projection (PLS-VIP) 
+analysis quantified predictor significance across thermal stress gradients 
+[59]. Within the PLS regression framework, standardized predictor 
+(soundscape diversity and meteorological parameters) and response 
+(perceptual, physiological, and psychological indicators) matrices were 
+fitted to characterize variable contributions to the multivariate system. 
+Predictor and response variables were standardized to eliminate scale 
+effects prior to model fitting [60]. VIP scores quantify each predictor's 
+relative contribution to PLS components and explained response vari­
+ance [61]. With squared values scaled to unit mean across predictors, 
+scores exceeding 1.0 indicate above-average explanatory power and 
+were retained as influential predictors [62,63]. 
+VIPj=̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅
+p ∑A
+a=1
+[
+q2
+a⋅
+(
+wja
+/
+‖ wa ‖
+)2]
+∑A
+a=1q2
+a
+√
+√
+√
+√
+(5) 
+where VIPj is the VIP value of the j-th variable; p is the total number of 
+predictor variables; A represents the total number of PLS components; qa 
+stands for the weight of the a-th component; wja is the weight of the j-th 
+variable in the a-th PLS component; ‖ wa‖ is the Euclidean norm of the 
+weight vector for the a-th PLS component.
+3. Results
+3.1. Thermal and auditory perceptions
+3.1.1. TSV and TCV
+Kruskal–Wallis analyses revealed sexual dimorphism in thermo- 
+acoustic perception contingent upon dominant source context. Within 
+natural environments, soundscape diversity did not modulate male TSV 
+(p > 0.05) but significantly predicted TCV under STS conditions (p <
+0.05). Conversely, under slight cold stress, diversity significantly pre­
+dicted female TSV (p < 0.05) without affecting TCV (p > 0.05). In 
+anthropogenic- settings, diversity exerted no significant effects on either 
+TSV or TCV for either sex (p > 0.05). These results demonstrate that 
+soundscape diversity effects on thermal perception are sexually dimor­
+phic and context-dependent, with pronounced sex differences emerging 
+primarily within nature-dominant acoustic environments (Appendix 
+Table E).
+Fig. 4. Schematic of the trial setup.
+Fig. 5. Correlation between PET and MTSV.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+6 
+
+
+===== PAGE 7 =====
+Mann–Whitney U analyses revealed sexually antagonistic thermal 
+perceptual responses to acoustic diversity within nature-dominant en­
+vironments. Under SCS conditions, diversity minimally affected male 
+TSV, whereas HSD significantly elevated female TSV relative to LSD (p <
+0.05), suggesting acoustic enrichment mitigates subjective cold sensa­
+tion in females.
+Under NTS conditions, MSD and HSD elevated male TSV above LSD 
+levels, while producing the inverse pattern in females. During MTS, MSD 
+diminished male TSV compared with LSD and HSD, yet elevated female 
+TSV. These results demonstrate consistent sexual dimorphism in thermo- 
+acoustic perception, wherein acoustic diversity elicits opposing thermal 
+perceptual effects across sexes (Fig. 6a, b).
+Mann–Whitney U analyses further revealed sexually dimorphic ef­
+fects of acoustic diversity on thermal comfort within nature-dominant 
+environments. Under NTS conditions, diversity minimally modulated 
+male TCV, whereas MSD significantly elevated female thermal comfort 
+above LSD and HSD levels, indicating heightened female responsivity to 
+acoustic complexity. Under STS conditions, LSD significantly improved 
+male TCV relative to MSD (p < 0.05), while exerting negligible effects on 
+females, demonstrating reversed sexual dimorphism in thermo-acoustic 
+comfort responsivity. During MTS conditions, HSD aggravated male 
+thermal discomfort but alleviated female discomfort, revealing sexually 
+antagonistic patterns wherein acoustic enrichment elicits opposite 
+comfort trajectories across sexes (Fig. 6c, d).
+3.1.2. SDV and SPV
+Kruskal–Wallis analyses revealed sexually dimorphic perceptual re­
+sponses to acoustic diversity contingent upon dominant source context. 
+Within natural environments, diversity significantly modulated male 
+SDV (SCS and MTS) and SPV (SCS) (p < 0.05), without affecting female 
+perception (p > 0.05). Conversely, in anthropogenic-dominant settings, 
+diversity significantly influenced SDV in both sexes under SCS, and SPV 
+under NTS conditions (p < 0.05), with females exhibiting additional 
+significant SDV responsivity (p < 0.001). These results indicate that 
+acoustic diversity effects on soundscape perception are sexually 
+dimorphic and context-specific, with pronounced sex differences 
+emerging primarily within nature-dominant environments (Appendix 
+Table F).
+Mann–Whitney U analyses revealed sexually dimorphic discrimina­
+tory capacity for acoustic diversity within natural environments. Under 
+SCS conditions, males exhibited significantly attenuated SDV under LSD 
+relative to HSD (p < 0.05), whereas female responsivity was negligible, 
+indicating heightened male perceptual acuity for complexity. During 
+STS, equivalent discrimination emerged in both sexes. Conversely, 
+under MTS conditions, sexually antagonistic patterns emerged: males 
+discriminated HSD, whereas females discriminated LSD, suggesting sex- 
+specific perceptual anchoring to diversity extremes.
+Within anthropogenic-dominant environments, sexual dimorphism 
+in acoustic diversity discrimination varied with thermal stress intensity. 
+Under SCS conditions, both sexes discriminated LSD from higher di­
+versity levels, though males exhibited larger effect sizes than females (p 
+< 0.05). During NTS, male responsivity was attenuated, whereas fe­
+males discriminated LSD from MSD and HSD with high significance (p <
+0.001). This pattern persisted under STS: males showed negligible 
+discrimination, while females reliably distinguished LSD from MSD/ 
+HSD. Conversely, under MTS conditions, sexually antagonistic patterns 
+emerged: males discriminated LSD, whereas females discriminated HSD, 
+indicating sex-specific perceptual salience of complexity extremes 
+(Fig. 7a, b).
+Within anthropogenic-dominant environments, acoustic diversity 
+elicited sexually dimorphic hedonic responses across thermal gradients. 
+Under SCS conditions, LSD significantly diminished male pleasantness 
+relative to MSD (p < 0.05), whereas female SPV exhibited minimal 
+diversity-dependent modulation. During NTS, sexually antagonistic 
+patterns emerged: HSD attenuated male pleasantness, while LSD atten­
+uated female pleasantness, indicating divergent acoustic preferences. 
+Conversely, under MTS conditions, HSD enhanced male pleasantness, 
+whereas MSD enhanced female pleasantness, revealing sex-specific op­
+tima for acoustic complexity (Fig. 7c, d).
+3.2. Physiological responses
+3.2.1. Systolic blood pressure
+One-way ANOVA revealed sexually dimorphic cardiovascular 
+responsivity to acoustic diversity. The SBP was significantly modulated 
+in males under STS conditions within natural environments (p < 0.05), 
+whereas females exhibited no significant modulation (p > 0.05), indi­
+cating context-dependent male susceptibility. The DBP showed similar 
+sexual dimorphism, with significant male responses under SCS (natural) 
+and NTS (anthropogenic) (p < 0.05), contrasting with female non- 
+responsivity (p > 0.05). These findings demonstrate that male cardio­
+vascular regulation is more sensitive to soundscape diversity than fe­
+male responses across varying thermal and acoustic contexts (Appendix 
+Table G).
+Specifically, within natural environments, males demonstrated a 
+quadratic SBP response to diversity under NTS and MTS conditions, 
+whereas females exhibited converse U-shaped trajectories. Critically, 
+under STS conditions, MSD significantly attenuated male SBP relative to 
+LSD (−6.08 mmHg, p < 0.05), suggesting optimal cardiovascular regu­
+lation at intermediate complexity levels (Fig. 8a, b).
+In natural contexts, male DBP declined linearly with increasing di­
+versity under STS but exhibited biphasic trajectories under NTS and MTS 
+conditions, whereas female responses were more heterogeneous. Criti­
+cally, HSD significantly attenuated male DBP relative to LSD under STS 
+conditions (−6.61 mmHg, p < 0.05), indicating maximal cardiovascular 
+benefit at highest acoustic complexity (Fig. 8c, d).
+3.2.2. Heart rate and eardrum temperature
+One-way ANOVA revealed sexually dimorphic chronotropic 
+responsivity: male HR was significantly modulated under STS within 
+natural environments (p < 0.05), whereas female HR exhibited signifi­
+cant responsivity under NTS anthropogenic conditions (p < 0.05). 
+Conversely, ET showed no significant modulation across conditions (p >
+0.05), indicating negligible thermoregulatory influence of acoustic di­
+versity (Appendix Table H).
+Within natural environments under STS conditions, LSD significantly 
+attenuated male HR relative to MSD (p < 0.05). Conversely, under NTS 
+anthropogenic conditions, HSD significantly lowered female HR 
+compared to LSD (p < 0.05) (Fig. 9a, b). Under SCS and NTS conditions, 
+males exhibited minimal tympanic temperature at MSD, whereas fe­
+males showed minimal temperatures at HSD. Under STS and MTS con­
+ditions, male ET minima shifted to LSD, while females maintained HSD 
+optima. Within anthropogenic environments, males consistently 
+demonstrated MSD-associated ET minima across thermal gradients, 
+whereas females exhibited no clear diversity-dependent thermoregula­
+tory pattern (Fig. 9c and d).
+3.3. Psychological effects
+3.3.1. ROS
+Within natural environments, sexual dimorphism characterized 
+restorative outcomes. For males, MSD consistently facilitated stress re­
+covery across thermal gradients, whereas attentional and cognitive 
+benefits were thermally contingent: HSD maximally enhanced atten­
+tional recovery under SCS conditions, while MSD optimally promoted 
+cognitive clarity. In contrast, females demonstrated consistent stress 
+recovery and cognitive benefits under LSD across all thermal conditions. 
+Notably, HSD's cognitive efficacy diminished with escalating thermal 
+stress, while MSD exhibited minimal restorative effects. Attentional re­
+covery in females was thermally contingent except under STS condi­
+tions, with HSD proving most effective under NTS conditions (Table 2).
+Within anthropogenic environments, HSD consistently exerted 
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+7 
+
+
+===== PAGE 8 =====
+Fig. 6. Thermal perceptions of male and female in different thermal stress and soundscape diversity across different sound source types: (a) male TSV, (b) female 
+TSV, (c) male TCV, (d) female TCV.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+8 
+
+
+===== PAGE 9 =====
+Fig. 7. Auditory perceptions of male and female in different thermal stress and soundscape diversity across different sound source types: (a) male SDV, (b) female 
+SDV, (c) male SPV, (d) female SPV.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+9 
+
+
+===== PAGE 10 =====
+beneficial effects on male stress recovery and cognitive function across 
+thermal gradients. LSD demonstrated increasing restorative efficacy 
+with escalating thermal stress, whereas MSD exhibited converse pat­
+terns. Attentional outcomes were thermally contingent, with MSD 
+proving optimal under NST conditions. Conversely, females exhibited 
+stress recovery benefits under both MSD and HSD across thermal con­
+ditions. HSD-mediated attentional benefits intensified with thermal 
+stress, while cognitive outcomes were thermally stratified: HSD proved 
+maximally effective under NTS conditions, whereas alternative diversity 
+levels predominated under thermal challenge (Table 3).
+3.3.2. PANAS
+Within natural environments, affective responses to acoustic di­
+versity exhibited marked sexual dimorphism across thermal gradients. 
+Under SCS conditions, males demonstrated optimal emotional restora­
+tion at MSD, whereas females achieved optimal affective states at LSD. 
+During NTS, MSD maximally enhanced male emotional valence. Under 
+STS conditions, HSD optimized male affective recovery; conversely, fe­
+males exhibited divergent optima: LSD maximized PA while HSD 
+minimized NA. Under MTS conditions, LSD provided insufficient 
+emotional restoration for males, whereas females achieved complete 
+affective recovery under LSD (Fig. 10a).
+Within anthropogenic-dominant contexts, affective restoration 
+exhibited marked sexual dimorphism. Under NTS conditions, males 
+achieved complete affective optimization under MSD, whereas females 
+failed to restore pre-stress baselines despite MSD-induced valence shifts. 
+Under STS conditions, HSD maximally improved male affective states; 
+conversely, females exhibited only partial affective modulation under 
+LSD and HSD. During MTS, LSD facilitated complete male affective 
+restoration, while MSD produced incomplete female recovery (Fig. 10b).
+Fig. 8. Systolic blood pressure and diastolic blood pressure of male and female in different thermal stress and soundscape diversity across different sound source 
+types: (a) male SBP, (b) female SBP, (c) male DBP, (d) female DBP.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+10 
+
+
+===== PAGE 11 =====
+3.3.3. EEG
+Spectral decomposition (δ, θ, α, β) and topographical mapping were 
+performed to characterize cortical activity under acoustic–thermal en­
+vironments, with significance assessed via one-way ANOVA (Appendix 
+Table I – L). Within natural environments, males exhibited elevated 
+frontal δ power under MTS conditions, which may be consistent with 
+heightened somnolence. LSD significantly attenuated this δ elevation 
+relative to HSD (p < 0.05), suggesting potentially reduced drowsiness. 
+Maximal α power emerged under NTS conditions in parieto-occipital 
+regions, with LSD significantly elevating occipital α relative to MSD (p 
+< 0.05) during MTS, indicating potentially enhanced relaxation 
+(Fig. 11a).
+Females demonstrated sexually dimorphic neurophysiological pat­
+terns. Under STS conditions, HSD significantly increased occipital δ 
+power relative to MSD (p < 0.05), suggesting potential HSD-induced 
+somnolence. Under MTS conditions, LSD significantly elevated 
+occipital θ power relative to MSD (p < 0.05), which may be consistent 
+with enhanced positive affect. Notably, α power exhibited a U-shaped 
+trajectory with increasing diversity, indicating that MSD may have 
+attenuated relaxation in females (Fig. 11b).
+Within anthropogenic environments, sexually dimorphic neuro­
+physiological responses emerged. Under MTS conditions, HSD signifi­
+cantly attenuated male δ power across frontal, parietal, and occipital 
+regions relative to LSD (p < 0.05), suggesting potentially reduced 
+somnolence. Conversely, LSD diminished frontal θ power versus MSD 
+and occipital θ power versus HSD (p < 0.05), indicating potentially 
+attenuated positive affect. The NTS conditions maximized parieto- 
+occipital α power, with MSD exhibiting relatively elevated values. LSD 
+significantly increased occipital β power versus HSD (p < 0.05) under 
+NTS conditions, whereas HSD enhanced frontal, parietal, and occipital β 
+power under MTS conditions, indicating potentially heightened alert­
+ness (Fig. 11c).
+Fig. 9. Heart rate and eardrum temperature of male and female in different thermal stress and soundscape diversity across different sound source types: (a) male HR, 
+(b) female HR, (c) male ET, (d) female ET.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+11 
+
+
+===== PAGE 12 =====
+Females demonstrated distinct spectral patterns. Under STS condi­
+tions, temporal δ power decreased linearly with acoustic diversity (p <
+0.05), suggesting potential diversity-dependent somnolence reduction. θ 
+power exhibited a U-shaped trajectory with minimal values at MSD, 
+indicating that positive affect may have been attenuated at intermediate 
+complexity. The MSD significantly elevated parietal and occipital α 
+power relative to LSD (p < 0.05) during NTS. Under STS conditions, 
+frontal and temporal β power increased with diversity (p < 0.05), sug­
+gesting potentially enhanced alertness (Fig. 11d).
+3.4. Influencers of thermal- soundscape diversity perception, emotion and 
+psychophysiological recovery
+PLS-VIP analysis quantified the relative importance of soundscape 
+diversity and micrometeorological parameters (Tg, Va, Ta, RH, and Tmrt) 
+as predictors of psychophysiological outcomes, including encompassing 
+cardiovascular/thermal metrics (SBP, DBP, HR, ET) and psychological 
+states (stress, cognition, attention, PA, NA, δ, θ, α, β), across sexes, 
+acoustic contexts, and thermal stress gradients. This multivariate 
+decomposition identified key determinants and elucidated sex-specific 
+regulatory mechanisms underlying thermo-acoustic interactions.
+Within natural environments, perceptual determinants exhibited 
+thermally contingent, sexually dimorphic patterns. Under SCS condi­
+tions, male thermal perception (TSV/TCV) was predominantly driven by 
+Tmrt and RH, whereas acoustic perception (SDV/SPV) showed elevated 
+diversity importance; conversely, female perceptual indicators were 
+predominantly diversity-mediated. Under NTS conditions, male thermal 
+perception shifted to Tmrt/Tg dominance while acoustic perception 
+retained diversity importance, whereas female indicators transitioned 
+toward meteorological (Tmrt/Tg) dominance. Under STS conditions, male 
+perception became primarily meteorologically regulated, while female 
+thermal perception remained Tmrt -driven but acoustic perception was 
+codetermined by diversity and RH. Under MTS conditions, male thermal 
+perception was jointly influenced by RH, Va, and diversity (with di­
+versity maintaining high importance for acoustic perception), whereas 
+female thermal and acoustic perception (except SDV driven by Tmrt) 
+were predominantly diversity-mediated. Thus, soundscape diversity's 
+predictive importance for male thermal perception intensified mono­
+tonically with escalating thermal stress, whereas female influence fol­
+lowed a U-shaped trajectory (initial attenuation followed by 
+Table 2 
+Sex differences in ROS changes from Stage 1 to Stage 3 under nature-dominated soundscapes: effects of thermal stress and soundscape diversity.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+12 
+
+
+===== PAGE 13 =====
+augmentation). For acoustic perception, diversity importance exhibited 
+U-shaped patterns across thermal stress gradients for both sexes.
+Physiological determinants exhibited thermally contingent, sexually 
+dimorphic patterns. From cool-to-moderate thermal conditions (SCS, 
+NTS and STS), male cardiovascular responsivity was codetermined by 
+acoustic diversity and micrometeorological parameters; however, under 
+MTS conditions, meteorological factors predominated. Conversely, fe­
+male physiological indicators were initially meteorologically dominated 
+(SCS) but subsequently demonstrated joint diversity-meteorological 
+regulation (NTS, STS and MTS). Thus, soundscape diversity's predic­
+tive importance for male physiological responses monotonically atten­
+uated with escalating thermal stress, whereas female responses 
+exhibited progressive intensification of acoustic influence.
+Psychological determinants exhibited thermally contingent, sexually 
+dimorphic regulatory patterns. Male affective and cognitive responses 
+were predominantly diversity-driven under SCS conditions, transition­
+ing to joint diversity-meteorological codetermination across NTS to MTS 
+conditions. Conversely, female responses were characterized by 
+consistent joint regulation across SCS to MTS conditions, yet exclusively 
+meteorologically dominated under NTS conditions. Consequently, male 
+psychological indicators demonstrated heightened sensitivity to acous­
+tic complexity with marked stage-dependent volatility, whereas female 
+responses exhibited a biphasic trajectory in the influence of diversity, 
+with initial attenuation followed by augmentation, under escalating 
+thermal stress (Fig. 12a, b).
+Within anthropogenic environments, predictor importance exhibited 
+thermally contingent sexual dimorphism. Perceptually, males demon­
+strated persistent meteorological dominance for thermal sensation/ 
+comfort across thermal gradients, with acoustic diversity primarily 
+governing soundscape discrimination (SDV) under cool-to-moderate 
+stress but attenuating under MTS conditions. Conversely, females 
+maintained acoustic dominance for soundscape appraisal (SDV, SPV) 
+across conditions, while thermal perception showed non-monotonic 
+diversity modulation, with initial intensification followed by attenua­
+tion under escalating stress, against sustained meteorological influence.
+Physiologically, male cardiovascular and thermal responses consis­
+tently exhibited joint diversity-meteorological codetermination across 
+all thermal stages. Female indicators, however, transitioned from initial 
+codetermined regulation (SCS) to meteorological dominance (NTS and 
+STS), reverting to joint regulation under MTS conditions, resulting in 
+Table 3 
+Sex differences in ROS changes from Stage 1 to Stage 3 under anthropogenic-dominant soundscapes: effects of thermal stress and soundscape diversity.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+13 
+
+
+===== PAGE 14 =====
+progressive intensification of acoustic influence with thermal escalation.
+Psychologically, male affective and cognitive states demonstrated 
+consistent joint regulation by acoustic complexity and micrometeoro­
+logical parameters across all thermal conditions. Female psychological 
+responses shifted from exclusive meteorological dominance (SCS and 
+NTS) to joint diversity-meteorological codetermination (STS and MTS). 
+Consequently, male psychological indicators maintained stable acoustic 
+sensitivity with marked stage-dependent volatility, whereas female di­
+versity influence monotonically strengthened with escalating thermal 
+stress (Fig. 12c, d).
+4. Discussion
+4.1. Thermal and soundscape perceptions
+Our findings demonstrate that significant thermo-modulatory effects 
+of acoustic diversity were confined to natural contexts, consistent with 
+established restorative properties of natural soundscapes [10,64]. 
+Anthropogenic acoustic environments, by contrast, elicit negative ap­
+praisals that attenuate perceived environmental quality [65], poten­
+tially masking the salutogenic effects of acoustic diversity and thereby 
+attenuating its thermoregulatory influence.
+Within natural contexts under slight cold stress, HSD significantly 
+attenuated female subjective cold sensation while exerting minimal 
+male effect. This sexual dimorphism may reflect enhanced female 
+auditory sensitivity and attentional engagement with environmental 
+acoustic detail [66], whereby enriched natural soundscapes capture 
+attentional resources and divert cognitive focus from thermal discom­
+fort. Conversely, under STS conditions, LSD significantly improved male 
+thermal comfort. This pattern likely reflects sex-specific cognitive load 
+management: elevated temperatures impair male executive function and 
+increase cognitive demands [67], and LSD may provide a lower-load 
+acoustic environment that mitigates cognitive stress and enhances 
+thermal comfort.
+Sex and thermal stress interactively govern acoustic diversity 
+perception. Individual attributes substantially modulate soundscape 
+appraisal, with sexual dimorphism particularly salient [68,69]. Thermal 
+conditions further constrain perceptual processing through affective and 
+attentional mechanisms, thereby modulating acoustic evaluation [32,
+70].
+Within anthropogenic environments, LSD significantly attenuated 
+male pleasantness (SPV) under slight cold stress, whereas female 
+responsivity remained muted. This sexual dimorphism likely reflects 
+inadequate acoustic masking: monotonous LSD insufficiently obscures 
+negative sources, amplifying perceived noise exposure persistence and 
+degrading male hedonic response [71]. Conversely, females demon­
+strate heightened susceptibility to acoustic intensity and noise-related 
+attributes, potentially attenuating the regulatory efficacy of diversity 
+Fig. 10. Scores for PA and NA: (a) ND, (b) AD.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+14 
+
+
+===== PAGE 15 =====
+manipulation on their perceptual evaluations.
+4.2. Physiological responses
+Sexual dimorphism characterized cardiovascular responsivity to 
+acoustic diversity across dominant source contexts. Within natural en­
+vironments, diversity significantly modulated male hemodynamic and 
+chronotropic parameters (SBP, DBP, HR) under STS conditions, 
+contrasting with female non-responsivity. Within anthropogenic envi­
+ronments, diversity effects were markedly attenuated, with females 
+exhibiting marginal chronotropic responsivity solely under NTS condi­
+tions. These findings indicate heightened male autonomic sensitivity to 
+acoustic structural complexity, who demonstrated pronounced male 
+heart rate deceleration following aversive acoustic exposure [72]. 
+However, these results contrast with Bai and Zhang, who reported 
+negligible sexual dimorphism in psychophysiological responses to forest 
+Fig. 11. Topographical distributions and developments of δ, θ, α and β wave normalized PSD: (a) ND-male, (b) ND-female, (c) AD-male, (d) AD-female.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+15 
+
+
+===== PAGE 16 =====
+park soundscapes under controlled indoor conditions [34]. This 
+discrepancy likely reflects the intensified thermal complexity of outdoor 
+environments, which amplifies individual sensitivity to acoustic varia­
+tion and unmasks latent sexual dimorphism in autonomic regulation. 
+The established salutogenic efficacy of natural environments may 
+further potentiate the detection of sex-specific cardiovascular modula­
+tion under thermal challenge [5,64,73].
+Under STS conditions, male cardiovascular responses to natural di­
+versity exhibited parameter-specific optima: bradycardia under LSD 
+(parasympathetic predominance) [74], reduced systolic pressure under 
+MSD (optimal arousal) [75], and attenuated diastolic pressure under 
+HSD (engagement-mediated vasodilation) [64,76]. These divergent 
+chronotropic, inotropic, and vascular responses indicate that acoustic 
+complexity modulates autonomic function through distinct physiolog­
+ical pathways. Notably, these effects were thermally contingent, mani­
+festing primarily under STS conditions, underscoring that thermal load 
+modulates acoustic sensitivity [77,78].
+4.3. Psychological effects
+Our findings suggest that soundscape diversity may contribute to 
+psychological restoration. Within natural environments, thermal esca­
+lation potentiated male cortical responsivity to diversity, whereas fe­
+males exhibited increasing θ responsivity. This aligns with established 
+restorative potentiation under environmental challenge [14,79].
+Within anthropogenic environments, male spectral responsivity (δ, θ, 
+β) intensified monotonically with thermal stress, whereas females 
+demonstrated restricted diversity sensitivity confined to NTS and STS 
+conditions. This sexual dimorphism may reflect differential attentional 
+resource allocation under environmental load [80]. Moderate stress may 
+facilitate external information processing; however, escalating thermal 
+challenge may prioritize physiological coping, thereby attenuating 
+environmental detail perception [75]. Thermal stress alters EEG dy­
+namics and recruits cognitive resources [81], with combined acous­
+tic–thermal demands potentially degrading cognitive performance [82]. 
+Consequently, females may retain diversity sensitivity under mild 
+Fig. 12. Dominant influencers of thermal- soundscape diversity perception, emotion and psychophysiological recovery: (a) ND-male, (b) ND-female, (c) AD-male, (d) 
+AD-female.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+16 
+
+
+===== PAGE 17 =====
+thermal conditions, with responsivity attenuating at thermal extremes 
+due to attentional resource competition.
+Within natural environments under MTS conditions, sexual dimor­
+phism characterized neurophysiological restoration. Males exhibited 
+attenuated frontal δ power coupled with enhanced occipital α activity, 
+concomitant with improved attention, stress recovery, and affective 
+valence, suggesting potentially heightened relaxation and restoration. 
+Females demonstrated elevated θ power with parallel psychometric 
+improvements, which may be consistent with enhanced positive affect 
+and well-being [17]. These outdoor findings diverge from Bai et al., who 
+reported superior restoration from composite versus single-source nat­
+ural sounds indoors [34]. This discrepancy may reflect the elevated 
+perceptual complexity of outdoor thermally challenging contexts, 
+wherein HSD (incorporating anthropogenic elements) may impose 
+excessive cognitive load, attenuating the restorative efficacy observed in 
+controlled indoor settings.
+Within anthropogenic environments, males under MTS conditions 
+exhibited HSD-mediated attenuation of δ power across frontoparietal 
+and occipital regions, coupled with enhanced θ and β activity and 
+improved psychometric indices. This pattern suggests that acoustic 
+complexity may facilitate attentional engagement, potentially miti­
+gating cognitive resource depletion induced by thermal challenge [83]. 
+Conversely, females demonstrated context-dependent optima. Under 
+NTS conditions, MSD maximized parieto-occipital α power with 
+concomitant stress reduction, potentially indicating balanced sensory 
+stimulation avoiding both monotony and excessive load [84]. Under STS 
+conditions, HSD reduced δ while enhancing β activity, which may have 
+facilitated stress, attention, and affective recovery, potentially reflecting 
+complexity-mediated replenishment of depleted attentional resources 
+under environmental challenge [85].
+4.4. Limitations and future directions
+This study examined acoustic diversity effects from a sex- 
+differentiated perspective. However, the sample comprised university 
+students with homogeneous demographic characteristics, potentially 
+constraining external validity. Subsequent research should stratify par­
+ticipants across age cohorts, occupations, and cultural contexts, incor­
+porating anthropometric and metabolic indices (BMI and metabolic 
+rate) to elucidate population-specific psychophysiological responsivity. 
+Second, acoustic stimuli were experimentally synthesized using 
+controlled diversity indices, potentially limiting ecological validity 
+relative to in situ acoustic heterogeneity. Future investigations should 
+explore extended diversity gradients using ecologically authentic 
+soundscapes or immersive virtual environments. Finally, the acute 
+exposure protocol precludes assessment of chronic adaptation dynamics. 
+Longitudinal or long-term field monitoring designs are warranted to 
+characterize cumulative exposure effects, habituation mechanisms, and 
+potential interactions with olfactory and visual environmental 
+complexity in multisensory urban contexts.
+5. Conclusions
+This study investigated sexual dimorphism in thermo-acoustic 
+responsivity across three microclimatic contexts (open, partially 
+shaded, shaded) within an urban green space in Xi'an, China. Thermal 
+stress was operationalized via four PET categories. Eight hundred sixty- 
+four university students (sex ratio 1:1.2) underwent orthogonal expo­
+sure to six acoustic conditions: LSD, MSD and HSD within natural and 
+anthropogenic-dominant environments. Multimodal assessment inte­
+grated micrometeorological monitoring, psychometric evaluation, car­
+diovascular and thermal physiology, and electroencephalography to 
+characterize sex-differentiated psychophysiological responsivity. Prin­
+cipal findings indicate: 
+1) Sexual dimorphism characterized thermo-perceptual responsivity 
+predominantly within natural environments: males demonstrated 
+significant TCV modulation under STS conditions, SDV sensitivity 
+under SCS and MTS conditions, and SPV responsivity under SCS 
+conditions (p < 0.05), whereas females exhibited exclusive TSV 
+sensitivity under SCS conditions (p < 0.05). Within anthropogenic 
+environments, diversity exerted no significant thermo-perceptual 
+effects, though SDV responsivity emerged under SCS in both sexes 
+(p < 0.05) and SPV under NTS (p < 0.05), with females demon­
+strating heightened SDV sensitivity (p < 0.001).
+2) Cardiovascular responsivity demonstrated sexual dimorphism and 
+context-dependency, whereas ET responses were non-significant. 
+Within natural environments under STS conditions, males exhibi­
+ted significant hemodynamic attenuation: SBP decreased 6.08 
+mmHg (MSD vs. LSD) and DBP decreased 6.61 mmHg (HSD vs. LSD; 
+p < 0.05). Females demonstrated significant chronotropic reduction 
+exclusively under NTS anthropogenic conditions (HR decreased 5.32 
+bpm, HSD vs. LSD; p < 0.05).
+3) Under MTS within natural environments, neuropsychological resto­
+ration exhibited sex-convergent efficacy with divergent neural sig­
+natures. LSD significantly attenuated male frontal δ power while 
+enhancing occipital α power (p < 0.05), concomitant with improved 
+attention, stress recovery, and affective valence. Females exhibited 
+elevated θ power (p < 0.05) with parallel improvements in stress 
+recovery, cognition, and affective state. Within anthropogenic en­
+vironments, diversity effects on psychological states were more 
+heterogeneous.
+4) Thermal stress gradients elicited sexually dimorphic, domain- 
+specific diversity effects. Within biophonic environments, male 
+thermal perception strengthened monotonically with escalating 
+stress, whereas females exhibited biphasic (attenuation-recovery) 
+trajectories; soundscape perception followed biphasic patterns 
+across sexes. Physiologically, male responsivity attenuated while 
+female responsivity intensified; psychologically, males maintained 
+heightened sensitivity, whereas females demonstrated biphasic tra­
+jectories. Within anthropogenic environments, male thermal 
+perception strengthened monotonically, whereas females exhibited 
+inverted-U patterns; soundscape perception demonstrated inverted- 
+U trajectories in males and monotonic attenuation in females. 
+Males exhibited greater overall psychophysiological sensitivity; fe­
+males demonstrated U-shaped physiological responsivity and pro­
+gressively intensifying psychological responsivity.
+CRediT authorship contribution statement
+Zihan Tang: Writing – original draft, Investigation, Data curation. 
+Wenxia Huang: Investigation, Data curation. Miaosen Zhang: Inves­
+tigation, Data curation. Pei Deng: Investigation, Data curation. Bo 
+Hong: Writing – review & editing, Supervision, Methodology, 
+Conceptualization.
+Declaration of competing interest
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper.
+Acknowledgments
+This study was supported by the National Natural Science Founda­
+tion of China (No. 32572138) and Chinese Universities Scientific Fund 
+(No. 2452026014).
+Supplementary materials
+Supplementary material associated with this article can be found, in 
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+17 
+
+
+===== PAGE 18 =====
+the online version, at doi:10.1016/j.buildenv.2026.114742.
+Data availability
+Data will be made available on request.
+References
+[1] P. Vetter, S. Badde, E.R. Ferr`e, J. Seubert, B. Shinn-Cunningham, Evaluating 
+cognitive penetrability of perception across the senses, Nat. Rev. Psychol. 3 (2024) 
+804–820.
+[2] W. Yang, J. Kang, Acoustic comfort evaluation in urban open public spaces, Appl. 
+Acoust. 66 (2005) 211–229.
+[3] ISO 12913-1, Acoustics — Soundscape — Part 1: Definition and Conceptual 
+Framework, International Organization for Standardization, 2014.
+[4] ˙I. Erkan, Cognitive response and how it is affected by changes in temperature, 
+Build. Res. Inf. 49 (2021) 399–416.
+[5] R. Zhu, L. Yuan, Y. Pan, Y. Wang, D. Xiu, W. Liu, Effects of natural sound exposure 
+on health recovery: a systematic review and meta-analysis, Sci. Total Environ. 921 
+(2024) 171052.
+[6] Y. Suko, K.M. Korpela, Accumulation of self-reported restorative effects of natural 
+sounds: a seven-day intervention indoors, J. Environ. Psychol. 98 (2024) 102388.
+[7] A. Mehrotra, S.P. Shukla, A.K. Shukla, M.K. Manar, S.K. Singh, M. Mehrotra, 
+A comprehensive review of auditory and non-auditory effects of noise on human 
+health, Noise Health 26 (2024) 59–69.
+[8] S. Stansfeld, C. Clark, M. Smuk, J. Gallacher, W. Babisch, Road traffic noise, noise 
+sensitivity, noise annoyance, psychological and physical health and mortality, 
+Environ. Health. 20 (2021) 32.
+[9] M. Zhen, X. Yuan, L. Gao, W. Xia, K. Nan, M. Zhang, Outdoor thermal comfort of 
+urban plaza space under thermoacoustic interactions–Taking Datang Everbright 
+City as an example, Build. Environ. 267 (2025) 112327.
+[10] X. Wu, C. Yuan, H. Xue, Y. Yan, Comprehensive effects of thermal and acoustic 
+environments on overall comfort in urban parks of cold regions in China, Energy 
+Build 347 (2025) 116329.
+[11] Y. Jin, H. Jin, J. Kang, Effects of sound types and sound levels on subjective 
+environmental evaluations in different seasons, Build. Environ. 183 (2020) 
+107215.
+[12] B. Hong, M. Du, Y. Zhai, A. Matzarakis, Multi-sensory modulation of outdoor 
+thermal comfort: a systematic review and future agenda, Hum. Settlements Sustain. 
+1 (2025) 251–263.
+[13] M. Erfanian, A.J. Mitchell, J. Kang, F. Aletta, The psychophysiological implications 
+of soundscape: a systematic review of empirical literature and a research agenda, 
+Int. J. Environ. Res. Pub. He. 16 (2019) 3533.
+[14] E. Ratcliffe, Sound and soundscape in restorative natural environments: a narrative 
+literature review, Front. Psychol. 12 (2021) 570563.
+[15] L. Fan, M.R. Baharum, The effect of exposure to natural sounds on stress reduction: 
+a systematic review and meta-analysis, Stress 27 (2024) 2402519.
+[16] L. Zhu, J. Ma, Y. Wu, F. Liu, J. Kang, Effects of acoustic environment on sleep and 
+mental health in residential regions near railways, Appl. Acoust. 227 (2025) 
+110260.
+[17] X. Zhang, R. Shu, J. Dong, S. Hu, Z. Tong, X. Zhang, H. Guan, Effects of nature 
+sounds at different sound levels on the recovery from noise-induced stress, Build. 
+Environ. 285 (2025) 113573.
+[18] K. Jeon, J.S. Oh, Study on quantification of stress according to sound pressure level 
+of road noise: case of salivary cortisol and heart rate, Appl. Acoust. 192 (2022) 
+108695.
+[19] Y. Xiang, Q. Meng, X. Zhang, M. Li, D. Yang, Y. Wu, Soundscape diversity: 
+evaluation indices of the sound environment in urban green spaces–Effectiveness, 
+role and interpretation, Ecol. Indic. 154 (2023) 110725.
+[20] Y. Xiang, Q. Meng, M. Li, D. Yang, Y. Wu, Using Soundscape Diversity to Interpret 
+Soundscape Evaluation in Urban Green Spaces—Relationship, Integration and 
+Application, 97, Urban For. Urban Gree, 2024 128371.
+[21] Y. Xiang, Q. Meng, M. Li, D. Yang, W. Zhang, Soundscape Diversity in Urban Green 
+spaces: Spatial-Temporal variations, Influencing Factors and Optimization 
+Strategies, Urban For. Urban Gree, 2025 128929.
+[22] Y. Liu, J. Liu, X. Fan, Y. Hu, H. Guo, F. Xue, Perceived birdsong diversity and 
+restorativeness effect of soundscape: Interventions of birdsong audio and 
+messaging, Biodivers. Sci. 32 (1) (2024) 23230.
+[23] S. Huang, Y. Huang, Y. Bai, J. Zhang, Y. Wang, F. Kong, Q. Liu, Emotional impact of 
+the number and combination of sound sources in green and blue spaces: an 
+auditory study, Appl. Acoust. 241 (2026) 111052.
+[24] Y. Geng, B. Hong, M. Du, T. Yuan, Y. Wang, Combined effects of visual-acoustic- 
+thermal comfort in campus open spaces: a pilot study in China's cold region, Build. 
+Environ. 209 (2022) 108658.
+[25] D.A. Low, D.M. Keller, J.E. Wingo, R.M. Brothers, C.G. Crandall, Sympathetic nerve 
+activity and whole body heat stress in humans, J. Appl. Physiol. 111 (2011) 
+1329–1334.
+[26] W. Yang, H.J. Moon, Combined effects of acoustic, thermal and illumination 
+conditions on the comfort of discrete senses and overall indoor environment, Build. 
+Environ. 148 (2019) 623–633.
+[27] X.T. Huang, J. Wang, Z. Wang, L. Wang, C. Cheng, Experimental study on the 
+influence of virtual tourism spatial situation on the tourists’ temperature comfort 
+in the context of metaverse, Front. Psychol. 13 (2023) 1062876.
+[28] K.K.L. Lau, C.Y. Choi, The influence of perceived aesthetic and acoustic quality on 
+outdoor thermal comfort in urban environment, Build. Environ. 206 (2021) 
+108333.
+[29] T.P. Pasanen, T. Yli-Tuomi, P. Tiittanen, T. Lanki, More Green, Less Annoying? The 
+Moderating Effects of Greenery Near Home, Noise Sensitivity, and Nature 
+Relatedness on Road Traffic Noise Annoyance, 104, Urban For. Urban Gree, 2025 
+128625.
+[30] M. Zhang, J. Kang, Towards the evaluation, description and creation of 
+soundscapes in urban open spaces, Environ. Plan. B Plan. Des. 34 (2007) 68–86.
+[31] J. Kim, R. de Dear, C. Candido, H. Zhang, E. Arens, Gender differences in office 
+occupant perception of indoor environmental quality (IEQ), Build. Environ. 70 
+(2013) 245–256.
+[32] A.M. Abbasi, E. Darvishi, K. Sayehmiri, Exploring gender differences in acoustic- 
+thermal comfort and performance in a simulated working environment, Build. 
+Environ. 265 (2024) 111995.
+[33] R. Cain, P. Jennings, J. Poxon, The development and application of the emotional 
+dimensions of a soundscape, Appl. Acoust. 74 (2013) 232–239.
+[34] Z. Bai, S. Zhang, Effects of different natural soundscapes on human 
+psychophysiology in national forest park, Sci. Rep. 14 (2024) 17462.
+[35] Y. Li, Y. Li, G. Shang, Z. Peng, X. Zhang, B. Hong, How gender difference affects 
+children's outdoor thermal physio-psychological responses? A comparative field 
+study, Build. Environ. 272 (2025) 112638.
+[36] M.L. Power, J. Schulkin, Sex differences in fat storage, fat metabolism and the 
+health risks from obesity: possible evolutionary origins, Br. J. Nutr. 99 (2008) 
+931–940.
+[37] L. Song, Z. Tang, X. Zhang, Z. Wang, B. Hong, Assessing Effects of Seasonal 
+Variations in 3D Canopy Structure Characteristics on Thermal Comfort in Urban 
+Parks, 112, Urban For. Urban Gree, 2025 128901.
+[38] CMA, China Meteorological Administration (CMA). http://data.cma.cn/, 2021 
+(accessed 31 March 2021).
+[39] X. Long, N.C. Din, Y. Lei, N. Mahyuddin, The restorative effects of outdoor 
+soundscapes in nursing homes for elderly individuals, Build. Environ. 242 (2023) 
+110520.
+[40] N. Zhang, C. Liu, M. Zhang, Y. Guan, W. Wang, Z. Liu, W. Gao, Effects of traffic 
+noise on the psychophysiological responses of college students: an EEG study, 
+Build. Environ. 267 (2025) 112171.
+[41] S.A. Lembke, Evaluating causes and gestures: source-related and crossmodal 
+features in the perception of environmental sounds, Front. Psychol. 16 (2025) 
+1520209.
+[42] J.V. Bradley, Complete counterbalancing of immediate sequential effects in a Latin 
+square design, J. Am. Stat. Assoc. 53 (1958) 525–528.
+[43] L. Miola, N. Cellini, S. Bellini, F. Pazzaglia, Beyond nature: investigating the 
+restorative properties of environments through the comparison of historical, 
+modern urban, and natural image exposures, J. Environ. Psychol. 110 (2026) 
+102920.
+[44] International Standard 7730, Ergonomics of the thermal environment analytical 
+determination and interpretation of thermal comfort using calculation of the PMV 
+and PPD indices and local thermal comfort criteria, International Organization for 
+Standardization (2005).
+[45] A. Khosla, P. Khandnor, T. Chand, A comparative analysis of signal processing and 
+classification methods for different applications based on EEG signals, Biocybern. 
+Biomed. Eng. 40 (2020) 649–690.
+[46] E. Bielinis, N. Takayama, S. Boiko, A. Omelan, L. Bielinis, The Effect of Winter 
+Forest Bathing on Psychological Relaxation of Young Polish adults, 29, Urban For. 
+Urban Gree, 2018, pp. 276–283.
+[47] D. Watson, L.A. Clark, A. Tellegen, Development and validation of brief measures 
+of positive and negative affect: the PANAS scales, J. Pers. Soc. Psychol. 54 (1988) 
+1063–1070.
+[48] Q. Huang, M. Yang, H.A. Jane, S. Li, N. Bauer, Trees, grass, or concrete? The effects 
+of different types of environments on stress reduction, Landsc. Urban Plan. 193 
+(2020) 103654.
+[49] D. Shimbo, N.T. Artinian, J.N. Basile, L.R. Krakoff, K.L. Margolis, M.K. Rakotz, 
+American Heart Association and the American Medical Association, self-measured 
+blood pressure monitoring at home: a joint policy statement from the American 
+Heart Association and American Medical Association, Circulation 142 (2020) 
+e42–e63.
+[50] X. Ma, J. Lin, A. Liu, X. Nian, B. Hong, Psychophysiological Responses of the 
+Elderly to Outdoor Thermal Stress: A focused Analysis, 57, Urban Clim, 2024 
+102094.
+[51] J. Li, X. Ma, C. Wang, X. Li, Z. Peng, B. Hong, Multisensory interactions in urban 
+parks: auditory-olfactory effects on psycho-physiological responses of hypertensive 
+elderly adults, Build. Environ. 283 (2025) 113413.
+[52] X. Wang, P. Deng, X. Zhang, M. Zhai, G. Shang, B. Hong, Gustatory Perception and 
+Its Influence on Emotional and Psychological Responses Under Outdoor Thermal 
+Stress, 61, Urban Clim, 2025 102416.
+[53] Y. Peng, Y. Lin, C. Fan, Q. Xu, D. Xu, S. Yi, K. Wang, Passenger overall comfort in 
+high-speed railway environments based on EEG: assessment and degradation 
+mechanism, Build. Environ. 210 (2022) 108711.
+[54] X. Ma, M. Du, P. Deng, T. Zhou, B. Hong, Effects of green walls on thermal 
+perception and cognitive performance: an indoor study, Build. Environ. 250 (2024) 
+111180.
+[55] R.W. Homan, J. Herman, P. Purdy, Cerebral location of international 10–20 system 
+electrode placement, Electroencephalogr. Clin. Neurophysiol. 66 (1987) 376–382.
+[56] A. Delorme, S. Makeig, EEGLAB: an open source toolbox for analysis of single-trial 
+EEG dynamics including independent component analysis, J. Neurosci. Methods. 
+134 (2004) 9–21.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+18 
+
+
+===== PAGE 19 =====
+[57] M. Du, Y. Zheng, C. Wang, Z. Wang, B. Hong, Effects of tactile perceptions on 
+elderly adults’ thermo-physiological responses in outdoor open spaces, Build. 
+Environ. 278 (2025) 112958.
+[58] X. Lang, Z. Wang, X. Tian, Y. Wu, S. Zhu, W. Liu, The effects of extreme high indoor 
+temperature on EEG during a low intensity activity, Build. Environ. 219 (2022) 
+109225.
+[59] R. Mukherjee, Selection of sustainable process and essential indicators for decision 
+making using machine learning algorithms, Process Integr. Optim. Sustain. 1 
+(2017) 153–163.
+[60] R.A. Van den Berg, H.C.J. Hoefsloot, J.A. Westerhuis, A.K. Smilde, M.J. van der 
+Werf, Centering, scaling, and transformations: improving the biological 
+information content of metabolomics data, BMC Genomics 7 (2006) 142.
+[61] B. Galindo-Prieto, L. Eriksson, J. Trygg, Variable influence on projection (VIP) for 
+OPLS models and its applicability in multivariate time series analysis, Chemom. 
+Intell. Lab. Syst. 146 (2015) 297–304.
+[62] N. Akarachantachote, S. Chadcham, K. Saithanu, Cutoff threshold of variable 
+importance in projection for variable selection, Int. J. Pure Appl. Math. 94 (2014) 
+307–322.
+[63] B. Mahieu, E.M. Qannari, B. Jaillais, Extension and significance testing of variable 
+importance in projection (VIP) indices in partial least squares regression and 
+principal components analysis, Chemom. Intell. Lab. Syst. 242 (2023) 104986.
+[64] J.J. Alvarsson, S. Wiens, M.E. Nilsson, Stress recovery during exposure to nature 
+sound and environmental noise, Int. J. Environ. Res. Pub. He. 7 (2010) 1036–1046.
+[65] J.Y. Jeon, H.I. Jo, Effects of audio-visual interactions on soundscape and landscape 
+perception and their influence on satisfaction with the urban environment, Build. 
+Environ. 169 (2020) 106544.
+[66] J. Krizman, S. Bonacina, D. Colegrove, R. Otto-Meyer, T. Nicol, N. Kraus, 
+Athleticism and sex impact neural processing of sound, Sci. Rep. 12 (2022) 15181.
+[67] T.Y. Chang, A. Kajackaite, Battle for the thermostat: gender and the effect of 
+temperature on cognitive performance, PLoS One 14 (2019) e0216362.
+[68] M.H. Beheshti, E. Taban, S.E. Samaei, M. Faridan, F. Khajehnasiri, L.T. Khaveh, 
+A. Tajpoor, The influence of personality traits and gender on noise annoyance in 
+laboratory studies, Pers. Individ. Dif. 148 (2019) 95–100.
+[69] M. Hedblom, I. Knez, Å. Ode Sang, B. Gunnarsson, Evaluation of natural sounds in 
+urban greenery: potential impact for urban nature preservation, R. Soc. Open Sci. 4 
+(2017) 170037.
+[70] Y. Yin, D. Zhang, M. Zhen, W. Jing, W. Luo, W. Feng, Combined effects of the 
+thermal-acoustic environment on subjective evaluations in outdoor public spaces, 
+Sustain. Cities Soc. 77 (2022) 103522.
+[71] J. Kang, B. Schulte-Fortkamp (Eds.), Soundscape and the Built Environment, CRC 
+Press, Boca Raton, FL, USA, 2016.
+[72] K. Hume, M. Ahtamad, Physiological responses to and subjective estimates of 
+soundscape elements, Appl. Acoust. 74 (2013) 275–281.
+[73] Z. Li, J. Kang, Sensitivity analysis of changes in human physiological indicators 
+observed in soundscapes, Landsc. Urban Plan. 190 (2019) 103593.
+[74] R.S. Ulrich, R.F. Simons, B.D. Losito, E. Fiorito, M.A. Miles, M. Zelson, Stress 
+recovery during exposure to natural and urban environments, J. Environ. Psychol. 
+11 (1991) 201–230.
+[75] Y. Ding, C. Udompanyawit, Y. Zhang, B. He, EEG-based brain-computer interface 
+enables real-time robotic hand control at individual finger level, Nat. Commun. 16 
+(2025) 5401.
+[76] J.E. Hall, Guyton and Hall Textbook of Medical Physiology, Jordanian Edition E- 
+Book, Elsevier Health Sciences, 2016.
+[77] H. Guan, S. Hu, M. Lu, M. He, Z. Mao, G. Liu, People's subjective and physiological 
+responses to the combined thermal-acoustic environments, Build. Environ. 172 
+(2020) 106709.
+[78] Z. Qin, B. Lu, W. Jing, Y. Yin, L. Zhang, X. Wang, Y. Dong, Creating Comfortable 
+Outdoor Environments: Understanding the Intricate Relationship Between Sound, 
+Humidity and Thermal Comfort, 55, Urban Clim, 2024 101967.
+[79] J.A. Benfield, B.D. Taff, P. Newman, J. Smyth, Natural sound facilitates mood 
+recovery, Ecopsychology 6 (2014) 183–188.
+[80] D. Kahneman, Attention and Effort, Prentice-Hall, 1973.
+[81] H.C. Hou, The impact of heat stress on cognitive performance in outdoor workers: 
+an EEG study. ICCREM 2025: Decarbonization and Digitalization of the Built 
+Environment–Shaping Resilience in a Changing World, 2025, pp. 624–634.
+[82] S. Sepehri, M. Aliabadi, R. Golmohammadi, M. Babamiri, The effects of noise on 
+human cognitive performance and thermal perception under different air 
+temperatures, J. Res. Health Sci. 19 (2019) e00464.
+[83] A.J. Smalley, M.P. White, R. Ripley, T.X. Atack, E. Lomas, M. Sharples, M. 
+H. Depledge, Forest 404: using a BBC drama series to explore the impact of nature’s 
+changing soundscapes on human wellbeing and behavior, Glob. Environ. Change 
+74 (2022) 102497.
+[84] Y. Chen, T. Li, S. Chen, H. Chen, Y. Lan, Thermal–Acoustic interaction effects on 
+physiological and psychological measures in urban forests: a laboratory study, 
+Forests 15 (2024) 1373.
+[85] K. Uebel, E. Ratcliffe, C. Buchan, S.J. Butler, N. Hanley, A. Higney, M. Marselle, 
+Natural soundscapes are associated with mental well-being via capacity-building 
+and capacity-restoring pathways, J. Environ. Psychol. 106 (2025) 102735.
+Z. Tang et al.                                                                                                                                                                                                                                    
+Building and Environment 301 (2026) 114742 
+19 

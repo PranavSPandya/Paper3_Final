@@ -1,0 +1,123 @@
+FILE: 20 Rodrigues2026 - highlighted.pdf
+PAGES: 13
+CHARS: 50474
+
+ution environ- mental data. We examined how urban features—such as vegetation, noise, sky visibility, infrastructure, and points of interest – relate to peripheral bio sig- nals, like heart rate variabil
+---
+rally vibrant environments enhance well-being, calmness, and alertness, while noise, heat, and technical infra- structure increase physiological stress. Clustering analyses reveal that environmental typ
+---
+ng, calmness, and alertness, while noise, heat, and technical infra- structure increase physiological stress. Clustering analyses reveal that environmental typologies shape affective and bodily responses,
+---
+vironments influence physical, emotional, and cognitive health through complex interactions between spatial form, environmental exposure, and everyday mobility [1]. Among travel modes, walk- ing is uniquely s
+---
+ese influences, given its immersive and multi-sensory nature [2, 3]. Research increasingly shows that features such as trees, parks, and human-scale design enhance subjective well- being and reduce stress
+---
+d human-scale design enhance subjective well- being and reduce stress [4],while noise, heat, and vis- ual chaos are linked to discomfort and physiological arousal [5]. Technological advances now enable re
+---
+s alone [9, 10]. Several recent studies have expanded this field. Road traffic noise has been shown to modulate psychophysiological responses during forest and urban walks [11]. A Perceived Environment
+---
+nmental exposure was assessed using high- resolution data on vegetation (NDVI), noise, tem- perature, visible sky, street-level imagery, and POIs from OpenStreetMap. Subjective perceptions were captured
+---
+eetMap. Subjective perceptions were captured through post-walk questionnaires. We hypothesize that greener and more vibrant urban environments—characterized by vegeta- tion, visible sky, and the presence of cu
+---
+associated with more positive subjective perceptions during walking, such as increased feelings of well-being (H1) [15–19]. Second, we expect that environmental stressors like noise, heat, and technical
+---
+well-being (H1) [15–19]. Second, we expect that environmental stressors like noise, heat, and technical urban infrastruc- ture are linked to heightened physiological acti- vation, either through increas
+---
+struc- ture are linked to heightened physiological acti- vation, either through increased variability, peak responses, or reduced parasympathetic regulation (H2) [2, 20–23]. Third, we hypothesize that walk
+---
+peak responses, or reduced parasympathetic regulation (H2) [2, 20–23]. Third, we hypothesize that walk- ing routes grouped by their environmental profiles (e.g., greener, noisier) will exhibit significantly
+---
+dated and enriched with spatial and environmental indicators, including NDVI, noise, temperature, precipitation, street imagery, and infrastructure variables. Partici- pant characteristics (age, gender,
+---
+During Walking Vol.: (0123456789) the timing and relevance of their responses, increas- ing ecological validity. These variables supported the interpretation of physiological responses by capturing emotion
+---
+ous predictors in subsequent models (details in Supplementary Meth- ods S2.5). Noise Pollution Data Processing Environmental noise exposure was derived from Lis- bon’s official Lden noise map (dB[A]), pro
+---
+in Supplementary Meth- ods S2.5). Noise Pollution Data Processing Environmental noise exposure was derived from Lis- bon’s official Lden noise map (dB[A]), provided by the municipality [39]. Values were e
+---
+ocessing Environmental noise exposure was derived from Lis- bon’s official Lden noise map (dB[A]), provided by the municipality [39]. Values were extracted for each walking trip by intersecting noise ras
+---
+municipality [39]. Values were extracted for each walking trip by intersecting noise rasters with 25 m buffers around GPS tracks, generating mean, mini- mum, maximum, and SD noise metrics per route. The
+---
+th 25 m buffers around GPS tracks, generating mean, mini- mum, maximum, and SD noise metrics per route. These indicators were included as continuous predic- tors of perceptual and physiological responses
+---
+study focused on within-individual variation across envi- ronmental contexts. Hypothesis 1 (H1) posited that greener and more vibrant environments are associated with more posi- tive perceptions. Separate mi
+---
+re- processing steps are detailed in “6.Model_H1.py” (Zenodo repository [26]). Hypothesis 2 (H2) examined whether environ- mental stressors (noise, heat, infrastructure) are associated with increased physiolo
+---
+repository [26]). Hypothesis 2 (H2) examined whether environ- mental stressors (noise, heat, infrastructure) are associated with increased physiological activa- tion. Using the same framework, predictors
+---
+er environ- mental stressors (noise, heat, infrastructure) are associated with increased physiological activa- tion. Using the same framework, predictors were grouped into five thematic blocks (Noise, Temp
+---
+. Using the same framework, predictors were grouped into five thematic blocks (Noise, Tempera- ture, Technical Infrastructure, Functional POIs, Vis- ual Elements), and each block was tested in separate m
+---
+ined. Full details are available in “7.Model_H2.py” (Zenodo repository [26]). Hypothesis 3 (H3) evaluated whether distinct envi- ronmental typologies elicit differentiated physiologi- cal and perceptual respo
+---
+ied to standardized environmental variables (NDVI, sky visibility, vegetation, noise, and POI cate- gories), with missing POIs imputed as zero. The opti- mal number of clusters (k = 4) was determined usin
+---
+(r = 0.25), leisure (r = 0.21), and natural greenery (r = 0.12). Calmness also increased with lei- sure (r = 0.30) and tourism (r = 0.25), suggesting that engaging and socially vibrant urban spaces promote
+---
+urb presence emerged as the most consistent positive predictor of perception, increasing Unwell–Well (β = 0.078, p = 0.046), Agi- tated–Calm (β = 0.092, p = 0.036), and Tired–Awake (β = 0.099, p = 0.042).
+---
+p = 0.042). Interpreted practically, this means that a one–standard-deviation increase in curb exposure corresponds to an improvement of approxi- mately + 0.08 to + 0.10 units in reported well-being — de
+---
+le. Effects of greenery were similarly directional but more nuanced. Mean NDVI increased calmness and vitality (≈ + 0.12–0.13 per 1-SD), while maximum NDVI and sky openness predicted slight decreases in
+---
+enness may reduce per- ceived comfort under some conditions. Tourism POIs also increased alertness (β = 0.127 for Tired–Awake, p = 0.006), suggesting that cultural destinations con- tribute to heightened a
+---
+an dif- ferences in perception scores associated with a one-standard-deviation increase in each predictor (linear mixed-effects models, trip-level; random inter- cept = participant). Only significant effec
+---
+plementary Table S2. Environmental Stressors and Physiological Responses (H2) Hypothesis 2 proposed that environmental stress- ors—such as noise, heat, and infrastructure—would increase physiological activat
+---
+al Responses (H2) Hypothesis 2 proposed that environmental stress- ors—such as noise, heat, and infrastructure—would increase physiological activation during walking, reflected in EDA and HRV indicators
+---
+d that environmental stress- ors—such as noise, heat, and infrastructure—would increase physiological activation during walking, reflected in EDA and HRV indicators. Correlation analyses (Supplementary Ta
+---
+he most consistent stressor: higher ambient tem- peratures were associated with increased EDA mean amplitude (r = 0.23) and reduced RMSSD (r = –0.13), indicating stronger sympathetic acti- vation and lower
+---
+0.13), indicating stronger sympathetic acti- vation and lower vagal regulation. Noise showed weaker correlations with EDA amplitude but Table 1 Key Environmental Predictors of Self-Reported Feelings Du
+---
+resence slightly lowers well-being Tourism POIs — — 0.127 Cultural destinations increase alertness ===== PAGE 7 ===== 350 Rodrigues et al. Vol:. (1234567890) modest positive associations with rise-time f
+---
+cts models (Table 2; Supplementary Table S4) further confirmed that heat and noise were the strongest predictors of physiological stress. Regression coefficients (β) reflect the adjusted mean differe
+---
+erence in each physiological outcome associ- ated with a one–standard-deviation increase in the standardized environmental predictors (z-score), accounting for repeated trips nested within par- ticipants.
+---
+trips nested within par- ticipants. Higher maximum temperatures were linked to increased EDA mean amplitude (β = 0.16, p = 0.0002) and slightly higher mean RMSSD (β = 0.087, p = 0.018), consistent with en
+---
+ced sympathetic mobilization and reduced parasympa- thetic control. Similarly, noise exposure predicted stronger EDA activation (β = 0.18, p = 0.0002). Built environment features also modulated auto- nom
+---
+n heart rate (β = 2.19, p = 0.0012). Overall, these results confirm that heat, noise, and infrastructural elements elevate physiological strain, whereas social and visual cues did not exert a meas- urab
+---
+sent the mean difference in each physiological outcome associated with a 1-SD increase in the standardized environmental predic- tor (all predictors z-scored). Models include random intercepts for partici
+---
+K-means clustering applied to standardized envi- ronmental variables (greenery, noise, infrastructure, and POIs) identified four distinct urban typologies (k = 4; see Supplementary Figure S8). Cluster 0
+---
+. Cluster 0 rep- resented low-density areas with sparse vegetation and minimal noise; Cluster 1 featured abundant greenery and openness with moderate functional diversity; Cluster 2 combined moderate gr
+---
+er 3 encompassed dense infrastructure, high commercial activity, and elevated noise exposure. Key psychophysiological differences between clusters are presented in Table 3, with full test outputs list
+---
+Interpretation Temperature ↑ EDA mean amplitude 0.16 0.0002 Higher temperature increases sympathetic arousal ↑ RMSSD 0.087 0.018 Slight increase in vagal-related HRV under heat load Noise ↑ EDA mean amplitu
+---
+002 Higher temperature increases sympathetic arousal ↑ RMSSD 0.087 0.018 Slight increase in vagal-related HRV under heat load Noise ↑ EDA mean amplitude 0.18 0.0002 Noise elevates electrodermal activation In
+---
+rousal ↑ RMSSD 0.087 0.018 Slight increase in vagal-related HRV under heat load Noise ↑ EDA mean amplitude 0.18 0.0002 Noise elevates electrodermal activation Infrastructure – Curbs ↑ LF/HF ratio 0.058 0.0
+---
+ase in vagal-related HRV under heat load Noise ↑ EDA mean amplitude 0.18 0.0002 Noise elevates electrodermal activation Infrastructure – Curbs ↑ LF/HF ratio 0.058 0.0013 More curbs correspond to sympatheti
+---
+d stress balance Visual exposure – Cars ↑ Mean BPM 2.19 0.0012 Traffic presence increases cardiovascular activation ===== PAGE 8 ===== 351 The Influence of Urban Context on Emotions and Bodily Responses Du
+---
+calmer and more positive responses. The spatial distribution of clusters is displayed in Fig. 2, with representa- tive street-level imagery shown in Supplementary Figures S9– S12. Kruskal–Wallis stat
+---
+en environmental clusters derived via K-means classi- fication (based on NDVI, noise, POIs and Mapillary features). Higher EDA and skin temperature values indicate stronger sympathetic activation. Only
+---
+. NDVI, for instance, showed selective effects, with mean NDVI associated with increased calmness and energetic states, whereas maximum NDVI demonstrated a small negative relationship with calmness. The
+---
+y, whereas exces- sive openness or dense vegetation may reduce vis- ibility and increase perceived insecurity [15, 17]. The consistent effects of curbs support previous findings on the role of micro-infras
+---
+y reflecting fears related to entrapment or inadequate lighting [17]. Overall, Hypothesis 1 was only partially sup- ported. Positive pedestrian perceptions emerged from a balanced combination of vegetation, v
+---
+mental Stressors and Physiological Responses (H2) These findings indicate that noise and heat consist- ently increase physiological activation, support- ing Hypothesis 2. The associations between maxi- mu
+---
+ical Responses (H2) These findings indicate that noise and heat consist- ently increase physiological activation, support- ing Hypothesis 2. The associations between maxi- mum noise and EDA measures suggest

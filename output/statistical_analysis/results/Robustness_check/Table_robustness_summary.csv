@@ -1,0 +1,7 @@
+"family","n_tests","n_fdr_hits_primary","n_same_sign_all_loo","n_p05_all_loo","n_p05_all_alternatives","n_cr2_q05","loo_estimate_pct_min","loo_estimate_pct_max","alternatives_used","n_cr2_df_below_4"
+"H1 cycling (BikeG - BikeU)",44,15,15,15,14,14,68.9,120.1,"Kenward-Roger; Satterthwaite; CR2-Satterthwaite; paired t; exact sign-flip; Wilcoxon (normal approx.); bootstrap CI excludes 0",
+"H1 walking (WalkG - WalkU)",44,14,14,14,14,12,73.3,126.2,"Kenward-Roger; Satterthwaite; CR2-Satterthwaite; paired t; exact sign-flip; Wilcoxon (normal approx.); bootstrap CI excludes 0",
+"H3 urban (WalkU - BikeU)",44,5,5,5,5,5,87.9,123.3,"Kenward-Roger; Satterthwaite; CR2-Satterthwaite; paired t; exact sign-flip; Wilcoxon (normal approx.); bootstrap CI excludes 0",
+"H3 green (WalkG - BikeG)",44,6,6,6,6,3,73.3,116.9,"Kenward-Roger; Satterthwaite; CR2-Satterthwaite; paired t; exact sign-flip; Wilcoxon (normal approx.); bootstrap CI excludes 0",
+"H5 exposure terms",1118,14,14,13,14,,72.9,124.5,"Kenward-Roger",0
+"H5 phase terms (phase vs mean of phases)",728,16,16,16,16,,85.1,119.9,"Kenward-Roger",2

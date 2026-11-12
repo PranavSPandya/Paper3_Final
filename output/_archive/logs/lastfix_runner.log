@@ -1,0 +1,9 @@
+11.54.58 start H1_H3_phaseavg
+11.55.31 end H1_H3_phaseavg exit=0 secs=34
+11.55.31 start H1_H3_timeseries
+11.55.59 end H1_H3_timeseries exit=0 secs=27
+11.55.59 start H4_sound_literature_test
+11.59.16 end H4_sound_literature_test exit=0 secs=197
+11.59.16 start Merge_statistical_outputs
+11.59.18 end Merge_statistical_outputs exit=0 secs=2
+ALL DONE

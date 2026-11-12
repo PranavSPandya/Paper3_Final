@@ -1,0 +1,1863 @@
+
+
+===== PAGE 1 =====
+Building and Environment 228 (2023) 109884
+Available online 2 December 2022
+0360-1323/© 2022 Elsevier Ltd. All rights reserved.
+The influence of outdoor thermal comfort on acoustic comfort of urban 
+parks based on plant communities 
+Negar Mohammadzadeh a,*, Alireza Karimi b, Robert D. Brown c 
+a Department of Architecture, Faculty of Art, Tarbiat Modares University, Tehran, Iran 
+b Instituto Universitario de Arquitectura y Ciencias de la Construcci´on, Escuela T´ecnica Superior de Arquitectura, Universidad de Sevilla, Sevilla, 41012, Spain 
+c Department of Landscape and Architecture, Texas A&M University, College Station, TX, United States   
+A R T I C L E I N F O  
+Keywords: 
+Acoustic comfort 
+Outdoor thermal comfort 
+Environmental perception 
+Urban park 
+A B S T R A C T  
+As human beings live in an environment where various factors interact and integrate, it seems vital to examine 
+the effects of these factors on environmental perceptions. Outdoor thermal and acoustic environments are the 
+main factors affecting the overall comfort of urban spaces. This research uses measurements and questionnaire 
+surveys to explore the effects of outdoor thermal comfort dimensions on acoustic comfort, emphasizing the plant 
+community in a city park (the El Goli Park of Tabriz, Iran). In this regard, the general comfort of the psycho­
+logical equivalent temperature (PET) under different conditions of the thermal-acoustic environment has been 
+evaluated and predicted. The results showed that a higher thermal sensation vote (TSV) and PET result in a 
+significant decrease in soundscape quality (SQ), overall impression (OI), and the percentage of reported natural 
+dominant sound (%RNDS), while an inverse trend has been reported in thermal comfort vote (TCV). On the other 
+hand, by increasing TSV and PET, reported loudness (RL) has recorded an upward trend. However, this process 
+was completely reversed in TCV. Furthermore, the analyzes showed that PET has a lower effectiveness compared 
+to TSV and TCV and, it should be stated that the three indicators of thermal comfort did not show any significant 
+relationship with landscape quality (LQ) and sound pressure level (SPL). These findings are important for 
+managing and improving outdoor acoustic comfort and soundscapes, and it is expected that future studies will 
+consider the acquired results in various green urban environments and provide a practical framework for 
+landscape architects and urban planners.   
+1. Introduction 
+Indiscriminate urbanization as one the phenomenon of the present 
+century leads to a variety of environmental problems, including water 
+shortage [1], industrial and community waster [2], land pollution [3], 
+increased density of population (S. [4], noise discomfort [5], and 
+climate change [6]. In this regard, exposure to noise in outdoor envi­
+ronments has numerous effects on human health, such as hearing loss, 
+sleep problems, cardiovascular and mental health disorders [7,8]. On 
+the other hand, the direct impact of climate changes on people’s quality 
+of life and the creation of a local phenomenon called the urban heat 
+island (UHI) has led to thermal discomfort in urban spaces [9]. 
+Urban parks are recognized as an integral component of the intricate 
+urban ecosystem network, which provides various advantages to urban 
+residents [10]. Open green areas in urban parks can improve mental and 
+physical health by decreasing the exposure of inhabitants to air 
+pollutants, noise pollution, and extreme heat as well as offering psy­
+chological relaxation and stress relief [11]. Plant Covers have been re­
+ported as one of the most important factors determining the quality of 
+urban spaces in the acoustic comfort of urban spaces [12–15],followed 
+by thermal comfort [16–18]. 
+Acoustic comfort is the basic feeling of users towards the acoustic 
+environment [19]. Studies show that acoustic comfort is beyond noise 
+control and includes subjective interpretations of a sound in a particular 
+context [20]; F [21]. The term “soundscape” has been defined as the 
+“acoustic environment as perceived or experienced and/or understood 
+by a person or people, in context” [22]. Typical studies dealt with 
+soundscape experiences such as sound level, perceived loudness [23], 
+perceived dominant sound [24], and pleasantness for sounds [25] etc. 
+These experiences may be influenced by different sound sources [26, 
+27], the social/demographic/behavioral characteristics [28], landscape 
+features [29] and physical factors such as temperature, humidity and 
+* Corresponding author. 
+E-mail address: Mohamadzadenegar@modares.ac.ir (N. Mohammadzadeh).  
+Contents lists available at ScienceDirect 
+Building and Environment 
+journal homepage: www.elsevier.com/locate/buildenv 
+https://doi.org/10.1016/j.buildenv.2022.109884 
+Received 22 September 2022; Received in revised form 8 November 2022; Accepted 27 November 2022   
+
+
+===== PAGE 2 =====
+Building and Environment 228 (2023) 109884
+2
+sunlight (W [30,31]. It is important to combine a variety of quantitative 
+and qualitative research methods to measure the objective acoustic 
+environment (using acoustic measurements, noise maps, etc.) and sub­
+jective acoustic perception using interviews and questionnaires [32,33]; 
+M [34]. 
+On the other hand, thermal comfort can be expressed as the physi­
+ological interval in which the human able to operate or tolerate the 
+environment [35]. It is the condition in which the human body feels 
+satisfied with the thermal environment [36] and is affected by heat 
+conduction, convection, radiation, and loss of evaporative heat [37]. 
+Several factors such as air temperature, humidity, air flow, solar radia­
+tion, terrestrial radiation, metabolic heat, and clothing insulation are 
+factors and the energy budget of a person in outdoor spaces [38,39]. In 
+the evaluation of the outdoor thermal environment, environment 
+microclimatic condition, physiological components (such as the meta­
+bolism rate), and behavioral elements are essential for better thermal 
+comfort [40]. 
+It is necessary to evaluate and identify different aspects of thermal 
+comfort as one of the most important environmental factors affecting 
+soundscapes [14]; M [34].. To evaluate acoustic comfort conditions, 
+only understanding the acoustic factors is not enough, and multiple 
+environmental stimuli, including thermal comfort, visual beauty of the 
+environment, and greenness can be effective in the perceived quality of 
+the acoustic environment. Studies showed that thermal conditions 
+significantly affected feelings of loudness or calmness of sound [41–43]. 
+Temperature changes have also been shown to increase or decrease 
+perceived acoustic comfort [44]. Meanwhile [45], suggested that the 
+thermal environment had no effect on the measured noise levels. 
+Although the stated results can have different effects in different spatial 
+conditions, including the variety and extent of natural elements and 
+different socio-cultural factors such as age, it is predicted that the 
+acoustic environment perceived in outdoor spaces is related to the 
+experienced thermal comfort conditions. 
+Plants are one of the influential indexes in managing environmental 
+conditions that can lead to better outdoor comfort conditions. These 
+include an improved quality of visual comfort [46] and thermal comfort 
+[47,48]; J [49]. In terms of acoustic comfort evaluation, previous studies 
+pointed out the importance of plants in mitigating noise pollution by 
+plants, tree [50–52], or by land use parameters emphasizing green 
+spaces and their ratio [53] [54], or the psychological and physiological 
+impacts of noise reduction [55]; F [56]. Some research also found that 
+non-acoustical features including plants can increase acoustic comfort 
+quality by producing natural soundscapes such as tree rustling [57–59]. 
+At the same order to regulate outdoor thermal comfort, solar atten­
+uation, and evaporative cooling capacity can provide relatively suitable 
+thermal comfort conditions in different cities [60]. These effects are 
+compared to the reduction of air and surface temperature under the tree 
+canopy compared to other areas [61,62]. Shade in trees is also consid­
+ered as one of the determining factors in improving thermal comfort to 
+cope with the heat sensation of the day and reduce the mean radiant 
+temperature (MRT). Numerous researches have analyzed the impact of 
+trees as a cooling strategy on urban climate and regulation of human 
+thermal comfort in Asia [63]; H. [18,36,64,65]; L. [66], Europa [67–71] 
+and North America [72]; Y [73]. which points to the undeniable effect of 
+urban trees. The summary of the studies on the influence of plant spaces 
+on outdoor thermal comfort and acoustic comfort, are highlighted in 
+Table 1. 
+The review of previous research illustrated that the role of plant 
+covers in improving acoustic and thermal comfort has been well estab­
+lished. But few studies have examined the relationship between these 
+two indicators in the outdoor environment with an emphasis on natural 
+elements, among which the role of the effect of acoustic comfort on 
+thermal comfort has been further analyzed [14,44,77–79] (Table 1). 
+This study focuses on the combined effects of thermal comfort on the 
+acoustic environment, with an emphasis on changes in the plant com­
+munity of El Goli park, Tabriz city, Iran. In this regard, first, the acoustic 
+Table 1 
+Summary of research on the acoustic and thermal comfort of plant spaces and 
+combined studies of both.  
+Reference 
+City 
+Method 
+Suggestion 
+[51] 
+Antwerp 
+Measurement 
+noise data 
+Trees-covered areas had 
+slightly lower noise levels 
+than the grass. 
+[52] 
+Wolfratshausen 
+Measurement 
+noise data 
+Further noise reduction is 
+associated with an increase 
+in the ground effect. 
+[50] 
+London 
+Measurement 
+noise data 
+Green roofs offered 
+significant noise abatement 
+over 1 kHz in the courtyard, 
+while the vegetated facade 
+was effective at reducing 
+noise levels at low 
+frequencies. 
+[74] 
+– 
+Review 
+The quality of a "place" is 
+strongly influenced by our 
+perception of sound in the 
+surrounding environment. 
+[53] 
+Eight UK cities 
+Measurement 
+noise data 
+On a micro-scale, different 
+areas can have the same 
+building coverage but 
+different noise levels. 
+[56] 
+Hangzhou 
+Measurement 
+noise data 
+The results suggest that the 
+emotions aroused by noise 
+and visual stimuli manifest 
+themselves in the 
+synchronization of the beta 
+frequency band and the 
+desynchronization of the 
+alpha frequency band, 
+indicating that landscape 
+plants can moderate or 
+buffer the effects of noise. 
+[55] 
+Plovdiv 
+Measurement 
+noise data 
+The effects on annoyance 
+were mediated by noise 
+sensitivity. 
+[54] 
+Bradford 
+Measurement 
+noise data 
+The percentage of people 
+feeling more relaxed after 
+visiting the spaces was 
+closely related to overall 
+assessments of perceived 
+tranquility. 
+[59] 
+Holland 
+Review 
+Discussions are presented 
+about the methods used in 
+soundscape research with a 
+special focus on human 
+perception assessment. 
+[57] 
+Rome 
+Field survey 
+Even if the level of sound 
+pressure is nearly always 
+higher than the limits 
+commonly used to define 
+quiet areas, the sound 
+environment in urban parks 
+is often considered ‘good’ or 
+“excellent”. 
+[58] 
+Jinan 
+Measurement 
+noise data 
+Soundscapes vary with time 
+of day and season and are 
+influenced by the 
+surrounding environment 
+and human behavior. 
+[63] 
+Tehran 
+Simulation 
+Air quality rates correlate 
+significantly with green 
+spaces and wind direction. 
+[64] 
+Singapore 
+Field 
+measurements 
+Trees with large canopies, 
+either in diameter or height, 
+are most effective in 
+improving the mean PET at 
+precinct level. 
+[18] 
+Roorkee 
+Field 
+measurements 
+and simulation 
+Fraxinus excelsior can 
+produce the most effective 
+conditions for thermal 
+comfort in Roorkee. 
+[36] 
+Isfahan 
+Trees with high trunks and 
+wide, overlapping crowns 
+(continued on next page) 
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 3 =====
+Building and Environment 228 (2023) 109884
+3
+comfort based on sound level measurements and questionnaire surveys 
+has been investigated. Furthermore, the monitoring and survey in order 
+to analyze the outdoor thermal comfort conditions were conducted 
+simultaneously. Subsequently, possible correlations between the 
+acoustic and thermal comfort parameters assessed were identified. 
+Eventually, acoustic comfort differences based on thermal comfort pa­
+rameters were analyzed in a park-based scale and index. 
+2. Methodology and data collection 
+This section describes the study area and how the thermal comfort 
+and soundscape data of the EL Goli Park were collected and then 
+analyzed. 
+2.1. Study area 
+This study was carried out in Tabriz, Iran (38.0792◦N, 46.2887◦E) 
+at an altitude of 1351 m [80]. The existence of the Guzni and Bababaghi 
+mountains in the northeast and Sahand mountains range in the south 
+creates considerable differences in the climate in the north and west of 
+the city. According to the K¨oppen classification, Tabriz has a cold and 
+dry climate [81] with a maximum temperature of 26.60 ◦C, and a 
+minimum temperature of −1.77, an average annual temperature of 
+12.9 ◦C (Fig. 1). 
+The selected location (El-Goli Park) with an approximate area of 70 
+km2 hectares is located in the southeast region of Tabriz, Iran, which is 
+surrounded by main highways in the south and west, and residential 
+areas in the east and north. El-Goli Park is made up of a vast garden, a 
+40,000 m2 artificial lake, an octagonal mansion in the center of the lake, 
+and recreational spaces such as Luna Park and cafes that have been 
+considered as an excellent example of a topographic design. This park 
+was listed in the national heritage of Iran in 2009. The park includes a 
+great diversity of natural communities, especially plant communities. 
+The sounds of plants are one of the main features of the park, which can 
+be found in different plant forms, leading to different biological 
+soundscapes. To determine the selected points for the evaluation of 
+outdoor acoustic and thermal comfort, first the climatic, cultural, and 
+social characteristics of it were considered. Then, based on the type of 
+plant enclosure, the selected spaces were classified into open spaces 
+(OS), semi-open spaces (SS), closed spaces (CS) and vertical spaces (VS) 
+(L1to L20). L1, L2, and L17 were located at the entrance of the park, 
+where there were fewer plants and sound elements, but greater traffic. 
+Similarly, L3 and L12, which are located inside the park, have a lower 
+plant density. The remaining 15 selected points were surrounded by 
+diverse plant and landscape characteristics (Table 2 and Fig. 1). 
+2.2. Objective assessment 
+2.2.1. Acoustic comfort data 
+Sound levels (dBA) were measured to analyze the quality of the 
+acoustic environment at each observation point [28]. To achieve this, 
+the A-weighting sound pressure level A (SPL) LAeq was recorded [82], 
+with a sound level meter (see Appendix 1, Table 8) for a duration of 5 
+min. The meter microphone was positioned 1.2 m above ground level to 
+decrease the impact of acoustic reflection [83]. Acoustic data collection 
+was conducted for one week in June, July, and August 2021 during three 
+specified time periods: 8–10 a.m., 1–3 p.m., and 6–8 p.m. The selected 
+days had good weather and were without rain and wind (wind speed 
+<10 m/s). Finally, to generate the representing LAeq, the mean value 
+was calculated at all 20 locations. 
+2.2.2. Thermal comfort data 
+Microclimate data monitoring was conducted simultaneously in the 
+time intervals mentioned in the previous section. To analyze and 
+determine the range of the thermal comfort index in EL Goli park in 
+Tabriz, PET was considered as a thermal comfort index. In this regard, 
+given the ASHRAE standard, air temperature (Ta), relative humidity 
+(Rh), wind speed (Ws), and mean radiant temperature (Mrt) have been 
+analyzed. To calculate MRT, it was necessary to consider global tem­
+perature (TGLOBE) Eq. (1) where ε is global emissivity and D is global 
+diameter [18,36,84] and was performed by the kestrel 5400 (standard 
+ST-174B) while for calculating other parameters have been used a data 
+logger at a height of 1.7 m has been used. Appendix 1, Table 8 illustrates 
+the features of the equipment used. 
+Table 1 (continued) 
+Reference 
+City 
+Method 
+Suggestion 
+Field 
+measurements 
+and simulation 
+were found to be the most 
+suitable forms of greenery to 
+reduce PET levels during the 
+day in Isfahan. 
+[65] 
+Chongqing 
+Field 
+measurements 
+Thermal comfort of green 
+spaces is one of the most 
+important factors that affect 
+people’s activities. 
+[66] 
+Wuhan 
+Field 
+measurements 
+and simulation 
+Evergreen species with the 
+height-to-distance ratio of 
+trees <2 and all trees with a 
+large LAI and canopy 
+diameter have been 
+proposed. 
+[75]    
+[67] 
+Sevilla and 
+Madrid 
+Field 
+Measurements 
+and Simulation 
+wider semi-open spaces and 
+relatively suitable vegetation 
+bring more favorable 
+conditions for visitors. 
+[68] 
+Lisbon 
+Field 
+measurements 
+Trees are capable of a 
+maximum Ta reduction up to 
+6.9 ◦C. 
+[69] 
+Trapani 
+Monitoring 
+Green surface temperature 
+decreases by up to 20 ◦C. 
+[70] 
+Athens 
+Field 
+measurements 
+Trees are considered 
+influential factors in 
+controlling climatic 
+conditions. 
+[71] 
+Erzurum 
+Field 
+measurements 
+Wetland and industrial areas 
+provide a moderate level of 
+thermal comfort in cold 
+regions. 
+[72] 
+literature 
+review 
+– 
+Researchers should develop 
+indexes to explain the spatial 
+and temporal variations of 
+UHI. 
+[76] 
+Montreal 
+Simulation 
+In the daytime, the tree cover 
+could reduce the air 
+temperature at the tree level 
+(4 ◦C at 20 m above the 
+ground), as well as higher 
+level (2 ◦C at 60 m above the 
+ground). 
+[77] 
+Pavia 
+Field 
+Measurements 
+and Field survey 
+There is a strong correlation 
+between indicators of 
+thermal and acoustic 
+comfort in indoor spaces. 
+[44] 
+Harbin 
+Field 
+measurements 
+and survey 
+In the summer season, traffic 
+noise only causes a slight 
+increase in thermal sensation 
+while higher traffic noise led 
+to lower thermal comfort in 
+the three seasons. 
+[78] 
+Madrid 
+Field 
+measurements 
+and Field survey 
+Older people may be at risk 
+due to thermal stress and 
+high noise levels in cities. 
+[14] 
+Hong Kong 
+Field 
+measurements 
+and Field survey 
+People feel more 
+comfortable if they are 
+satisfied with aesthetics and 
+acoustics. 
+[79] 
+China 
+Field 
+measurements 
+and Field survey 
+The acoustic and thermal 
+environment and thermal 
+environment are both 
+important factors that affect 
+subjective comfort.  
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 4 =====
+Building and Environment 228 (2023) 109884
+4
+Fig. 1. (a) Location of Tabriz city in Iran map of Koppen climate classification (Peel et al., 2007); (b) El-Goli Park in Tabriz city; (c) 20 selected points (plant spaces) 
+within El-Goli Park; (d) diagram of plant space classification [58]. 
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 5 =====
+Building and Environment 228 (2023) 109884
+5
+TMRT =
+[
+(TGLOBE + 273.15)4 + 1.1 ∗108 ∗Ws0.6
+ε ∗D0.4
+∗(TGLOBE −TA)
+]0.25
+−273.15
+(1) 
+Furthermore, this index is not complete with climatic data and re­
+quires the activity of humans and the level of clothing. In this regard, the 
+heat transfer resistance of the clothing and the type of activity of each 
+participant were considered before calculating the PET using the Ray­
+Man software. The RayMan model, which was developed by Ref. [85], is 
+used to calculate the physiological equivalent temperature (PET) and is 
+very suitable for complex urban structures such as parks and urban 
+plazas. 
+2.3. Subjective assessment (questionnaire) 
+Questionnaire surveys have been conducted simultaneously with the 
+monitoring step, and it consists of 3 parts. The first part of the ques­
+tionnaire is allocated to demographic data (that is, age and sex). In the 
+second part, and given that prior research [25,86–88]; X. [24,29,66], 
+three subsections were defined for acoustic comfort responses. Firstly, to 
+examine the effects of perceived sound types on acoustic comfort, re­
+spondents were asked to rank three types of perceived sounds, using a 
+ten-point Likert scale, in which 0 was ‘unable to hear” and 10 was 
+“clearly hear”. Then, their answers were grouped according to the type 
+of sound: natural, anthropogenic, or mechanical. Second, the partici­
+pants were asked whether they perceived a subjectively dominant sound 
+in the soundscape and if so, which. Then, four indicators including 
+soundscape quality, the perceived loudness, landscape quality, and the 
+overall impression were determined for participants to score on a scale 
+of 1–5 (1 indicating the lowest quality and 5 indicating the highest). 
+Eventually, the last section of the questionnaire was related to the vis­
+itors’ position, type of activity, type of clothes as well as thermal 
+sensation and thermal comfort. In this section, unlike many previous 
+studies (M. [89]; M. A [90–92]. that used seven-category thermal 
+sensation scales, due to the better adaptation to the wide range of out­
+door thermal conditions [93] and more potential for the development of 
+thermal comfort indices such as PET thermal sensation patterns [94,95] 
+two extreme votes were added. Therefore, this scale ranges from −4 to 
++4 (very cold (−4), cold (−3), cool (−2), slightly cool (−1), neutral (0), 
+slightly warm (+1), warm (+2), hot (+3) and very hot (+4). An example 
+of the questionnaire used in the park is shown in Appendix 2, Table 9. 
+2.4. Characteristics of the respondents 
+Participants were randomly selected in the area, and a total of 300 
+valid questionnaires were collected. All participants were informed 
+about the voluntary nature of the study before taking part. Considering 
+that the differences in the basic physical environment might be caused 
+by the time, the survey at the 20 positions was carried out from 9:00 a.m. 
+to 21:00 a.m. Most visitors were sitting (45.7%) and the rest were 
+walking (20.7%) or standing (33.6%). Moreover, respondents who were 
+under the shading trees environment accounted for 43.26% while the 
+rest of them were not in the shade 20 min before the survey. These data 
+provide a comprehensive background of the respondents to ensure a 
+random sampling of participants and allow potential adjustments to 
+these factors in the statistical analyses. The age group that was repeated 
+the most was 21–35 years (38.57%), followed by 36–50 years (28.7%). 
+More men completed the survey than women (57% men, 43% women), 
+and their average height and weight were 1.72 cm and 71 kg, respec­
+tively, while the average height and weight of the women who partici­
+pated in this survey were 1.52 cm and 57 kg, respectively. A summary of 
+personal information is observed in Table 3. These details give a rich 
+portrait of the respondents, allowing for possible adjustments to be 
+applied in statistical analyses to account for any imbalances in the dis­
+tribution of respondents’ characteristics. 
+2.5. Data analysis 
+SPSS 26.0 was used to establish a database of all subjective and 
+objective results. Descriptive statistics were used to provide a summary 
+of thermal and acoustic comfort evaluations. Kruskal-Wallis test was 
+used to test if there were significant differences in thermal and acoustic 
+comfort dimensions between four space categories. Pearson’s correla­
+tion was conducted to test the correlations between the dimensions of 
+acoustic and thermal comfort after being checked the normality of the 
+data by the Kolmogorov-Smirnov (KS) test. Weighted linear regression 
+models of the correlated indicators were developed. Furthermore, a one- 
+way analysis of variance (ANOVA) test was conducted to find the re­
+lationships between thermal and acoustic comfort dimensions. Finally, 
+simple linear regression was used to predict acoustic comfort based on 
+Table 2 
+Main characteristics of each selected point (receptors).  
+Selected 
+points 
+Location 
+Space 
+categories 
+Plant community 
+L1 
+Health road 
+Vertical 
+space 
+Platanus, Populus nigra, 
+Platanus acerifolia 
+L2 
+Pine forest 
+Vertical 
+space 
+Pinus, Pine, 
+L3 
+The Green Hill 
+Vertical 
+space 
+Populus, Platanus, Populus 
+nigra, 
+L4 
+Greenwood 
+Vertical 
+space 
+Populus, Acer, Platanus, 
+Ailanthus 
+L5 
+Robinin forest 
+Closed 
+space 
+Elaeagnus angustifolia, Acer, 
+Robinia 
+L6 
+Acer forest 
+Closed 
+space 
+Acer, Robinia, Olea europaea, 
+Ailanthus, Elaeagnus 
+angustifolia 
+L7 
+Arbor place 
+Closed 
+space 
+Acer, Pinus, Carpinus betulus, 
+Ailanthus, Morus alba 
+L8 
+El Goli artificial 
+waterfall 
+Closed 
+space 
+Elaeagnus angustifolia, 
+Platanus, Pinus, Populus alba 
+L9 
+The Green Lake 
+Closed 
+space 
+Salix babylonica, Acer, Pinus 
+L10 
+The Thousand 
+Stairs 
+Semi-open 
+space 
+Populus alba, Morus alba, Olea 
+europaea 
+L11 
+Playing space 
+Semi-open 
+space 
+Robinia, Acer, Salix babylonica 
+L12 
+Picnic space 
+Semi-open 
+space 
+Pinus, Elaeagnus angustifolia 
+L13 
+playground 
+Semi-open 
+space 
+Robinia, Morus alba, Fraxinus 
+excelsior, Olea europaea 
+L14 
+Rest square 
+Semi-open 
+space 
+Pinus, Berberis vulgaris, Acer, 
+Salix babylonica 
+L15 
+Arbor place 
+Semi-open 
+space 
+Pinus, Berberis vulgaris, Robinia 
+L16 
+Main Entrance 
+Open space 
+Buxus, Populus alba, 
+Helichrysum bractatum 
+L17 
+Luna Park 
+Entrance 
+Open space 
+Helichrysum bractatum, 
+Ailanthus, Pinus 
+L18 
+El Goli Mansion 
+Open space 
+Pinus, Robinia, Helichrysum 
+bractatum, Berberis vulgaris 
+L19 
+Sports space 
+Open space 
+Buxus, Berberis vulgaris, Morus 
+alba, Oleaeuropaea 
+L20 
+Entrance 
+Open space 
+Buxus, Helichrysum bractatum  
+Table 3 
+Characteristics of the respondents.  
+Season 
+Gender 
+NO. of 
+Persons 
+Age group (in %) 
+Average 
+Height(m) 
+Average 
+Weight 
+(kg) 
+Summer 
+Male 
+171 
+Under 
+20 
+18.46% 
+1.72c.m 
+71 kg 
+Female 
+129 
+21–35 
+38.57% 
+1.52 c.m 
+57 kg   
+36–50 
+28.37%     
+51–60 
+10%     
+upper 
+60 
+4.6%    
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 6 =====
+Building and Environment 228 (2023) 109884
+6
+thermal comfort indices on a spatial scale. 
+3. Results 
+3.1. Analysis of acoustic comfort and reported indicators 
+In terms of sound pressure level (SL), Fig. 2 shows the difference of 
+LAeq among the selected places during summer. The existing differences 
+are rooted in plant communities, user activities, and spatial conditions. 
+VS with dense plants recorded the lowest sound levels. On the contrary, 
+Location 1 reported a high LAeq (between 64 and 67 dB) due to the large 
+gathering of birds, especially crows, as well as exercise activities. CS 
+were the second quietest places and L8 reported remarkable low LAeq 
+values with values between 55 and 58 dB, as it was adjacent to the 
+residential parts and the protected forest covering the external noise. 
+Meanwhile, SS showed a slight increase in sound levels. The high LAeq 
+of place 11 reflected the impact of human activities, a place where 
+morning sports, children’s play, and cafe meetings occur. Finally, OS 
+recorded the highest LAeqs (L16 and 20, with LAeq values between 66 
+and 72 dB), which was mainly due to exposure to external noise factors, 
+including traffic and Luna Park equipment. 
+In terms of the identified sound types, Fig. 3 illustrates the frequency 
+of the identified sound sources at each selected location. In VS, natural 
+sounds were perceived the most and heard clearly, such as the 
+swooshing sounds of dense plant species with larger leaves, such as 
+plane trees. In addition, participants highly mentioned the sound of 
+birds and water forms (burbling water, channels, and streams). In CS, 
+both anthropogenic and natural sound were dominantly perceived. 
+Nature sounds including rustling of trees with small leaves, such as 
+willow (L19) and pine (L7 and L9), followed by bird singing, frogs, and 
+cicadas was heard. Visitors also produce various types of human sounds 
+such as talking, yelling, and footsteps. Regarding SS, human sounds 
+were dominant and both natural and mechanical sound were secondly 
+identified. The dominance of human sounds was due to various public 
+activities including talking, playing, fitness activities, and cycling. Also, 
+a weak swooshing can be heard where the plant community owned 
+different leaf types, such as Robinia and Morus alba pendula (L13, L14 
+and L15). Bird singing was present at a lower level due to the lower 
+density of plants. Lastly, OS owned the most frequent mechanical 
+sounds, which were located near the Luna Park and city routs. Natural 
+sounds were heard weakly, which were negligible at locations 19 and 
+20. 
+The Kruskal-Wallis test was performed to assess whether there were 
+significant differences in acoustic comfort dimensions between the 
+specified space types. Based on the results, as shown in Table 4, there 
+were significant differences among the four indicators, including 
+soundscape quality (SQ), overall impression (OI), percentage of reported 
+natural dominant sound (%RNDS) and reported loudness (RL) (p < .05). 
+However, there were no significant differences between LQ (p > .05). 
+This finding could be explained by two factors: It is crucial to properly 
+plan natural elements in line with other landscape aspects, such as 
+architectural elements, because the sheer presence of natural elements, 
+such as plants, cannot adequately boost the visual quality of the envi­
+ronment. Additionally, the landscape’s vastness (the depth of field) is 
+occasionally thought of as an environmental design potential that can be 
+constrained by the presence of a plant community. For example, location 
+3 in the category of open space was said to have a high-quality envi­
+ronment because the El Goli Park mansion was located in the middle of 
+the main pool and had beautiful views of the surroundings. Fig. 4 shows 
+the mean values of reported indicators. It can be seen that SQ, OI and % 
+RNDS showed a similar trend. 
+Regarding SQ, Table 4 shows that there were significant differences 
+between VS and SS and OS (p < .05), between CS and OS (p < .05), and 
+between SS and OS (p < .05), respectively. VS (M = 4.07) had the 
+highest SQ value, while OS had the lowest values (M = 2.26). According 
+to Fig. 3, it can be seen that SQ had a significant difference between VS 
+with a rich natural community where natural sounds were perceived 
+frequently and SS with fewer natural elements where human sounds 
+were frequently perceived (p < .05), as well as OS with a weak existence 
+of plants where mechanical sounds were predominantly reported (p <
+.05). However, no SQ difference was observed between CS (with 
+dominant natural and human sounds) and VS (with dominant natural 
+sounds), also between CS and SS (with dominant human sounds) (p >
+.05). 
+The perceived quality of OI might also be influenced by the 
+composition of the plant spaces. As shown in Table 4, the OI was 
+significantly different between VS and SS and OS (p < .05) and between 
+CS with SS and OS (p < .05), while there was no difference between the 
+others. According to Fig. 4, the OI of VS as well as CS with higher levels 
+of the plant community had a significant difference with SS which has 
+fewer natural elements and more human activities (p < .05), and, with 
+OS which has the least plant cover and various mechanical sounds (p <
+.05). VS (M = 4.11) had the highest OI value, while OS had the lowest 
+values (M = 2.76). 
+Regarding% RNDS, only subjectively natural dominant sounds were 
+taken into consideration for the following analyses due to the results of 
+numerous prior studies about the pleasantness of natural sounds and 
+how it helps to create a nice soundscape. The results reported similar 
+variations as the OI, which was significantly different between VS and SS 
+and OS (p < .05) and between CS and SS and OS (p < .05) (Table 4). 
+Higher percentages of natural dominant sounds were reported for VS 
+and CS (identified by 52% and 41% of participants, respectively), which 
+was rooted in dense plant cover, water forms and being located in the 
+inner parts of the park. On the other hand, in SS due to the predomi­
+nance of man-made sounds and in OS due to the masking effect of me­
+chanical sounds, a lower% of RNDS was reported (29% and 25% of 
+participants). 
+In terms of RL, there were differences between VS and OS (p < .05), 
+Fig. 2. Box plots representing the average measured values of LAeq within the space categories.  
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 7 =====
+Building and Environment 228 (2023) 109884
+7
+and between CS with SS and OS (p < .05), while there were none among 
+the others. There were lower levels of RL for VS and CS (M = 2.0 and 2.2 
+respectively), which could have rooted in the presence of multiple 
+pleasant sounds in the environment. Meanwhile, there were higher 
+levels of RL for SS and OS (M = 3.5 and 3.8 respectively), which could be 
+due to the considerable presence of annoying sounds. 
+3.2. Analysis of outdoor thermal comfort 
+Regarding Ta, the evaluation of the results in El-Goli Park showed 
+that the difference in Ta in different parts (OS, SS, CS and VS) is less than 
+other indicators, so that the maximum difference in CS and SS is 0.41◦
+Celsius. which is due to the difference of the plant community in the two 
+spaces. However, Rh shows another trend from the Ta. CS and VS of the 
+park due to high vaporization have the highest measure of Rh than the 
+rest of the other parts. The shade of trees (both the tree canopy and 
+height of the tree) is considered an influential indicator in the intro­
+duction of MRT which has been recorded due to being in the depth of the 
+ground or the lack of suitable plants in some parts up to 57.3 ◦C. In this 
+regard, VS experienced better conditions than other parts due to the 
+placement of suitable crowns and tall trees, and the amount of MRT has 
+decreased significantly. Although the average MRT difference between 
+VS and OS has reached 5.52 ◦C due to lack of proper coverage. Evalu­
+ations made in connection with the impact of Ws on each part, it can be 
+stated that, in the OS and VS, due to the lack of sufficient plant covers 
+and the presence of tall trees with suitable coverage, respectively, led to 
+Fig. 3. The combination of perceived sounds in space categories.  
+Table 4 
+Differences in reported indicators among space categories, where , significant 
+difference in SQ (soundscape quality). , significant difference in OI (overall 
+picture). 
+, significant difference in RL (reported height). 
+, significant dif­
+ference in RNDS % (reported natural dominant voice percentage).  
+Space types 
+VS 
+CS 
+SS 
+OS 
+VS 
+_  
+*  
+*  
+* 
+*  
+*  
+*  
+* 
+CS  
+_ 
+*  
+*  
+* 
+*  
+*  
+*  
+* 
+SS   
+_ 
+* 
+OS    
+_ 
+VS = vertical spaces; CS = closed spaces; SS = semi-open spaces; OS = Open 
+spaces. *p < .05. 
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 8 =====
+Building and Environment 228 (2023) 109884
+8
+creating more airflow than other parts. 
+In terms of PET, the most appropriate thermal comfort was observed 
+in VS, where the average PET was 1.75 ◦C lower than the OS situation. 
+The lack of adequate coverage in this part caused the most severe 
+discomfort, and PET was recorded at 21.95 ◦C (Fig. 5). Separate analysis 
+of sunny and night hours suggested that the maximum reduction in 
+average daytime PET was equal to 3.38 ◦C reported when receptors were 
+placed in VS. In addition, OS have the most intense thermal stress during 
+sunny hours. However, the minimum PET was recorded in this scenario 
+altering the thermal comfort condition to higher degrees of coolness. 
+Fig. 5 demonstrated the mean changes in Ta, Rh, MRT, Ws, and PET at Z 
+= 1.7 m entire measurement time. 
+Kruskal-Wallis test was conducted to identify significant differences 
+in thermal comfort indicators (TSV and TCV) among the four space 
+categories. According to the results, as shown in Table 5, there were 
+significant differences in TSV and TCV (p < .05). The mean values of 
+thermal sensation vote (TSV), thermal comfort vote (TCV), and psy­
+chological equivalent temperature (PET) are shown in Fig. 6. It can be 
+seen that TSV and PET indicated similar variations. 
+TSV has also been influenced by the composition of plant spaces like 
+PET. As demonstrated in Table 5, TSV was remarkably different between 
+VS and SS and OS (p < .05) and between CS and OS (p < .05), while 
+there was no difference between the other indicators. Our output has 
+shown that TSV of VS and CS with higher levels of plant cover in com­
+parison with SS and OS with fewer natural elements and more human 
+activities had significant differences (Fig. 6). In other words, VS have 
+recorded the most votes in neutral (45%) and slightly warm (30%). 
+while warm (0.08%), slightly cool (0.08%), cool (0.05%) and cold 
+(0.03%) followed. On the other hand, slightly warm was the most 
+common vote in CS. Completely opposite conditions have been recorded 
+in SS. The highest and lowest values of votes are assigned to warm 
+(0.63%) and slightly warm (0.37%), respectively, in the SS. Finally, the 
+most common vote in OS was hot (37%), followed by warm (34.6%). In 
+this regard, while the overview was carried out in the hot season and 
+there were noticeably more ‘warm’, ‘hot’ and ‘very hot’ votes, ‘slightly 
+warm’ conditions were more common than ‘warm’, ‘hot’ and ‘very hot’ 
+conditions because most of the participants were in shaded areas. 
+Regarding TCV, a significant difference has been observed between 
+VS and SS and OS, and between CS and SS and OS, while there was no 
+significant difference between other indicators (Table 5). According to 
+Fig. 5, the highest and lowest level of TCV has been recorded in VS and 
+OS respectively and CS and SS are in the next categories. During this 
+project, about 2% of the participants in VS were very comfortable, then 
+4% were comfortable and 6% were very slightly comfortable with the 
+thermal conditions. Although most of the participants in this area were 
+slightly uncomfortable (44%) and neutral (36%) respectively. On the 
+other hand, all participants felt slightly uncomfortable in CS. This situ­
+ation has also continued in SS, with the difference that the number of 
+people who feel uncomfortable (64%) is more than slightly uncomfort­
+able (36%). Based on surveys of participants, conditions in OS have 
+worsened, and most of the users feel very uncomfortable and uncom­
+fortable with the thermal conditions, respectively. 
+To determine the outdoor thermal comfort range in Tabriz, PET [96] 
+was used because of its frequent use as a thermal comfort index [62,67]. 
+In this research, PET is calculated by RayMan [85] using measured Ta, 
+RH, and WS and MRT. The clothing and activity are also taken into 
+account in the PET calculation. To better identify the relationship be­
+tween thermal comfort and thermal sensation vote (TSV), the mean 
+thermal sensation votes (MTSV) were calculated for each 1 ◦C PET in­
+terval as in previous studies [62,97]. The correlation between PET and 
+MTSV in this study is illustrated in Eq 3. Neutral PET in this climate is 
+determined by substituting MTSV = 0 in Eq. 3. As a result, the neutral 
+PET in this study is 25.85 ◦C. The acceptable thermal comfort range is 
+between −0.5 and + 0.5 [98], so by replacing MTSV = ±0.5 in equation. 
+2, the outdoor thermal comfort in Tabriz ranges from 25.27 ◦C to 
+26.42 ◦C PET.  
+MTSV = 0.791PET-22.493                                                               
+(2)  
+3.3. Relationship between acoustic comfort and thermal comfort 
+An examination of the relationship between the reported thermal 
+sensation vote (TSV) and the dimensions of acoustic comfort was done in 
+an effort to confirm the hypothesis of the investigation. Furthermore, the 
+relationship between acoustic comfort dimensions and thermal comfort 
+Fig. 4. The mean values of soundscape quality (SQ), landscape quality (LQ), overall impression (OI), reported loudness (RL) and the percentage of natural dominant 
+sound (%RNDS). 
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 9 =====
+Building and Environment 228 (2023) 109884
+9
+Fig. 5. The mean values of Ta, RH, Ws, MRT and PET.  
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 10 =====
+Building and Environment 228 (2023) 109884
+10
+vote (TCV) and physiological equivalent temperature (PET ◦C) was also 
+studied. Table 6 displays the Pearson’s correlation coefficients of the 
+acoustic and thermal comfort metrics. The Kolmogorov-Smirnov test 
+was used to determine the normality before Pearson’s correlation 
+analysis was performed. Of the six measured acoustic comfort in­
+dicators, four were found to be statistically significant with ‘TSV’, ‘TCV’ 
+and ‘PET’ (p < .1). The results are depicted in Fig. 7 with the corre­
+sponding R2 values.  
+1. SQ (r = −0.875, p < .01), OI (r = −0.818, p < .01) and %RPDS (r =
+−0.795, p < .01) negatively, and RL (r = 0.604, p < .01) positively 
+correlated with TSV. It was shown that more variance is explained 
+when ‘TSV’ is used as a predictor for SQ (R2 = 0.76), OI (R2 = 0.68) 
+and% RPDS (R2 = 0.63), compared to RL (R2 = 0.36). These findings 
+support the hypothesis that visitors tended to report higher sound­
+scape quality, higher overall impression, and higher percentage of 
+natural dominant sound when they felt cooler in the environment. At 
+the same time, these results reveal that a decrease in TSV can 
+potentially reduce perceived loudness in the environment.  
+2. Furthermore, the Pearson product-moment correlation coefficient 
+indicated a negative significant association between SQ (r = −0.739, 
+p < .01), OI (r = −0.688, p < .01), %RPDS (r = −0.676, p < .01) and 
+PET (◦C) as well as positive significant association between RL and 
+PET (◦C) (r = 0.548, p < .01). The variation in PET (◦C) among the 
+four acoustic comfort indicators showed a similar trend, but gener­
+ally there was reported a weaker effect was reported for PET (◦C) in 
+predicting the mean SQ (R2 = 0.54), OI (R2 = 0.47), %RPDS (R2 =
+0.45) and RL (R2 = 0.29) compared to the other two indicators. Due 
+Table 5 
+Difference in outdoor thermal comfort among space categories, where , with a 
+significant difference in TVS (thermal sensation vote); , with a significant dif­
+ference in TCV (thermal comfort vote).  
+Space types 
+VS 
+CS 
+SS 
+OS 
+VS 
+_  
+*  
+* 
+*  
+* 
+CS  
+_ 
+* 
+*  
+* 
+SS   
+_  
+OS    
+_ 
+VS = vertical spaces; CS = closed spaces; SS = semi-open spaces; OS = Open 
+spaces. *p < .05. 
+Fig. 6. Mean thermal comfort vote (TCV), thermal sensation vote (TSV), and physiological equivalent temperature (PET).  
+Table 6 
+Pearson’s correlation (Pearson’s r) between thermal comfort and acoustic comfort variables.   
+SQ 
+OI 
+LQ 
+RL 
+%RPDS 
+SL 
+TSV 
+PET (◦C) 
+TCV 
+SQ 
+1 
+0.895** 
+0.609** 
+−0.684** 
+0.846** 
+−0.413 
+−0.875** 
+−0.739** 
+0.869** 
+OI 
+– 
+1 
+0.688** 
+−0.728** 
+0.876** 
+−0.432 
+−0.818** 
+−0.688** 
+0.815** 
+LQ 
+– 
+– 
+1 
+−0.420 
+0.521** 
+−0.236 
+−0.372 
+−0.284 
+0.390 
+RL 
+– 
+– 
+– 
+1 
+−0.641** 
+0.721** 
+0.604** 
+0.548* 
+−0.619** 
+%RPDS 
+– 
+– 
+– 
+– 
+1 
+−0.423 
+−0.795** 
+−0.676** 
+0.826** 
+SL 
+– 
+– 
+– 
+– 
+– 
+1 
+0.333 
+0.298 
+−0.359 
+TSV 
+– 
+– 
+– 
+– 
+– 
+– 
+1 
+0.844** 
+−0.988** 
+PET (◦C) 
+– 
+– 
+– 
+– 
+– 
+– 
+– 
+1 
+−0.824** 
+TCV 
+– 
+– 
+– 
+– 
+– 
+– 
+– 
+– 
+– 
+SQ = soundscape quality; OI = overall impression; LQ = landscape quality; RL = reported loudness; %RPDS = % reported pleasant dominant sound; SL = sound levels 
+(dBA); TSV = thermal sensation vote; TCV = thermal comfort vote; PET (◦C) = physiological equivalent temperature. ** The correlation is significant at the 0.01 level 
+(2-tailed); * The correlation is significant at the 0.05 level (2-tailed). 
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 11 =====
+Building and Environment 228 (2023) 109884
+11
+to the same correlation variations of PET with TSV, similar in­
+terpretations stated for TSV are also true for PET (◦C)).  
+3. In addition to TSV and PET parameters, strong positive correlations 
+were detected between SQ (r = 0.869, p < .01), OI (r = 0.815, p <
+.01), %RPDS (r = 0.826, p < .01), and TCV, as well as negative 
+correlations between RL (r = −0.619, p < .01) and TCV. Similarly, to 
+the previous parts, there was a stronger relationship between SQ (R2 
+= 0.75), OI (R2 = 0.65), %RPDS (R2 = 0.68) and TCV, compared to 
+RL and TCV (R2 = 0.38). The higher SQ, OI, and% RPDS, as the well 
+as lower RL are perceived if the respondents present more thermal 
+comfort votes. 
+Furthermore, it can be seen that the relationships between the two 
+variables SL and LQ with each of the three variables of outdoor thermal 
+comfort (TSV, PET (◦C), and TCV) were almost insignificant (p > .5). 
+This result suggests that the outdoor thermal comfort condition may not 
+Fig. 7. Scatter plots between (a) mean TSV and the correlated indicators. Scatter plots between (b) mean PET and the correlated indicators. Scatterplots between (c) 
+TCV and the correlated indicator. 
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 12 =====
+Building and Environment 228 (2023) 109884
+12
+affect the perceived landscape quality and the measured sound levels in 
+the environment. 
+3.4. Acoustic comfort comparisons using an index-based and park-based 
+approach 
+3.4.1. Index-based approach 
+To overcome the issue of spatial difference in the categorized posi­
+tions, an index-based approach was considered. In this approach, the 
+spatial scale covers all the 20 selected locations within El-Goli Park and 
+the corresponding datasets. A one-way ANOVA test was conducted to 
+examine whether the difference between average SQ, OI, % RPDS and 
+RL across the groups of TSV/TCV groups (ie Warm, Neutral, Cool/Un­
+comfortable, Neutral, Comfortable) is significantly different. Levene’s 
+test was used to examine the homogeneity of variances, and it was 
+discovered that it was violated in all instances since equal variances 
+were not assumed.  
+• The analyzes showed that the average SQ is significantly different 
+between the three TSV groups (p < .005) (p < .005). As shown in 
+Fig. 8. Soundscape quality, overall impression, reported loudness, and percentage of reported pleasant dominant sound with different values of (a) TSV and (b) TCV.  
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 13 =====
+Building and Environment 228 (2023) 109884
+13
+Fig. 8a, the lowest mean SQ was in the ‘Warm’ group (2.6) compared 
+to the ‘Neutral’ (3.5) and ‘Cool’ groups (4.4), respectively. These 
+findings suggest that visitors who express warm, neutral, and cool 
+TSVs perceive SQ in different ways to each other.  
+• Analysis of variance (ANOVA) demonstrated that the mean OI for the 
+‘Warm’ group differed significantly from the ‘Neutral’ and ‘Cool’ 
+groups (p < .005), while there was no significant difference between 
+the ‘Neutral’ and ‘Cool’ groups (p > .05). These findings show that 
+among the TSV categories, feeling ‘Warm’ in the environment has the 
+greatest impact on the evaluation of IAO, accounting for the lowest 
+IAO value (2.8). In addition, visitors who feel cool and neutral in the 
+environment perceive the quality of SQ in a similar way.  
+• The ANOVA test revealed similar findings to the OI and indicated 
+that the mean %RPDS was significantly different between the ‘Warm’ 
+group and the ‘Neutral’ and ‘Cool’ groups (p < .05). However, there 
+were no differences between the ‘Neutral’ and ‘Cool’ groups (p >
+.05). This means that visitors who felt neutral in the environment 
+presented a similar amount of %RPDS to those who felt cool. Ac­
+cording to Fig. 8a, the highest calculated means of %RPDS was 
+related to respondents who felt ‘cool’ (55%) and ‘Neutral’ (45%) 
+with the thermal environment, respectively.  
+• There were significant differences in mean RL between three groups 
+of TSV (p < .005). These findings indicate that visitors who rated the 
+thermal environment as ‘Warm’ (3.8) perceived RL at higher levels 
+than visitors who rated it as ‘Neutral’ (2.8) and ‘Cool’ (1.7), 
+respectively.  
+❖ On the other hand, the results, as in Fig. 8b, revealed that there 
+are significant differences between the mean SQ of the three TCV 
+groups (p < .005). The perceived quality of the SQ for the re­
+spondents who were ‘uncomfortable’ (2.2) with the thermal 
+environment was low, compared to the groups ‘neutral’ (3.2) and 
+‘Comfortable’ (3.9) groups respectively, suggesting the potential 
+effect of the quality of thermal comfort on sound environment 
+perception. 
+❖The ANOVA test also showed that the perceived OI of the ‘un­
+comfortable’ groups was significantly different from the ‘neutral’ 
+and ‘Comfortable’ groups (p < .005). However, it was not sig­
+nificant between the ‘neutral’ and ‘Comfortable’ group (p > .05), 
+which implies that participants considering neutral TCV 
+perceived OI in a similar way to those who were comfortable with 
+the quality of thermal comfort. The mean measured OI for the 
+‘Uncomfortable’ and ‘comfortable’ group were 2.7 and 4.0 
+respectively (Fig. 8b).  
+❖ It should also be noted that the analysis of variance performed for 
+the %RPDS index was reported in the same way as the SQ index. 
+As shown in Fig. 8b, the measured mean %RPDS for the 
+‘Comfortable’ and ‘Uncomfortable’ group were 54% and 26%, 
+respectively.  
+❖ According to the analyzes, there were significant differences in 
+the mean RL of ‘Comfortable’ group with the ‘neutral’ and ‘Un­
+comfortable’ group (p < .005), while there was no significant 
+difference between the ‘neutral’ and ‘Uncomfortable’ group (p >
+.05). This means that respondents who felt neutral or uncom­
+fortable with the thermal environment perceived the loudness of 
+the perceived sound to a similar extent. The lowest RL was re­
+ported for the ‘Cool’ group (2.2). 
+3.4.2. Park-based approach 
+VS, CS, SS and OS, as classified in Fig. 1, were analyzed with a simple 
+linear regression test with regard to different plant communities. This 
+process was conducted based on 3 predictors: a) TSV, b) TCV, and c) 
+PET. 
+The effectiveness of the specified predictors is presented in Table 7 
+using the coefficient of determination (R2). From Table 7 it can be seen 
+that for TCV and PET there was a very low coefficient of determination 
+(R2) ranging mostly between 0% and 14%. However, there were higher 
+amounts of variance for TCV in predicting RL (between 0.13% and 
+52%). This means that the higher a visitor feels comfortable in the 
+environment, the lower amount of subjective loudness is perceived, 
+which is consistent with the respective findings in Fig. 8b. It is note­
+worthy that this effectiveness in open spaces allocated the highest R2 (=
+0.52). In the case of TSV, stronger variances have been reported, most of 
+which are related to vertical spaces. Consequently, the effect of TSV in 
+predicting SQ, %RNDS and RL is 45%, 55%, and 77%, respectively. 
+However, very little variance was reported in terms of overall impres­
+sion. It can be concluded that in VS with the highest amount of plant 
+cover, the perceptual effect of thermal sensation plays an important role 
+in the perceived quality of soundscape, the reported loudness, and the 
+frequency of reported natural dominant sounds. This issue is less effec­
+tive in closed, semi-open, and open spaces (Table 7). 
+4. Discussion 
+Outdoor acoustic comfort is an essential aspect of urban design that 
+affects the use of outdoor spaces, the behavior of city dwellers, and the 
+comfort felt in the environment. The increase in the growth of urbani­
+zation and the appearance of various types of noise pollution, including 
+traffic and construction, weaken the acoustic comfort quality in the 
+environment and cause users’ dissatisfaction. However, different envi­
+ronmental factors, especially the thermal environment, can improve the 
+acoustic conditions and the associated experiences in outdoor spaces. In 
+the present study, the effect of outdoor thermal comfort on acoustic 
+comfort and related indicators was investigated in four plant-space 
+categories of an urban park (El-Goli, Tabriz). 
+Regarding the effects of thermal comfort on SQ, TSV and PET 
+negatively and TCV positively are related to the perceived quality of 
+soundscape. Our results indicated that, during summer, people in the 
+cool and comfortable environments perceived a higher soundscape 
+quality. It can be stated that by increasing the plant cover and adjusting 
+the ambient temperature, the quality of the soundscape significantly will 
+be promoted. In other words, the presence of natural elements in urban 
+environments, especially trees, creates multiple positive soundscapes, 
+such as wind blowing, rustling, birdsong, etc., which makes the envi­
+ronment more pleasant. These findings are similar to the results of 
+previous studies [44,99,100]; M [34]. that low levels of thermal sensa­
+tion (cooling of the environment) in the hot season and high levels of 
+thermal comfort significantly increase the quality of the soundscape. 
+Regarding the effects on OI, similar to the SQ, TSV and PET nega­
+tively and TCV positively are related to the perceived quality of the 
+Table 7 
+The effect of each predictor (R2) on the respective acoustic comfort variables.  
+Space categories 
+Soundscape quality 
+Overall impression 
+Reported loudness 
+% Reported pleasant dominant sound 
+TSV 
+TCV 
+PET(◦C) 
+TSV 
+TCV 
+PET(◦C) 
+TSV 
+TCV 
+PET(◦C) 
+TSV 
+TCV 
+PET(◦C) 
+R2 
+R2 
+R2 
+R2 
+R2 
+R2 
+R2 
+R2 
+R2 
+R2 
+R2 
+R2 
+VS 
+0.45 
+0.11 
+0.09 
+0.13 
+0.14 
+0.05 
+0.55 
+0.13 
+0.00 
+0.77 
+0.11 
+0.00 
+CS 
+0.31 
+0.01 
+0.03 
+0.05 
+0.00 
+0.04 
+0.19 
+0.43 
+0.05 
+0.09 
+0.02 
+0.07 
+SS 
+0.36 
+0.01 
+0.00 
+0.10 
+0.02 
+0.03 
+0.31 
+0.36 
+0.09 
+0.45 
+0.05 
+0.09 
+OS 
+0.20 
+0.00 
+0.00 
+0.01 
+0.06 
+0.03 
+0.34 
+0.52 
+0.03 
+0.06 
+0.12 
+0.00  
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 14 =====
+Building and Environment 228 (2023) 109884
+14
+overall environment. People in the cool and comfortable environments 
+present a higher quality of overall impression. It can be stated that, 
+better thermal comfort conditions by the presence of more natural ele­
+ments have a significant effect on enhancing the OI quality and user’s 
+satisfaction as a result of creating a more comfortable, beautiful and 
+pleasant space, which has been described by various authors [44,77, 
+101]. 
+Regarding the reported effects on %RDNS, TSV and PET negatively 
+and TCV are positively related to the frequency of dominant natural 
+sound. It showed that more %RDNS was reported in the groups with 
+"cool" and "comfortable" thermal evaluations than in the groups with 
+"warm" and "uncomfortable". It can be interpreted that the type of space 
+configuration and the presence of extensive natural elements causes the 
+perception of a higher percentage of natural sounds that prevail in the 
+environment, which in the next stages strengthens user’s perception and 
+understanding of the soundscape and the environment [24,102]. In this 
+regard [103], found that dominant natural sounds increase the pleas­
+antness and eventfulness of perceived soundscapes. 
+Regarding the effects on RL, contrary to the previous sections, TSV, 
+PET are positively and TCV negatively related to perceived loudness. It 
+indicated that lower RL was reported in the groups with "cool" and 
+"comfortable" thermal votes than in the groups with "warm" and "un­
+comfortable". Considering the presence of more greenery in cooler 
+spaces, it is important to express the importance of the psychological 
+effect of greenery in reducing the loudness of sound perceived by the 
+users [104] Differently [44], found no relationship between thermal 
+environment and perceived loudness. On the other hand, no correlation 
+was found between thermal comfort and SPL (section 3.3). In this regard 
+[78,105], suggested that there is no relationship between SPL and 
+thermal perception indices, but there is relationship in case of loudness 
+perceptions. It should be noted that all three thermal comfort indices 
+showed slight influence on reported loudness compared to other di­
+mensions of acoustic comfort. 
+Furthermore, as shown in Section 3.3, no correlation was found be­
+tween thermal comfort and LQ. Several studies [14,106] stated that 
+visual aesthetics can be effective in judging thermal comfort and users 
+perceive higher comfort conditions in beautiful environments. However, 
+according to the results of this study, in reverse mode, no relationship 
+was found between thermal comfort and aesthetics. aesthetics. The 
+reason can be rooted in the design method and composition of visual 
+elements, including the presence of different visual elements, such as 
+greenery, water forms, architectural aesthetics, and in some cases, the 
+depth of the field of view. Similarly, the mean landscape quality in open 
+and semi-open spaces is reported with a relatively slight difference 
+compared to closed and vertical spaces. 
+The surveys were conducted in a limited time frame (summer 2021); 
+hence, the findings may only be true under warm conditions. Further­
+more, the role of other related variables such as the SVF index and noise 
+indices may help the accuracy of the resulting analysis. Additionally, the 
+focus of the current research was on the division of spaces based on plant 
+communities, and the role of other effective factors, such as materials, 
+water elements, etc., can be investigated in future studies to make the 
+findings more accurate. Moreover, the factors that determine tree 
+shading and show higher correlations with cooling effect and thermal 
+comfort than with acoustic comfort can be analyzed in the future. 
+Finally, more research is necessary at different locations considering 
+their unique ecological and environmental characteristics and the social, 
+economic, and cultural differences of their users. 
+5. Conclusions 
+Our study suggested that thermal comfort dimensions have signifi­
+cant effects on acoustic comfort and related indicators according to a 
+questionnaire survey and thermal acoustic measurements. In this regard:  
+• Regarding TSV changes, the thermal sensation has a significant effect 
+on SQ, %RNDS, OI, and RL. higher TSV results in a significant 
+decrease in SQ, %RNDS, and OI. However, with the increase in TSV, 
+RL increases significantly in all plant spaces. More precisely, the 
+group in the ‘Warm’ thermal condition has a significantly lower SQ, 
+%RNDS, and OI, as well as higher RL than the groups with ‘Neutral’ 
+or ‘Cool’. Furthermore, it was shown that TSV can be considered as a 
+predictor for SQ, %RNDS, and RL in vertical spaces.  
+• With respect to changes in TCV, thermal comfort has a significant 
+effect on SQ, %RNDS, OI, and RL. Higher TCV results in a significant 
+increase in SQ, %RNDS, and OI. On the other hand, with the increase 
+in TCV, RL decreases significantly. Specifically, the group under 
+thermal condition has a significantly lower SQ,% RNDS and OI, than 
+that of group with ‘neutral’ or ‘Comfortable’. However, in terms of 
+RL, the group in ‘uncomfortable’ thermal condition has a signifi­
+cantly higher RL only with the ‘comfortable’ group and RL is 
+perceived in a similar way to the ‘neutral’ group. Furthermore, it was 
+shown that TCV can be considered as a predictor of RL in plant 
+spaces.  
+• With respect to PET changes, it can be said that PET has a significant 
+effect on SQ, % RNDS, OI and RL. higher PET results in a significant 
+decrease in SQ, %RNDS, and OI. On the other hand, with the increase 
+in PET, RL increases significantly in all plant spaces. However, our 
+analyzes showed that PET has lower effectiveness compared to TSV 
+and TCV. 
+In addition, it should be noted that all three indicators of thermal 
+comfort did not show any significant relationship with LQ and SPL. 
+These findings are important for managing and improving outdoor 
+acoustic comfort and soundscapes, since, for example, to improve a 
+given soundscape, the outdoor thermal comfort condition should also be 
+assessed too, and then, specific actions can be implemented to eliminate 
+or reduce negative thermal comfort factors and promote positive factors. 
+Therefore, more work is needed to identify the extensive and complex 
+relationships of environmental factors to improve acoustic comfort in 
+urban landscapes. 
+CRediT authorship contribution statement 
+Negar Mohammadzadeh: Writing – original draft, Visualization, 
+Resources, Methodology, Investigation, Formal analysis, Data curation, 
+Conceptualization. Alireza Karimi: Writing – review & editing, Writing 
+– original draft, Visualization, Investigation, Formal analysis, Data 
+curation. Robert D. Brown: Supervision, Project administration. 
+Declaration of competing interest 
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper. 
+Data availability 
+Data will be made available on request.  
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 15 =====
+Building and Environment 228 (2023) 109884
+15
+Appendix 1  
+Table 8 
+Measured parameters and features of the instruments used in this research [62].  
+Instrument 
+Measured parameter 
+Accuracy 
+Range 
+Globe-thermometer 
+Tg,Ws 
+0.1 ◦C ◦C at 0 ◦C DIN 43760 1/3 
+0.1 
+Weather datalogger 
+Ta 
+±0.9 ◦C from 40 ◦C to 60 ◦C 
+−40 ◦C–70 ◦C 
+±0.5 ◦C from 5 ◦C to 40 ◦C 
+±1.1 ◦C from −20 ◦C to 5 ◦C ± 3% 
+Rh 
+±3% 
+0 to 90℅ 
+ST-885 sound level meter 
+LAeq 
+±1.4 dBA 
+30–130 dBA; 31.5 Hz-8 kHz.  
+Appendix A. Supplementary data 
+Supplementary data to this article can be found online at https://doi.org/10.1016/j.buildenv.2022.109884. 
+References 
+[1] R. Reitano, Water harvesting and water collection systems in Mediterranean area. 
+The case of Malta, Procedia Eng. 21 (2011) 81–88. 
+[2] J. Adusei-Gyamfi, K.S. Boateng, A. Sulemana, J.N. Hogarh, Post COVID-19 
+recovery: challenges and opportunities for solid waste management in Africa, 
+Environmental Challenges (2022), 100442. 
+[3] F.O. Ajibade, B. Adelodun, K.H. Lasisi, O.O. Fadare, T.F. Ajibade, N.A. Nwogwu, 
+I.D. Sulaymon, A.Y. Ugya, H.C. Wang, A. Wang, Environmental pollution and 
+their socioeconomic impacts, in: Microbe Mediated Remediation of 
+Environmental Contaminants, Elsevier, 2021, pp. 321–354. 
+[4] S. Wang, D. Zhou, Architectural plasticity in response to population density in 
+Abutilon theophrasti (Malvaceae), Ecol. Res. 37 (2) (2022) 228–239. 
+[5] L. Goines, L. Hagler, Noise pollution: a modem plague, South. Med. J. 100 (3) 
+(2007) 287–294. 
+[6] A. Karimi, P. Mohammad, A. García-Martínez, D. Moreno-Rangel, D. Gachkar, 
+S. Gachkar, New developments and future challenges in reducing and controlling 
+heat island effect in urban areas, Environ. Dev. Sustain. (2022) 1–47. 
+[7] A. Gupta, A. Gupta, K. Jain, S. Gupta, Noise pollution and impact on children 
+health, Indian J. Pediatr. 85 (4) (2018) 300–306. 
+[8] R. Thompson, R.B. Smith, Y.B. Karim, C. Shen, K. Drummond, C. Teng, M. 
+B. Toledano, Noise pollution and human cognition: an updated systematic review 
+and meta-analysis of recent evidence, Environ. Int. 158 (2022), 106905. 
+[9] B. Halder, A. Karimi, P. Mohammad, J. Bandyopadhyay, R.D. Brown, Z. 
+M. Yaseen, Investigating the relationship between land alteration and the urban 
+heat island of Seville city using multi-temporal Landsat data, Theor. Appl. 
+Climatol. (2022) 1–23. 
+[10] L. Loures, R. Santos, T. Panagopoulos, Urban parks and sustainable city planning- 
+The case of Portim˜ao, Portugal, Population 15 (10) (2007) 171–180. 
+[11] M. Braubach, A. Egorov, P. Mudu, T. Wolf, C. Ward Thompson, M. Martuzzi, 
+Effects_of_Urban_Green_Space_on_Environmental_Heal, 2017, pp. 51–64, https:// 
+doi.org/10.1007/978-3-319-56091-5. 
+[12] I.B. Campos, R. Fewster, T. Landers, A. Truskinger, M. Towsey, P. Roe, B. Lee, 
+A. Gaskett, Acoustic region workflow for efficient comparison of soundscapes 
+under different invasive mammals’ management regimes, Ecol. Inf. (2022), 
+101554. 
+[13] Y. Geng, B. Hong, M. Du, T. Yuan, Y. Wang, Combined effects of visual-acoustic- 
+thermal comfort in campus open spaces: a pilot study in China’s cold region, 
+Build. Environ. 209 (2022), 108658. 
+[14] K.K.-L. Lau, C.Y. Choi, The influence of perceived aesthetic and acoustic quality 
+on outdoor thermal comfort in urban environment, Build. Environ. 206 (2021), 
+108333. 
+[15] J. Liu, Y. Xiong, Y. Wang, T. Luo, Soundscape effects on visiting experience in city 
+park: a case study in Fuzhou, China, Urban For. Urban Green. 31 (January) 
+(2018) 38–47, https://doi.org/10.1016/j.ufug.2018.01.022. 
+[16] N.K. Afshar, Z. Karimian, R. Doostan, M.H. Nokhandan, Influence of planting 
+designs on winter thermal comfort in an urban park, J. Environ. Eng. Landsc. 
+Manag. 26 (3) (2018) 232–240. 
+[17] M. Afsharzadeh, M. Khorasanizadeh, S. Norouzian-Maleki, A. Karimi, Identifying 
+and prioritizing the design attributes to improve the use of besat park of tehran, 
+Iran, Iran Univ. Sci. Technol. 31 (3) (2021) 1–24. 
+[18] P. Mohammad, S. Aghlmand, A. Fadaei, S. Gachkar, D. Gachkar, A. Karimi, 
+Evaluating the role of the albedo of material and vegetation scenarios along the 
+urban street canyon for improving pedestrian thermal comfort outdoors, Urban 
+Clim. 40 (2021), 100993, https://doi.org/10.1016/j.uclim.2021.100993. 
+[19] X. Zhang, M. Ba, J. Kang, Q. Meng, Effect of soundscape dimensions on acoustic 
+comfort in urban open public spaces, Appl. Acoust. 133 (November 2017) (2018) 
+73–81, https://doi.org/10.1016/j.apacoust.2017.11.024. 
+[20] B.M. Brooks, B. Schulte-Fortkamp, K.S. Voigt, Alex U. Case, Exploring our sonic 
+environment through soundscape research & theory, Acoust. Today 10 (1) (2014) 
+30–40, https://doi.org/10.1121/1.4870174. 
+[21] F. Liu, J. Kang, A grounded theory approach to the subjective understanding of 
+urban soundscape in Sheffield, Cities 50 (2016) 28–39. 
+[22] ISO 12913-1, Acoustics — Soundscape — Part 1: Definition and Conceptual 
+Framework, 2014. 
+[23] Q. Meng, J. Kang, H. Jin, Field study on the influence of spatial and 
+environmental characteristics on the evaluation of subjective loudness and 
+acoustic comfort in underground shopping streets, Appl. Acoust. 74 (8) (2013) 
+1001–1009. 
+[24] G. P´erez-Martínez, A.J. Torija, D.P. Ruiz, Soundscape assessment of a 
+monumental place: a methodology based on the perception of dominant sounds, 
+Landsc. Urban Plann. 169 (December 2016) (2018) 12–21, https://doi.org/ 
+10.1016/j.landurbplan.2017.07.022. 
+[25] F. Aletta, J. Kang, ¨O. Axelsson, Soundscape descriptors and a conceptual 
+framework for developing predictive soundscape models, Landsc. Urban Plann. 
+149 (2016) 65–74, https://doi.org/10.1016/j.landurbplan.2016.02.001. 
+[26] F. Aletta, ¨O. Axelsson, J. Kang, Dimensions underlying the perceived similarity of 
+acoustic environments, Front. Psychol. 8 (2017) 1162. 
+[27] ¨O. Axelsson, M.E. Nilsson, B. Hellstr¨om, P. Lund´en, A field experiment on the 
+impact of sounds from a jet-and-basin fountain on soundscape quality in an urban 
+park, Landsc. Urban Plann. 123 (2014) 49–60. 
+[28] J. Liu, J. Kang, T. Luo, H. Behm, Landscape effects on soundscape experience in 
+city parks, Sci. Total Environ. 454 (455) (2013) 474–481, https://doi.org/ 
+10.1016/j.scitotenv.2013.03.038. 
+[29] J. Liu, J. Kang, T. Luo, H. Behm, T. Coppack, Spatiotemporal variability of 
+soundscapes in a multiple functional urban area, Landsc. Urban Plann. 115 
+(2013) 1–9. 
+[30] W. Yang, J. Kang, Acoustic comfort evaluation in urban open public spaces, Appl. 
+Acoust. 66 (2005) 211–229, https://doi.org/10.1016/j.apacoust.2004.07.011. 
+[31] L. Yu, Soundscape Evaluation and ANN Modelling in Urban Open Spaces, 
+University of Sheffield, 2009. 
+[32] J.Y. Hong, J.Y. Jeon, Exploring spatial relationships among soundscape variables 
+in urban areas: a spatial statistical modelling approach, Landsc. Urban Plann. 157 
+(2017) 352–364. 
+[33] S. Marry, J. Defrance, Analysis of the perception and representation of sonic 
+public spaces through on site survey, acoustic indicators and in-depth interviews, 
+Appl. Acoust. 74 (2) (2013) 282–292. 
+[34] M. Zhang, J. Kang, Towards the evaluation, description, and creation of 
+soundscapes in urban open spaces, Environ. Plann. Plann. Des. 34 (1) (2007) 
+68–86. 
+[35] M. Cetin, The changing of important factors in the landscape planning occur due 
+to global climate change in temperature, Rain and climate types: a case study of 
+Mersin City, Turkish J. Agric. Food Sci. Technol. 8 (12) (2020) 2695–2701. 
+[36] N. Narimani, A. Karimi, R.D. Brown, Effects of street orientation and tree species 
+thermal comfort within urban canyons in a hot, dry climate, Ecol. Inf. (2022), 
+101671. 
+[37] Y.Y. Lee, M.F.M. Din, M. Ponraj, Z.Z. Noor, K. Iwao, S. Chelliapan, Overview of 
+urban heat island (uhi) phenomenon towards human thermal comfort, Environ. 
+Eng. Manag. J. (EEMJ) 16 (9) (2017). 
+[38] R.D. Brown, T.J. Gillespie, Estimating outdoor thermal comfort using a 
+cylindrical radiation thermometer and an energy budget model, Int. J. 
+Biometeorol. 30 (1) (1986) 43–52, https://doi.org/10.1007/BF02192058. 
+[39] N. Mazhar, R.D. Brown, N. Kenny, S. Lenzholzer, Thermal comfort of outdoor 
+spaces in Lahore, Pakistan: lessons for bioclimatic urban design in the context of 
+global climate change, Landsc. Urban Plann. 138 (2015) 110–117, https://doi. 
+org/10.1016/j.landurbplan.2015.02.007. 
+[40] S.Y. Chan, C.K. Chau, T.M. Leung, On the study of thermal comfort and 
+perceptions of environmental features in urban parks: a structural equation 
+modeling approach, Build. Environ. 122 (2017) 171–183, https://doi.org/ 
+10.1016/j.buildenv.2017.06.014. 
+[41] T. Galindo, M.A. Hermida, Effects of thermophysiological and non-thermal 
+factors on outdoor thermal perceptions: the Tomebamba Riverbanks case, Build. 
+Environ. 138 (2018) 235–249. 
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 16 =====
+Building and Environment 228 (2023) 109884
+16
+[42] H. Guan, S. Hu, M. Lu, M. He, Z. Mao, G. Liu, People’s subjective and 
+physiological responses to the combined thermal-acoustic environments, Build. 
+Environ. 172 (2020), 106709. 
+[43] K. Nagano, T. Horikoshi, New index of combined effect of temperature and noise 
+on human comfort: summer experiments on hot ambient temperature and traffic 
+noise, Arch. Complex Environ. Stud. 13 (3–4) (2001). 
+[44] Y. Jin, H. Jin, J. Kang, Combined effects of the thermal-acoustic environment on 
+subjective evaluations in urban squares, Build. Environ. 168 (2020), 106517. 
+[45] Wonyoung Yang, H.J. Moon, Cross-modal effects of noise and thermal conditions 
+on indoor environmental perception and speech recognition, Appl. Acoust. 141 
+(2018) 1–8. 
+[46] S. Louafi, S. Abdou, S. Reiter, Effect of vegetation cover on thermal and visual 
+comfort of pedestrians in urban spaces in hot and dry climate, Nat. Technol. 17 
+(2017) 30B. 
+[47] A.M. Bustamante-Zapata, C.A. Zafra-Mejía, H.A. Rond´on-Quintana, Influence of 
+vegetation on outdoor thermal comfort in a high-altitude tropical megacity: 
+climate change and variability scenarios, Buildings 12 (5) (2022) 520. 
+[48] A. Habibi, R. Tafvizi, R. Vakilinejad, M. Sheibani, The effect of vegetation and 
+topography on thermal comfort in urban spaces, Geogr. Territ. Spatial Arrang. 12 
+(42) (2022). 
+[49] J. Zhang, F. Zhang, Z. Gou, J. Liu, Assessment of macroclimate and microclimate 
+effects on outdoor thermal comfort via artificial neural network models, Urban 
+Clim. 42 (2022), 101134. 
+[50] H.S. Jang, S.C. Lee, J.Y. Jeon, J. Kang, Evaluation of road traffic noise abatement 
+by vegetation treatment in a 1: 10 urban scale model, J. Acoust. Soc. Am. 138 (6) 
+(2015) 3884–3895. 
+[51] E. Margaritis, J. Kang, K. Filipan, D. Botteldooren, The influence of vegetation 
+and surrounding traffic noise parameters on the sound environment of urban 
+parks, Appl. Geogr. 94 (2018) 199–212. 
+[52] T. Van Renterghem, K. Attenborough, M. Maennel, J. Defrance, K. Horoshenkov, 
+J. Kang, I. Bashir, S. Taherzadeh, B. Altreuther, A. Khan, Measured light vehicle 
+noise reduction by hedges, Appl. Acoust. 78 (2014) 19–27. 
+[53] E. Margaritis, J. Kang, Relationship between urban green spaces and other 
+features of urban morphology with traffic noise distribution, Urban For. Urban 
+Green. 15 (2016) 174–185. 
+[54] G. Watts, A. Miah, R. Pheasant, Tranquillity and soundscapes in urban green 
+spaces—predicted and actual assessments from a questionnaire survey, Environ. 
+Plann. Plann. Des. 40 (1) (2013) 170–181. 
+[55] A.M. Dzhambov, D.D. Dimitrova, Green spaces and environmental noise 
+perception, Urban For. Urban Green. 14 (4) (2015) 1000–1008. 
+[56] F. Yang, Z.Y. Bao, Z.J. Zhu, An assessment of psychological noise reduction by 
+landscape plants, Int. J. Environ. Res. Publ. Health 8 (4) (2011) 1032–1048. 
+[57] G. Brambilla, V. Gallo, F. Asdrubali, F. D’Alessandro, The perceived quality of 
+soundscape in three urban parks in Rome, J. Acoust. Soc. Am. 134 (1) (2013) 
+832–839, https://doi.org/10.1121/1.4807811. 
+[58] X. Song, X. Lv, D. Yu, Q. Wu, Spatial-temporal change analysis of plant 
+soundscapes and their design methods, Urban For. Urban Green. 29 (2018) 
+96–105. 
+[59] M. Weber, The soundscape of nature areas: assessment and review of research 
+approaches, Acoustics 2012 (2012). 
+[60] E. G´omez-Baggethun, D.N. Barton, Classifying and valuing ecosystem services for 
+urban planning, Ecol. Econ. 86 (2013) 235–245. 
+[61] D. Armson, P. Stringer, A.R. Ennos, The effect of tree shade and grass on surface 
+and globe temperatures in an urban area, Urban For. Urban Green. 11 (3) (2012) 
+245–255. 
+[62] N. Nasrollahi, Y. Namazi, M. Taleghani, The effect of urban shading and canyon 
+geometry on outdoor thermal comfort in hot climates: a case study of Ahvaz, Iran, 
+Sustain. Cities Soc. 65 (2021), 102638. 
+[63] S.N. Kandelan, M. Yeganeh, S. Peyman, K. Panchabikesan, U. Eicker, 
+Environmental study on greenery planning scenarios to improve the air quality in 
+urban canyons, Sustain. Cities Soc. (2022), 103993. 
+[64] H. Liu, J.Y. Lim, B.W.H. Thet, P.-Y. Lai, W.S. Koh, Evaluating the impact of tree 
+morphologies and planting densities on outdoor thermal comfort in tropical 
+residential precincts in Singapore, Build. Environ. (2022), 109268. 
+[65] J. Niu, J. Xiong, H. Qin, J. Hu, J. Deng, G. Han, J. Yan, Influence of thermal 
+comfort of green spaces on physical activity: empirical study in an urban park in 
+Chongqing, China, Build. Environ. 219 (2022), 109168. 
+[66] L. Zhang, Q. Zhan, Y. Lan, Effects of the tree distribution and species on outdoor 
+environment conditions in a hot summer and cold winter zone: a case study in 
+Wuhan residential quarters, Build. Environ. 130 (September 2017) (2018) 27–39, 
+https://doi.org/10.1016/j.buildenv.2017.12.014. 
+[67] A. Karimi, P. Mohammad, Effect of outdoor thermal comfort condition on visit of 
+tourists in historical urban plazas of Sevilla and Madrid, Environ. Sci. Pollut. 
+Control Ser. (2022) 1–21. 
+[68] S. Oliveira, H. Andrade, T. Vaz, The cooling effect of green spaces as a 
+contribution to the mitigation of urban heat: a case study in Lisbon, Build. 
+Environ. 46 (11) (2011) 2186–2194. 
+[69] C. Romeo, M. Zinzi, Impact of a cool roof application on the energy and comfort 
+performance in an existing non-residential building. A Sicilian case study, Energy 
+Build. 67 (2013) 647–657. 
+[70] A. Synnefa, T. Karlessi, N. Gaitani, M. Santamouris, D.N. Assimakopoulos, 
+C. Papakatsikas, Experimental testing of cool colored thin layer asphalt and 
+estimation of its potential to improve the urban microclimate, Build. Environ. 46 
+(1) (2011) 38–44. 
+[71] S. Yilmaz, M.A. Irmak, A. Qaid, Assessing the effects of different urban landscapes 
+and built environment patterns on thermal comfort and air pollution in Erzurum 
+city, Turkey, Build. Environ. (2022), 109210. 
+[72] S.W. Kim, R.D. Brown, Pedestrians’ behavior based on outdoor thermal comfort 
+and micro-scale thermal environments, Austin, TX, Sci. Total Environ. 808 
+(2022), 152143. 
+[73] Y. Wang, U. Berardi, H. Akbari, Comparing the effects of urban heat island 
+mitigation strategies for Toronto, Canada, Energy Build. 114 (2016) 2–19. 
+[74] M. Sheikh, A. Mitchell, Design strategies for perceived acoustic comfort in urban 
+environments–A literature review, Proc. ACOUSTICS 7 (9) (2018). 
+[75] Q. Weng, M.K. Firozjaei, A. Sedighi, M. Kiavarz, S.K. Alavipanah, Statistical 
+analysis of surface urban heat island intensity variations: a case study of babol 
+city, Iran, GIScience Remote Sens. 56 (4) (2019) 576–604. 
+[76] Y. Wang, H. Akbari, Analysis of urban heat island phenomenon and mitigation 
+solutions evaluation for Montreal, Sustain. Cities Soc. 26 (2016) 438–446. 
+[77] C. Buratti, E. Belloni, F. Merli, P. Ricciardi, A new index combining thermal, 
+acoustic, and visual comfort of moderate environments in temperate climates, 
+Build. Environ. 139 (2018) 27–37. 
+[78] M.T.B. Larriva, E. Higueras, Health risk for older adults in Madrid, by outdoor 
+thermal and acoustic comfort, Urban Clim. 34 (2020), 100724. 
+[79] Y. Yin, D. Zhang, M. Zhen, W. Jing, W. Luo, W. Feng, Combined effects of the 
+thermal-acoustic environment on subjective evaluations in outdoor public spaces, 
+Sustain. Cities Soc. 77 (2022), 103522. 
+[80] G. Roshan, R. Oji, P. Fdez-Arr´oyabe, Future impact of cloudiness and wind 
+changes on thermal comfort conditions in the city of Tabriz (Iran) in the frame of 
+climate change, Sustain. Cities Soc. 77 (2022), 103575. 
+[81] S. Teshnehdel, H. Akbari, E. Di Giuseppe, R.D. Brown, Effect of tree cover and tree 
+species on microclimate and pedestrian comfort in a residential district in Iran, 
+Build. Environ. 178 (May) (2020), https://doi.org/10.1016/j. 
+buildenv.2020.106899. 
+[82] J.Y. Jeon, J.Y. Hong, Classification of urban park soundscapes through 
+perceptions of the acoustical environments, Landsc. Urban Plann. 141 (2015) 
+100–111. 
+[83] P. Zahorik, Assessing auditory distance perception using virtual acoustics, Acoust. 
+Soc. Am. 111 (4) (2002) 1832–1846, https://doi.org/10.1121/1.1458027. 
+[84] S.H. Rizvi, H. Fatima, M.J. Iqbal, K. Alam, The effect of urbanization on the 
+intensification of SUHIs: analysis by LULC on Karachi, J. Atmos. Sol. Terr. Phys. 
+207 (June) (2020), 105374, https://doi.org/10.1016/j.jastp.2020.105374. 
+[85] A. Matzarakis, F. Rutz, H. Mayer, Modelling radiation fluxes in simple and 
+complex environments - application of the RayMan model, Int. J. Biometeorol. 51 
+(4) (2007) 323–334, https://doi.org/10.1007/s00484-006-0061-8. 
+[86] J. Kang, W. Yang, Soundscape and sound preferences in urban squares : a case 
+study in sheffield soundscape and sound preferences in urban squares : a case 
+study in sheffield, J. Urban Des. 10 (1) (2005) 61–80, https://doi.org/10.1080/ 
+13574800500062395. 
+[87] J. Liu, Y. Wang, C. Zimmer, J. Kang, T. Yu, Factors associated with soundscape 
+experiences in urban green spaces: a case study in Rostock, Germany, Urban For. 
+Urban Green. 37 (July 2017) (2019) 135–146, https://doi.org/10.1016/j. 
+ufug.2017.11.003. 
+[88] J. Liu, L. Yang, Y. Xiong, Y. Yang, Effects of soundscape perception on visiting 
+experience in a renovated historical block, Build. Environ. 165 (August) (2019), 
+106375, https://doi.org/10.1016/j.buildenv.2019.106375. 
+[89] M. Humphreys, F. Nicol, S. Roaf, Adaptive Thermal Comfort: Foundations and 
+Analysis, Routledge, 2015. 
+[90] M.A. Humphreys, J.F. Nicol, I.A. Raja, Field studies of indoor thermal comfort 
+and the progress of the adaptive approach, in: Advances in Building Energy 
+Research, Routledge, 2012, pp. 55–88. 
+[91] E.L. Krüger, F.O. Minella, F. Rasia, Impact of urban geometry on thermal comfort 
+and air quality from field measurements in Curitiba, Braziloutdoor, Build. 
+Environ. 46 (3) (2011) 621–634. 
+[92] J. Nakano, S.-I. Tanabe, Thermal comfort and adaptation in semi-outdoor 
+environments, Build. Eng. 110 (2004) 543. 
+[93] I. Knez, S. Thorsson, Thermal, emotional and perceptual evaluations of a park: 
+cross-cultural and environmental attitude comparisons, Build. Environ. 43 (9) 
+(2008) 1483–1490. 
+[94] N. K´antor, L. ´Egerh´azi, J. Unger, Subjective estimation of thermal environment in 
+recreational urban spaces—part 1: investigations in Szeged, Hungary, Int. J. 
+Biometeorol. 56 (6) (2012) 1075–1088. 
+[95] N. K´antor, A. Kov´acs, ´A. Tak´acs, Seasonal differences in the subjective assessment 
+of outdoor thermal conditions and the impact of analysis techniques on the 
+obtained results, Int. J. Biometeorol. 60 (11) (2016) 1615–1635. 
+[96] P. H¨oppe, The physiological equivalent temperature - a universal index for the 
+biometeorological assessment of the thermal environment, Int. J. Biometeorol. 43 
+(2) (1999) 71–75, https://doi.org/10.1007/s004840050118. 
+[97] A. Karimi, H. Sanaieian, H. Farhadi, S. Norouzian-Maleki, Evaluation of the 
+thermal indices and thermal comfort improvement by different vegetation species 
+and materials in a medium-sized urban park, Energy Rep. 6 (2020) 1670–1684. 
+[98] R. Mora, R. Bean, Thermal comfort: designing for people, ASHRAE J. 60 (2) 
+(2018) 40–46. 
+[99] Y. Hao, J. Kang, H. W¨ortche, Assessment of the masking effects of birdsong on the 
+road traffic noise environment, J. Acoust. Soc. Am. 140 (2) (2016) 978–987. 
+[100] L. Yu, J. Kang, Modeling subjective evaluation of soundscape quality in urban 
+open spaces: an artificial neural network approach, J. Acoust. Soc. Am. 126 (3) 
+(2009) 1163–1174. 
+[101] Q. Huang, X. Meng, X. Yang, L. Jin, X. Liu, W. Hu, The ecological city: considering 
+outdoor thermal environment, Energy Proc. 104 (2016) 177–182. 
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    
+
+
+===== PAGE 17 =====
+Building and Environment 228 (2023) 109884
+17
+[102] Y.G. Matsinos, A.D. Mazaris, K. Papadimitriou, A. Mniestris, Spatio-temporal 
+variability in human and natural sounds in a rural landscape Spatio-temporal 
+variability in human and natural sounds in a rural landscape, Landsc. Ecol. 23 (8) 
+(2008) 945–959, https://doi.org/10.1007/s10980-008-9250-7. 
+[103] ¨O. Axelsson, M.E. Nilsson, B. Berglund, A principal components model of 
+soundscape perception a), J. Acoust. Soc. Am. 128 (5) (2010) 2846, https://doi. 
+org/10.1121/1.3493436, 2846. 
+[104] H. Kuttruff, Acoustics: an Introduction, CRC Press, 2007. 
+[105] K. Nagano, T. Horikoshi, New comfort index during combined conditions of 
+moderate low ambient temperature and traffic noise, Energy Build. 37 (3) (2005) 
+287–294. 
+[106] N. Pellerin, V. Candas, Combined effects of temperature and noise on human 
+discomfort, Physiol. Behav. 78 (1) (2003) 99–106. 
+N. Mohammadzadeh et al.                                                                                                                                                                                                                    

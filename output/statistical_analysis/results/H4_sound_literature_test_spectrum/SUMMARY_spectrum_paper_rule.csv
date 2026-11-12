@@ -1,0 +1,155 @@
+"paper","sound_variable","n_tests","n_estimable","n_source_rule_met"
+"Cureau 2022","freq_proportion_20_to_200Hz",1,1,0
+"Cureau 2022","freq_proportion_200_to_2000Hz",1,1,0
+"Cureau 2022","freq_proportion_2000_to_20000Hz",1,1,1
+"Cureau 2022","mechanisms_proportion",1,1,0
+"Cureau 2022","octave_proportion_1000_0_Hz",1,1,0
+"Cureau 2022","octave_proportion_125_0_Hz",1,1,1
+"Cureau 2022","octave_proportion_2000_0_Hz",1,1,0
+"Cureau 2022","octave_proportion_250_0_Hz",1,1,0
+"Cureau 2022","octave_proportion_31_5_Hz",1,1,0
+"Cureau 2022","octave_proportion_4000_0_Hz",1,1,1
+"Cureau 2022","octave_proportion_500_0_Hz",1,1,1
+"Cureau 2022","octave_proportion_63_0_Hz",1,1,0
+"Cureau 2022","octave_proportion_8000_0_Hz",1,1,1
+"Cureau 2022","rural_natural_proportion",1,1,1
+"Cureau 2022","spectral_centroid_Hz",1,1,1
+"Cureau 2022","spectral_rolloff85_Hz",1,1,0
+"Cureau 2022","unidentify_proportion",1,1,0
+"Cureau 2022","urban_manmade_negative_proportion",1,1,0
+"Cureau 2022","urban_manmade_neutral_proportion",1,1,1
+"Cureau 2022","urban_manmade_positive_proportion",1,1,0
+"Cureau 2022","vehicle_proportion",1,1,0
+"Cureau 2022","wind_proportion",1,1,0
+"Grapas Rome 2026","freq_proportion_20_to_200Hz",4,4,2
+"Grapas Rome 2026","freq_proportion_200_to_2000Hz",4,4,2
+"Grapas Rome 2026","freq_proportion_2000_to_20000Hz",4,4,2
+"Grapas Rome 2026","mechanisms_proportion",4,4,0
+"Grapas Rome 2026","octave_proportion_1000_0_Hz",4,4,0
+"Grapas Rome 2026","octave_proportion_125_0_Hz",4,4,0
+"Grapas Rome 2026","octave_proportion_2000_0_Hz",4,4,2
+"Grapas Rome 2026","octave_proportion_250_0_Hz",4,4,2
+"Grapas Rome 2026","octave_proportion_31_5_Hz",4,4,1
+"Grapas Rome 2026","octave_proportion_4000_0_Hz",4,4,2
+"Grapas Rome 2026","octave_proportion_500_0_Hz",4,4,0
+"Grapas Rome 2026","octave_proportion_63_0_Hz",4,4,2
+"Grapas Rome 2026","octave_proportion_8000_0_Hz",4,4,2
+"Grapas Rome 2026","rural_natural_proportion",4,4,1
+"Grapas Rome 2026","spectral_centroid_Hz",4,4,2
+"Grapas Rome 2026","spectral_rolloff85_Hz",4,4,2
+"Grapas Rome 2026","unidentify_proportion",4,4,0
+"Grapas Rome 2026","urban_manmade_negative_proportion",4,4,2
+"Grapas Rome 2026","urban_manmade_neutral_proportion",4,4,1
+"Grapas Rome 2026","urban_manmade_positive_proportion",4,4,2
+"Grapas Rome 2026","vehicle_proportion",4,4,0
+"Grapas Rome 2026","wind_proportion",4,4,0
+"Peng 2025","freq_proportion_20_to_200Hz",2,2,0
+"Peng 2025","freq_proportion_200_to_2000Hz",2,2,0
+"Peng 2025","freq_proportion_2000_to_20000Hz",2,2,0
+"Peng 2025","mechanisms_proportion",2,2,0
+"Peng 2025","octave_proportion_1000_0_Hz",2,2,0
+"Peng 2025","octave_proportion_125_0_Hz",2,2,0
+"Peng 2025","octave_proportion_2000_0_Hz",2,2,0
+"Peng 2025","octave_proportion_250_0_Hz",2,2,0
+"Peng 2025","octave_proportion_31_5_Hz",2,2,0
+"Peng 2025","octave_proportion_4000_0_Hz",2,2,0
+"Peng 2025","octave_proportion_500_0_Hz",2,2,0
+"Peng 2025","octave_proportion_63_0_Hz",2,2,0
+"Peng 2025","octave_proportion_8000_0_Hz",2,2,0
+"Peng 2025","rural_natural_proportion",2,2,1
+"Peng 2025","spectral_centroid_Hz",2,2,0
+"Peng 2025","spectral_rolloff85_Hz",2,2,0
+"Peng 2025","unidentify_proportion",2,2,0
+"Peng 2025","urban_manmade_negative_proportion",2,2,0
+"Peng 2025","urban_manmade_neutral_proportion",2,2,0
+"Peng 2025","urban_manmade_positive_proportion",2,2,0
+"Peng 2025","vehicle_proportion",2,2,0
+"Peng 2025","wind_proportion",2,2,0
+"Rodrigues 2026","freq_proportion_20_to_200Hz",10,10,0
+"Rodrigues 2026","freq_proportion_200_to_2000Hz",10,10,1
+"Rodrigues 2026","freq_proportion_2000_to_20000Hz",10,10,2
+"Rodrigues 2026","mechanisms_proportion",10,10,0
+"Rodrigues 2026","octave_proportion_1000_0_Hz",10,10,0
+"Rodrigues 2026","octave_proportion_125_0_Hz",10,10,2
+"Rodrigues 2026","octave_proportion_2000_0_Hz",10,10,0
+"Rodrigues 2026","octave_proportion_250_0_Hz",10,10,0
+"Rodrigues 2026","octave_proportion_31_5_Hz",10,10,0
+"Rodrigues 2026","octave_proportion_4000_0_Hz",10,10,2
+"Rodrigues 2026","octave_proportion_500_0_Hz",10,10,0
+"Rodrigues 2026","octave_proportion_63_0_Hz",10,10,0
+"Rodrigues 2026","octave_proportion_8000_0_Hz",10,10,2
+"Rodrigues 2026","rural_natural_proportion",10,10,0
+"Rodrigues 2026","spectral_centroid_Hz",10,10,2
+"Rodrigues 2026","spectral_rolloff85_Hz",10,10,0
+"Rodrigues 2026","unidentify_proportion",10,10,0
+"Rodrigues 2026","urban_manmade_negative_proportion",10,10,0
+"Rodrigues 2026","urban_manmade_neutral_proportion",10,10,0
+"Rodrigues 2026","urban_manmade_positive_proportion",10,10,2
+"Rodrigues 2026","vehicle_proportion",10,10,1
+"Rodrigues 2026","wind_proportion",10,10,1
+"Tang 2026","freq_proportion_20_to_200Hz",6,6,0
+"Tang 2026","freq_proportion_200_to_2000Hz",6,6,0
+"Tang 2026","freq_proportion_2000_to_20000Hz",6,6,1
+"Tang 2026","mechanisms_proportion",6,6,1
+"Tang 2026","octave_proportion_1000_0_Hz",6,6,0
+"Tang 2026","octave_proportion_125_0_Hz",6,6,0
+"Tang 2026","octave_proportion_2000_0_Hz",6,6,0
+"Tang 2026","octave_proportion_250_0_Hz",6,6,0
+"Tang 2026","octave_proportion_31_5_Hz",6,6,0
+"Tang 2026","octave_proportion_4000_0_Hz",6,6,0
+"Tang 2026","octave_proportion_500_0_Hz",6,6,0
+"Tang 2026","octave_proportion_63_0_Hz",6,6,0
+"Tang 2026","octave_proportion_8000_0_Hz",6,6,0
+"Tang 2026","rural_natural_proportion",6,6,1
+"Tang 2026","spectral_centroid_Hz",6,6,0
+"Tang 2026","spectral_rolloff85_Hz",6,6,0
+"Tang 2026","unidentify_proportion",6,6,0
+"Tang 2026","urban_manmade_negative_proportion",6,6,0
+"Tang 2026","urban_manmade_neutral_proportion",6,6,0
+"Tang 2026","urban_manmade_positive_proportion",6,6,0
+"Tang 2026","vehicle_proportion",6,6,0
+"Tang 2026","wind_proportion",6,6,0
+"this study","freq_proportion_20_to_200Hz",6,6,0
+"this study","freq_proportion_200_to_2000Hz",6,6,0
+"this study","freq_proportion_2000_to_20000Hz",6,6,0
+"this study","mechanisms_proportion",6,6,2
+"this study","octave_proportion_1000_0_Hz",6,6,0
+"this study","octave_proportion_125_0_Hz",6,6,3
+"this study","octave_proportion_2000_0_Hz",6,6,0
+"this study","octave_proportion_250_0_Hz",6,6,0
+"this study","octave_proportion_31_5_Hz",6,6,0
+"this study","octave_proportion_4000_0_Hz",6,6,0
+"this study","octave_proportion_500_0_Hz",6,6,0
+"this study","octave_proportion_63_0_Hz",6,6,0
+"this study","octave_proportion_8000_0_Hz",6,6,0
+"this study","rural_natural_proportion",6,6,0
+"this study","spectral_centroid_Hz",6,6,0
+"this study","spectral_rolloff85_Hz",6,6,0
+"this study","unidentify_proportion",6,6,0
+"this study","urban_manmade_negative_proportion",6,6,0
+"this study","urban_manmade_neutral_proportion",6,6,0
+"this study","urban_manmade_positive_proportion",6,6,0
+"this study","vehicle_proportion",6,6,0
+"this study","wind_proportion",6,6,0
+"Zhen 2025","freq_proportion_20_to_200Hz",1,1,0
+"Zhen 2025","freq_proportion_200_to_2000Hz",1,1,0
+"Zhen 2025","freq_proportion_2000_to_20000Hz",1,1,0
+"Zhen 2025","mechanisms_proportion",1,1,1
+"Zhen 2025","octave_proportion_1000_0_Hz",1,1,0
+"Zhen 2025","octave_proportion_125_0_Hz",1,1,0
+"Zhen 2025","octave_proportion_2000_0_Hz",1,1,0
+"Zhen 2025","octave_proportion_250_0_Hz",1,1,0
+"Zhen 2025","octave_proportion_31_5_Hz",1,1,0
+"Zhen 2025","octave_proportion_4000_0_Hz",1,1,0
+"Zhen 2025","octave_proportion_500_0_Hz",1,1,0
+"Zhen 2025","octave_proportion_63_0_Hz",1,1,0
+"Zhen 2025","octave_proportion_8000_0_Hz",1,1,0
+"Zhen 2025","rural_natural_proportion",1,1,1
+"Zhen 2025","spectral_centroid_Hz",1,1,0
+"Zhen 2025","spectral_rolloff85_Hz",1,1,0
+"Zhen 2025","unidentify_proportion",1,1,0
+"Zhen 2025","urban_manmade_negative_proportion",1,1,0
+"Zhen 2025","urban_manmade_neutral_proportion",1,1,0
+"Zhen 2025","urban_manmade_positive_proportion",1,1,0
+"Zhen 2025","vehicle_proportion",1,1,0
+"Zhen 2025","wind_proportion",1,1,0

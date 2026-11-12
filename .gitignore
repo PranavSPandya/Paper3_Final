@@ -18,6 +18,7 @@ __pycache__/
 
 # Oversized local design source (> GitHub 100MB limit)
 Figures/sensor_setup/Experiment Sensor Setup.ai
+archive/Figures - Copy/sensor_setup/Experiment Sensor Setup.ai
 
 # Local scratch (keep small H4 VIF helpers only if needed)
 temp/

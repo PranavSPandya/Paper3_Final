@@ -1,0 +1,14 @@
+"sound_variable","paper","test","paper_decision_rule","n_tests","n_paper_rule_met","outcomes_paper_rule_met","n_significant_unadjusted","n_significant_adjusted","significant_adjusted_outcomes"
+"ucm_SND_dBA","Rodrigues 2026","Noise block (7.Model_H2.py): NOISE_max","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","2","MAX_Values; MIN_Values","2","1","MIN_Values"
+"ucm_SND_dBA","Rodrigues 2026","Noise block (7.Model_H2.py): NOISE_std","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","0",,"0","0",
+"temperature-only (no sound term)","Rodrigues 2026","Temperature block (7.Model_H2.py): Temp_max","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","4","STD_bpm; STD_Values; MAX_Values; MIN_Values","4","2","STD_Values; MAX_Values"
+"temperature-only (no sound term)","Rodrigues 2026","Temperature block (7.Model_H2.py): Temp_mean","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","3","STD_bpm; STD_Values; MAX_Values","3","3","STD_bpm; STD_Values; MAX_Values"
+"ucm_SND_dBA","Jin 2020","Two-way ANOVA: source-spaced sound bands x UTCI stress categories","p < 0.05","9","2","thermal_comfort; acoustic_comfort","2","2","thermal_comfort; acoustic_comfort"
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase BikeU","p < 0.05","6","0",,"0","0",
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase WalkU","p < 0.05","6","1","acoustic_comfort","1","0",
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase BikeG","p < 0.05","3","1","acoustic_comfort","1","0",
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase WalkG","p < 0.05","6","0",,"0","0",
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase Tram","p < 0.05","6","0",,"0","0",
+"ucm_SND_dBA","Wu 2025","Published objective additive predictor set; repeated-participant adaptation","p < 0.05","2","0",,"0","0",
+"perceived acoustic comfort","Wu 2025","Published subjective additive predictor set; repeated-participant adaptation","p < 0.05","2","1","overall_comfort","1","1","overall_comfort"
+"ucm_SND_dBA","Xu 2026","Pearson sound-comfort association (phase-stratified)","p < 0.05","10","0",,"0","0",

@@ -1,0 +1,1783 @@
+
+
+===== PAGE 1 =====
+Do we all feel the city the same way? A proof-of-concept framework linking 
+physiological wellbeing to neighborhood-scale resilience through 
+multi-domain environmental sensing
+Christos Grapas a, Marcel Schweiker b,c
+, Anna Laura Pisello a,d,*
+,  
+Ilaria Pigliautile a
+, Roberta Jacoby Cureau d
+a Environmental Applied Physics Laboratory (EAPLAB), Interuniversity Research Centre on Pollution and Environment Mauro Felli (CIRIAF), University of Perugia, via 
+G. Duranti, 67, 06125 Perugia, Italy
+b Healthy Living Spaces Lab, Institute for Occupational, Social and Environmental Medicine, Medical Faculty, RWTH Aachen University, Aachen, Germany
+c Chair of Healthy Living Spaces, Faculty of Architecture, RWTH Aachen University, Aachen, Germany
+d Engineering Department, University of Perugia, via G. Duranti, 93, 06125 Perugia, Italy
+A R T I C L E I N F O
+Keywords:
+Human-urban resilience
+Multi-domain comfort
+Human Centred digital twins
+Multisensory urban design
+Well-being
+Climate Change Adaptation
+A B S T R A C T
+Outdoor comfort and climate adaptation studies usually focus on thermal-only investigations, typically relying 
+on straightforward heat stress metrics. Human-centered validation frameworks to confirm whether built envi­
+ronment interventions reduce actual physiological stress versus predicted discomfort from population-averaged 
+models still lack. To fill this gap, this proof-of-concept addresses three questions: (1) Do multi-domain envi­
+ronmental models explain physiological variance that thermal indices alone cannot capture? (2) Do individuals 
+exhibit heterogeneous resilience to identical landscapes? (3) How can individual physiological data aggregate 
+into neighborhood-scale resilience zones? Using synchronized wearable sensors (heart rate, electrodermal ac­
+tivity) and multi-domain environmental monitoring (Universal Thermal Climate Index, Particulate Matter, CO₂, 
+Acoustic Spectrum), we tested eight participants through contrasting Roman urban typologies such as exposed 
+piazzas, tree-canopied riverbanks, enclosed gardens. Thermal comfort indices alone failed to predict stress, yet 
+multi-domain models integrating thermal, air quality, and acoustic parameters explained up to 43% of physio­
+logical variance. Individuals with similar characteristics (age 28–38) and lifestyle exhibited markedly different 
+physiological responses to identical microclimates, suggesting that the city is not felt the same way by everyone, 
+and that population-averaged vulnerability models may not reliably predict individual-level stress outcomes. We 
+operationalized three resilience metrics: Toughness, Recovery Capacity, Adaptation Duration, derived through 
+generalized logistic growth modeling capturing nonlinear threshold dynamics in physiological stress responses. 
+K-means clustering identified five statistically distinct adaptation zones corresponding to landscape typologies, 
+demonstrating that individual wearable data enables neighborhood-scale resilience mapping. This framework 
+establishes a preliminary methodological infrastructure for integrating physiological sensing with urban digital 
+twins, enabling validation of whether landscape configurations reduce stress for inhabitants rather than relying 
+on demographic prediction alone.
+1. Introduction
+Urban areas house 55% of the world's population, projected to reach 
+68% by 2050 [1], intensifying challenges in designing built environ­
+ments that maintain thermal comfort, air quality, and acoustic perfor­
+mance under changing climatic conditions. While initiatives like C40 
+Abbreviation: UTCI, Universal Thermal Climate Index; CCA, Climate Change Adaptation; T, Toughness; AC, Ability to Cope; RC, Recovery Capacity; PM, Par­
+ticulate Matter; BPM, Beats per Minute; EDA, Electrodermal Activity; UAQI, Universal Air Quality Index; UHI, Urban Heat Island Effect; LST, Land Surface Tem­
+perature; ART, Attention Restoration Theory; SRT, Stress Recovery Theory; GIS, Geographic Information System; IoT, Internet of Things; LOPO, Leave-One- 
+Participant-Out; CV, Coefficient of Variation; RMS, Root Mean Square.
+* Corresponding author.
+E-mail address: anna.pisello@unipg.it (A.L. Pisello). 
+Contents lists available at ScienceDirect
+Building and Environment
+journal homepage: www.elsevier.com/locate/buildenv
+https://doi.org/10.1016/j.buildenv.2026.114679
+Received 4 December 2025; Received in revised form 2 April 2026; Accepted 29 April 2026  
+Building and Environment 300 (2026) 114679 
+Available online 1 May 2026 
+0360-1323/© 2026 Published by Elsevier Ltd. 
+
+
+===== PAGE 2 =====
+Cities [2] and the EU Covenant of Mayors [3] emphasize Climate Change 
+Adaptation (CCA) planning, current building science approaches lack 
+methods to validate whether environmental interventions actually 
+reduce physiological stress for individual occupants versus predicted 
+discomfort from population-averaged models.
+Simplified threshold-based approaches, while scalable, cannot cap­
+ture real-time physiological adaptation dynamics determining actual 
+health risk [4]. Emerging evidence shows that compound environmental 
+stressors such as heat combined with air pollution and noise can produce 
+interaction effects unpredictable from single-stressor models, necessi­
+tating integrated multi-domain approaches [5,6]. Structural equation 
+modeling reveals that audio-visual interactions (β = 0.57) of environ­
+mental satisfaction, with thermal, acoustic, and visual domains oper­
+ating through bidirectional sensory influences rather than independent 
+channels [7 ]. Yet conventional building design treats thermal condi­
+tioning, ventilation, and acoustic control as independent systems rather 
+than synergistic determinants of occupant wellbeing. The resulting built 
+environments may satisfy individual performance standards while 
+failing to support actual physiological resilience, a contradiction unde­
+tectable without measuring inhabitant stress responses. Multi-domain 
+resilience operates through parallel analytical scales and physiological 
+regulatory systems responding to different environmental stressors, 
+which interact synergistically rather than additively [8,9].
+Recent advances in wearable sensor integration with urban IoT 
+networks enable continuous, synchronized collection of individual 
+physiological data alongside hyperlocal environmental conditions, 
+providing unprecedented resolution for linking personal stress responses 
+to specific urban microclimates [10]. Wearable technologies measuring 
+heart rate and electrodermal activity (EDA) [11] transform climate 
+resilience assessment by enabling real-time validation of design in­
+terventions. In a recent study, researchers used EDA wristbands to track 
+students' skin conductance during math tasks under varying classroom 
+microclimates (temperature, CO2, PM). Higher CO2 and temperatures 
+correlated with increased EDA features like Conductance Level (CL), 
+indicating stress; machine learning confirmed temperature and air 
+quality's role in physiological well-being and thermal comfort [12]. 
+However, population-targeted urban sensing approaches perpetuate the 
+limitation of treating vulnerability as spatially uniform rather than 
+recognizing heterogeneous exposure risks across population subgroups 
+[13,14]. Landscape spatial patterns within 175-meter radius buffers 
+exert greater influence on soundscape perception than on-site compo­
+sition [15]. While urban morphology represents relatively fixed con­
+straints amenable to Geographical Information System (GIS)-based 
+thermal comfort modeling and soundscape mapping [16,17], human 
+physiological adaptation remains highly flexible and individualized, 
+necessitating integration of population-scale landscape interventions 
+with person-scale physiological sensing. The present study advances 
+beyond existing individual-level outdoor comfort research in three 
+critical dimensions. First, while recent walking experiments have suc­
+cessfully employed wearable sensors to measure physiological responses 
+to environmental sequences and demonstrated the restorative effects of 
+green exposure [18], these studies typically focus on route-level or 
+scenario-level comparisons rather than quantifying individual-specific 
+resilience profiles across multiple environmental domains. Second, 
+although emerging frameworks integrate multi-domain urban features 
+including visual, acoustic, and microclimatic variables to predict 
+neighborhood-scale comfort indices using explainable AI [19]), these 
+approaches aggregate population-level perceptual data rather than 
+measuring individual physiological stress responses that determine 
+actual health risk. Third, smartwatch-based interventions have demon­
+strated behavioral nudging potential for thermal and acoustic comfort 
+[20], yet these implementations assess perceived usefulness and 
+behavior change rather than validating whether interventions actually 
+reduce physiological stress burden as measured through dynamic re­
+covery or cumulative allostatic markers. No framework currently in­
+tegrates continuous multi-domain environmental sensing with 
+individual-level physiological monitoring to validate whether in­
+terventions reduce measured stress for actual inhabitants. Our meth­
+odological contribution lies in integrating continuous multi-domain 
+environmental 
+sensing 
+(thermal, 
+acoustic, 
+air 
+quality) 
+with 
+individual-level physiological monitoring to: (1) validate whether 
+multi-domain models predict acute stress responses significantly better 
+than single-domain thermal comfort indices, (2) quantify heterogeneous 
+resilience profiles among physically similar individuals, examining 
+whether person-specific physiological response patterns exist even after 
+controlling for environmental variation, and (3) develop a framework 
+for aggregating individual sensing data into neighborhood-scale resil­
+ience zones that can inform spatially-targeted built environment 
+interventions.
+This proof-of-concept study addresses a critical gap: the absence of 
+individualized physiological data in validating outdoor environmental 
+performance of built environments. Resilience operates across temporal 
+scales. For example, dynamic recovery [21] quantifies acute physio­
+logical restoration rates post-exposure, allostatic load (long-­
+term-exposure 
+[22]) 
+captures 
+cumulative 
+regulatory 
+system 
+dysregulation, and adaptation time measures thermoregulatory stabili­
+zation periods. While vulnerability assessments typically focus on 
+extreme thermal conditions, we examine resilience under non-extreme 
+exposure where multisensory interventions can support physiological 
+restoration [23]. Three research questions guide this investigation. First, 
+do multi-domain environmental models integrating thermal, acoustic, 
+and air quality parameters predict individual physiological stress re­
+sponses significantly better than single-domain thermal comfort 
+indices? This question addresses whether the integrated sensing 
+approach provides superior explanatory power compared to conven­
+tional thermal-only assessment, validating the multi-domain frame­
+work's added value. Second, do individuals exhibit heterogeneous 
+resilience profiles to identical landscape conditions, challenging the 
+validity of demographic vulnerability assumptions in building perfor­
+mance assessment? This examines whether person-specific physiological 
+response patterns exist even after controlling for environmental varia­
+tion, establishing the necessity of individualized rather than 
+population-averaged approaches. Third, how can neighborhood-scale 
+resilience zones be identified through aggregated individual sensing 
+data? This bridges from individual-level heterogeneity to spatial plan­
+ning applications, demonstrating how personalized physiological 
+monitoring can inform area-based intervention strategies. Using syn­
+chronized wearable physiological sensors and multi-domain environ­
+mental 
+monitoring, 
+we 
+developed 
+a 
+framework 
+integrating 
+individual-level resilience metrics that can be aggregated to neighbor­
+hood scale, demonstrating how these insights inform human-centered 
+urban digital twins and evidence-based multisensory design strategies 
+[24] for the built environment [25].
+2. Methodology
+This proof-of-concept framework examines individual physiological 
+resilience to multi-domain environmental stressors through synchro­
+nized wearable sensing and hyperlocal monitoring during structured 
+urban transect walks. Data collected during these walks were analyzed 
+through four stages (Fig. 1): (1) correlation analysis quantifying re­
+lationships between physiological indicators (heart rate, EDA) and 
+environmental parameters (thermal, acoustic, air quality domains) to 
+establish baseline associations and inter-individual variability; (2) 
+generalized logistic growth modeling fitted to physiological time-series 
+under single-domain and multi-domain (thermal + acoustic + air 
+quality) configurations to compare explanatory power; (3) trans­
+formation of model parameters into three resilience metrics: Toughness 
+(resistance to stressors), Recovery Capacity (speed of baseline return), 
+and Adaptation Duration (stabilization period), operationalizing 
+Schweiker's resilience framework [26]; and (4) K-means clustering on 
+temporally-weighted, recovery-coupled environmental features to 
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+2 
+
+
+===== PAGE 3 =====
+identify spatially distinct adaptation zones. This framework enables 
+direct comparison of thermal-only versus integrated environmental 
+models, characterizes individual-specific adaptation profiles, and dem­
+onstrates aggregation of personalized physiological data into 
+neighborhood-scale resilience maps corresponding to measurable urban 
+typologies.
+2.1. Data collection
+2.1.1. Experimental design
+Data collection took place through a multi-domain comfort walk, 
+intentionally conducted during non-heatwave conditions, as existing 
+literature suggests that extreme heat often mask subtle multi-domain 
+effects and interactions between environmental factors, making 
+Fig. 1. Methodology.
+Fig. 2. Case study area and overview of the multi-domain comfort walk and key variables per domain retrieved during the experimental campaign.
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+3 
+
+
+===== PAGE 4 =====
+humans less sensitive to non-thermal stimuli such as acoustics or visual 
+[27–30]. During each session of the comfort walks, two researchers 
+carried wearable environmental monitoring backpacks [31], while two 
+participants wore Empatica medical devices to measure heart rate, EDA, 
+and skin temperature [32]. Each session followed a structured route 
+(Fig. 2), where one participant and one researcher commenced their 
+walk from an area characterized by elevated thermal discomfort and 
+higher pollution levels, progressing toward an environment with more 
+favourable environmental conditions, while the other participant and 
+researcher walked in the opposite direction. The initial selection of 
+transect start and end points (A and B in Fig. 2) was informed by Land 
+Surface Temperature (LST) data derived from Landsat 8 and the Uni­
+versal Air Quality Index (UAQI) obtained from the Google Air Quality 
+API. This methodological design facilitated the examination of spatio­
+temporal variations in environmental exposure and human perception 
+across distinct urban microclimates.
+The one-hour lasting comfort walk was performed in Rome, Italy, 
+with a hot-summer Mediterranean climate (Csa) according to the 
+K¨oppen climate classification [33] between July 1st and 2nd of 2024. 
+The " comfort walk" protocol [34,35] instructed participants to maintain 
+their natural, self-selected walking pace typical of urban pedestrian 
+movement, without running or prolonged standing. All participants 
+completed the one-hour route covering approximately 2.5 km under 
+researcher supervision to ensure comparable pacing. The starting and 
+ending points of the transect are represented in Fig. 2. Point B, located in 
+St. Peter’s Square, Vatican City, is an open, highly exposed environment 
+with minimal vegetation, with LST = 43.9 ◦C and UAQI=135.37, while 
+Point A, situated at Ponte Cestio across the Tiber River, features a denser 
+and taller tree canopy, offering greater thermal buffering with LST=37.9 
+◦C and UAQI=126.40 on average during the previous week before the 
+experimental campaign. In the midpoint of the route participants 
+crossed a garden fenced with brick walls of 4 m and dense vegetation 
+(Fig. 2, Point C) and a ‘transitional space’ (Fig. 2, Point D) which in the 
+case of this experiment was a ‘loggia: a room or gallery with one or more 
+open sides, especially one that forms part of a house and has one side open to 
+the garden’ [36] to account for similar architectural typologies that are 
+often present in the case study area.
+The study participants comprised university students and academic 
+personnel aged 28–38 years, representing diverse international back­
+grounds. This sample was selected to ensure a relatively homogeneous 
+sample, excluding individuals from recognized vulnerable populations 
+[37]. The narrow age range (28–38) and similar educational/occupa­
+tional backgrounds minimize confounding from major demographic 
+factors, though residual variability from unmeasured covariates (sleep 
+quality, caffeine intake, recent stress exposure, menstrual cycle phase) 
+remains a limitation of within-subject models.
+Each session followed four phases. First, pre-walk preparation (~15 
+min) included informed consent, wristband equipment, and walking 
+instructions. Second, stationary assessment periods (5–10 min) occurred 
+at Points A, B, C, D where participants paused within 5 m of the envi­
+ronmental backpack, acclimatized for 15 min, then completed ques­
+tionnaires via their smartphones. Third, walk segments consisted of 
+natural-pace walking with the researcher carrying the environmental 
+backpack maintaining ≤2 m proximity and continuous monitoring. 
+Fourth, session completion involved final questionnaires. Bidirectional 
+design enabled one pair to walk A→C→D→B while another walked 
+B→C→D→A simultaneously. The two-day experimental period was 
+designed as a proof-of-concept validation study to test whether multi- 
+domain models predict physiological responses better than thermal 
+indices alone, and whether physically similar individuals exhibit het­
+erogeneous resilience profiles. The short timeframe enabled controlled 
+comparison across contrasting urban typologies under stable meteoro­
+logical conditions, minimizing confounding variables for initial frame­
+work validation.
+2.1.2. Environmental measures
+The wearable monitoring system was designed and developed at the 
+University of Perugia as a backpack to ensure ergonomic comfort while 
+allowing comprehensive environmental data collection on a hyperlocal 
+microclimate scale [31]. The backpacks housed a modular array of 
+sensors, including a BME280 for air temperature (accuracy: ±1 ◦C), 
+relative humidity (±3 %), and atmospheric pressure (±0.25 %), a CV7-V 
+ultrasonic anemometer for wind velocity and direction, and an 
+upward-looking (sp-510-SS ) pyranometer for global solar radiation (±5 
+%). It also featured a TDS0037 NDIR CO2 sensor and a PMS5003 
+laser-scattering particulate matter (PM) sensor for PM1.0, PM2.5, and 
+PM10. A NEO-M8 GPS unit was integrated to provide high-resolution 
+spatial mapping of the collected data. The sensors were protected with 
+custom 3D-printed ventilated enclosures, except for those requiring 
+direct exposure, ensuring accurate measurements. The control unit, 
+powered by a rechargeable battery with over two hours of autonomy, 
+wirelessly transmitted real-time data of 5 s frequency to a user-friendly 
+dashboard accessible via Wi-Fi, making the system ideal for monitoring 
+dynamic urban environments. In addition to the above, two micro­
+phones were used to account for basic acoustic recordings such as 
+relative sound level and frequency. Zoom H1n compact stereo recorder 
+featuring a unidirectional condenser microphone was used in a 90◦XY 
+stereo format, ensuring directional sound capture with reduced side 
+noise.
+2.1.3. Subjective measures
+Questionnaires administered at four urban settings (Points A, B, C, D) 
+captured subjective comfort across thermal, air quality, and acoustic 
+domains (Supplementary Materials, Table S1) Given limited sample size, 
+subjective data served as secondary validation for physiological obser­
+vations rather than primary analytical endpoints. Perceived adaptive 
+capacity was assessed through standardized inquiry: "In case you would 
+experience exhaustion from extreme climate conditions, how accessible 
+would you find suitable environments for thermal relief?" (5-point Likert 
+scale: not at all (0) to fully accessible (+5)). This metric quantified 
+participants' perception of available thermal refuge options, tested for 
+correlation with measured physiological stress responses, and provided 
+insight into psychological modulation of physiological adaptation 
+(perceived control).
+2.2. Data processing
+Universal Thermal Climate Index (UTCI) calculations were per­
+formed using the wearable sensor data combining air temperature, 
+relative humidity, solar radiation and wind speed and processed in Py­
+thon via the ‘pythermalcomfort’ library [38] with a metabolic rate of 1.3 
+met (light walking activity) and clothing insulation of 0.36 clo (standard 
+for shorts and t-shirt attire) [39].
+The relative sound level in dBFS was calculated using the root mean 
+square (RMS) of the audio signal, which measures its effective amplitude 
+[40]. This value was then converted into a logarithmic scale relative to 
+the maximum possible amplitude of the digital audio. A higher RMS 
+value results in a dBFS level closer to zero, indicating a louder sound, 
+while lower RMS values produce more negative dBFS levels, repre­
+senting quieter sounds. This approach provides a standardized way to 
+assess and compare sound intensity in digital audio analysis. To enhance 
+the reliability of the analysis, data preprocessing includes outlier 
+removal and signal smoothing. Outliers are identified using the Inter­
+quartile Range (IQR) method, where values falling below Q1 −
+1.5 ×
+IQR or above Q3 + 1.5 × IQR are considered extreme and excluded. This 
+procedure prevents anomalous values from skewing the analysis, 
+ensuring a more accurate representation of the underlying trends. Next, 
+time-series data is smoothed using a low-pass Butterworth filter to 
+reduce high-frequency noise, with a carefully chosen cutoff frequency 
+relative to the Nyquist frequency to preserve relevant trends [41]. This 
+filtering is crucial for accurate relevant peak detection and subsequent 
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+4 
+
+
+===== PAGE 5 =====
+modelling. Peaks in the data, which signify environmental stressors and 
+physiological responses, are then identified using prominence-based 
+algorithm [42] that detect significant changes in signal amplitude. The 
+detection process is governed by two key parameters: prominence, 
+which defines the minimum relative importance of a peak, and distance, 
+which sets the minimum time interval between successive peaks to avoid 
+redundant detections. This step ensures that only meaningful peaks, 
+corresponding to significant environmental or physiological events, are 
+included in the analysis.
+2.3. Correlation analysis
+Initial correlation analysis quantified bivariate relationships be­
+tween physiological indicators (BPM, EDA) and environmental param­
+eters across thermal, acoustic, and air quality domains. Pearson 
+correlation assessed linear relationships for normally distributed vari­
+ables, while Spearman rank correlation captured monotonic associa­
+tions for non-normal distributions [43]. This exploratory analysis 
+addressed 
+two 
+objectives: 
+(1) 
+establishing 
+baseline 
+environmental-physiological 
+associations, 
+and 
+(2) 
+quantifying 
+inter-individual variability to justify subsequent resilience modeling. All 
+correlations were evaluated for statistical significance (p < 0.05), with | 
+r| > 0.2 serving as an exploratory screening threshold to identify po­
+tential relationships warranting investigation through subsequent 
+generalized logistic growth modeling, consistent with similar 
+individual-level studies reporting r = 0.15–0.20 as meaningful [44]. 
+This liberal threshold accounts for expected weak correlations in 
+individual-level physiological data due to high inter-individual vari­
+ability and complex regulatory mechanisms. The logistic growth models 
+(Section 2.4) and clustering analysis (Section 2.5) represent the primary 
+analytical approaches where relationship strength is properly quantified 
+through R² and validated through statistical testing.
+2.4. Logistic growth model for resilience dynamics
+By combining signal processing techniques, peak detection, and 
+nonlinear modelng, this study analyzes the adaptive physiological re­
+sponses of each participant to urban environmental stressors. The 
+generalized logistic growth function was selected to operationalize 
+Schweiker's theoretical resilience framework [26] through three key 
+advantages over alternative approaches. We employed the generalized 
+logistic growth function [45,46] because it captures nonlinear threshold 
+dynamics in physiological adaptation while providing mechanistically 
+interpretable parameters (B = sensitivity, M = threshold, ν = recovery 
+modulation) that can be extended to multi-domain stressor interactions 
+unlike linear models (Fig. 3). Critically, the model enables multi-domain 
+extension that preserves individual parameter interpretation while 
+revealing interaction effects, allowing quantification of how thermal 
+stress modulates air quality sensitivity, or how acoustic load influences 
+thermal adaptation capacity, through coupled environmental terms 
+rather than forcing additive assumptions. This mathematical frame­
+work, originally developed by Richards in 1959 to model plant growth 
+rates and later widely applied in ecological modelling [46], operation­
+alizes parameters that can be derived from empirical physiological time 
+series, compared across individuals to quantify inter-personal resilience 
+differences, and aggregated to neighborhood scales to map spatial pat­
+terns in collective adaptation capacity. Specifically, with particular 
+emphasis on how fluctuations in air temperature, air quality, and noise 
+levels affect BPM and EDA [47,48], the human response to increases or 
+decreases in environmental stress can be modeled to reveal how multi­
+ple stressors simultaneously affect distinct physiological systems such as 
+thermoregulation and autonomic stress response, which interact syner­
+gistically rather than independently.
+To model the relationship between a single environmental stressor 
+and physiological responses, a generalized logistic growth function as 
+mentioned by Schweiker [26] is employed. This model captures the 
+nonlinear dynamics of human adaptation to stress and is expressed as: 
+y(x) = A +
+(K −
+A)
+(1 + e−B (x −
+M))
+1
+ν 
+Where: y(x) is the physiological response as a function of environmental 
+stress; A is the lower asymptote, representing the baseline response 
+under normal conditions; K is the upper asymptote, representing the 
+physiological limit; B is the growth rate, quantifying sensitivity to 
+changes in environmental stress; M is the inflection point, indicating the 
+stress level at which the response is most pronounced; and ν is a shape 
+parameter controlling the steepness and symmetry of the response 
+curve.
+To account for multi-domain relationships across multiple environ­
+mental domains [49,50] the general logistic growth function was 
+modified for the second part of this analysis as follows: 
+y(x1, x2) = A +
+(K −A)
+(1 + Q⋅e−(B1(x1−M1)+B2(x2−M2)))
+1
+ν 
+Where: y(x1,x2) represents physiological response as a function of two 
+environmental variables pertaining to different environmental domains, 
+e.g., CO₂ concentration (x1) and sound level (x2); A and K are the lower 
+and upper limits of the physiological response; B1 and B2 are growth 
+rates relative to each environmental stressor; M1 and M2 are inflection 
+points (threshold values where significant physiological signal changes 
+occur, for each environmental stressor); and Q is an asymmetry factor. 
+The fitted parameters of the function such as A (lower asymptote), K 
+(upper asymptote), B (growth rate), M (inflection point), and ν (shape 
+parameter), are used to derive three key resilience metrics: toughness 
+(T), capacity to recover (RC), and ability to cope (AC) (Table 1). The 
+fitting parameters and resilience metrics were first calculated for a 
+reference participant to illustrate the general logistic growth model. To 
+evaluate collective physiological resilience, the study then applied the 
+same analytical approach across multiple participants. This process 
+allowed for a systematic assessment of the multi-domain model’s per­
+formance and the categorization of resilience parameters into distinct 
+Fig. 3. Generalized Logistic Growth Model of Human Physiological Resilience. 
+The diagram illustrates how physiological responses (y-axis) change with 
+environmental stressors (x-axis), characterized by parameters A (baseline), K 
+(upper limit), B (growth rate, where 1/B = toughness), M (inflection point), and 
+ν (shape parameter). Recovery capacity (1/B) × ν) and adaptation duration are 
+key resilience metrics quantifying the system's ability to respond and return to 
+equilibrium.
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+5 
+
+
+===== PAGE 6 =====
+groups.
+These resilience metrics (Table 1) provide mechanistic links between 
+environmental design and physiological outcomes, operationalizing 
+Schweiker's [26] three-phase resilience framework. Toughness (T =
+1/B) quantifies resistance to initial environmental stress, describing how 
+slowly physiological responses escalate as stressors increase. Higher 
+toughness values indicate individuals who maintain baseline function 
+despite rising thermal stress requiring fewer immediate interventions. 
+However, excessive toughness may delay recognition of accumulating 
+strain, particularly in vulnerable populations who may report thermal 
+conditions as acceptable despite associated health risks [51]. Recovery 
+Capacity (RC = ν/B) measures the speed of return to homeostatic 
+equilibrium after peak stress exposure ends. This metric directly informs 
+urban cooling infrastructure design: populations with low recovery ca­
+pacity require more frequent spatial access to thermal refuges, as they 
+cannot efficiently restore physiological equilibrium between exposures. 
+Adaptation Duration (AC = t₉₅ % - tpeak) quantifies the time required for 
+physiological stabilization after stress peaks, representing what 
+Schweiker describes as the "ability to cope" phase. This metric estab­
+lishes minimum exposure thresholds for intervention effectiveness. If 
+cool spots or green spaces provide relief periods shorter than an in­
+dividual's adaptation duration, the physiological system cannot com­
+plete its recovery process, leaving residual strain that accumulates 
+across repeated exposures. Critically, these person-specific metrics 
+enable identification of low-resilience individuals who may be missed by 
+demographic vulnerability indices, while simultaneously aggregating to 
+neighborhood scales for spatial mapping of collective adaptive capacity 
+[52].
+Single-domain models (5 parameters: A, K, B, M, ν) tested seven 
+environmental predictors independently: UTCI, CO₂, average PM, 
+overall sound level (dBFS), and three frequency-specific acoustic mea­
+sures (low-frequency: <500 Hz representing traffic and mechanical 
+noise; mid-frequency: 500–2000 Hz capturing human voices and urban 
+activity; high-frequency: >2000 Hz indicating birds, wind, and high- 
+pitched mechanical sounds). Multi-domain models (8 parameters: A, 
+K, B₁, B₂, M₁, M₂, Q, ν) tested eleven pairwise combinations: UTCI paired 
+with CO₂, PM, and each acoustic frequency band; CO₂ paired with each 
+acoustic frequency band; and PM paired with each acoustic frequency 
+band. Each configuration was fitted separately for BPM and EDA across 
+all participants, with only models achieving R² > 0.20 reported in 
+Tables 4–5.
+Generalized logistic growth models were fitted as within-participant 
+models to account for repeated measurements collected during each 
+individual's transect walk (multiple time points per participant across 
+varying environmental exposures). Models were then fitted indepen­
+dently for each participant using nonlinear least squares optimization. 
+This participant-specific approach enabled individual heterogeneity 
+quantification as required by the theoretical framework, while the small 
+sample size (n = 8) precluded reliable mixed-effects modeling across 
+participants. Model performance was assessed through adjusted R² ac­
+counting for differing predictor numbers between single-domain (5 pa­
+rameters) and multi-domain (8 parameters) configurations. Leave-one- 
+participant-out (LOPO) validation ensured findings were not driven by 
+outliers. We recalculated R² values and resilience metrics after 
+systematically excluding each participant, with stability assessed 
+through the range of LOPO mean predictions (<0.15 considered robust) 
+[53]. Coefficient of variation (CV) was calculated for full sample and 
+each LOPO iteration to confirm heterogeneity (CV>50%) persisted 
+across participant subsets. R² values represent within-participant model 
+fit, not population-level variance. This individual-specific approach was 
+required to: (1) quantify individual heterogeneity (our primary research 
+question), (2) extract mechanistically interpretable resilience metrics 
+(Toughness 
+=
+1/B 
+and 
+Recovery 
+Capacity 
+=
+ν/B) 
+from 
+participant-specific parameters, and (3) avoid unstable nonlinear 
+mixed-effects estimation with limited sample size (n = 8). The 
+within-subject modeling inherently accounts for repeated measures 
+clustering.
+2.5. Individual spatial resilience analysis and adaptation zone 
+classification
+We performed K-means clustering on T/RC/R²-weighted environ­
+mental features to identify spatial resilience zones, as our normalized 
+composite features exhibit compact distributions suitable for this 
+approach rather than requiring density-based methods. Each environ­
+mental feature was assigned a weight proportional to its temporal 
+contribution (T), recovery coupling (RC), and explained variance (R²), 
+derived from prior model evaluation. For each domain (air, acoustic, 
+thermal), normalized composite weights were computed as: 
+wi =
+(
+Ti + RCi + R2
+i
+)
+∑(
+T + RC + R2)
+Where: Tᵢ represents the temporal persistence of the environmental 
+signal; RCᵢ denotes its coupling with recovery capacity; and R²ᵢ quan­
+tifies its explanatory strength within the environmental–physiological 
+model. The numerator therefore reflects the combined influence of 
+temporal relevance and physiological linkage, while normalization by 
+the summed contributions across all domains ensures that weights sum 
+to one. These weights were then used to scale each standardized envi­
+ronmental variable, producing empirically grounded composite multi- 
+domain features prior to clustering. All variables were z-score normal­
+ized prior to analysis. Cluster validity was evaluated across k = 2–9 
+using silhouette coefficient (measuring within-cluster cohesion versus 
+between-cluster separation) and Calinski–Harabasz index (ratio of 
+between-cluster to within-cluster variance). The optimal k was selected 
+balancing compactness and interpretability. Post-clustering stability 
+was assessed through bootstrap resampling: 1000 iterations of sampling 
+with replacement, refitting K-means models, and calculating the per­
+centage of iterations each observation was assigned to its modal cluster. 
+Post-clustering, the resilience index, a normalized indicator of the 
+adaptation metrics calculated (Section 2.4) and the average physiolog­
+ical stress deriving from HR and EDA data entries were compared across 
+zones using one-way ANOVA. Zones were then ranked by mean resil­
+ience to represent a gradient from optimal adaptive environments to 
+low-capacity, personalized stress-prone zones.
+Table 1 
+Resilience Metrics calculated from the fitting parameters of the general logistic growth function for both single and multi-domain approach.
+Resilience Metric
+Definition
+Formula
+Toughness (T)
+Toughness quantifies the resistance of the system to change and is inversely proportional to the growth rate (B).
+τ = 1 / B
+Recovery Capacity (RC)
+Recovery capacity combines resistance (τ) with the shape parameter (ν) to describe the ability of the system to recover from 
+stress.
+RC = ν τ = ν / 
+B
+Adaptation Duration or Ability to 
+Cope (AC)
+The duration of the ability to cope is determined as the time difference (Δt = t₉₅ % - tpeak) between the occurrence of the first 
+peak in physiological response and the point where the response reaches 95% of the asymptotic range between the lower 
+asymptote (A) and upper asymptote (K). This approach assumes the complete development of ability to cope, which was 
+ensured in our experimental design as participants' behaviour was controlled, preventing adaptive actions such as hydration or 
+clothing adjustments that might otherwise truncate the thermal stress response before reaching upper asymptotic levels.
+Δt = t₉₅ % - 
+tpeak
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+6 
+
+
+===== PAGE 7 =====
+3. Results
+The design of the transect route was subsequently validated using 
+subjective comfort vote data. Point A was characterized as warm and 
+humid based on thermal sensation metrics and was perceived as slightly 
+to extremely uncomfortable in terms of thermal and air quality condi­
+tions by 87.5% of participants. In contrast, Point B exhibited similar 
+warm and humid conditions but was reported as thermally more un­
+comfortable by 62.5% of participants. During each session, thermal 
+conditions were monitored through UTCI readings, ranging from 24.84 
+± 0.88 ◦C to 30.20 ± 0.67 ◦C. Physiological responses were tracked via 
+heart rate (BPM: 86.93 ± 13.24 to 100.61 ± 16.64 bpm) and EDA (2.82 
+± 1.04 to 47.08 ± 17.91 µS). Environmental quality parameters 
+included PM measurements at three levels (PM1.0: 4.25–13.70 μg/m³, 
+PM2.5: 7.02–16.69 μg/m³, PM10: 6.91–17.28 μg/m³), carbon dioxide 
+levels (354.39–438.31 ppm), and solar radiation via pyranometer 
+readings (0.04–1704.91 W/m²). Acoustic environment was character­
+ized through sound level measurements (−59.37 to −61.36 dBFS) and 
+frequency analysis across low, mid, and high ranges. Local microclimate 
+conditions comprised temperature (25.46–30.04 ◦C) and relative hu­
+midity (49.17–52.18 %RH) readings.
+3.1. Preliminary correlation analysis
+Correlation analysis was conducted for each participant individually, 
+examining relationships between target variables (UTCI, BPM, and EDA) 
+and environmental parameters across all domains (thermal, acoustic, air 
+quality), one physiological parameter (skin temperature), and one sub­
+jective measure (perceived adaptation access). The analysis demon­
+strated varying degrees of association with environmental factors, 
+suggesting predominantly individualized response patterns with a few 
+consistent correlations observed across multiple participants (Fig. 4). 
+Specifically, as expected, UTCI exhibited the most consistent relation­
+ship with air temperature, with correlation coefficients ranging from r =
+0.53 to r = 0.98 across all participants. However, other environmental 
+parameters demonstrated notable variability in their associations. Hu­
+midity exhibited inconsistent correlations, ranging from moderately 
+negative (r = −0.49) to slightly positive (r = 0.22), suggesting that 
+contextual factors may modulate its influence on UTCI. Particularly 
+noteworthy were the divergent correlations with air quality parameters. 
+While some participants UTCI showed strong positive correlations with 
+PM (e.g., Participant 3: r ≈0.60–0.66), others demonstrated moderate 
+negative correlations (e.g., Participant 4: r ≈−0.31 to −0.35). BPM 
+correlations revealed marked individual differences in physiological 
+responses to environmental stimuli.
+Relative sound levels demonstrated reliably negative associations 
+with BPM (r = −0.28 to −0.45). Moreover, the relationship between air 
+quality metrics and heart rate varied substantially between participants, 
+with both positive and negative correlations observed. EDA demon­
+strated the highest degree of inter-individual variability among the 
+measured physiological parameters. Temperature correlations ranged 
+from moderately positive (r = 0.42) to negative (r = −0.29). Humidity 
+showed relatively consistent correlations with EDA. Particulate matter 
+correlations were inconsistent, indicating that air quality may not have a 
+uniform influence on electrodermal activity across individuals. A 
+consistent negative correlation emerges between adaptation access and 
+various physiological and environmental variables. Specifically, partic­
+ipants who perceived easier access to spaces for heat stress relief, 
+assessed at different points of interest (A, B, C, D), tended to exhibit 
+lower BPM. The strongest negative correlations are observed with BPM, 
+averaging −0.44, with this effect being most pronounced in 4 out of 8 
+participants (Fig. 4). This trend suggests that improved adaptation ac­
+cess may help reduce physiological responses, as indicated by negative 
+correlations with BPM (−0.29 to −0.44) and EDA (−0.44 to −0.20). 
+These physiological changes likely reflect both direct environmental 
+effects and significant psychological components, including higher 
+perceived levels of control and reduced perceived heat risk when 
+adaptation options such as accessible heat shelters are available [54]. 
+Fig. 4. Average and individual correlation coefficients of physiological responses (BPM and EDA) and UTCI to multiple environmental stressors during the 
+experimental campaign. Annotated correlations indicate key values discussed in text: UTCI-air temperature, UTCI-humidity, UTCI-particulate matter for Participant 3 
+and Participant 4, BPM-sound level, BPM-adaptation access for 4 participants, EDA-air temperature, and EDA-adaptation access. Bubble size represents correlation 
+magnitude; color indicates direction (red = positive, blue = negative) and marked are the key data discussed within Section 4.1.
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+7 
+
+
+===== PAGE 8 =====
+This variability suggests physiological stress is modulated by factors 
+beyond single-domain conditions and demographic categories alone. 
+This highlights the limitations of current approaches and highlights the 
+need for a more comprehensive framework to accurately quantify 
+human vulnerability to the combined effects of multiple environmental 
+stressors.
+3.2. Single domain approach
+Taking as an example a random reference participant, in single- 
+domain analysis (Fig. 5), environmental variables such as CO₂ concen­
+tration, sound levels, and average particulate matter concentration 
+display varying degrees of impact on heart rate, as reflected by tough­
+ness, recovery capacity, and adaptation duration summarized in Table 2. 
+Single-domain analysis revealed variable resilience patterns: CO₂ 
+showed moderate toughness (0.212) with good recovery (0.794), while 
+PM exhibited lower toughness (0.129) with no recovery capacity. 
+Acoustic 
+stressors 
+demonstrated 
+frequency-dependent responses 
+(Table 2). These results indicate that different environmental factors 
+affect physiological responses through distinct resilience patterns. Mid 
+and high-frequency sounds have the most consistent impact on this 
+participant (R² = 0.13 and 0.18 respectively), suggesting that auditory 
+stimuli may be a key determinant of physiological stress. Notably, UTCI, 
+low-frequency sounds and relative sound level measurements did not 
+produce reliable resilience models for this participant, indicating a lack 
+of direct physiological response to these variables using the single- 
+domain approach.
+3.3. Multi-domain approach
+Taking the same reference participant as an example for our multi- 
+domain model (Table 3), when UTCI is paired with CO₂ concentration, 
+BPM response shows relatively high toughness (0.294) but zero recovery 
+capacity, suggesting that while this combination resists initial changes 
+in heart rate, it severely compromises the system's ability to recover. 
+This pairing represents a form of multi-domain overload where the 
+thermoregulatory system maintains initial stability but cannot adapt 
+over time. In contrast, when UTCI interacts with average low frequency 
+sounds, we observe a much lower toughness (0.098) but significantly 
+higher recovery capacity (1.498), indicating greater physiological 
+sensitivity but enhanced resilience over time. The combination of CO₂ 
+with acoustic stressors reveals also interesting patterns. When CO₂ is 
+paired with high-frequency sounds, the model predicts moderate 
+toughness (0.099) and high recovery capacity (1.469), suggesting that 
+this multi-domain interaction initially challenges physiological stability 
+but allows for robust recovery. However, with mid-frequency sounds, 
+the same CO₂ levels yield a lower recovery capacity (0.278), indicating 
+frequency-specific physiological responses that would be missed in 
+single-domain analyses. Particularly noteworthy is the average PM 
+interaction with high-frequency sounds, which shows the highest 
+toughness (0.259) and recovery capacity (3.348) values among all 
+combinations. This finding indicates that this pairing creates a more 
+resilient physiological response compared to other environmental 
+combinations, potentially indicating an adaptive combined effect 
+unique to this pairing.
+Surface plots from these models reveal how heart rate responds to 
+combined environmental stressors (Fig. 6). The R² values vary consid­
+erably (0.036–0.345), indicating that different environmental pairings 
+affect physiology in distinct ways. UTCI emerges as the dominant 
+modulator across most interactions. The strongest predictor of physio­
+logical response is the UTCI–particulate matter pairing (R² = 0.345). 
+Temperature–PM interactions (R² = 0.34) show poor initial tolerance (T 
+= 0.010) but moderate recovery (RC = 0.160), suggesting adaptive ca­
+pacity despite vulnerability. In contrast, temperature–CO₂ pairing 
+demonstrates strong initial resistance (T = 0.294) but complete recovery 
+failure, indicating a brittle response under prolonged exposure. In­
+teractions involving high-frequency sound show notably robust recov­
+ery: CO₂–sound pairings achieve RC = 1.469 with T = 0.099, while 
+PM–sound interactions produce the most resilient profile overall (T =
+0.259; RC = 3.348).
+The relatively high R² values for CO₂ paired with sound frequencies 
+(0.238, 0.210, 0.117) compared to UTCI with sound frequencies (0.036, 
+0.077, 0.191) suggest that CO₂ may have more consistent interactive 
+effects with acoustic stressors than thermal conditions do. This profile 
+suggests the participant may function best in environments where PM 
+levels and acoustic factors are carefully managed, as these combinations 
+trigger their most resilient physiological responses, while showing 
+greater vulnerability to thermal-CO₂ interactions despite initial 
+Fig. 5. Resilience Analysis of Physiological Response for the reference participant. Time series (top) and logistic growth modelling (bottom) of BPM responses to 
+environmental stimuli. Peaks indicate stress events.
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+8 
+
+
+===== PAGE 9 =====
+Table 2 
+Resilience metrics – single domain analysis for the reference participant.
+Variable
+T
+RC
+AC
+R2
+A
+K
+B
+M
+ν
+UTCI
+-
+-
+-
+-
+-
+-
+-
+-
+-
+CO₂
+0.21
+0.79
+39
+0.18
+11.44
+16.42
+4.72
+357.31
+3.75
+PM
+0.12
+0
+59.5
+0.06
+14.40
+16.80
+7.77
+17.90
+0
+Sound Level
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Low freq Sounds
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Mid freq Sounds
+0.13
+0.73
+42.83
+0.12
+18.34
+14.36
+7.46
+−1.52
+5.47
+Hight freq Sounds
+0.18
+0.45
+42.50
+0.16
+16.68
+13.78
+5.44
+−25.49
+2.47
+Note: The relationship between various environmental stressors and human resilience, as measured by Toughness (T), Recovery Capacity (RC), and Ability to Cope 
+(AC) in relation to the selected participant' BPM. Each variable's resilience metrics are summarized alongside the R² value, indicating the goodness of fit for the model, 
+and the fitting parameters (A, K, B, M, ν), which describe the underlying mathematical model. Note: Dashes (-) indicate where values were not available or were 
+extremely large, indicating overfitting or lack of direct response.
+Table 3 
+Resilience metrics – multi-domain analysis for the reference participant.
+Domains
+T
+RC
+AC
+R²
+A
+K
+B1
+B2
+M1
+M2
+Q
+Nu
+UTCI vs CO2
+0.29
+0
+61.33
+0.19
+-
+87.62
+3.396
+0
+0.38
+0.43
+0
+0
+UTCI vs PM
+0.01
+0.16
+61.33
+0.34
+91.01
+114.62
+0
+99.94
+0
+0.73
+15.96
+0.05
+UTCI vs Low f Sounds
+0.09
+1.49
+61.33
+0.03
+92.60
+102.29
+0
+10.25
+0.53
+0.62
+15.36
+2.09
+UTCI vs Mid f Sounds
+0.01
+0.09
+61.33
+0.07
+92.16
+100.91
+0
+52.21
+0.51
+0.37
+4.90
+0.01
+UTCI vs High f Sounds
+0.29
+0
+61.33
+0.19
+-
+86.99
+3.19
+0.23
+0.29
+0.33
+0
+0.02
+CO2 vs Low f Sounds
+0.01
+0.75
+61.16
+0.23
+91.28
+116.56
+0
+54.95
+0.69
+0.47
+41.25
+0
+CO2 vs Mid f Sounds
+0.07
+0.27
+61.16
+0.21
+82.27
+121.10
+0.90
+13.03
+0.97
+0.79
+3.87
+3.17
+CO2 vs High f Sounds
+0.25
+3.34
+59.66
+0.13
+88.07
+138.62
+0
+3.85
+0.52
+0.53
+12.90
+1.53
+PM vs avg_low_freq
+0.19
+2.42
+59.66
+0.09
+87.04
+121.31
+0
+5.22
+0.56
+0.57
+12.68
+1.98
+PM vs avg_mid_freq
+0.21
+1.91
+59.66
+0.16
+82.10
+122.87
+0
+4.56
+0.55
+0.56
+8.71
+2.48
+PM vs avg_high_freq
+0.25
+3.34
+59.66
+0.13
+88.07
+138.62
+0n
+3.85
+0.52
+0.53
+12.90
+1.53
+Note: The relationship between various environmental stressors and human resilience, as measured by Toughness (T), Recovery Capacity (RC), and Ability to Cope 
+(AC) in relation to the selected participants' BPM (beats per minute). Each variable's resilience metrics are summarized alongside the R-squared value, indicating the 
+goodness of fit for the model, and the fitting parameters (A, K, B, M, ν), which describe the underlying mathematical model.
+Fig. 6. Three-dimensional response surfaces showing heart rate (BPM) as a function of paired environmental stressors for the reference participant. Surfaces fitted 
+using generalized logistic growth models; scatter points represent observed data.
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+9 
+
+
+===== PAGE 10 =====
+resistance to these stressors. This finding highlights the importance of 
+considering also environmental pairings beyond thermal comfort in 
+multi-domain comfort assessment.
+3.4. Personalized adaptation zone classification
+Using 164 multi-domain observations, we applied k-means clus­
+tering to five T/RC/R²-weighted environmental features (weighted_air, 
+weighted_acoustic, weighted_thermal, UTCI × PM, CO₂ × low-freq, CO₂ 
+× mid-freq), integrating each domain's temporal persistence (T), re­
+covery coupling (RC), and explanatory strength (R²). Cluster validation 
+confirmed a stable five-zone solution (Silhouette =
+0.42; Cal­
+inski–Harabasz = 60.4), ranked by resilience from Zone 1 (R = 0.657, 
+balanced conditions: CO₂=426 ppm, UTCI=30.1 ◦C) to Zone 5 (R =
+0.405, acoustic stress, mean BPM=101.9). Fig. 7 visualizes this multi- 
+scale resilience framework. The top-left panel shows contrasting heart 
+rate trajectories with stable toughness (T ≈0.055) but variable recovery 
+capacity (RC=0.283 vs 0.957), validating T as an individual trait and RC 
+as environmentally sensitive. Red trajectory (Point D, Zone 5) shows 
+dysregulated elevation; blue trajectory (Point C) shows homeostatic 
+recovery. The top-right panel confirms within-individual variation (T 
+range=0.001, RC range=0.257) across all zones. The bottom panel 
+presents the 3D spatial map with zones ranked by resilience (1 > 2 > 3 >
+4 > 5). Zone 5′s elevated heart rate reflects dysregulated stress responses 
+where resilience measures regulatory control and recovery efficiency, 
+not activation magnitude. Within-individual comparison validated the 
+person-environment model: toughness remained stable (range=0.001), 
+while recovery capacity varied substantially (range=0.257). Two 
+Fig. 7. Environmental and physiological resilience across clustered zones (k = 5). 
+Multi-scale resilience framework integrating spatial and temporal dynamics.
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+10 
+
+
+===== PAGE 11 =====
+consecutive trajectories illustrate this: high-recovery (Point C, 
+RC=0.957) showed efficient baseline return (90→70 BPM), while low- 
+recovery (Point D, Zone 5, RC=0.283) showed sustained elevation 
+(100–107 BPM) despite similar toughness. Environmental quality 
+modulates adaptive responses through recovery mechanisms, with 
+urban microenvironments directly shaping physiological regulation 
+capacity.
+3.5. Multi-domain collective resilience
+The following section presents the results of this multi-domain 
+assessment, highlighting patterns and differences in physiological re­
+sponses among all the participants aiming to summarize the resilience 
+metrics collectively. Findings reveal that the combination of PM con­
+centration with high frequency sounds shows the most consistent re­
+lationships to BPM (present in all 8/8 participants, R² = 0.220) 
+(Table 4), while the pairing of UTCI with PM produces the highest 
+average R² (0.400 across 4/8 participants). These relationships 
+demonstrate varying resilience patterns: the UTCI-PM domain pairing 
+shows relatively low toughness (0.016) but measurable recovery ca­
+pacity (0.066), while CO₂ paired with high frequency sounds shows 
+more moderate toughness (0.057) and higher recovery capacity (0.369) 
+with an R² of 0.323 observed in 6/8 participants. This finding suggests 
+that environmental variables influence human physiological responses 
+through different mechanisms, with thermal domain (UTCI) playing a 
+central moderating role in the most significant relationships.
+While BPM demonstrates robust relationships with multiple envi­
+ronmental domains, particularly when UTCI interacts with PM (R² =
+0.400) and when CO₂ interacts with sound frequencies (R² = 0.323 for 
+high frequency), EDA exhibits even stronger associations (Table 5), 
+especially with thermal-air quality domains. For EDA, the UTCI-PM 
+pairing exhibits the highest average R² (0.434 across 5/8 participants) 
+with moderate toughness (0.055) and recovery capacity (0.168). Simi­
+larly, the UTCI-CO₂ combination shows meaningful correlations (R² =
+0.328) with comparable resilience metrics (toughness = 0.050, recovery 
+capacity = 0.145). This differential response pattern suggests a hierar­
+chical physiological adaptation mechanism in outdoor environments, 
+where EDA appears particularly attuned to thermal and air quality pa­
+rameters, showing higher correlation strengths than cardiovascular re­
+sponses for these specific domain pairs.
+Notably, both physiological measures (BPM and EDA) show 
+consistent relationships with acoustic stressors across all participants, 
+though with varying strengths. The sound frequency pairings with CO₂ 
+and PM demonstrate universal significance across all participants for 
+EDA (8/8 participants for all frequency ranges), suggesting that these 
+environmental combinations reliably trigger electrodermal responses 
+regardless of individual differences. The PM-low frequency sound 
+combination shows particularly high recovery capacity for EDA (0.894), 
+indicating robust adaptation potential for this specific environmental 
+pairing. This dual-measure approach reveals complementary aspects of 
+human physiological adaptation to multi-domain environmental 
+stressors, with cardiovascular responses (BPM) showing strongest cor­
+relations to UTCI-PM interactions, while electrodermal responses (EDA) 
+demonstrate stronger associations with both thermal-air quality and 
+thermal-acoustic domain pairs. These findings highlight the importance 
+of considering integrated multi-domain environmental quality assess­
+ments aligned with recent studies supported by crowdsourced data on 
+human perception.
+Leave-one-participant-out (LOPO) validation confirmed robustness 
+of these multi-domain relationships (Supplementary Table S2). Multi- 
+domain superiority persisted across all iterations. For heart rate re­
+sponses, five of seven domain pairs (71 %) showed LOPO stability <0.15 
+(meaning the predictive strength remained consistent when each 
+participant was systematically excluded, considered robust for this 
+study), with PM-acoustic combinations demonstrating particularly 
+robust findings (stability: 0.03–0.06) and CO₂-acoustic pairings showing 
+consistent predictive power (stability: 0.11–0.12). EDA demonstrated 
+higher between-participant variability, with UTCI-PM (stability: 0.18) 
+and UTCI-CO₂ (stability: 0.19) showing moderate variability, yet both 
+EDA domain pairs still substantially outperformed single-domain ther­
+mal models.
+To justify the heterogeneity finding statistically, we ran Kruskal- 
+Wallis tests across all 18,815 observations. Both BPM (H = 1358.1, p 
+< 0.001) and EDA (H = 13,937.7, p < 0.001) showed significant dif­
+ferences between participants. EDA means ranged from 2.68 to 44.18 µS 
+(CV=89.6 %), and Cohen's d reached 0.96 for BPM and 3.15 for EDA, 
+both large effects (Table S3). Crucially, these differences persisted even 
+when comparing participants within the same CO₂ exposure range 
+(330–450 ppm), where individual mean BPM still spanned 89.1–100.9 
+bpm. This suggests the differences reflect actual physiological variability 
+between individuals, not differences in environmental exposure. These 
+effect sizes are consistent with literature showing that individual 
+Table 4 
+An overview of the influence of environmental domain pairs on the resilience metrics across all the participants tested.
+Domain Pair
+Participants with Significant Model
+Average R² (±SD)
+T (Avg ± SD)
+RC (Avg ± SD)
+AC (Avg ± SD)
+UTCI & PM
+4/8
+0.40 ± 0.25
+0.01 ± 0
+0.06 ± 0.07
+62.92 ± 11.65
+UTCI & CO₂
+4/8
+0.20 ± 0.18
+0.12 ± 0.13
+0 ± 0
+62.92 ± 10.97
+CO₂ & High Freq Sounds
+6/8
+0.32 ± 0.13
+0.05 ± 0.03
+0.36 ± 0.55
+63.40 ± 10.26
+PM & High Freq Sounds
+8/8
+0.22 ± 0.09
+0.07 ± 0.08
+0.59 ± 1.19
+61.71 ± 9.58
+CO₂ & Low Freq Sounds
+6/8
+0.26 ± 0.13
+0.03 ± 0.02
+0.21 ± 0.27
+63.20 ± 9.89
+CO₂ & Mid Freq Sounds
+6/8
+0.25 ± 0.13
+0.04 ± 0.03
+0.18 ± 0.16
+63.20 ± 9.89
+PM & Low Freq Sounds
+7/8
+0.23 ± 0.15
+0.05 ± 0.06
+0.47 ± 0.90
+62.70 ± 9.34
+Note: The pairs depicted in this table are those with R² values exceeding 0.2, representing a minimum threshold of statistical importance in explaining variance in BPM regulation.
+Table 5 
+An overview of the influence of environmental domain pairs on the resilience metrics across all the participants tested.
+Domain Pair
+Participants with Significant Model
+Average R² (±SD)
+T (Avg ± SD)
+RC (Avg ± SD)
+AC (Avg ± SD)
+UTCI & PM
+5/8
+0.43 ± 0.20
+0.05 ± 0.04
+0.16 ± 0.20
+61.66 ± 11.05
+UTCI & CO₂
+5/8
+0.32 ± 0.22
+0.05 ± 0.04
+0.14 ± 0.15
+61.66 ± 11.05
+CO₂ & High Freq Sounds
+8/8
+0.21 ± 0.12
+0.06 ± 0.08
+0.09 ± 0.23
+63.62 ± 9.75
+PM & High Freq Sounds
+8/8
+0.21 ± 0.17
+0.03 ± 0.01
+0.14 ± 0.25
+63.12 ± 9.04
+CO₂ & Low Freq Sounds
+8/8
+0.25 ± 0.15
+0.09 ± 0.14
+0.25 ± 0.59
+63.62 ± 9.75
+CO₂ & Mid Freq Sounds
+8/8
+0.25 ± 0.14
+0.05 ± 0.04
+0.12 ± 0.19
+63.62 ± 9.75
+PM & Mid Freq Sounds
+8/8
+0.20 ± 0.21
+0.02 ± 0.01
+0.13 ± 0.23
+63.12 ± 9.04
+Note: The pairs depicted in this table are those with R² values exceeding 0.2, representing a minimum threshold of statistical importance in explaining variance on 
+EDA.
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+11 
+
+
+===== PAGE 12 =====
+variability in thermal comfort is on the order of 3◦C in neutral temper­
+ature, often comparable or exceeding reported differences between de­
+mographic groups [55].
+4. Discussion
+4.1. Multi-Domain environmental interactions override single-stressor 
+predictions
+Vulnerability is not a static spatial pattern: it varies across in­
+dividuals, across time of day, and across sensory combinations, a fact 
+that aggregate indices obscure and that only person-scale physiological 
+monitoring can recover. Our findings confirm the multi-domain frame­
+work's explanatory superiority established in the results. This challenges 
+Attention Restoration Theory (ART) and Stress Recovery Theory (SRT), 
+which traditionally emphasize visual nature exposure as the primary 
+restoration mechanism. Our results demonstrate that UTCI functions as a 
+moderator of other stressors rather than an independent driver, 
+revealing multi-domain synergies absent from classical single-domain 
+restoration frameworks. Temperature-PM interactions showed the 
+strongest correlations (BPM: R²=0.40; EDA: R²=0.43), while CO₂- 
+acoustic frequency pairings demonstrated universal electrodermal re­
+sponses across all participants. These compound effects extend beyond 
+visual-natural restoration pathways emphasized in traditional theory 
+[21]. PM-acoustic pairings succeeded where UTCI alone failed, indi­
+cating cross-domain interactions, not singular thermal or visual drivers, 
+determine adaptive outcomes. These findings partially align with sen­
+sory and cognitive load theories suggesting that urban overload from 
+noise, density, and pollution does elevate stress through autonomic 
+activation. But the patterns observed go beyond that: EDA responded 
+more strongly to thermal-air quality interactions than cardiovascular 
+measures did, suggesting that different physiological systems handle 
+different environmental loads, and these loads interact synergistically 
+rather than additively. Optimal resilience emerged from balanced 
+multi-domain conditions (Zone 1: CO₂=426 ppm, UTCI=30.1 ◦C with 
+low-to-mid frequency acoustic dominance and minimal high-frequency 
+intrusion) rather than maximizing single factors like vegetation extent 
+or minimizing thermal exposure alone. Tree-canopied areas with poor 
+circulation showed elevated discomfort undermining recovery despite 
+visual-natural qualities [56], demonstrating that greenery alone is not 
+sufficient to ensure improved physiological outcomes. This contributes 
+to explaining mixed evidence in existing density and greenery research 
+[23]further framing that previous studies capturing single-domain ef­
+fects (visual greenery, thermal relief) may have missed the compound 
+thermal-air quality-acoustic interactions that actually determine physi­
+ological outcomes, leading to inconsistent restoration findings across 
+contexts. Hong and Jeon [7] showed that pleasantness and visual quality 
+together contributed similarly to perceived environmental harmony 
+(standardized path coefficients of 0.37 and 0.34 respectively), yet 
+climate adaptation planning continues to optimize what sensors can 
+measure remotely rather than validating what bodies experience locally. 
+Our results confirm that landscape-mediated comfort emerges from in­
+tegrated thermal-air quality-acoustic conditions shaped by vegetation 
+placement, spatial configuration, and material selection, not tempera­
+ture reduction, greenery extent, or density alone [11,57].
+4.2. Individual heterogeneity
+In this pilot sample, individuals with similar observable character­
+istics (age 28–38, healthy adults, similar educational backgrounds) 
+exhibited markedly different physiological responses to identical mi­
+croclimates. Kruskal-Wallis tests suggest highly significant inter- 
+individual differences in both BPM and EDA across all 18,815 observa­
+tions, with large effect sizes persisting within identical CO₂ exposure 
+ranges (Section 3.5, Table S3), consistent with Wang et al. and their 
+review on inter-individual thermal comfort variability [55]. The same 
+temperature-PM combination producing high toughness (T = 0.294) but 
+zero recovery in one participant generated low toughness (T = 0.010) 
+with moderate recovery (RC=0.160) in another. To check whether 
+findings depend on a single day's conditions, we stratified analyses by 
+session (Table S4). The two days differed slightly. Day 2 was approxi­
+mately 2.7 ◦C cooler with lower PM2.5 but CO₂ exposure was compa­
+rable and both days fell within the same UTCI range. Physiological 
+heterogeneity was statistically significant within each day indepen­
+dently, confirming the finding is not an artifact of either day's specific 
+conditions. While this small-sample observation cannot validate 
+whether demographic categorization fails broadly, it demonstrates that 
+at least within this homogeneous group, population-averaged assump­
+tions did not predict individual stress responses, supporting the rationale 
+for personalized physiological monitoring in larger validation studies. 
+While GIS-based modeling remains essential for spatial patterns [16,17], 
+it cannot predict individual health risk without wearable physiological 
+monitoring. Perceived adaptive capacity showed consistent negative 
+correlations with stress (BPM: r=−0.44), indicating that both environ­
+mental conditions and psychological factors (perceived control, risk 
+assessment) modulate adaptation.
+4.3. Temporal dynamics and spatial aggregation for design validation
+Extended adaptation durations demonstrate that complex multi- 
+domain environments require substantial physiological stabilization 
+time, with direct implications for thermal refuge design where brief 
+exposure may provide insufficient adaptive benefit. PM-low frequency 
+sound combinations showed particularly high recovery capacity (EDA: 
+0.894), representing frequency-specific responses missed by single- 
+domain assessment yet actionable for landscape interventions. The hi­
+erarchical adaptation mechanism, cardiovascular responses showing 
+broad sensitivity while electrodermal activity exhibits stronger thermal- 
+air quality coupling, confirms that climate-resilient design requires 
+orchestrating thermal, acoustic, and air quality interventions as inte­
+grated systems. Spatial clustering identified five statistically distinct 
+adaptation zones (ANOVA: F₅,₁₅₈=9.42, p < 0.001) corresponding to 
+measurable urban typologies. Optimal zones (resilience=0.66±0.17) 
+exhibited balanced air quality (CO₂≈426 ppm), moderate acoustics 
+[58], and thermal stability (UTCI≈30 ◦C), while stress-prone zones (0.41 
+±0.11) showed elevated CO₂ and broadband acoustic loads. This dem­
+onstrates that aggregating multidimensional urban features enables 
+neighborhood-scale comfort mapping identifying where physiological 
+adaptation manifests versus where demographic models merely predict 
+quality of life [59].
+4.4. Limitations and future directions
+This study presents three primary limitations. First, the small sample 
+size (eight participants) establishes proof-of-concept but constrains 
+generalizability. However, the observed physiological heterogeneity 
+within this homogeneous group validates individual-level monitoring as 
+necessary rather than reflecting inadequate statistical power. Unmea­
+sured covariates (sleep quality, caffeine, stress levels, menstrual phase) 
+may contribute to observed heterogeneity alongside inherent physio­
+logical differences. Future work should incorporate ecological momen­
+tary assessment to partition person-specific traits from contextual 
+modulators. Second, the two-day experimental period limits assessment 
+of temporal stability in resilience metrics. We cannot validate whether 
+observed patterns persist across diurnal cycles or seasonal acclimatiza­
+tion. However, the short timeframe achieves the primary objective: 
+demonstrating that multi-domain models outperform single-domain 
+indices in predicting acute physiological responses. Day-stratified ana­
+lyses suggested that physiological heterogeneity was statistically sig­
+nificant within each session independently (Section 3.5, Table S4), 
+indicating the temporal limitation of this study applies to seasonal 
+generalisability rather than to the internal validity of the core findings. 
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+12 
+
+
+===== PAGE 13 =====
+Despite these limitations, this study establishes that multi-domain 
+monitoring predicts physiological stress better than thermal indices 
+alone, a finding unlikely to reverse with extended observation, though 
+magnitude and individual stability require longitudinal verification.
+5. Conclusion
+Do we all feel the city the same way? This study suggests we do not 
+by establishing a methodological infrastructure for outdoor environ­
+mental resilience assessment by integrating individual physiological 
+sensing with spatial analysis to validate whether building and landscape 
+interventions successfully reduce stress for actual occupants [60]. 
+Despite sample and temporal constraints detailed in Section 4.4, this 
+investigation demonstrates technical feasibility and addresses three 
+foundational questions: 
+1. Multi-Domain Superiority (RQ1): Multi-domain models combining 
+thermal, acoustic, and air quality parameters explained up to 43% of 
+physiological variance, while heat stress index (UTCI) alone pro­
+duced no predictive power. This demonstrates that UTCI functions as 
+a moderator of other stressors rather than an independent driver, 
+fundamentally challenging single-domain building performance 
+frameworks.
+2. Individual Heterogeneity (RQ2): In this pilot sample, individuals 
+with similar characteristics showed statistically significant differ­
+ences in physiological stress responses, with effect sizes large enough 
+to be detectable at this sample size. While n = 8 does not allow broad 
+generalisation, the results demonstrate that meaningful physiolog­
+ical heterogeneity exists even within a homogeneous group, sup­
+porting the need for larger studies to validate whether personalised 
+monitoring improves vulnerability assessment beyond population- 
+averaged models.
+3. Spatial Aggregation (RQ3): K-means clustering identified five sta­
+tistically distinct adaptation zones (p < 0.001) corresponding to 
+measurable urban typologies, demonstrating that personalized 
+wearable data can be aggregated into neighborhood-scale resilience 
+maps. This enables evidence-based validation of where interventions 
+improve physiological adaptation versus where demographic models 
+merely predict vulnerability.
+The three resilience metrics (Table 1) revealed extended physiolog­
+ical stabilization periods, with direct implications for thermal refuge 
+design where brief exposure may provide insufficient adaptive benefit. 
+The hierarchical adaptation mechanism, for example cardiovascular 
+responses showing broad sensitivity while EDA exhibits stronger 
+thermal-air quality coupling, confirms that climate-resilient building 
+design requires coordinating multisensory interventions as integrated 
+systems. Yet current practice lacks methods to validate whether these 
+strategies improve resilience for actual inhabitants versus theoretical 
+models.
+This framework provides a methodological pathway for closing the 
+validation loop between building intervention and individual response. 
+The three-resilience metrics: Toughness, Recovery Capacity, and 
+Adaptation Duration, translate individual measurements into actionable 
+planning parameters that complement demographic indices and GIS 
+modeling, enabling empirical assessment of where population- 
+calibrated design assumptions fail and which landscape configurations 
+produce measurable stress reduction for actual inhabitants. By inte­
+grating physiological sensing with spatial analysis, this proof-of-concept 
+framework demonstrates how individual-level measurements can vali­
+date whether landscape interventions produce measurable stress 
+reduction at neighborhood scale. This approach addresses a critical gap 
+in current practice: while building science optimizes thermal perfor­
+mance and urban planning maps demographic vulnerability, neither 
+validates whether implemented designs actually reduce stress for people 
+inhabiting those spaces [61]. Human physiological responses provide 
+the missing validation layer connecting building-scale performance to 
+neighborhood-scale climate outcomes.
+Future scaling of this methodology and the integration of validated 
+physiological stress models with physics-informed digital twins that 
+combine building energy simulation and urban microclimate modeling 
+would enable pre-deployment validation: testing whether coordinated 
+building innovations (material assemblages, transitional space config­
+urations, cooperative energy management) aggregate to measurable 
+pedestrian comfort improvements before construction begins. This re­
+quires scaling from proof-of-concept validation (n = 8) to population- 
+level inference, from two-day acute response to seasonal acclimatiza­
+tion monitoring, and resolution of technical barriers regarding sensor 
+network scalability, real-time data processing infrastructure, and pri­
+vacy governance frameworks [62]. Applications of the validated 
+proof-of-concept framework include green infrastructure placement 
+strategies informed by measured recovery capacity, thermal refuge 
+network design calibrated to adaptation duration requirements, and 
+evidence-based evaluation of whether densification interventions 
+maintain or improve physiological resilience. The fundamental question 
+remains: will climate adaptation continue relying on predicted comfort 
+from population-averaged models, or begin validating interventions 
+through measured physiological outcomes of actual inhabitants expe­
+riencing urban space?
+CRediT authorship contribution statement
+Christos Grapas: Writing – original draft, Visualization, Validation, 
+Methodology, Investigation, Formal analysis, Data curation, Conceptu­
+alization. Marcel Schweiker: Writing – review & editing, Supervision, 
+Methodology, Investigation, Funding acquisition, Formal analysis, 
+Conceptualization. Anna Laura Pisello: Writing – review & editing, 
+Supervision, Resources, Project administration, Methodology, Investi­
+gation, Funding acquisition, Conceptualization. Ilaria Pigliautile: 
+Writing – review & editing, Supervision, Investigation. Roberta Jacoby 
+Cureau: Writing – review & editing, Supervision, Methodology, 
+Investigation.
+Declaration of competing interest
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper.
+Acknowledgements
+Christos Grapas received financial support from the European 
+Union's 'MuSIC' Marie Skłodowska-Curie program (Grant Agreement No. 
+101073357). Marcel Schweiker’s contribution is facilitated by the 
+project‘ Profilbildung Built and Lived Environment’(PB22-062). The 
+project ‘Profilbildung Built and Lived Environment’ is receiving funding 
+from the programme ‘Profilbildung 2022’, an initiative of the Ministry of 
+Culture and Science of the State of North Rhine-Westphalia. Addition­
+ally, Marcel Schweiker was funded from VILLUM FONDEN by research 
+grant (21055). Roberta Jacoby Cureau acknowledges the financial 
+support under the National Recovery and Resilience Plan (NRRP) for the 
+project "AFRODITE - Adaptive solutions For Radiative cOoling and heat 
+mitigation through Dynamic Innovative TEmporary urban shading and 
+clothing strategies", funded by the European Union - Next Generation 
+EU, Mission 4 Component 2 (Italian Ministry of University and Research 
+- MUR) CUP J93C25000480001. Anna Laura Pisello acknowledges the 
+financial support under the National Recovery and Resilience Plan 
+(NRRP), Mission 4, Component 2, Investment 1.1, Call for tender No. 
+104 published on 2.2.2022 by the Italian Ministry of University and 
+Research (MUR), funded by the European Union – NextGenerationEU – 
+Project Title: THE-UNKNOWN – Equivalent THErmo-physical properties 
+for UNKNOWN composition of building walls (Project code: 
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+13 
+
+
+===== PAGE 14 =====
+P2022NM5L7) – CUP J53D230157600001, Grant assignment Decree No 
+1207 adopted on 28/07/2023 by the Italian Ministry of University and 
+Research (MUR).
+Supplementary materials
+Supplementary material associated with this article can be found, in 
+the online version, at doi:10.1016/j.buildenv.2026.114679.
+Data availability
+Data will be made available on request.
+References
+[1] United Nations, Department of Economic and Social Affairs, link: https://www.un. 
+org/uk/node/81254, 2025. accessed: 1/4/2025.
+[2] C40 Cities, C40 Cities - A global network of mayors taking urgent climate action, 
+C40 Cities, https://www.c40.org/, 2023. Accessed 19 Feb 2025.
+[3] European Commission. Joint Research Centre. Covenant of mayors: 2023 
+assessment : 15 years of climate action at local level in Europe, Publications Office, 
+LU, 2024.
+[4] J. Vanos, G. Guzman-Echavarria, J.W. Baldwin, C. Bongers, K.L. Ebi, O. Jay, 
+A physiological approach for assessing human survivability and liveability to heat 
+in a changing climate, Nat. Commun. 14 (2023) 7653, https://doi.org/10.1038/ 
+s41467-023-43121-5.
+[5] S.H. Park, P.J. Lee, Effects of noise on health-related quality of life: the roles of 
+outdoor noise, indoor noise, and noise sensitivity, J. Expo Sci. Environ. Epidemiol. 
+(2025) 1–11, https://doi.org/10.1038/s41370-025-00816-9.
+[6] M. Schweiker, E. Ampatzi, M.S. Andargie, R.K. Andersen, E. Azar, V.M. Barthelmes, 
+C. Berger, L. Bourikas, S. Carlucci, G. Chinazzo, L.P. Edappilly, M. Favero, 
+S. Gauthier, A. Jamrozik, M. Kane, A. Mahdavi, C. Piselli, A.L. Pisello, A. Roetzel, 
+A. Rysanek, K. Sharma, S. Zhang, Review of multi-domain approaches to indoor 
+environmental perception and behaviour, Build. Environ. 176 (2020) 106804, 
+https://doi.org/10.1016/j.buildenv.2020.106804.
+[7] J.Y. Hong, J.Y. Jeon, Influence of urban contexts on soundscape perceptions: a 
+structural equation modeling approach, Landsc. Urban. Plan. 141 (2015) 78–87, 
+https://doi.org/10.1016/j.landurbplan.2015.05.004.
+[8] A.P. Santos, J.M. Rodriguez Lopez, Y. Peng, J. Scheffran, Integrating broad and 
+deep multiple-stressor research: a framework for translating across scales and 
+disciplines, One Earth. 7 (2024) 1713–1726, https://doi.org/10.1016/j. 
+oneear.2024.09.006.
+[9] K. Burwell-Naney, S.M. Wilson, S.T. Whitlock, R. Puett, Hybrid resiliency-stressor 
+conceptual framework for informing decision support tools and addressing 
+environmental injustice and health inequities, Int. J. Environ. Res. Public Health 16 
+(2019) 1466, https://doi.org/10.3390/ijerph16081466.
+[10] G.M. Dimitri, L. Parri, E. Vitanza, A. Pozzebon, A. Fort, C. Mocenni, WeAIR: 
+wearable swarm sensors for air quality monitoring to foster citizens’ Awareness of 
+climate change, Comput. Stand. Interfaces. 94 (2025) 104004, https://doi.org/ 
+10.1016/j.csi.2025.104004.
+[11] O. Baumann, B. Brooks-Cederqvist, Multimodal assessment of effects of urban 
+environments on psychological wellbeing, Heliyon. 9 (2023) e16433, https://doi. 
+org/10.1016/j.heliyon.2023.e16433.
+[12] K.Y.T. Lim, M.T. Nguyen Thien, M.A. Nguyen Duc, H.F. Posada-Quintero, 
+Application of DIY electrodermal activity wristband in detecting stress and 
+affective responses of students, Bioengineering 11 (2024) 291, https://doi.org/ 
+10.3390/bioengineering11030291.
+[13] M. Huang, X. Li, M. Yang, X. Kuai, Intelligent coverage and cost-effective 
+monitoring: bus-based mobile sensing for city air quality, Comput. Environ. Urban. 
+Syst. 108 (2024) 102073, https://doi.org/10.1016/j. 
+compenvurbsys.2024.102073.
+[14] Y.-Q. Hou, X.-J. Chen, Z. Huang, X. Peng, Y. Liu, Advancing population-targeted 
+urban sensing: a comparative study on mobile and static sensing paradigms, 
+Comput. Environ. Urban. Syst. 119 (2025) 102288, https://doi.org/10.1016/j. 
+compenvurbsys.2025.102288.
+[15] J. Liu, J. Kang, H. Behm, T. Luo, Effects of landscape on soundscape perception: 
+soundwalks in city parks, Landsc. Urban. Plan. 123 (2014) 30–40, https://doi.org/ 
+10.1016/j.landurbplan.2013.12.003.
+[16] J.Y. Hong, J.Y. Jeon, Exploring spatial relationships among soundscape variables 
+in urban areas: a spatial statistical modelling approach, Landsc. Urban. Plan. 157 
+(2017) 352–364, https://doi.org/10.1016/j.landurbplan.2016.08.006.
+[17] J. Lin, R. Cromley, C. Zhang, Using Geographically Weighted Regression to Solve 
+the Areal Interpolation Problem, Annals of GIS 17 (2011) 1–14, https://doi.org/ 
+10.1080/19475683.2010.540258.
+[18] S. Cheng, B. Lei, K. Fujiwara, C. Miller, F. Biljecki, J. van Ameijde, Walking through 
+green and grey: exploring sequential exposure and multisensory environmental 
+effects on psychological restoration, Build. Environ. 287 (2026) 113748, https:// 
+doi.org/10.1016/j.buildenv.2025.113748.
+[19] Y. Lei, Construct a deep meta-learning model for accurate outdoor thermal comfort 
+prediction and its application, Int. J. Environ. Sci. Technol. 22 (2025) 
+11173–11194, https://doi.org/10.1007/s13762-024-06099-1.
+[20] C. Miller, Y.X. Chua, M. Quintana, B. Lei, F. Biljecki, M. Frei, Make yourself 
+comfortable: nudging urban heat and noise mitigation with smartwatch-based just- 
+in-time Adaptive interventions (JITAI), Build. Environ. 284 (2025) 113388, 
+https://doi.org/10.1016/j.buildenv.2025.113388.
+[21] M. Hedblom, B. Gunnarsson, B. Iravani, I. Knez, M. Schaefer, P. Thorsson, J. 
+N. Lundstr¨om, Reduction of physiological stress by urban green space in a 
+multisensory virtual experiment, Sci. Rep. 9 (2019) 10113, https://doi.org/ 
+10.1038/s41598-019-46099-7.
+[22] A.I. Egorov, S.M. Griffin, R.R. Converse, J.N. Styles, E.A. Sams, A. Wilson, L. 
+E. Jackson, T.J. Wade, Vegetated land cover near residence is associated with 
+reduced allostatic load and improved biomarkers of neuroendocrine, metabolic 
+and immune functions, Environ. Res. 158 (2017) 508–521, https://doi.org/ 
+10.1016/j.envres.2017.07.009.
+[23] X. Fan, D. Hu, Y. Fan, J. Yang, H. Liang, T. Gao, L. Qiu, Urban restorative 
+environments: the critical role of building density, vegetation structure, and multi- 
+sensory stimulation in psychophysiological recovery, Build. Environ. 281 (2025) 
+113190, https://doi.org/10.1016/j.buildenv.2025.113190.
+[24] K. Kavee, K.A. Flanigan, Encoding experience: quantifying multisensory perception 
+of urban form through a systematic review, Comput. Environ. Urban. Syst. 122 
+(2025) 102349, https://doi.org/10.1016/j.compenvurbsys.2025.102349.
+[25] C. Grapas, A.L. Pisello, I. Pigliautile, C. Guattari, E. De Cristo, Multisensory urban 
+climate zones (MUCZ): a framework for mapping dynamic multidomain Human 
+comfort in complex urban fabrics beyond urban morphology, Sustain. Cities. Soc. 
+131 (2025) 106673, https://doi.org/10.1016/j.scs.2025.106673.
+[26] M. Schweiker, Rethinking resilient thermal comfort within the context of human- 
+building resilience, in: J.F. Nicol, S. Roaf, H.B. Rijal (Eds.), Routledge Handbook of 
+Resilient Thermal Comfort, Routledge, 2022.
+[27] A. Chiucchiu, I. Misuraca, E. Brembilla, I. Pigliautile, M. Tenpierik, A.L. Pisello, 
+Influence of Daylight Transmitted Through Blue Coloured Glazings on Human 
+Response to Temperature and Glare, Gate Conference, Seville, Spain, 2024.
+[28] A. Chiucchiù, V.M. Gnecco, I. Pigliautile, A.L. Pisello, The role of personality in 
+multi-domain environmental perception: An occupant-centric approach, Building 
+and Environment 290 (2026) 114140, https://doi.org/10.1016/j. 
+buildenv.2025.114140.
+[29] M. Bavaresco, R.J. Cureau, I. Pigliautile, M. Schweiker, V.M. Gnecco, G. Chinazzo, 
+E. Barna, Z.D. Belafi, L. Belussi, A. Chiucchiù, L. Danza, Z. Deng, B. Dong, N. 
+H. Gapski, L. Garlet, X. Guo, P.P. Ha, H. Karimian, R. Lamberts, S. Liu, B.d. 
+C. Loeser, C. Massucci, A.P. Melo, B.V. Nagy, M.M. Ouf, F. Salamone, A.L. Pisello, 
+Beyond hue and heat: A multi-site experimental study of lighting–thermal 
+interactions in human perceptions, Building and Environment 292 (2026) 114264, 
+https://doi.org/10.1016/j.buildenv.2026.114264.
+[30] C. Grapas, M. Llaguno-Munitxa, A.L. Pisello, A. Irajpour, Urban chronotypes as 
+climate vulnerability indicators: Safety-modulated bioclimatic responses and 
+adaptive behavior across diurnal urban contexts (2026) Urban Climate, 67, art, no 
+102906 (2026), https://doi.org/10.1016/j.uclim.2026.102906.
+[31] R.J. Cureau, I. Pigliautile, A.L. Pisello, A new wearable system for sensing outdoor 
+environmental conditions for monitoring hyper-microclimate, Sensors 22 (2022) 
+502, https://doi.org/10.3390/s22020502.
+[32] A. Costantino, M. Ferrara, M. Arnesano, E. Fabrizio, Off-the-shelf wearable sensing 
+devices for personalized thermal comfort models: a systematic review on their use 
+in scientific research, J. Build. Eng. 70 (2023) 106379, https://doi.org/10.1016/j. 
+jobe.2023.106379.
+[33] U. Lohmann, R. Sausen, L. Bengtsson, U. Cubasch, J. Perlwitz, E. Roeckner, The 
+K¨oppen climate classification as a diagnostic tool for general circulation models, 
+Clim. Res. 3 (1993) 177–193.
+[34] R.J. Cureau, C. Balocco, I. Pigliautile, C. Piselli, C. Fabiani, F. Cotana, C. Carletti, 
+F. Sciurpi, A.L. Pisello, On urban microclimate spatial-temporal dynamics: 
+evidence from the integration of fixed and wearable sensing and mapping 
+techniques, Environ. Res. 262 (2024) 119795, https://doi.org/10.1016/j. 
+envres.2024.119795.
+[35] M.S. Engel, B. Paas, C. Schneider, C. Pfaffenbach, J. Fels, Perceptual studies on air 
+quality and sound through urban walks, Cities. 83 (2018) 173–185, https://doi. 
+org/10.1016/j.cities.2018.06.020.
+[36] Oxford, Rloggia Lexico powered by Oxford, Available at: https://www.oxfordl 
+earnersdictionaries.com/definition/english/loggia, 2025.
+[37] Y. Kang, J. Park, D.-H. Jang, Compound impact of heatwaves on vulnerable groups 
+considering age, income, and disability, Sci. Rep. 14 (2024) 24732, https://doi. 
+org/10.1038/s41598-024-75224-4.
+[38] F. Tartarini, S. Schiavon, Pythermalcomfort: a Python package for thermal comfort 
+research, SoftwareX 12 (2020) 100578, https://doi.org/10.1016/j. 
+softx.2020.100578 [online].
+[39] Z. Wei, J.K. Calautit, S. Wei, P.W. Tien, Real-time clothing insulation level 
+classification based on model transfer learning and computer vision for PMV-based 
+heating system optimization through piecewise linearization, Build. Environ. 253 
+(2024) 111277, https://doi.org/10.1016/j.buildenv.2024.111277.
+[40] T.P. McAlexander, R.R. Gershon, R.L. Neitzel, Street-level noise in an urban setting: 
+assessment and contribution to personal exposure, Environ. Heal. 14 (2015) 18, 
+https://doi.org/10.1186/s12940-015-0006-y.
+[41] Front Matter, in: L.F. Chaparro, A. Akan (Eds.), Signals and Systems Using 
+MATLAB, 3rd Edition, Academic Press, 2019, pp. i–iii, https://doi.org/10.1016/ 
+B978-0-12-814204-2.00002-8.
+[42] J. Emrich, A. Gargano, T. Koka, M. Muma, Physiology-informed ECG delineation 
+based on peak prominence, in: 2024 32nd European Signal Processing Conference 
+(EUSIPCO). Presented at the 2024 32nd European Signal Processing Conference 
+(EUSIPCO), IEEE, Lyon, France, 2024, pp. 1402–1406, https://doi.org/10.23919/ 
+EUSIPCO63174.2024.10715353.
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+14 
+
+
+===== PAGE 15 =====
+[43] M. Jain, A. Dimri, D. Niyogi, Land-air interactions over urban-rural transects using 
+satellite observations: analysis over Delhi, India from 1991 to 2016, Remote Sens. 9 
+(12) (2017) 1283, https://doi.org/10.3390/rs9121283.
+[44] R. Zhu, X. Zhang, L. Yang, Y. Liu, Y. Cong, W. Gao, Correlation analysis of thermal 
+comfort and physiological responses under different microclimates of urban park, 
+Case Stud. Therm. Eng. 34 (2022) 102044, https://doi.org/10.1016/j. 
+csite.2022.102044.
+[45] F.J. Richards, A flexible growth function for empirical use, J. Exp. Bot. 10 (2) 
+(1959) 290–301 [online].
+[46] J.H.M. Thornley, J. France, An open-ended logistic-based growth function, Ecol. 
+Modell. 184 (2–4) (2005) 257–261, https://doi.org/10.1016/j. 
+ecolmodel.2004.10.007.
+[47] S.A. Mansi, G. Barone, C. Forzano, I. Pigliautile, M. Ferrara, A.L. Pisello, 
+M. Arnesano, Measuring human physiological indices for thermal comfort 
+assessment through wearable devices: a review, Measurement 183 (2021) 109872, 
+https://doi.org/10.1016/j.measurement.2021.109872.
+[48] T. Johnson, DigitalExposome: A dataset for wellbeing classification using 
+environmental air quality and human physiological data, Data in Brief 59 (2025) 
+111442, https://doi.org/10.1016/j.dib.2025.111442.
+[49] N.P.A. Nitidara, J. Sarwono, S. Suprijanto, F.X.N. Soelami, The multisensory 
+interaction between auditory, visual, and thermal to the overall comfort in public 
+open space: a study in a tropical climate, Sustain. Cities. Soc. 78 (2022) 103622, 
+https://doi.org/10.1016/j.scs.2021.103622.
+[50] I. Pigliautile, S. Casaccia, N. Morresi, M. Arnesano, A.L. Pisello, G.M. Revel, 
+Assessing occupants’ personal attributes in relation to human perception of 
+environmental comfort: Measurement procedure and data analysis, Building and 
+Environment 177 (2020) 106901, https://doi.org/10.1016/j. 
+buildenv.2020.106901.
+[51] T. Williamson, L. Daniel, A new adaptive thermal comfort model for homes in 
+temperate climates of Australia, Energy Build. 210 (2020) 109728, https://doi. 
+org/10.1016/j.enbuild.2019.109728.
+[52] C. Grapas, M. Llaguno-Munitxa, A.L. Pisello, A. Irajpour, Urban chronotypes as 
+climate vulnerability indicators: Safety-modulated bioclimatic responses and 
+adaptive behavior across diurnal urban contexts, Urban Clim. 67 (2026) 102906, 
+https://doi.org/10.1016/j.uclim.2026.102906.
+[53] G.I. Austin, I. Pe’er, T. Korem, Distributional bias compromises leave-one-out 
+cross-validation, Sci. Adv. 11 (2025) eadx6976, https://doi.org/10.1126/sciadv. 
+adx6976.
+[54] Qian, W., Rao, F., Li, X., Lai, D., 2025. Mapping priority zones for urban heat 
+mitigation in Shanghai: heat risk vs. shelter provision. Computers, Environment 
+and Urban Systems 121, 102330. https://doi.org/10.1016/j.compenvurbsys.20 
+25.102330.
+[55] Z. Wang, R. de Dear, M. Luo, B. Lin, Y. He, A. Ghahramani, Y. Zhu, Individual 
+difference in thermal comfort: a literature review, Build. Environ. 138 (2018) 
+181–193, https://doi.org/10.1016/j.buildenv.2018.04.040.
+[56] C. Liu, L. Tang, J. Yan, J. Ouyang, Direct and indirect effects of multisensory 
+modalities on visitor’ s thermal comfort in an urban park in a humid-hot climate, 
+Int. J. Sustain. Dev. World Ecol. 30 (2023) 319–328, https://doi.org/10.1080/ 
+13504509.2022.2142692.
+[57] Y. Zhao, D. Li, Multi-domain indoor environmental quality in buildings: a review of 
+their interaction and combined effects on occupant satisfaction, Build. Environ. 
+228 (2023) 109844, https://doi.org/10.1016/j.buildenv.2022.109844.
+[58] R.J. Cureau, P. Domenighini, I. Pigliautile, F. Cotana, A.L. Pisello, A multi-domain 
+comfort walk: cross-modal interactions on acoustic perception, in: Proceedings of 
+the 10th Convention of the European Acoustics Association Forum Acusticum 
+2023. Presented at the 10th Convention of the European Acoustics Association 
+Forum Acusticum 2023, European Acoustics Association, Turin, Italy, 2024, 
+pp. 255–262, https://doi.org/10.61782/fa.2023.1153.
+[59] B. Lei, P. Liu, X. Liang, Y. Yan, F. Biljecki, Developing the urban comfort index: 
+advancing liveability analytics with a multidimensional approach and explainable 
+artificial intelligence, Sustain. Cities. Soc. 120 (2025) 106121, https://doi.org/ 
+10.1016/j.scs.2024.106121.
+[60] S. Zorita, K. Milde, N. Pe˜na Cerezo, A. Aguirre-Such, D. Lückerath, E. Feliu Torres, 
+Extending from adaptation to resilience pathways: perspectives from the 
+conceptual framework to key insights, Environ. Manag. (2025), https://doi.org/ 
+10.1007/s00267-025-02115-3.
+[61] F. Rosso, A.L. Pisello, F. Cotana, M. Ferrero, On the thermal and visual pedestrians’ 
+perception about cool natural stones for urban paving: a field survey in summer 
+conditions, Build. Environ. 107 (2016) 198–214, https://doi.org/10.1016/j. 
+buildenv.2016.07.028.
+[62] S.J. Birchall, S. Kehler, S. Weissenberger, Sometimes, I just want to scream”: 
+institutional barriers limiting adaptive capacity and resilience to extreme events, 
+Glob. Environ. Change 91 (2025) 102967, https://doi.org/10.1016/j. 
+gloenvcha.2025.102967.
+C. Grapas et al.                                                                                                                                                                                                                                 
+Building and Environment 300 (2026) 114679 
+15 

@@ -1,0 +1,617 @@
+"sound_variable","family","equation","outcome","term","estimate","p","paper","source_rule_met"
+"votes_unchanged","Wilcoxon","Y_urban - Y_green","thermal_comfort","wilcoxon_thermal_comfort",-1,0.015625,"Cureau 2022",TRUE
+"votes_unchanged","Wilcoxon","Y_urban - Y_green","acoustic_comfort","wilcoxon_acoustic_comfort",0,0.15625,"Cureau 2022",FALSE
+"votes_unchanged","Fisher","thermal x acoustic","thermal_comfort x acoustic_comfort","fisher_WalkG",,0.523809523809523,"Cureau 2022",FALSE
+"votes_unchanged","Fisher","thermal x acoustic","thermal_comfort x acoustic_comfort","fisher_WalkU",,0.0606060606060603,"Cureau 2022",FALSE
+"dBA_energy_mean","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.619655548672355,0.0021001324234045,"Zhen 2025",TRUE
+"dBA_energy_mean","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",4.22766225866397,0.0009765625,"Cureau 2022",TRUE
+"dBA_energy_mean","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",1.6969696969697,0.428063021183176,"Tang 2026",FALSE
+"dBA_energy_mean","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",2.33333333333334,0.311403223914597,"Tang 2026",FALSE
+"dBA_energy_mean","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",4.27272727272727,0.118083457641592,"Tang 2026",FALSE
+"dBA_energy_mean","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.84090909090909,0.241604171856029,"Tang 2026",FALSE
+"dBA_energy_mean","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",3.86363636363637,0.14488453243724,"Tang 2026",FALSE
+"dBA_energy_mean","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.946969696969695,0.622828020737051,"Tang 2026",FALSE
+"dBA_energy_mean","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.591879879756287,0.00367538898013197,"Peng 2025",TRUE
+"dBA_energy_mean","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"dBA_energy_mean","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.569941120606736,0.0205604019268713,"Peng 2025",TRUE
+"dBA_energy_mean","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.898826959394841,0.000172943389648843,"Rodrigues 2026",TRUE
+"dBA_energy_mean","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-0.125934957545593,0.476386524381864,"Rodrigues 2026",FALSE
+"dBA_energy_mean","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",0.199066116532088,0.919555952375737,"Rodrigues 2026",FALSE
+"dBA_energy_mean","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-3.0047507845468,0.151427314575565,"Rodrigues 2026",FALSE
+"dBA_energy_mean","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",0.809070324828289,0.292732308107101,"Rodrigues 2026",FALSE
+"dBA_energy_mean","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-0.411987692751497,0.63269417836657,"Rodrigues 2026",FALSE
+"dBA_energy_mean","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",0.221716946814681,0.966877962348871,"Rodrigues 2026",FALSE
+"dBA_energy_mean","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",7.32864827413264,0.204259165335401,"Rodrigues 2026",FALSE
+"dBA_energy_mean","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",-8.08551488703571,0.200606164193734,"Rodrigues 2026",FALSE
+"dBA_energy_mean","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",10.3007991767888,0.112393954234827,"Rodrigues 2026",FALSE
+"L_low","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.567664936783747,0.00585748510436479,"Zhen 2025",TRUE
+"L_low","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",5.69125937992548,0.0009765625,"Cureau 2022",TRUE
+"L_low","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",1.6969696969697,0.428063021183176,"Tang 2026",FALSE
+"L_low","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",2.33333333333334,0.311403223914597,"Tang 2026",FALSE
+"L_low","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",4.27272727272727,0.118083457641592,"Tang 2026",FALSE
+"L_low","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.84090909090909,0.241604171856029,"Tang 2026",FALSE
+"L_low","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",3.86363636363637,0.14488453243724,"Tang 2026",FALSE
+"L_low","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.946969696969695,0.622828020737051,"Tang 2026",FALSE
+"L_low","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.564220333932049,0.00603588036106779,"Peng 2025",TRUE
+"L_low","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"L_low","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.560088110811665,0.0216980386898386,"Peng 2025",TRUE
+"L_low","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.884426671606066,0.000742641330753033,"Rodrigues 2026",TRUE
+"L_low","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-0.12015786318301,0.538758784027069,"Rodrigues 2026",FALSE
+"L_low","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-0.136215347043055,0.945754069240097,"Rodrigues 2026",FALSE
+"L_low","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-3.05925200341662,0.150585041740528,"Rodrigues 2026",FALSE
+"L_low","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",1.02505184449678,0.199011185835108,"Rodrigues 2026",FALSE
+"L_low","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-0.681235303311922,0.40790371865323,"Rodrigues 2026",FALSE
+"L_low","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",-0.606974029029075,0.910283052277391,"Rodrigues 2026",FALSE
+"L_low","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",8.06198920802782,0.165142194586096,"Rodrigues 2026",FALSE
+"L_low","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",-8.61860141573506,0.189334499183858,"Rodrigues 2026",FALSE
+"L_low","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",9.93483705652714,0.136118801605102,"Rodrigues 2026",FALSE
+"L_f20","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.546505966829081,0.00849699723092622,"Zhen 2025",TRUE
+"L_f20","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",6.19940927366904,0.0009765625,"Cureau 2022",TRUE
+"L_f20","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",1.6969696969697,0.428063021183176,"Tang 2026",FALSE
+"L_f20","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",2.33333333333334,0.311403223914597,"Tang 2026",FALSE
+"L_f20","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",4.27272727272727,0.118083457641592,"Tang 2026",FALSE
+"L_f20","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.84090909090909,0.241604171856029,"Tang 2026",FALSE
+"L_f20","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",3.86363636363637,0.14488453243724,"Tang 2026",FALSE
+"L_f20","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.946969696969695,0.622828020737051,"Tang 2026",FALSE
+"L_f20","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.560927516561076,0.00631271568313116,"Peng 2025",TRUE
+"L_f20","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"L_f20","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.552999288840932,0.0229918424278995,"Peng 2025",TRUE
+"L_f20","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.884426671606066,0.000742641330753033,"Rodrigues 2026",TRUE
+"L_f20","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-0.12015786318301,0.538758784027069,"Rodrigues 2026",FALSE
+"L_f20","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-0.136215347043055,0.945754069240097,"Rodrigues 2026",FALSE
+"L_f20","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-3.05925200341662,0.150585041740528,"Rodrigues 2026",FALSE
+"L_f20","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",1.02505184449678,0.199011185835108,"Rodrigues 2026",FALSE
+"L_f20","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-0.681235303311922,0.40790371865323,"Rodrigues 2026",FALSE
+"L_f20","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",-0.606974029029075,0.910283052277391,"Rodrigues 2026",FALSE
+"L_f20","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",8.06198920802782,0.165142194586096,"Rodrigues 2026",FALSE
+"L_f20","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",-8.61860141573506,0.189334499183858,"Rodrigues 2026",FALSE
+"L_f20","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",9.93483705652714,0.136118801605102,"Rodrigues 2026",FALSE
+"L_63","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.597892036718984,0.0032944606127212,"Zhen 2025",TRUE
+"L_63","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",6.93036522211575,0.0009765625,"Cureau 2022",TRUE
+"L_63","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",2.03787878787879,0.360977592237729,"Tang 2026",FALSE
+"L_63","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",2.33333333333334,0.311403223914597,"Tang 2026",FALSE
+"L_63","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",3.15151515151515,0.206850788165602,"Tang 2026",FALSE
+"L_63","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.84090909090909,0.241604171856029,"Tang 2026",FALSE
+"L_63","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",3.10606060606061,0.211605771673476,"Tang 2026",FALSE
+"L_63","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.946969696969695,0.622828020737051,"Tang 2026",FALSE
+"L_63","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.538344003576302,0.00866176249666319,"Peng 2025",TRUE
+"L_63","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"L_63","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.580915601027345,0.0140972850961048,"Peng 2025",TRUE
+"L_63","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.884426671606066,0.000742641330753033,"Rodrigues 2026",TRUE
+"L_63","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-0.12015786318301,0.538758784027069,"Rodrigues 2026",FALSE
+"L_63","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-0.136215347043055,0.945754069240097,"Rodrigues 2026",FALSE
+"L_63","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-3.05925200341662,0.150585041740528,"Rodrigues 2026",FALSE
+"L_63","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",1.02505184449678,0.199011185835108,"Rodrigues 2026",FALSE
+"L_63","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-0.681235303311922,0.40790371865323,"Rodrigues 2026",FALSE
+"L_63","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",-0.606974029029075,0.910283052277391,"Rodrigues 2026",FALSE
+"L_63","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",8.06198920802782,0.165142194586096,"Rodrigues 2026",FALSE
+"L_63","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",-8.61860141573506,0.189334499183858,"Rodrigues 2026",FALSE
+"L_63","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",9.93483705652714,0.136118801605102,"Rodrigues 2026",FALSE
+"L_excess","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.634769098639973,0.00150625646947102,"Zhen 2025",TRUE
+"L_excess","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",3.7969715153269,0.0009765625,"Cureau 2022",TRUE
+"L_excess","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",1.6969696969697,0.428063021183176,"Tang 2026",FALSE
+"L_excess","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",2.33333333333334,0.311403223914597,"Tang 2026",FALSE
+"L_excess","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",4.27272727272727,0.118083457641592,"Tang 2026",FALSE
+"L_excess","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.84090909090909,0.241604171856029,"Tang 2026",FALSE
+"L_excess","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",3.86363636363637,0.14488453243724,"Tang 2026",FALSE
+"L_excess","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.946969696969695,0.622828020737051,"Tang 2026",FALSE
+"L_excess","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.556321894407213,0.00694153278736428,"Peng 2025",TRUE
+"L_excess","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"L_excess","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.56682750400742,0.0215255460959061,"Peng 2025",TRUE
+"L_low_ex","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.564642226790224,0.00618632694658467,"Zhen 2025",TRUE
+"L_low_ex","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",5.64106267476308,0.0009765625,"Cureau 2022",TRUE
+"L_low_ex","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",1.6969696969697,0.428063021183176,"Tang 2026",FALSE
+"L_low_ex","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",2.33333333333334,0.311403223914597,"Tang 2026",FALSE
+"L_low_ex","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",4.27272727272727,0.118083457641592,"Tang 2026",FALSE
+"L_low_ex","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.84090909090909,0.241604171856029,"Tang 2026",FALSE
+"L_low_ex","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",3.86363636363637,0.14488453243724,"Tang 2026",FALSE
+"L_low_ex","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.946969696969695,0.622828020737051,"Tang 2026",FALSE
+"L_low_ex","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.532650156108705,0.0102316471192205,"Peng 2025",TRUE
+"L_low_ex","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"L_low_ex","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.56373803956218,0.0211334084696831,"Peng 2025",TRUE
+"L_f20_ex","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.533206042857577,0.010609008356113,"Zhen 2025",TRUE
+"L_f20_ex","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",5.89652808497308,0.0009765625,"Cureau 2022",TRUE
+"L_f20_ex","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",1.6969696969697,0.428063021183176,"Tang 2026",FALSE
+"L_f20_ex","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",2.33333333333334,0.311403223914597,"Tang 2026",FALSE
+"L_f20_ex","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",4.27272727272727,0.118083457641592,"Tang 2026",FALSE
+"L_f20_ex","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.84090909090909,0.241604171856029,"Tang 2026",FALSE
+"L_f20_ex","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",3.86363636363637,0.14488453243724,"Tang 2026",FALSE
+"L_f20_ex","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.946969696969695,0.622828020737051,"Tang 2026",FALSE
+"L_f20_ex","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.531358651451165,0.010363124929564,"Peng 2025",TRUE
+"L_f20_ex","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"L_f20_ex","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.56059062447241,0.0213101517342583,"Peng 2025",TRUE
+"oct_low","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.0743586658406825,0.742253844455024,"Zhen 2025",FALSE
+"oct_low","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",0.0438647578607592,0.0419921875,"Cureau 2022",TRUE
+"oct_low","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",4.29090909090909,0.231716306595159,"Tang 2026",FALSE
+"oct_low","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",3.75,0.289755781193383,"Tang 2026",FALSE
+"oct_low","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",0.0636363636363626,0.995811091718054,"Tang 2026",FALSE
+"oct_low","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",3.06060606060606,0.382374977838592,"Tang 2026",FALSE
+"oct_low","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",0.663636363636364,0.881721844159464,"Tang 2026",FALSE
+"oct_low","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",4.41666666666666,0.219844966901761,"Tang 2026",FALSE
+"oct_low","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.0115641831528837,0.956550653448674,"Peng 2025",FALSE
+"oct_low","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"oct_low","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.0763459592578721,0.770333064575595,"Peng 2025",FALSE
+"oct_mid","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.0930994678005294,0.680278877629634,"Zhen 2025",FALSE
+"oct_mid","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.042969936143746,0.0830078125,"Cureau 2022",FALSE
+"oct_mid","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",5.66666666666666,0.129003061437436,"Tang 2026",FALSE
+"oct_mid","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",4.25,0.235703369926533,"Tang 2026",FALSE
+"oct_mid","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",1.77272727272727,0.620887693109561,"Tang 2026",FALSE
+"oct_mid","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.34848484848485,0.503296180332556,"Tang 2026",FALSE
+"oct_mid","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",2.59848484848485,0.457755234427896,"Tang 2026",FALSE
+"oct_mid","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",4.75,0.191045755269693,"Tang 2026",FALSE
+"oct_mid","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.0500486304657522,0.813588783616682,"Peng 2025",FALSE
+"oct_mid","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"oct_mid","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.130972809021345,0.616449165723495,"Peng 2025",FALSE
+"oct_high","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.0622678258665878,0.783100609373023,"Zhen 2025",FALSE
+"oct_high","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.00588446517401498,0.013671875,"Cureau 2022",TRUE
+"oct_high","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",2.68939393939394,0.442032693313059,"Tang 2026",FALSE
+"oct_high","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",6.74242424242424,0.0805768459259099,"Tang 2026",FALSE
+"oct_high","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",2.96212121212121,0.397502286843856,"Tang 2026",FALSE
+"oct_high","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",4.31818181818182,0.229092790485409,"Tang 2026",FALSE
+"oct_high","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",4.23484848484848,0.237195968252614,"Tang 2026",FALSE
+"oct_high","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",4.1969696969697,0.240965451147642,"Tang 2026",FALSE
+"oct_high","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.111919908597874,0.597957350016177,"Peng 2025",FALSE
+"oct_high","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"oct_high","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.138177563145814,0.599144889725111,"Peng 2025",FALSE
+"vehicle_proportion","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.0613956899059799,0.786069816780377,"Zhen 2025",FALSE
+"vehicle_proportion","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.0177083333333333,0.2783203125,"Cureau 2022",FALSE
+"vehicle_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",1.95454545454545,0.581894358885136,"Tang 2026",FALSE
+"vehicle_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",4.59393939393939,0.204062608056271,"Tang 2026",FALSE
+"vehicle_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",1.03030303030303,0.793920063415628,"Tang 2026",FALSE
+"vehicle_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",0.912121212121207,0.822501740004322,"Tang 2026",FALSE
+"vehicle_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",1.53030303030303,0.675294272894093,"Tang 2026",FALSE
+"vehicle_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",1.10303030303031,0.776342607213239,"Tang 2026",FALSE
+"vehicle_proportion","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.0783646631785801,0.7119654304467,"Peng 2025",FALSE
+"vehicle_proportion","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"vehicle_proportion","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.106825382062222,0.682866317916966,"Peng 2025",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-0.163599675123461,0.848597811635072,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-0.027541085256834,0.975794922333561,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-9.82066773404642,0.0263011553442135,"Rodrigues 2026",TRUE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",5.35028529542539,0.189938785133198,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",2.04957737284767,0.198446574343053,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-3.30559404545313,0.0674185411956151,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",0.678199227989917,0.961972258742596,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",0.329921878725328,0.981657991633016,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",7.2510850719047,0.655537059484155,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-5.73869387174979,0.723490526202195,"Rodrigues 2026",FALSE
+"rural_natural_proportion","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.581595624084726,0.00452348076117377,"Zhen 2025",TRUE
+"rural_natural_proportion","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.0958333333333333,0.0048828125,"Cureau 2022",TRUE
+"rural_natural_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",2.13333333333333,0.344153786865412,"Tang 2026",FALSE
+"rural_natural_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",7.90909090909091,0.0479283647300327,"Tang 2026",TRUE
+"rural_natural_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",3.39393939393939,0.183237950104468,"Tang 2026",FALSE
+"rural_natural_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",3.22727272727273,0.357893866648076,"Tang 2026",FALSE
+"rural_natural_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",4.67878787878788,0.0963860363119001,"Tang 2026",FALSE
+"rural_natural_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.81818181818182,0.845113421681592,"Tang 2026",FALSE
+"rural_natural_proportion","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.491376527968358,0.0187770684733741,"Peng 2025",TRUE
+"rural_natural_proportion","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"rural_natural_proportion","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.346073613876773,0.184845575152691,"Peng 2025",FALSE
+"rural_natural_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.278901151551664,0.754835606809133,"Rodrigues 2026",FALSE
+"rural_natural_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-0.774012487475706,0.401142605733518,"Rodrigues 2026",FALSE
+"rural_natural_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",1.84935504101225,0.709588712020988,"Rodrigues 2026",FALSE
+"rural_natural_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-2.04377201992502,0.680933412967055,"Rodrigues 2026",FALSE
+"rural_natural_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",2.89262254871115,0.158708394409257,"Rodrigues 2026",FALSE
+"rural_natural_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-2.74545586913817,0.18512080995666,"Rodrigues 2026",FALSE
+"rural_natural_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",5.10495526198065,0.709928466620122,"Rodrigues 2026",FALSE
+"rural_natural_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-1.86929222072182,0.891637718968106,"Rodrigues 2026",FALSE
+"rural_natural_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",8.21591901618038,0.551140419601789,"Rodrigues 2026",FALSE
+"rural_natural_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",3.06021212615706,0.822758812433923,"Rodrigues 2026",FALSE
+"urban_manmade_negative_proportion","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.0623030153725708,0.782980866738885,"Zhen 2025",FALSE
+"urban_manmade_negative_proportion","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",0.0114583333333333,0.8984375,"Cureau 2022",FALSE
+"urban_manmade_negative_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",3.08333333333334,0.378954422059994,"Tang 2026",FALSE
+"urban_manmade_negative_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",6.06818181818182,0.10833974237985,"Tang 2026",FALSE
+"urban_manmade_negative_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",0.901515151515149,0.825062152755337,"Tang 2026",FALSE
+"urban_manmade_negative_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",1.28030303030303,0.733815546004557,"Tang 2026",FALSE
+"urban_manmade_negative_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",2.42424242424242,0.489137857545306,"Tang 2026",FALSE
+"urban_manmade_negative_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",2.62121212121212,0.453782917948169,"Tang 2026",FALSE
+"urban_manmade_negative_proportion","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.0751768661635372,0.723190639216854,"Peng 2025",FALSE
+"urban_manmade_negative_proportion","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"urban_manmade_negative_proportion","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.0918906756573052,0.725250538754663,"Peng 2025",FALSE
+"urban_manmade_negative_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-0.0895862400501833,0.940170087801326,"Rodrigues 2026",FALSE
+"urban_manmade_negative_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.251562837780552,0.828875981346142,"Rodrigues 2026",FALSE
+"urban_manmade_negative_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-7.79953135965171,0.112221512295862,"Rodrigues 2026",FALSE
+"urban_manmade_negative_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",2.22817800204666,0.62336668293426,"Rodrigues 2026",FALSE
+"urban_manmade_negative_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",2.78318989002354,0.255233648357085,"Rodrigues 2026",FALSE
+"urban_manmade_negative_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-3.28711323945587,0.171841308023441,"Rodrigues 2026",FALSE
+"urban_manmade_negative_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",-15.7643755471077,0.356437748590753,"Rodrigues 2026",FALSE
+"urban_manmade_negative_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",16.3016613248165,0.338206848734408,"Rodrigues 2026",FALSE
+"urban_manmade_negative_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",-1.07322385790667,0.95510348208757,"Rodrigues 2026",FALSE
+"urban_manmade_negative_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-0.0938830712885588,0.996070110735571,"Rodrigues 2026",FALSE
+"urban_manmade_positive_proportion","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.022078253020377,0.922311179351796,"Zhen 2025",FALSE
+"urban_manmade_positive_proportion","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",0.0208333333333333,0.51953125,"Cureau 2022",FALSE
+"urban_manmade_positive_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",4.95454545454545,0.175155968528753,"Tang 2026",FALSE
+"urban_manmade_positive_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",4.13636363636363,0.247110820829835,"Tang 2026",FALSE
+"urban_manmade_positive_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",1.27272727272727,0.735619215963506,"Tang 2026",FALSE
+"urban_manmade_positive_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",0.409090909090907,0.938358189168358,"Tang 2026",FALSE
+"urban_manmade_positive_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",1.02272727272727,0.795752856304085,"Tang 2026",FALSE
+"urban_manmade_positive_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",1,0.801251956901201,"Tang 2026",FALSE
+"urban_manmade_positive_proportion","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.00609579142566571,0.97708860858204,"Peng 2025",FALSE
+"urban_manmade_positive_proportion","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"urban_manmade_positive_proportion","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.212360286809358,0.416604251483889,"Peng 2025",FALSE
+"urban_manmade_positive_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.161913974818628,0.623020459468475,"Rodrigues 2026",FALSE
+"urban_manmade_positive_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-0.685372980209606,0.127096699809409,"Rodrigues 2026",FALSE
+"urban_manmade_positive_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",4.13133732866751,0.0191273962173508,"Rodrigues 2026",TRUE
+"urban_manmade_positive_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-2.04739934760639,0.191688422814233,"Rodrigues 2026",FALSE
+"urban_manmade_positive_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",0.646345165780469,0.257621780751354,"Rodrigues 2026",FALSE
+"urban_manmade_positive_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-2.19427538074076,0.0180783614185264,"Rodrigues 2026",TRUE
+"urban_manmade_positive_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",2.33916669610748,0.646510651511235,"Rodrigues 2026",FALSE
+"urban_manmade_positive_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-0.297073710349001,0.95587612787056,"Rodrigues 2026",FALSE
+"urban_manmade_positive_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",6.37990069565737,0.262266116893545,"Rodrigues 2026",FALSE
+"urban_manmade_positive_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",3.90867796365862,0.48240350226543,"Rodrigues 2026",FALSE
+"urban_manmade_neutral_proportion","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.0420275360670891,0.852678910560515,"Zhen 2025",FALSE
+"urban_manmade_neutral_proportion","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.0135416666666667,0.013671875,"Cureau 2022",TRUE
+"urban_manmade_neutral_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",0.969696969696969,0.615790491285929,"Tang 2026",FALSE
+"urban_manmade_neutral_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",3.56060606060606,0.168587052541742,"Tang 2026",FALSE
+"urban_manmade_neutral_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",3.92727272727272,0.14034713864886,"Tang 2026",FALSE
+"urban_manmade_neutral_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",1.51515151515152,0.468801539140235,"Tang 2026",FALSE
+"urban_manmade_neutral_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",4.1939393939394,0.122828071149503,"Tang 2026",FALSE
+"urban_manmade_neutral_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.909090909090907,0.634736418940283,"Tang 2026",FALSE
+"urban_manmade_neutral_proportion","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.00823810507652227,0.969039734352921,"Peng 2025",FALSE
+"urban_manmade_neutral_proportion","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"urban_manmade_neutral_proportion","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.313512922198247,0.226791046364697,"Peng 2025",FALSE
+"urban_manmade_neutral_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-0.928826022658282,0.447321134853164,"Rodrigues 2026",FALSE
+"urban_manmade_neutral_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.172386276664014,0.886417014825888,"Rodrigues 2026",FALSE
+"urban_manmade_neutral_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",1.25670397650074,0.895954192316991,"Rodrigues 2026",FALSE
+"urban_manmade_neutral_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-2.57140321004343,0.789346022068618,"Rodrigues 2026",FALSE
+"urban_manmade_neutral_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",4.2705080079405,0.202300275343934,"Rodrigues 2026",FALSE
+"urban_manmade_neutral_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-5.39504195570585,0.117502298218984,"Rodrigues 2026",FALSE
+"urban_manmade_neutral_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",27.0108049958201,0.295914031007849,"Rodrigues 2026",FALSE
+"urban_manmade_neutral_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-31.5446704973509,0.227680819594401,"Rodrigues 2026",FALSE
+"urban_manmade_neutral_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",32.4144132568994,0.281621423310823,"Rodrigues 2026",FALSE
+"urban_manmade_neutral_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-32.4051581285658,0.28175060189797,"Rodrigues 2026",FALSE
+"wind_proportion","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.0860795466043529,0.703285257440841,"Zhen 2025",FALSE
+"wind_proportion","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",0,0.125,"Cureau 2022",FALSE
+"wind_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",0.666666666666664,0.414216178242526,"Tang 2026",FALSE
+"wind_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",1.60000000000001,0.205903210732067,"Tang 2026",FALSE
+"wind_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",1.04166666666666,0.307434165927396,"Tang 2026",FALSE
+"wind_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.5,0.113846298006658,"Tang 2026",FALSE
+"wind_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",0.0416666666666643,0.838256486385831,"Tang 2026",FALSE
+"wind_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.399999999999991,0.527089256865543,"Tang 2026",FALSE
+"wind_proportion","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.224596216705693,0.289583983274296,"Peng 2025",FALSE
+"wind_proportion","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"wind_proportion","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.148815045491774,0.569223856631838,"Peng 2025",FALSE
+"wind_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-4.0606873831495,0.0386263173173766,"Rodrigues 2026",TRUE
+"wind_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",3.70411934345611,0.0573063168098839,"Rodrigues 2026",FALSE
+"wind_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-6.94579729822331,0.522877941082224,"Rodrigues 2026",FALSE
+"wind_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",4.06442998896477,0.706331193665561,"Rodrigues 2026",FALSE
+"wind_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",-0.349459733909873,0.932733584889232,"Rodrigues 2026",FALSE
+"wind_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-1.02679983394606,0.807059727649016,"Rodrigues 2026",FALSE
+"wind_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",-35.2015673668818,0.256679752751081,"Rodrigues 2026",FALSE
+"wind_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",41.3845673326527,0.188229715580633,"Rodrigues 2026",FALSE
+"wind_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",-21.8563695601791,0.542349576248761,"Rodrigues 2026",FALSE
+"wind_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",21.7915003899265,0.543524430392885,"Rodrigues 2026",FALSE
+"mechanisms_proportion","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.458588379541488,0.0318249427021183,"Zhen 2025",TRUE
+"mechanisms_proportion","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",0.00520833333333334,0.46484375,"Cureau 2022",FALSE
+"mechanisms_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",2.96212121212121,0.397502286843856,"Tang 2026",FALSE
+"mechanisms_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",8.31818181818182,0.0398737887399541,"Tang 2026",TRUE
+"mechanisms_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",4,0.261464129949111,"Tang 2026",FALSE
+"mechanisms_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",1.75757575757576,0.624210146310449,"Tang 2026",FALSE
+"mechanisms_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",2.17424242424242,0.537039613559773,"Tang 2026",FALSE
+"mechanisms_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",1.65151515151515,0.647766321271234,"Tang 2026",FALSE
+"mechanisms_proportion","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.353145867869222,0.0947695744633968,"Peng 2025",FALSE
+"mechanisms_proportion","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"mechanisms_proportion","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.142140893077596,0.588613267903955,"Peng 2025",FALSE
+"mechanisms_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.585607880636658,0.659089808434447,"Rodrigues 2026",FALSE
+"mechanisms_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-0.80817686208065,0.559450683679467,"Rodrigues 2026",FALSE
+"mechanisms_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-1.2155837177578,0.850121340134538,"Rodrigues 2026",FALSE
+"mechanisms_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",2.41447967735183,0.708266308486033,"Rodrigues 2026",FALSE
+"mechanisms_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",-0.608925019369396,0.82634876703241,"Rodrigues 2026",FALSE
+"mechanisms_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-0.671120710165239,0.818867286887821,"Rodrigues 2026",FALSE
+"mechanisms_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",22.7568875119326,0.208078901225901,"Rodrigues 2026",FALSE
+"mechanisms_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-23.9284129717569,0.190452181000965,"Rodrigues 2026",FALSE
+"mechanisms_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",18.0397887928746,0.369427948494533,"Rodrigues 2026",FALSE
+"mechanisms_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-16.2123178231504,0.417843544248909,"Rodrigues 2026",FALSE
+"unidentify_proportion","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.2436992379142,0.274432975035476,"Zhen 2025",FALSE
+"unidentify_proportion","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",0.03125,0.0537109375,"Cureau 2022",FALSE
+"unidentify_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",3.21212121212121,0.36006219780004,"Tang 2026",FALSE
+"unidentify_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",3.57575757575758,0.311068719275449,"Tang 2026",FALSE
+"unidentify_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",1.60606060606061,0.658016400006008,"Tang 2026",FALSE
+"unidentify_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",0.572727272727278,0.902646455678253,"Tang 2026",FALSE
+"unidentify_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",3.24242424242424,0.35573684265441,"Tang 2026",FALSE
+"unidentify_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.921212121212122,0.82030605226963,"Tang 2026",FALSE
+"unidentify_proportion","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.246621767841809,0.244729646735937,"Peng 2025",FALSE
+"unidentify_proportion","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"unidentify_proportion","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.00163731100862584,0.995005114891807,"Peng 2025",FALSE
+"unidentify_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.0348363017149768,0.96442919187584,"Rodrigues 2026",FALSE
+"unidentify_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.375879753958822,0.624034258787114,"Rodrigues 2026",FALSE
+"unidentify_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",5.35540053985292,0.231078011226992,"Rodrigues 2026",FALSE
+"unidentify_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-8.94593519559093,0.0603235595355704,"Rodrigues 2026",FALSE
+"unidentify_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",0.628135432420978,0.744604342523471,"Rodrigues 2026",FALSE
+"unidentify_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-0.838008633526323,0.655652568199099,"Rodrigues 2026",FALSE
+"unidentify_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",4.24360259794678,0.763371095882168,"Rodrigues 2026",FALSE
+"unidentify_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-7.07922497275739,0.616473558347674,"Rodrigues 2026",FALSE
+"unidentify_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",-0.679878619559708,0.965123161051946,"Rodrigues 2026",FALSE
+"unidentify_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-4.98129770446239,0.749396223730102,"Rodrigues 2026",FALSE
+"spectral_centroid_Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.0604541998704736,0.78927836652031,"Zhen 2025",FALSE
+"spectral_centroid_Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-61.1511614158221,0.0029296875,"Cureau 2022",TRUE
+"spectral_centroid_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",3.82121212121212,0.281428427602113,"Tang 2026",FALSE
+"spectral_centroid_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",0.375757575757575,0.945203601819641,"Tang 2026",FALSE
+"spectral_centroid_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",4.3030303030303,0.230546908268881,"Tang 2026",FALSE
+"spectral_centroid_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",5.15454545454545,0.160824101451799,"Tang 2026",FALSE
+"spectral_centroid_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",6.3030303030303,0.0977627069789446,"Tang 2026",FALSE
+"spectral_centroid_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",2.43636363636364,0.486901440781915,"Tang 2026",FALSE
+"spectral_centroid_Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.0527084340961918,0.803880061811884,"Peng 2025",FALSE
+"spectral_centroid_Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"spectral_centroid_Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.09110490132666,0.729810405419644,"Peng 2025",FALSE
+"spectral_centroid_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-3.17742951415977,0.0400149517356113,"Rodrigues 2026",TRUE
+"spectral_centroid_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",3.13233029221692,0.0490475658158475,"Rodrigues 2026",TRUE
+"spectral_centroid_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-14.1720194964462,0.160663872171458,"Rodrigues 2026",FALSE
+"spectral_centroid_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",16.2455939885123,0.113601036364043,"Rodrigues 2026",FALSE
+"spectral_centroid_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",-3.90801608703047,0.303723419312206,"Rodrigues 2026",FALSE
+"spectral_centroid_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",3.71641507953254,0.345411777099338,"Rodrigues 2026",FALSE
+"spectral_centroid_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",25.4718043058881,0.388380738281526,"Rodrigues 2026",FALSE
+"spectral_centroid_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-25.5176499044154,0.387642918913263,"Rodrigues 2026",FALSE
+"spectral_centroid_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",21.6417351336929,0.496436633389309,"Rodrigues 2026",FALSE
+"spectral_centroid_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-16.0294437164478,0.612313276995227,"Rodrigues 2026",FALSE
+"spectral_rolloff85_Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.154158209669708,0.493361890169882,"Zhen 2025",FALSE
+"spectral_rolloff85_Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",7.02083333333337,0.7646484375,"Cureau 2022",FALSE
+"spectral_rolloff85_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",3.72727272727273,0.155107576069851,"Tang 2026",FALSE
+"spectral_rolloff85_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",2.87575757575758,0.411180222298493,"Tang 2026",FALSE
+"spectral_rolloff85_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",3.65909090909091,0.160486499607413,"Tang 2026",FALSE
+"spectral_rolloff85_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",0.512121212121215,0.916220477628015,"Tang 2026",FALSE
+"spectral_rolloff85_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",2.96212121212121,0.227396382459774,"Tang 2026",FALSE
+"spectral_rolloff85_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.984848484848484,0.804918109327562,"Tang 2026",FALSE
+"spectral_rolloff85_Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.0600317164758555,0.777302768904781,"Peng 2025",FALSE
+"spectral_rolloff85_Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"spectral_rolloff85_Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.0870774293887028,0.739131782334226,"Peng 2025",FALSE
+"spectral_rolloff85_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-0.691819733199589,0.760062655394647,"Rodrigues 2026",FALSE
+"spectral_rolloff85_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.629416652085125,0.78305751763735,"Rodrigues 2026",FALSE
+"spectral_rolloff85_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",2.06533434887218,0.864049929835598,"Rodrigues 2026",FALSE
+"spectral_rolloff85_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-0.123544345766439,0.991821207616977,"Rodrigues 2026",FALSE
+"spectral_rolloff85_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",-5.85082842476877,0.228984562647784,"Rodrigues 2026",FALSE
+"spectral_rolloff85_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",5.7505255575324,0.241439679332709,"Rodrigues 2026",FALSE
+"spectral_rolloff85_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",48.8180530344643,0.160694660257173,"Rodrigues 2026",FALSE
+"spectral_rolloff85_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-48.6830184355724,0.161739661934286,"Rodrigues 2026",FALSE
+"spectral_rolloff85_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",43.1210218164428,0.248911378274142,"Rodrigues 2026",FALSE
+"spectral_rolloff85_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-37.1057174342073,0.31643895716484,"Rodrigues 2026",FALSE
+"freq_proportion_20_to_200Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.0175317179624373,0.938276184564086,"Zhen 2025",FALSE
+"freq_proportion_20_to_200Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",0.0507010608879902,0.0673828125,"Cureau 2022",FALSE
+"freq_proportion_20_to_200Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",4.23030303030303,0.237645435087101,"Tang 2026",FALSE
+"freq_proportion_20_to_200Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",7.11818181818182,0.0682248055530931,"Tang 2026",FALSE
+"freq_proportion_20_to_200Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",0.048484848484847,0.997201536689774,"Tang 2026",FALSE
+"freq_proportion_20_to_200Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",1.83030303030304,0.608362963247422,"Tang 2026",FALSE
+"freq_proportion_20_to_200Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",0.330303030303035,0.954232091882582,"Tang 2026",FALSE
+"freq_proportion_20_to_200Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",3.23939393939394,0.356167344576823,"Tang 2026",FALSE
+"freq_proportion_20_to_200Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.00304950297766875,0.988537046124014,"Peng 2025",FALSE
+"freq_proportion_20_to_200Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"freq_proportion_20_to_200Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.114518201806137,0.661434434812797,"Peng 2025",FALSE
+"freq_proportion_20_to_200Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.56414746902527,0.114846576547298,"Rodrigues 2026",FALSE
+"freq_proportion_20_to_200Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.182247464742626,0.51641655861021,"Rodrigues 2026",FALSE
+"freq_proportion_20_to_200Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-3.42072223894095,0.065445071614549,"Rodrigues 2026",FALSE
+"freq_proportion_20_to_200Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",2.74087293229485,0.127203774980697,"Rodrigues 2026",FALSE
+"freq_proportion_20_to_200Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",0.642002113890117,0.478547819293757,"Rodrigues 2026",FALSE
+"freq_proportion_20_to_200Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-0.170164735626064,0.817125705771445,"Rodrigues 2026",FALSE
+"freq_proportion_20_to_200Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",-3.73336199826443,0.486424402039392,"Rodrigues 2026",FALSE
+"freq_proportion_20_to_200Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",4.33926813759982,0.39362132808032,"Rodrigues 2026",FALSE
+"freq_proportion_20_to_200Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",-6.57772355141339,0.253351082492734,"Rodrigues 2026",FALSE
+"freq_proportion_20_to_200Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",7.29807453168394,0.208739034379286,"Rodrigues 2026",FALSE
+"freq_proportion_200_to_2000Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.03445889392617,0.879000226707163,"Zhen 2025",FALSE
+"freq_proportion_200_to_2000Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.0550879892840964,0.0673828125,"Cureau 2022",FALSE
+"freq_proportion_200_to_2000Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",5.66666666666666,0.129003061437436,"Tang 2026",FALSE
+"freq_proportion_200_to_2000Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",4.25,0.235703369926533,"Tang 2026",FALSE
+"freq_proportion_200_to_2000Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",1.77272727272727,0.620887693109561,"Tang 2026",FALSE
+"freq_proportion_200_to_2000Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.34848484848485,0.503296180332556,"Tang 2026",FALSE
+"freq_proportion_200_to_2000Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",2.59848484848485,0.457755234427896,"Tang 2026",FALSE
+"freq_proportion_200_to_2000Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",4.75,0.191045755269693,"Tang 2026",FALSE
+"freq_proportion_200_to_2000Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.0180499377201085,0.932230249698174,"Peng 2025",FALSE
+"freq_proportion_200_to_2000Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"freq_proportion_200_to_2000Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.15030471377104,0.565398545885124,"Peng 2025",FALSE
+"freq_proportion_200_to_2000Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-0.0988412183400334,0.837923339944783,"Rodrigues 2026",FALSE
+"freq_proportion_200_to_2000Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.320539676762055,0.518130023363984,"Rodrigues 2026",FALSE
+"freq_proportion_200_to_2000Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",4.85766418209835,0.0706555502936876,"Rodrigues 2026",FALSE
+"freq_proportion_200_to_2000Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-1.91953730022098,0.438877131202868,"Rodrigues 2026",FALSE
+"freq_proportion_200_to_2000Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",-0.468885996566225,0.67708474068707,"Rodrigues 2026",FALSE
+"freq_proportion_200_to_2000Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",0.242406928574239,0.831822119452409,"Rodrigues 2026",FALSE
+"freq_proportion_200_to_2000Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",15.0436317475751,0.0376041721621075,"Rodrigues 2026",TRUE
+"freq_proportion_200_to_2000Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-7.30534268103159,0.270276793049177,"Rodrigues 2026",FALSE
+"freq_proportion_200_to_2000Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",12.5129587866151,0.131256132953074,"Rodrigues 2026",FALSE
+"freq_proportion_200_to_2000Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-3.86460318739885,0.620488050557229,"Rodrigues 2026",FALSE
+"freq_proportion_2000_to_20000Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.0259953059443037,0.908579483429123,"Zhen 2025",FALSE
+"freq_proportion_2000_to_20000Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.00973379586466343,0.009765625,"Cureau 2022",TRUE
+"freq_proportion_2000_to_20000Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",3.45757575757575,0.326306229475334,"Tang 2026",FALSE
+"freq_proportion_2000_to_20000Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",0.272727272727273,0.965073388886929,"Tang 2026",FALSE
+"freq_proportion_2000_to_20000Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",3.40909090909091,0.332745531129565,"Tang 2026",FALSE
+"freq_proportion_2000_to_20000Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",8.22727272727273,0.0415409193816784,"Tang 2026",TRUE
+"freq_proportion_2000_to_20000Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",5.75757575757576,0.124019177990696,"Tang 2026",FALSE
+"freq_proportion_2000_to_20000Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",6.29545454545455,0.098087882132454,"Tang 2026",FALSE
+"freq_proportion_2000_to_20000Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.0707319206970009,0.738945524192963,"Peng 2025",FALSE
+"freq_proportion_2000_to_20000Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"freq_proportion_2000_to_20000Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.109659334534646,0.676593347787968,"Peng 2025",FALSE
+"freq_proportion_2000_to_20000Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.151694130237997,0.9152366195625,"Rodrigues 2026",FALSE
+"freq_proportion_2000_to_20000Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-0.38626703058604,0.793524984257626,"Rodrigues 2026",FALSE
+"freq_proportion_2000_to_20000Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-18.7366659861483,0.00535143379022039,"Rodrigues 2026",TRUE
+"freq_proportion_2000_to_20000Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",22.4445080797343,0.00197595220732566,"Rodrigues 2026",TRUE
+"freq_proportion_2000_to_20000Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",-1.40975746003573,0.640727260506251,"Rodrigues 2026",FALSE
+"freq_proportion_2000_to_20000Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",1.05138927980717,0.737634082268817,"Rodrigues 2026",FALSE
+"freq_proportion_2000_to_20000Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",14.1590575613967,0.488023583455695,"Rodrigues 2026",FALSE
+"freq_proportion_2000_to_20000Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-8.47114076288443,0.680456066218634,"Rodrigues 2026",FALSE
+"freq_proportion_2000_to_20000Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",19.1204264213717,0.410100278324001,"Rodrigues 2026",FALSE
+"freq_proportion_2000_to_20000Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-9.17342897992924,0.68825094168994,"Rodrigues 2026",FALSE
+"octave_proportion_31_5_Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.166853591642507,0.457992438465791,"Zhen 2025",FALSE
+"octave_proportion_31_5_Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.0110835869251908,0.7646484375,"Cureau 2022",FALSE
+"octave_proportion_31_5_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",2.37878787878788,0.497595466535987,"Tang 2026",FALSE
+"octave_proportion_31_5_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",1.84090909090909,0.606073377443802,"Tang 2026",FALSE
+"octave_proportion_31_5_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",2.37878787878788,0.497595466535987,"Tang 2026",FALSE
+"octave_proportion_31_5_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",6.06818181818182,0.10833974237985,"Tang 2026",FALSE
+"octave_proportion_31_5_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",2.72727272727273,0.43561245870778,"Tang 2026",FALSE
+"octave_proportion_31_5_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",7.52272727272727,0.0569773577378322,"Tang 2026",FALSE
+"octave_proportion_31_5_Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.109566794227262,0.605678791707542,"Peng 2025",FALSE
+"octave_proportion_31_5_Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"octave_proportion_31_5_Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.120217342756427,0.646088458721195,"Peng 2025",FALSE
+"octave_proportion_31_5_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.0630552828127837,0.929357994207072,"Rodrigues 2026",FALSE
+"octave_proportion_31_5_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-0.0167184499275556,0.982466400105898,"Rodrigues 2026",FALSE
+"octave_proportion_31_5_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",4.87601858441108,0.219603229227375,"Rodrigues 2026",FALSE
+"octave_proportion_31_5_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-4.58645646907664,0.245973543938121,"Rodrigues 2026",FALSE
+"octave_proportion_31_5_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",0.357979303554158,0.819632586117736,"Rodrigues 2026",FALSE
+"octave_proportion_31_5_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-0.342170703026594,0.841262241995721,"Rodrigues 2026",FALSE
+"octave_proportion_31_5_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",-6.41228691987468,0.533603847909452,"Rodrigues 2026",FALSE
+"octave_proportion_31_5_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-1.42668218606231,0.889911708539915,"Rodrigues 2026",FALSE
+"octave_proportion_31_5_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",-16.2787753878562,0.175648613554731,"Rodrigues 2026",FALSE
+"octave_proportion_31_5_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",9.56483905594291,0.410197023547365,"Rodrigues 2026",FALSE
+"octave_proportion_63_0_Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.0417133979106268,0.853768570246573,"Zhen 2025",FALSE
+"octave_proportion_63_0_Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",0.0532286860663385,0.1015625,"Cureau 2022",FALSE
+"octave_proportion_63_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",3.48484848484848,0.322732544846151,"Tang 2026",FALSE
+"octave_proportion_63_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",6.50757575757576,0.0893642131607539,"Tang 2026",FALSE
+"octave_proportion_63_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",1.39393939393939,0.706955984032886,"Tang 2026",FALSE
+"octave_proportion_63_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.18939393939394,0.534040454642229,"Tang 2026",FALSE
+"octave_proportion_63_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",2.18939393939394,0.534040454642229,"Tang 2026",FALSE
+"octave_proportion_63_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",1.25757575757576,0.739230918608826,"Tang 2026",FALSE
+"octave_proportion_63_0_Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.0102098170045402,0.961635286952916,"Peng 2025",FALSE
+"octave_proportion_63_0_Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"octave_proportion_63_0_Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.0778081937308032,0.766072139747545,"Peng 2025",FALSE
+"octave_proportion_63_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.0878815789204725,0.847492082479102,"Rodrigues 2026",FALSE
+"octave_proportion_63_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.642205429244825,0.193185762980805,"Rodrigues 2026",FALSE
+"octave_proportion_63_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-2.38245627726805,0.336489494811215,"Rodrigues 2026",FALSE
+"octave_proportion_63_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",1.96034816201186,0.425133074204703,"Rodrigues 2026",FALSE
+"octave_proportion_63_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",-2.26608591573722,0.0919188892949737,"Rodrigues 2026",FALSE
+"octave_proportion_63_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",2.12434397911765,0.120046433006996,"Rodrigues 2026",FALSE
+"octave_proportion_63_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",6.03395516973896,0.394417482107405,"Rodrigues 2026",FALSE
+"octave_proportion_63_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",2.30248491135968,0.743740833323646,"Rodrigues 2026",FALSE
+"octave_proportion_63_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",0.0987473240841922,0.989530654002526,"Rodrigues 2026",FALSE
+"octave_proportion_63_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",4.33761442343418,0.568042897732222,"Rodrigues 2026",FALSE
+"octave_proportion_125_0_Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.305293709345892,0.167089236983015,"Zhen 2025",FALSE
+"octave_proportion_125_0_Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",0.0403547227055838,0.0009765625,"Cureau 2022",TRUE
+"octave_proportion_125_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",4.06060606060606,0.131295728535209,"Tang 2026",FALSE
+"octave_proportion_125_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",0.545454545454547,0.761300386696873,"Tang 2026",FALSE
+"octave_proportion_125_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",2.68181818181818,0.261607735231344,"Tang 2026",FALSE
+"octave_proportion_125_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",5.68181818181818,0.0583725758582378,"Tang 2026",FALSE
+"octave_proportion_125_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",2.13636363636363,0.343632736568553,"Tang 2026",FALSE
+"octave_proportion_125_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",2.5,0.28650479686019,"Tang 2026",FALSE
+"octave_proportion_125_0_Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.203324500119483,0.337807420698918,"Peng 2025",FALSE
+"octave_proportion_125_0_Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"octave_proportion_125_0_Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.0508902906170557,0.845620188890319,"Peng 2025",FALSE
+"octave_proportion_125_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.208653684652441,0.831390515443873,"Rodrigues 2026",FALSE
+"octave_proportion_125_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.334350831724785,0.724919608894603,"Rodrigues 2026",FALSE
+"octave_proportion_125_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-13.9437692987464,0.0187677694996693,"Rodrigues 2026",TRUE
+"octave_proportion_125_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",12.075865136047,0.0325750100363576,"Rodrigues 2026",TRUE
+"octave_proportion_125_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",1.57799854585389,0.408545915861096,"Rodrigues 2026",FALSE
+"octave_proportion_125_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-0.228478040982068,0.899197250467247,"Rodrigues 2026",FALSE
+"octave_proportion_125_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",-2.09014520796039,0.894852892969326,"Rodrigues 2026",FALSE
+"octave_proportion_125_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",6.70986858824016,0.672750487428261,"Rodrigues 2026",FALSE
+"octave_proportion_125_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",10.0720862072641,0.567856623002492,"Rodrigues 2026",FALSE
+"octave_proportion_125_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-13.4250409514634,0.44969646495464,"Rodrigues 2026",FALSE
+"octave_proportion_250_0_Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.359097947230613,0.100739535340567,"Zhen 2025",FALSE
+"octave_proportion_250_0_Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.0189955856436485,0.0830078125,"Cureau 2022",FALSE
+"octave_proportion_250_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",6.18181818181818,0.103091772018074,"Tang 2026",FALSE
+"octave_proportion_250_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",0.836363636363636,0.840751002097526,"Tang 2026",FALSE
+"octave_proportion_250_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",3.68181818181818,0.297935153288874,"Tang 2026",FALSE
+"octave_proportion_250_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",3.71212121212121,0.29427470812963,"Tang 2026",FALSE
+"octave_proportion_250_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",2.72727272727273,0.43561245870778,"Tang 2026",FALSE
+"octave_proportion_250_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.593939393939394,0.897818398410551,"Tang 2026",FALSE
+"octave_proportion_250_0_Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.274044787058836,0.195919781249783,"Peng 2025",FALSE
+"octave_proportion_250_0_Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"octave_proportion_250_0_Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.0105537704976501,0.967820735148616,"Peng 2025",FALSE
+"octave_proportion_250_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",0.174684841215228,0.880625139737406,"Rodrigues 2026",FALSE
+"octave_proportion_250_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.22925033309274,0.843316564115568,"Rodrigues 2026",FALSE
+"octave_proportion_250_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-5.38198074653092,0.379679595920554,"Rodrigues 2026",FALSE
+"octave_proportion_250_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",4.10096437206915,0.499277777717518,"Rodrigues 2026",FALSE
+"octave_proportion_250_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",0.0639437694836793,0.980889353472408,"Rodrigues 2026",FALSE
+"octave_proportion_250_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",0.644252484028208,0.808890949575309,"Rodrigues 2026",FALSE
+"octave_proportion_250_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",18.6650001812965,0.273917554309968,"Rodrigues 2026",FALSE
+"octave_proportion_250_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-14.1077805851861,0.401292754971782,"Rodrigues 2026",FALSE
+"octave_proportion_250_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",-9.16087648702369,0.618903587966956,"Rodrigues 2026",FALSE
+"octave_proportion_250_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",15.0150737903906,0.420403258856736,"Rodrigues 2026",FALSE
+"octave_proportion_500_0_Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.192848897586811,0.389868974129487,"Zhen 2025",FALSE
+"octave_proportion_500_0_Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.061126896597668,0.0029296875,"Cureau 2022",TRUE
+"octave_proportion_500_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",1.59090909090909,0.66145287470247,"Tang 2026",FALSE
+"octave_proportion_500_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",6.0530303030303,0.109058497482958,"Tang 2026",FALSE
+"octave_proportion_500_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",3.7,0.295734032375276,"Tang 2026",FALSE
+"octave_proportion_500_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",2.59848484848485,0.457755234427896,"Tang 2026",FALSE
+"octave_proportion_500_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",5.39090909090909,0.145311024127845,"Tang 2026",FALSE
+"octave_proportion_500_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",0.333333333333336,0.953642173096255,"Tang 2026",FALSE
+"octave_proportion_500_0_Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.171831814214768,0.418044177190032,"Peng 2025",FALSE
+"octave_proportion_500_0_Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"octave_proportion_500_0_Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.182383639430792,0.494451255952904,"Peng 2025",FALSE
+"octave_proportion_500_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-0.281691136001625,0.799637442870793,"Rodrigues 2026",FALSE
+"octave_proportion_500_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.00273619958845672,0.997777999086071,"Rodrigues 2026",FALSE
+"octave_proportion_500_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",7.32057950739732,0.159138751535765,"Rodrigues 2026",FALSE
+"octave_proportion_500_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",-5.48988891379386,0.278424784792208,"Rodrigues 2026",FALSE
+"octave_proportion_500_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",1.3497918856459,0.571457583628471,"Rodrigues 2026",FALSE
+"octave_proportion_500_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-2.11605104784727,0.314867279091123,"Rodrigues 2026",FALSE
+"octave_proportion_500_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",16.4827783309682,0.238521620930697,"Rodrigues 2026",FALSE
+"octave_proportion_500_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-8.48267492454589,0.532023135959723,"Rodrigues 2026",FALSE
+"octave_proportion_500_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",3.30236683503542,0.829609623784529,"Rodrigues 2026",FALSE
+"octave_proportion_500_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",4.84462588577269,0.752588746326028,"Rodrigues 2026",FALSE
+"octave_proportion_1000_0_Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.388115963168441,0.0742795886800851,"Zhen 2025",FALSE
+"octave_proportion_1000_0_Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",0.020376203502742,0.7001953125,"Cureau 2022",FALSE
+"octave_proportion_1000_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",3.89393939393939,0.273146859434997,"Tang 2026",FALSE
+"octave_proportion_1000_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",4.1969696969697,0.240965451147642,"Tang 2026",FALSE
+"octave_proportion_1000_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",2.90909090909091,0.405854986858071,"Tang 2026",FALSE
+"octave_proportion_1000_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",1.65151515151515,0.647766321271234,"Tang 2026",FALSE
+"octave_proportion_1000_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",2.37878787878788,0.497595466535987,"Tang 2026",FALSE
+"octave_proportion_1000_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",2.18181818181818,0.535538495710598,"Tang 2026",FALSE
+"octave_proportion_1000_0_Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.340452493800245,0.107425974229515,"Peng 2025",FALSE
+"octave_proportion_1000_0_Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"octave_proportion_1000_0_Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.34352371138701,0.188160975194322,"Peng 2025",FALSE
+"octave_proportion_1000_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-0.429709088392281,0.497966249983427,"Rodrigues 2026",FALSE
+"octave_proportion_1000_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.783252915849509,0.212075294973733,"Rodrigues 2026",FALSE
+"octave_proportion_1000_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",1.29183092148498,0.724236052818709,"Rodrigues 2026",FALSE
+"octave_proportion_1000_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",0.389927354836552,0.914913066174094,"Rodrigues 2026",FALSE
+"octave_proportion_1000_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",-0.774375071650969,0.637965309443106,"Rodrigues 2026",FALSE
+"octave_proportion_1000_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",0.390677529198868,0.802872048824655,"Rodrigues 2026",FALSE
+"octave_proportion_1000_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",16.4119108454839,0.113417402162171,"Rodrigues 2026",FALSE
+"octave_proportion_1000_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-14.9487520295397,0.141374746399296,"Rodrigues 2026",FALSE
+"octave_proportion_1000_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",16.467547307934,0.151926005096043,"Rodrigues 2026",FALSE
+"octave_proportion_1000_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-15.718921165168,0.169313628919223,"Rodrigues 2026",FALSE
+"octave_proportion_2000_0_Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.189221645594582,0.399016265087161,"Zhen 2025",FALSE
+"octave_proportion_2000_0_Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.00221924304882003,0.365234375,"Cureau 2022",FALSE
+"octave_proportion_2000_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",3.14393939393939,0.369960549071582,"Tang 2026",FALSE
+"octave_proportion_2000_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",6.70909090909091,0.0817713376239664,"Tang 2026",FALSE
+"octave_proportion_2000_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",0.962121212121211,0.810416397634459,"Tang 2026",FALSE
+"octave_proportion_2000_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",0.936363636363637,0.816644727339795,"Tang 2026",FALSE
+"octave_proportion_2000_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",2.71969696969697,0.436890372124289,"Tang 2026",FALSE
+"octave_proportion_2000_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",2.84545454545455,0.416071847589382,"Tang 2026",FALSE
+"octave_proportion_2000_0_Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",-0.137258157124999,0.517771381414129,"Peng 2025",FALSE
+"octave_proportion_2000_0_Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"octave_proportion_2000_0_Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.260723495552715,0.318389729223411,"Peng 2025",FALSE
+"octave_proportion_2000_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-0.508558877339846,0.473405131437877,"Rodrigues 2026",FALSE
+"octave_proportion_2000_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.664978051213692,0.324077468978984,"Rodrigues 2026",FALSE
+"octave_proportion_2000_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-2.66155143357388,0.464434234467424,"Rodrigues 2026",FALSE
+"octave_proportion_2000_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",2.64214642038052,0.46755529610757,"Rodrigues 2026",FALSE
+"octave_proportion_2000_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",-2.75891617111094,0.053385246892142,"Rodrigues 2026",FALSE
+"octave_proportion_2000_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",1.67050749552233,0.180369503171106,"Rodrigues 2026",FALSE
+"octave_proportion_2000_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",8.07542147209005,0.32948154277733,"Rodrigues 2026",FALSE
+"octave_proportion_2000_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",5.72714409209218,0.479352363931915,"Rodrigues 2026",FALSE
+"octave_proportion_2000_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",-1.8418852503078,0.852440462722701,"Rodrigues 2026",FALSE
+"octave_proportion_2000_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",13.0650008882971,0.207568399701711,"Rodrigues 2026",FALSE
+"octave_proportion_4000_0_Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.0646859938614068,0.774883249565271,"Zhen 2025",FALSE
+"octave_proportion_4000_0_Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.00249917277493449,0.0419921875,"Cureau 2022",TRUE
+"octave_proportion_4000_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",3.82121212121212,0.281428427602113,"Tang 2026",FALSE
+"octave_proportion_4000_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",2.17424242424242,0.537039613559773,"Tang 2026",FALSE
+"octave_proportion_4000_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",2.12121212121212,0.547633341257818,"Tang 2026",FALSE
+"octave_proportion_4000_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",5.81060606060606,0.121197156672344,"Tang 2026",FALSE
+"octave_proportion_4000_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",4.84848484848485,0.183234024503822,"Tang 2026",FALSE
+"octave_proportion_4000_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",4.96212121212121,0.174591920954608,"Tang 2026",FALSE
+"octave_proportion_4000_0_Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.0102589029161538,0.961450834581121,"Peng 2025",FALSE
+"octave_proportion_4000_0_Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"octave_proportion_4000_0_Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",-0.0130989589826457,0.960064690922341,"Peng 2025",FALSE
+"octave_proportion_4000_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-0.265760317754563,0.907520169442336,"Rodrigues 2026",FALSE
+"octave_proportion_4000_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",0.103610261052213,0.963889570328716,"Rodrigues 2026",FALSE
+"octave_proportion_4000_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-18.390004078312,0.0427787165716092,"Rodrigues 2026",TRUE
+"octave_proportion_4000_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",22.5402322244243,0.0179024449910311,"Rodrigues 2026",TRUE
+"octave_proportion_4000_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",-6.25220763825159,0.197660957120402,"Rodrigues 2026",FALSE
+"octave_proportion_4000_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",5.76203156495592,0.232263580697253,"Rodrigues 2026",FALSE
+"octave_proportion_4000_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",22.3078215187526,0.449993083265926,"Rodrigues 2026",FALSE
+"octave_proportion_4000_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-15.4654133371596,0.597476509107141,"Rodrigues 2026",FALSE
+"octave_proportion_4000_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",14.012773862663,0.646026066519341,"Rodrigues 2026",FALSE
+"octave_proportion_4000_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-3.36257296166494,0.91173280271453,"Rodrigues 2026",FALSE
+"octave_proportion_8000_0_Hz","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",0.120303857742242,0.593839318919837,"Zhen 2025",FALSE
+"octave_proportion_8000_0_Hz","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.00315621107978053,0.0419921875,"Cureau 2022",TRUE
+"octave_proportion_8000_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",2.32575757575758,0.507604406499526,"Tang 2026",FALSE
+"octave_proportion_8000_0_Hz","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",0.742424242424242,0.86318282701444,"Tang 2026",FALSE
+"octave_proportion_8000_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",5.46212121212121,0.140921823709808,"Tang 2026",FALSE
+"octave_proportion_8000_0_Hz","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",6.13636363636363,0.10516106583382,"Tang 2026",FALSE
+"octave_proportion_8000_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",6.06818181818182,0.10833974237985,"Tang 2026",FALSE
+"octave_proportion_8000_0_Hz","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",6.37878787878788,0.0945673593556058,"Tang 2026",FALSE
+"octave_proportion_8000_0_Hz","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.198243979360466,0.350047546512992,"Peng 2025",FALSE
+"octave_proportion_8000_0_Hz","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"octave_proportion_8000_0_Hz","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.265712964260302,0.313017625425723,"Peng 2025",FALSE
+"octave_proportion_8000_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",2.50981275778385,0.318215608063764,"Rodrigues 2026",FALSE
+"octave_proportion_8000_0_Hz","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-2.76376418196542,0.282224606977901,"Rodrigues 2026",FALSE
+"octave_proportion_8000_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-11.2017249047262,0.169136422888434,"Rodrigues 2026",FALSE
+"octave_proportion_8000_0_Hz","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",14.5126710464609,0.0847440660346237,"Rodrigues 2026",FALSE
+"octave_proportion_8000_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",-13.2671122922728,0.0213035805155435,"Rodrigues 2026",TRUE
+"octave_proportion_8000_0_Hz","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",13.4703447304694,0.0220984571911864,"Rodrigues 2026",TRUE
+"octave_proportion_8000_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",23.4917460926835,0.364719194746776,"Rodrigues 2026",FALSE
+"octave_proportion_8000_0_Hz","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",-27.5506564586262,0.293525910192194,"Rodrigues 2026",FALSE
+"octave_proportion_8000_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",3.32005660708241,0.905665102777297,"Rodrigues 2026",FALSE
+"octave_proportion_8000_0_Hz","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-5.52832034185602,0.843680985380763,"Rodrigues 2026",FALSE

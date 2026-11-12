@@ -1,0 +1,5 @@
+"family","outcome","term","estimate","se","df","t_ratio","p_value","status","q_value"
+"B_high_vs_low_dBA","empatica_skin_temperature","high_dBA",0.00305906339901216,0.00221521183896039,2063,1.38093492694937,0.167448541135211,"FIT",0.251172811702817
+"B_high_vs_low_dBA","empatica_eda_tonic","high_dBA",-0.0196503603109901,0.01213341061263,1794,-1.61952487543243,0.105510139367669,"FIT",0.251172811702817
+"B_high_vs_low_dBA","empatica_heart_rate","high_dBA",-0.0136629061213225,0.0173205928320268,2063,-0.788824392665074,NA,"DEGENERATE_FIT",NA
+"B_high_vs_low_dBA","eyetracker_pupil_diameter_avg","high_dBA",-0.011998371746096,0.0165662361799687,1766,-0.724266611664274,0.46899800596973,"FIT",0.46899800596973

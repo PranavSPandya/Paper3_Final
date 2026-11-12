@@ -1,0 +1,6 @@
+"outcome","label","trend_forms","confounders_kept_by_AIC","formula","n_obs"
+"empatica_heart_rate","HR","clock_h=poly2; day_index=poly2","","Yk ~ L_below65_per5 + L_above65_per5 + empatica__met + poly(clock_h, 2) + poly(day_index, 2)",44
+"empatica_hrv_td_sdnn","SDNN","clock_h=poly2; day_index=linear","","Yk ~ L_below65_per5 + L_above65_per5 + empatica__met + HR_cov + poly(clock_h, 2) + day_index",44
+"empatica_hrv_fd_lfnu","LFnu","clock_h=poly2; day_index=linear","","Yk ~ L_below65_per5 + L_above65_per5 + empatica__met + HR_cov + poly(clock_h, 2) + day_index",44
+"empatica_hrv_fd_hfnu","HFnu","clock_h=poly2; day_index=linear","","Yk ~ L_below65_per5 + L_above65_per5 + empatica__met + HR_cov + poly(clock_h, 2) + day_index",44
+"empatica_hrv_fd_lf_hf_ratio","LF_HF","clock_h=poly2; day_index=linear","","Yk ~ L_below65_per5 + L_above65_per5 + empatica__met + HR_cov + poly(clock_h, 2) + day_index",44

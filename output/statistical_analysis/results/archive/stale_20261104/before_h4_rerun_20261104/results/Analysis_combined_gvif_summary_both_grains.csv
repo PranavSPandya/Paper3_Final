@@ -1,0 +1,8 @@
+"equation_id","terms_timeseries","max_vif_heart_rate_timeseries","worst_term_heart_rate_timeseries","n_design_rows_hr_timeseries","max_vif_worst_outcome_timeseries","worst_outcome_timeseries"
+1,"ucm_UTCI + ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG",2.52,"ucm_SUN_Gh",2060,2.61,"empatica_eda_tonic"
+2,"ucm_AIR_T_mid + ucm_SND_dBA + ucm_AIR_RH + ucm_WIND_AWS + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG",1.88,"ucm_AIR_T_mid",2060,1.94,"empatica_eda_tonic"
+3,"ucm_MRT + ucm_SND_dBA + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG",1.04,"ucm_MRT",2073,1.11,"empatica_hrv_fd_lf"
+4,"ucm_HUMIDEX + ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG",1.41,"SVF",2060,1.51,"eyetracker_blink_duration_s"
+5,"ucm_PET + ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm2.5_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG",2.36,"ucm_SUN_Gh",2060,2.41,"empatica_hrv_td_sdnn"
+6,"ucm_UTCI + ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm1_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG",2.52,"ucm_SUN_Gh",2060,2.61,"empatica_eda_tonic"
+7,"ucm_UTCI + ucm_SND_dBA + ucm_SUN_Gh + SVF + atmo_pm10_avg + lys_lux_avg + lys_kelvin_avg + gvi_50m + PhaseSumWalkG + PhaseSumWalkU + PhaseSumBikeG",2.52,"ucm_SUN_Gh",2060,2.61,"empatica_eda_tonic"

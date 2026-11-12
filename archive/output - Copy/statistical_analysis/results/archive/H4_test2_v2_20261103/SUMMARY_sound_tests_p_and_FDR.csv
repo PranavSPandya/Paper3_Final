@@ -1,0 +1,21 @@
+"paper","test","paper_decision_rule","n_tests","n_paper_rule_met","outcomes_paper_rule_met","n_significant_unadjusted","n_significant_adjusted","significant_adjusted_outcomes"
+"Moshammer 2019","random-effects GLS per dB, preceding 2-min Leq, all phases, Table A2 unadjusted (noise only)","p < 0.05 (Table A2 bold)","6","0",,"0","0",
+"Moshammer 2019","random-effects GLS per dB, preceding 2-min Leq, all phases, Methods: temperature as confounder","p < 0.05 (Table A2 bold)","6","0",,"0","0",
+"Moshammer 2019","random-effects GLS per dB, preceding 2-min Leq, walking phases (paper setting), Table A2 unadjusted (noise only)","p < 0.05 (Table A2 bold)","6","1","RMSSD_ms","1","0",
+"Moshammer 2019","random-effects GLS per dB, preceding 2-min Leq, walking phases (paper setting), Methods: temperature as confounder","p < 0.05 (Table A2 bold)","6","2","RMSSD_ms; HF_power","2","0",
+"Jin 2020","two-way ANOVA, LAeq level","p < 0.05","2","0",,"0","0",
+"Jin 2020","two-way ANOVA, UTCI category","p < 0.05","2","0",,"0","0",
+"Jin 2020","two-way ANOVA, LAeq x UTCI","p < 0.05","2","0",,"0","0",
+"Song 2013/2014","one-sided paired t-test, park (WalkG) vs city (WalkU)","P < 0.05 (one sided)","3","0",,"0","0",
+"Rodrigues 2026","Noise block (7.Model_H2.py): NOISE_max","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","2","MAX_Values; MIN_Values","2","1","MIN_Values"
+"Rodrigues 2026","Noise block (7.Model_H2.py): NOISE_std","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","0",,"0","0",
+"Rodrigues 2026","Temperature block (7.Model_H2.py): Temp_max","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","4","STD_bpm; STD_Values; MAX_Values; MIN_Values","4","2","STD_Values; MAX_Values"
+"Rodrigues 2026","Temperature block (7.Model_H2.py): Temp_mean","round(p,4) < 0.05 and |round(beta,4)| > 0.1","15","3","STD_bpm; STD_Values; MAX_Values","3","3","STD_bpm; STD_Values; MAX_Values"
+"Kraus 2013","additive mixed model, 1-min intervals, Leq lag 0 min, 5-dB increase < 65 dB(A)","95% CI excludes 0 (p < 0.05)","5","3","LF_nu; HF_nu; LF_HF","3","3","LF_nu; HF_nu; LF_HF"
+"Kraus 2013","additive mixed model, 1-min intervals, Leq lag 0 min, 5-dB increase >= 65 dB(A)","95% CI excludes 0 (p < 0.05)","5","2","LF_nu; LF_HF","2","0",
+"Kraus 2013","additive mixed model, 1-min intervals, Leq lag 1 min, 5-dB increase < 65 dB(A)","95% CI excludes 0 (p < 0.05)","5","3","LF_nu; HF_nu; LF_HF","3","3","LF_nu; HF_nu; LF_HF"
+"Kraus 2013","additive mixed model, 1-min intervals, Leq lag 1 min, 5-dB increase >= 65 dB(A)","95% CI excludes 0 (p < 0.05)","5","3","LF_nu; HF_nu; LF_HF","3","3","LF_nu; HF_nu; LF_HF"
+"Kraus 2013","additive mixed model, 1-min intervals, Leq lag 2 min, 5-dB increase < 65 dB(A)","95% CI excludes 0 (p < 0.05)","5","3","LF_nu; HF_nu; LF_HF","3","3","LF_nu; HF_nu; LF_HF"
+"Kraus 2013","additive mixed model, 1-min intervals, Leq lag 2 min, 5-dB increase >= 65 dB(A)","95% CI excludes 0 (p < 0.05)","5","0",,"0","0",
+"Kraus 2013","additive mixed model, 1-min intervals, Leq lag 3 min, 5-dB increase < 65 dB(A)","95% CI excludes 0 (p < 0.05)","5","4","HR; LF_nu; HF_nu; LF_HF","4","4","HR; LF_nu; HF_nu; LF_HF"
+"Kraus 2013","additive mixed model, 1-min intervals, Leq lag 3 min, 5-dB increase >= 65 dB(A)","95% CI excludes 0 (p < 0.05)","5","0",,"0","0",

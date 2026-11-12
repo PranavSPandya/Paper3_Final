@@ -1,0 +1,37 @@
+Sound relationships: per-phase univariate models (not RF; not a multivariate dBA equation).
+Participants: 11. Phases: WalkG, WalkU, BikeG, BikeU. Matched cap: 480 s.
+10 s env/physio: Y_z ~ dBA_z + (1|ParticipantID), corAR1(~ time_10s_step_integer | ParticipantID).
+Y: CSV transform (physio only) then within-person z within the phase; dBA z-scored within the phase.
+Psycho: one vote per person per phase; energy-mean dBA; BH on Spearman p; OLS z(vote)~z(dBA) for beta_std.
+BH: Benjamini-Hochberg, three families per phase (env / physio / psycho). Spoke iff q_FDR < 0.05.
+Comfort votes: higher = more comfortable. STAI calm/relaxed/content already reversed (higher = more anxiety).
+Random forest was not used.
+
+BH family sizes (FIT tests with finite p):
+  WalkG 1_env: family_size=13  BH spokes=1
+  WalkG 2_physio: family_size=26  BH spokes=0
+  WalkG 3_psycho: family_size=18  BH spokes=0
+  WalkU 1_env: family_size=13  BH spokes=1
+  WalkU 2_physio: family_size=26  BH spokes=0
+  WalkU 3_psycho: family_size=18  BH spokes=0
+  BikeG 1_env: family_size=13  BH spokes=1
+  BikeG 2_physio: family_size=25  BH spokes=0
+  BikeG 3_psycho: family_size=16  BH spokes=0
+  BikeU 1_env: family_size=13  BH spokes=4
+  BikeU 2_physio: family_size=25  BH spokes=0
+  BikeU 3_psycho: family_size=18  BH spokes=0
+
+Degenerate / not tested:
+  BikeG 2.23 Pupil diam.  status=DEGENERATE_FIT
+  BikeG 3.4 Odor comfort  status=CONSTANT
+  BikeG 3.8 Visual comfort  status=CONSTANT
+  BikeU 2.12 SDNN  status=DEGENERATE_FIT
+
+BH spokes (q_FDR < 0.05):
+  WalkG 1.3 Kelvin  beta_std=-0.0826  p=0.002161  q=0.0281
+  WalkU 1.12 UTCI  beta_std=-0.1308  p=0.0008909  q=0.01158
+  BikeG 1.13 Wind  beta_std=0.3717  p=1.259e-12  q=1.637e-11
+  BikeU 1.8 HUMIDEX  beta_std=0.0793  p=0.0003169  q=0.001444
+  BikeU 1.9 MRT  beta_std=0.1131  p=0.01236  q=0.04019
+  BikeU 1.11 Solar Gh  beta_std=0.1449  p=0.0003332  q=0.001444
+  BikeU 1.13 Wind  beta_std=0.4473  p=7.95e-26  q=1.034e-24

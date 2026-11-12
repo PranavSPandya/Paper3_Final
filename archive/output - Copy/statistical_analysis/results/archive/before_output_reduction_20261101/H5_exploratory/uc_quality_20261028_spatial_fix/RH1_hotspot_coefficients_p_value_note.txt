@@ -1,0 +1,3 @@
+RH1 hotspot_f fixed-effect coefficients (reference hotspot level omitted by contrast coding).
+p_value: raw two-sided; NOT FDR-adjusted across hotspot levels or outcomes.
+Compare to env_ucm_UTCI_c in H5_hotspot_weather_models.csv for the same outcome.

@@ -1,0 +1,9 @@
+"perception_outcome","dba_bin","utci_bin","n_phase_cells"
+"thermal_comfort","Quiet_lt65","Cool_leq26",8
+"thermal_comfort","Loud_geq65","Cool_leq26",11
+"thermal_comfort","Quiet_lt65","Hot_gt26",3
+"thermal_comfort","Loud_geq65","Hot_gt26",22
+"environmental_comfort","Quiet_lt65","Cool_leq26",8
+"environmental_comfort","Loud_geq65","Cool_leq26",11
+"environmental_comfort","Quiet_lt65","Hot_gt26",3
+"environmental_comfort","Loud_geq65","Hot_gt26",22

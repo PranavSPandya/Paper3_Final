@@ -1,0 +1,123 @@
+FILE: 10 Yousefinezhad2026 - highlighted.pdf
+PAGES: 12
+CHARS: 63861
+
+ustic exposure on human performance of healthy adults: simulation of traffic noise and thermal conditions in the urban environment Raziyeh Yousefinezhad1, Navid Jamchi1, Mohamad Amrolahi2, Seyed Ehsan
+---
+nal environmental settings are simultaneously exposed to environmental traffic noise and heat stress. These combined exposures may have adverse effects on physiological functions and cognitive performanc
+---
+ance. This study aimed to assess the effects of concurrent exposure to traffic noise and thermal stress under controlled laboratory conditions. In this crossover experimental study, 80 healthy participan
+---
+e conditions: (1) control (comfort), (2) thermal (WBGT = 30.62 °C), (3) traffic noise (75 dBA), and (4) combined exposure (WBGT = 30.62 °C and75 dBA). Physiological parameters including heart rate, blood
+---
+r selective attention) and n-back test (for working memory). Repeated-measures ANOVA was used for statistical analysis. Exposure to combined heat and traffic noise produced the most pronounced physiologi
+---
+ANOVA was used for statistical analysis. Exposure to combined heat and traffic noise produced the most pronounced physiological and cognitive alterations among all test conditions. Core temperature rose
+---
+erations among all test conditions. Core temperature rose significantly during noise (p = 0.008) and combined exposure (p = 0.007). Diastolic blood pressure increased under thermal (p = 0.001) and combin
+---
+noise (p = 0.008) and combined exposure (p = 0.007). Diastolic blood pressure increased under thermal (p = 0.001) and combined conditions (p < 0.001). Heart rate also elevated during combined exposure (p
+---
+nd mean reaction time at level 1 (p < 0.001). Simultaneous exposure to traffic noise and thermal stress amplifies both physiological strain and cognitive impairment compared to single exposures. These fi
+---
+level 1 (p < 0.001). Simultaneous exposure to traffic noise and thermal stress amplifies both physiological strain and cognitive impairment compared to single exposures. These findings highlight the impo
+---
+ational environments, especially in warm and noisy settings. Keywords Traffic noise, Themal stress, Environmental exposure, WBGT, Performance Exposure to noise pollution, particularly traffic noise, impa
+---
+fic noise, Themal stress, Environmental exposure, WBGT, Performance Exposure to noise pollution, particularly traffic noise, impairs cognitive functions, leading to reduced accuracy in brain activities, c
+---
+l exposure, WBGT, Performance Exposure to noise pollution, particularly traffic noise, impairs cognitive functions, leading to reduced accuracy in brain activities, compromised cognitive coordination, and
+---
+d cognitive coordination, and disruptions in communication and memory. Traffic noise is recognized as an environmental stressor that degrades cognitive performance during mental processing and elevates t
+---
+for emergency response during driving—are significantly impaired under traffic noise exposure1,2. This attentional impairment substantially diminishes individual performance and, with prolonged exposure,
+---
+ure, may elevate the incidence of traffic accidents3. Exposure to environmental noise (e.g., traffic) induces detrimental changes in precision, attention, and processing speed, concurrently heightening p
+---
+ently heightening psychological stress4. As an environmental stressor, traffic noise contributes to public health issues among urban populations, including physiological and psychological disorders. Phys
+---
+xerts deleterious effects on cardiovascular activity, elevates blood pressure, increases myocardial infarction risk, and disrupts sympathetic 1Department of Occupational Health Engineering, Faculty of Heal
+---
+lly, it induces endocrine system dysfunction, elevates serum lipid levels, and increases norepinephrine secretion5. Transportation-related noise pollution is further established as a significant modifier o
+---
+lipid levels, and increases norepinephrine secretion5. Transportation-related noise pollution is further established as a significant modifier of cognitive and mental performance in exposed populations6
+---
+al. (2015) demonstrated elevated stress levels in subjects exposed to traffic noise through electroencephalographic (EEG) analysis. Research indicates that increased alpha wave amplitude (µV) correlates
+---
+noise through electroencephalographic (EEG) analysis. Research indicates that increased alpha wave amplitude (µV) correlates with enhanced cognitive performance, whereas attenuation reflects heightened ps
+---
+under elevated ambient temperatures. Critically, thermal stress may potentiate noise-induced health effects through synergistic interactions10. Notably, methodological limitations in single-stressor cogn
+---
+thermal stress may potentiate noise-induced health effects through synergistic interactions10. Notably, methodological limitations in single-stressor cognitive models have drawn increasing criticism in recent
+---
+ably, methodological limitations in single-stressor cognitive models have drawn increasing criticism in recent years. Studies examining isolated stressors exhibit significant contradictions, methodological
+---
+demonstrated that speech intelligibility across varying sound pressure levels (SPL) is significantly modulated by ambient thermal conditions13. In a simultaneous noise-climate exposure study, Abbasi et
+---
+is significantly modulated by ambient thermal conditions13. In a simultaneous noise-climate exposure study, Abbasi et al. (2020) observed that high-intensity noise exposure (compared to low-intensity) r
+---
+oise-climate exposure study, Abbasi et al. (2020) observed that high-intensity noise exposure (compared to low-intensity) reduced alpha wave amplitude (µV) across all temperature regimes14. This amplitud
+---
+experiments in a climate chamber, exposing 14 healthy young adults to combined noise and thermal stimuli. They concluded that heat stress exacerbates noise-induced temporary threshold shift (TTS)15. Furt
+---
+ombined noise and thermal stimuli. They concluded that heat stress exacerbates noise-induced temporary threshold shift (TTS)15. Furthermore, studies revealed that thermal comfort was significantly compro
+---
+dies revealed that thermal comfort was significantly compromised by concurrent noise exposure during combined stressor conditions16,17. Over recent decades, the impact of environmental factors on human co
+---
+-domain approaches and investigated combined environmental stressors, including interactions between thermal conditions and noise18,19, evidence regarding their joint effects on human responses remains heterog
+---
+environmental stressors, including interactions between thermal conditions and noise18,19, evidence regarding their joint effects on human responses remains heterogeneous. While some investigations have
+---
+ses remains heterogeneous. While some investigations have reported significant interactions between noise and thermal stress on physiological, perceptual, or cognitive outcomes particularly under moderate-to-h
+---
+neous. While some investigations have reported significant interactions between noise and thermal stress on physiological, perceptual, or cognitive outcomes particularly under moderate-to-high exposure l
+---
+moderate-to-high exposure levels13,14,20, Also others have not observed clear interaction effects, potentially due to differences in sound pressure levels, temperature ranges, task demands, or controlled offi
+---
+ly emphasizing subjective ratings of comfort, annoyance, or performance (e.g., thermal sensation votes, noise annoyance scales), and only partially integrating objective physiological and cognitive indicators during
+---
+ratings of comfort, annoyance, or performance (e.g., thermal sensation votes, noise annoyance scales), and only partially integrating objective physiological and cognitive indicators during simultaneous
+---
+easurable functional impairment. Unlike prior work23, which primarily examined thermal comfort interactions in general indoor environments using subjective assessments among healthy adults, the present study inves
+---
+onal impairment. Unlike prior work23, which primarily examined thermal comfort interactions in general indoor environments using subjective assessments among healthy adults, the present study investigates traf
+---
+ssessments among healthy adults, the present study investigates traffic-derived noise combined with heat stress on a broader array of objective physiological and task-based cognitive performance measures
+---
+four experimental conditions (control comfort, thermal WBGT = 30.6 °C, traffic noise 75 dBA, combined exposure) on separate days (maximum one scenario per day) with randomized scenario sequence to elimin
+---
+curate execution of the experiments, despite the time-intensive and sometimes repetitive nature of the testing procedures. Consequently, all participants successfully completed the experimental sessions
+---
+os. (1) control (comfort), (2) thermal exposure (WBGT = 30.62 °C), (3) traffic noise exposure (75 dBA), and (4) combined or simultaneous exposure (WBGT = 30.62 °C C and75 dBA). Background noise levels we
+---
+4) combined or simultaneous exposure (WBGT = 30.62 °C C and75 dBA). Background noise levels were measured in the acoustically treated listening room during quiet control (no traffic noise stimulus) and t
+---
+ed in the acoustically treated listening room during quiet control (no traffic noise stimulus) and thermal-only exposure conditions using the Casella CEL-450 sound level meter (Class 1, IEC 61672-1:2013)
+---
+-450 sound level meter (Class 1, IEC 61672-1:2013) at ear height (120 cm). Mean LAeq values were 35.5 ± 2.2 dBA (quiet control) and 27 ± 1.1 dBA (thermal-only, WBGT = 30.62 °C), confirming effective acou
+---
+nfirming effective acoustic isolation (< 30 dBA) well below the 75 dBA traffic noise stimulus across all experimental scenarios. Each scenario was administered to participants on separate days (maximum o
+---
+d acoustic control systems: (1) control (comfort: thermoneutral and background noise), (2) thermal exposure only (WBGT = 30.62 °C, background noise < 40 dBA), (3) traffic noise exposure only (75 dBA LAeq
+---
+and background noise), (2) thermal exposure only (WBGT = 30.62 °C, background noise < 40 dBA), (3) traffic noise exposure only (75 dBA LAeq, thermoneutral WBGT), and (4) combined exposure (WBGT = 30.62
+---
+hermal exposure only (WBGT = 30.62 °C, background noise < 40 dBA), (3) traffic noise exposure only (75 dBA LAeq, thermoneutral WBGT), and (4) combined exposure (WBGT = 30.62 °C + 75 dBA LAeq simultaneous
+---
+30.62 °C, background noise < 40 dBA), (3) traffic noise exposure only (75 dBA LAeq, thermoneutral WBGT), and (4) combined exposure (WBGT = 30.62 °C + 75 dBA LAeq simultaneously). For each scenario, the
+---
+LAeq, thermoneutral WBGT), and (4) combined exposure (WBGT = 30.62 °C + 75 dBA LAeq simultaneously). For each scenario, the chamber was specifically configured by activating the relevant thermal and acou
+---
+nistrative workstation with an ergonomic office chair, work desk, and visual display terminal for functional performance testing. Interior surfaces (walls and floor) were constructed of wood, with the
+---
+s did not influence physiological or cognitive outcomes beyond target WBGT and noise exposures. Reproduction and anechoic chamber (traffic noise survey, produce and playback) Prior to generating and prese
+---
+ond target WBGT and noise exposures. Reproduction and anechoic chamber (traffic noise survey, produce and playback) Prior to generating and presenting urban traffic noise (specific to Sari) to participants
+---
+survey, produce and playback) Prior to generating and presenting urban traffic noise (specific to Sari) to participants, field measurements of traffic noise across Sari’s streets were required. Measureme
+---
+raffic noise (specific to Sari) to participants, field measurements of traffic noise across Sari’s streets were required. Measurements were conducted on Saturdays (first workday) from 8:00–11:00 AM to re
+---
+flow in congested urban corridors (12 measurement points). Based on community noise reports, eleven high-traffic locations were selected for 3-h recording sessions. Traffic noise was captured during sum
+---
+leven high-traffic locations were selected for 3-h recording sessions. Traffic noise was captured during summer under controlled conditions: sunny weather, windless, dry asphalt, with vehicles maintainin

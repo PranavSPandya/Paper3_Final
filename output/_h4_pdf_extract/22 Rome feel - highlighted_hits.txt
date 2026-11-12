@@ -1,0 +1,123 @@
+FILE: 22 Rome feel - highlighted.pdf
+PAGES: 15
+CHARS: 95722
+
+ypologies such as exposed piazzas, tree-canopied riverbanks, enclosed gardens. Thermal comfort indices alone failed to predict stress, yet multi-domain models integrating thermal, air quality, and acoustic paramet
+---
+50 [1], intensifying challenges in designing built environ­ ments that maintain thermal comfort, air quality, and acoustic perfor­ mance under changing climatic conditions. While initiatives like C40 Abbreviation:
+---
+e under changing climatic conditions. While initiatives like C40 Abbreviation: UTCI, Universal Thermal Climate Index; CCA, Climate Change Adaptation; T, Toughness; AC, Ability to Cope; RC, Recovery Capac
+---
+UHI, Urban Heat Island Effect; LST, Land Surface Tem­ perature; ART, Attention Restoration Theory; SRT, Stress Recovery Theory; GIS, Geographic Information System; IoT, Internet of Things; LOPO, Leave-One- Par
+---
+compound environmental stressors such as heat combined with air pollution and noise can produce interaction effects unpredictable from single-stressor models, necessi­ tating integrated multi-domain app
+---
+ntal stressors such as heat combined with air pollution and noise can produce interaction effects unpredictable from single-stressor models, necessi­ tating integrated multi-domain approaches [5,6]. Structural
+---
+omain approaches [5,6]. Structural equation modeling reveals that audio-visual interactions (β = 0.57) of environ­ mental satisfaction, with thermal, acoustic, and visual domains oper­ ating through bidirection
+---
+roclimates (temperature, CO2, PM). Higher CO2 and temperatures correlated with increased EDA features like Conductance Level (CL), indicating stress; machine learning confirmed temperature and air quality
+---
+g confirmed temperature and air quality's role in physiological well-being and thermal comfort [12]. However, population-targeted urban sensing approaches perpetuate the limitation of treating vulnerability as sp
+---
+thermal comfort [12]. However, population-targeted urban sensing approaches perpetuate the limitation of treating vulnerability as spatially uniform rather than recognizing heterogeneous exposure risk
+---
+ly fixed con­ straints amenable to Geographical Information System (GIS)-based thermal comfort modeling and soundscape mapping [16,17], human physiological adaptation remains highly flexible and individualized, n
+---
+models predict acute stress responses significantly better than single-domain thermal comfort indices, (2) quantify heterogeneous resilience profiles among physically similar individuals, examining whether perso
+---
+al scales. For example, dynamic recovery [21] quantifies acute physio­ logical restoration rates post-exposure, allostatic load (long-­ term-exposure [22]) captures cumulative regulatory system dysregulat
+---
+n-extreme exposure where multisensory interventions can support physiological restoration [23]. Three research questions guide this investigation. First, do multi-domain environmental models integrating therm
+---
+vidual physiological stress re­ sponses significantly better than single-domain thermal comfort indices? This question addresses whether the integrated sensing approach provides superior explanatory power compared
+---
+terature suggests that extreme heat often mask subtle multi-domain effects and interactions between environmental factors, making Fig. 1. Methodology. Fig. 2. Case study area and overview of the multi-domain c
+---
+ding points of the transect are represented in Fig. 2. Point B, located in St. Peter’s Square, Vatican City, is an open, highly exposed environment with minimal vegetation, with LST = 43.9 ◦C and UAQI=
+---
+n a 90◦XY stereo format, ensuring directional sound capture with reduced side noise. 2.1.3. Subjective measures Questionnaires administered at four urban settings (Points A, B, C, D) captured subjective
+---
+ion (perceived control). 2.2. Data processing Universal Thermal Climate Index (UTCI) calculations were per­ formed using the wearable sensor data combining air temperature, relative humidity, solar radi
+---
+data is smoothed using a low-pass Butterworth filter to reduce high-frequency noise, with a carefully chosen cutoff frequency relative to the Nyquist frequency to preserve relevant trends [41]. This fi
+---
+ation assessed linear relationships for normally distributed vari­ ables, while Spearman rank correlation captured monotonic associa­ tions for non-normal distributions [43]. This exploratory analysis addres
+---
+eshold, ν = recovery modulation) that can be extended to multi-domain stressor interactions unlike linear models (Fig. 3). Critically, the model enables multi-domain extension that preserves individual parame
+---
+extension that preserves individual parameter interpretation while revealing interaction effects, allowing quantification of how thermal stress modulates air quality sensitivity, or how acoustic load influen
+---
+h particular emphasis on how fluctuations in air temperature, air quality, and noise levels affect BPM and EDA [47,48], the human response to increases or decreases in environmental stress can be modele
+---
+ir quality, and noise levels affect BPM and EDA [47,48], the human response to increases or decreases in environmental stress can be modeled to reveal how multi­ ple stressors simultaneously affect distinc
+---
+al stress, describing how slowly physiological responses escalate as stressors increase. Higher toughness values indicate individuals who maintain baseline function despite rising thermal stress requiring
+---
+arameters: A, K, B, M, ν) tested seven environmental predictors independently: UTCI, CO₂, average PM, overall sound level (dBFS), and three frequency-specific acoustic mea­ sures (low-frequency: <500 Hz
+---
+coustic mea­ sures (low-frequency: <500 Hz representing traffic and mechanical noise; mid-frequency: 500–2000 Hz capturing human voices and urban activity; high-frequency: >2000 Hz indicating birds, wind
+---
+8 parameters: A, K, B₁, B₂, M₁, M₂, Q, ν) tested eleven pairwise combinations: UTCI paired with CO₂, PM, and each acoustic frequency band; CO₂ paired with each acoustic frequency band; and PM paired wi
+---
+deriving from HR and EDA data entries were compared across zones using one-way ANOVA. Zones were then ranked by mean resil­ ience to represent a gradient from optimal adaptive environments to low-capacit
+---
+ective comfort vote data. Point A was characterized as warm and humid based on thermal sensation metrics and was perceived as slightly to extremely uncomfortable in terms of thermal and air quality condi­ tions by 8
+---
+f participants. During each session, thermal conditions were monitored through UTCI readings, ranging from 24.84 ± 0.88 ◦C to 30.20 ± 0.67 ◦C. Physiological responses were tracked via heart rate (BPM:
+---
+ch participant individually, examining relationships between target variables (UTCI, BPM, and EDA) and environmental parameters across all domains (thermal, acoustic, air quality), one physiological pa
+---
+ons observed across multiple participants (Fig. 4). Specifically, as expected, UTCI exhibited the most consistent relation­ ship with air temperature, with correlation coefficients ranging from r = 0.53
+---
+e (r = 0.22), suggesting that contextual factors may modulate its influence on UTCI. Particularly noteworthy were the divergent correlations with air quality parameters. While some participants UTCI sh
+---
+he divergent correlations with air quality parameters. While some participants UTCI showed strong positive correlations with PM (e.g., Participant 3: r ≈0.60–0.66), others demonstrated moderate negativ
+---
+ndividual correlation coefficients of physiological responses (BPM and EDA) and UTCI to multiple environmental stressors during the experimental campaign. Annotated correlations indicate key values discu
+---
+imental campaign. Annotated correlations indicate key values discussed in text: UTCI-air temperature, UTCI-humidity, UTCI-particulate matter for Participant 3 and Participant 4, BPM-sound level, BPM-adap
+---
+tated correlations indicate key values discussed in text: UTCI-air temperature, UTCI-humidity, UTCI-particulate matter for Participant 3 and Participant 4, BPM-sound level, BPM-adaptation access for 4 pa
+---
+ons indicate key values discussed in text: UTCI-air temperature, UTCI-humidity, UTCI-particulate matter for Participant 3 and Participant 4, BPM-sound level, BPM-adaptation access for 4 participants, EDA
+---
+concen­ tration, sound levels, and average particulate matter concentration display varying degrees of impact on heart rate, as reflected by tough­ ness, recovery capacity, and adaptation duration summ
+---
+at auditory stimuli may be a key determinant of physiological stress. Notably, UTCI, low-frequency sounds and relative sound level measurements did not produce reliable resilience models for this parti
+---
+eference participant as an example for our multi- domain model (Table 3), when UTCI is paired with CO₂ concentration, BPM response shows relatively high toughness (0.294) but zero recovery capacity, su
+---
+stem maintains initial stability but cannot adapt over time. In contrast, when UTCI interacts with average low frequency sounds, we observe a much lower toughness (0.098) but significantly higher recov
+---
+(0.099) and high recovery capacity (1.469), suggesting that this multi-domain interaction initially challenges physiological stability but allows for robust recovery. However, with mid-frequency sounds, the
+---
+e missed in single-domain analyses. Particularly noteworthy is the average PM interaction with high-frequency sounds, which shows the highest toughness (0.259) and recovery capacity (3.348) values among all
+---
+ting that different environmental pairings affect physiology in distinct ways. UTCI emerges as the dominant modulator across most interactions. The strongest predictor of physio­ logical response is the
+---
+hysiology in distinct ways. UTCI emerges as the dominant modulator across most interactions. The strongest predictor of physio­ logical response is the UTCI–particulate matter pairing (R² = 0.345). Temperature
+---
+s most interactions. The strongest predictor of physio­ logical response is the UTCI–particulate matter pairing (R² = 0.345). Temperature–PM interactions (R² = 0.34) show poor initial tolerance (T = 0.0
+---
+l response is the UTCI–particulate matter pairing (R² = 0.345). Temperature–PM interactions (R² = 0.34) show poor initial tolerance (T = 0.010) but moderate recovery (RC = 0.160), suggesting adaptive ca­ pacit
+---
+cov­ ery: CO₂–sound pairings achieve RC = 1.469 with T = 0.099, while PM–sound interactions produce the most resilient profile overall (T = 0.259; RC = 3.348). The relatively high R² values for CO₂ paired with
+---
+values for CO₂ paired with sound frequencies (0.238, 0.210, 0.117) compared to UTCI with sound frequencies (0.036, 0.077, 0.191) suggest that CO₂ may have more consistent interactive effects with acous
+---
+nt physiological responses, while showing greater vulnerability to thermal-CO₂ interactions despite initial Fig. 5. Resilience Analysis of Physiological Response for the reference participant. Time series (top
+---
+le domain analysis for the reference participant. Variable T RC AC R2 A K B M ν UTCI - - - - - - - - - CO₂ 0.21 0.79 39 0.18 11.44 16.42 4.72 357.31 3.75 PM 0.12 0 59.5 0.06 14.40 16.80 7.77 17.90 0 Sound
+---
+analysis for the reference participant. Domains T RC AC R² A K B1 B2 M1 M2 Q Nu UTCI vs CO2 0.29 0 61.33 0.19 - 87.62 3.396 0 0.38 0.43 0 0 UTCI vs PM 0.01 0.16 61.33 0.34 91.01 114.62 0 99.94 0 0.73 15.9
+---
+K B1 B2 M1 M2 Q Nu UTCI vs CO2 0.29 0 61.33 0.19 - 87.62 3.396 0 0.38 0.43 0 0 UTCI vs PM 0.01 0.16 61.33 0.34 91.01 114.62 0 99.94 0 0.73 15.96 0.05 UTCI vs Low f Sounds 0.09 1.49 61.33 0.03 92.60 102.2
+---
+0.43 0 0 UTCI vs PM 0.01 0.16 61.33 0.34 91.01 114.62 0 99.94 0 0.73 15.96 0.05 UTCI vs Low f Sounds 0.09 1.49 61.33 0.03 92.60 102.29 0 10.25 0.53 0.62 15.36 2.09 UTCI vs Mid f Sounds 0.01 0.09 61.33 0.0
+---
+vs Low f Sounds 0.09 1.49 61.33 0.03 92.60 102.29 0 10.25 0.53 0.62 15.36 2.09 UTCI vs Mid f Sounds 0.01 0.09 61.33 0.07 92.16 100.91 0 52.21 0.51 0.37 4.90 0.01 UTCI vs High f Sounds 0.29 0 61.33 0.19 -
+---
+I vs Mid f Sounds 0.01 0.09 61.33 0.07 92.16 100.91 0 52.21 0.51 0.37 4.90 0.01 UTCI vs High f Sounds 0.29 0 61.33 0.19 - 86.99 3.19 0.23 0.29 0.33 0 0.02 CO2 vs Low f Sounds 0.01 0.75 61.16 0.23 91.28 11
+---
+ng highlights the importance of considering also environmental pairings beyond thermal comfort in multi-domain comfort assessment. 3.4. Personalized adaptation zone classification Using 164 multi-domain observatio

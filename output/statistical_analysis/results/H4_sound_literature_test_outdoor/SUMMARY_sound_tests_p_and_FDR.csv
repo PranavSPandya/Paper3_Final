@@ -1,0 +1,8 @@
+"sound_variable","paper","test","paper_decision_rule","n_tests","n_paper_rule_met","outcomes_paper_rule_met","n_significant_unadjusted","n_significant_adjusted","significant_adjusted_outcomes"
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase BikeU","p < 0.05","6","0",,"0","0",
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase WalkU","p < 0.05","6","1","acoustic_comfort","1","0",
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase BikeG","p < 0.05","3","1","acoustic_comfort","1","0",
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase WalkG","p < 0.05","6","0",,"0","0",
+"ucm_SND_dBA","Wu 2025","Published objective additive predictor set; repeated-participant adaptation","p < 0.05","2","0",,"0","0",
+"perceived acoustic comfort","Wu 2025","Published subjective additive predictor set; repeated-participant adaptation","p < 0.05","2","1","overall_comfort","1","0",
+"ucm_SND_dBA","Xu 2026","Pearson sound-comfort association (phase-stratified)","p < 0.05","8","0",,"0","0",

@@ -1,0 +1,17 @@
+"PhaseID","dominance_class","n_epochs","n_participants"
+"BikeU","S",284,11
+"BikeU","T",167,10
+"BikeU","BS",4,2
+"BikeU","TS",69,11
+"BikeU","A",4,3
+"WalkU","S",156,11
+"WalkU","B",22,1
+"WalkU","BS",350,10
+"BikeG","S",124,11
+"BikeG","T",228,11
+"BikeG","BS",1,1
+"BikeG","TS",173,11
+"WalkG","S",59,8
+"WalkG","T",324,11
+"WalkG","TS",140,11
+"WalkG","A",1,1

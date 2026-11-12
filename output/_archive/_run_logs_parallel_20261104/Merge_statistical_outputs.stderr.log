@@ -1,0 +1,4 @@
+Error in `[[<-.data.frame`(`*tmp*`, column_name, value = NA_character_) : 
+  replacement has 1 row, data has 0
+Calls: lapply -> FUN -> [[<- -> [[<-.data.frame
+Execution halted

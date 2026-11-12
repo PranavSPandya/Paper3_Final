@@ -1,0 +1,5 @@
+"paper","phases","n_epochs","n_participants","event_rate","event_rate_loud","event_rate_quiet","beta_loud65","se","z","p","OR_loud_vs_quiet","note","q_BH"
+"Mahecha2018","BikeU+BikeG",1056,11,0.523674242424242,0.544014084507042,0.5,0.244971555067264,0.147684214464976,1.65875246690877,0.0971656821611441,1.27758497186944," | boundary (singular) fit: see help('isSingular')
+",0.0971656821611441
+"Teixeira2020","BikeU+WalkU+BikeG+WalkG",2112,11,0.54592803030303,0.5662100456621,0.524090462143559,0.160368452074411,0.101203328620152,1.58461637834388,0.113053521418186,1.17394333317247," | boundary (singular) fit: see help('isSingular')
+",0.113053521418186

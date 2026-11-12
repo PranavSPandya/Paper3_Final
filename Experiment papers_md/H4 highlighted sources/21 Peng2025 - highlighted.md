@@ -1,0 +1,209 @@
+[image]
+Rotterdam & online | 7–11 July 2025
+Rotterdam & online | 7–11 July 2025
+Rotterdam & online | 7–11 July 2025
+
+•
+•  Programme
+
+Session overview
+Browse by session
+
+•  Information for
+
+Authors
+
+•  About
+
+Scientiﬁc committee
+Local organizing committee
+Rules of conduct
+Licence & copyright
+
+•
+
+Abstract ICUC12-816
+
+1. Home
+2. HH
+3. HH2
+4. ICUC12-816
+
+Multiple terms: term1 term2
+red apples
+returns results with all terms like:
+Fructose levels in red and green apples
+
+Precise match in quotes: "term1 term2"
+"red apples"
+returns results matching exactly like:
+Anthocyanin biosynthesis in red apples
+
+Exclude a term with -: term1 -term2
+apples -red
+returns results containing apples but not red:
+Malic acid in green apples
+
+Close
+
+hits for "" in
+
+Search in:
+
+○
+○ All PGs
+There are no results for your search term.
+
+Network problems
+
+We are sorry, but your search could not be completed due to
+network problems. Please try again later.
+
+Server timeout
+
+We are sorry, but your search could not be completed due to server
+timeouts. Please try again later.
+
+Invalid search term
+
+We are sorry, but your search term seems to be invalid. Please
+reﬁne your search.
+
+Too many requests
+
+We are sorry, but we have received too many parallel search
+requests. Please try again later.
+
+Empty search term
+
+You have applied the search with an empty search term. Please
+revisit and try again.
+Searching
+[image]
+[Back] [Session HH2]
+ICUC12-816, updated on 21 May 2025
+https://doi.org/10.5194/icuc12-816
+12th International Conference on Urban Climate
+© Author(s) 2025. This work is distributed under
+the Creative Commons Attribution 4.0 License.
+
+Coping with Urban Heat and Noise: A case study at Schiphol
+Airport
+Zhikai Peng[image]1,2, Martijn Lugten1,2, Gustaf Wuite1,2, Wei
+Luo3, and Daniele Santucci4
+Zhikai Peng et al.
+
+•  1Delft University of Technology, Faculteit Bouwkunde, Delft,
+
+Netherlands (z.p.peng@tudelft.nl)
+
+•  2Amsterdam Institute for Advanced Metropolitan Solutions
+
+(AMS), Amsterdam, Netherlands
+
+•  3Eindhoven University of Technology, Eindhoven,
+
+Netherlands
+
+•  4RWTH Aachen University, Aachen, Germany
+
+(santucci@gbt.arch.rwth-aachen.de)
+
+Urban heat stress and noise signiﬁcantly impact the health and
+well-being of urban inhabitants. This biometeorological study
+analyses microclimate, sound, and human perceptions in three
+vegetative courtyards near Schiphol Airport, Amsterdam. The
+courtyards operate with sixteen Kestrel heat-stress trackers and six
+Munisense microphones for year-round microclimate and
+soundscape monitoring to inform urban design strategies to
+improve pedestrian thermal and acoustical comfort.
+
+A human measurement campaign was conducted on 23-July-2024,
+
+involving 24 student participants (aged 22–28) equipped with skin-
+temperature sensors (iButtons) and heart-rate wristbands (Polar).
+They completed mobile questionnaires on ‘right-here-right-now’
+comfort perceptions during three transect walks following a stop-
+and-go protocol (3-minute intervals, total duration: 60 minutes).
+Walks spanned three courtyards: one with a vertical vegetative
+wall, another with 36 Tilia × europaea potted trees, and a third
+featuring a slanted roof with an overhang. The study examines the
+interplay between heat, noise, and environmental perceptions
+across courtyard designs.
+
+Findings suggest overhangs provide signiﬁcant cooling (UTCI -10°C)
+and noise reduction due to sound shadowing. Slanted roofs scatter
+aircraft noise (LAeq -5 dB(A)) but have minimal cooling eﬀects.
+Green walls diﬀract sound but reﬂect short-wave radiation, limiting
+cooling. Trees intercept solar heat eﬀectively but oﬀer limited
+aircraft noise reduction due to foliage gaps.
+
+Perceptual analyses indicate the tree courtyard oﬀered optimal
+thermal (TSV) and acoustical comfort (ASV). A mixed-linear
+regression analysis tested ﬁve hypotheses on TSV, ASV, UTCI, and
+LAeq. One hypothesis was rejected: heat stress and aircraft noise do
+not confound acoustical perception. Two were partially supported:
+thermal and/or acoustical perception may confound acoustical
+perception. Two were fully supported: aircraft noise can confound
+thermal perceptions and acoustical perception can confound
+thermal perception.
+
+The discussions and conclusions present evidence-based design and
+planning strategies to mitigate environmental stressors and enhance
+pedestrians' psychological and behavioural adaptations to heat and
+noise in urban environments.
+
+How to cite: Peng, Z., Lugten, M., Wuite, G., Luo, W., and Santucci,
+D.: Coping with Urban Heat and Noise: A case study at Schiphol
+Airport, 12th International Conference on Urban Climate,
+Rotterdam, The Netherlands, 7–11 Jul 2025, ICUC12-816, https://
+doi.org/10.5194/icuc12-816, 2025.
+
+Share
+[image]
+
+[image]
+[image]
+[image]
+[image]
+
+Please decide on your access
+
+Please use the buttons below to download the supplementary
+material or to visit the external website where the presentation is
+linked. Regarding the external link, please note that Copernicus
+Meetings cannot accept any liability for the content and the website
+you will visit.
+
+Download supplementary material ﬁle Visit supplementary material
+link Cancel
+
+Forward to presentation link
+
+You are going to open an external link to the presentation as
+indicated by the authors. Copernicus Meetings cannot accept any
+liability for the content and the website you will visit.
+
+OK Cancel
+
+We are sorry, but presentations are only available for users who
+registered for the conference. Thank you.
+
+OK
+
+Supporters & sponsors
+
+[image]
+[image]
+[image]
+[image]
+[image] [image] [image] [image] [image]
+
+•  All site content, except where otherwise noted, is licensed
+
+under the Creative Commons Attribution 4.0 License.
+
+•  Imprint
+•  |
+•  Data protection
+

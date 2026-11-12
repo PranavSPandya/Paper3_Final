@@ -1,0 +1,39 @@
+FILE: 21 Peng2025 - highlighted.pdf
+PAGES: 6
+CHARS: 5815
+
+under the Creative Commons Attribution 4.0 License. Coping with Urban Heat and Noise: A case study at Schiphol Airport Zhikai Peng[image]1,2, Martijn Lugten1,2, Gustaf Wuite1,2, Wei Luo3, and Daniele Sant
+---
+rsity, Aachen, Germany (santucci@gbt.arch.rwth-aachen.de) Urban heat stress and noise signiﬁcantly impact the health and well-being of urban inhabitants. This biometeorological study analyses microclimate,
+---
+a slanted roof with an overhang. The study examines the interplay between heat, noise, and environmental perceptions across courtyard designs. Findings suggest overhangs provide signiﬁcant cooling (UTCI -1
+---
+cross courtyard designs. Findings suggest overhangs provide signiﬁcant cooling (UTCI -10°C) and noise reduction due to sound shadowing. Slanted roofs scatter aircraft noise (LAeq -5 dB(A)) but have minima
+---
+designs. Findings suggest overhangs provide signiﬁcant cooling (UTCI -10°C) and noise reduction due to sound shadowing. Slanted roofs scatter aircraft noise (LAeq -5 dB(A)) but have minimal cooling eﬀects.
+---
+0°C) and noise reduction due to sound shadowing. Slanted roofs scatter aircraft noise (LAeq -5 dB(A)) but have minimal cooling eﬀects. Green walls diﬀract sound but reﬂect short-wave radiation, limiting co
+---
+d noise reduction due to sound shadowing. Slanted roofs scatter aircraft noise (LAeq -5 dB(A)) but have minimal cooling eﬀects. Green walls diﬀract sound but reﬂect short-wave radiation, limiting cooling.
+---
+miting cooling. Trees intercept solar heat eﬀectively but oﬀer limited aircraft noise reduction due to foliage gaps. Perceptual analyses indicate the tree courtyard oﬀered optimal thermal (TSV) and acousti
+---
+e gaps. Perceptual analyses indicate the tree courtyard oﬀered optimal thermal (TSV) and acoustical comfort (ASV). A mixed-linear regression analysis tested ﬁve hypotheses on TSV, ASV, UTCI, and LAeq. On
+---
+the tree courtyard oﬀered optimal thermal (TSV) and acoustical comfort (ASV). A mixed-linear regression analysis tested ﬁve hypotheses on TSV, ASV, UTCI, and LAeq. One hypothesis was rejected: heat stress and air
+---
+ical comfort (ASV). A mixed-linear regression analysis tested ﬁve hypotheses on TSV, ASV, UTCI, and LAeq. One hypothesis was rejected: heat stress and aircraft noise do not confound acoustical perception
+---
+rt (ASV). A mixed-linear regression analysis tested ﬁve hypotheses on TSV, ASV, UTCI, and LAeq. One hypothesis was rejected: heat stress and aircraft noise do not confound acoustical perception. Two were
+---
+A mixed-linear regression analysis tested ﬁve hypotheses on TSV, ASV, UTCI, and LAeq. One hypothesis was rejected: heat stress and aircraft noise do not confound acoustical perception. Two were partially
+---
+near regression analysis tested ﬁve hypotheses on TSV, ASV, UTCI, and LAeq. One hypothesis was rejected: heat stress and aircraft noise do not confound acoustical perception. Two were partially supported: therm
+---
+TSV, ASV, UTCI, and LAeq. One hypothesis was rejected: heat stress and aircraft noise do not confound acoustical perception. Two were partially supported: thermal and/or acoustical perception may confound
+---
+rception may confound acoustical perception. Two were fully supported: aircraft noise can confound thermal perceptions and acoustical perception can confound thermal perception. The discussions and conclus
+---
+and enhance pedestrians' psychological and behavioural adaptations to heat and noise in urban environments. How to cite: Peng, Z., Lugten, M., Wuite, G., Luo, W., and Santucci, D.: Coping with Urban Heat
+---
+., Lugten, M., Wuite, G., Luo, W., and Santucci, D.: Coping with Urban Heat and Noise: A case study at Schiphol Airport, 12th International Conference on Urban Climate, Rotterdam, The Netherlands, 7–11 Jul

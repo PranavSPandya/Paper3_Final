@@ -1,0 +1,575 @@
+
+
+===== PAGE 1 =====
+Assessment of Effects of Concomitant Exposure to Sound, Heat, and Physical
+Workload Changes on Physiological Parameters in Five Different Combination
+Modes, a Controlled Laboratory Study
+Hossein Molaeifar1, Farahnaz Khajehnasiri2, Kiana Nikeghbal3 and Zahra Zamanian1,*
+1Department of Occupational Health, School of Health, Shiraz University of Medical Sciences, Shiraz, Iran
+2Department of Community Medicine, School of Medicine, Tehran University of Medical Sciences, Tehran, Iran
+3Department of Oral and Maxillofacial Radiology, School of Dentistry, Shahrekord University of Medical Sciences, Shahrekord, Iran
+Corresponding Author: Zahra Zamanian. Email: zamanianz@sums.ac.ir
+Received: 12 October 2019; Accepted: 13 April 2020
+Abstract: Exposure to sound, heat, and increased physical workload can change
+physiological parameters. This study was conducted to evaluate the effect of
+concomitant exposure to sound, heat, and physical workload changes on physio-
+logical parameters in controlled laboratory conditions. This experimental cross-
+sectional study was conducted in 35 male university students with a mean age
+of 25.75 years and a mean BMI of 22.69 kg/m2. Systolic and diastolic blood pres-
+sure and heart rate were measured after 15 min rest in the laboratory, 5 and 10 min
+after starting the experiment, and then after 20 min in controlled laboratory con-
+ditions in ﬁve combination modes. The combination modes were (Sound: 65 dB,
+WBGT: 22°C, Speed: 1.7, Slope: 10%), (Sound: 65 dB, WBGT: 22°C, Speed:
+3.4, Slope: 14%), (Sound: 95 dB, WBGT: 22°C, Speed: 1.7, Slope: 10%), (Sound:
+65 dB, WBGT: 32°C, Speed: 1.7, Slope: 10%), and (Sound: 95 dB, WBGT: 32°C,
+Speed: 3.4, Slope: 14%). Mixed model analysis and paired t-test were applied for
+analysis. The results showed that the mean physiological parameters (Systolic and
+diastolic blood pressure and heart rate) increased when different combination
+modes worsened (Sound from 65 to 95 dB, WBGT from 22°C to 32°C, speed
+from 1.7 to 3.4, and slope from 10% to 14%, and when sound: 95 dB, WBGT:
+32°C, Speed: 3.4, and Slope: 14%). Moreover, the mean changes of systolic
+and diastolic blood pressure were signiﬁcant in all conditions when compared
+with the reference condition (Sound: 65 dB, WBGT: 22°C, Speed: 1.7, and Slope:
+10%). The mean heart rate changes were also signiﬁcant except for exposure to
+the second condition (Sound: 65 dB, WBGT: 22°C, Speed: 3.4, Slope: 14%)
+and the third condition (Sound: 95 dB, WBGT: 22°C, Speed: 1.7, Slope: 10%).
+Exposure to hazardous levels of sound, heat, and workload has adverse effects
+on physiological parameters. Concomitant exposure to all three hazards has a
+synergistic effect and increases the adverse effect.
+Keywords: Concomitant exposure; sound; heat; physical workload; physiological
+parameters
+This work is licensed under a Creative Commons Attribution 4.0 International License, which
+permits unrestricted use, distribution, and reproduction in any medium, provided the original
+work is properly cited.
+Sound & Vibration
+DOI:10.32604/sv.2020.08810
+Article
+ech
+T
+Press
+Science
+
+
+===== PAGE 2 =====
+1 Introduction
+There are different occupational factors in the industry that expose workers to physical, chemical,
+ergonomic, biological, and psychological hazards [1]. Physical factors are an important group of
+occupational hazards [2–4]. Noise, deﬁned as unwanted sound, is regarded as an industrial challenge in
+recent years following industrialization [5] and is associated with harmful consequences [6]. Totally,
+sound pollution as a harmful physical element could lead to increased oxygen consumption, elevated
+heart rate and blood pressure, reduced number of blood vessels, EEG changes, constriction of blood
+vessels, and increased intravascular blood pressure [7]. Lusk et al. [8] in a study entitled “acute effect of
+noise on blood pressure and heart rate” showed a signiﬁcant direct association between systolic and
+diastolic blood pressure changes and heart rate and sound pollution.
+Heat is another physical factor of the work environment, which is known as an environmental and
+occupational hazard [9]. Exposure to high temperatures is common in workers working in hot
+environments and is associated with numerous physiological effects [10]. In environments with a high
+heat stress, in addition to the environmental heat, the heat produced by physical activity results in the
+accumulation of heat in the body and elevation of core body temperature, causing physiological effects
+and heat tension [11]. Studies have shown that exposure to excessive heat has direct and indirect effects
+on metabolism, body temperature, heart rate, blood pressure, occupational errors and accidents, mental
+and psychological problems, and productivity in workers [12]. Canadian health ofﬁce has estimated that
+the rate of heat-related death will increase from 20 cases in 2001 to 300 cases in 2020 [13]. Therefore,
+heat exposure should be scientiﬁcally analyzed as an important cause of mortality and morbidity. As
+mentioned earlier, two hazardous factors of the work environment, i.e., sound and heat, may affect the
+workers’ performance and physiological factors.
+Workload ability can also affect the worker’s performance and physiologic parameters. Workload has always
+been considered an important factor in the personal performance in complex systems [14]. According to Varley’s
+study, workload is the relationship between the demands of a task and available resources [15]. The aim of
+workload assessment is to determine the effect of the demands that a task produces in the operator or a group
+of operational workers [16]. Moreover, workload is considered a risk factor for cardiovascular diseases. Many
+studies have demonstrated an association between workload and blood pressure as a possible mechanism for
+the relationship between cardiovascular disease and workload [17]. A study showed a signiﬁcant association
+between systolic and diastolic blood pressure, heart rate, and cortisol level with workload variety in men [18].
+Therefore, occupational and health factors of the workplace have an important effect on productivity and
+physiologic parameters. Since previous studies only addressed the independent effect of each of these
+hazardous factors alone and no study has evaluated their combined effect, the aim of this study was to
+examine the effect of concurrent exposure to hazardous and non-hazardous levels of sound, heat, and physical
+workload changes on physiological factors (blood pressure and heart rate) under controlled laboratory condition.
+2 Methods
+This cross-sectional, experimental, interventional study was conducted in 35 male students under
+controlled climate, physical activity, and sound pressure level conditions in the thermal tension room of
+the School of Public Health, Shiraz University of Medical Sciences. After a public announcement, the
+study samples were selected from men with a normal BMI (18.5 < BMI < 25 kg/m2) and a normal
+hearing status on a primary audiometry (hearing loss < 25 dB) [19]. All participants underwent
+cardiovascular, clinical, para-clinical, and ophthalmic evaluations by an occupational medicine specialist.
+The participants were required to have a plenty of rest and avoid coffee, caffeine, and alcohol within 12 h
+before the test. The inclusion criteria were general health, lack of cardiovascular diseases and blood
+pressure-related diseases in the person or their family; lack of pulmonary and neuromuscular diseases;
+negative history of diabetes, seizures, epilepsy, musculoskeletal disorders, hearing loss, or asthma; and
+140
+SV, 2020, vol.54, no.3
+
+
+===== PAGE 3 =====
+willingness to participate in the study. Patients were excluded if they took drugs affecting blood pressure or
+heart rate, smoked, or exercised professionally. The study was stopped in case of profound fatigue, including
+a heart rate > 180 beats/s and a core temperature above 39°C [20].
+2.1 Assessment Tool
+The participant’s mental health status was assessed by the General Health Questionnaire (GHQ). This
+questionnaire was ﬁrst developed by Goldberg in 1972. This questionnaire has 28 questions in four small
+tests, each containing seven questions (questions 1–7, 8–14, 15–21, and 22–28 are related to somatic
+symptoms, anxiety and insomnia, social dysfunction, and depression, respectively). A total score of 23 or
+higher indicates a high level of mental stress. This self-administered questionnaire was completed by the
+participants. This questionnaire has been widely used in domestic and international studies and its
+reliability and validity have been conﬁrmed [21].
+2.2 Temperature, Sound, and Workload Condition
+A thermal tension room was used to provide the required temperature. The wet-bulb globe temperature
+(WBGT) was measured according to the following formula:
+WBGT ¼ 0:7Tw þ 0:3Tg
+where WBGT is wet-bulb globe temperature, Tw is natural wet-bulb temperature (in Celsius), and Tg is globe
+thermometer temperature (in celsius) [22].
+In this study, the Cassela WBGT meter (England) was used to increase the reliability of the wet globe
+temperature. In addition, a wet and a wet globe thermometer were used to measure the temperature in the
+room. The CELL 420 (England) and TES (Taiwan) sound level meters were used for sound pressure
+level measurement. Because a work environment sound sample was required to conduct the study under
+laboratory conditions, the most common sound in the industry was played using the Goldwave software
+with two 500-watt speakers located beside and behind the participants at 1.5 m. During the measurement,
+produced level of noise exposure kept constant in the laboratory [23].
+To produce physical workload, a treadmill (Turbo, Taiwan) was used in the room for 10 min, from
+minute 11 to minute 20. Blood pressure and heart rate were measured digitally (Beurer BC16, Germany).
+To control the effects of confounders (light and ergonomic workstation) and to provide equal conditions,
+a brightness of 500 lux was maintained throughout the study using halogen and ﬂuorescent lamps. In
+addition, tables and chairs with a standard height and appropriate footrests were prepared for participants.
+In the beginning of the study, the participants received information about the study and signed informed
+consent forms. Before blood pressure and heart rate measurement, the objectives of the study were presented to
+the participants to decrease their stress and prevent bias. The participants were also asked to take plenty of rest
+the night before the study and avoid caffeine, alcohol, coffee, and high-fat meals for about 12 h before the test.
+To control the effect of clothes on heart rate, blood pressure, and body temperature, all subjects wore light
+clothes, comfortable pants, and white uniforms. After 15 min rest in the supine position on the examination
+bed, systolic and diastolic blood pressure and heart rate were measured using an automatic wrist blood
+pressure monitor in the sitting position in a calm environment. The left wrist was used for measurements
+with hand in the heart level. The measurements were repeated for three times and their average was recorded.
+Then, the participants were directed to the heat tension room and exposed to the sound level and heat
+tension for about 10 min in the sitting position. After 5 and 10 min, their systolic and diastolic blood
+pressure and heart rate were measured three times and the average readings were recorded. While the
+subjects were exposed to sound and heat stress, they used the treadmill for about 10 min, starting from
+minute 11, and their blood pressure and heart rate were measured after 20 min. All participants were
+SV, 2020, vol.54, no.3
+141
+
+
+===== PAGE 4 =====
+exposed to different conditions mentioned in Tab. 1 at an interval of 1 to 2 days using a crossover method
+with random sequence allocation of work conditions. It is noticeable to mention that in order to. In summary,
+participants were directed to the test room with speciﬁed level and tension days for about 10 min in setting
+position. Systolic and diastolic blood pressure and heart rate of the subjects were measured and recorded after
+5 to 10 min of resting. At the next step, participants were asked to go on a treadmill for 20 min. At the end of
+the procedure the indexes were measured again. The participants were exposed to the 5 conditions based on a
+cross-over design with random sequence allocation of work conditions.
+To conduct analysis, Linear Mixed Model and student paired t-test were used. Data was analyzed by SPSS
+(Version 19). Before the analysis was started, test of normality was conducted for all quantitative variables.
+3 Results
+In the present study, the effect of concurrent exposure to sound, heat and physical workload changes on
+physiological parameters was assessed in 35 students of Shiraz University of Medical Sciences. The
+demographic characteristics of the participants are shown in Tab. 2.
+Tabs. 3 and 4 show the mean and standard deviation of systolic and diastolic blood pressure before and
+after the exposure as compared to the reference exposure group (hazardless sound and heat, speed of 1.7 and
+slope of 10). Accordingly, there was an increase in the mean systolic and diastolic blood. The results of post
+hoc comparison showed signiﬁcant differences between all conditions and the reference condition (p <
+0.005). Moreover, compression of the mean measurements showed that the greatest effect on the systolic
+and diastolic blood pressure was related to condition 1 < 2 < 3 < 4 < 5 (Tabs. 3 and 4).
+Tab. 5 shows the mean and standard deviation of the heart rate before and after the exposure as compared
+to the reference condition (hazardless sound and heat, speed of 1.7 and slope of 10). Accordingly, there was
+an increase in the mean heart rate. The results of post hoc comparison showed signiﬁcant differences between
+all conditions and the reference condition, except for (speed of 3.4, slope of 14, hazardless sound, and
+hazardless heat) and (speed of 1.7, slope of 10, hazardous sound, hazardless heat) (p < 0.005). Moreover,
+compression of the mean measurements showed that the greatest effect on the systolic and diastolic blood
+pressure was related to condition 1 < 2 < 3 < 4 < 5 (Tab. 5).
+Table 1: Combination of conditions designed for exposure to environmental factors [24–26]
+Condition Sound pressure
+level (A
+decibel)
+Wet-bulb temperature
+(Celsius)
+Physical workload
+change
+1
+65
+22
+Speed: 1.7, Slope: 10%
+2
+65
+22
+Speed: 3.4, Slope: 14%
+3
+95
+22
+Speed: 1.7, Slope: 10%
+4
+65
+32
+Speed: 1.7, Slope: 10%
+5
+95
+32
+Speed: 3.4, Slope: 14%
+*Hazardless condition.
+Table 2: Demographic characteristics of participants (n = 35)
+Age (year)
+Mean ± SD
+Weight (kg)
+Mean ± SD
+Height (cm)
+Mean ± SD
+General health score
+Mean ± SD
+25.75 ± 2.52
+64.52 ± 5.22
+168.72 ± 7.42
+18.32 ± 2.81
+142
+SV, 2020, vol.54, no.3
+
+
+===== PAGE 5 =====
+Table 3: Systolic blood pressure changes before and after exposure and comparison with reference condition
+Exposure condition (N = 35)
+Mean and SD of systolic
+BP changes before and
+after exposure
+Increase in systolic
+BP compared with
+reference condition
+Level of
+signiﬁcance*
+1 Reference condition (hazardless sound,
+hazardless heat, speed 1.7, slope 10)
+9.93 ± 2.9
+–
+–
+2 Hazardless sound, hazardless heat, speed 3.4, slope 14
+65.83 ± 13.9
+11.56
+<0.001
+3 Hazardous sound, hazardless heat, speed 1.7, slope 10
+43.32 ± 14.11
+12.34
+<0.001
+4 Hazardless sound, hazardous heat, speed 1.7, slope 10
+78.96 ± 15.12
+13.68
+<0.001
+5 Hazardous sound, hazardous heat, speed 3.4, slope 14
+25.58 ± 19.7
+17.18
+Comparison of groups**
+<0.005
+*Paired t test.
+** ANCOVA.
+Table 4: Diastolic blood pressure changes before and after exposure and comparison with reference condition
+Exposure condition (N = 35)
+Mean and SD of diastolic
+BP changes before and
+after exposure
+Increase in diastolic
+BP compared with
+reference condition
+Level of
+signiﬁcance*
+1 Reference condition (hazardless sound,
+hazardless heat, speed 1.7, slope 10)
+125.53 ± 0.6
+–
+–
+2 Hazardless sound, hazardless heat, speed 3.4, slope 14
+40.26 ± 4.5
+2.81
+0.005
+3 Hazardous sound, hazardless heat, speed 1.7, slope 10
+43.04 ± 6.6
+6.31
+<0.001
+4 Hazardless sound, hazardous heat, speed 1.7, slope 10
+75.21 ± 6.5
+6.62
+<0.001
+5 Hazardous sound, hazardous heat, speed 3.4, slope 14
+65.37 ± 7.7
+7.53
+<0.001
+Comparison of groups**
+0.002
+*Paired t test.
+**ANCOVA.
+Table 5: Diastolic heart rate changes before and after exposure and comparison with reference condition
+Exposure condition (N = 35)
+Mean and SD of heart
+rate changes before and
+after exposure
+Increase in heart
+rate compared with
+reference condition
+Level of
+signiﬁcance*
+1 Reference condition (hazardless sound,
+hazardless heat, speed 1.7, slope 10)
+53.41 ± 3.5
+–
+–
+2 Hazardless sound, hazardless heat, speed 3.4, slope 14
+90.43 ± 3.5
+0.375
+0.806
+3 Hazardous sound, hazardless heat, speed 1.7, slope 10
+68 ± 5.6
+2.15
+0.159
+4 Hazardless sound, hazardous heat, speed 1.7, slope 10
+75.58 ± 6.6
+3.21
+0.036
+5 Hazardous sound, hazardous heat, speed 3.4, slope 14
+56.91 ± 10.5
+7.03
+<0.001
+Comparison of groups**
+0.002
+*Paired t test.
+**ANCOVA.
+SV, 2020, vol.54, no.3
+143
+
+
+===== PAGE 6 =====
+Figs. 1–3 show the mean changes of systolic and diastolic blood pressure and heart rate before, during,
+and after exposure. Accordingly, an increase in blood pressure and heart rate was seen in all condition except
+for the reference condition.
+145.00
+140.00
+135.00
+130.00
+125.00
+120.00
+115.00
+zero(before
+exposure)
+20 min(after
+exposure)
+5 min
+time(min)
+sistolic blood pressure (mmHg)
+10 min
+condition
+1
+2
+3
+4
+5
+Figure 1: Systolic BP changes in different exposure condition
+dyastolic blood pressure (mmHg)
+condition
+1
+2
+3
+4
+5
+zero(before
+exposure)
+20 min(after
+exposure)
+5 min
+time(min)
+10 min
+80.00
+78.00
+76.00
+74.00
+72.00
+70.00
+Figure 2: Diastolic BP changes in different exposure conditions
+heart rate (number/min)
+condition
+1
+2
+3
+4
+5
+zero(before
+exposure)
+20 min(after
+exposure)
+5 min
+time(min)
+10 min
+90.00
+85.00
+80.00
+75.00
+70.00
+Figure 3: Hear rate changes in different exposure conditions
+144
+SV, 2020, vol.54, no.3
+
+
+===== PAGE 7 =====
+4 Discussion
+Although there are different hazardous factors in the work environment and people spend a signiﬁcant
+amount of time in the workplace, few studies have addressed concurrent exposure to hazardous factors.
+Therefore, the aim of this study was to evaluate the effect of concurrent exposure to heat, sound, and
+physical workload change on physiological parameters (blood pressure and heart rate).
+We noted an increase in the mean systolic and diastolic BP before and after exposure in the second
+condition (hazardless sound, hazardless heat, speed 3.4, slope 14). Moreover, there was a signiﬁcant
+difference in the systolic and diastolic blood pressure after exposure to the second condition as compared
+to the reference condition (hazardless sound, hazardless heat, speed 1.7, slope 10), indicating the effect of
+workload on blood pressure. This ﬁnding is consistent with the results of a study by Naravane in 2009
+who investigated the relationship between blood pressure and daily workload [24]. However, there was
+no signiﬁcant difference in the mean heart rate changes before and after exposure between the second and
+the ﬁrst (reference) condition, which is not consistent with the results of a study by Ramsey et al. [25].
+The reason for this inconsistency may be differences in the exposure time, age range of the participants,
+sample size, slope, or speed.
+Regarding the effect of sound, there was an increase in the mean SBP and DBP after exposure to the
+third condition (hazardous sound, hazardless heat, speed 1.7, and slope 10) and the difference with the
+ﬁrst (reference) condition was signiﬁcant. This ﬁnding is in line with the results of studies conducted by
+Tomei et al. [26], Lusk et al. [8], Vogt et al. [27], but inconsistent with the results reported by Zamanian
+et al. [28–30], Rizi et al. [31], and Kalantari [32] reported an inverse association in this regard.
+The mean heart rate increased after exposure to hazardous sound, but its difference with the reference
+condition was not signiﬁcant. This ﬁnding is consistent with the results of studies by Zamanian et al. [28–30]
+and Chang et al. [33]. However, Rizi’s et al. [31] reported different results in this regard. It is difﬁcult to draw
+a deﬁnite conclusion on the association of sound and physiological parameters. The differences in the results
+may be due to differences in the type of sound, sound pressure level, type and complexity of the activity,
+exposure time, and sample size.
+As for thermal stress, with an increase in the temperature as compared to the reference condition
+(condition 4: Hazardless sound, hazardous heat, speed 1.7, slope 10), a signiﬁcant increase was observed
+in the systolic and diastolic BP, which is consistent with the results of a study by Ising et al. [34] and
+Singhal et al. [35]. However, Brothers et al. [36] and Malakouti et al. [37] reported contradictory results.
+The mean heart rate increased signiﬁcantly after heat exposure as compared to the reference condition,
+which is consistent with the results of studies by Schneider who showed an increase in the cardiac output and
+heart rate following exposure to thermal stress [11] while Zamanian reported different results in workers in a
+steel factory [30]. The reason for different results may be differences in the temperature and heat, complexity
+and type of activity, sample size, and exposure time.
+Finally, the mean systolic and diastolic blood pressure and heart rate increased at different time
+points after exposure to hazardous levels of sound and heat, speed of 3.4, and slope of 14 with a
+signiﬁcant difference when compared to exposure to the reference condition, indicating that concurrent
+exposure to the three environmental factors has a synergistic effect on the systolic and diastolic blood
+pressure and heart rate.
+In studies similar to our study, due to the small sample size and lack of access to vital information, it is
+very difﬁcult to determine the effect of multiple hazardous factors. However, considering the variety of
+occupational hazardous factors, one of the advantages of this study was assessment of physiological
+parameters in people exposed to different levels of sound, heat, and workload, and evaluation of
+concurrent exposure to multiple environmental factors in ﬁve different combination modes.
+SV, 2020, vol.54, no.3
+145
+
+
+===== PAGE 8 =====
+5 Conclusion
+The results of this study showed an increase in the systolic and diastolic BP and heart rate after exposure
+to any condition as compared to the reference condition. Moreover, the effect of a concurrent exposure to all
+three factors was greater than the effect of exposure to each factor alone. The effect of heat alone was greater
+than the effect of sound alone, and the effect of sound alone was greater than the effect of workload changes
+on the blood pressure and heart rate. Our results showed a combination of hazardous sound and heat and
+increased workload had a synergistic effect of physiological parameters.
+Finally, this study was conducted in men under laboratory conditions. It is suggested to conducted similar
+studies in different sound, heat, and workload conditions with attention to the effect of confounding factors on
+physiological responses. Our ﬁndings highlight the importance of engineering and management interventions
+to reduce hazardous factors to increase productivity and promote the workers’ health.
+Acknowledgement: The authors sincerely thank all those who contributed to the research in this study.
+Funding Statement: The authors sincerely thank the deputy of research and technology afﬁliated to Shiraz
+University of Medical Sciences for ﬁnancial support from this study, in the form of a research project by
+Mr. Hossein Molaeifar approved by the University on No. 10652.
+Conﬂicts of Interest: The authors declare that they have no conﬂicts of interest to report regarding the
+present study.
+References
+1. Ezzati, M., Lopez, A. D., Rodgers, A. A., Murray, C. J. (2004). Comparative quantiﬁcation of health risks: global
+and regional burden of disease attributable to selected major risk factors. World Health Organization. https://apps.
+who.int/iris/handle/10665/42770.
+2. Bohgard, M., Akselsson, R., Holmer, I., Johansson, G., Rassner, F. et al. (2009). Physical factors. In: Bohgard, M.,
+Karlsson, S., Lovén, E., Mikaelsson, L. Å., Mårtensson, L. et al. (eds.), Work and technology on human terms.
+Stockholm: Prevent, pp. 193–303.
+3. Zamanian, Z., Dehghani, M., Hashemi, H. (2013). Outline of changes in cortisol and melatonin circadian rhythms
+in the security guards of Shiraz University of Medical Sciences. International Journal of Preventive Medicine, 4
+(7), 825–830.
+4. Zamanian, Z., Mohammadi, H., Rezaeeyani, M. T., Dehghani, M. (2012). An investigation of shift work disorders
+in security personnel of 3 hospitals of Shiraz University of Medical Sciences, 2009. Iran Occupational Health,
+9(1), 52–57.
+5. Li, J. S., Wang, J. H. (1981). Study on environmental noise pollution in Qingdao. Chinese Journal of Preventive
+Medicine, 15, 41–43.
+6. Korte, C., Grant, R. J. E. (2016). Trafﬁc noise, environmental awareness, and pedestrian behavior. Environment
+and Behavior, 12(3), 408–420. DOI 10.1177/0013916580123006.
+7. Chang, T. Y., Jain, R. M., Wang, C. S., Chan, C. C. (2003). Effects of occupational noise exposure on blood
+pressure. Journal of Occupational and Environmental Medicine, 45(12), 1289–1296. DOI 10.1097/01.
+jom.0000100003.59731.3d.
+8. Lusk, S. L., Hagerty, B. M., Gillespie, B., Caruso, C. C. (2002). Chronic effects of workplace noise on blood
+pressure and heart rate. Archives of Environmental Health, 57(4), 273–281. DOI 10.1080/00039890209601410.
+9. Kovats, R. S., Hajat, S. (2008). Heat stress and public health: a critical review. Annual Review of Public Health,
+29(1), 41–55. DOI 10.1146/annurev.publhealth.29.020907.090843.
+10. Sund-Levander, M., Forsberg, C., Wahren, L. K. (2002). Normal oral, rectal, tympanic and axillary body
+temperature in adult men and women: a systematic literature review. Scandinavian Journal of Caring Sciences,
+16(2), 122–128. DOI 10.1046/j.1471-6712.2002.00069.x.
+146
+SV, 2020, vol.54, no.3
+
+
+===== PAGE 9 =====
+11. Rowlinson, S., Andrea, Y. Y., Jia, A. (2013). Application of the predicted heat strain model in development of
+localized, threshold-based heat stress management guidelines for the construction industry. Annals of
+Occupational Hygiene, 58(3), 326–339.
+12. Brake, D., Bates, G. J. O. (2003). Fluid losses and hydration status of industrial workers under thermal stress
+working extended shifts. Occupational and Environmental Medicine, 60(2), 90–96. DOI 10.1136/oem.60.2.90.
+13. Beheshti, M., Boroumand Nejad, E., Bahalgerdy, B., Mehrafshan, F., Zamani Arimy, A. (2015). Performance loss
+among workers due to heat stress in high-temperature workplaces. Journal of Occupational Health and
+Epidemiology, 4(2), 116–124. DOI 10.18869/acadpub.johe.4.2.116.
+14. Parsons, K. (2006). Heat stress standard ISO 7243 and its global application. Industrial Health, 44(3), 368–379.
+DOI 10.2486/indhealth.44.368.
+15. Varley, F. (2004). A study of heat stress exposures and interventions for mine rescue workers. Transactions, 316,
+133–142.
+16. Gao, C., Kuklane, K., Östergren, P. O., Kjellstrom, T. (2018). Occupational heat stress assessment and protective
+strategies in the context of climate change. International Journal of Biometeorology, 62(3), 359–371. DOI
+10.1007/s00484-017-1352-y.
+17. Lublin, U., Feitelson, D. G. (2003). The workload on parallel supercomputers: modeling the characteristics of rigid
+jobs. Journal of Parallel and Distributed Computing, 63(11), 1105–1122. DOI 10.1016/S0743-7315(03)00108-4.
+18. Hasle, P., Limborg, H. J. (2006). A review of the literature on preventive occupational health and safety activities in
+small enterprises. Industrial Health, 44(1), 6–12. DOI 10.2486/indhealth.44.6.
+19. Shriram, R., Sundhararajan, M., Daimiwal, N. (2013). EEG based cognitive workload assessment for maximum
+efﬁciency. IOSR Journal of Electronics & Communication Engineering, 7, 34–38.
+20. Habibi, E., Dehghan, H., Moghiseh, M., Hasanzadeh, A. (2014). Study of the relationship between the aerobic
+capacity (VO2 max) and the rating of perceived exertion based on the measurement of heart beat in the metal
+industries Esfahan. Journal of Education and Health Promotion, 3, 55.
+21. Lobo, A., Pérez-Echeverría, M. J., Artal, J. (1986). Validity of the scaled version of the General Health
+Questionnaire (GHQ-28) in a Spanish population. Psychological Medicine, 16(1), 135–140. DOI 10.1017/
+S0033291700002579.
+22. Hosseini, S., Ghotbi Ravandi, M. R., Khanjani, N. (2017). Estimating aerobic capacity (VO2-max) using a single-
+stage step test and determining its effective factors. International Journal of Occupational Hygiene, 9(4), 201–206.
+23. Song, E. S., Lim, Y. J., Kim, B., Mun, J. S. (2019). Noise reduction using active vibration control methods in
+CAD/CAM dental milling machines. Applied Sciences, 9(8), 1516. DOI 10.3390/app9081516.
+24. Naravane, S. (2009). Effect of industrial noise on occupational skill performance capability (Unpublished Master
+of Science’s Thesis). State University of New York, Binghamton, USA.
+25. Ramsey, J. D., Burford, C. L., Beshir, M. Y., Jensen, R. C. (1983). Effects of workplace thermal conditions on safe
+work behavior. Journal of Safety Research, 14(3), 105–114. DOI 10.1016/0022-4375(83)90021-X.
+26. Tomei, F., Fantini, S., Tomao, E., Baccolo, T. P., Rosati, M. V. (2000). Hypertension and chronic exposure to noise.
+Archives of Environmental Health: An International Journal, 55(5), 319–325. DOI 10.1080/00039890009604023.
+27. Vogt, J., Hagemann, T., Kastner, M. (2006). The impact of workload on heart rate and blood pressure in en-route
+and tower air trafﬁc control. Journal of Psychophysiology, 20(4), 297–314. DOI 10.1027/0269-8803.20.4.297.
+28. Zamanian, Z., Nikravesh, A., Monazzam, M. R., Hassanzadeh, J., Fararouei, M. (2014). Short-term exposure with
+vibration and its effect on attention. Journal of Environmental Health Science and Engineering, 12(1), 137. DOI
+10.1186/s40201-014-0135-1.
+29. Kakooei, H., Ardakani, Z. Z., Ayattollahi, M. T., Karimian, M., Saraji, G. N. et al. (2015). The effect of bright light
+on physiological circadian rhythms and subjective alertness of shift work nurses in Iran. International Journal of
+Occupational Safety and Ergonomics, 16(4), 477–485. DOI 10.1080/10803548.2010.11076860.
+30. Zamanian, Z., Kakooei, H., Ayattollahi, S. M. T., Dehghani, M. (2010). Effect of bright light on shift work nurses
+in hospitals. Pakistan Journal of Biological Sciences, 13(9), 431–436. DOI 10.3923/pjbs.2010.431.436.
+SV, 2020, vol.54, no.3
+147
+
+
+===== PAGE 10 =====
+31. YouseﬁRizi, H. A., Dehghan, H. (2013). Effects of occupational noise exposure on changes in blood pressure of
+workers. ARYA Atherosclerosis Journal, 8, S183–S186.
+32. Kalantari, S., Dehghani, A., Yekaninejad, M. S., Omidi, L., Rahimzadeh, M. (2015). The effects of occupational
+noise on blood pressure and heart rate of workers in an automotive parts industry. ARYA Atherosclerosis, 11(4),
+215–219.
+33. Chang, T. Y., Liu, C. S., Young, L. H., Wang, V. S., Jian, S. E. et al. (2012). Noise frequency components and the
+prevalence of hypertension in workers. Science of the Total Environment, 416, 89–96. DOI 10.1016/j.
+scitotenv.2011.11.071.
+34. Ising, H., Michalak, R. (2004). Stress effects of noise in a ﬁeld experiment in comparison to reactions to short term
+noise exposure in the laboratory. Noise & Health, 6(24), 1–7.
+35. Singhal, S., Yadav, B., Hashmi, S. F., Muzammil, M. (2009). Effects of workplace noise on blood pressure and
+heart rate. Biomedical Research, 20(2), 122–126.
+36. Brothers, R. M., Bhella, P. S., Shibata, S., Wingo, J. E., Levine, B. D. et al. (2009). Cardiac systolic and diastolic
+function during whole body heat stress. American Journal of Physiology-Heart and Circulatory Physiology, 296
+(4), H1150–H1156. DOI 10.1152/ajpheart.01069.2008.
+37. Malakouti, J., Koohpaei, A., Arsang-Jang, S. H., Mashkoori, A. (2016). Evaluation of heat stress in dry cleaner
+units: a case study in QOM, Iran. Archives of Hygiene Sciences, 5(2), 111–116.
+148
+SV, 2020, vol.54, no.3

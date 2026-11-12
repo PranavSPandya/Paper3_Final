@@ -1,0 +1,913 @@
+
+
+===== PAGE 1 =====
+Investigating the effect of ambient temperature, sound type, and noise level 
+on the heart rate of the elderly
+Mohammad Tohidi a
+, Karen Fatahi b,*
+, Maryam Beigi b
+a Department of Mathematics, Il. C., Islamic Azad University, Ilam, Iran
+b Department of Architecture, Il. C., Islamic Azad University, Ilam, Iran
+A R T I C L E I N F O
+Section Editor: Chang won Won
+Keywords:
+Ambient temperature
+Type of sound
+Noise level
+Heart rate
+Elderly
+A B S T R A C T
+Background: Given the increasing elderly population in the future, attention to the health of older adults is 
+important. Environmental factors, including ambient temperature, sound type, and noise level, greatly affect the 
+health of older adults. This study looks at how these elements influence the heart rate of elderly individuals.
+Method: This study involves laboratory research with 216 elderly male participants from Ilam province in Iran 
+over four months, from May to August 2024. Participants were exposed to different ambient temperature settings 
+(20 ◦C, 25 ◦C, and 30 ◦C) and four noise levels (55, 65, 75, and 85 dB(A)) using sound types like music, traffic, 
+and crowded noise. They were randomly divided into three equal groups of 72 by ambient temperature and then 
+into subgroups of 24 based on the three sound type; finally, these subgroups were tested under four different 
+noise levels, with each group consisting of 6 participants. The data from participants were analyzed using a three- 
+way ANOVA model.
+Results: The findings showed that ambient temperature, sound type, and noise level greatly affected older adults' 
+heart rate, with strong statistical significance. There was a notable interaction between ambient temperature and 
+noise level. However, other interactions did not show significant relationships with heart rate.
+Conclusion: The study highlights important impacts on the health of elderly in noisy urban areas. It shows that 
+long exposure to high noise and heat increases heart rate. This research emphasizes noise control and heat 
+management to protect older adults and informs public health policies and urban planning.
+1. Introduction
+Population aging is a significant demographic challenge and a key 
+driver of social change in the 21st century, with its effects expected to 
+increase in the coming years (Rowland, 2012). The growing elderly 
+population, especially “older adults,” is recognized globally as a critical 
+issue that is placing increasing pressure on health services, social care, 
+housing, and the economy (Christensen et al., 2009). Population aging is 
+characterized by an increase in the number and proportion of in­
+dividuals aged 60 years and older, along with a decline in the number 
+and percentage of those aged 15 years and younger (Ismail et al., 2021). 
+Population aging is occurring in both developed and developing coun­
+tries, although it is most rapid in newly industrialized and developing 
+regions (Noroozian., 2012). Many scholars argue that population aging 
+has emerged as a significant demographic phenomenon that warrants 
+careful consideration (Cristea et al., 2020).
+The rising aging population in Iran is increasing more quickly than 
+the global average. Iran has the second fastest-growing older population 
+in the world, with a significant rise in the percentage of people aged over 
+60, projected to reach 14. 8 % by 2030 and 29. 4 % by 2050 (Noroozian., 
+2012). The aging population in Iran is growing at a rate that exceeds the 
+global average. According to data from the Statistical Center of Iran, 
+looking at the elderly population of Iran (65 years and older), it can be 
+observed that the elderly population of Iran has increased from about 
+1.6 % of the total population in 2016 to 7.8 % in 2024. Also, based on the 
+center's forecasts, over 10.4 million people will be added to the popu­
+lation of Iran over the 20 years from 2016 to 2036, among which the 
+elderly population (65 years and older) will increase by about 5.5 
+million people or equivalently 11.5 % (Statistical Centre of Iran, 2024).
+To improve the health and well-being of older adults in Iran, 
+collaboration between the government, private sector, civil society, and 
+the elderly is essential. Establishing geriatric assessment units and 
+comprehensive care programs is recommended, along with increasing 
+the number of geriatric specialists. It is important to focus on the 
+* Corresponding author.
+E-mail address: Karen.fatahi@iau.ac.ir (K. Fatahi). 
+Contents lists available at ScienceDirect
+Experimental Gerontology
+journal homepage: www.elsevier.com/locate/expgero
+https://doi.org/10.1016/j.exger.2025.112829
+Received 2 January 2025; Received in revised form 7 July 2025; Accepted 8 July 2025  
+Experimental Gerontology 208 (2025) 112829 
+Available online 10 July 2025 
+0531-5565/© 2025 The Authors. Published by Elsevier Inc. This is an open access article under the CC BY-NC license ( http://creativecommons.org/licenses/by- 
+nc/4.0/ ). 
+
+
+===== PAGE 2 =====
+distinctive needs of older adults and make necessary policy adjustments, 
+allocate resources, and enhance healthcare services specific to this de­
+mographic (Piroozi et al., 2024). Policymakers and healthcare managers 
+are encouraged to invest in legislative measures, prevention strategies, 
+and resource allocation that effectively respond to the needs of the 
+elderly. By fostering partnerships within the community and enhancing 
+the current health infrastructure, the adaptability and responsiveness of 
+healthcare systems can be improved (Samouei et al., 2024). The global 
+increase in life expectancy emphasizes the importance of understanding 
+the factors that influence the well-being of older adults (Crimmins and 
+Zhang, 2019). Age is widely recognized as a critical factor in thermal 
+comfort perception (Wu et al., 2023; Jiao et al., 2023). Due to disrup­
+tions in body ambient temperature regulation (Baquero and Forcada, 
+2022; Inoue et al., 1991), older adults do not respond to hot and cold 
+environments as effectively as younger individuals (Al-Absi et al., 2022; 
+Zhu et al., 2018). As ambient temperatures rise, older adults often 
+experience an increase in heart rate (Zhu et al., 2018). A variety of 
+policies have been implemented to enhance the quality of life for older 
+adults in urban areas, with the auditory environment being a significant 
+factor affecting overall comfort (Baquero Larriva and Higueras García, 
+2023).
+Noise, defined as unwanted sound, poses potential risks to health and 
+communication (Ismaila and Odusote., 2014). Noise-induced stress 
+negatively impacts human performance (Simpson et al., 1974), and is 
+associated with neurological and psychological complaints (Baquero 
+Larriva and Higueras García, 2023). It is recognized as one of the four 
+major pollutants that severely threaten human physical and mental 
+health. Factors such as construction, traffic, and crowd noise create 
+fluctuating sound pressure levels due to their random occurrence (Guan 
+et al., 2020). Consequently, exposure to traffic noise can influence heart 
+rate variability (Huang et al., 2013), and crowd noise is linked to 
+increased heart rates (El Aarbaoui and Chaix, 2020).
+Individuals over 65 years old are at a greater risk for heart disease 
+due to noise exposure compared to younger individuals (Vienneau et al., 
+2015). Therefore, noise serves as an environmental factor that elevates 
+heart rate (Schnell et al., 2013). Heart rate is one of the most important 
+indicators of cardiovascular health and holds special significance for the 
+elderly. There are substantial knowledge gaps between the biological 
+aging hallmarks and aging-related diseases in humans (Zhao et al., 
+2024). As age increases, physiological changes occur in the cardiovas­
+cular system that can have significant effects on the well-being of elderly 
+individuals (Al-Tabtabai et al., 2025).
+Monitoring heart rate in older adults can aid in the early diagnosis of 
+issues such as arrhythmias, heart failure, or coronary artery diseases. 
+Additionally, controlling heart rate and maintaining it within a normal 
+range can help prevent serious complications such as heart attacks or 
+strokes (Ndlovu and Chungag, 2024). This is especially important for the 
+elderly, who are more at risk for these dangers. Research on trans­
+portation noise as a risk factor for cardiovascular death was summarized 
+in a 2021 meta-analysis (Cai et al., 2021). Learning stress management 
+techniques and reducing heart rate during stressful times can contribute 
+to the mental health improvement of the elderly. Understanding the 
+impact of heat stress on the cardiovascular system in older adults un­
+derscores the importance of developing adaptation strategies, in­
+terventions and policies to protect this vulnerable population during 
+extreme heat events (Liu et al., 2025). Overall, paying attention to heart 
+rate and cardiovascular health in older adults not only helps to preserve 
+their health but can also enhance their quality of life (Jakovljevic, 
+2018). A collaborative approach involving various stakeholders, 
+including researchers, is necessary to improve geriatric care. Sharing 
+successful international care models can provide insights for better 
+practices in Iran, specifically in Ilam province.
+The present study aims to examine the influence of environmental 
+factors, including ambient temperature, sound type, and noise level on 
+the heart rate of elderly individuals. Given the aging population and the 
+increased susceptibility of older adults to environmental factors, 
+understanding how ambient temperature and noise affect their heart 
+rate can lead to improved care measures. For the health and well-being 
+of older adults, collaboration among the government, private sector, and 
+civil society is crucial. Recommendations include establishing geriatric 
+assessment units and enhancing healthcare services. Policymakers 
+should invest in legislation, prevention strategies, and community 
+partnerships to improve healthcare systems for the elderly.
+2. Methods
+2.1. Study participants
+This study was approved by the Ethics Committee of the Islamic Azad 
+University, Ilam Branch, with the identification code IR.IAU.ILAM. 
+RES.1403.012. A total of 216 healthy elderly men, aged between 65 and 
+75 years, with a normal body mass index, were selected for the study and 
+agreed to participate. In this study, relative humidity was set at 50 %, 
+and airspeed was <0.1 m per second. Three ambient temperature levels 
+(20, 25 and 30 ◦C) corresponding to cool, neutral, and warm sensations 
+were tested, ensuring that the conditions were stable for 10 h before the 
+experiment. Additionally, four noise levels (55, 65, 75, and 85 dB 
+denoted as dB(A)), reflecting typical exposure levels of noise throughout 
+the day, and three types of sound (music, traffic, and crowded) were 
+tested. The metabolic rate was approximately 1.0 MET, and the clothing 
+insulation value was 0.6 Clo. For each participant, standard clothing 
+with the same material and design was provided to ensure that the 
+clothing coverage rate was consistent across individuals.
+To assess the eligibility of individuals with a history of cardiovas­
+cular diseases or sensory-motor and auditory disorders, we initially 
+verified the qualifications of the older adults participating in this study 
+through interviews and self-reporting. Participants were assured that 
+their involvement in the research was entirely voluntary and were 
+instructed not to include any identifying information on the question­
+naire. The eligibility criteria for participants included: - Full consent to 
+undergo the relevant tests - An age range of 65 to 75 years - Mental 
+alertness - Cardiovascular health - Absence of auditory and sensory- 
+motor disorders. Additionally, individuals were excluded from the 
+study if they had issues with alertness or any auditory or sensory-motor 
+disorders that could interfere with their experience in a thermal envi­
+ronment. After confirming participants' eligibility, they were asked to 
+stay at a designated location, free from noise, the day before the tests.
+The experiment method in this study is as follows: the participants, 
+who include 216 elderly men, were randomly divided into three equal 
+groups of 72 people based on the environmental ambient temperature 
+variable at three ambient temperature levels: 20 ◦C, 25 ◦C, and 30 ◦C. 
+Then, each of the three groups mentioned above was also randomly 
+divided into three equal groups of 24 people to measure the environ­
+mental sound type variable (music, traffic, and crowd noise); finally, 
+each of these 24-person groups was tested under four noise levels (55, 
+65, 75, and 85 dB(A)). It is important to note that in this study, the heart 
+rate of the participants was not measured before and after the experi­
+ment because to examine the heart rate of the elderly participants, we 
+first placed them at a neutral temperature of 25 ◦C for 20 min to control 
+individual tensions and mental and psychological factors that might 
+affect the results of the experiment, and for the elderly to reach thermal 
+adaptation. In addition, their heart rate was not recorded in the pre-test 
+phase and before entering the laboratory chamber to reduce the sensi­
+tivity of the elderly to heart rate measurement under laboratory condi­
+tions and minimize psychological effects on the experiment results. 
+Further details on how the tests were conducted are provided below.
+2.2. Measurements
+2.2.1. Laboratory equipment
+The experiments were conducted in a climate chamber that consists 
+of three sections: changing room, a room with an ambient temperature 
+M. Tohidi et al.                                                                                                                                                                                                                                  
+Experimental Gerontology 208 (2025) 112829 
+2 
+
+
+===== PAGE 3 =====
+of 25 ◦C, which is considered comfortable, and a laboratory room 
+(Fig. 1). Noise stimuli were delivered through a speaker placed at the 
+center of the table. Environmental parameters, such as ambient tem­
+perature and relative humidity, were measured using a data logger 
+(delta log 10). This device records various climatic variables, including 
+ambient temperature, humidity, airflow velocity, radiant ambient tem­
+perature, and relative humidity. Noise levels were assessed with a noise 
+meter that measures frequencies ranging from 10 Hz to 20,000 Hz, with 
+a maximum capacity of 140 dB(A). In the current experiment, the 
+ambient temperature and humidity of the climate chamber were 
+controlled by the data logger, which maintained a margin of error of 
+±0.3 degrees for three hours before the tests.
+To assess the potential impact of noise on physiological parameters, 
+participants measured their heart rate using a small desktop device 
+(Omron, HEM-7320), which can measure rates from 40 to 180 beats per 
+minute with an accuracy of ±5 %. Participants conducted the heart rate 
+test themselves and then recorded the results on the questionnaire form. 
+After a half-hour of thermal adaptation, participants were placed in one 
+noise level environment for 15 min. It is crucial to present the samples to 
+participants in a counterbalanced manner to avoid order effects. The 
+sound was played in a randomized sequence during the experiment. 
+Following this, the operating staff adjusted the noise level. The entire 
+experimental process lasted 120 min, maintaining a constant thermal 
+environment.
+2.2.2. How to perform the test
+This study investigated the combined effects of four noise levels (55, 
+65, 75, and 85 dB(A)), ambient temperatures (20 ◦C, 25 ◦C, and 30 ◦C), 
+and sound types (music, traffic, and crowded noise) on the heart rates of 
+elderly men. A total of 216 healthy elderly men, aged 65 to 75 years, 
+with a normal body mass index, were selected for the experiment. Par­
+ticipants were instructed to abstain from caffeine and smoking for 24 h 
+before the study. Additionally, their hearing was tested using an audi­
+ometer to ensure none had hearing impairments. The 216 participants 
+were initially divided into three main groups of 72 individuals each, 
+with each group exposed to a specific type of sound: music, traffic, or 
+crowded noise. Each of these main groups was further subdivided into 
+three subgroups of 24 participants, each tested under different ambient 
+temperature conditions (20 ◦C, 25 ◦C, and 30 ◦C). Within each ambient 
+temperature condition, participants were exposed to four different noise 
+levels (55, 65, 75, and 85 dB(A)).
+To facilitate the experiments, each group of 24 was divided into two 
+groups of 12, and then into smaller groups of 6. Each testing session 
+involved 6 participants. Participants entered the chamber room. After a 
+half-hour of thermal acclimation, they were exposed to a specific noise- 
+level environment for 15 min. During this time, they completed ques­
+tionnaires. Upon arrival, participants spent 5 min in room 1 changing 
+into the provided standardized clothing. Next, in room 2, they waited for 
+20 min in a pre-conditioning chamber maintained at 25 ◦C with 50 % 
+relative humidity while wearing the experimental clothing to ensure 
+uniform thermal conditions. During this time, the experiment and 
+questionnaires were explained to them. Following that, in room 3, where 
+the desired ambient temperature was set 10 h earlier, they are placed for 
+15 min under the specified ambient temperature and noise levels. 
+Finally, at the last step, which took 80 min to execute, participants 
+experienced four 20-min intervals, during which they were exposed to 
+different noise levels for 15 min, and 5 min were spent filling the 
+questionnaires and recording individuals' heart rates. Fig. 2 shows the 
+schedule of each test.
+3. Results
+Statistical analyses were performed using SPSS 26. The analysis of 
+variance (ANOVA) was used in this study. The level of significance was 
+fixed at P = 0.05. The mean and standard deviation of the variables for 
+each group are displayed in (Table 1). The mean heart rate of elderly 
+individuals varied based on ambient temperature levels, recorded at 
+20 ◦C, 25 ◦C, and 30 ◦C, with values of 91.67, 69.65, and 80.63 beats per 
+minute, respectively. The highest mean heart rate, averaging 91.50 
+beats per minute, was observed in the crowd noise group at an ambient 
+temperature of 30 ◦C and a noise level of 85 dB(A). In contrast, the 
+lowest mean heart rate, recorded at 63.50 beats per minute, was asso­
+ciated with the music sound type group at an ambient temperature of 
+20 ◦C and a noise level of 55 dB(A). Results also showed a significant 
+interaction effect between temperature and noise level on heart rate; p 
+< 0.05. However, the interaction effects between temperature and 
+sound type p > 0.05, sound type and noise level, and the three-way 
+interaction between temperature, sound type, and noise level were not 
+significant; p > 0.05. Also, Figs. 3–5 illustrate the two-way and simul­
+taneous interaction effects of temperature, noise level, and sound type 
+on the heart rate of elderly individuals under different temperature 
+conditions, showing detectable significant effects. Of course, readers can 
+refer to (Appendix A) for more information and to see the results of the 
+analysis of variance of the heart rate of the elderly participants in this 
+study.
+One of the key assumptions in performing an analysis of variance 
+(ANOVA) is that the error variance of the dependent variable is uniform 
+across the study groups. In this case, Levine's statistic is 2.161. At the 1 % 
+significance level, we do not have sufficient evidence to reject the 
+assumption of equal variances among the groups, as p > 0.01. Conse­
+quently, we can proceed with the analysis of variance to examine the 
+differences between the study groups.
+According to (Fig. 1), varying noise levels have different effects on 
+heart rate at different ambient temperatures. Therefore, by controlling 
+for the variable of sound type (specifically music), a two-way analysis of 
+variance was performed only on ambient temperature and noise level. 
+The results indicate significant effects for ambient temperature levels; p 
+< 0.01 and sound type; p < 0.01 on heart rate. Additionally, there is a 
+significant interaction effect between ambient temperature and noise 
+level; p < 0.05. On the other hand, the results from Tukey's test indicate 
+a significant difference in the mean heart rate among elderly individuals 
+exposed to different noise levels. Specifically, there is a significant 
+Fig. 1. Clinical trial environment design.
+M. Tohidi et al.                                                                                                                                                                                                                                  
+Experimental Gerontology 208 (2025) 112829 
+3 
+
+
+===== PAGE 4 =====
+difference between the noise levels of 75 dB(A) and 85 dB(A) compared 
+to the group exposed to 55 dB(A); p < 0.05. However, no significant 
+difference was found between the 65 dB(A) and 55 dB(A) groups; p >
+0.05. This finding is illustrated in (Table 2), which categorizes the 
+sound-level groups into subgroups that reflect their similarities. In this 
+table, the mean noise level groups of 55 dB(A) and 65 dB(A) are cate­
+gorized separately from the group exposed to 75 dB(A) and 85 dB(A), 
+which do not differ significantly from each other.
+3.1. Two-way variance with variable control of music sound type
+By controlling the variable of noise levels, specifically the level of 
+music, and conducting a two-way analysis of variance on the factors of 
+ambient temperature and noise level, the results demonstrate significant 
+effects of both ambient temperature and noise level on the heart rate of 
+elderly individuals. This is indicated by the values: F(2.60) = 169.215, p 
+< 0.01 for ambient temperature, and F(3.60) = 31.821, p < 0.01 for 
+noise level. Additionally, the interaction effect of ambient temperature 
+and noise level on the heart rate of elderly individuals was significant, 
+with a value of F(6.60) = 2.701, p < 0.05. Furthermore, Tukey's test 
+results revealed a significant difference in the mean heart rates of elderly 
+individuals exposed to different noise levels. Notably, there was a sig­
+nificant difference between the 75 & 85 dB(A) noise level groups 
+compared to the group exposed to 55 dB(A); p < 0.05. However, no 
+Fig. 2. Schedule of test.
+Table 1 
+Means and standard deviations of heart rate of elderly people (mean ± SD).
+Sound type factor 
+levels
+Noise 
+levels
+Ambient temperature factor levels
+Statistical significance
+Ambient 
+temperature 
+20 ◦C
+Ambient 
+temperature 
+25 ◦C
+Ambient 
+temperature 
+30 ◦C
+Temperature factor levels 
+Sound type factor levels 
+Noise level factor levels 
+(p-Value = 0.001)
+The sound of music
+55 dB(A)
+63.1±5.1
+66.1±8.4
+74.3±1.7
+The interaction effect of the temperature factor on the noise level factor 
+(p-value = 0.001) 
+The interaction effect of the temperature factor on the sound type factor 
+(p-value = 0.084) 
+The interaction effect of the sound type factor on the noise level factor (p- 
+value = 0.814) 
+Interactions between temperature factors, sound type factor, and noise 
+level (p-value = 0.998)
+65 dB(A)
+64.1±0.1
+67.1±6.7
+74.3±6.6
+75 dB(A)
+66.1±5.1
+69.2±5.1
+81.3±6.6
+85 dB(A)
+68.2±3.3
+73.2±1.63
+85.3±0.1
+Traffic noise
+55 dB(A)
+66.1±8.4
+67.2±0.0
+75.3±6.7
+65 dB(A)
+67.1±1.6
+67.1±8.3
+75.3±6.6
+75 dB(A)
+69.2±0.1
+69.2±8.4
+83.4±8.3
+85 dB(A)
+71.1±6.7
+73.2±6.7
+88.5±1.7
+The sound of the 
+crowded
+55 dB(A)
+67.1±1.7
+67.1±5.1
+76.4±1.6
+65 dB(A)
+68.1±0.0
+68.1±3.4
+76.3±1.7
+75 dB(A)
+69.3±6.6
+70.2±1.7
+85.4±0.1
+85 dB(A)
+73.2±1.7
+74.3±3.3
+91.6±5.1
+Total
+67.3±9.1
+69.3±6.5
+80.6±6.4
+Fig. 3. Interaction effects between different levels of air ambient temperature 
+and noise levels on the heart rate of elderly people.
+Fig. 4. Diagram of the interaction effects between different levels of sound type 
+and sound noise level on the heart rate of elderly people.
+M. Tohidi et al.                                                                                                                                                                                                                                  
+Experimental Gerontology 208 (2025) 112829 
+4 
+
+
+===== PAGE 5 =====
+significant difference was found between the group exposed to 65 dB(A) 
+and 55 dB(A); p > 0.05. This data is illustrated in (Table 2), which 
+categorizes the groups into subgroups that are consistent with each 
+other. In this table, the means of the 55 dB(A) and 65 dB(A) noise level 
+groups differ from the means of the group exposed to 75 dB(A) and 85 dB 
+(A). The latter two groups are placed in a separate subgroup, indicating 
+that they do not differ significantly from each other.
+The numbers in (Table 2), represent the average heart rates of elderly 
+participants in this study across four noise levels (55, 65, 75, and 85 dB 
+(A)). These averages have been categorized into three sets based on their 
+same mean values denoted by: Set 1, Set 2, and Set 3. The average heart 
+rates for the 55 dB(A) and 65 dB(A) groups demonstrated significant 
+difference from the other groups. This categorization process has been 
+applied consistently in the subsequent tables presented. As stated, the 
+main goal of the authors is to investigate the effect of three independent 
+variables: ambient temperature, sound type, and noise level, on the 
+dependent variable (heart rate) of elderly. The results of the significant 
+interaction effect of the variables are presented in (Table 1). Of course, 
+the complete results of the analysis of variance are also provided.1 In 
+addition, the researchers are seeking to examine whether, by factoring 
+out and removing the variable of sound type, the other two variables, 
+temperature and noise level, still affect individuals' heart rate. For this 
+reason, since there is no significant difference between the 55 dB(A) and 
+65 dB(A) groups; p > 0.05, so they are jointly placed as a subset in Set 1. 
+On the other hand, since for all three sets (Set1, Set2, and Set3) the p- 
+value is >0.05, there is no significant difference between these sets in 
+terms of their effect on elderly heart rate.
+3.2. Two-way variance with variable control of traffic sound type
+By controlling for traffic noise levels and conducting a two-way 
+analysis of variance solely on the factors of ambient temperature and 
+noise level, the results show that both ambient temperature and noise 
+level have a significant effect on the heart rate of elderly individuals. 
+Additionally, the results from Tukey's test indicated a significant dif­
+ference in average noise levels among elderly individuals in groups 
+exposed to noise levels of 75 dB(A) and 85 dB(A) when compared to the 
+group exposed to 55 dB(A); p < 0.05. However, no significant difference 
+was found between the average noise levels in the group exposed to 65 
+dB(A) and the group exposed to 55 dB(A); p > 0.05. This information is 
+detailed in (Table 3), which categorizes the groups into homogeneous 
+subsets. In this table, the averages for the group exposed 55 dB(A) and 
+65 dB(A) are placed in a separate subset from the group exposed to 75 dB 
+(A) and 85 dB(A), indicating that the latter two do not differ signifi­
+cantly from each other.
+3.3. Two-way variance with variable control of crowd sound type
+By controlling for the variable of noise level (crowd noise) and 
+conducting a two-way analysis of variance solely on the factors of 
+ambient temperature and noise level, the results indicate that both 
+ambient temperature and noise level, as well as their interaction on the 
+heart rate of the elderly, are significant. The respective values are (F 
+(2.60) =98.944, p < 0.01), (F(3.60) =27.326, p < 0.01), and (F (6.60) 
+=3.644, p < 0.01). Additionally, Tukey's test results showed a signifi­
+cant difference in the average noise levels among elderly individuals 
+between the groups with noise levels of 75 & 85 dB(A) and the group 
+with 55 dB(A); p < 0.05. However, no significant difference was 
+observed between the average noise level in the group with 65 dB(A) 
+and the group with 55 dB(A); p > 0.05. This result is shown in (Table 4), 
+where the groups are divided into homogeneous subsets. In this table, 
+the average of the 55 dB(A) and 65 dB(A) groups is placed in a separate 
+subset from the groups exposed to 75 dB(A) and 85 dB(A), as the latter 
+two groups do not have a significant difference between themselves.
+Fig. 3 shows the interaction between ambient temperature and noise 
+level on heart rate in elderly people. Three ambient temperature con­
+ditions (20 ◦C, 25 ◦C, 30 ◦C) with noise levels (55 dB(A), 65 dB(A), 75 dB 
+(A), 85 dB(A)) were investigated. In general, heart rates at 20 ◦C and 
+25 ◦C were almost the same, but heart rates at 25 ◦C were slightly higher 
+than at 20 ◦C. At both 20 ◦C and 25 ◦C, heart rate values were similar at 
+noise levels of 55 dB(A) and 65 dB(A), and the values at 75 dB(A) and 85 
+dB(A) were also similar.
+Fig. 4 shows the interaction effects between different sound type and 
+noise level on heart rate in older adults. Three types of sound (music, 
+traffic, and crowded) were examined at different noise levels (55 dB(A), 
+65 dB(A), 75 dB(A) and 85 dB(A)). Overall, heart rates were similar in 
+Fig. 5. Diagram of the interaction effects between different levels of sound type 
+and air ambient temperature on the heart rate of elderly people.
+Table 2 
+Homogeneous subsets with the control variable of music sound type.
+Homogeneous subsets
+Set 1
+Set 2
+Set 3
+(68.2)a for noise level 
+group 
+55 dB(A) 
+(68.8)a for noise level 
+group 
+65 dB(A)
+(72.6)a for noise level 
+group 
+75 dB(A)
+(75.5)a for noise level 
+group 
+85 dB(A)
+0.893
+0.877
+0.757
+p- 
+Value
+The bold values given in the table meant p > 0.05 and there were no significant 
+difference.
+a The numbers relate to the comparison of means between two groups, which 
+is only significant for set 1.
+Table 3 
+Homogeneous subsets with variable control of traffic sound type.
+Homogeneous subsets
+Set 1
+Set 2
+Set 3
+(69.8) for noise level 
+group 
+55 dB(A) 
+(70.2) for noise level 
+group 
+65 dB(A)
+(74.2) for noise level 
+group 
+75 dB(A)
+(77.8) for noise level 
+group 
+85 dB(A)
+0.980
+0.635
+0.212
+p- 
+Value
+The bold values given in the table meant p > 0.05 and there were no significant 
+difference.
+1 Additional details, including the ANOVA table for the heart rates of par­
+ticipants in this study and diagrams related to the interaction effects between 
+variables, can be found in Appendix A.
+M. Tohidi et al.                                                                                                                                                                                                                                  
+Experimental Gerontology 208 (2025) 112829 
+5 
+
+
+===== PAGE 6 =====
+traffic and crowded at 55 dB(A) and 65 dB(A). However, at 75 dB(A) and 
+85 dB(A), heart rates increased in proportion to traffic and crowded, but 
+crowdedness consistently increased heart rates relative to traffic. 
+Conversely, music tended to maintain lower heart rates than traffic and 
+crowded at all noise levels tested.
+Fig. 5 illustrates the interaction effects of different sound types and 
+air ambient temperatures on heart rates in older adults. The study 
+examined three types of sound (music, traffic, and crowded), under 
+three ambient temperature conditions: 20 ◦C, 25 ◦C, and 30 ◦C. Overall, 
+heart rates were similar for traffic and crowd sounds at both 20 ◦C and 
+25 ◦C. However, music consistently produced lower heart rates. At 
+30 ◦C, both traffic and crowd sounds caused an increase in heart rates 
+compared to music.
+In this study, we focused on investigating the impact of two varia­
+bles—noise level and ambient temperature—on heart rate while keeping 
+the “type of sound” constant. By limiting our analysis to a single type of 
+sound each time, we aimed to determine whether noise level and 
+ambient temperature significantly affect individuals' heart rates. The 
+necessary analyses have been completed, providing detailed explana­
+tions about the simultaneous interaction effects of three sound type­
+s—music, traffic, and crowd noise—along with different levels of 
+ambient temperature and noise levels on the heart rates of elderly in­
+dividuals. This includes relevant charts to illustrate the findings.2
+4. Discussion
+The present study demonstrates that both ambient temperature and 
+noise level significantly affect heart rate in elderly individuals. Elderly 
+care is a crucial issue influenced by environmental factors such as 
+ambient temperature, sound type, and noise level, garnering the atten­
+tion of many researchers (Verderber et al., 2023; Kumar et al., 2023; 
+Peralta et al., 2025; Chen et al., 2024; Yan and Geng, 2024). Various 
+studies have examined this topic and yielded differing conclusions. For 
+instance, research conducted in China highlighted changes in heart rate 
+among the elderly between 22 ◦C and 28 ◦C (Madaniyazi et al., 2016). 
+Another study noted a significant increase in thermal discomfort at 30 ◦C 
+when noise levels rose from 55 dB(A) to 85 dB(A); this increase in noise 
+also correlated with a notable rise in heart rate (Guan et al., 2020). 
+Furthermore, a study exploring the impact of noise levels on elderly 
+heart rate found that heart rate increased even at relatively low noise 
+levels of 65 dB(A) (Kraus et al., 2013). Research focusing on traffic noise 
+has shown that higher noise levels (65.6 dB(A)) significantly affect heart 
+rate in the elderly (Huang et al., 2013). The present study supports these 
+findings, indicating that both noise level and ambient temperature 
+markedly influence heart rate in elderly individuals. Consistent with 
+previous research, our study highlights that an increase in noise level, 
+particularly at 30 ◦C, leads to a rise in heart rate.
+The results of this study indicate that as noise levels increase from 55 
+dB(A) to 85 dB(A), heart rate also rises, particularly at higher ambient 
+temperatures. For instance, at 20 ◦C, the heart rate increases from 65 
+beats per minute to 70 beats per minute. At 25 ◦C, it varies between 65 
+and 75 beats per minute. At 30 ◦C, it can reach between 80 and 85 beats 
+per minute. Music tends to cause a lower heart rate compared to the 
+other two types of sounds, even at higher noise levels (remaining below 
+75 beats per minute at 85 dB(A)). In contrast, traffic and crowd noises 
+lead to a significant increase in heart rate, especially at higher noise 
+levels. For example, loud noises can raise the heart rate to 80 beats per 
+minute at 85 dB(A). Higher ambient temperatures generally result in 
+increased heart rate, with traffic and crowd noises showing more pro­
+nounced effects compared to music. At 30 ◦C, traffic noise can increase 
+heart rate from 85 beats per minute, while crowd noise can increase 
+heart rate between 80 and 85 beats per minute. Thus, this study shows 
+that high noise levels and ambient temperatures generally lead to an 
+increase in heart rate in older adults. Traffic and crowd noises cause a 
+significant increase in heart rate, particularly at 30 ◦C, whereas music 
+tends to maintain a lower heart rate even at higher noise levels.
+The findings of this study are consistent with a study by Meade et al. 
+(2024a, 2024b), which explored the effects of ambient temperature on 
+heart rate in older adults. This study demonstrated that higher ambient 
+temperatures are linked to increased heart rate, particularly when 
+ambient temperatures exceed 26 ◦C. Specifically, heart rates were found 
+to rise at ambient temperatures of 31 ◦C and 36 ◦C, while no significant 
+increase was noted at 26 ◦C compared to a control ambient temperature 
+of 22 ◦C. These results indicate that prolonged exposure to elevated 
+indoor ambient temperatures could elevate heart rates in older adults, 
+raising concerns about cardiovascular health. Therefore, it is advisable 
+to keep indoor ambient temperatures below 26 ◦C to help prevent heat- 
+related complications and reduce mortality risk in this population. Also, 
+the results of our research also align with the findings of the study by 
+Meade et al. (2024a, 2024b), which indicates that exposure to high 
+ambient temperatures (31 ◦C and 36 ◦C) leads to an increase in heart rate 
+in older individuals.
+The results of the current study are consistent with the findings of 
+Ohlendorf et al. (2023), which explored the effects of musical sounds on 
+the heart rates of elderly individuals. Their research indicated that the 
+type of music had a minimal impact on older adults' heart rates, which 
+tended to be more stable and analogized to those of younger adults. On 
+average, the heart rates of older individuals were consistently lower 
+than those of younger individuals across all sound conditions. Further­
+more, the variability in heart rates among older adults was less than that 
+observed in younger adults, suggesting that older individuals may be 
+less sensitive to music and sound stimuli. Altogether, these findings 
+indicate that listening to music does not significantly influence the in­
+crease or decrease in heart rates among the elderly. Moreover, in 
+another study conducted by Kraus et al. (2013), examining the effect of 
+noise levels on the heart rate of the elderly, the results showed that even 
+at relatively low noise levels (65 dB(A)), an increase in heart rate was 
+observed, which is not consistent with the findings of our study. This 
+discrepancy may be due to differences in the locations of the studies 
+reviewed and also the duration for which the participants examined.
+Previous studies have identified heart rate variations at different 
+ambient temperatures and moderate noise levels (65 dB(A)), with traffic 
+noise having a particularly strong effect (Huang et al., 2013; Guan et al., 
+2020; Kraus et al., 2013; El Aarbaoui and Chaix, 2020; Cai et al., 2021). 
+Specifically, our study shows that traffic and crowd noise are responsible 
+for the greatest increase in heart rate, reaching 80 to 85 beats per minute 
+at 85 dB(A), underscoring the significant role of environmental factors 
+in elderly care. The present study demonstrates that both ambient 
+temperature and noise level significantly affect heart rate in elderly 
+individuals. Specifically, ambient temperature has a notable impact on 
+heart rate, especially at 30 ◦C. Additionally, an increase in noise level 
+from 55 dB(A) to 85 dB(A) corresponds with a rise in heart rate, 
+particularly at 30 ◦C. Traffic and crowd noises lead to the most 
+Table 4 
+Homogeneous subsets with the control variable of the crowd sound type.
+Homogeneous subsets
+Set 1
+Set 2
+Set 3
+(70.3) for noise level 
+group 
+55 dB(A) 
+(70.8) for noise level 
+group 
+65 dB(A)
+(74.9) for noise level 
+group 
+75 dB(A)
+(79.7) for noise level 
+group 
+85 dB(A)
+0.965
+0.835
+0.723
+p- 
+Value
+The bold values given in the table meant p > 0.05 and there were no significant 
+difference.
+2 The necessary explanations, along with the relevant tables and charts, are 
+provided in Appendix A.
+M. Tohidi et al.                                                                                                                                                                                                                                  
+Experimental Gerontology 208 (2025) 112829 
+6 
+
+
+===== PAGE 7 =====
+substantial increase in heart rate, reaching between 80 and 85 beats per 
+minute at 85 dB(A).
+5. Conclusion
+This study examined the impact of ambient temperature, sound type, 
+and noise level on the heart rate of 216 healthy elderly men. The ex­
+periments were conducted at three ambient temperature levels (20, 25, 
+and 30 ◦C) and included four noise levels (55, 65, 75, and 85 dB(A)), as 
+well as three types of sound (music, traffic, and crowd noise). These 
+findings suggest that not only the loudness but also the nature and un­
+pleasantness of sound can be crucial in determining physiological re­
+sponses. The results of this study hold significant implications for the 
+health and well-being of the elderly, particularly for those living in 
+urban environments with high levels of noise pollution. These findings 
+indicate that prolonged exposure to high noise levels and elevated 
+ambient temperatures increases heart rate, emphasizing the importance 
+of implementing noise control measures and heat management strate­
+gies to mitigate these risks. Overall, this research enhances our under­
+standing of the complex relationships between the type of sound and 
+noise level, ambient temperature, and heart rate in elderly individuals, 
+highlighting the need to consider these factors in public health policies 
+and urban planning.
+CRediT authorship contribution statement
+Mohammad Tohidi: Writing – review & editing, Writing – original 
+draft, Software, Methodology, Investigation, Formal analysis, Data 
+curation. Karen Fatahi: Writing – review & editing, Writing – original 
+draft, Validation, Resources, Investigation, Data curation, Conceptuali­
+zation. Maryam Beigi: Writing – review & editing, Writing – original 
+draft, Visualization, Investigation, Funding acquisition.
+Consent for publication
+Not applicable.
+Ethics approval and consent to participate
+This study was approved by the Ethics Committee of the Islamic Azad 
+University, Ilam Branch, under the ethics [code No. IR.IAU.ILAM. 
+RES.1403.012].
+Funding
+This research did not receive any specific grant from funding 
+agencies in the public, commercial, or not-for-profit sectors.
+Declaration of competing interest
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper.
+Acknowledgments
+We would like to sincerely thank the Ethics Committee of Islamic 
+Azad University, Ilam Branch, and all the elderly who helped us conduct 
+this research despite the numerous challenges we faced.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://doi. 
+org/10.1016/j.exger.2025.112829.
+Data availability
+Data will be made available on request.
+References
+Al-Absi, Z.A., Hafizal, M.I.M., Ismail, M., 2022. Field assessment of the indoor thermal 
+environment and thermal comfort levels for naturally conditioned residential 
+buildings in the tropical climate. Journal of Advanced Research in Fluid Mechanics 
+and Thermal Sciences 100 (3), 51–66. https://doi.org/10.37934/arfmts.100.3.5166.
+Al-Tabtabai, T., Türkmen, C., S¸ ahan, N., 2025. The impact of sociodemographic, 
+psychological, and quality of life factors on dual-task performance in elderly 
+individuals: a cross-sectional study in Iraq. Aging Ment. Health 1–9. https://doi.org/ 
+10.1080/13607863.2025.2451116.
+Baquero, M.T., Forcada, N., 2022. Thermal comfort of older people during summer in the 
+continental Mediterranean climate. Journal of Building Engineering 54, 104680. 
+https://doi.org/10.1016/j.jobe.2022.104680.
+Baquero Larriva, M.T., Higueras García, E., 2023. Differences in perceptions of the urban 
+acoustic environment in older adults: a systematic review. Journal of Population 
+Ageing 16 (3), 781–813. https://doi.org/10.1007/s12062-021-09325-7.
+Cai, Y., Ramakrishnan, R., Rahimi, K., 2021. Long-term exposure to traffic noise and 
+mortality: a systematic review and meta-analysis of epidemiological evidence 
+between 2000 and 2020. Environ. Pollut. 269, 116222. https://doi.org/10.1016/j. 
+envpol.2020.116222.
+Chen, Y., Wulff, F., Clark, S., Huang, J., 2024. Indoor comfort domains and well-being of 
+older adults in residential settings: a scoping review. Build. Environ., 112268 
+https://doi.org/10.1016/j.buildenv.2024.112268.
+Christensen, K., Doblhammer, G., Rau, R., Vaupel, J.W., 2009. Ageing populations: the 
+challenges ahead. Lancet 374 (9696), 1196–1208. https://doi.org/10.1016/S0140- 
+6736(09)61460-4.
+Crimmins, E.M., Zhang, Y.S., 2019. Aging populations, mortality, and life expectancy. 
+Annu. Rev. Sociol. 45 (1), 69–89. https://doi.org/10.1146/annurev-soc-073117- 
+041351.
+Cristea, M., Georgiana Noja, G., D˘an˘acic˘a, D.E., S¸tefea, P., 2020. Population ageing, 
+labour productivity and economic welfare in the European Union. Economic 
+Research-Ekonomska Istraˇzivanja 33 (1), 1354–1376. https://doi.org/10.1080/ 
+1331677X.2020.1748507.
+El Aarbaoui, T., Chaix, B., 2020. The short-term association between exposure to noise 
+and heart rate variability in daily locations and mobility contexts. Journal of 
+Exposure Science & Environmental Epidemiology 30 (2), 383–393. https://doi.org/ 
+10.1038/s41370-019-0158-x.
+Guan, H., Hu, S., Liu, G., Zhang, L., 2020. The combined effects of temperature and noise 
+on the comfort perceptions of young people with a normal Body Mass Index. Sustain. 
+Cities Soc. 54, 101993. https://doi.org/10.1016/j.scs.2019.101993.
+Huang, J., Deng, F., Wu, S., Lu, H., Hao, Y., Guo, X., 2013. The impacts of short-term 
+exposure to noise and traffic-related air pollution on heart rate variability in young 
+healthy adults. Journal of Exposure Science & Environmental Epidemiology 23 (5), 
+559–564. https://doi.org/10.1289/isee.2013.O-3-09-05.
+Inoue, Y.O.S.H.I.M.I.T.S.U., Nakao, M.I.K.I.O., Araki, T.S.U.T.O.M.U., Murakami, H.I.R. 
+O.S.I., 1991. Regional differences in the sweating responses of older and younger 
+men. J. Appl. Physiol. 71 (6), 2453–2459. https://doi.org/10.1152/ 
+jappl.1991.71.6.2453.
+Ismail, Z., Ahmad, W.I.W., Hamjah, S.H., Astina, I.K., 2021. The impact of population 
+ageing: a review. Iran. J. Public Health 50 (12), 2451. https://doi.org/10.18502/ 
+ijph.v50i12.7927.
+Ismaila, S.O., Odusote., 2014. Noise exposure as a factor in the increase of blood pressure 
+of workers in a sack manufacturing industry. Beni-Suef University Journal of Basic 
+and Applied Sciences 3 (2), 116–121. https://doi.org/10.1016/j.bjbas.2014.05.004.
+Jakovljevic, D.G., 2018. Physical activity and cardiovascular aging: physiological and 
+molecular insights. Exp. Gerontol. 109, 67–74. https://doi.org/10.1016/j. 
+exger.2017.05.016.
+Jiao, Y., Yu, Y., Yu, H., Wang, F., 2023. The impact of thermal environment of transition 
+spaces in elderly-care buildings on thermal adaptation and thermal behavior of the 
+elderly. Build. Environ. 228, 109871. https://doi.org/10.1016/j. 
+buildenv.2022.109871.
+Kraus, U., Schneider, A., Breitner, S., Hampel, R., Rückerl, R., Pitz, M., Geruschkat, U., 
+Belcredi, P., Radon, K., Peters, A., 2013. Individual daytime noise exposure during 
+routine activities and heart rate variability in adults: a repeated measures study. 
+Environ. Health Perspect. 121 (5), 607–612. https://doi.org/10.1289/ehp.1205606.
+Kumar, S., Underwood, S.H., Masters, J.L., Manley, N.A., Konstantzos, I., Lau, J., 
+Wang, L.M., 2023. Ten questions concerning smart and healthy built environments 
+for older adults. Build. Environ. 244, 110720. https://doi.org/10.1016/j. 
+buildenv.2023.110720.
+Liu, W., Wang, S., Gu, H., Li, R., 2025. Heart rate variability, a potential assessment tool 
+for identifying anxiety, depression, and sleep disorders in elderly individuals. 
+Frontiers in Psychiatry 16, 1485183. https://doi.org/10.3389/fpsyt.2025.1485183.
+Madaniyazi, L., Zhou, Y., Li, S., Williams, G., Jaakkola, J.J., Liang, X., Guo, Y., 2016. 
+Outdoor temperature, heart rate and blood pressure in Chinese adults: effect 
+modification by individual characteristics. Sci. Rep. 6 (1), 1–9. https://doi.org/ 
+10.1038/srep21003.
+Meade, R.D., Akerman, A.P., Notley, S.R., Kirby, N.V., Sigal, R.J., Kenny, G.P., 2024a. 
+Effects of daylong exposure to indoor overheating on thermal and cardiovascular 
+strain in older adults: a randomized crossover trial. Environ. Health Perspect. 132 
+(2), 027003. https://doi.org/10.1289/EHP13159.
+M. Tohidi et al.                                                                                                                                                                                                                                  
+Experimental Gerontology 208 (2025) 112829 
+7 
+
+
+===== PAGE 8 =====
+Meade, R.D., Akerman, A.P., Notley, S.R., Kirby, N.V., Sigal, R.J., Kenny, G.P., 2024b. 
+Exploring the contribution of inter-individual factors to the development of 
+physiological heat strain in older adults exposed to simulate indoor overheating. 
+Appl. Physiol. Nutr. Metab. 49 (9), 1252–1270. https://doi.org/10.1139/apnm- 
+2024-0135.
+Ndlovu, N., Chungag, B.N., 2024. Impact of Heat Stress on Cardiovascular Health 
+Outcomes. https://doi.org/10.1016/j.ahr.2024.100189.
+Noroozian., 2012. The elderly population in iran: an ever growing concern in the health 
+system. Iranian Journal of Psychiatry and Behavioral Sciences 6 (2), 1–6 (PMID: 
+24644476). 
+Ohlendorf, D., Rader, T., Maurer-Grubinger, C., Keil, F., Wanke, E.M., Uibel, S., 
+Groneberg, D.A., 2023. Music for the heart—can heart rate be influenced by 
+different music genres or modulated sounds? A comparison between healthy young 
+and elderly people and patients with Parkinson’s disease. Appl. Sci. 13 (3), 1364. 
+https://doi.org/10.3390/app13031364.
+Peralta, A., Olivas, J.A., Romero, F.P., Navarro, P., 2025. The influence of ambient 
+factors on emotional wellbeing of older adults: a review. Sensors 25 (4), 1071. 
+https://doi.org/10.3390/s25041071.
+Piroozi, B., Mohamadi-Bolbanabad, A., Shokri, A., 2024. The growth of aging population 
+in Iran: an achievement or a challenge? J. Gerontol. Soc. Work. 67 (6), 711–714. 
+https://doi.org/10.1080/01634372.2024.2340725.
+Rowland, 2012. Population Aging: The Transformation of Societies, vol. 3. Springer 
+Science & Business Media. https://doi.org/10.1007/978-94-007-4050-1.
+Samouei, R., Keyvanara, M., Daei, A., 2024. Population aging management from the 
+perspective of the health field of Iran and other countries: a scoping review. J. Educ. 
+Health Promot. 13 (1), 401. https://doi.org/10.4103/jehp.jehp_257_23.
+Schnell, I., Potchter, O., Epstein, Y., Yaakov, Y., Hermesh, H., Brenner, S., Tirosh, E., 
+2013. The effects of exposure to environmental factors on Heart Rate Variability: an 
+ecological perspective. Environ. Pollut. 183, 7–13. https://doi.org/10.1016/j. 
+envpol.2013.02.005.
+Simpson, G.C., Cox, T., Rothschild, D.R., 1974. The effects of noise stress on blood 
+glucose level and skilled performance. Ergonomics 481–487. https://doi.org/ 
+10.1080/00140137408931378.
+Statistical Centre of Iran, 2024. Population and housing censuses, Google Scholar. https 
+://www.amar.org.ir/.
+Verderber, S., Koyabashi, U., Cruz, C.D., Sadat, A., Anderson, D.C., 2023. Residential 
+environments for older persons: a comprehensive literature review (2005–2022). 
+HERD: Health Environments Research & Design Journal 16 (3), 291–337. https:// 
+doi.org/10.1177/19375867231152611.
+Vienneau, D., Schindler, C., Perez, L., Probst-Hensch, N., R¨o¨osli, M., 2015. The 
+relationship between transportation noise exposure and ischemic heart disease: a 
+meta-analysis. Environ. Res. 138, 372–380. https://doi.org/10.1016/j. 
+envres.2015.02.023.
+Wu, Y., Zhang, Z., Liu, H., Li, B., Chen, B., Kosonen, R., Jokisalo, J., 2023. Age differences 
+in thermal comfort and physiological responses in thermal environments with 
+temperature ramp. Build. Environ. 228 (109887), 228. https://doi.org/10.1016/j. 
+buildenv.2022.109887.
+Yan, X., Geng, T., 2024. Healing spaces improve the well-being of older adults: a 
+systematic analysis. Buildings 14 (9), 2701. https://doi.org/10.3390/ 
+buildings14092701.
+Zhao, D., Wang, Y., Wong, N.D., Wang, J.A., 2024. Impact of aging on cardiovascular 
+diseases: from chronological observation to biological insights: JACC family series. 
+JACC: Asia 4 (5), 345–358. https://doi.org/10.1016/j.jacasi.2024.02.002.
+Zhu, H., Wang, H., Liu, Z., Li, D., Kou, G., Li, C., 2018. Experimental study on the human 
+thermal comfort based on the heart rate variability (HRV) analysis under different 
+environments. Sci. Total Environ. 616 (616), 1124–1133. https://doi.org/10.1016/j. 
+scitotenv.2017.10.208.
+M. Tohidi et al.                                                                                                                                                                                                                                  
+Experimental Gerontology 208 (2025) 112829 
+8 

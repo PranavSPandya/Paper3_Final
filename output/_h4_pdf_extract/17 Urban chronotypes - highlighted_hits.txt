@@ -1,0 +1,101 @@
+FILE: 17 Urban chronotypes - highlighted.pdf
+PAGES: 15
+CHARS: 77712
+
+how populations sense and respond to environmental exposures. Laboratory-based thermal comfort frameworks miss this real-world contextual complexity. This study introduces urban chronotypes: four distinct patterns
+---
+4.0/ ). ===== PAGE 2 ===== 1. Introduction Urban bioclimatology research has increasingly moved beyond characterising thermal exposure thresholds toward understanding how contextual factors modulate huma
+---
+formation. While indoor laboratory comfort studies reveal extensive non-linear interactions across sensory modalities, the comfort research field faces a critical ecological validity problem where controlled e
+---
+ns. Reduced visibility heightens reliance on non-visual sensory modalities and amplifies safety concerns (Jackson and Gouseti, 2012). Fear of crime peaks during evening hours, particularly in poorly lit o
+---
+activates sympathetic nervous system responses including elevated heart rate, increased electrodermal activity, and altered respiration patterns (Walker et al., 2020; Clauss et al., 2022), which may eithe
+---
+right morning light significantly suppresses skin tem­ perature rise and shifts thermal sensation toward cooler votes under warm conditions, whereas midday exposure shows attenuated effects (Elkounni et al., 2025). T
+---
+chronotypes’: distinct patterns of multisensory processing that emerge from the interaction between time of day and safety perception. Unlike circadian chronotypes that describe individual sleep-wake preference
+---
+hods namely, paired t-tests (d = 0.5, α = 0.05, 1 −β = 0.80), repeated measures ANOVA (η2 = 0.06), and logistic growth curve modelling of physiological adaptation rates (Schweiker, 2022) converging on a re
+---
+: existing literature demonstrates that extreme heat masks subtle multisensory interactions, reducing human sensitivity to non-thermal stimuli including acoustics, visual quality, and air pollution in indoors
+---
+tract metrics of visual attention and stress-related gaze dynamics (Franˇek and Petruˇz´alek, 2025). Two complementary indices were derived: (i) a composite stress indicator based on normalized fixation
+---
+scaled fixation duration (where higher frequency and shorter duration indicate increased cognitive load), and (ii) a rule-based multidimensional stress score integrating fixation dispersion, scan regularit
+---
+et al., 2024) separated population-level patterns (fixed effects: safety, time, interaction) from individual differences (random effects), testing whether context effects are consistent enough for population-le
+---
+ature conditions (mean temperature: 18–24 ◦C, minimal precipitation) to ensure thermal comfort ranges conducive to outdoor activity while avoiding extreme heat that could confound physiological measurements. Each
+---
+Urban Climate 67 (2026) 102906 6 ===== PAGE 7 ===== increased 15.1% (48.6 ± 8.5% vs. 56.0 ± 9.3%), and particulate matter increased 11–17% at night (all p < 0.001). Coefficient of
+---
+E 7 ===== increased 15.1% (48.6 ± 8.5% vs. 56.0 ± 9.3%), and particulate matter increased 11–17% at night (all p < 0.001). Coefficient of variation ranged from 0.13 (temperature) to 4.96 (color temperature)
+---
+. Environ­ mental sensitivity (S → O coupling) showed significant Safety × Time interaction (β = 0.192, p = 0.016): morning unsafe contexts exhibited reduced coupling versus safe contexts (β = −0.140, p = 0.010
+---
+ter than morning (β = −3.58, p < 0.001), independent of safety context (safety main effect: β = −0.49, p = 0.374; interaction: p = 0.814), with median times ranging 14.3–15.9 min. Within this general accelerat
+---
+.001), independent of safety context (safety main effect: β = −0.49, p = 0.374; interaction: p = 0.814), with median times ranging 14.3–15.9 min. Within this general acceleration pattern, thermal sensitivity sp
+---
+g safe nighttime navigation (M = 0.591, 95% CI [0.532–0.649]), representing 24% increase versus morning safe (M = 0.477, 95% CI [0.450–0.499]; H = 11.42, p = 0.010, η2 = 0.196) the only modality surviving Bo
+---
+rviving Bonferroni correction (α = 0.0125) (Meidenbauer et al., 2024). This 24% increase in pathway strength indicates that thermal comfort interventions deployed during safe nighttime hours would produce s
+---
+eidenbauer et al., 2024). This 24% increase in pathway strength indicates that thermal comfort interventions deployed during safe nighttime hours would produce substantially more reliable physiological-behavioral
+---
+. Multisensory stress heatmap across diurnal and safety conditions. Heat maps display standardized intensity (blue = comfort, pink = discomfort) for 22 variables across morning (10–11 AM) and night (10–
+---
+uality = 0.22–0.83; Supplementary Material, Table S1). Building upon the second hypothesis of this study, these results demonstrate that the relative importance of environmental domains changes substantially b
+---
+rmal processing. Thermal processing uniquely reorganizes across conditions (24% increase in Night Safe contexts), while visual, acoustic, and air quality processing remain stable. The thermal domain's uniqu
+---
+processing remain stable. The thermal domain's unique context-sensitivity (24% increase Night Safe vs. morning) while other domains remained stable aligns with evidence from both controlled human experimen
+---
+ged 3.6 min faster than morning (β = −3.58, p < 0.001), with safety showing no main effect (β = −0.49, p = 0.374) or interaction with time (p = 0.814). Median response times ranged from 14.3 to 15.9 min across
+---
+−3.58, p < 0.001), with safety showing no main effect (β = −0.49, p = 0.374) or interaction with time (p = 0.814). Median response times ranged from 14.3 to 15.9 min across conditions, identifying a critical 14
+---
+ses but fail to produce coordinated behavioral adaptation. Addressing the third hypothesis of this study, the results demonstrate that response timing patterns in unsafe conditions do not reflect fragmented pr
+---
+aster than morning responses, independent of safety context (safety: p = 0.374; interaction: p = 0.814). Processing modes defined as follows: Extended integration = deliberative processing with longer latencies
+---
+ion (Table 2). Thermal sensitivity peaked during safe nighttime conditions (24% increase versus safe morning), while remaining suppressed in unsafe contexts. This uniqueness likely reflects thermal comfort'
+---
+while remaining suppressed in unsafe contexts. This uniqueness likely reflects thermal comfort's dual nature, both physiological regulation and psychological appraisal making it sensitive to circadian rhythms and
+---
+s and attentional state. Thermal processing may require sustained attention competing with threat monitoring, whereas visual and acoustic cues process more automatically (Ding et al., 2024; Izquierdo e
+---
+gardless of safety context, with safety showing neither independent effect nor interaction with time of day. This indicates distinct neural mechanisms: circadian rhythms modulate processing speed through physi
+---
+tion-action coupling while preserving core integration mechanisms (Franˇek and Petruˇz´alek, 2025). 4.4. Chronotypes for climate-adaptive urban design The four urban chronotypes challenge deploying unif
+---
+contexts' visual dominance suggests conventional daylight-oriented strategies remain effective. Morning Unsafe contexts shifted to thermal dominance despite adequate lighting, implying co-located safety interve
+---
+, such benefits materialize only where safety enables behavioral translation of thermal comfort. This represents a previously uncharacterized climate vulnerability dimension intersecting built environment quality,
+---
+ies requiring expanded evening outdoor activity as daytime temperatures become increasingly inhospitable. 5. Conclusions Are we designing cities for bodies that do not exist? Current urban climate adaptatio
+---
+enabling systematic characterization of how climate vulnerability emerges from interactions between physical exposure, temporal context, and perceived safety. Only by understanding cities as experienced, not a
+---
+in compliance with General Data Protection Regulation (GDPR). Declaration of competing interest The authors declare that they have no known competing financial interests or personal relationships that co
+---
+eclaration of competing interest The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper
+---
+sors 22, 502. de Dear, R., Brager, G.S., 1998. Developing an adaptive model of thermal comfort and preference. ASHRAE Trans. 104 (1), 145–167. Ding, X., Zhao, Y., Strebel, D., Fan, Y., Ge, J., Carmeliet, J., 2024.
+---
+, Fan, Y., Ge, J., Carmeliet, J., 2024. A WRF-UCM-SOLWEIG framework for mapping thermal comfort and quantifying urban climate drivers: advancing spatial and temporal resolutions at city scale. Sustain. Cities Soc.
+---
+ion in psychophysiological recovery. Build. Environ. 281, 113190. Franˇek, M., Petruˇz´alek, J., 2025. Perceptual fluency and eye movements when viewing urban and natural scenes. Sci. Rep. 15, 25772. Gn
+---
+M., Vittori, F., Pisello, A.L., 2023. Digital twins for decoding human-building interaction in multi-domain test-rooms for environmental comfort and energy saving via graph representation. Energy Build. 279, 11
+---
+uer, K.L., et al., 2024. Variable and dynamic associations between hot weather, thermal comfort, and individuals’ emotional states during summertime. BMC Psychol. 12, 504. Nachtlichter, T., Tegeler, A., Marz, A., G
+---
+oi.org/10.1016/j.landurbplan.2025.105460. Nikolopoulou, M., Steemers, K., 2003. Thermal comfort and psychological adaptation as a guide for designing urban spaces. Energ. Buildings 95–101. https://doi.org/ 10.1016/
+---
+oi.org/10.1016/j.physbeh.2009.12.003. Schweiker, M., 2022. Rethinking resilient thermal comfort within the context of human-building resilience. In: Routledge Handbook of Resilient Thermal Comfort. Routledge, Londo
+---
+n the context of human-building resilience. In: Routledge Handbook of Resilient Thermal Comfort. Routledge, London, pp. 23–38. https://doi.org/10.4324/9781003244929-3. Shang, C., et al., 2015. A parvalbumin-positiv
+---
+eis, C., Braz, D., Vasconcelos, J., Lopes, A., 2024. Climate walking and linear mixed model statistics for the seasonal outdoor thermophysiological comfort assessment in Lisbon. Urban Clim. 55, 101933. Stefani,

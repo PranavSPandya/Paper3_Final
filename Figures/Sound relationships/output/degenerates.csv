@@ -1,0 +1,5 @@
+"phase","domain","id","sensor","variable","label","column_name","n_obs","n_id","beta_std","se","p","q_FDR","significant","model","family","status","family_size","rho_spearman","p_spearman","p_ols"
+"BikeG","physio","2.23","Pupil Labs","Pupil diam.","2.23 Pupil diam.","eyetracker_pupil_diameter_avg",450,10,0.0605635563092129,0.0467876769884269,NA,NA,FALSE,"lme_ar1","2_physio","DEGENERATE_FIT",25,NA,NA,NA
+"BikeG","psycho","3.4","Comfort","Odor comfort","3.4 Odor comfort","questionnaire_odor_comfort_1_5",11,11,NA,NA,NA,NA,FALSE,"spearman_ols","3_psycho","CONSTANT",16,NA,NA,NA
+"BikeG","psycho","3.8","Comfort","Visual comfort","3.8 Visual comfort","questionnaire_visual_comfort_1_5",11,11,NA,NA,NA,NA,FALSE,"spearman_ols","3_psycho","CONSTANT",16,NA,NA,NA
+"BikeU","physio","2.12","Empatica","SDNN","2.12 SDNN","empatica_hrv_td_sdnn",452,11,0.0235884647923983,0.0360617222116454,NA,NA,FALSE,"lme_ar1","2_physio","DEGENERATE_FIT",25,NA,NA,NA

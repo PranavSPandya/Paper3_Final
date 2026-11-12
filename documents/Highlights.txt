@@ -1,5 +1,0 @@
-Green phases showed cooler wrist skin and larger pupils.
-Walking differed from cycling only in eye movements.
-Comfort votes tracked blinks, pupils and skin temperature.
-Noise did not amplify thermal discomfort after correction.
-Exposures were estimated together in additive mixed models.

@@ -81,6 +81,17 @@ paper3_statistical_bootstrap <- function(
 
 PAPER3_PARTICIPANTS <- c("P4", "P8", "P9", "P10", "P11", "P12", "P13", "P14", "P15", "P16", "P17")
 PAPER3_CORE_PHASES <- c("BikeU", "WalkU", "BikeG", "WalkG")
+# H4 screened guide item 6: green/nature walk vs urban/traffic walk (unless a paper uses biking only).
+H4_PHASE_WALK <- c("WalkG", "WalkU")
+H4_PHASE_BIKE <- c("BikeG", "BikeU")
+# H4 vote mapping: documents/H4_papers_screened_final.md §2 (TCV/TSV → thermal_comfort_1_5; OCV → current_comfort_1_7).
+H4_QUESTIONNAIRE <- list(
+  subjective_thermal = "questionnaire_thermal_comfort_1_5",
+  thermal_tcv_analogue = "questionnaire_thermal_comfort_1_5",
+  acoustic_acv_analogue = "questionnaire_acoustic_comfort_1_5",
+  overall_ocv_analogue = "questionnaire_current_comfort_1_7",
+  center_comfort_5 = function(x) 2 * (x - 3),
+  center_comfort_7 = function(x) x - 4)
 PAPER3_MATCHED_CAP_SEC <- 8L * 60L
 
 paper3_merged_8min_path <- function(root = resolve_project_root()) {
@@ -123,6 +134,14 @@ paper3_read_outcome_transforms_csv <- function(outcomes, root = resolve_project_
   if (length(unknown)) stop("Unknown transformation_in_models in ", path, ": ", paste(unknown, collapse = ", "), call. = FALSE)
   rownames(rows) <- NULL
   rows}
+
+# Cohort, phases, and outcome transforms for H4 hypothesis physiology models.
+paper3_h4_study_spec <- function(root = resolve_project_root()) {
+  spec <- list(
+    participants = PAPER3_PARTICIPANTS,
+    phases = PAPER3_CORE_PHASES,
+    physiological_outcome_names = paper3_physiological_outcomes())
+  paper3_attach_outcome_normalization(spec, root)}
 
 paper3_normalization_csv_path <- function(root = resolve_project_root()) {
   file.path(root, PAPER3_NORMALIZATION_CSV)}
@@ -210,7 +229,7 @@ paper3_psych_questionnaire_outcomes <- function() {
     "questionnaire_prs11_scope_mean_1_5"
   )}
 
-# Cohort, phases and the 26 physiological outcomes for both Analysis_combined entry scripts.
+# Cohort, phases and the 26 physiological outcomes for both H5_combined entry scripts.
 paper3_combined_study_spec <- function(root = resolve_project_root()) {
   spec <- list(
     participants = PAPER3_PARTICIPANTS,
@@ -385,9 +404,10 @@ p3_family <- function(results, file) {
     res <- list(key = key, size = size, forced = sp, text = ifelse(sp,
       sprintf("BH across the %d planned restoration (delta PRS) Spearman tests", size),
       sprintf("BH across all %d questionnaire x physiological rmcorr tests", size)))
-  } else if (grepl("H4_sound_literature_tests\\.csv$", file)) {
-    key <- paste(col("paper"), col("test")); size <- count_tests(key, finite_p)
-    res <- list(key = key, size = size, forced = FALSE, text = sprintf("BH within paper x test across its %d outcome tests", size))
+  } else if (grepl("H4_sound_literature_tests(_spectrum|_adaptations)?\\.csv$", file)) {
+    # H4 confirmatory / literature catalogue: nominal p only; never apply BH in finalize.
+    res <- list(key = rep("H4_no_fdr", n), size = rep(NA_integer_, n), forced = rep(FALSE, n),
+      text = rep("No catalogue-wide BH/FDR for H4 (nominal p only)", n), has = rep(FALSE, n))
   } else if (grepl("H5_stress_composite_(phaseavg|timeseries)_coupling_env_physio", file)) {
     key <- col("analysis_family"); size <- count_tests(key, finite_p)
     res <- list(key = key, size = size, forced = FALSE,
@@ -400,7 +420,7 @@ p3_family <- function(results, file) {
     key <- col("analysis_family"); size <- count_tests(key, finite_p)
     res <- list(key = key, size = size, forced = FALSE,
       text = sprintf("BH within %s (literature-style sensitivity; one family per source x test type)", key))
-  } else if (grepl("Analysis_combined_timeseries_supplementary_blocks", file)) {
+  } else if (grepl("H5_combined_timeseries_supplementary_blocks", file)) {
     key <- col("table"); size <- count_tests(key, finite_p)
     res <- list(key = key, size = size, forced = FALSE, text = sprintf("BH within supplementary block (%s) across its %d tests", key, size))}
   if (is.null(res)) return(NULL)
@@ -420,7 +440,7 @@ p3_check_family <- function(results, family, file) {
 # 3. Per-table presentation
 p3_finalize_table <- function(results, file) {
   col <- function(local_key) p3_col(results, local_key)
-  if (grepl("H4_sound_literature_tests\\.csv$", file) && "test" %in% names(results)) {      # omnibus ANOVA rows: F belongs in statistic
+  if (grepl("H4_sound_literature_tests(_spectrum|_adaptations)?\\.csv$", file) && "test" %in% names(results)) {      # omnibus ANOVA rows: F belongs in statistic
     if (!"statistic" %in% names(results)) results$statistic <- NA_character_
     selected_rows <- grepl("ANOVA", results$test, ignore.case = TRUE) & p3_nb(results$estimate) & !p3_nb(results$statistic)
     results$statistic[selected_rows] <- results$estimate[selected_rows]; results$estimate[selected_rows] <- NA_character_
@@ -511,8 +531,10 @@ p3_public_result <- function(source_results, file) {
       selected_rows <- p3_nb(z)
       context_values[selected_rows] <- paste0(context_values[selected_rows], ifelse(nzchar(context_values[selected_rows]), '; ', ''), column_name, '=', z[selected_rows])}
     context_values}
-  script <- if (grepl('^Analysis_combined_phaseavg', file)) 'Analysis_combined_phaseavg.R' else
-    if (grepl('^Analysis_combined_timeseries', file)) 'Analysis_combined_timeseries.R' else
+  script <- if (grepl('^H5_combined_phaseavg', file)) 'H5_combined_phaseavg.R' else
+    if (grepl('^H5_combined_timeseries', file)) 'H5_combined_timeseries.R' else
+    if (grepl('H4_sound_literature_tests_spectrum\\.csv$', file)) 'H4_sound_literature_test_spectrum.R' else
+    if (grepl('H4_sound_literature_tests_adaptations\\.csv$', file)) 'H4_sound_literature_test_adaptations.R' else
     if (grepl('H4_sound_literature_tests\\.csv$', file)) 'H4_sound_literature_test.R' else ''
   # H1/H3 folders get script_name from the directory finalizer.
   public_results <- data.frame(script_name = rep(script, n), source_table = rep(file, n), stringsAsFactors = FALSE)
@@ -531,13 +553,16 @@ p3_public_result <- function(source_results, file) {
   type <- ifelse(type == 't', 't-test (model coefficient or contrast)', ifelse(type == 'z', 'Wald z-test', ifelse(type == 'F', 'f-test (ANOVA)', type)))
   explicit <- get('statistic_test')
   public_results$statistic_test <- fill(explicit, type)
-  if (grepl('H4_sound_literature_tests\\.csv$', file)) {
+  if (grepl('H4_sound_literature_tests(_spectrum|_adaptations)?\\.csv$', file)) {
     public_results$paper <- get('paper')
     public_results$context <- get('test')
-    is_comparison <- grepl('paired|ANOVA', get('test'), ignore.case = TRUE)
+    is_comparison <- grepl('paired', get('test'), ignore.case = TRUE)
     public_results$comparison[is_comparison] <- get('test')[is_comparison]
-    public_results$predictor[!is_comparison] <- get('test')[!is_comparison]}
-  if (grepl('^Analysis_combined', file) && !grepl('supplementary_blocks', file)) {
+    public_results$predictor <- get('term')
+    public_results$predictor[is_comparison] <- ''
+    public_results$comparison[is_comparison] <- get('term')[is_comparison]
+    public_results$sound_variable <- get('sound_variable')}
+  if (grepl('^H5_combined', file) && !grepl('supplementary_blocks', file)) {
     public_results$statistic_test <- rep(if (grepl('phase_contrasts', file)) 't-test (model phase contrast)' else 't-test (model coefficient)', n)}
   if (grepl('Temporal_AR1', file)) public_results$statistic_test <- rep('t-test (mixed-model coefficient)', n)
   if ('correlation' %in% names(source_results)) {

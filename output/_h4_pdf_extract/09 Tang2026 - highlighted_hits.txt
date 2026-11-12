@@ -1,0 +1,123 @@
+FILE: 09 Tang2026 - highlighted.pdf
+PAGES: 19
+CHARS: 80347
+
+rapy & Wellness, Yangling 712100, China A R T I C L E I N F O Keywords: Outdoor thermal comfort Soundscape diversity Thermal stress Physio-psychological responses Sex differences Electroencephalogram (EEG) A B S T R
+---
+anisms under thermal stress remain elusive. This study examined thermo-acoustic interactions across six acoustic conditions that varied in diversity (low/medium/high) and environmental context (nature-dominant
+---
+ated. Females conversely demonstrated intensified physiological reactions with increasing thermal load, including reduced heart rate under no thermal stress conditions in anthropogenic settings (p < 0.05).
+---
+uation followed by enhancement. In anthropogenic-dominant environments, males displayed heightened phys­ iological and psychological sensitivity to acoustic diversity, whereas females showed asynchronous
+---
+hen strengthened, while psychological responses progressively intensified with increasing thermal stress. Our findings inform sex-sensitive acoustic optimization frameworks for urban design, advancing evid
+---
+ychological states [3]. Biophilic acoustic stimuli promote psychophysiological restoration and affective regulation [4–6], whereas anthropogenic noise, particularly traffic-related emissions, elicits annoyanc
+---
+hysiological restoration and affective regulation [4–6], whereas anthropogenic noise, particularly traffic-related emissions, elicits annoyance and compromises wellbeing [7,8]. Consequently, outdoor env
+---
+rmal discomfort and enhance environmental acceptability, whereas anthropogenic noise exacerbates thermal stress [10]. Notably, this thermo-acoustic interaction exhibits thermal-intensity dependence: * C
+---
+ropogenic noise exacerbates thermal stress [10]. Notably, this thermo-acoustic interaction exhibits thermal-intensity dependence: * Corresponding author. E-mail addresses: hongbo@nwsuaf.edu.cn, hongbo@nwafu.ed
+---
+aining, and similar technologies. ===== PAGE 2 ===== soundscape benefits are amplified under heat stress but attenuated during cold or neutral exposure [11]. Soundscape-mediated thermal mitigation has e
+---
+t: natural stimuli generally facilitate stress recovery, whereas anthropogenic noise elicits adverse autonomic and emotional responses [14–16]. Sound pressure level represents a critical physical determ
+---
+evaluation [20,21]. Elevated biophonic diversity promotes psy­ chophysiological restoration [22]; however, this relationship follows an inverted-U pattern, wherein excessive acoustic layering attenuates benefi
+---
+ental percep­ tion and comfort evaluation [12]. Elevated sound pressure levels amplify thermal sensation and compromise thermal comfort, whereas biophilic soundscapes attenuate perceived warmth relative t
+---
+rcep­ tion and comfort evaluation [12]. Elevated sound pressure levels amplify thermal sensation and compromise thermal comfort, whereas biophilic soundscapes attenuate perceived warmth relative to anthro­ pogenic
+---
+[12]. Elevated sound pressure levels amplify thermal sensation and compromise thermal comfort, whereas biophilic soundscapes attenuate perceived warmth relative to anthro­ pogenic acoustic environments [26,27]
+---
+ve to anthro­ pogenic acoustic environments [26,27]. This thermo-acoustic interaction is stress-dependent: under moderate thermal loads, acous­ tically pleasant environments significantly diminish subjecti
+---
+environments [31,32]. Fe­ males demonstrate heightened auditory sensitivity and noise suscepti­ bility, whereas males exhibit exaggerated cardiovascular and autonomic responses to acoustic stimulation [33
+---
+wind sounds [34]. These disparities persist under thermal challenge. Females display enhanced thermal sensitivity and more volatile subjective thermal evaluations than males under identical microclima
+---
+stigation. 1.3. Research gap Extant research on soundscape-thermo-physiological interactions has predominantly examined acoustic intensity and source typologies, yet remains largely unidimensional, neglecting
+---
+tive humidity Va Wind speed Tg Global temperature Tmrt Mean radiant temperature PET Physiological equivalent temperature TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vo
+---
+perature Tmrt Mean radiant temperature PET Physiological equivalent temperature TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote SDV Soundscape diversity sensation vot
+---
+ture Tmrt Mean radiant temperature PET Physiological equivalent temperature TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote SDV Soundscape diversity sensation vote SPV Soundscape d
+---
+emperature PET Physiological equivalent temperature TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote SDV Soundscape diversity sensation vote SPV Soundscape diversity p
+---
+e PET Physiological equivalent temperature TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote SDV Soundscape diversity sensation vote SPV Soundscape diversity pleasantness vote OS Ope
+---
+ivalent temperature TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote SDV Soundscape diversity sensation vote SPV Soundscape diversity pleasantness vote OS Open space P
+---
+ent temperature TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote SDV Soundscape diversity sensation vote SPV Soundscape diversity pleasantness vote OS Open space PS Partially shad
+---
+OS Open space PS Partially shaded space SS Shaded space SVF Sky view factor ROS Restoration Outcome Scale PANAS Positive and Negative Affect Schedule EEG Electroencephalogram PSD Power spectral density ICA Indep
+---
+(SVF), with site selection prioritizing acoustic isolation to preclude ambient noise interference (Fig. 1). SVF was quantified via hemispherical photography (Canon EOS 6D; EF 8–15 mm f/4 L fisheye lens)
+---
+c (traffic, human conversation, children’s play, horn sounds, and construction noise), obtained from open-access acoustic repositories (https://www.freesfx. co.uk/soundeffects; https://freesound.org). U
+---
+nment, designated for teaching and learning, inherently maintains low ambient noise with negligible traffic intrusion, ensuring comparable background sound pressure levels across experimental sites. To
+---
+luation and triplicate autonomic measurements followed [43]. Stage 3: Acoustic Restoration (15 min). Randomized exposure to one of six soundscape conditions was administered with concurrent EEG recording. The
+---
+matization with participants remaining seated. Perceptual assessment included Thermal Sensation Vote (TSV; 7-point ASHRAE Standard 55 scale; ASHRAE, 2020), Thermal Comfort Vote (TCV; 5-point symmetric scale), Soun
+---
+pants remaining seated. Perceptual assessment included Thermal Sensation Vote (TSV; 7-point ASHRAE Standard 55 scale; ASHRAE, 2020), Thermal Comfort Vote (TCV; 5-point symmetric scale), Soundscape Div
+---
+Thermal Sensation Vote (TSV; 7-point ASHRAE Standard 55 scale; ASHRAE, 2020), Thermal Comfort Vote (TCV; 5-point symmetric scale), Soundscape Diversity Vote (SDV; 7-point richness scale), and Sound­ scape Diversi
+---
+e (TSV; 7-point ASHRAE Standard 55 scale; ASHRAE, 2020), Thermal Comfort Vote (TCV; 5-point symmetric scale), Soundscape Diversity Vote (SDV; 7-point richness scale), and Sound­ scape Diversity Pleasan
+---
+ss Vote (SPV; 7-point hedonic scale). Affective states were evaluated using the Restoration Outcome Scale (ROS) and Positive and Negative Affect Schedule (PANAS). ROS, vali­ dated for environmental restoration
+---
+sitive and Negative Affect Schedule (PANAS). ROS, vali­ dated for environmental restoration research [45,46], comprises six items assessing stress regulation, attentional recovery, and cognitive clarity (7-poi
+---
+ing and exported to MATLAB for spectral decomposition. 2.3. Thermal index Mean thermal sensation votes (MTSV) were computed across experimental phases (baseline, stress, restoration) within 1 ◦C Physio­ logical Equi
+---
+B for spectral decomposition. 2.3. Thermal index Mean thermal sensation votes (MTSV) were computed across experimental phases (baseline, stress, restoration) within 1 ◦C Physio­ logical Equivalent Tempe
+---
+ation votes (MTSV) were computed across experimental phases (baseline, stress, restoration) within 1 ◦C Physio­ logical Equivalent Temperature (PET) strata to parameterize thermal comfort functions [52]. Therm
+---
+eline, stress, restoration) within 1 ◦C Physio­ logical Equivalent Temperature (PET) strata to parameterize thermal comfort functions [52]. Thermal stress categories were operationalized via PET thresh
+---
+al comfort functions [52]. Thermal stress categories were operationalized via PET thresholds: slight cold stress (SCS; −1.5 ≤TSV < −0.5; PET 0.54–15.82 ◦C), no thermal stress (NTS; −0.5 ≤TSV < 0.5; PE
+---
+gories were operationalized via PET thresholds: slight cold stress (SCS; −1.5 ≤TSV < −0.5; PET 0.54–15.82 ◦C), no thermal stress (NTS; −0.5 ≤TSV < 0.5; PET 15.82–31.09 ◦C), slight thermal stress (STS;
+---
+operationalized via PET thresholds: slight cold stress (SCS; −1.5 ≤TSV < −0.5; PET 0.54–15.82 ◦C), no thermal stress (NTS; −0.5 ≤TSV < 0.5; PET 15.82–31.09 ◦C), slight thermal stress (STS; 0.5 ≤TSV <
+---
+ress (SCS; −1.5 ≤TSV < −0.5; PET 0.54–15.82 ◦C), no thermal stress (NTS; −0.5 ≤TSV < 0.5; PET 15.82–31.09 ◦C), slight thermal stress (STS; 0.5 ≤TSV < 1.5; PET 31.09–46.36 ◦C), and moderate thermal str
+---
+−1.5 ≤TSV < −0.5; PET 0.54–15.82 ◦C), no thermal stress (NTS; −0.5 ≤TSV < 0.5; PET 15.82–31.09 ◦C), slight thermal stress (STS; 0.5 ≤TSV < 1.5; PET 31.09–46.36 ◦C), and moderate thermal stress (MTS; 1
+---
+s (NTS; −0.5 ≤TSV < 0.5; PET 15.82–31.09 ◦C), slight thermal stress (STS; 0.5 ≤TSV < 1.5; PET 31.09–46.36 ◦C), and moderate thermal stress (MTS; 1.5 ≤TSV < 2.5; PET 46.36–61.63 ◦C) (Fig. 5). 2.4. Stat
+---
+5 ≤TSV < 0.5; PET 15.82–31.09 ◦C), slight thermal stress (STS; 0.5 ≤TSV < 1.5; PET 31.09–46.36 ◦C), and moderate thermal stress (MTS; 1.5 ≤TSV < 2.5; PET 46.36–61.63 ◦C) (Fig. 5). 2.4. Statistical ana
+---
+S; 0.5 ≤TSV < 1.5; PET 31.09–46.36 ◦C), and moderate thermal stress (MTS; 1.5 ≤TSV < 2.5; PET 46.36–61.63 ◦C) (Fig. 5). 2.4. Statistical analysis Data preprocessing entailed outlier detection and missi
+---
+< 1.5; PET 31.09–46.36 ◦C), and moderate thermal stress (MTS; 1.5 ≤TSV < 2.5; PET 46.36–61.63 ◦C) (Fig. 5). 2.4. Statistical analysis Data preprocessing entailed outlier detection and missing value tr
+---
+gradients and dominant source contexts were analyzed via para­ metric (one-way ANOVA) or nonparametric (Kruskal–Wallis) proced­ ures, contingent upon distributional properties (SPSS v26.0). 2.4.1. EEG EEG
+---
+the a-th PLS component. 3. Results 3.1. Thermal and auditory perceptions 3.1.1. TSV and TCV Kruskal–Wallis analyses revealed sexual dimorphism in thermo- acoustic perception contingent upon dominant sou
+---
+PLS component. 3. Results 3.1. Thermal and auditory perceptions 3.1.1. TSV and TCV Kruskal–Wallis analyses revealed sexual dimorphism in thermo- acoustic perception contingent upon dominant source cont
+---
+ntext. Within natural environments, soundscape diversity did not modulate male TSV (p > 0.05) but significantly predicted TCV under STS conditions (p < 0.05). Conversely, under slight cold stress, dive
+---
+ape diversity did not modulate male TSV (p > 0.05) but significantly predicted TCV under STS conditions (p < 0.05). Conversely, under slight cold stress, diversity significantly pre­ dicted female TSV (
+---
+onversely, under slight cold stress, diversity significantly pre­ dicted female TSV (p < 0.05) without affecting TCV (p > 0.05). In anthropogenic- settings, diversity exerted no significant effects on e
+---
+ss, diversity significantly pre­ dicted female TSV (p < 0.05) without affecting TCV (p > 0.05). In anthropogenic- settings, diversity exerted no significant effects on either TSV or TCV for either sex
+---
+n anthropogenic- settings, diversity exerted no significant effects on either TSV or TCV for either sex (p > 0.05). These results demonstrate that soundscape diversity effects on thermal perception ar
+---
+ropogenic- settings, diversity exerted no significant effects on either TSV or TCV for either sex (p > 0.05). These results demonstrate that soundscape diversity effects on thermal perception are sexua
+---
+ix Table E). Fig. 4. Schematic of the trial setup. Fig. 5. Correlation between PET and MTSV. Z. Tang et al.

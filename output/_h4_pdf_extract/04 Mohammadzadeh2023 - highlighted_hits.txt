@@ -1,0 +1,123 @@
+FILE: 04 Mohammadzadeh2023 - highlighted.pdf
+PAGES: 17
+CHARS: 85674
+
+22 0360-1323/© 2022 Elsevier Ltd. All rights reserved. The influence of outdoor thermal comfort on acoustic comfort of urban parks based on plant communities Negar Mohammadzadeh a,*, Alireza Karimi b, Robert D. Br
+---
+, United States A R T I C L E I N F O Keywords: Acoustic comfort Outdoor thermal comfort Environmental perception Urban park A B S T R A C T As human beings live in an environment where various factors i
+---
+uses measurements and questionnaire surveys to explore the effects of outdoor thermal comfort dimensions on acoustic comfort, emphasizing the plant community in a city park (the El Goli Park of Tabriz, Iran). In
+---
+this regard, the general comfort of the psycho­ logical equivalent temperature (PET) under different conditions of the thermal-acoustic environment has been evaluated and predicted. The results showed t
+---
+environment has been evaluated and predicted. The results showed that a higher thermal sensation vote (TSV) and PET result in a significant decrease in soundscape quality (SQ), overall impression (OI), and the perce
+---
+aluated and predicted. The results showed that a higher thermal sensation vote (TSV) and PET result in a significant decrease in soundscape quality (SQ), overall impression (OI), and the percentage of r
+---
+nd predicted. The results showed that a higher thermal sensation vote (TSV) and PET result in a significant decrease in soundscape quality (SQ), overall impression (OI), and the percentage of reported n
+---
+ed natural dominant sound (%RNDS), while an inverse trend has been reported in thermal comfort vote (TCV). On the other hand, by increasing TSV and PET, reported loudness (RL) has recorded an upward trend. However
+---
+ound (%RNDS), while an inverse trend has been reported in thermal comfort vote (TCV). On the other hand, by increasing TSV and PET, reported loudness (RL) has recorded an upward trend. However, this pro
+---
+e trend has been reported in thermal comfort vote (TCV). On the other hand, by increasing TSV and PET, reported loudness (RL) has recorded an upward trend. However, this process was completely reversed in
+---
+been reported in thermal comfort vote (TCV). On the other hand, by increasing TSV and PET, reported loudness (RL) has recorded an upward trend. However, this process was completely reversed in TCV. Fu
+---
+ported in thermal comfort vote (TCV). On the other hand, by increasing TSV and PET, reported loudness (RL) has recorded an upward trend. However, this process was completely reversed in TCV. Furthermor
+---
+has recorded an upward trend. However, this process was completely reversed in TCV. Furthermore, the analyzes showed that PET has a lower effectiveness compared to TSV and TCV and, it should be stated
+---
+process was completely reversed in TCV. Furthermore, the analyzes showed that PET has a lower effectiveness compared to TSV and TCV and, it should be stated that the three indicators of thermal comfor
+---
+urthermore, the analyzes showed that PET has a lower effectiveness compared to TSV and TCV and, it should be stated that the three indicators of thermal comfort did not show any significant relationshi
+---
+re, the analyzes showed that PET has a lower effectiveness compared to TSV and TCV and, it should be stated that the three indicators of thermal comfort did not show any significant relationship with l
+---
+compared to TSV and TCV and, it should be stated that the three indicators of thermal comfort did not show any significant relationship with landscape quality (LQ) and sound pressure level (SPL). These findings a
+---
+significant relationship with landscape quality (LQ) and sound pressure level (SPL). These findings are important for managing and improving outdoor acoustic comfort and soundscapes, and it is expected
+---
+water shortage [1], industrial and community waster [2], land pollution [3], increased density of population (S. [4], noise discomfort [5], and climate change [6]. In this regard, exposure to noise in ou
+---
+unity waster [2], land pollution [3], increased density of population (S. [4], noise discomfort [5], and climate change [6]. In this regard, exposure to noise in outdoor envi­ ronments has numerous effec
+---
+[4], noise discomfort [5], and climate change [6]. In this regard, exposure to noise in outdoor envi­ ronments has numerous effects on human health, such as hearing loss, sleep problems, cardiovascular a
+---
+physical health by decreasing the exposure of inhabitants to air pollutants, noise pollution, and extreme heat as well as offering psy­ chological relaxation and stress relief [11]. Plant Covers have be
+---
+y of urban spaces in the acoustic comfort of urban spaces [12–15],followed by thermal comfort [16–18]. Acoustic comfort is the basic feeling of users towards the acoustic environment [19]. Studies show that acou
+---
+ds the acoustic environment [19]. Studies show that acoustic comfort is beyond noise control and includes subjective interpretations of a sound in a particular context [20]; F [21]. The term “soundscape
+---
+combine a variety of quantitative and qualitative research methods to measure the objective acoustic environment (using acoustic measurements, noise maps, etc.) and sub­ jective acoustic perception using interv
+---
+ds to measure the objective acoustic environment (using acoustic measurements, noise maps, etc.) and sub­ jective acoustic perception using interviews and questionnaires [32,33]; M [34]. On the other ha
+---
+ption using interviews and questionnaires [32,33]; M [34]. On the other hand, thermal comfort can be expressed as the physi­ ological interval in which the human able to operate or tolerate the environment [35].
+---
+acoustic factors is not enough, and multiple environmental stimuli, including thermal comfort, visual beauty of the environment, and greenness can be effective in the perceived quality of the acoustic environmen
+---
+ness or calmness of sound [41–43]. Temperature changes have also been shown to increase or decrease perceived acoustic comfort [44]. Meanwhile [45], suggested that the thermal environment had no effect on
+---
+ile [45], suggested that the thermal environment had no effect on the measured noise levels. Although the stated results can have different effects in different spatial conditions, including the variety
+---
+acoustic environment perceived in outdoor spaces is related to the experienced thermal comfort conditions. Plants are one of the influential indexes in managing environmental conditions that can lead to better ou
+---
+mfort conditions. These include an improved quality of visual comfort [46] and thermal comfort [47,48]; J [49]. In terms of acoustic comfort evaluation, previous studies pointed out the importance of plants in mi
+---
+valuation, previous studies pointed out the importance of plants in mitigating noise pollution by plants, tree [50–52], or by land use parameters emphasizing green spaces and their ratio [53] [54], or t
+---
+s and their ratio [53] [54], or the psychological and physiological impacts of noise reduction [55]; F [56]. Some research also found that non-acoustical features including plants can increase acoustic c
+---
+6]. Some research also found that non-acoustical features including plants can increase acoustic comfort quality by producing natural soundscapes such as tree rustling [57–59]. At the same order to regula
+---
+undscapes such as tree rustling [57–59]. At the same order to regulate outdoor thermal comfort, solar atten­ uation, and evaporative cooling capacity can provide relatively suitable thermal comfort conditions in d
+---
+tten­ uation, and evaporative cooling capacity can provide relatively suitable thermal comfort conditions in different cities [60]. These effects are compared to the reduction of air and surface temperature under
+---
+de in trees is also consid­ ered as one of the determining factors in improving thermal comfort to cope with the heat sensation of the day and reduce the mean radiant temperature (MRT). Numerous researches have an
+---
+mpact of trees as a cooling strategy on urban climate and regulation of human thermal comfort in Asia [63]; H. [18,36,64,65]; L. [66], Europa [67–71] and North America [72]; Y [73]. which points to the undeniable
+---
+trees. The summary of the studies on the influence of plant spaces on outdoor thermal comfort and acoustic comfort, are highlighted in Table 1. The review of previous research illustrated that the role of plant
+---
+s research illustrated that the role of plant covers in improving acoustic and thermal comfort has been well estab­ lished. But few studies have examined the relationship between these two indicators in the outdoo
+---
+n natural elements, among which the role of the effect of acoustic comfort on thermal comfort has been further analyzed [14,44,77–79] (Table 1). This study focuses on the combined effects of thermal comfort on th
+---
+nalyzed [14,44,77–79] (Table 1). This study focuses on the combined effects of thermal comfort on the acoustic environment, with an emphasis on changes in the plant com­ munity of El Goli park, Tabriz city, Iran.
+---
+s regard, first, the acoustic Table 1 Summary of research on the acoustic and thermal comfort of plant spaces and combined studies of both. Reference City Method Suggestion [51] Antwerp Measurement noise
+---
+ies of both. Reference City Method Suggestion [51] Antwerp Measurement noise data Trees-covered areas had slightly lower noise levels than the grass. [52] Wolfratshausen Measurement noise d
+---
+[51] Antwerp Measurement noise data Trees-covered areas had slightly lower noise levels than the grass. [52] Wolfratshausen Measurement noise data Further noise reduction is associated with an
+---
+lightly lower noise levels than the grass. [52] Wolfratshausen Measurement noise data Further noise reduction is associated with an increase in the ground effect. [50] London Measurement noise
+---
+levels than the grass. [52] Wolfratshausen Measurement noise data Further noise reduction is associated with an increase in the ground effect. [50] London Measurement noise data Green roofs of
+---
+hausen Measurement noise data Further noise reduction is associated with an increase in the ground effect. [50] London Measurement noise data Green roofs offered significant noise abatement over
+---
+associated with an increase in the ground effect. [50] London Measurement noise data Green roofs offered significant noise abatement over 1 kHz in the courtyard, while the vegetated facade was e
+---
+ffect. [50] London Measurement noise data Green roofs offered significant noise abatement over 1 kHz in the courtyard, while the vegetated facade was effective at reducing noise levels at low fr
+---
+1 kHz in the courtyard, while the vegetated facade was effective at reducing noise levels at low frequencies. [74] – Review The quality of a "place" is strongly influenced by our perception of so
+---
+of sound in the surrounding environment. [53] Eight UK cities Measurement noise data On a micro-scale, different areas can have the same building coverage but different noise levels. [56] Hangz
+---
+cro-scale, different areas can have the same building coverage but different noise levels. [56] Hangzhou Measurement noise data The results suggest that the emotions aroused by noise and visual s
+---
+e building coverage but different noise levels. [56] Hangzhou Measurement noise data The results suggest that the emotions aroused by noise and visual stimuli manifest themselves in the synchron
+---
+hou Measurement noise data The results suggest that the emotions aroused by noise and visual stimuli manifest themselves in the synchronization of the beta frequency band and the desynchronization
+---
+band, indicating that landscape plants can moderate or buffer the effects of noise. [55] Plovdiv Measurement noise data The effects on annoyance were mediated by noise sensitivity. [54] Bradfor
+---
+ants can moderate or buffer the effects of noise. [55] Plovdiv Measurement noise data The effects on annoyance were mediated by noise sensitivity. [54] Bradford Measurement noise data The perc
+---
+] Plovdiv Measurement noise data The effects on annoyance were mediated by noise sensitivity. [54] Bradford Measurement noise data The percentage of people feeling more relaxed after visiting
+---
+n annoyance were mediated by noise sensitivity. [54] Bradford Measurement noise data The percentage of people feeling more relaxed after visiting the spaces was closely related to overall assess

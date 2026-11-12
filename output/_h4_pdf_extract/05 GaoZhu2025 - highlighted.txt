@@ -1,0 +1,1075 @@
+
+
+===== PAGE 1 =====
+Seeking comfort in the urban heat: Unraveling the effects of 
+thermal-acoustic environments on psychological restoration in 
+urban greenways
+Ming Gao a,b, Xun Zhu a,*
+a School of Architecture and Design, Harbin Institute of Technology; Key Laboratory of Cold Region Urban and Rural Human Settlement Environment Science and 
+Technology, Ministry of Industry and Information Technology, Harbin 150006, China
+b Department of Architecture, College of Design and Engineering, National University of Singapore, Singapore 117566, Singapore
+A R T I C L E I N F O
+Keywords:
+Outdoor space
+Psychological restoration
+Thermal comfort
+Soundscape
+Urban greenway
+A B S T R A C T
+As environmental pressures from high-density urbanization increase, the comfort of outdoor spaces and their 
+restorative benefits for urban residents have become increasingly important. Although thermal and acoustic 
+environments are key factors influencing outdoor comfort, evidence linking thermal and acoustic comfort with 
+restorative benefits is scarce. This study explores the impact of the thermal-acoustic environment on psycho­
+logical restorative benefits in urban greenways through on-site meteorological measurements and questionnaire 
+surveys. The results indicate that, during the hot season, compared to densely vegetated greenways, sparsely 
+vegetated greenways are perceived as hotter and noisier. Furthermore, the relationship between the thermal- 
+acoustic environment and restorative benefits is more strongly correlated in sparsely vegetated greenways 
+than in densely vegetated ones. In other words, the environmental comfort in different types of greenways can be 
+targeted for improvement. Secondly, the interaction between thermal and acoustic environments influences 
+restorative benefits. At the same sound pressure levels, restorative benefits decrease as the Universal Thermal 
+Climate Index (UTCI) increases. However, on sparsely vegetated greenways, under conditions of 70–75 dB(A), 
+the increase in UTCI does not significantly affect restoration. Finally, to identify the factors hindering psycho­
+logical restoration, the study compares the veto power of thermal-acoustic comfort voting (TCV, ACV). This veto 
+power varies according to greenway type. In densely vegetated greenways, ACV has greater veto power than 
+TCV, while in sparsely vegetated greenways, the reverse is true. The findings offer valuable insights for urban 
+planners and policymakers, suggesting that creating comfortable thermal-acoustic environments in outdoor 
+spaces can enhance restorative benefits and contribute to the sustainability of high-density urban areas.
+1. Introduction
+The rapid pace of urbanization has intensified environmental pres­
+sures on residents living in high-density cities, such as noise pollution 
+and heatwaves [1,2], contributing to increased rates of anxiety and 
+cardiovascular diseases [3]. Consequently, the renewal and redevelop­
+ment of urban outdoor spaces have been increasingly employed to 
+address the challenges posed by highly fragmented spatial patterns, 
+gradually becoming a central issue in urban planning literature and 
+practice worldwide [4]. The comfort of these spaces not only affects the 
+psychological restoration of outdoor users but also contributes to the 
+livability and sustainability of cities [5,6]. Among various environ­
+mental factors, thermal and acoustic conditions are primary 
+determinants of the comfort of urban open spaces [7].
+Urban green spaces, as an indispensable component of outdoor 
+spaces, are becoming increasingly important and urgent due to their 
+restorative benefits. On one hand, exposure to nature in cities can alle­
+viate stress [8], while on the other, it supports outdoor recreational 
+activities that promote positive emotions [9]. Urban greenways, a key 
+type of urban green space [10], are particularly significant in 
+high-density cities due to their multifunctionality [11]. They provide 
+multidimensional benefits to cities, such as increasing the density of 
+green areas within strict spatial constraints, offering public spaces for 
+leisure and sports activities, and improving community quality of life 
+[12]. However, in high-density cities in subtropical regions, the poten­
+tial role of urban greenways in promoting environmental restoration 
+* Corresponding author.
+E-mail addresses: 22B334014@stu.hit.edu.cn (M. Gao), zhuxun@hit.edu.cn (X. Zhu). 
+Contents lists available at ScienceDirect
+Building and Environment
+journal homepage: www.elsevier.com/locate/buildenv
+https://doi.org/10.1016/j.buildenv.2025.113269
+Received 23 March 2025; Received in revised form 31 May 2025; Accepted 4 June 2025  
+Building and Environment 282 (2025) 113269 
+Available online 6 June 2025 
+0360-1323/© 2025 Elsevier Ltd. All rights are reserved, including those for text and data mining, AI training, and similar technologies. 
+
+
+===== PAGE 2 =====
+may be underestimated. More importantly, as vital outdoor spaces for 
+recreational activities, the thermal and acoustic environments of urban 
+greenways may impact the psychological restoration of users [13]. As a 
+result, urban planners and policymakers around the world are increas­
+ingly focused on maximizing the comfort of outdoor spaces with limited 
+resources, whether through greenway planning or large-scale redevel­
+opment [5]. To promote effective greenway design and renewal, plan­
+ners must identify the key environmental comfort attributes that 
+influence environmental restoration.
+This study employs linear regression models and variance analysis 
+applied to field data collected from urban greenways in Shenzhen, a 
+high-density city in China, aiming to address three research questions: 
+• Research Question 1 (RQ1): What are the differences in thermal- 
+acoustic perception between two greenway spaces with contrasting 
+vegetation density?
+• Research Question 2 (RQ2): How do thermal-acoustic environments 
+influence psychological restoration across these two greenway 
+spaces?
+• Research Question 3 (RQ3): Do thermal and acoustic environments 
+exert equal influence on psychological restoration in these greenway 
+spaces?
+This research makes threefold contributions to the literature on 
+urban greenway planning and the practice of creating comfortable 
+outdoor environments. First, it utilizes a unique field-based approach to 
+investigate residents’ perceptions of thermal and acoustic comfort in 
+urban greenways within high-density environments. By integrating 
+direct measurements of environmental conditions, the study provides 
+nuanced, data-driven insights to guide practical interventions and 
+inform sustainable outdoor design strategies. Second, the study explores 
+the relationship between thermal-acoustic comfort and psychological 
+restoration from a sensory interaction perspective. This perspective 
+highlights how specific sensory conditions can disproportionately in­
+fluence users’ overall experiences, thus broadening planners’ under­
+standing of the complex interplay between environmental factors and 
+psychological outcomes. The findings encourage further examination of 
+multisensory dynamics in both theoretical frameworks and practical 
+applications. Third, by analyzing variations in vegetation density within 
+greenways, the study clarifies how different thermal-acoustic environ­
+ments affect restorative outcomes. Addressing an under-examined 
+aspect of urban greenway research, this work proposes an alternative 
+to traditional approaches that rely solely on physical modifications. By 
+explicitly connecting sensory experiences to psychological restoration, 
+the results offer practical guidance for planners and policymakers 
+seeking to enhance urban sustainability and improve quality-of-life 
+outcomes through greenway design.
+2. Literature review
+2.1. The importance of urban greenways as outdoor spaces
+Compared to traditional parks, urban greenways are often more 
+suitable for recreational activities [14]. Their environmental design has 
+become an important entry point for actively intervening in public 
+health [15]. In recent years, the development of greenways has been 
+vigorously promoted. As a form of small-scale linear green space, 
+greenways play a crucial role for residents in high-density urban areas, 
+providing essential spaces for daily activities [11]. They offer urban 
+residents more convenient outdoor spaces and contribute to the creation 
+of comfortable, livable environments [10]. Furthermore, high-quality 
+urban greenways enhance exposure to the natural environment, 
+thereby reducing perceived environmental stress and alleviating anxiety 
+and depression [16], serving as restorative environments that promote 
+both physical and mental well-being.
+Research on restorative environments is largely anchored in two 
+theoretical frameworks: Attention Restoration Theory (ART) and Stress 
+Reduction Theory (SRT) [17,18]. According to SRT, exposure to natural 
+settings helps alleviate stress and calm arousal, thereby promoting rapid 
+recovery from acute stress [18]. In contrast, ART posits that 
+non-directed attention activities—such as immersing oneself in nature­
+—can restore directed attention, which is vital for tasks requiring 
+focused effort [17]. While the restorative benefits of urban green spaces 
+have been extensively documented, the specific attributes of greenways 
+may influence their use through environmental perceptions [19], ulti­
+mately enhancing residents’ well-being. Although the restorative effects 
+of traditional, large-scale green spaces have been emphasized, ongoing 
+urban land transformation and fragmented spatial patterns, coupled 
+with the growing demand for accessible daily spaces [20], highlight the 
+necessity and urgency of studying outdoor spaces—particularly green­
+ways in high-density urban areas [11].
+2.2. The impact of environmental comfort on psychological restoration
+The comfort of outdoor environments has a positive influence on 
+psychological well-being and restoration, a relationship that also in­
+forms urban design efforts [5,21]. However, much of the existing 
+research on urban outdoor comfort has focused primarily on 
+single-sensory perceptions [22,23], which may be insufficient for 
+addressing environmental challenges in rapidly urbanizing contexts 
+[24]. This narrow focus can also underestimate the role of sensory 
+interaction [25,26]; by contrast, a multisensory experience is considered 
+an effective intervention to enhance restorative outcomes [27]. In other 
+words, multisensory perception is not merely the sum of individual 
+sensory inputs but rather a composite effect that operates holistically 
+[28]. For example, in summer, thermal comfort and acoustic comfort 
+can interact, where high temperatures exacerbate acoustic discomfort, 
+collectively influencing overall comfort [29]. Moreover, outdoor ther­
+mal comfort is often evaluated using the Universal Thermal Climate 
+Index (UTCI) [30], owing to its robust accuracy and applicability in 
+complex urban microclimates [31]. Meanwhile, the comfort of outdoor 
+spaces is frequently assessed through their acoustic environment [32]. 
+Specifically, the A-weighted equivalent sound pressure level (LAeq) is 
+employed to characterize the intensity of ambient sound, and measures 
+of acoustic comfort and preference are used to evaluate psychological 
+impacts [33]. Consequently, there is a clear need to conduct a joint 
+assessment of environmental comfort from both thermal and acoustic 
+perspectives.
+Although environmental comfort under multisensory interaction has 
+been investigated [34], its relationship with psychological restoration in 
+outdoor spaces remains largely unexplored. In addition, while acoustic 
+comfort may enhance restorative benefits [35], variations in acoustic 
+type and loudness under the same temperature conditions can shift 
+thermal comfort evaluations [36,37]. These insights underscore the 
+interactive effects of thermal and acoustic environments, but often 
+overlook whether each factor contributes equally to perceived restora­
+tion. Prior research has introduced the notion of veto power—a situation 
+in which a single severely negative stimulus, such as excessive noise or 
+extreme heat, can override otherwise favorable conditions and sub­
+stantially reduce overall satisfaction [25], prompting the question of 
+whether a similar veto effect exists in the thermal-acoustic environment 
+with respect to psychological restoration. Moreover, current research on 
+thermal-acoustic comfort predominantly takes place in laboratory set­
+tings [37], potentially restricting our understanding of how complex 
+environmental factors and psychological perceptions intertwine in green 
+spaces. This gap is particularly pressing in high-density urban contexts, 
+where visitors to green spaces encounter more severe environmental 
+conditions, which may obscure potential links between environmental 
+comfort and psychological restoration.
+M. Gao and X. Zhu                                                                                                                                                                                                                             
+Building and Environment 282 (2025) 113269 
+2 
+
+
+===== PAGE 3 =====
+3. Methods
+3.1. Site selection
+This study conducted a field experiment in Shenzhen, China. 
+Shenzhen’s greenways have been developed alongside existing urban 
+roads, forming a mature network that connects public green spaces and 
+service facilities. Characterized by extensive coverage and flexible 
+configurations [15], this network makes Shenzhen an ideal hotspot for 
+research. Moreover, Shenzhen is not only representative of high-density 
+urban environments but also experiences hot, humid summers, with 
+average daily temperatures typically exceeding 30 ◦C [38]. As such, the 
+city’s greenways offer a compelling context in which to investigate the 
+relationship between outdoor thermal-acoustic comfort and psycho­
+logical restoration.
+In selecting specific greenways, we relied on the Shenzhen Greenway 
+Atlas published by the Shenzhen Municipal Administration and 
+Comprehensive Enforcement Bureau, along with local greenway web 
+maps and on-site surveys. Ultimately, greenways in the Nanshan District 
+were chosen as study sites. While both selected sites fall under the 
+official category of community greenways as defined in the Shenzhen 
+Greenway Atlas, we further classified them from an urban greening 
+perspective into two categories based on vegetation density: densely 
+vegetated and sparsely vegetated greenways (Fig. 1). This vegetation- 
+based distinction complements earlier functional classifications (e.g., 
+landscape-recreational vs. service-oriented) proposed in previous 
+studies [15], and captures differences in ecological exposure and spatial 
+enclosure relevant to users’ thermal-acoustic experiences. Densely 
+vegetated greenways are typically located along sidewalks adjacent to 
+urban parks, situated near major roads, and distributed in relatively 
+discrete segments. They primarily serve as important recreational and 
+exercise spaces for local residents. In contrast, sparsely vegetated 
+greenways usually follow sidewalks along secondary or local streets, and 
+are embedded within mixed-use urban settings that combine shopping, 
+commuting, and leisure functions. Despite differences in immediate 
+surroundings and vegetation density, both types belong to the broader 
+urban greenway system designed to support non-motorized mobility and 
+public open space access. Their inclusion enables a focused comparison 
+of how variations in vegetation influence user experiences and percep­
+tual outcomes within greenway spaces. Both greenways featured similar 
+pedestrian surfaces, including asphalt, poured concrete, and concrete 
+pavers commonly used in urban sidewalk construction.
+3.2. Procedures
+In this outdoor experiment, conducted between late June and early 
+July (summer), participants were first briefed on the study’s purpose 
+and procedures, and asked to sign a consent form for data collection. At 
+Fig. 1. Location map of the research site.
+M. Gao and X. Zhu                                                                                                                                                                                                                             
+Building and Environment 282 (2025) 113269 
+3 
+
+
+===== PAGE 4 =====
+the selected sites, participants reported their evaluations of comfort 
+(Section 3.3.1) and psychological restoration (Section 3.3.2) while on 
+the greenways. Simultaneously, thermal and acoustic parameters were 
+measured (Section 3.3.3). Data were collected from 8:00–11:00 a.m. to 
+2:00–5:00 pm. to capture both morning and afternoon conditions while 
+avoiding midday extremes, thereby minimizing the potential masking 
+effect of heat stress on other sensory perceptions.
+For thermal assessment, the UTCI was adopted to evaluate the 
+physiological effects of the thermal environment [6,29]. Owing to 
+UTCI’s wide acceptance and robust methodology in previous studies, it 
+was used to represent thermal comfort [38], with corresponding stress 
+categories based on specific UTCI ranges [39]. The thermal stress cate­
+gories used in this study—very strong heat stress (+38 to +46 ◦C), strong 
+heat stress (+32 to +38 ◦C), and moderate heat stress (+26 to +32 ◦C)— 
+follow internationally recognized UTCI thresholds. These classifications 
+have been widely applied in both cold and subtropical climates [6,38]. 
+As for the acoustic environment, the A-weighted equivalent continuous 
+sound level (LAeq) was selected to account for the intermittent nature of 
+traffic noise, thereby serving as a suitable metric for assessing the 
+greenway sound environment. Following the categories used in prior 
+studies [29], LAeq was classified into four ranges: 55–60 dB(A), 60–65 
+dB(A), 65–70 dB(A), and 70–75 dB(A). Field observations confirmed 
+that the main sound sources at this site were urban traffic, human ac­
+tivity, and occasional mechanical noise, with intermittent natural 
+sounds such as wind in the vegetation and birdsong. No sea-related 
+sounds were perceptible.
+Following the experiment, we randomly selected 47 partic­
+ipants—each of whom had completed the questionnaire and provided 
+verbal consent—for brief, on-site interviews. Conducted outdoors and 
+lasting 3 to 5 min, the semi-structured interviews explored participants’ 
+perceptions of thermal comfort and acoustic disturbance, with questions 
+including, for example, “what would make this greenway feel more 
+comfortable to you?” and “were there any sounds that made you feel 
+uncomfortable?” (Fig. 2).
+3.3. Measures
+3.3.1. Assessment of thermal and acoustic comfort
+In this study, we assessed thermal-acoustic comfort in the selected 
+greenway environments by designing a questionnaire informed by ISO 
+10551 guidelines, ASHRAE Standards [40], and previous research on 
+evaluating outdoor thermal and acoustic environments [25,29]. Spe­
+cifically, the questionnaire included the Thermal Sensation Vote (TSV), 
+the Thermal Comfort Vote (TCV), the Acoustic Sensation Vote (ASV), 
+and the Acoustic Comfort Vote (ACV) (Appendix A). TSV captures 
+consciously perceived thermal sensation, while ASV measures perceived 
+loudness. TCV and ACV reflect satisfaction with the thermal and acoustic 
+conditions, respectively. TCV and ACV were assessed using a 7-point 
+bipolar Likert scale with a neutral midpoint, representing a state of 
+neither satisfaction nor dissatisfaction, a format widely adopted in 
+outdoor environmental comfort research to enable nuanced measure­
+ment of comfort perceptions in field settings [25] (Table 1).
+3.3.2. Measurement of psychological restorative benefits
+The Restorative Outcome Scale (ROS) was used to measure partici­
+pants’ level of psychological restoration. This scale has been widely 
+employed and validated in studies examining urban outdoor environ­
+ments and psychological restoration [41,42]. It consists of six items 
+[43]: one item assesses attentional recovery (e.g., “my concentration 
+and alertness clearly increase here”), two items address stress relief (e.g., 
+“I can forget everyday worries here”), and three items evaluate mental 
+relaxation and calm (e.g., “after visiting this place, I always feel restored 
+and relaxed”). Each item is rated on a five-point Likert scale, ranging 
+from “disagree strongly” (−2) to “agree strongly” (+2). A composite 
+score is obtained by averaging all six items, representing the overall 
+restorative benefit.
+3.3.3. Measurement of environmental parameters
+During the field experiment, the thermal and acoustic conditions 
+were recorded in parallel. The thermal parameters measured included 
+air temperature (Ta), relative humidity (RH), wind speed (Va), and 
+globe temperature (Tg). The acoustic parameter was the A-weighted 
+equivalent continuous sound pressure level (LAeq). A portable Kestrel 
+5500 weather station was used to record wind speed and direction, 
+while the BES-01 temperature recorder measured Tg. The black globe 
+measured 0.08 m in diameter, and its surface material had a scattering 
+coefficient of 0.95. A BES-02 temperature and humidity recorder 
+measured air temperature and humidity. All devices were placed under a 
+radiation-resistant aluminum hood to minimize interference from direct 
+solar radiation and wind. To assess the acoustic environment, an NC-75 
+acoustic calibrator was employed to calibrate the NL-52A sound level 
+meter, ensuring accurate measurements. All instruments were posi­
+tioned 1.5 m above the ground. Table 2 provides further details on the 
+recorded parameters.
+3.4. Participants
+This experiment was conducted on both weekdays and weekends 
+from late June to early July. A total of 381 individuals were initially 
+approached for participation. Among them, 27 declined due to time 
+constraints, and 12 did not complete the full experimental protocol. As a 
+Fig. 2. Experimental procedure.
+Table 1 
+Subjective evaluations of the questionnaire surveys.
+Score
+Thermal 
+Sensation 
+Vote
+Thermal Comfort 
+Vote
+Acoustic 
+Sensation 
+Vote
+Acoustic Comfort 
+Vote
+3
+Hot
+Very comfortable
+Very quiet
+Very comfortable
+2
+Warm
+Comfortable
+Quiet
+Comfortable
+1
+Slightly warm
+Slightly 
+comfortable
+Slightly quiet
+Slightly 
+comfortable
+0
+Neutral
+Neutral
+Neutral
+Neutral
+−1
+Slightly cool
+Slightly 
+uncomfortable
+Slightly loud
+Slightly 
+uncomfortable
+−2
+Cool
+Uncomfortable
+Loud
+Uncomfortable
+−3
+Cold
+Very 
+uncomfortable
+Very loud
+Very 
+uncomfortable
+M. Gao and X. Zhu                                                                                                                                                                                                                             
+Building and Environment 282 (2025) 113269 
+4 
+
+
+===== PAGE 5 =====
+result, 342 participants were successfully recruited through convenience 
+sampling (56.14 % male; mean age = 35, SD = 8). A total of 153 par­
+ticipants were ultimately recruited at densely vegetated urban green­
+ways (DVUG) and 189 participants at sparsely vegetated urban 
+greenways (SVUG), based on the two greenway types classified in Sec­
+tion 3.1. Additionally, participants had primarily been walking, stand­
+ing, or sitting during the 20 min preceding the experiment. The selected 
+greenway segments ranged between 300 and 500 m in length. Partici­
+pants were instructed to walk naturally along the designated greenway 
+path and, after exposure, to rest briefly at a fixed point while completing 
+the questionnaire. Although the walking distance contributed to the 
+contextual experience of the site, all perceptual responses were recorded 
+while participants were in a stationary state, ensuring consistency in 
+exposure conditions and minimizing variation related to individual 
+movement. As the study was conducted in summer, the vast majority of 
+participants wore typical summer clothing (upper body: short-sleeve T- 
+shirt; lower body: shorts, short skirts, or long skirts; accessories: hats or 
+facemasks).
+Prior to the start of the experiment, each participant was required to 
+rest quietly for 5 min to allow perceptual stabilization. All participants 
+confirmed they were not experiencing mental fatigue or negative emo­
+tions and retained full cognitive and decision-making capacity [44]. 
+Participants were then exposed to the greenway environment for 
+approximately 10 min, followed by the completion of the questionnaire, 
+which took about 3 min. Previous research has indicated that such an 
+exposure duration is sufficient to elicit perceptual and psychological 
+restorative effects in outdoor settings. To ensure the accuracy of the 
+experiment, all participants confirmed that they were not experiencing 
+mental fatigue, had not consumed any stimulants (e.g., caffeine or 
+nicotine). Before the experiment, participants were informed about the 
+study procedures, and they were assured that all questionnaire data 
+would be used exclusively for academic research purposes. Additionally, 
+confidentiality was strictly maintained, and no personal information 
+was disclosed under any circumstances.
+3.5. Data analysis
+First, analysis of variance (ANOVA) was employed to examine 
+whether there were significant differences in thermal-acoustic percep­
+tions across different types of greenways, as well as to identify the role of 
+thermal-acoustic environments in restorative outcomes. Second, 
+weighted linear regression models were used to explore the relationships 
+between ROS scores and the measured UTCI and LAeq values. To facil­
+itate analysis, all data were categorized by greenway type, and within 
+each category, data points were grouped in increments of 1 ◦C UTCI, 
+after which the mean values were computed. Subsequently, a two-way 
+ANOVA was conducted to investigate the combined effects of thermal 
+and acoustic conditions on psychological restoration. Finally, condi­
+tional probability analysis was utilized to test for potential “veto ef­
+fects,” wherein the interaction of thermal and acoustic comfort could 
+significantly affect psychological restoration. All statistical analyses 
+were performed using SPSS version 26.0.
+4. Results
+4.1. Comparison of thermal-acoustic comfort across different greenway 
+types
+To answer RQ1, we conducted analysis of variance to compare 
+thermal-acoustic perceptions between different types of greenways: 
+densely vegetated and sparsely vegetated. Participants reported signif­
+icantly higher levels of comfort in densely vegetated greenways 
+compared to sparsely vegetated ones, evident in both TCV (densely: 0.97 
+vs sparsely: 0.28; p < 0.01) and ACV (densely: 1.33 vs sparsely: 0.36; p <
+0.01). Conversely, compared to densely vegetated greenways, partici­
+pants perceived sparsely vegetated greenways as hotter (TSV, densely: 
+0.70 vs sparsely: 1.47; p < 0.01) and noisier (ASV, densely: 0.77 vs 
+sparsely: −0.47; p < 0.01) (Fig. 3).
+4.2. Impact of thermal environment on psychological restoration
+Fig. 4 illustrates the relationship between UTCI and restorative 
+outcomes. In both densely vegetated (R² = 0.552) and sparsely vege­
+tated (R² = 0.688) greenways, UTCI exhibits a moderate negative cor­
+relation with ROS. This indicates that regardless of greenway type, an 
+increase in UTCI is associated with a gradual decline in restorative 
+benefits. Moreover, this trend is more pronounced in sparsely vegetated 
+greenways.
+To further investigate the impact of thermal comfort votes (TCV) on 
+ROS under different thermal stress conditions, an analysis of variance 
+was conducted. The results indicate that under moderate heat stress, 
+strong heat stress, and very strong heat stress conditions, TCV signifi­
+cantly influenced ROS in both densely vegetated and sparsely vegetated 
+greenways. Notably, ROS evaluations were higher in densely vegetated 
+greenways. Fig. 5 illustrates the relationship between TCV and ROS. 
+When TCV ≥−1, restorative benefits were only absent under very strong 
+heat stress conditions. However, when TCV ≥−2, despite thermal 
+discomfort in the densely vegetated greenway, ROS still exhibited 
+restorative benefits under moderate heat stress. Across all thermal stress 
+conditions, ROS increased with rising TCV. In sparsely vegetated 
+greenways, the differences in ROS between thermally comfortable and 
+uncomfortable visitors were 2.42 under very strong heat stress, 2.34 
+under strong heat stress, and 2.61 under moderate heat stress. In 
+contrast, in densely vegetated greenways, ROS differences remained 
+relatively stable across thermal stress conditions, averaging around 2.3. 
+This suggests that the influence of TCV on ROS is stronger in sparsely 
+vegetated greenways. These findings provide an initial response to RQ2.
+4.3. Impact of acoustic environment on psychological restoration
+Fig. 6 illustrates a moderate negative correlation between LAeq and 
+ROS. Specifically, the relationship between LAeq and ROS is more pro­
+nounced in densely vegetated greenways (R² = 0.622) compared to 
+sparsely vegetated greenways (R² = 0.536). This suggests that the 
+acoustic environment has a greater impact on ROS in densely vegetated 
+greenways than in sparsely vegetated ones. As LAeq increases, restor­
+ative benefits gradually decline.
+Fig. 7 illustrates the relationship between ACV and restorative ben­
+efits under different acoustic conditions. ANOVA comparisons between 
+greenway types reveal a significant difference in the impact of ACV on 
+restoration. In densely vegetated greenways, even when ACV ≥−2, ROS 
+continues to exhibit restorative benefits at 55–60 dB(A). However, this 
+effect is not observed in sparsely vegetated greenways, where ROS only 
+demonstrates restorative benefits when ACV ≥−1 under 55–60 dB(A) 
+conditions. Regarding the influence of ACV on ROS, at the same LAeq 
+level, ROS significantly increases as ACV improves. The average range (i. 
+e., the difference between the maximum and minimum values) was 1.71 
+in densely vegetated greenways and 1.86 in sparsely vegetated green­
+ways. Concerning the impact of the acoustic environment on ROS, at the 
+Table 2 
+Details of the measurement instruments.
+Instrument
+Parameters
+Range
+Precision
+Kestrel 5500 weather station
+Wind speed
+0.4~40 m/s
+±0.1 m/s
+BES-01 temperature recorder
+Air temperature
+−30–50 ◦C
+±0.5 ◦C
+BES-02 temperature and 
+humidity recorder
+Relative 
+humidity
+0 −90 %RH
+±3 %
+NL-52A Sound Level Meter
+Sound pressure 
+level
+25 dB(A)~130 
+dB(A)
+±1 dB
+M. Gao and X. Zhu                                                                                                                                                                                                                             
+Building and Environment 282 (2025) 113269 
+5 
+
+
+===== PAGE 6 =====
+same ACV level, ROS exhibits a decreasing trend with increasing LAeq in 
+sparsely vegetated greenways. Specifically, when LAeq ranges from 55 
+to 60 dB(A) to 70–75 dB(A), the average ROS difference is 0.86, further 
+suggesting that higher noise levels in sparsely vegetated greenways may 
+reduce restorative benefits. This provides a more detailed response to 
+RQ2.
+4.4. Combined effects of thermal-acoustic interactions on psychological 
+restoration
+We examined the interaction effects of UTCI and LAeq on ROS across 
+different types of urban greenways. As shown in Fig. 8, both environ­
+mental variables demonstrated interactive influences on ROS in both 
+sparsely and densely vegetated greenways. First, regarding thermal ef­
+fects, ROS generally decreased with increasing UTCI under the same 
+LAeq levels in sparsely vegetated greenways. However, when LAeq 
+reached 70–75 dB(A), the influence of UTCI on ROS became less pro­
+nounced. Second, in terms of acoustic influences, ROS consistently 
+declined as LAeq increased under each UTCI level in both greenway 
+types. Moreover, the average fluctuation of ROS—calculated by 
+comparing the mean ROS across all LAeq categories between higher and 
+lower UTCI levels—was 0.62 in densely vegetated greenways and 0.73 
+Fig. 3. Comparison of thermal and acoustic perceptions across different greenway types; (a) thermal comfort comparison; (b) thermal sensation comparison; (c) 
+scoustic comfort comparison; (d)scoustic sensation comparison.
+Fig. 4. Correlation between UTCI and ROS (based on 1 ◦C UTCI bins).
+Fig. 5. Relationship between thermal comfort votes and psychological restoration.
+M. Gao and X. Zhu                                                                                                                                                                                                                             
+Building and Environment 282 (2025) 113269 
+6 
+
+
+===== PAGE 7 =====
+in sparsely vegetated ones. This suggests that densely vegetated green­
+ways offer more consistent and stable restorative experiences in 
+response to thermal variation, reflecting greater psychological resil­
+ience. Finally, the range of ROS—defined as the difference between the 
+maximum and minimum ROS values across UTCI levels within each 
+LAeq category—varied with noise exposure. In densely vegetated 
+greenways, this range remained relatively small (from 0.55 to 0.66), 
+suggesting that thermal stress had a limited impact on restorative 
+Fig. 6. Correlation between LAeq and ROS.
+Fig. 7. Relationship between acoustic comfort votes and psychological restoration.
+Fig. 8. Effect of thermal-acoustic interaction on ROS.
+M. Gao and X. Zhu                                                                                                                                                                                                                             
+Building and Environment 282 (2025) 113269 
+7 
+
+
+===== PAGE 8 =====
+perception in this setting. This highlights the relatively greater role of 
+acoustic conditions in supporting perceived restoration under high 
+vegetation cover. In contrast, in sparsely vegetated greenways, the ROS 
+range decreased notably from 1.04 to 0.69 as LAeq increased, indicating 
+that thermal conditions played a more substantial role, particularly 
+under quieter conditions. This suggests that improving thermal comfort 
+may be more effective in enhancing restoration in sparsely vegetated 
+greenways. This provides a comprehensive answer to RQ2.
+4.5. Influence of thermal-acoustic comfort on psychological restoration
+To address RQ3, we employed conditional probability analysis to 
+elucidate the relationship between thermal-acoustic comfort and psy­
+chological restoration [25]. Conditional probability refers to the likeli­
+hood of one event occurring in the context of another event that is 
+already known or assumed to have taken place. It is typically denoted as 
+P(A | B), representing the probability of event A under the condition 
+that event B has occurred. Specifically, we calculated probabilities to 
+describe the likelihood of experiencing “adverse psychological restora­
+tion” (APR) under different combinations of comfort factors in greenway 
+environments with varying vegetation densities. First, we defined 
+probability events representing outdoor comfort votes (Table 3). Based 
+on previous research, comfort votes within the range of [−3,0] were 
+classified as “uncomfortable,” while psychological restoration scores 
+within [−2,0] were defined as “APR” [5]. This classification resulted in a 
+total of 22 = 4 possible comfort condition combinations, as outlined in 
+Table 3.
+Table 4 presents the probability of different comfort vote combina­
+tions occurring under APR conditions, allowing for an examination of 
+the veto effect of comfort perceptions on psychological restoration. The 
+combinations were defined as follows: S1 = (X1,Y1), S2 = (X1, Y2), S3 =
+(X2, Y1), S4 = (X2, Y2). Fig. 9 illustrates the proportion of APR occur­
+rences within various thermal-acoustic discomfort vote combinations. 
+For instance, in the sparsely vegetated urban greenway (SVUG) cate­
+gory, n = 2 represents greenway users who felt “comfortable” in terms of 
+thermal comfort but “uncomfortable” in terms of acoustic comfort, with 
+an APR probability of 25.18 %. Additionally, even when users reported 
+comfort in both thermal and acoustic conditions, they could still expe­
+rience APR. This occurred more frequently in SVUG compared to DVUG, 
+with an incidence rate of 15.12 %. Notably, acoustic discomfort 
+exhibited a stronger veto effect on psychological restoration in densely 
+vegetated greenways (32.50 %), whereas thermal discomfort showed a 
+higher veto tendency in sparsely vegetated greenways (30.35 %). When 
+both thermal and acoustic comfort votes were rated as “uncomfortable,” 
+the likelihood of experiencing APR was significantly higher in SVUG 
+(73.62 %).
+5. Discussion
+5.1. Interaction between thermal and acoustic environments
+The interaction between thermal and acoustic environments signif­
+icantly influences the restorative benefits of different types of green­
+ways. Regarding the impact of the thermal environment on ROS in 
+densely vegetated greenways, the effect of LAeq on ROS varies across 
+different UTCI levels. As UTCI increases from 31.7 ◦C to 41.4 ◦C, ROS 
+evaluations decline with rising LAeq, demonstrating a downward trend 
+within the same UTCI category. This suggests that when summer tem­
+peratures are excessively high and thermal stress is strong, ROS is 
+significantly affected, decreasing as LAeq increases. However, this trend 
+is relatively moderate within the 55–60 dB(A) range but becomes more 
+pronounced under 70–75 dB(A) conditions. In other words, even under 
+high thermal stress, a favorable acoustic environment in densely vege­
+tated greenways provides an opportunity to mitigate its negative effects 
+on restoration. This finding aligns with previous research suggesting 
+that acoustic comfort can enhance individuals’ tolerance to thermal 
+conditions, thereby fostering more positive perceptual experiences [45]. 
+For instance, vegetation with different leaf morphologies can help 
+reduce urban noise [46], offering a sustainable and easily implement­
+able alternative to constructing noise barriers while also contributing to 
+urban greenery. Such approaches provide practical design solutions for 
+addressing thermal exposure in outdoor environments. These findings 
+support the notion that poor performance in a single sensory dimension 
+may obscure the influence of multisensory interactions. Therefore, it is 
+crucial to consider multisensory interactions in order to help policy­
+makers and urban planners identify appropriate intervention strategies 
+to optimize the restorative potential of various outdoor spaces.
+Furthermore, another key contribution of this study is its deeper 
+insight into the factors contributing to “unfavorable” psychological re­
+covery. In hot climates, thermal exposure can negatively impact mental 
+Table 3 
+Descriptions of probability conditions.
+Probability events
+Notations
+Explanations
+Psychological restoration
+A
+Adverse to psychological restoration
+Acoustic comfort vote
+Y1
+Comfortable with acoustic environment
+​
+Y2
+Uncomfortable with acoustic environment
+Thermal comfort vote
+X1
+Comfortable with thermal environment
+​
+X2
+Uncomfortable with thermal environment
+Table 4 
+Outcomes of conditional probability analysis.
+P(A/Sn)
+DVUG
+SVUG
+n = 1
+S1=(X1,Y1)
+0.0842
+0.1512
+n = 2
+S2=(X1,Y2)
+0.3250
+0.2518
+n = 3
+S3=(X2,Y1)
+0.1638
+0.3035
+n = 4
+S4=(X2,Y2)
+0.6825
+0.7362
+Note: P(A | Sn) denotes the probability of APR occurring under thermal-acoustic 
+comfort condition Sn. Each Sn represents a unique combination of thermal (X) 
+and acoustic (Y) comfort states. DVUG refers to densely vegetated urban 
+greenway; SVUG refers to sparsely vegetated urban greenway.
+Fig. 9. Distribution of adverse psychological restoration by thermal-acoustic 
+comfort conditions. (Black circles represent all combinations that contribute 
+to psychological restoration. The numbers indicate the probability of APR 
+occurrence based on comfort vote combinations. Within the green and yellow 
+circles, areas denote “uncomfortable” TCV/ACV conditions, while their overlap 
+signifies cases where both comfort votes are “uncomfortable.” In contrast, the 
+black circle, excluding the green and yellow areas, represents conditions where 
+both thermal and acoustic comfort votes are “comfortable.”).
+M. Gao and X. Zhu                                                                                                                                                                                                                             
+Building and Environment 282 (2025) 113269 
+8 
+
+
+===== PAGE 9 =====
+well-being, an effect that is particularly pronounced in high-density 
+urban areas [47]. In highly vegetated outdoor environments, ACV has 
+a stronger impact on psychological restoration than other sensory 
+comfort factors [48], as individuals may be more sensitive to noise in 
+thermally stressful conditions [7]. This suggests that in less vegetated 
+environments, people may tolerate situations where they feel acousti­
+cally uncomfortable but thermally comfortable. For instance, in sparsely 
+vegetated settings, visitors are more sensitive to thermal comfort, with 
+thermal comfort demonstrating a stronger veto effect (30.35 %) on ROS 
+in these greenways.
+5.2. Impact of environmental conditions on restoration
+First, this study extends previous research on the influence of land­
+scape and soundscape on subjective perceptions of restorative benefits 
+in outdoor spaces by further exploring the role of thermal and acoustic 
+environmental conditions. It further reveals the interrelationship be­
+tween thermal and acoustic environments based on their physical con­
+ditions. As UTCI and LAeq increase, ROS evaluations gradually decline. 
+Regarding the impact of the thermal environment on ROS, the effect of 
+TCV varies under different levels of thermal stress. When individuals are 
+dissatisfied with the thermal environment, ROS is lower. This finding 
+supports the correlation between UTCI and ROS rather than just tem­
+perature alone [6]. This relationship can be explained by the influence of 
+solar radiation and subjective appraisal of thermal comfort [49], which 
+reflects both physical exposure and psychological judgment.
+Second, concerning the impact of the acoustic environment on ROS, 
+we found that under different acoustic conditions, respondents who 
+perceived a comfortable sound environment reported higher ROS levels. 
+This effect was particularly evident in greenway settings. In both densely 
+vegetated and sparsely vegetated greenways, even when ACV was rated 
+as slightly uncomfortable (ACV ≥−1), psychological restoration was 
+still observed under sound environments ranging from 55 to 60 dB(A) 
+and 60 to 65 dB(A). This phenomenon can be explained by the restor­
+ative potential of preferred soundscapes [50], where natural sounds are 
+often more accepted [51], especially in urban greenways. Additionally, 
+ACV may be influenced by individual subjective preferences and 
+perceptual sensitivity [52], which should not be overlooked in assessing 
+its impact on psychological restoration.
+Finally, this study expands previous research on restorative envi­
+ronments based on Attention Restoration Theory and Stress Recovery 
+Theory, emphasizing that environmental restorative benefits are 
+significantly influenced by thermal and acoustic conditions, rather than 
+being solely dependent on visual factors [18]. By incorporating objec­
+tive measurements of the thermal and acoustic environment, this study 
+complements subjective assessments of comfort and helps explain how 
+perceived discomfort under different environmental conditions may 
+translate into changes in restoration outcomes [21]. This approach 
+provides a more scientific and practical foundation for the design and 
+application of outdoor spaces.
+5.3. Implications for urban greenway design
+To support more targeted greenway planning, this study integrates 
+both subjective comfort evaluations and objective environmental in­
+dicators. While subjective ratings capture individual experiences of 
+comfort, objective metrics help identify the physical conditions shaping 
+those perceptions. They not only clarify the relative influence of thermal 
+and acoustic factors, but also reveal where landscape inter­
+ventions—such as shading or vegetation buffers—may be most effective. 
+This integrated approach acknowledges that comfort is shaped by both 
+environmental conditions and psychological adaptation, and it enables 
+more responsive and evidence-based design decisions.
+Although research has demonstrated the numerous benefits of nat­
+ural environments for physical and mental well-being, urban green­
+ways—as typical outdoor spaces—face dual challenges. First, they are 
+often underutilized in hot weather, and second, the combined effects of 
+soundscape and climate on restorative benefits in high-density urban 
+environments remain insufficiently explored. In particular, during hot 
+seasons and under noisy conditions, subjective discomfort may 
+discourage people from using outdoor spaces. These findings highlight 
+the importance of addressing thermal and acoustic discomfort in out­
+door environments to maximize their restorative potential. Urban street 
+vegetation can enhance outdoor thermal comfort, mitigate noise, and 
+alleviate stress [18,46,53]. For example, clusters of trees provide better 
+noise reduction than individual trees, and dense greenery offers shade 
+that reduces solar radiation, lowers local temperatures, and enhances 
+overall comfort. To improve outdoor spatial comfort, landscape de­
+signers and policymakers should prioritize these strategies.
+Empirically, our findings offer guidance for differentiated greenway 
+design. In densely vegetated streets, regulating the sound environ­
+ment—such as using vegetation to reduce noise and create a more nat­
+ural, comfortable soundscape—emerges as a key strategy for enhancing 
+restorative benefits, as soundscape influences are more pronounced in 
+such settings. Conversely, in sparsely vegetated greenways, thermal 
+conditions play a greater role in restoration. Therefore, implementing 
+artificial shading structures (e.g., canopies and street-scale shelters) to 
+reduce temperatures is an effective intervention [54]. As urban green­
+ways serve as vital outdoor spaces in high-density cities, their spatial 
+configuration and design should emphasize comfort. In areas with high 
+usage during hot seasons, shade should be prioritized to facilitate out­
+door activities in thermally comfortable microclimates. These measures 
+not only promote physical and mental restoration but also reduce 
+dependence on energy-intensive cooling systems [38], contributing to 
+sustainable development goals.
+5.4. Limitations and prospects
+This study conducted field-based assessments of the thermal and 
+acoustic environments of urban greenways during the hot summer 
+season in a high-density city. By quantifying visitors’ subjective evalu­
+ations of environmental comfort and psychological restoration, the 
+research contributes to a deeper understanding of how the interaction 
+between thermal and acoustic conditions influences restorative out­
+comes in urban outdoor settings. These findings offer valuable insights 
+for the evidence-based design and renewal of urban green spaces, 
+particularly in contexts where environmental stressors such as heat and 
+noise are increasingly prevalent.
+Nevertheless, given the dynamic and complex nature of outdoor 
+environments, two key limitations of this study must be acknowledged. 
+First, although we assessed both the physical parameters of the thermal- 
+acoustic environment and participants’ comfort evaluations, we may 
+have underestimated users’ subjective soundscape preferences—such as 
+perceived pleasantness and eventfulness—which could introduce po­
+tential bias in the interpretation of acoustic comfort. Despite this limi­
+tation, the findings remain valuable, as the in-situ approach captures the 
+lived experiences of greenway users, offering a more holistic under­
+standing of outdoor comfort and restorative potential. This, in turn, 
+provides urban planners and policymakers with a richer evidence base 
+for designing environments that support mental well-being. Second, the 
+study focused exclusively on the hot summer period, without accounting 
+for seasonal variations in thermal-acoustic comfort experiences. Future 
+research should refine this limitation by incorporating seasonal 
+dynamics—such as transitional periods and winter conditions—into an 
+integrated framework that reflects the interplay between environmental 
+and temporal characteristics of urban greenways.
+Despite these limitations, the study makes a significant contribution 
+to understanding how thermal-acoustic comfort in hot climates can 
+enhance the restorative potential of urban greenways. It moves beyond 
+traditional approaches that rely solely on physical environmental con­
+trols by introducing a perceptual perspective that accounts for the 
+combined effects of thermal and acoustic experiences. These findings 
+M. Gao and X. Zhu                                                                                                                                                                                                                             
+Building and Environment 282 (2025) 113269 
+9 
+
+
+===== PAGE 10 =====
+highlight the potential of integrated sensory design strategies to improve 
+restorative outcomes. Given the specific environmental characteristics 
+of greenways, future studies should further explore the nonlinear re­
+lationships between thermal-acoustic conditions and psychological 
+restoration. Doing so will support the development of more resilient and 
+restorative outdoor spaces, particularly in response to sudden societal 
+stressors and ongoing urban sustainability challenges [55].
+6. Conclusions
+Under the pressures of urban heat and rising climate stress, this study 
+examined how thermal and acoustic conditions in outdoor spaces in­
+fluence psychological restoration. The aim was to assess how combined 
+thermal-acoustic comfort affects restorative outcomes in high-density 
+urban contexts.
+First, perceptual differences in thermal-acoustic comfort varied by 
+greenway type: thermal conditions were more strongly linked to resto­
+ration in sparsely vegetated greenways, while acoustic conditions 
+played a greater role in densely vegetated ones. Second, both TCV and 
+ACV had distinct impacts under varying levels of thermal stress and 
+noise. As thermal stress rose, TCV’s influence on ROS increased in 
+sparsely vegetated greenways. Conversely, in densely vegetated green­
+ways, ACV remained positively associated with ROS even under higher 
+sound pressure levels—highlighting the value of soundscape design in 
+hot environments. Finally, a differentiated “veto effect” was observed: 
+ACV showed stronger veto tendencies in densely vegetated settings, 
+while TCV played a larger veto role in sparse ones. This suggests that 
+enhancing acoustic comfort may be more effective in tree-rich envi­
+ronments, whereas improving thermal comfort is more critical in open, 
+less-shaded spaces. The interaction between thermal and acoustic en­
+vironments shapes psychological restoration differently depending on 
+vegetation density. In the creation of comfortable urban outdoor spaces, 
+improving thermal-acoustic conditions offers a promising pathway for 
+enhancing restorative potential.
+The comfort of urban greenways is closely linked to public health, 
+particularly in high-density cities like Shenzhen, where greenway spaces 
+directly impact residents’ everyday experiences. Designing open spaces 
+that consider both thermal and acoustic comfort can significantly 
+enhance users’ restorative outcomes, encouraging greater participation 
+in outdoor leisure and mobility. By addressing the combined effects of 
+thermal and acoustic environments, urban designers can more effec­
+tively create restorative urban landscapes through the targeted modu­
+lation of environmental comfort.
+CRediT authorship contribution statement
+Ming Gao: Writing – review & editing, Writing – original draft, 
+Visualization, Validation, Software, Resources, Project administration, 
+Methodology, Investigation, Funding acquisition, Formal analysis, Data 
+curation, Conceptualization. Xun Zhu: Writing – review & editing, 
+Writing – original draft, Visualization, Validation, Supervision, Soft­
+ware, Resources, Project administration, Investigation, Funding acqui­
+sition, Conceptualization.
+Declaration of competing interest
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper.
+Funding
+This research was funded by China Scholarship Council (Grant No. 
+202306120267); Heilongjiang Philosophy and Social Sciences Research 
+Planning Project (Grant No. 21YSB127).
+Data availability
+Data will be made available on request.
+References
+[1] O. Jay, A. Capon, P. Berry, C. Broderick, R. de Dear, G. Havenith, Y. Honda, R. 
+S. Kovats, W. Ma, A. Malik, Reducing the health effects of hot weather and heat 
+extremes: from personal cooling strategies to green cities, Lancet 398 (10301) 
+(2021) 709–724.
+[2] J. Honold, R. Beyer, T. Lakes, E. van der Meer, Multiple environmental burdens and 
+neighborhood-related health of city residents, J. Environ. Psychol. 32 (4) (2012) 
+305–317.
+[3] L. Luo, B. Jiang, From oppressiveness to stress: a development of Stress Reduction 
+Theory in the context of contemporary high-density city, J. Environ. Psychol. 84 
+(2022) 101883.
+[4] Y. Dong, F. Li, J. Cao, W. Dong, What neighborhood factors are critical to resident 
+satisfaction with old neighborhoods? An integration of ground theory and impact 
+asymmetry analysis, Cities 141 (2023) 104460.
+[5] M. Gao, X. Zhu, Reclaiming winter: how visual, thermal, and acoustic comfort 
+shape psychological restoration in severe cold urban parks, Build. Environ. 271 
+(2025) 112597.
+[6] T. Yan, Y. Jin, H. Jin, Combined effects of the visual-thermal environment on the 
+subjective evaluation of urban pedestrian streets in severely cold regions of China, 
+Build. Environ. 228 (2023) 109895.
+[7] Y. Yin, D. Zhang, M. Zhen, W. Jing, W. Luo, W. Feng, Combined effects of the 
+thermal-acoustic environment on subjective evaluations in outdoor public spaces, 
+Sustain. Cities Soc. 77 (2022) 103522.
+[8] S. Korpilo, E. Nyberg, K. Vierikko, A. Ojala, J. Kaseva, J. Lehtim¨aki, 
+L. Kopperoinen, G. Cerw´en, M. Hedblom, E. Castellazzi, Landscape and soundscape 
+quality promote stress recovery in nearby urban nature: a multisensory field 
+experiment, Urban For. Urban Green. 95 (2024) 128286.
+[9] M. Gao, C. Fang, Do urban park spatial features influence public emotional 
+responses during jogging? Evidence from social media data, J. Outdoor Recreat. 
+Tour. 50 (2025) 100864.
+[10] Y. Tang, Y. Xie, B. Sun, Z. Hao, N. Pei, Greenway service supply and public demand 
+in Guangzhou city, China, in: Urban For. Urban Green., 76, 2022 127711.
+[11] Y. Zhang, G.X. Ong, Z. Jin, C.M. Seah, T.S. Chua, The effects of urban greenway 
+environment on recreational activities in tropical high-density Singapore: a 
+computer vision approach, Urban For. Urban Green. 75 (2022) 127678.
+[12] V. Jacob, J.A. Reynolds, S.K. Chattopadhyay, D.P. Hopkins, D.R. Brown, H. 
+M. Devlin, A. Barrett, D. Berrigan, C.J. Crespo, G.W. Heath, Parks, trails, and 
+greenways for physical activity: a community guide systematic economic review, 
+Am. J. Prev. Med. 66 (6) (2024) 1089–1099.
+[13] Y. Li, L. Li, W. Wang, H. Kong, L. Chen, L. Yang, How to enhance thermal comfort 
+in greenway walking? An exploration of the physical environment, walking status, 
+and emotional perspectives, Urban Clim. 56 (2024) 102053.
+[14] A. Akpinar, Factors influencing the use of urban greenways: a case study of Aydın, 
+Turkey, Urban For. Urban Green. 16 (2016) 123–131.
+[15] W. Dong, X. Zhu, X. Zhao, Research on correlation between built environment 
+characteristics of community greenway and intensity of physical activities: a case 
+study of Shenzhen, Landsc. Archit. 28 (12) (2021) 93–99.
+[16] P.-J. Chang, C.-W. Tsou, Y.-S. Li, Urban-greenway factors’ influence on older 
+adults’ psychological well-being: a case study of Taichung, Taiwan, in: Urban For. 
+Urban Green., 49, 2020 126606.
+[17] S. Kaplan, The restorative benefits of nature: toward an integrative framework, 
+J. Environ. Psychol. 15 (3) (1995) 169–182.
+[18] R.S. Ulrich, R.F. Simons, B.D. Losito, E. Fiorito, M.A. Miles, M. Zelson, Stress 
+recovery during exposure to natural and urban environments, J. Environ. Psychol. 
+11 (3) (1991) 201–230.
+[19] R. Wang, M.H. Browning, F. Kee, R.F. Hunter, Exploring mechanistic pathways 
+linking urban green and blue space to mental wellbeing before and after urban 
+regeneration of a greenway: evidence from the Connswater Community Greenway, 
+Belfast, UK, Landsc. Urban Plan. 235 (2023) 104739.
+[20] M. Subiza-Perez, L. Vozmediano, C.S. Juan, Welcome to your plaza: assessing the 
+restorative potential of urban squares through survey and objective evaluation 
+methods, Cities 100 (2020) 102461.
+[21] M. Nikolopoulou, K. Steemers, Thermal comfort and psychological adaptation as a 
+guide for designing urban spaces, Energy Build. 35 (1) (2003) 95–101.
+[22] S. Song, Y. Xiao, R. Tu, S. Yin, Effects of thermal perception on restorative benefits 
+by green space exposure: a pilot study in hot-humid China, Urban Clim. 53 (2024) 
+101767.
+[23] W. Yang, J. Kang, Acoustic comfort evaluation in urban open public spaces, Appl. 
+Acoust. 66 (2) (2005) 211–229.
+[24] X. Ren, Q. Li, M. Yuan, S. Shao, How visible street greenery moderates traffic noise 
+to improve acoustic comfort in pedestrian environments, Landsc. Urban Plan. 238 
+(2023) 104839.
+[25] M. Du, B. Hong, C. Gu, Y. Li, Y. Wang, Multiple effects of visual-acoustic-thermal 
+perceptions on the overall comfort of elderly adults in residential outdoor 
+environments, Energy Build. 283 (2023) 112813.
+[26] J. Chang, M. Du, B. Hong, H. Qu, H. Chen, Effects of thermal-olfactory interactions 
+on emotional changes in urban outdoor environments, Build. Environ. 232 (2023) 
+110049.
+M. Gao and X. Zhu                                                                                                                                                                                                                             
+Building and Environment 282 (2025) 113269 
+10 
+
+
+===== PAGE 11 =====
+[27] Y. Qi, Q. Chen, F. Lin, Q. Liu, X. Zhang, J. Guo, L. Qiu, T. Gao, Comparative study 
+on birdsong and its multi-sensory combinational effects on physio-psychological 
+restoration, J. Environ. Psychol. 83 (2022) 101879.
+[28] E. Schreuder, J. Van Erp, A. Toet, V.L. Kallen, Emotional responses to multisensory 
+environmental stimuli: a conceptual framework and literature review, Sage Open 6 
+(1) (2016) 2158244016630591.
+[29] Y. Jin, H. Jin, J. Kang, Combined effects of the thermal-acoustic environment on 
+subjective evaluations in urban squares, Build. Environ. 168 (2020) 106517.
+[30] G. Jendritzky, R. De Dear, G. Havenith, UTCI—Why another thermal index? Int. J. 
+Biometeorol. 56 (2012) 421–428.
+[31] M. Nikolopoulou, Thermal comfort in urban spaces, Urban microclimate modelling 
+for comfort and energy studies (2021) 55–77.
+[32] J. Kang, Urban Sound Environment, CRC Press, 2006.
+[33] F. Liu, J. Kang, A grounded theory approach to the subjective understanding of 
+urban soundscape in Sheffield, Cities 50 (2016) 28–39.
+[34] N.P.A. Nitidara, J. Sarwono, S. Suprijanto, F.N. Soelami, The multisensory 
+interaction between auditory, visual, and thermal to the overall comfort in public 
+open space: a study in a tropical climate, Sustain. Cities Soc. 78 (2022) 103622.
+[35] Y. Zhang, J. Kang, J. Kang, Effects of soundscape on the environmental restoration 
+in urban natural environments, Noise Health 19 (87) (2017) 65–72.
+[36] N. Pellerin, V. Candas, Combined effects of temperature and noise on human 
+discomfort, Physiol. Behav. 78 (1) (2003) 99–106.
+[37] Y. Chen, T. Li, S. Chen, H. Chen, Y. Lan, Thermal–Acoustic interaction effects on 
+physiological and psychological measures in urban forests: a laboratory study, 
+Forests 15 (8) (2024) 1373.
+[38] Y. Luo, X. Ma, J. Li, C. Wang, R. de Dear, S. Lu, Outdoor space design and its effect 
+on mental work performance in a subtropical climate, Build. Environ. 270 (2025) 
+112470.
+[39] P. Br¨ode, D. Fiala, K. Bła˙zejczyk, I. Holm´er, G. Jendritzky, B. Kampmann, B. Tinz, 
+G. Havenith, Deriving the operational procedure for the Universal Thermal Climate 
+Index (UTCI), Int. J. Biometeorol. 56 (2012) 481–494.
+[40] A. Standard, Thermal Environmental Conditions for Human Occupancy, 55, ANSI/ 
+ASHRAE, 1992, p. 5.
+[41] K.M. Korpela, M. Yl´en, L. Tyrv¨ainen, H. Silvennoinen, Favorite green, waterside 
+and urban environments, restorative experiences and perceived health in Finland, 
+Health Promot. Int. 25 (2) (2010) 200–209.
+[42] E. Bielinis, N. Takayama, S. Boiko, A. Omelan, L. Bielinis, The effect of winter 
+forest bathing on psychological relaxation of young Polish adults, Urban For. 
+Urban Green. 29 (2018) 276–283.
+[43] K.M. Korpela, M. Yl´en, L. Tyrv¨ainen, H. Silvennoinen, Determinants of restorative 
+experiences in everyday favorite places, Health Place 14 (4) (2008) 636–652.
+[44] J.S. Lerner, C.A. Dorison, J. Klusowski, How do emotions affect decision making? 
+in: A. Scarantino (Ed.), Emotion Theory: The Routledge Comprehensive Guide, vol. 
+II Routledge, Abingdon, UK, 2023, pp. 447–468.
+[45] H. Chen, B. Hong, H. Qu, Y. Geng, M. Su, Effects of acoustic perception on outdoor 
+thermal comfort in campus open spaces in China’s cold region, Buildings 12 (10) 
+(2022) 1518.
+[46] Q. Meng, O. Evgrafova, M. Li, A predictive model for traffic noise reduction effects 
+of street green spaces with variable widths of coniferous vegetation, Forests 16 (2) 
+(2025) 238.
+[47] H. Huang, Z. Lu, X. Fan, W. Zhai, L. Zhang, D. Xu, Z. Liu, Y. Li, X. Ye, H. Qin, Urban 
+heatwave, green spaces, and mental health: a review based on environmental 
+health risk assessment framework, Sci. Total Environ. (2024) 174816.
+[48] S. Zhang, X. Zhao, Z. Zeng, X. Qiu, The influence of audio-visual interactions on 
+psychological responses of young people in urban green areas: a case study in two 
+parks in China, Int. J. Environ. Res. Public Health 16 (10) (2019) 1845.
+[49] C.K.C. Lam, H. Yang, X. Yang, J. Liu, C. Ou, S. Cui, X. Kong, J. Hang, Cross-modal 
+effects of thermal and visual conditions on outdoor thermal and visual comfort 
+perception, Build. Environ. 186 (2020) 107297.
+[50] X. Guo, J. Liu, C. Albert, X.-C. Hong, Audio-visual interaction and visitor 
+characteristics affect perceived soundscape restorativeness: case study in five parks 
+in China, Urban For. Urban Green. 77 (2022) 127738.
+[51] L. Yu, J. Kang, Factors influencing the sound preference in urban open spaces, 
+Appl. Acoust. 71 (7) (2010) 622–633.
+[52] J. Mu, J. Kang, Y. Wu, Acoustic environment of comprehensive activity spaces in 
+nursing homes: a case study in Harbin, China, Appl. Acoust. 177 (2021) 107932.
+[53] D. Lai, W. Liu, T. Gan, K. Liu, Q. Chen, A review of mitigating strategies to improve 
+the thermal environment and thermal comfort in urban outdoor spaces, Sci. Total 
+Environ. 661 (2019) 337–353.
+[54] S. Nicholson, M. Nikolopoulou, R. Watkins, M. L¨ove, C. Ratti, Data driven design 
+for urban street shading: validation and application of ladybug tools as a design 
+tool for outdoor thermal comfort, Urban Clim. 56 (2024) 102041.
+[55] M. Gao, X. Zhu, Lighting the night: unveiling the restorative potential of urban 
+green spaces in nighttime environments, Urban For. Urban Green. 107 (2025) 
+128769.
+M. Gao and X. Zhu                                                                                                                                                                                                                             
+Building and Environment 282 (2025) 113269 
+11 

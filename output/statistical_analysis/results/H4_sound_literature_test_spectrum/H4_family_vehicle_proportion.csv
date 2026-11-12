@@ -1,0 +1,22 @@
+"sound_variable","family","equation","outcome","term","estimate","p","paper","source_rule_met"
+"vehicle_proportion","Spearman","(thermal_comfort, sound)","thermal_comfort","spearman_thermal_sound",-0.0613956899059799,0.786069816780377,"Zhen 2025",FALSE
+"vehicle_proportion","Wilcoxon","sound_urban - sound_green","sound","wilcoxon_sound",-0.0177083333333333,0.2783203125,"Cureau 2022",FALSE
+"vehicle_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET cool","heart_rate","kw_heart_rate_cool",1.95454545454545,0.581894358885136,"Tang 2026",FALSE
+"vehicle_proportion","Kruskal-Wallis","heart_rate ~ sound quartile within PET warm","heart_rate","kw_heart_rate_warm",4.59393939393939,0.204062608056271,"Tang 2026",FALSE
+"vehicle_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET cool","sdnn","kw_sdnn_cool",1.03030303030303,0.793920063415628,"Tang 2026",FALSE
+"vehicle_proportion","Kruskal-Wallis","sdnn ~ sound quartile within PET warm","sdnn","kw_sdnn_warm",0.912121212121207,0.822501740004322,"Tang 2026",FALSE
+"vehicle_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET cool","rmssd","kw_rmssd_cool",1.53030303030303,0.675294272894093,"Tang 2026",FALSE
+"vehicle_proportion","Kruskal-Wallis","rmssd ~ sound quartile within PET warm","rmssd","kw_rmssd_warm",1.10303030303031,0.776342607213239,"Tang 2026",FALSE
+"vehicle_proportion","LMM (one predictor)","thermal_comfort ~ sound_z + (1|participant)","thermal_comfort","peng_thermal_sound",0.0783646631785801,0.7119654304467,"Peng 2025",FALSE
+"vehicle_proportion","LMM (one predictor)","thermal_comfort ~ acoustic_comfort + (1|participant)","thermal_comfort","peng_thermal_acoustic",0.54909045137618,0.00211914838606117,"Peng 2025",TRUE
+"vehicle_proportion","LMM (one predictor)","acoustic_comfort ~ sound_z + (1|participant)","acoustic_comfort","peng_acoustic_sound",0.106825382062222,0.682866317916966,"Peng 2025",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_max_z",-0.163599675123461,0.848597811635072,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","skin_temp ~ sound_max_z + sound_sd_z + (1|participant)","skin_temp","sound_sd_z",-0.027541085256834,0.975794922333561,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_max_z",-9.82066773404642,0.0263011553442135,"Rodrigues 2026",TRUE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","heart_rate ~ sound_max_z + sound_sd_z + (1|participant)","heart_rate","sound_sd_z",5.35028529542539,0.189938785133198,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_max_z",2.04957737284767,0.198446574343053,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","eda_tonic ~ sound_max_z + sound_sd_z + (1|participant)","eda_tonic","sound_sd_z",-3.30559404545313,0.0674185411956151,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_max_z",0.678199227989917,0.961972258742596,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","sdnn ~ sound_max_z + sound_sd_z + (1|participant)","sdnn","sound_sd_z",0.329921878725328,0.981657991633016,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_max_z",7.2510850719047,0.655537059484155,"Rodrigues 2026",FALSE
+"vehicle_proportion","LMM (Noise_max + Noise_sd)","rmssd ~ sound_max_z + sound_sd_z + (1|participant)","rmssd","sound_sd_z",-5.73869387174979,0.723490526202195,"Rodrigues 2026",FALSE

@@ -1,0 +1,1645 @@
+
+
+===== PAGE 1 =====
+Outdoor thermal comfort of urban plaza space under thermoacoustic 
+interactions –Taking Datang Everbright City as an example
+Meng Zhen a, Xinyi Yuan b, Liqiang Gao b, Weijie Xia c, Kai Nan d,*, Ming Zhang e,*
+a School of Human Settlements and Civil Engineering, Xi’an Jiaotong University, Xi’an 710049, Shanxi, PR China
+b School of Architecture and Art, Shijiazhuang Tiedao University, Shijiazhuang 050043, Hebei, PR China
+c School of Architecture and Art, Hebei University of Architecture, Zhangjiakou 075000, Hebei, PR China
+d Department of Joint Surgery, Honghui Hospital, Xi’an Jiaotong University, Xi’an 710054, Shaanxi, PR China
+e Department of General Practice, Honghui Hospital, Xi’an Jiaotong University, Xi’an 710054, Shaanxi, PR China
+A R T I C L E I N F O
+Keywords:
+Outdoor thermal comfort
+Acoustic comfort
+Universal thermal climate index
+Cold region
+A B S T R A C T
+The comfort of urban square environments in terms of thermal and acoustic conditions directly influences the 
+quality of people’s travel experiences and their overall well-being. This study, represented by Xi’an Datang 
+Everbright City, investigates the impact of thermal-acoustic environments on human comfort in cold regions of 
+China. Four typical spaces within the city square were selected for meteorological measurements and subjective 
+questionnaire surveys to gauge the thermal perception of active crowds. Using the Universal Thermal Climate 
+Index (UTCI) as a thermal benchmark, the study compares the interaction between thermal conditions and 
+acoustic environments. Results indicate that the neutral UTCI in Xi’an urban squares is 14.9 ◦C, with a neutral 
+UTCI range of 10.8~19.0 ◦C and a preferred temperature of 17.1 ◦C. Positive types of sounds moderately reduce 
+thermal sensation. Moderate environmental sounds alleviate thermal discomfort to some extent among re­
+spondents. In environments such as birdsong and flowing water, people prefer higher temperatures, thereby 
+increasing thermal tolerance. Conversely, in noise from traffic or construction, individuals prefer lower tem­
+peratures, reducing their thermal tolerance. In environments with broadcasts or conversations, respondents 
+exhibit slightly higher thermal tolerance compared to the average neutral temperature. Finally, based on 
+meteorological characteristics at different survey points and respondent feedback, optimization strategies for 
+design are proposed.
+1. Introduction
+With the rapid development of cities, China’s urbanization process 
+has accelerated significantly, leading to substantial changes in urban 
+meteorological conditions [1]. According to data from the National 
+Bureau of Statistics in 2022, China’s urbanization rate has increased 
+dramatically from 17.9 % in 1978 to 64.72 % in 2021 [2], and the urban 
+resident population has grown from 170 million to 910 million Xi’an, for 
+instance, has an urban population of 10.34 million and an urbanization 
+rate of 79.59 % [3], making it a representative example of a highly ur­
+banized city. While this rapid urbanization reflects the progress of 
+China’s modern economic development, it also imposes considerable 
+pressure on the urban ecological environment.
+The urban heat island effect is one of the environmental issues 
+resulting from rapid urbanization. Modern cities have seen an increasing 
+number of buildings and structures that absorb significant amounts of 
+solar radiation during the day and release this heat at night, causing a 
+noticeable increase in temperatures in urban centers. Additionally, the 
+urban heat island effect exacerbates temperature differences within the 
+city. This temperature variation has widespread impacts on both resi­
+dents and the environment [4]. Excessive temperatures not only cause 
+health issues for residents, such as heatstroke and respiratory diffi­
+culties, but also lead to increased energy consumption, particularly due 
+to the higher use of air conditioning.
+Therefore, mitigating the urban heat island effect and enhancing 
+environmental comfort in cities have become significant topics of 
+research and discussion among scholars in the field of the built envi­
+ronment. For instance, Negar et al. [5] used measurements and ques­
+tionnaires to explore outdoor thermal comfort dimensions on acoustic 
+comfort, emphasizing plant communities in urban parks, to derive 
+metrics of thermal comfort in relation to landscape quality. Li et al. [6] 
+* Corresponding authors.
+E-mail addresses: drnankai@xjtu.edu.cn (K. Nan), zhangminghonghui@yeah.net (M. Zhang). 
+Contents lists available at ScienceDirect
+Building and Environment
+journal homepage: www.elsevier.com/locate/buildenv
+https://doi.org/10.1016/j.buildenv.2024.112327
+Received 26 July 2024; Received in revised form 15 October 2024; Accepted 18 November 2024  
+Building and Environment 267 (2025) 112327 
+Available online 19 November 2024 
+0360-1323/© 2024 Elsevier Ltd. All rights are reserved, including those for text and data mining, AI training, and similar technologies. 
+
+
+===== PAGE 2 =====
+proposed 13 practical greenway design strategies to enhance thermal 
+comfort during greenway walking by taking into account the physical 
+environment, walking condition and psychological factors through 
+meteorological measurements and questionnaire surveys. Xue et al. [7] 
+found that bodies of water can significantly reduce the temperature of 
+surrounding open spaces, thereby alleviating the heat island effect.
+Urban squares, as typical public spaces within cities, provide areas 
+for residents and tourists to rest and interact. Therefore, it is essential to 
+mitigate the heat island effect in these squares and enhance their ther­
+mal comfort. However, in real environments, the factors affecting 
+human comfort are complex, and studies focusing solely on the thermal 
+environment cannot comprehensively reflect the level of comfort. 
+Additionally, with advancements in technology and the continuous 
+innovation of research methods, studies considering multiple factors 
+under composite conditions have gradually emerged in recent years. 
+Gao et al. [8] analyzed the weight factors of various influencing factors 
+in the outdoor environment of urban residential areas and established an 
+evaluation method for thermal and acoustic environments. Ali et al. [9] 
+investigated gender differences in acoustic-thermal comfort and cogni­
+tive performance in several simulated work environments with load 
+levels, and showed that gender differences in acoustic-thermal comfort 
+and performance were nearly significant, emphasizing the importance of 
+considering gender differences when designing indoor work environ­
+ments for optimal comfort and performance. Du et al. [10] studied 
+Multiple effects of visual-acoustic-thermal perception on the overall 
+comfort of older adults in residential outdoor environments, resulting in 
+a regression equation that predicts the overall comfort of older adults. 
+Ying et al. [11] used a university campus as a research site to explore the 
+changing characteristics of human comfort in thermo-acoustic envi­
+ronments, and concluded that both acoustic and thermal environments 
+are important factors affecting subjective human comfort, but thermal 
+environments are more important than acoustic environments. Yin et al. 
+[12] explored the impact of background music on human comfort and 
+work efficiency, concluding that changes in environmental parameters 
+can affect psychological emotions and physiological parameters, 
+altering levels of human comfort. Xiao et al. [13] investigated the impact 
+of environmental quality on thermal perception under different visual 
+and auditory conditions, demonstrating a negative correlation between 
+overall comfort and environmental parameters, provides research sup­
+port for urban space planning and design, and facilitates the creation of 
+better outdoor environments. Wen et al. [14] simulated different levels 
+of thermal and acoustic environments and office activity levels through 
+climate chamber experiments, The conclusion that thermal environ­
+ments have little effect on comfort at rest, but a significant impact during 
+reading, guides the thermal and acoustic design of office building 
+spaces. Yang et al. [15] studied the interaction of thermal and acoustic 
+environments on indoor thermal comfort at Terminal 3 of Xi’an Xia­
+nyang Airport and proposed optimization strategies. Zhen et al. [16] 
+researched campus spaces, demonstrating that in most locations, 
+thermal evaluation is primarily influenced by PET, while acoustic 
+evaluation is mainly affected by LAeq. The interaction of thermal and 
+acoustic environments affects people’s overall comfort, however, 
+focusing on thermal environments alone does not provide a compre­
+hensive picture of human comfort levels. Multifactorial comfort studies 
+under composite conditions have gradually emerged in recent years. 
+Zhang et al. [17] explored the effects of four dimensions of soundscape 
+on acoustic comfort in open public spaces, and the results showed that 
+the dominance of the sound source had a significant effect on relaxation, 
+communication, spatial sense and dynamics.
+Most current research focuses on the interaction of various comfort 
+factors in laboratory, indoor, or semi-open spaces, The results show that 
+under thermoacoustic interaction conditions, factors such as sound can 
+significantly affect human sensitivity to the thermal environment; 
+however, existing indoor thermal comfort studies tend to measure under 
+stable thermoacoustic conditions, where the thermoacoustic parameters 
+are relatively stable with respect to the site environment, and it is not 
+possible to accurately integrate a wide range of parameters. Meanwhile, 
+outdoor thermoacoustic interaction study sites have complex thermoa­
+coustic conditions, and existing studies are less likely to quantify the 
+type of acoustic environment according to the subjective perception of 
+respondents. Existing studies have shown that improving the layout and 
+facilities of the plaza space can increase people’s thermal-acoustic 
+comfort to a certain extent [18]. This study investigated the interac­
+tion between human acoustic perception and thermal perception in 
+scenic plaza spaces through meteorological parameter measurements 
+and questionnaire distribution, combined with statistical analysis of 
+subjective polling, and used this as a basis to provide design optimiza­
+tion strategies for outdoor environments, providing new ideas and di­
+rections for future urban plaza design and management.
+2. Methods
+2.1. Study area
+Xi’an is located in northwestern China (34◦16′N 108◦54′E / 34.267◦N 
+108.9◦E). According to the K¨oppen climate classification, Xi’an lies at 
+the junction of a cold semi-arid climate and a humid subtropical climate 
+[19], characterized by a temperate continental monsoon climate with 
+distinct four seasons. Summers are hot and humid, while winters are 
+cold and dry. Based on annual temperature data from 2010 to 2021, the 
+highest monthly average temperature (Ta) occurs in July (28.08 ◦C), 
+with a maximum Ta of 39.33 ◦C. The lowest monthly average Ta is in 
+January (0.62 ◦C), with a minimum Ta of −8.01 ◦C. The annual average 
+relative humidity ranges from 51.28 % to 73.68 %. According to China’s 
+current climate zoning regulations [20], Xi’an is classified as a cold 
+region with long, cold, and dry winters, presenting significant oppor­
+tunities for outdoor environment enhancement. To investigate the 
+impact of thermal and acoustic environments on human comfort in 
+Nomenclature
+LS
+Leisure Space
+OS
+Open Square
+PS
+Pedestrian Street
+SS
+Space under Shadow
+OTC
+Outdoor thermal comfort
+Ta
+Air temperature
+RH
+Relative humidity
+Va
+Wind speed
+Tg
+Globe temperature
+Tmrt
+Mean radiant temperature
+G
+Global radiation
+TSV
+Thermal sensation vote
+MTSV
+Mean thermal sensation vote
+TCV
+Thermal comfort vote
+MTCV
+Mean thermal comfort vote
+UTCI
+Universal thermal climate index
+NUTCI
+Neutral universal thermal climate index
+NUTCIR
+Neutral universal thermal climate index range
+PPD
+Predicted percentage of dissatisfied
+ASV
+Acoustic sensation vote
+MASV
+Mean acoustic sensation vote
+ACV
+Acoustic comfort vote
+MACV
+Mean acoustic comfort vote
+SPL
+Sound pressure level
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+2 
+
+
+===== PAGE 3 =====
+square spaces, this study selects the front square of the bustling tourist 
+area, the "Datang Everbright City" (34◦13′5″N, 108◦57′51″E), as the 
+research location (Fig. 1).
+Datang Everbright City, chosen as the study area for this research, 
+features a relatively flat and open terrain adorned with architectural 
+complexes reminiscent of China’s Tang Dynasty. It includes water fea­
+tures and landscaped gardens. The main street runs north to south for 
+2100 m and east to west for 500 m, covering a total construction area of 
+650,000 m2s. The front square is rectangular with a high enclosure de­
+gree and lacks tall structures within the site. Based on field surveys, this 
+study selects four representative open space nodes: LS measurement 
+point is a shaded resting area covered by tree canopies. It is enclosed by 
+brick and stone walls ranging from 2.4 to 4 m in height on the north and 
+south sides. There are tall deciduous trees on the southern side, and the 
+predominant sound is pedestrian conversation. OS measurement point is 
+an open square space located along the central axis. It is predominantly 
+paved with marble, surrounded by greenery on all sides. PS measure­
+ment point is a street-side pedestrian walkway adorned with tree shade 
+and water features. The street is lined with trees approximately 10 m tall 
+on both sides. To the east of the measurement point, there is a land­
+scaped pool with a depth of approximately 0.5 m. The overall sound 
+environment is complex. SS measurement point is a shaded resting area 
+with ample outdoor sunshades. To the south, there is a five-story 
+shopping mall, and the greenery mainly consists of small shrubs.
+2.2. Experimental design
+The comprehensive evaluation of human thermal comfort in varying 
+environmental conditions is influenced by multiple meteorological pa­
+rameters [21]. In this experiment conducted outdoors, all meteorolog­
+ical parameters relevant to human thermal sensation were measured. 
+The research period for this study lasted from September 2022 to 
+September 2023, a one-year period covering the transition season, 
+winter and summer. In Xi’an, temperatures are significantly lower in the 
+early morning and evening compared to daytime, resulting in large 
+diurnal temperature variations. Nearly all residents of Xi’an for over a 
+year mitigate the impact of these temperature differences on comfort by 
+adjusting clothing and outdoor activities. Therefore, the research was 
+conducted between 9:00 and 17:00 to avoid these times.
+Furthermore, rainy or snowy weather not only affects the heat ex­
+change of ground surfaces in open squares but also influences re­
+spondents’ subjective choices in voting. Consequently, this study 
+selected days with suitable weather conditions such as clear skies or 
+light cloud cover, conducive to outdoor activities for the survey.
+2.2.1. Measurement of meteorological parameters
+In each of the four designated measurement zones, instruments were 
+installed to monitor meteorological data (Fig. 2(a)). The monitored 
+meteorological parameters include air temperature (Ta), relative hu­
+midity (RH), wind speed (Va), solar radiation (G), globe temperature 
+(Tg), and sound pressure level (dB) (Table 1). Globe temperature (Tg) 
+Fig. 1. Site locations.
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+3 
+
+
+===== PAGE 4 =====
+represents the comprehensive environmental sensation temperature 
+experienced by humans due to radiant heat and convective effects, 
+incorporating factors such as ambient air temperature and radiation. It 
+reflects the thermal conditions felt by the human body from radiant heat 
+and strongly influences mean radiant temperature (Tmrt), which is 
+calculated according to Equation (1.1) as per ISO 7726 standard [22]: 
+Tmrt =
+[(
+Tg + 273
+)4 + 1.10 × 108Va
+0.6
+εD0.4
+(
+Tg −Ta
+)]1
+4
+−273
+(1.1) 
+Here, D represents the diameter of the black globe (in this study, D =
+0.05 m), and ε denotes the emissivity (for the black globe, ε=0.95).
+Before the experiment, the instruments were calibrated and fixed on 
+a stand 1.5 m above the ground and measurements of meteorological 
+parameters will be taken every minute. In measuring the acoustic 
+environment, given the instability of ambient sound pressure levels 
+under natural conditions, we recorded the average sound pressure level 
+of the environment during the respondents’ questionnaire sessions to 
+minimize the error caused by instantaneous noise. Additionally, the 
+surveyors noted the type of sound present at the time: traffic, con­
+struction, birdsong, music, broadcasting, or conversation.
+2.2.2. Questionnaire survey
+In this experiment, a questionnaire survey method was used to 
+collect data from respondents. Randomly selected respondents at the 
+measurement points were given questionnaires. While the respondents 
+filled out the questionnaires, the surveyors simultaneously measured 
+meteorological data to ensure the precision and timeliness of the data. 
+The survey was conducted on days suitable for outdoor activities, such 
+as sunny or cloudy days, avoiding uncomfortable weather conditions 
+like rain, snow, and sandstorms, which could lead to abnormal meteo­
+rological parameters.
+The questionnaire consisted of two main parts (Specific question­
+naire information can be found in the appendix). The first part collected 
+basic information about the respondents, including age, gender, length 
+of residence in Xi’an, and physical activity status in the past 20 min. Due 
+to the differences in the perception of thermal sound, and the degree of 
+thermal sound sensitivity of respondents in different age groups, in the 
+questionnaire survey, in order to avoid such errors, we divided the re­
+spondents according to the age interval they were in, and limited the 
+number of respondents in each interval to an appropriate level. The 
+metabolic activities were referenced according to the standard meta­
+bolic rates outlined. The second part investigated respondents’ percep­
+tions of the thermal and acoustic environment in public open spaces, 
+including Thermal Sensation Vote (TSV), Thermal Comfort Vote (TCV), 
+thermal preference, thermal acceptability, Acoustic Sensation Vote 
+(ASV), Acoustic Comfort Vote (ACV), acoustic preference, acoustic 
+acceptability, and overall comfort. At the same time, the main types of 
+environmental sounds perceived by the respondents during the ques­
+tionnaire filling process (insects, bird calls, flowing, traffic, machines, 
+hawking, radio, music and crowds) were recorded and categorized after 
+the data collection was completed.
+To quantify different levels of thermal and acoustic perception and 
+comfort, this study used the Likert scale to reflect respondents’ per­
+ceptions of the current thermal and acoustic environment. According to 
+the ASHRAE definition, a 7-point Likert scale was used in the ques­
+tionnaire for thermal sensation (−3, cold; −2, cool; −1, slightly cool; 0, 
+Fig. 2. (a) Installation of measuring instruments (b)Research methodology.
+Table 1 
+Instruments used for acquiring meteorological variables and sound pressure 
+level recording.
+Instrument
+Parameter
+Range
+Accuracy
+JT2020
+Air temperature
+0–50 ◦C
+±0.6 ◦C
+​
+Relative humidity
+0–100 %
+±3 %
+​
+Globe temperature
+0–80 ◦C
+±1 ◦C
+TES1333
+Global radiation
+2000 W/m2
+0.1 W/m2
+JT2020
+Wind speed
+0.3–45m/s
+0.001 m/s
+TES-1350A
+Sound pressure level
+A LO(Low) 35–100 dB
+0.1 dB
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+4 
+
+
+===== PAGE 5 =====
+neutral; 1, slightly warm; 2, warm; 3, hot), thermal comfort (–3, very 
+discomfort; –2, discomfort; –1, slightly discomfort; 0, neutral; +1, 
+slightly comfort; +2, comfort; +3, very comfort), acoustic sensation (–3, 
+very loud; –2, loud; –1, slightly loud; 0, moderate; +1, slightly quiet; +2, 
+quiet; +3, very quiet), and acoustic comfort (–3, very discomfort; –2, 
+discomfort; –1, slightly discomfort; 0, neutral; +1, slightly comfort; +2, 
+comfort; +3, very comfort). For evaluating preferences for meteoro­
+logical factors, a 3-point scale was used (−1, decrease/weaker; 0, un­
+changed; 1, increase/stronger). Additionally, respondents’ cooling 
+measures adopted during the summer were surveyed to determine their 
+thermal adaptation behaviors.
+During the questionnaire completion process, the experimenters 
+assisted the respondents in understanding the content of the survey to 
+help them fill it out more accurately, thus closely reflecting the re­
+spondents’ true feelings. A total of 1153 questionnaires were collected 
+from four measurement points, of which 1004 were valid.
+2.2.3. Thermal index
+In this study, the Universal Thermal Climate Index (UTCI) was 
+selected as the thermal index. This index was developed by the Inter­
+national Society of Biometeorology (ISB) based on the Fiala multi-node 
+thermoregulation model and the adaptive clothing model [23]. The 
+UTCI is a comprehensive thermal comfort evaluation index widely used 
+in existing research. It takes into account human metabolic processes, 
+heat accumulation, and heat transfer, making it the most thoroughly 
+considered and deeply calculated thermal index. The UTCI can be used 
+for thermal comfort model predictions across different climate zones, 
+environmental characteristics, and populations of different races. The 
+calculation of this index incorporates various thermal environment pa­
+rameters such as temperature and humidity and is typically performed 
+using the RayMan software. Fig 2(b) illustrates the overall process of 
+conducting the empirical tests and questionnaires in this study.
+3. Results
+3.1. Descriptive analysis
+3.1.1. Respondent attributes
+In this study, a total of 1153 questionnaires were collected, with 
+1004 valid responses. Among these, 232 were from the LS site, 279 from 
+the OS site, 206 from the PS site, and 289 from the SS site (Table 2). The 
+survey period included dates with significant temperature variations, 
+covering winter, summer, and transitional seasons. Table 2 presents the 
+personal information of the respondents surveyed during the study. 
+Among the respondents, 43.1 % were female and 56.9 % were male, 
+indicating a higher proportion of males. The demographic at the Datang 
+Everbright City showed a tendency towards youthfulness, with the 
+majority of respondents aged 19–25 years, accounting for 42.8 % of the 
+total survey population; followed by those aged 26–40 years, comprising 
+34.4 % of the surveyed group. A significant portion of respondents had 
+lived in Xi’an for less than 6 months (59.6 %), suggesting that many 
+respondents were recent tourists to Xi’an, likely drawn by the attractions 
+of Datang Everbright City.
+3.1.2. Meteorological parameters
+Through descriptive analysis using SPSS software, the maximum, 
+minimum, mean, and standard deviation of meteorological parameters 
+at four measurement points were computed (Table 3). It was observed 
+that the OS site had the highest solar radiation (994.9 W/m²) and black 
+globe temperature (45.7 ◦C), likely due to the absence of surrounding 
+buildings or trees and the reflective surface of marble flooring absorbing 
+significant heat. Consequently, this site also recorded the highest 
+average wind speed (0.63 m/s) and lowest air humidity (26.2 %). In 
+contrast, the LS site exhibited the lowest average solar radiation (70.89 
+W/m²), while the PS and SS sites showed similar solar radiation levels 
+(161.23 W/m² and 132.25 W/m², respectively). Observations indicated 
+that the LS site was predominantly shaded by buildings, whereas the SS 
+and PS sites were semi-open spaces enclosed on their eastern and 
+western sides. Additionally, the PS site had the highest air humidity 
+(58.9 %) likely due to a nearby water feature causing increased relative 
+humidity through evaporation. The LS site showed significantly higher 
+average temperatures and black globe temperatures compared to the 
+other three locations (Ta: 32.6 ◦C, Tg: 33.7 ◦C). The SS site recorded the 
+lowest average wind speed (0.53 m/s), attributed to wind obstruction by 
+high walls and trees on both sides. Lastly, the PS site had the lowest 
+average temperature (22.02 ◦C), possibly influenced by heat absorption 
+by the water feature to some extent.
+The sound level meter data indicates that there is minimal variation 
+in the acoustic environment between the SS, PS, and OS measurement 
+points. Analyzing the results of the questionnaire in conjunction with 
+the questionnaire, we found that the negative sound within the OS space 
+and the PS space maintained a high level. Among the four points, the OS 
+site recorded the highest noise pressure level and maximum average 
+Table 2 
+Personal information of respondents in surveys.
+Location
+Total
+LS
+OS
+PS
+SS
+Research period
+Transition season
+299
+16
+92
+70
+121
+​
+Winter
+281
+22
+116
+80
+63
+​
+Summer
+424
+194
+71
+56
+103
+Biological sex
+Male
+571
+124
+182
+101
+164
+​
+Female
+433
+108
+97
+105
+123
+Age
+≤18 years
+119
+50
+30
+20
+19
+​
+19–25 years
+430
+79
+120
+94
+137
+​
+26–40 years
+345
+67
+104
+69
+105
+​
+41–55 years
+84
+25
+23
+15
+21
+​
+>55 years
+26
+11
+2
+8
+5
+Time living in Xi’an
+0–6 Months
+598
+153
+184
+113
+148
+​
+6 Months - 1 Year
+37
+8
+9
+11
+9
+​
+More than 1 year
+369
+71
+86
+82
+130
+Table 3 
+Meteorological parameters and heat indices calculated for each study site. SD: 
+standard deviation.
+Space
+LS
+OS
+PS
+SS
+Air temperature 
+( ◦C)
+Max
+40.30
+40.7
+40.2
+40.1
+​
+Min
+12.50
+8.0
+10.1
+11.3
+​
+Mean 
+± SD
+32.6 ±
+7.4
+23.31±
+9.21
+22.02 ±
+9.33
+25.82±
+8.45
+Relative 
+humidity (%)
+Max
+58.8
+52.3
+58.9
+53.3
+​
+Min
+14.00
+10.3
+16.3
+10.2
+​
+Mean 
+± SD
+33.6 ±
+9.2
+26.20 ±
+10.98
+37.07 ±
+8.97
+31.06 ±
+10.75
+Wind speed (m/ 
+s)
+Max
+2.15
+2.17
+2.15
+1.55
+​
+Min
+0.4
+0.4
+0.4
+0.2
+​
+Mean 
+± SD
+0.56 ±
+0.40
+0.63 ±
+0.35
+0.54 ±
+0.30
+0.53 
+±0.22
+Globe 
+temperature ( 
+◦C)
+Max
+41.8
+45.7
+41.2
+41.2
+​
+Min
+15.9
+8.5
+11.4
+11.2
+​
+Mean 
+± SD
+33.7 ±
+7.3
+25.89 ±
+9.97
+23.2 ±
+9.37
+27.08 ±
+8.33
+Global radiation 
+(W/m2)
+Max
+189.20
+994.9
+947.2
+937.1
+​
+Min
+9.10
+23.3
+16.2
+19.4
+​
+Mean 
+± SD
+70.89 
+±31.05
+413.16 
+±273.83
+161.23 
+±191.49
+132.25 
+±128.87
+Sound pressure 
+level (dB)
+Max
+69.6
+77.6
+74.3
+73.9
+​
+Min
+47.5
+47.7
+46.4
+40.7
+​
+Mean 
+± SD
+58.00 ±
+4.22
+63.26 ±
+7.02
+60.02 ±
+5.81
+59.29 ±
+6.92
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+5 
+
+
+===== PAGE 6 =====
+Fig. 3. Distribution of meteorological parameters: Air temperature(a), Relative humidity(b) , Wind speed(c), Global radiation(d) , Globe temperature(e), Sound 
+pressure level(f).
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+6 
+
+
+===== PAGE 7 =====
+noise (77.60 dB and 63.26 dB, respectively). In contrast, the LS site 
+exhibited the lowest average noise level, measuring only 58.00 dB, 
+indicating a relatively stable acoustic environment. Field analysis 
+revealed that the LS site is an isolated activity area, away from pedes­
+trian flow and road traffic, contributing to its quieter acoustic environ­
+ment. In contrast, the other three locations are situated along the central 
+axis of Datang Everbright City, frequently experiencing high pedestrian 
+traffic, resulting in unavoidable noisy conditions.
+Fig 3 depicts the specific distribution of meteorological parameters 
+within each measurement point, reflecting their typical characteristics 
+distinctly. It is evident that the OS site exhibits the widest range of air 
+temperatures. The LS site, characterized by long-term shade and mini­
+mal solar radiation, maintains the most stable temperature distribution 
+and the lowest average temperature. Regarding average humidity, the 
+order from highest to lowest is PS (37.07 %), LS (33.60 %), SS (31.06 %), 
+and OS (26.2 %). The SS and LS sites show similar air humidity levels. 
+The presence of water features at the PS site significantly increases air 
+humidity, while the OS site, with its single reflective surface, experi­
+ences markedly lower humidity levels. Solar radiation at the LS site 
+remains stable due to its shaded location, resulting in minimal distri­
+bution of solar radiation within the area. Conversely, the OS site, being 
+unobstructed, experiences the highest variability in solar radiation over 
+time, with levels consistently higher than other areas. The layout dif­
+ferences between the PS and SS sites result in minor variations in solar 
+radiation. There are no significant differences in average wind speed 
+across the four measurement points during the survey period, indicating 
+a stable wind environment in the plaza space.
+3.1.3. Thermal sensation vote and thermal comfort vote
+Fig 4(a) illustrates the distribution of Thermal Sensation Votes (TSV) 
+during the survey period. Overall, the majority of respondents voted as 
+feeling "very hot" (TSV=3), accounting for 41.3 %. The next most 
+frequent sensation was "neutral" (TSV=0), while very few respondents 
+felt "very cold" (TSV=−3), comprising only 3.7 %. At the LS site, the 
+highest proportion of respondents selected "very hot" (TSV=+3), 
+totaling 63.7 %, significantly more than the other three locations. This 
+perception of warmth at the LS site is largely due to the majority of votes 
+being collected during the summer months, as indicated by the survey 
+distribution dates in Table 2. The distribution of Thermal Sensation 
+Votes at the OS and SS sites was similar, while the PS site generally felt 
+cooler overall. This is attributed to landscape features such as water 
+pools in the area, which lower local temperatures.
+Fig 4(b) depicts the distribution of Thermal Comfort Votes (TCV) 
+across the four spaces during the survey period. It shows that the ma­
+jority of respondents (70.2 %) felt comfortable with the current thermal 
+environment, giving votes ranging from "neutral" (TCV=0) to "slightly 
+comfortable" (TCV=+1), "comfortable" (TCV=+2), and "very comfort­
+able" (TCV=+3). Within the LS space, the number of people who felt 
+comfortable (TCV = 0 to +3) dropped significantly due to the large 
+number of TSV votes for (hot, +3). Even so, a higher number of re­
+spondents felt comfortable, suggesting that people in Xi’an had a higher 
+tolerance for hotter environments during the research period. A small 
+percentage (5.1 %) felt "very comfortable" (TCV=+3), indicating 
+generally favorable thermal conditions across the four measurement 
+points. At the OS site, the highest proportion of votes (77.3 %) expressed 
+Fig 4. (a) TSV distribution, (b) TCV distribution, (c) Correlation between TSV and TCV.
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+7 
+
+
+===== PAGE 8 =====
+satisfaction with the current thermal environment, consistent with the 
+distribution of Thermal Sensation Votes shown in Fig 4(a). This indicates 
+that the OS site had the most respondents (61.1 %) providing moder­
+ately positive evaluations (TCV=0 to +3) of the current thermal envi­
+ronment. In contrast, the LS site received the poorest Thermal Comfort 
+Vote, with a significant majority (73.8 %) finding the current environ­
+ment uncomfortable (TCV=−1 to −3). This proportion is much higher 
+compared to other spaces, with only 13.7 % of respondents considering 
+the thermal environment somewhat comfortable (TCV=0 to +3).
+Each value of Thermal Sensation Vote (TSV) was averaged across all 
+Thermal Comfort Votes (TCV), yielding the Mean Thermal Comfort Vote 
+(MTCV). These values were plotted on the same graph and subjected to 
+nonlinear quadratic fitting to produce Fig 4(c). It depicts the relation­
+ship between human thermal sensation and thermal comfort during the 
+survey period. The results indicate that when TSV=0.18, people expe­
+rience the highest thermal comfort (TCV=0.74), indicating a preference 
+for moderately warm temperatures. When TSV ranges between −1.89 
+(cold) and 2.11 (hot), people feel comfortable with the current thermal 
+environment (TCV > 0).
+Fig. 5. (a) ASV for different spaces,(b) ASV for different sound types, (c) ACV for different spaces, (d) ACV for different sound types, (e) Correlation between ASV and 
+ACV, (f) Correlation between ASV and ACV for different sound types.
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+8 
+
+
+===== PAGE 9 =====
+3.1.4. Acoustic sensation vote and acoustic comfort vote
+In order to simplify the types of acoustic environments and investi­
+gate their impact on human comfort, this study categorized the sounds 
+into three different types based on respondents’ perceptions: positive 
+sound sources (insect sounds, natural wind sounds, bird songs, and 
+flowing water sounds), neutral sound sources (vendors’ calls, broadcast 
+voices, music, and crowd sounds), and negative sound sources (traffic 
+noise and machinery sounds).
+The distribution of acoustic satisfaction across measurement points is 
+illustrated in Fig 5(a), (b). The majority of respondents (73.3 %) rated 
+the current acoustic environment as moderate (ASV=0) or satisfactory 
+(ASV=2.3). There were significantly more respondents perceiving the 
+current acoustic environment as noisy (ASV<0) compared to those 
+perceiving it as quiet (ASV>0), indicating generally lower acoustic 
+environment quality across the four spaces. Respondents at OS and SS 
+sites rated the acoustic environment lower than other spaces, likely due 
+to their proximity to open squares near roads and tree-shaded relaxation 
+areas with high pedestrian traffic, leading to poorer acoustic 
+environments.
+The distribution of acoustic comfort across measurement points is 
+depicted in Fig 5(c), (d), indicating that the majority (83.5 %) of re­
+spondents felt comfortable (ACV≥0) with the current acoustic envi­
+ronment. Specifically, the highest level of acoustic comfort was reported 
+at the PS site, with the highest proportion (31.9 %) of respondents 
+feeling comfortable (ACV≥0) in the current environment. Respondents 
+at OS and SS sites rated the acoustic environment less comfortable 
+(ACV<0) (16.2 % and 14.3 %, respectively) compared to PS and LS sites 
+(18.1 % and 19.8 %, respectively), consistent with the findings in Fig 5
+(a), (b). This suggests that the noisy acoustic environments at OS and SS 
+sites contribute to a lower overall level of acoustic comfort.
+Similar to the acoustic sensation vote, the proportion of votes indi­
+cating comfort with the acoustic environment gradually decreases as the 
+acoustic environment shifts from positive sound types to negative ones. 
+When the acoustic environment includes sounds such as bird songs and 
+flowing water, the proportion of respondents feeling comfortable rea­
+ches its peak at 38.6 %, significantly higher than the other two acoustic 
+types. Only 13.9 % of respondents find the acoustic environment un­
+comfortable. This indicates that positive acoustic environments signifi­
+cantly enhance people’s comfort with sound, highlighting higher 
+tolerance for positive environmental sounds.
+To explore the relationship between human acoustic perception and 
+acoustic comfort during the survey period, we normalized all votes for 
+Acoustic Comfort Votes (ACV) and calculated the Mean Acoustic Com­
+fort Votes (MACV). The resulting MACV values were plotted on the same 
+graph for linear regression analysis, yielding Fig 5(e). This figure depicts 
+how perceived acoustic environments influence acoustic comfort. 
+Overall, participants rated their acoustic comfort highest in quieter 
+surroundings, with acoustic comfort decreasing as perceived noise levels 
+increased. Specifically, when ACV = 0, ASV = −0.27, indicating mod­
+erate acoustic comfort assessment in relatively noisy environments (ASV 
+= −0.27).
+To investigate the impact of different acoustic environments on 
+acoustic comfort, we examined variations in the relationship between 
+acoustic perception and acoustic comfort across three types of acoustic 
+environments. These were plotted together on a single coordinate 
+system, each subjected to linear regression analysis to derive patterns of 
+acoustic comfort variation (Fig 5(f)). The results show that for positive 
+sound types, the slope of acoustic comfort change with acoustic 
+perception is lowest, followed by neutral sound types, while negative 
+sound types exhibit the highest slope. Moreover, under constant acoustic 
+perception voting, respondents reported lower acoustic comfort in 
+negative noise environments compared to neutral noise environments, 
+with positive noise environments yielding the highest acoustic comfort 
+votes. These findings indicate that in negative noise conditions, changes 
+in acoustic perception significantly affect acoustic comfort; furthermore, 
+increasing sound pressure levels further decrease acoustic comfort 
+relative to the other two acoustic environment conditions.
+3.1.5. Relationship between thermal sensation and meteorological 
+parameters
+When individuals are in outdoor spaces, meteorological parameters 
+such as air temperature and solar radiation significantly impact their 
+thermal perception [24]. Variations in these parameters lead to differ­
+ences in subjective evaluations of the thermal environment. To explore 
+the effects of four factors on thermal sensation in different spaces, partial 
+correlation analysis was conducted between Thermal Sensation Vote 
+(TSV) and four key meteorological parameters, as shown in Table 4. In 
+analyzing the correlation between a specific meteorological parameter 
+and TSV, the other three parameters were controlled, thereby isolating 
+the influence of each parameter on thermal perception. The r value 
+represents the correlation coefficient between thermal sensation and the 
+meteorological parameter, indicating the parameter’s influence on TSV, 
+while P signifies the significance of the parameter’s correlation.
+The results indicate that air temperature is the most critical factor 
+affecting thermal comfort across all spaces (P ≤0.01), positively 
+correlating with TSV, which aligns with subjective perceptions. Relative 
+humidity and wind speed were found to be the least significant factors, 
+showing weak correlations with thermal sensation and having no sig­
+nificant impact at most measurement points. In OS site, solar radiation 
+exhibited the strongest correlation with thermal sensation (P ≤0.001), 
+followed by SS site, consistent with environmental factors. The OS site, 
+being open squares with no surrounding obstructions, did not block 
+solar radiation, resulting in higher G values and increased TSV. 
+Conversely, in LS site, located in shaded areas and not exposed to direct 
+sunlight during the survey period, the correlation was weakest (r =
+0.062) and the significance was lowest (P = 0.350).
+3.2. Thermal benchmarks
+3.2.1. Neutral temperature and neutral temperature range
+According to ASHRAE Standard ISO-7730 [25], neutral temperature 
+is defined as the temperature at which the human body perceives neither 
+cold nor heat. In this study, the demographic data of the survey re­
+spondents, including gender, age, height, weight, clothing insulation, 
+and metabolic rate, along with meteorological parameters such as 
+temperature, humidity, wind speed, and solar radiation, were input into 
+the RayMan model to calculate the Universal Thermal Climate Index 
+(UTCI). From the thermal sensation vote (TSV) data, we calculated the 
+weighted average TSV (MTSV) within each UTCI range ( Fig 6(a)). Ac­
+cording to ISO 7730, the UTCI value corresponding to TSV = 0 is defined 
+Table 4 
+Spearman’s correlation coefficients between TSV and physical variables.
+Space
+Air temperature
+Relative humidity
+Wind speed
+Global radiation
+P
+r
+P
+r
+P
+r
+P
+R
+LS
+0.000
+0.674**
+0.754
+0.021
+0.417
+0.054
+0.350
+0.062
+OS
+0.000
+0.590**
+0.016
+0.145
+0.389
+−0.052
+0.000
+0.321**
+PS
+0.000
+0.584**
+0.018
+0.166
+0.344
+−0.067
+0.017
+0.168
+SS
+0.000
+0.633**
+0.240
+−0.070
+0.017
+−0.142*
+0.003
+0.176*
+P: **Significantly different at P < 0.01 (two-tailed test). *Significantly different at P < 0.05 (two-tailed test).
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+9 
+
+
+===== PAGE 10 =====
+as the neutral temperature. The data indicates that the neutral temper­
+ature during the survey period was 14.9 ◦C.
+Existing research suggests that the interaction between thermal and 
+acoustic perceptions significantly affects human thermal sensation. 
+Different types of sound environments can influence people’s evalua­
+tions of their thermal perception to varying degrees. To investigate the 
+impact of different sound types on the thermal comfort of people in 
+urban squares, this study analyzed the neutral temperature range under 
+different sound categories. As shown in Fig 6, under the same UTCI, the 
+average thermal sensation vote in natural sound environments, such as 
+bird songs and water flow, was similar to that in normal environments. 
+The neutral UTCI (NUTCI) under these conditions was 15.9 ◦C. In 
+contrast, for sound environments dominated by traffic and construction 
+noise, the neutral temperature was 9.4 ◦C. In neutral sound environ­
+ments, such as conversations and broadcasts, the neutral temperature 
+was 15.3 ◦C. This indicates that in natural sound environments, people 
+prefer higher environmental temperatures, increasing their tolerance to 
+thermal conditions. Conversely, in traffic and construction noise envi­
+ronments, people tend to prefer lower temperatures, decreasing their 
+thermal tolerance. In neutral sound environments, respondents’ toler­
+ance to temperature was slightly higher than the average neutral 
+temperature.
+The temperature range in which MTSV falls between −0.5 and 0.5 is 
+defined as the Neutral Universal Thermal Climate Index Range (NUT­
+CIR) [26]. As shown in Fig 6(a), when TSV is between −0.5 and 0.5, the 
+corresponding NUTCI range is 10.8–19.0 ◦C. Compared to a study con­
+ducted in residential areas of Xi’an (12.4–26.9 ◦C) [27], the NUTCI 
+range in this study is narrower and lower. This may be due to the study’s 
+focus on tourists who have lived in the area for less than six months and 
+are often in a higher state of activity. The annual NUTCIR in Xi’an 
+(12.4–26.9 ◦C) [28] is relatively wider, which is primarily due to dif­
+ferences in the survey area and respondents. The Xi’an survey was 
+conducted in residential areas where residents are more accustomed to 
+local climatic variations compared to tourists. When respondents mainly 
+heard traffic and construction noise, the neutral UTCI range significantly 
+increased.
+3.2.2. Thermal acceptable range
+ASHRAE Standard 55 defines the Thermal Acceptable Range (TAR) 
+as the temperature range acceptable to at least 80 % (under normal 
+conditions) or 90 % (under stringent conditions) of respondents (ASH­
+RAE 2017) [29]. Conversely, this means that only 20 % (under normal 
+conditions) or 10 % (under stringent conditions) of respondents find the 
+Fig. 6. Correlation between UTCI and MTSV for sound types: (a) Total, (b) 
+Neutral sound, (c) Negative sound, (d) Positive sound.
+Fig. 7. Relationship between thermal unacceptable rate and UTCI.
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+10 
+
+
+===== PAGE 11 =====
+current thermal environment unsatisfactory. This study adopts the 80 % 
+acceptability criterion to calculate the thermal unacceptable rate within 
+each 1 ◦C UTCI interval, which is then fitted to a quadratic polynomial 
+(Fig 7). The results indicate that the thermal acceptable temperature 
+range for the surveyed area is 7.8 ◦C to 25.7 ◦C, which is closely aligned 
+with the neutral temperature. This suggests that respondents exhibited a 
+high tolerance for uncomfortable temperatures during the survey 
+period.
+3.2.3. Percentage of thermal dissatisfaction
+ISO 7730 recommends determining the percentage of thermal 
+dissatisfaction (hot/cold) through the Predicted Percentage of Dissatis­
+fied (PPD). In this study, PPD was calculated using TSV data. When TSV 
+ranges from −1 (slightly cool) to +1 (slightly warm), people feel ther­
+mally comfortable. However, when TSV ranges from −2 (cool) to −3 
+(cold) or from +2 (warm) to +3 (hot), people feel thermally uncom­
+fortable [30]. This study calculated the percentage of thermal dissatis­
+faction for each 1 ◦C UTCI interval, referred to as the Percentage of 
+Thermal Dissatisfaction, and fitted it with the corresponding MTSV to 
+develop a PPD model for the Xi’an area (Fig 8).
+3.2.4. Thermal preference
+Preferred temperature is defined as the temperature that people 
+desire [31], representing their ideal thermal state. The survey recorded 
+the thermal preference votes from respondents at different measurement 
+points. For each 1 ◦C UTCI interval, we aggregated the votes for "prefer 
+cooler" and "prefer warmer" conditions. The percentages of these votes 
+were calculated and analyzed using probit analysis in SPSS. The inter­
+section of the "prefer cooler" and "prefer warmer" curves represents the 
+preferred UTCI (Fig 9). The analysis shows that the preferred tempera­
+ture in Xi’an is 17.1 ◦C, which is 3.6 ◦C higher than the neutral UTCI 
+(NUTCI). This indicates that respondents in Xi’an tended to prefer 
+higher temperatures during the survey period.
+3.3. The impact of thermal and acoustic interactions on human comfort
+3.3.1. Classification of thermal and acoustic levels
+To analyze the impact of different thermal and acoustic environ­
+ments on human comfort, this study plotted the data from thermal and 
+acoustic environment votes on SPL-ASV and UTCI-TSV graphs. The 
+thermal and acoustic perceptions were categorized into three levels 
+based on the voting scale. Thermal sensation votes were divided into: 
+cooler (TSV = −3, −2), neutral (TSV = −1, 0, 1), and warmer (TSV = 2, 
+3). Acoustic sensation votes were categorized into: noisy (ASV = −3, 
+−2), neutral (ASV = −1, 0, 1), and quiet (ASV = 2, 3). Similarly, thermal 
+and acoustic comfort levels were classified into uncomfortable (ACV, 
+TCV = −3, −2), comfortable (ACV, TCV = −1, 0, 1), and very 
+comfortable (ACV, TCV = 2, 3), allowing us to analyze the variation 
+patterns of the thermal and acoustic environments under the influence 
+of a single factor. When studying the impact of different noise types on 
+acoustic perception, noise types are qualitative concepts that lack 
+ordinality. Therefore, sounds were categorized based on noise types into 
+Fig. 8. Correlation between MTSV and PPD.
+Fig. 9. Preferred UTCI (total).
+Fig. 10. Correlation between UTCI and MTSV for different sound types(a), 
+Correlation between UTCI and MTCV for different sound types(b).
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+11 
+
+
+===== PAGE 12 =====
+positive sound sources, neutral sound sources, and negative sound 
+sources. Through comparative analysis, this study explored the influ­
+ence of sound types on thermal and acoustic comfort.
+3.3.2. Impact of acoustic environment on thermal perception
+The mean thermal sensation votes (TSV) corresponding to each 1 ◦C 
+UTCI interval were plotted in the same coordinate system and fitted with 
+a quadratic polynomial to derive the variation pattern of TSV with UTCI 
+(Fig 10a). The graph illustrates that irrespective of the type of sound, 
+TSV gradually increases with rising Universal Thermal Climate Index 
+(UTCI). In negative acoustic environments, respondents exhibit a lower 
+slope in thermal sensation voting (k = 0.082), whereas under neutral (k 
+= 0.111) and positive sound conditions (k = 0.111), the slopes are 
+closer. At higher temperatures, the type of sound at measurement points 
+has no significant impact on thermal sensation vote. However, at lower 
+temperatures (UTCI < 30 ◦C), respondents exposed to negative acoustic 
+environments significantly increase their voting values for current 
+thermal conditions. When respondents perceive the environment as 
+neither cold nor warm (TSV=0), those affected by traffic and noise tend 
+to prefer lower temperatures (9.6 ◦C), whereas positive sound environ­
+ments lead people to prefer warmer environments (17.2 ◦C). This sug­
+gests that poorer acoustic conditions can induce irritation and 
+psychological discomfort, prompting respondents to desire lower envi­
+ronmental temperatures.
+Fig 10(b) illustrates the variation of thermal comfort votes (TCV) 
+with UTCI. During the survey period, respondents generally felt warmer, 
+resulting in a temperature distribution mainly concentrated in the 20–40 
+◦C range. The results indicate that within the comfortable temperature 
+range, positive sound environments expand the UTCI range where 
+people feel comfortable. In uncomfortable thermal environments, re­
+spondents exposed to positive sound sources have the highest TCV 
+values.
+3.3.3. Impact of acoustic comfort on thermal perception
+Fig 11(a) demonstrates that regardless of changes in acoustic com­
+fort, the slope of human thermal sensation remains relatively stable 
+(0.106 < k < 0.110) with temperature variation. When acoustic comfort 
+is higher (ACV=2,3), respondents generally rate their thermal sensation 
+lower. Thus, within the measurement points, higher acoustic comfort 
+levels lead to a slight decrease in thermal sensation. Across different 
+conditions, the slope of thermal sensation curves remains consistent, 
+indicating that acoustic comfort does not alter the sensitivity of in­
+dividuals to thermal environments.
+The variation of human thermal comfort with temperature under 
+three acoustic comfort levels is depicted in Fig 11(b). In the curve of 
+thermal comfort versus temperature, the X-axis value corresponding to 
+the apex of the curve is the most comfortable temperature. From the 
+figure, the lowest X-axis vertex value is found in the low acoustic 
+environment condition (15.9 ◦C), followed by the second highest X-axis 
+value in the meidum acoustic environment (16.9 ◦C), and the highest X- 
+axis value in the high acoustic environment (19.1 ◦C). This indicates that 
+respondents tended to prefer lower temperatures in low acoustic envi­
+ronments. Although this section was conducted with respondents in the 
+cold region of Xi’an, the study covers a wide range of temperatures, so 
+the effect of acoustic comfort on changes in thermal perception is still 
+relevant in multiple regions. The optimization of the built environment 
+as well as the improvement of the thermal environment plays an 
+Fig. 11. (a) Correlation between UTCI and MTSV for different ACV, (b) Cor­
+relation between UTCI and MTCV for different ACV.
+Fig. 12. (a) Correlation between UTCI and MTSV for different ASV, (b) Cor­
+relation between UTCI and MTCV for different ASV.
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+12 
+
+
+===== PAGE 13 =====
+important role from the point of view of energy management and public 
+health and safety, and Koley et al. [32] have shown that a good indoor 
+and outdoor thermal environment is essential for predicting and con­
+trolling the spread of diseases.
+3.3.4. Impact of sound pressure levels on thermal perception
+Fig 12(a) illustrates that in quiet environments, the slope of thermal 
+sensation with UTCI variation (k = 0.122) is higher compared to mod­
+erate (k = 0.110) and noisy environments (k = 0.106). As the sound 
+sensation votes increase, these differences gradually diminish. The re­
+sults indicate that in quieter acoustic environments (ASV=2,3), in­
+dividuals are more sensitive to changes in thermal environments. In 
+cooler conditions, a quieter acoustic environment (ASV=2,3) tends to 
+lower thermal sensation. This may be attributed to sound acting as en­
+ergy in open spaces, consistent with existing findings in acoustic envi­
+ronment research [33].
+At higher environmental temperatures, the thermal comfort index 
+for individuals shows no significant variation across the three acoustic 
+conditions (Fig 12(b)). Respondents in quiet environments (ASV=2,3) 
+perceive the highest comfort temperature, followed by noisy environ­
+ments 
+(ASV=−2,−3), 
+with 
+moderate 
+acoustic 
+environments 
+(ASV=−1,0,1) perceived as least comfortable. This aligns with previous 
+research conclusions that both noisier and more negative noise sources 
+increase respondent irritation, reducing their perceived comfort tem­
+perature. The moderate acoustic environment showed the largest TCV at 
+the most comfortable thermal temperature (0.64), followed by the noisy 
+environment (TCV of 0.49), and the smallest TCV extremes in the quiet 
+environment (0.37). This suggests that the discomfort of the acoustic 
+environment diverted the respondents’ attention from thermal discom­
+fort to some extent, which is consistent with the findings of previous 
+studies.
+3.3.5. Influence of thermal environment on sound perception
+Regardless of changes in the thermal environment, sound pressure 
+level was the most important factor influencing respondents’ sound 
+perception vote. Meanwhile, AL et al. chose a university campus to 
+evaluate the combined effect of thermal and acoustic environments on 
+human comfort and concluded that the interaction of TCV, ASV or ACV 
+is not significant. [34] This is consistent with the findings in this section.
+From Fig 13(a), it is observed that when the current thermal envi­
+ronment is cold (TSV = −3,−2) or warm (TSV = 2,3), the slope of sound 
+sensation with changes in sound pressure level (k = 0.038, 0.037) is 
+higher compared to moderate thermal sensation (k = 0.025). Under cold 
+Fig. 13. (a) Correlation between SPL and MASV for different TSV, (b) Corre­
+lation between SPL and MACV for different TSV.
+Fig. 14. (a) Correlation between SPL and MASV for different TCV, (b) Corre­
+lation between SPL and MACV for different TCV.
+Table 5 
+NUTCI and NUTCIR among OTC studies.
+Author
+Climate 
+zone
+City, country
+NUTCI ( 
+◦C)
+NUTCIR ( 
+◦C)
+This study
+Cwa
+Xi’an, China
+14.9
+10.8–19.0
+Huang et al. [35]
+Cwa
+Xi’an, China
+13.9
+6.4–21.5
+Hadianpour et al. 
+[36]
+BWk
+Tehran, Iran
+14.3
+14.2–20.1
+Shao et al. [37]
+Dwa
+Harbin, China
+6.7
+0.5–14.0
+Feng et al. [38]
+Cfa
+Guangzhou, 
+China
+23.7
+21.3–26.1
+Guo et al. [39]
+Dwa
+Dalian, China
+18.8
+14.7–23.0
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+13 
+
+
+===== PAGE 14 =====
+conditions, respondents’ perception of sound sensation is slightly lower 
+than in warm environments. This indicates that at comfortable envi­
+ronmental temperatures, sensitivity to changes in sound pressure level 
+decreases, suggesting that appropriate air temperature can increase 
+tolerance to higher sound pressure levels. In all three TSV conditions, 
+ASV decreased with increasing sound pressure level.
+Regardless of variations in respondents’ thermal environment con­
+ditions, the slope of sound comfort influenced by noise sound pressure 
+level is similar (k = 0.032, 0.031, 0.032) (Fig 13(b)). When the thermal 
+environment is cold (TSV=−2,−3), overall sound comfort is highest. 
+Moderate environments follow, with the lowest sound comfort in warm 
+environments. This suggests that as respondents’ thermal sensation 
+increases, overall sound comfort decreases. Specifically, within a mod­
+erate range of sound comfort, a cold thermal environment increases 
+tolerance to higher sound pressure levels.
+3.3.6. Influence of thermal comfort on sound perception
+In terms of sound sensation, respondents’ perception varies signifi­
+cantly with different levels of thermal comfort as depicted in Fig 14(a). 
+The distribution of points in this chart is more scattered due to the lower 
+impact of the thermal environment on sound perception and the fact 
+that the current sound pressure level corresponds to a number of 
+different sound types. When respondents are in a comfortable state 
+(TCV=2,3), the slope of the fitted curve with SPL is lowest (k = 0.016), 
+while it is highest when thermal conditions are uncomfortable 
+(TCV=−3,−2), reaching 0.061. At an ambient sound pressure level of 
+60~65 dB, the effect of thermal comfort on acoustic perception is 
+relatively low. This is mainly due to the fact that the acoustic sensation 
+remains stable in this sound pressure level range, regardless of thermal 
+comfort changes, the ASV values are centered between −0.33 and 0.24. 
+These results indicate that a comfortable thermal environment effec­
+tively reduces respondents’ sensitivity to sound levels, enhancing their 
+tolerance to sound pressure levels. Therefore, in outdoor environments 
+with high foot traffic and frequent high sound pressure levels, creating a 
+reasonable thermal environment can promote perceived comfort in 
+sound environments.
+When thermal comfort voting is moderate, the slope of respondents’ 
+sound comfort change (k = 0.023) is lower than in comfortable (k =
+0.029) and uncomfortable (k = 0.032) thermal environments (Fig 14
+(b)). Overall, at the same sound pressure level, the acoustic comfort of 
+the respondents increased with increasing levels of thermal comfort. A 
+Fig. 15. Analyses of PPD.
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+14 
+
+
+===== PAGE 15 =====
+comfortable thermal environment contributes to acoustic comfort.
+4. Discussion
+4.1. Outdoor thermal indices
+4.1.1. Neutral temperature
+This study is conducted in Xi’an, a cold region. To compare thermal 
+comfort variations under different conditions and with overall popula­
+tion data, several studies from different regions were used to extract 
+neutral temperatures. Xi’an’s neutral UTCI is similar to year-round 
+surveys conducted in the same region [35] (Table 5), being 0.7 ◦C 
+higher than Tehran [36]. This similarity indicates similar thermal per­
+ceptions among residents in these areas. Xi’an’s neutral UTCI is lower 
+than Athens [34] by 5.4 ◦C and Guangzhou [38] by 8.8 ◦C, but higher 
+than Harbin [37] by 8.2 ◦C. These differences in NUCTI are due to cli­
+matic variations: Athens has a warmer climate, Guangzhou is in a sub­
+tropical region, and Harbin experiences severe cold.
+4.1.2. Range of neutral temperature
+The NUTCIR observed in this study is narrower compared to year- 
+round NUTCIR in the same surveyed area, wider than Tehran and 
+Guangzhou, and closer to Dalian. This variation may stem from the 
+study’s focus on children in Xi’an [35], who exhibit stronger adaptive 
+capabilities to thermal changes. In contrast, Tehran [36] experiences 
+more stable climatic conditions. Residents in Xi’an are thus more 
+adaptable to the diverse seasonal changes in thermal environments. The 
+lower limit of NUTCIR in this study is higher than Harbin [37] by 10.3 
+◦C, while the upper limit is lower than Athens [34] by 5.2 ◦C and Dalian 
+[39] by 4.0 ◦C. This indicates varying levels of adaptation to thermal 
+environments among residents living in different climatic zones.
+4.1.3. Percentage of thermal discomfort
+When MTSV = 0, the PPD in Xi’an’s campus is lower compared to 
+other surveyed areas within the city (Fig 15). This suggests that during 
+the study period, respondents in this area had a higher tolerance for their 
+environment. Within discomfort zones (MTSV = +2, +3) or (MTSV =
+−3, −2), Xi’an’s PPD is lower than ISO 7730 standards, indicating that 
+the population in Xi’an is more capable of adapting to uncomfortable 
+temperatures compared to the standard.
+4.2. Strategies for enhancing thermal-acoustic comfort in urban open 
+spaces
+4.2.1. Physical environment status of open squares
+This study highlights the significant influence of physical factors on 
+the thermal-acoustic environment of open square spaces. Targeted 
+landscaping can effectively improve outdoor micro-climates. In the LS 
+site, globe radiation is significantly lower compared to other spaces. This 
+area exhibits higher thermal comfort in summer but lower comfort in 
+winter due to lower temperatures. The OS site, being open and unob­
+structed, experiences higher solar radiation in summer and reduced 
+thermal sensation in winter due to high wind speeds. Moreover, this 
+space has the lowest relative humidity, exacerbating thermal discom­
+fort. The PS measurement point features abundant water features that 
+increase humidity, alleviating thermal discomfort, while large trees on 
+the west side provide ample shaded areas, reducing solar radiation in 
+summer. The SS site, enclosed by high walls on both sides, experiences 
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+15 
+
+
+===== PAGE 16 =====
+the lowest average wind speed and overall higher comfort.
+In terms of acoustic environment, the LS site, located at the end of a 
+road, has the lowest average sound pressure level (SPL Mean = 58 dB), 
+followed by the SS site (SPL Mean = 59.29 dB). The OS site, close to 
+traffic flow and gatherings, exhibits the highest average sound pressure 
+level (SPL Mean = 63.26 dB). Similarly, the PS site near road traffic also 
+experiences an average noise level above 60 dB (SPL Mean = 60.02 dB). 
+Existing research indicates that sound pressure levels exceeding 60 dB 
+can induce discomfort in perception, increasing psychological agitation. 
+Therefore, measures should be implemented at OS and PS sites to reduce 
+sound pressure levels and improve acoustic conditions.
+4.2.2. Design strategies for square environment optimization
+Existing studies have found that when people enter a foggy envi­
+ronment, water droplets cause convection and evaporative heat loss on 
+the skin surface, reduce skin temperature (ST) and relieve thermal 
+discomfort. [40] On this basis, Su et al. [41] analyzed the effects of the 
+setting height of the spray device and the amount of spray on the human 
+body in different types of environments. Therefore, for space OS and 
+space SS, a spray device is added in summer to increase humidity, 
+alleviate the thermal discomfort caused by solar radiation, reduce the 
+temperature of the human surface through water vapor evaporation, and 
+increase the overall comfort of the environment.
+There are many kinds of materials for landscape sketches, and too 
+high temperature may cause thermal discomfort or even scalding, which 
+will affect people’s safety. Huang et al. [35] studied the influence of 
+outdoor landscape and seat surface material on the thermal perception 
+of the human body, and concluded that the temperature of some 
+landscape sketches is higher when exposed to direct sunlight, which 
+seriously affects the thermal safety of children.
+To alleviate the discomfort of the heat, people who chose to rest in 
+the shade voted the most. For the OS, SS and PS spaces that are exposed 
+to direct sunlight in summer, it is expected to set up sunshade facilities in 
+combination with landscape sketches, pay attention to public partici­
+pation and interaction, and expect to achieve artistic aesthetics and 
+practical application value.
+Optimizing the environmental conditions of measurement point 
+spaces should be based on empirical data, using layout and landscape 
+composition to strategically improve thermal-acoustic environments 
+and enhance overall comfort in outdoor activity spaces.
+Problems 
+1. Inadequate shading facilities.
+2. High solar radiation in summer.
+3. Low site humidity and lack of vegetation.
+Strategies 
+1. Introducing mobile shading devices.
+2. Planting tall deciduous trees on the west side of the site.
+3. Installing landscaped pools and low shrubs.
+Problems 
+1. Inadequate tree cover and vegetation, leading to high solar radiation.
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+16 
+
+
+===== PAGE 17 =====
+2. Low site humidity, resulting in poor heat dissipation during summer.
+3. Limited number of resting spaces.
+Strategies 
+1. Planting vegetation on both sides of the square to provide shade.
+2. Installing misting devices to expand the distribution of water 
+features.
+3. Adding sunshades, pavilions, or benches for resting facilities.
+Problems 
+1. Inadequate resting spaces on both sides of the square.
+2. Poor acoustic environment near the roads.
+3. Single-layered paving materials prone to heat accumulation in 
+summer.
+Strategies 
+1. Installing sunshades, pavilions, or benches for resting facilities.
+2. Designing sound isolation barriers or green plant belts.
+3. Installing misting devices to enhance rainwater penetration.
+Problems 
+1. High wind speeds and cold winters.
+2. Few trees leading to low humidity and insufficient summer shade.
+3. High pedestrian traffic with single-layered paving materials in 
+walkways, resulting in heat accumulation in summer.
+Strategies 
+1. Planting tall deciduous trees to reduce wind speed.
+2. Installing ponds within the site to provide summer shade.
+3. Installing misting devices along the roadside to lower the perceived 
+temperature for pedestrians.
+4.3. Limitations and future work
+Our study has several limitations. 1) the acoustic environment pa­
+rameters at measurement points may exhibit significant fluctuations, 
+which are less stable compared to meteorological parameters. For future 
+study we should continue to monitor the acoustic environment to 
+improve the accuracy of the research. 2) this study only considered re­
+spondents’ thermal and acoustic perceptions; future research should 
+delve deeper into other factors such as light.
+5. Conclusion
+In an open square space in Xi’an, four typical spaces were selected for 
+systematic study and comparison of thermal and acoustic physical en­
+vironments and environmental landscape factors influencing people’s 
+thermal perception evaluations outdoors, using methods such as mete­
+orological measurements and questionnaires. A series of strategies for 
+multidimensional optimization of the square were proposed. The con­
+clusions are as follows: 
+1. The UTCI of Xi’an urban squares is 14.9 ◦C, with a neutral UTCI 
+range of 10.8~19.0 ◦C, preferred temperature of 17.1 ◦C, and ther­
+mal comfort range of 7.8 ◦C-25.7 ◦C.
+2. When thermal sensation votes are neutral (TSV=−1,0,1), re­
+spondents influenced by negative sound tend to prefer lower 
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+17 
+
+
+===== PAGE 18 =====
+temperatures, while under positive sound types, people perceive 
+lower thermal sensations. Negative sound environments increase 
+discomfort among respondents at lower temperatures (UTCI < 15 
+◦C).
+3. When the acoustic environment is quieter (ASV=2,3), people are 
+more sensitive to changes in thermal environment perception. 
+Appropriate 
+environmental 
+sound 
+pressure 
+levels 
+(ASV=−3,−2,−1,0,1) can mitigate thermal discomfort under cooler 
+conditions (UTCI < 25 ◦C) to a certain extent. As the thermal envi­
+ronment increases, people’s acoustic comfort decreases.
+4. When respondents are in a comfortable state (TCV=2,3), the average 
+slope of acoustic sensation is minimized, whereas in uncomfortable 
+thermal conditions (TCV=−3,−2), the slope is maximized, indi­
+cating that a comfortable thermal environment can effectively 
+reduce respondents’ sensitivity to environmental sound pressure 
+levels.
+5. Based on meteorological parameter characteristics and respondent 
+voting for different square spaces, optimized designs were provided. 
+To enhance thermal comfort in the four typical spaces, methods such 
+as installing cooling mist devices and optimizing tree species along 
+walkways can be employed to improve microclimate comfort.
+Declaration
+There are no conflicts of interest to declare.
+CRediT authorship contribution statement
+Meng Zhen: Conceptualization, Methodology, Writing – review & 
+editing, Supervision. Xinyi Yuan: Writing – original draft, Data cura­
+tion, Visualization. Liqiang Gao: Project administration, Resources. 
+Weijie Xia: Writing – review & editing, Formal analysis, Software, 
+Visualization. Kai Nan: Investigation, Project administration, Re­
+sources, Validation. Ming Zhang: Investigation, Project administration, 
+Resources, Validation.
+Declaration of competing interest
+None.
+Funding
+No specific funding was received for this research.
+Supplementary materials
+Supplementary material associated with this article can be found, in 
+the online version, at doi:10.1016/j.buildenv.2024.112327.
+References
+[1] Climate-Data.org. Climate data for cities worldwide, 2018. https://en.cliamtedata. 
+org.
+[2] National Bureau of Statistics of China. Statistical Yearbook of China, 2022. http:// 
+www.stats.gov.cn/xxgk/jd/sjjd2020/202201/t20220118_1826609.html.
+[3] Xi’an municipal people’s government. Statistics for Xi’an, 2022. http://www.xa. 
+gov.cn/sq/csgk/rkzk/1.html.
+[4] Y. Mao, Study on climate adaptability of human beings to thermal comfort in 
+China, Xi’an Univ. Architect. Techn. (2007), https://doi.org/10.7666/d.d195626.
+[5] N. Mohammadzadeh, A. Karimi, D.R. Brown, The influence of outdoor thermal 
+comfort on acoustic comfort of urban parks based on plant communities, Build. 
+Environ. 228 (2023), https://doi.org/10.1016/j.buildenv.2022.109884.
+[6] Y.H.L. Li, L. Li, W. Wang, H.W. Kong, L.P. Chen, L.X. Yang, How to enhance 
+thermal comfort in greenway walking? an exploration of the physical environment, 
+walking status, and emotional perspectives, Urban Climate, 2024, https://doi.org/ 
+10.1016/j.uclim.2024.102053, 56102053-102053.
+[7] F. Xue, X.F. Li, J. Ma, Z.Q. Zhang, Modeling the influence of fountain on urban 
+microclimate, Build. Simul. 8 (2015) 285–295. https://link.springer.com/article 
+/10.1007/s12273-014-0210-7.
+[8] M. Xu, B. Hong, J.Y. Mi, S.S. Yan, Outdoor thermal comfort in an urban park during 
+winter in cold regions of China, Sustain. Cities. Soc. 43 (2018) 208–220, https:// 
+doi.org/10.1016/j.scs.2018.08.034.
+[9] M.A. Abbasi, E. Darvishi, K. Sayehmiri, Exploring gender differences in acoustic- 
+thermal comfort and performance in a simulated working environment, Build. 
+Environ. (2024), https://doi.org/10.1016/j.buildenv.2024.111995, 265111995- 
+111995.
+[10] D. M, B. Hong, C.J. Gu, Y.C. Li, Y.Y. Wang, Multiple effects of visual-acoustic- 
+thermal perceptions on the overall comfort of elderly adults in residential outdoor 
+environments, Energy Build. 283 (2023), https://doi.org/10.1016/j. 
+enbuild.2023.112813.
+[11] Y.D. Yin, D. Zhang, M. Zhen, W.Q. Jing, W. luo, W. Feng, Combined effects of the 
+thermal-acoustic environment on subjective evaluations in outdoor public spaces, 
+Sustain. Cities. Soc. 77 (2022), https://doi.org/10.1016/j.scs.2021.103522.
+[12] P.C. Terry, C.I. Karageorghis, M.L. Curran, O.V. Martin, R.L. Smith, Effects of music 
+in exercise and sport: a meta-analytic review, Psychol. Bull. 146 (2) (2020) 91, 
+https://doi.org/10.1037/bul0000216.
+[13] A.Y. Xiao, B. Cheng, J. Zhang, H.Y. Peng, Y.M. Lai, F.X. Zeng, T. Liu, F. Zhu, 
+A study of acoustic-light-thermal effects on pedestrians’ overall comfort in a Cfa- 
+climate campus during the summer, J. Therm. Biol. 121 (2024) 103839, https:// 
+doi.org/10.1016/j.scs.2021.103522.
+[14] X. Wen, Q. Meng, D. Yang, M. Li, Effect of thermal-acoustic composite 
+environments on comfort perceptions considering different office activities, Energy 
+Build. 305 (2024) 113887, https://doi.org/10.1016/j.enbuild.2024.113887.
+[15] L. Yang, Z.Z. Chen, M. Zhen, Effects of thermal-acoustic interaction on airport 
+terminal’s indoor thermal comfort: a case study in cold region of China, J. Build. 
+Eng. (2024) 108834, https://doi.org/10.1016/j.jobe.2024.108834.
+[16] C. Piselli, V.L. Castaldo, I. Pigliautile, A.L. Pisello, F. Cotana, Outdoor comfort 
+conditions in urban areas: on citizens’ perspective about microclimate mitigation 
+of urban transit areas, Sustain. Cities. Soc. 39 (2018) 16–36, https://doi.org/ 
+10.1016/j.scs.2018.02.004.
+[17] X. Zhang, M. Ba, J. Kang, et al., Effect of soundscape dimensions on acoustic 
+comfort in urban open public spaces[J], Appl. Acoust. 133 (2018) 73–81, https:// 
+doi.org/10.1016/j.apacoust.2017.11.024.
+[18] X.Y. Ma, Y. Tian, M. Du, B. Hong, B.R. Lin, How to design comfortable open spaces 
+for the elderly? Implications of their thermal perceptions in an urban park, Sci. 
+Total Environ. 768 (2021) 144985, https://doi.org/10.1016/j. 
+scitotenv.2021.144985, 144985.
+[19] M.C. Peel, B.L. Finlayson, T.A. McMahon, Updated world map of the K¨oppen- 
+Geiger climate classification, Hydrol. Earth. Syst. Sci. 11 (5) (2007) 1633–1644, 
+https://doi.org/10.5194/hess-11-1633-2007.
+[20] GB 50176 1993, Code for thermal design of civil building. https://www.nssi.org. 
+cn/nssi/front/106360583.html.
+[21] P. H¨oppe, The physiological equivalent temperature–a universal index for the 
+biometeorological assessment of the thermal environment, Int. J. Biometeorol. 43 
+(1999) 71–75, https://doi.org/10.1007/s004840050118.
+[22] ISO, International standard 7726, Thermal environment-instruments and method 
+for measuring physical quantities, International Standard Organization, Geneva, 
+1998. https://standards.iteh.ai/.
+[23] G. Jendritzky, R.D. Dear, G. Havenith, UTCI—Why another thermal index? Int. J. 
+Biometeorol. 56 (2012) 421–428, https://doi.org/10.1007/s00484-011-0513-7.
+[24] D.H. Xu, R. Zhu, The sensation of human to temperature & humility & wind speed 
+and the clothing, J. Appl. Meteorol. Sci. 11 (4) (2000) 430–439. gikan.camscma. 
+cn/indexen.html.
+[25] ISO. International Standard 7730, Ergonomics of the thermal environment 
+analytical determination and interpretation of thermal comfort using calculation of 
+the PMV and PPD indices and local thermal comfort criteria, International 
+Standard Organization, Geneva, 2005. https://www.iso.org/standard/39155.html.
+[26] E. Krüger, P. Drach, R. Emmanuel, O. Corbella, Assessment of daytime outdoor 
+comfort levels in and outside the urban area of Glasgow, UK, Int. J. Biometeorol. 57 
+(2013) 521–533, https://doi.org/10.1007/s00484-012-0578-y.
+[27] O. Potchter, P. Cohen, T. Lin, Andreas Matzarakis, Outdoor human thermal 
+perception in various climates: a comprehensive review of approaches, methods 
+and quantification, Sci.Total Environ. 631 (2018) 390–406, https://doi.org/ 
+10.1016/j.scitotenv.2018.02.276.
+[28] R. Yao, S. Zhang, C. Du, M. Schweiker, S. Hodder, B.W. Olesen, J. Toftum, F. 
+R. d’Ambrosio, H. Gebhardt, S. Zhou, Evolution and performance analysis of 
+adaptive thermal comfort models–A comprehensive literature review, Build. 
+Environ. 217 (2022) 109020, https://doi.org/10.1016/j.buildenv.2022.109020.
+[29] ASHRAE, ASHRAE Standard 55–2004: thermal environmental conditions for 
+human occupancy, Atlanta, Georgia, USA, 2004. https://www.ashrae.org/.
+[30] A. Faraji, M. Rashidi, F. Rezaei, E. Sorooshnia, Determining appropriate thermal 
+comfort period based on PET and PMV using the RayMan model: a case study in the 
+subtropical city of Sari, Internat. J. Architect. Eng. Urban Plann. (2022), https:// 
+doi.org/10.22068/ijaup.569.
+[31] S. Zhang, Z. Lin, Adaptive-rational thermal comfort model: adaptive predicted 
+mean vote with variable adaptive coefficient, Indoor. Air. 30 (5) (2020) 
+1052–1062, https://doi.org/10.1111/ina.12665.
+[32] S. Koley, Role of Fluid Dynamics in Infectious Disease Transmission: insights from 
+COVID-19 and Other Pathogens[J], Trends Sci. 21 (8) (2024) 8287, https://doi. 
+org/10.48048/tis.2024.8287, 8287.
+[33] A. Matzarakis, M. Gangwisch, D. Fr¨ohlich, RayMan and SkyHelios model, Urban 
+microclimate modelling for comfort and energy studies (2021) 339–361. https 
+://doi.org/10.1007/978-3-030-65421-4_16.
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+18 
+
+
+===== PAGE 19 =====
+[34] M. Zhen, Z. LC, Q.S. Zou, Combined effects of thermal and acoustic environments 
+on outdoor human comfort in university campus[J], Urban. Clim. 49 (2023), 
+https://doi.org/10.1016/j.uclim.2023.101566.
+[35] B. Huang, B. Hong, Y. Tian, T.T. Yuan, M.F. Su, Outdoor thermal benchmarks and 
+thermal safety for children: a study in China’s cold region, Sci. Total Environ. 787 
+(2021) 147603, https://doi.org/10.1016/j.scitotenv.2021.147603.
+[36] M. Hadianpour, M. Mahdavinejad, M. Bemanian, F. Nasrollahi, Seasonal 
+differences of subjective thermal sensation and neutral temperature in an outdoor 
+shaded space in Tehran, Iran. Sustain. Cit. Soc. 39 (2018) 751–764, https://doi. 
+org/10.1016/j.scs.2018.03.003.
+[37] L. Shao, X. He, Y. Tang, S.L. Wu, Outdoor cold stress and cold risk for children 
+during winter: a study in China’s severe cold regions, Buildings 12 (7) (2022) 936, 
+https://doi.org/10.3390/buildings12070936.
+[38] X.W. Feng, Z.M. Zheng, Y.P. Yang, Z.S. Fang, Quantitative seasonal outdoor 
+thermal sensitivity in Guangzhou, China. Urban Climate 39 (2021) 100938, 
+https://doi.org/10.1016/j.uclim.2021.100938.
+[39] F. Guo, Z. Wang, J. Dong, H.C. Zhang, X.D. Lu, S.S.Y. Lau, Y.J. Mao, Spatial 
+differences in outdoor thermal comfort during the transition season in cold regions 
+of China, Buildings 12 (6) (2022) 720, https://doi.org/10.3390/ 
+buildings12060720.
+[40] Y.X. Wu, R. Ooka, J. Nakano, H. Kikumoto, O. Ogawa, Evaluation of mist-spraying 
+environment on thermal sensations, thermal environment, and skin temperature 
+under different operation modes, Build. Environ. 168 (2020) 106484, https://doi. 
+org/10.1016/j.buildenv.2019.106484.
+[41] M.F. Su, B. Hong, X.J. Su, A.W. Liu, J.Y. Zhang, How the nozzle density and height 
+of mist spraying affect pedestrian outdoor thermal comfort: a field study, Build. 
+Environ. 215 (2022) 108968, https://doi.org/10.1016/j.buildenv.2022.108968.
+M. Zhen et al.                                                                                                                                                                                                                                    
+Building and Environment 267 (2025) 112327 
+19 

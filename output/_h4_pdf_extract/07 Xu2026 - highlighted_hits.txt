@@ -1,0 +1,123 @@
+FILE: 07 Xu2026 - highlighted.pdf
+PAGES: 27
+CHARS: 72973
+
+profiles. Under the combined high-temperature and high-sound- level condition, thermal comfort was 0.63 units below the additive prediction. Tempera­ ture accounted for the largest reported SHAP contribution to the
+---
+ediction. Tempera­ ture accounted for the largest reported SHAP contribution to thermal comfort. The find­ ings motivate local tests of coordinated shading and sound management, together with alternative outdoor se
+---
+applying the thresholds or profile-based recommendations more widely. Keywords Thermal comfort · Multi-scale analysis · Threshold identification · Individual heterogeneity · Machine learning · Urban public spaces
+---
+tic stimuli interact with the human mind and body, shaping perceptions such as thermal sensation and acoustic comfort (Yang et al., 2022; Jin et al., 2020). As climate change and urbanization accelerate, urban heat
+---
+As climate change and urbanization accelerate, urban heat islands and traffic noise frequently occur together. This means that exposure to multiple environmental sources is now common (Hsu et al., 2021
+---
+st page of the article ===== PAGE 2 ===== 1 3 L. Xu et al. ing temperature or noise, often fail to improve comfort. These approaches overlook how combined factors affect human comfort (Jiang et al., 202
+---
+ch prior­ ity is to identify, quantify, and interpret the nonlinear effects and interactions of multiple thermal and acoustic factors on outdoor comfort using a unified assessment framework. To investigate thes
+---
+ches either ignore heterogeneity, hurting individual prediction, or treat it as noise. Our framework uses three analytical scales: population-level pattern identification, subgroup-level heterogeneity ch
+---
+nnovations: first, systematic identification and quantification of significant interactions among multiple environmental factors (particu­ larly thermal-acoustic factors) in urban public spaces; second, investi
+---
+spaces; second, investigation of critical thresh­ old intervals at which these interactions influence human comfort perception. The paper is organized as follows: Sect. 2 reviews the relevant literature and re
+---
+e issues from multiple paradigms and made important advances. First, classical thermal comfort models based on physiological and energy bal­ ance principles—such as Predicted Mean Vote (PMV) and Physiological Equiv
+---
+s—such as Predicted Mean Vote (PMV) and Physiological Equivalent Tem­ perature (PET)—have established quantitative relationships between climatic parameters and thermal sensation votes, providing a scie
+---
+T)—have established quantitative relationships between climatic parameters and thermal sensation votes, providing a scientific foundation for evaluating thermal envi­ ronmental main effects (Yang et al., 2022; Du et
+---
+votes, providing a scientific foundation for evaluating thermal envi­ ronmental main effects (Yang et al., 2022; Du et al., 2022). These models assume that under steady-state conditions, individual factors cont
+---
+human thermal balance framework has been widely applied to indoor and outdoor thermal comfort assessments and standard development (Du et al., 2022). Second, statistical analysis paradigms have examined associati
+---
+primary influences of air temperature, radiation, humidity, and wind speed on thermal sensation and comfort votes, constructing empirical models for specific regions (Pompei et al., 2024; Fang et al., 2021). Some
+---
+et al., 2024; Fang et al., 2021). Some studies have begun incorporating simple interaction terms (e.g., solar radiation × wind speed) to examine synergistic effects (Li et al., 2020). Such statistical mod­ els
+---
+r relationships, with studies demonstrating that their prediction accuracy for thermal comfort votes significantly outperforms traditional regres­ sion methods (Zhou et al., 2020). Additionally, researchers now app
+---
+ts However, significant gaps remain in existing research regarding multi-factor interaction effects. First, classical models and most statistical analyses implicitly assume that environ­ mental factor influence
+---
+additive. This single-modal thinking neglects nonlinear threshold effects and amplification/buffering mechanisms between fac­ tors under extreme or compound exposure scenarios. When interaction terms are
+---
+mechanisms between fac­ tors under extreme or compound exposure scenarios. When interaction terms are ignored, the coexistence of multiple adverse factors leads to biased comfort assessments, and intervention
+---
+entified mechanisms (Chen et al., 2024). For instance, research has shown that noise levels can influence thermal sensation evaluations: reducing excessive background noise helps improve outdoor thermal
+---
+t al., 2024). For instance, research has shown that noise levels can influence thermal sensation evaluations: reducing excessive background noise helps improve outdoor thermal comfort perceptions (Ning et al., 2025
+---
+els can influence thermal sensation evaluations: reducing excessive background noise helps improve outdoor thermal comfort perceptions (Ning et al., 2025); conversely, under conditions combining high tem
+---
+nsation evaluations: reducing excessive background noise helps improve outdoor thermal comfort perceptions (Ning et al., 2025); conversely, under conditions combining high temperature with intense noise, overall
+---
+., 2025); conversely, under conditions combining high temperature with intense noise, overall comfort decreases significantly accompanied by heightened irritability and discomfort (Chen et al., 2023). Ho
+---
+rritability and discomfort (Chen et al., 2023). However, such thermal-acoustic interaction effects have been observed only in limited contexts and have not been systematically quantified within a unified fram
+---
+nd have not been systematically quantified within a unified framework. Second, thermal comfort and acoustic comfort research have long remained independent, resulting in modal separation between thermal and acoust
+---
+025). Most outdoor comfort studies focus on dominant factors of heat stress or thermal sensation (Pompei et al., 2024; Fang et al., 2021; Li et al., 2020), while oth­ ers emphasize soundscape perception and acoustic
+---
+easuring range Measurement accuracy Work environment Sound-level detec­ tor (noise0501) 30db-120db ± 0.5db Air temperature: −40% ~ + 60% Relative humidity: 25% ~ 90% Wind speed detector(wind0501) 0.
+---
+d respondents' percep­ tions of thermal and acoustic environments, encompassing Thermal Sensation Vote (TSV), Thermal Comfort Vote (TCV), Acoustic Sensation Vote (ASV), and Acoustic Comfort Vote (ACV). Following ASH
+---
+ions of thermal and acoustic environments, encompassing Thermal Sensation Vote (TSV), Thermal Comfort Vote (TCV), Acoustic Sensation Vote (ASV), and Acoustic Comfort Vote (ACV). Following ASHRAE standa
+---
+thermal and acoustic environments, encompassing Thermal Sensation Vote (TSV), Thermal Comfort Vote (TCV), Acoustic Sensation Vote (ASV), and Acoustic Comfort Vote (ACV). Following ASHRAE standards, a 7-point Like
+---
+environments, encompassing Thermal Sensation Vote (TSV), Thermal Comfort Vote (TCV), Acoustic Sensation Vote (ASV), and Acoustic Comfort Vote (ACV). Following ASHRAE standards, a 7-point Likert scale w
+---
+HRAE standards, a 7-point Likert scale was employed to measure each dimension: TSV (−3 = Cold, −2 = Cool, −1 = Slightly Cool, 0 = Neutral, 1 = Slightly Warm, 2 = Warm, 3 = Hot); TCV(−3 = Severe Discomf
+---
+Cool, −1 = Slightly Cool, 0 = Neutral, 1 = Slightly Warm, 2 = Warm, 3 = Hot); TCV(−3 = Severe Discomfort, −2 = Discomfort, −1 = Slightly Discom­ fort, 0 = Neutral, 1 = Slightly Comfortable, 2 = Comfort
+---
+tral, 1 = Slightly Loud, 2 = Loud, 3 = Very Loud); and ACV (scale identical to thermal comfort). Respondents could select any scale value based on their actual perceptions. Experimental staff assisted respondents
+---
+nts; classification and regression tree (CART) analysis identifies conditional split rules; K-means clustering describes response profiles from standardised TSV, TCV, ASV and ACV values; random-forest
+---
+split rules; K-means clustering describes response profiles from standardised TSV, TCV, ASV and ACV values; random-forest models quantify fit­ ted feature contributions using Shapley additive explanati
+---
+t rules; K-means clustering describes response profiles from standardised TSV, TCV, ASV and ACV values; random-forest models quantify fit­ ted feature contributions using Shapley additive explanations (
+---
+known threshold t: di s play-eq-Equ 1  (1) where y represents comfort votes (TCV or ACV), x is the environmental variable (tempera­ ture or N), t is the threshold to be estimated, and a₁, a₂, b, and c
+---
+reakpoint-selection procedure. 3.3.2 Decision tree analysis for multi-variable interaction rules CART regression trees were used to summarise conditional relationships between environ­ mental variables and each
+---
+CART was introduced by Loh (2011); it is not a model proposed in this study. A split partitions observations into two child nodes, and each terminal node reports the mean response of the observations a
+---
+E) at each node was used to measure prediction error, as shown in Eq. (2): displa y -eq-Equ2 𝑆𝑆 eq - Equ2  (2) Fig. 2 Overall methodology ===== PAGE 8 ===== 1 3 L. Xu et al. where S represents t
+---
+al value of the i-th sample, and y is the mean of samples at the node. At each split, the feature f and split point s that maximize error reduction were selected. The MSE reduction is expressed in Eq.
+---
+ple, and y is the mean of samples at the node. At each split, the feature f and split point s that maximize error reduction were selected. The MSE reduction is expressed in Eq. (3): displa y-eq -Eq u
+---
+error reduction were selected. The MSE reduction is expressed in Eq. (3): displa y-eq -Eq u 3 𝑆𝑆 𝑆𝑆 𝑆𝑆 𝑆𝑆 𝑆𝑆 𝑆𝑆 𝑆𝑆  (3) The Decision Tree construction procedure comprised four steps: (1) at each no
+---
+bset of features (controlled by hyperparameter mtry) was randomly selected for splitting; (2) MSE reduction (ΔMSE) after splitting was calculated for each feature, selecting the feature and split poin
+---
+ter mtry) was randomly selected for splitting; (2) MSE reduction (ΔMSE) after splitting was calculated for each feature, selecting the feature and split point that maximized error reduction; (3) if t
+---
+SE) after splitting was calculated for each feature, selecting the feature and split point that maximized error reduction; (3) if the node sample size exceeded the minimum split threshold (min_samples_
+---
+at maximized error reduction; (3) if the node sample size exceeded the minimum split threshold (min_samples_split) and tree depth had not reached maximum depth (max_depth), recursive splitting continue
+---
+(3) if the node sample size exceeded the minimum split threshold (min_samples_split) and tree depth had not reached maximum depth (max_depth), recursive splitting continued; (4) leaf node output was
+---
+les_split) and tree depth had not reached maximum depth (max_depth), recursive splitting continued; (4) leaf node output was the mean of target variable values for all samples at that node. 3.4 K-mean
+---
+clustering (MacQuuen, 1967) was applied to the standardised response vec­ tor [TSV, TCV, ASV, ACV]. Candidate solutions with two to six clusters were compared using the silhouette coefficient (Rousseeu
+---
+tering (MacQuuen, 1967) was applied to the standardised response vec­ tor [TSV, TCV, ASV, ACV]. Candidate solutions with two to six clusters were compared using the silhouette coefficient (Rousseeuw, 19
+---
+escribe bootstrap agreement between cluster assignments. Analysis of variance (ANOVA) comparisons describe differences in the variables used to form the clusters; they do not independently establish that
+---
+-interpretation approach described by Friedman (2001). One-dimensional plots display the fitted response as a selected feature varies while averaging over other feature values. Two-dimensional plots de
+---
+ysis of thermal-acoustic comfort in… 3.5 Statistical validation All identified interactions were validated using two-way ANOVA with temperature and noise as factors. Post-hoc pairwise comparisons used Tukey's
+---
+n… 3.5 Statistical validation All identified interactions were validated using two-way ANOVA with temperature and noise as factors. Post-hoc pairwise comparisons used Tukey's HSD test with Bonferroni corr
+---
+Statistical validation All identified interactions were validated using two-way ANOVA with temperature and noise as factors. Post-hoc pairwise comparisons used Tukey's HSD test with Bonferroni correction

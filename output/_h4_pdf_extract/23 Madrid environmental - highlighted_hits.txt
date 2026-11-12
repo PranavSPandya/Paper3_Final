@@ -1,0 +1,55 @@
+FILE: 23 Madrid environmental - highlighted.pdf
+PAGES: 33
+CHARS: 61116
+
+licado distintas pruebas de correlación entre las variables como la de Pearson, Spearman, U de Mann Whitney, H Kruskal Wallis y chi-cuadrado. Adicionalmente, se realiza un análisis estadístico multivariado co
+---
+diﬀerent correlation tests have been applied between variables such as Pearson, Spearman, Mann Whitney U, Kruskal Wallis H, and chi-square. Besides, a multivariate statistical ===== PAGE 3 ===== analysis is
+---
+nﬂuenced by environmental factors such as temperature, humidity, wind speed and noise, however, only wind speed is determinant within a regression model. Besides, some elements of the design also signiﬁcan
+---
+t, and quality of life of all citizens. Keywords: elderly, use of public space, thermal comfort, acoustic comfort, environmental factors. INTRODUCCIÓN El envejecimiento de la población, entendido como un proceso het
+---
+ntales (Ta, HR, dB, Velocidad del viento, SVF); el coeﬁciente de correlación de Spearman, para establecer la relación entre la estancia y la percepción ambiental (sensación térmica, preferencia térmica, perce
+---
+; Baquero Larriva y Higueras García, 2019; Schneider, Rückerl, Breitner, Wolf y Peters, 2017). En relación a la percepción del paisaje sonoro, el 77.6% de los entrevistados lo considera agradable, al 16%
+---
+vironmental gerontology studies appeared around 1970, analyzing the inﬂuence of interactions between the elderly and their surroundings (Lawton & Powell Nahemow, 1973; Lawton, 1985). Whyte (1980) used direct obs
+---
+f designing these spaces considering their needs. In this case, they found that thermal comfort was the most inﬂuential factor in the use of these. On the other hand, Sánchez-González et al (2018) establish that =
+---
+sense of connectivity, belonging and environmental identity, determined by the interaction, exposure and perception of the environment, favoring active and healthy aging in the place (Vidal & Pol, 2005; Maas et
+---
+e are the busiest times. A PCE-322 A sound-level meter has been used to measure noise levels. It had a frequency of 31.5-8 Hz, measurement of 30-130 dB and a precision of ±1.4 dB. A HOBO UX100 datalogger t
+---
+) and the environmental variables (Ta, HR, dB, wind speed, SVF); meanwhile, the Spearman correlation coeﬃcient was used to establish the relation between those staying and the environmental perception (therma
+---
+establish the relation between those staying and the environmental perception (thermal sensation, thermal preference, humidity perception, wind, noise level and noise discomfort); the Mann Whitney U non-parametric te
+---
+l perception (thermal sensation, thermal preference, humidity perception, wind, noise level and noise discomfort); the Mann Whitney U non-parametric test was used to identify relations between those who st
+---
+ermal sensation, thermal preference, humidity perception, wind, noise level and noise discomfort); the Mann Whitney U non-parametric test was used to identify relations between those who stay and the time
+---
+several authors about the importance of suitable friendly urban environments to increase the opportunities for physical and social activity, managing to promote the participation and integration in old age (
+---
+Higueras García 2019,Schneider et al. 2017). In terms of the perception of the noise landscape, 77.6% of those interviewed considered it was pleasant, 16% found the birdsong pleasurable and 10% felt the s
+---
+presence. On the other hand, it is interesting to point out that, despite mean noise levels of up to 77 dB (A) and maximum levels of up to 108 dB (A) being recorded, over the limit of 65 dB allowed for re
+---
+ed harmful for the health (Head of State, 2003), 70.5% were not bothered by the noise. The limited discomfort caused by the noise, in some studies is attributed to the loss of hearing sensitivity which mak
+---
+03), 70.5% were not bothered by the noise. The limited discomfort caused by the noise, in some studies is attributed to the loss of hearing sensitivity which makes the elderly more tolerant to it (Miedema
+---
+or of ===== PAGE 24 ===== expectation, which reduces the discomfort caused by noise that is expected to be present in a given place, like is the case of the street in a city like Madrid (Ge & Hokao, 2005
+---
+perature, relative humidity and wind speed, as well as the discomfort caused by noise, are factors which aﬀect the stays of the elderly in public spaces; however, only the wind speed is signiﬁcant within a
+---
+aking the elderly more or less tolerant to certain environmental parameters and increase their vulnerability to the eﬀects these have on their health. Finally, important lines of work are opened to face the
+---
+g- cities_a4_web.pdf. ASHRAE (1992). Thermal environmental conditions for human occupancy. Atlanta. Auchincloss, A.H., Diez, A., Mahasin, M., Shen M., Bertoni, A. y Carnethon, M. (2009). Neighborhood Resources
+---
+h, U. y Röttgen, M. (2006). Behaviour of people in open spaces in dependence of thermal comfort conditions. En Proceedings of 23rd Conference on Passive and Low Energy Architecture, Ginebra, Suiza. Kerr, J., Rosenbe
+---
+. Demographic and attitudinal factors that modify annoyance from transportation noise. The Journal of the Acoustical Society of America, 105(6), 3336-3344. DOI 10.1121/1.424662. Naciones Unidas (2002). Dec
+---
+ringer Publishing Company. Schneider, A., Rückerl, R., Breitner, S., Wolf, K. y Peters, A. (2017). Thermal Control, Weather, and Aging. Current Environmental Health Reports, 4(1), 21-29. DOI 10.1007/s405

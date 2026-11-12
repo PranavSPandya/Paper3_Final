@@ -1,0 +1,5 @@
+"source","outcome","n_participants","mean_beta_sd","ci_lower","ci_upper","p_value","n_10s","p_value_adjusted","confidence_level","adjustment_method","adjustment_family","adjustment_family_size"
+"vehicle_proportion","empatica_eda_tonic","11","0.0855515150441099","-0.0046753714974664","0.175778401585686","0.0615234375","1803","0.24609375","0.95","BH","source_defined_family_see_methods",""
+"vehicle_proportion","eyetracker_fixation_rate","10","0.0130780803091952","-0.0382001219047815","0.064356282523172","0.572265625","1782","0.671875","0.95","BH","source_defined_family_see_methods",""
+"rural_natural_proportion","empatica_eda_tonic","11","-0.024795095648657","-0.146820258554059","0.0972300672567449","0.671875","1803","0.671875","0.95","BH","source_defined_family_see_methods",""
+"rural_natural_proportion","eyetracker_fixation_rate","10","0.0254819666813465","-0.0264724105717486","0.0774363439344416","0.291015625","1782","0.58203125","0.95","BH","source_defined_family_see_methods",""

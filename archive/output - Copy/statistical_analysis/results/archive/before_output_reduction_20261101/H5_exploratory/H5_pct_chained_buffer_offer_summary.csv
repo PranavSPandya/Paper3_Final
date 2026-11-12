@@ -1,0 +1,5 @@
+PhaseID,n_buffers,n_epochs_total,n_offers_shared_9of11,max_participants_in_buffer
+BikeG,23,517,13,11
+BikeU,22,527,11,11
+WalkG,33,528,27,11
+WalkU,30,526,27,11

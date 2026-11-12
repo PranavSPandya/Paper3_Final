@@ -10,7 +10,7 @@ root <- option('root', resolve_project_root())
 input <- option('input', file.path(root, 'output/statistical_analysis/results'))
 out <- option('out', file.path(root, 'output/merged'))
 groups <- list(
-  Analysis_combined_merged = c('Analysis_combined_phaseavg', 'Analysis_combined_timeseries'),
+  H5_combined_merged = c('H5_combined_phaseavg', 'H5_combined_timeseries'),
   H1_H3_merged = c('H1_H3_phaseavg', 'H1_H3_timeseries'),
   H4_sound_results = 'H4_sound_literature_test')
 read <- function(source_path) {

@@ -1,0 +1,197 @@
+"sound_variable","paper","test","paper_decision_rule","n_tests","n_paper_rule_met","outcomes_paper_rule_met","n_significant_unadjusted","n_significant_adjusted","significant_adjusted_outcomes"
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase BikeG","p < 0.05","3","1","acoustic_comfort","1","0",
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase BikeU","p < 0.05","6","0",,"0","0",
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase WalkG","p < 0.05","6","0",,"0","0",
+"comfort-domain association (no measured sound predictor)","Cureau 2022","Fisher exact comfort-domain association, phase WalkU","p < 0.05","6","1","acoustic_comfort","1","0",
+"dba","Chen 2023 (adapted)","Continuous participant LMM: utci_z","p < 0.05","3","0",,"0","0",
+"dba","Chen 2023 (adapted)","Continuous participant LMM: dba_z","p < 0.05","3","0",,"0","0",
+"dba","Chen 2023 (adapted)","Continuous participant LMM: nature_z","p < 0.05","3","1","thermal_comfort","1","0",
+"dba","Chen 2023 (adapted)","Continuous participant LMM: utci_z:dba_z","p < 0.05","3","0",,"0","0",
+"sound_corridor_urban","Chen 2023 (adapted)","Continuous participant LMM: utci_z | sound_corridor_urban","p < 0.05","3","0",,"0","0",
+"sound_corridor_urban","Chen 2023 (adapted)","Continuous participant LMM: sound_z | sound_corridor_urban","p < 0.05","3","2","thermal_comfort; acoustic_comfort","2","2","thermal_comfort; acoustic_comfort"
+"sound_corridor_urban","Chen 2023 (adapted)","Continuous participant LMM: utci_z:sound_z | sound_corridor_urban","p < 0.05","3","1","thermal_comfort","1","0",
+"sound_yamnet_majority_traffic","Chen 2023 (adapted)","Continuous participant LMM: utci_z | sound_yamnet_majority_traffic","p < 0.05","3","2","thermal_comfort; acoustic_comfort","2","2","thermal_comfort; acoustic_comfort"
+"sound_yamnet_majority_traffic","Chen 2023 (adapted)","Continuous participant LMM: sound_z | sound_yamnet_majority_traffic","p < 0.05","3","1","thermal_comfort","1","1","thermal_comfort"
+"sound_yamnet_majority_traffic","Chen 2023 (adapted)","Continuous participant LMM: utci_z:sound_z | sound_yamnet_majority_traffic","p < 0.05","3","0",,"0","0",
+"wind_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z | wind_proportion","p < 0.05","3","1","thermal_comfort","1","1","thermal_comfort"
+"wind_proportion","Chen 2023 (adapted)","Continuous participant LMM: sound_z | wind_proportion","p < 0.05","3","0",,"0","0",
+"wind_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z:sound_z | wind_proportion","p < 0.05","3","0",,"0","0",
+"rural_natural_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z | rural_natural_proportion","p < 0.05","3","0",,"0","0",
+"rural_natural_proportion","Chen 2023 (adapted)","Continuous participant LMM: sound_z | rural_natural_proportion","p < 0.05","3","2","thermal_comfort; acoustic_comfort","2","2","thermal_comfort; acoustic_comfort"
+"rural_natural_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z:sound_z | rural_natural_proportion","p < 0.05","3","2","thermal_comfort; acoustic_comfort","2","0",
+"vehicle_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z | vehicle_proportion","p < 0.05","3","1","thermal_comfort","1","1","thermal_comfort"
+"vehicle_proportion","Chen 2023 (adapted)","Continuous participant LMM: sound_z | vehicle_proportion","p < 0.05","3","0",,"0","0",
+"vehicle_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z:sound_z | vehicle_proportion","p < 0.05","3","0",,"0","0",
+"urban_manmade_neutral_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z | urban_manmade_neutral_proportion","p < 0.05","3","1","thermal_comfort","1","0",
+"urban_manmade_neutral_proportion","Chen 2023 (adapted)","Continuous participant LMM: sound_z | urban_manmade_neutral_proportion","p < 0.05","3","1","acoustic_comfort","1","0",
+"urban_manmade_neutral_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z:sound_z | urban_manmade_neutral_proportion","p < 0.05","3","0",,"0","0",
+"urban_manmade_positive_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z | urban_manmade_positive_proportion","p < 0.05","3","1","thermal_comfort","1","1","thermal_comfort"
+"urban_manmade_positive_proportion","Chen 2023 (adapted)","Continuous participant LMM: sound_z | urban_manmade_positive_proportion","p < 0.05","3","0",,"0","0",
+"urban_manmade_positive_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z:sound_z | urban_manmade_positive_proportion","p < 0.05","3","0",,"0","0",
+"urban_manmade_negative_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z | urban_manmade_negative_proportion","p < 0.05","3","1","thermal_comfort","1","1","thermal_comfort"
+"urban_manmade_negative_proportion","Chen 2023 (adapted)","Continuous participant LMM: sound_z | urban_manmade_negative_proportion","p < 0.05","3","0",,"0","0",
+"urban_manmade_negative_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z:sound_z | urban_manmade_negative_proportion","p < 0.05","3","0",,"0","0",
+"mechanisms_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z | mechanisms_proportion","p < 0.05","3","2","thermal_comfort; acoustic_comfort","2","2","thermal_comfort; acoustic_comfort"
+"mechanisms_proportion","Chen 2023 (adapted)","Continuous participant LMM: sound_z | mechanisms_proportion","p < 0.05","3","1","thermal_comfort","1","1","thermal_comfort"
+"mechanisms_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z:sound_z | mechanisms_proportion","p < 0.05","3","0",,"0","0",
+"unidentify_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z | unidentify_proportion","p < 0.05","3","1","thermal_comfort","1","1","thermal_comfort"
+"unidentify_proportion","Chen 2023 (adapted)","Continuous participant LMM: sound_z | unidentify_proportion","p < 0.05","3","0",,"0","0",
+"unidentify_proportion","Chen 2023 (adapted)","Continuous participant LMM: utci_z:sound_z | unidentify_proportion","p < 0.05","3","0",,"0","0",
+"dba","Qin 2024","TC ~ sound x RH | dba sound_z","p < 0.05","1","0",,"0","0",
+"dba","Qin 2024","TC ~ sound x RH | dba rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"dba","Qin 2024","TC ~ sound x RH | dba sound_z:rh_z","p < 0.05","1","0",,"0","0",
+"sound_corridor_urban","Qin 2024","TC ~ sound x RH | sound_corridor_urban sound_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"sound_corridor_urban","Qin 2024","TC ~ sound x RH | sound_corridor_urban rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"sound_corridor_urban","Qin 2024","TC ~ sound x RH | sound_corridor_urban sound_z:rh_z","p < 0.05","1","0",,"0","0",
+"sound_yamnet_majority_traffic","Qin 2024","TC ~ sound x RH | sound_yamnet_majority_traffic sound_z","p < 0.05","1","0",,"0","0",
+"sound_yamnet_majority_traffic","Qin 2024","TC ~ sound x RH | sound_yamnet_majority_traffic rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"sound_yamnet_majority_traffic","Qin 2024","TC ~ sound x RH | sound_yamnet_majority_traffic sound_z:rh_z","p < 0.05","1","0",,"0","0",
+"wind_proportion","Qin 2024","TC ~ sound x RH | wind_proportion sound_z","p < 0.05","1","0",,"0","0",
+"wind_proportion","Qin 2024","TC ~ sound x RH | wind_proportion rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"wind_proportion","Qin 2024","TC ~ sound x RH | wind_proportion sound_z:rh_z","p < 0.05","1","0",,"0","0",
+"rural_natural_proportion","Qin 2024","TC ~ sound x RH | rural_natural_proportion sound_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"rural_natural_proportion","Qin 2024","TC ~ sound x RH | rural_natural_proportion rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"rural_natural_proportion","Qin 2024","TC ~ sound x RH | rural_natural_proportion sound_z:rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"vehicle_proportion","Qin 2024","TC ~ sound x RH | vehicle_proportion sound_z","p < 0.05","1","0",,"0","0",
+"vehicle_proportion","Qin 2024","TC ~ sound x RH | vehicle_proportion rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"vehicle_proportion","Qin 2024","TC ~ sound x RH | vehicle_proportion sound_z:rh_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_neutral_proportion","Qin 2024","TC ~ sound x RH | urban_manmade_neutral_proportion sound_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_neutral_proportion","Qin 2024","TC ~ sound x RH | urban_manmade_neutral_proportion rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"urban_manmade_neutral_proportion","Qin 2024","TC ~ sound x RH | urban_manmade_neutral_proportion sound_z:rh_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_positive_proportion","Qin 2024","TC ~ sound x RH | urban_manmade_positive_proportion sound_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_positive_proportion","Qin 2024","TC ~ sound x RH | urban_manmade_positive_proportion rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"urban_manmade_positive_proportion","Qin 2024","TC ~ sound x RH | urban_manmade_positive_proportion sound_z:rh_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_negative_proportion","Qin 2024","TC ~ sound x RH | urban_manmade_negative_proportion sound_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_negative_proportion","Qin 2024","TC ~ sound x RH | urban_manmade_negative_proportion rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"urban_manmade_negative_proportion","Qin 2024","TC ~ sound x RH | urban_manmade_negative_proportion sound_z:rh_z","p < 0.05","1","0",,"0","0",
+"mechanisms_proportion","Qin 2024","TC ~ sound x RH | mechanisms_proportion sound_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"mechanisms_proportion","Qin 2024","TC ~ sound x RH | mechanisms_proportion rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"mechanisms_proportion","Qin 2024","TC ~ sound x RH | mechanisms_proportion sound_z:rh_z","p < 0.05","1","0",,"0","0",
+"unidentify_proportion","Qin 2024","TC ~ sound x RH | unidentify_proportion sound_z","p < 0.05","1","0",,"0","0",
+"unidentify_proportion","Qin 2024","TC ~ sound x RH | unidentify_proportion rh_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"unidentify_proportion","Qin 2024","TC ~ sound x RH | unidentify_proportion sound_z:rh_z","p < 0.05","1","0",,"0","0",
+"temperature-only (thermal to acoustic)","Mohammadzadeh 2023","AC ~ UTCI utci_z","p < 0.05","1","1","acoustic_comfort","1","1","acoustic_comfort"
+"comfort-domain association (no measured sound predictor)","Mohammadzadeh 2023","AC ~ TC thermal_comfort","p < 0.05","1","1","acoustic_comfort","1","1","acoustic_comfort"
+"dba","Mohammadzadeh 2023","AC ~ UTCI x sound | dba utci_z","p < 0.05","1","0",,"0","0",
+"dba","Mohammadzadeh 2023","AC ~ UTCI x sound | dba sound_z","p < 0.05","1","0",,"0","0",
+"dba","Mohammadzadeh 2023","AC ~ UTCI x sound | dba utci_z:sound_z","p < 0.05","1","0",,"0","0",
+"dba","Gao 2025","PRS ~ UTCI x sound | dba utci_z","p < 0.05","5","4","prs_fascination; prs_being_away; prs_coherence; prs_mean","4","4","prs_fascination; prs_being_away; prs_coherence; prs_mean"
+"dba","Gao 2025","PRS ~ UTCI x sound | dba sound_z","p < 0.05","5","4","prs_fascination; prs_being_away; prs_scope; prs_mean","4","4","prs_fascination; prs_being_away; prs_scope; prs_mean"
+"dba","Gao 2025","PRS ~ UTCI x sound | dba utci_z:sound_z","p < 0.05","5","0",,"0","0",
+"sound_corridor_urban","Gao 2025","PRS ~ UTCI x sound | sound_corridor_urban utci_z","p < 0.05","5","0",,"0","0",
+"sound_corridor_urban","Gao 2025","PRS ~ UTCI x sound | sound_corridor_urban sound_z","p < 0.05","5","4","prs_fascination; prs_being_away; prs_scope; prs_mean","4","4","prs_fascination; prs_being_away; prs_scope; prs_mean"
+"sound_corridor_urban","Gao 2025","PRS ~ UTCI x sound | sound_corridor_urban utci_z:sound_z","p < 0.05","5","0",,"0","0",
+"sound_yamnet_majority_traffic","Gao 2025","PRS ~ UTCI x sound | sound_yamnet_majority_traffic utci_z","p < 0.05","5","4","prs_fascination; prs_being_away; prs_scope; prs_mean","4","4","prs_fascination; prs_being_away; prs_scope; prs_mean"
+"sound_yamnet_majority_traffic","Gao 2025","PRS ~ UTCI x sound | sound_yamnet_majority_traffic sound_z","p < 0.05","5","1","prs_scope","1","0",
+"sound_yamnet_majority_traffic","Gao 2025","PRS ~ UTCI x sound | sound_yamnet_majority_traffic utci_z:sound_z","p < 0.05","5","0",,"0","0",
+"wind_proportion","Gao 2025","PRS ~ UTCI x sound | wind_proportion utci_z","p < 0.05","5","3","prs_fascination; prs_being_away; prs_mean","3","3","prs_fascination; prs_being_away; prs_mean"
+"wind_proportion","Gao 2025","PRS ~ UTCI x sound | wind_proportion sound_z","p < 0.05","5","1","prs_coherence","1","0",
+"wind_proportion","Gao 2025","PRS ~ UTCI x sound | wind_proportion utci_z:sound_z","p < 0.05","5","2","prs_being_away; prs_scope","2","0",
+"rural_natural_proportion","Gao 2025","PRS ~ UTCI x sound | rural_natural_proportion utci_z","p < 0.05","5","0",,"0","0",
+"rural_natural_proportion","Gao 2025","PRS ~ UTCI x sound | rural_natural_proportion sound_z","p < 0.05","5","4","prs_fascination; prs_being_away; prs_scope; prs_mean","4","4","prs_fascination; prs_being_away; prs_scope; prs_mean"
+"rural_natural_proportion","Gao 2025","PRS ~ UTCI x sound | rural_natural_proportion utci_z:sound_z","p < 0.05","5","0",,"0","0",
+"vehicle_proportion","Gao 2025","PRS ~ UTCI x sound | vehicle_proportion utci_z","p < 0.05","5","3","prs_fascination; prs_being_away; prs_mean","3","1","prs_mean"
+"vehicle_proportion","Gao 2025","PRS ~ UTCI x sound | vehicle_proportion sound_z","p < 0.05","5","0",,"0","0",
+"vehicle_proportion","Gao 2025","PRS ~ UTCI x sound | vehicle_proportion utci_z:sound_z","p < 0.05","5","0",,"0","0",
+"urban_manmade_neutral_proportion","Gao 2025","PRS ~ UTCI x sound | urban_manmade_neutral_proportion utci_z","p < 0.05","5","2","prs_coherence; prs_mean","2","0",
+"urban_manmade_neutral_proportion","Gao 2025","PRS ~ UTCI x sound | urban_manmade_neutral_proportion sound_z","p < 0.05","5","1","prs_scope","1","0",
+"urban_manmade_neutral_proportion","Gao 2025","PRS ~ UTCI x sound | urban_manmade_neutral_proportion utci_z:sound_z","p < 0.05","5","0",,"0","0",
+"urban_manmade_positive_proportion","Gao 2025","PRS ~ UTCI x sound | urban_manmade_positive_proportion utci_z","p < 0.05","5","2","prs_fascination; prs_mean","2","0",
+"urban_manmade_positive_proportion","Gao 2025","PRS ~ UTCI x sound | urban_manmade_positive_proportion sound_z","p < 0.05","5","0",,"0","0",
+"urban_manmade_positive_proportion","Gao 2025","PRS ~ UTCI x sound | urban_manmade_positive_proportion utci_z:sound_z","p < 0.05","5","0",,"0","0",
+"urban_manmade_negative_proportion","Gao 2025","PRS ~ UTCI x sound | urban_manmade_negative_proportion utci_z","p < 0.05","5","3","prs_fascination; prs_being_away; prs_mean","3","3","prs_fascination; prs_being_away; prs_mean"
+"urban_manmade_negative_proportion","Gao 2025","PRS ~ UTCI x sound | urban_manmade_negative_proportion sound_z","p < 0.05","5","0",,"0","0",
+"urban_manmade_negative_proportion","Gao 2025","PRS ~ UTCI x sound | urban_manmade_negative_proportion utci_z:sound_z","p < 0.05","5","0",,"0","0",
+"mechanisms_proportion","Gao 2025","PRS ~ UTCI x sound | mechanisms_proportion utci_z","p < 0.05","5","3","prs_fascination; prs_being_away; prs_mean","3","3","prs_fascination; prs_being_away; prs_mean"
+"mechanisms_proportion","Gao 2025","PRS ~ UTCI x sound | mechanisms_proportion sound_z","p < 0.05","5","0",,"0","0",
+"mechanisms_proportion","Gao 2025","PRS ~ UTCI x sound | mechanisms_proportion utci_z:sound_z","p < 0.05","5","0",,"0","0",
+"unidentify_proportion","Gao 2025","PRS ~ UTCI x sound | unidentify_proportion utci_z","p < 0.05","5","5","prs_fascination; prs_being_away; prs_coherence; prs_scope; prs_mean","5","5","prs_fascination; prs_being_away; prs_coherence; prs_scope; prs_mean"
+"unidentify_proportion","Gao 2025","PRS ~ UTCI x sound | unidentify_proportion sound_z","p < 0.05","5","0",,"0","0",
+"unidentify_proportion","Gao 2025","PRS ~ UTCI x sound | unidentify_proportion utci_z:sound_z","p < 0.05","5","0",,"0","0",
+"dba","Gao 2025","participant-blocked two-way ANOVA on PRS, LAeq level","p < 0.05","5","1","prs_scope","1","0",
+"dba","Gao 2025","participant-blocked two-way ANOVA on PRS, UTCI category","p < 0.05","5","0",,"0","0",
+"dba","Gao 2025","participant-blocked two-way ANOVA on PRS, LAeq x UTCI","p < 0.05","5","0",,"0","0",
+"dba","Wu 2025","OC ~ UTCI + sound | dba utci_z","p < 0.05","1","0",,"0","0",
+"dba","Wu 2025","OC ~ UTCI + sound | dba sound_z","p < 0.05","1","0",,"0","0",
+"sound_corridor_urban","Wu 2025","OC ~ UTCI + sound | sound_corridor_urban utci_z","p < 0.05","1","0",,"0","0",
+"sound_corridor_urban","Wu 2025","OC ~ UTCI + sound | sound_corridor_urban sound_z","p < 0.05","1","0",,"0","0",
+"sound_yamnet_majority_traffic","Wu 2025","OC ~ UTCI + sound | sound_yamnet_majority_traffic utci_z","p < 0.05","1","0",,"0","0",
+"sound_yamnet_majority_traffic","Wu 2025","OC ~ UTCI + sound | sound_yamnet_majority_traffic sound_z","p < 0.05","1","0",,"0","0",
+"wind_proportion","Wu 2025","OC ~ UTCI + sound | wind_proportion utci_z","p < 0.05","1","0",,"0","0",
+"wind_proportion","Wu 2025","OC ~ UTCI + sound | wind_proportion sound_z","p < 0.05","1","0",,"0","0",
+"rural_natural_proportion","Wu 2025","OC ~ UTCI + sound | rural_natural_proportion utci_z","p < 0.05","1","0",,"0","0",
+"rural_natural_proportion","Wu 2025","OC ~ UTCI + sound | rural_natural_proportion sound_z","p < 0.05","1","0",,"0","0",
+"vehicle_proportion","Wu 2025","OC ~ UTCI + sound | vehicle_proportion utci_z","p < 0.05","1","0",,"0","0",
+"vehicle_proportion","Wu 2025","OC ~ UTCI + sound | vehicle_proportion sound_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_neutral_proportion","Wu 2025","OC ~ UTCI + sound | urban_manmade_neutral_proportion utci_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_neutral_proportion","Wu 2025","OC ~ UTCI + sound | urban_manmade_neutral_proportion sound_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_positive_proportion","Wu 2025","OC ~ UTCI + sound | urban_manmade_positive_proportion utci_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_positive_proportion","Wu 2025","OC ~ UTCI + sound | urban_manmade_positive_proportion sound_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_negative_proportion","Wu 2025","OC ~ UTCI + sound | urban_manmade_negative_proportion utci_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_negative_proportion","Wu 2025","OC ~ UTCI + sound | urban_manmade_negative_proportion sound_z","p < 0.05","1","0",,"0","0",
+"mechanisms_proportion","Wu 2025","OC ~ UTCI + sound | mechanisms_proportion utci_z","p < 0.05","1","0",,"0","0",
+"mechanisms_proportion","Wu 2025","OC ~ UTCI + sound | mechanisms_proportion sound_z","p < 0.05","1","0",,"0","0",
+"unidentify_proportion","Wu 2025","OC ~ UTCI + sound | unidentify_proportion utci_z","p < 0.05","1","0",,"0","0",
+"unidentify_proportion","Wu 2025","OC ~ UTCI + sound | unidentify_proportion sound_z","p < 0.05","1","0",,"0","0",
+"dba","Wu 2025","TC ~ I(dBA>=60) x UTCI loud60","p < 0.05","1","0",,"0","0",
+"dba","Wu 2025","TC ~ I(dBA>=60) x UTCI utci_z","p < 0.05","1","0",,"0","0",
+"dba","Wu 2025","TC ~ I(dBA>=60) x UTCI loud60:utci_z","p < 0.05","1","0",,"0","0",
+"sound_corridor_urban","Wu 2025","TC ~ high-sound x UTCI | sound_corridor_urban loud","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"sound_corridor_urban","Wu 2025","TC ~ high-sound x UTCI | sound_corridor_urban utci_z","p < 0.05","1","0",,"0","0",
+"sound_corridor_urban","Wu 2025","TC ~ high-sound x UTCI | sound_corridor_urban loud:utci_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"sound_yamnet_majority_traffic","Wu 2025","TC ~ high-sound x UTCI | sound_yamnet_majority_traffic loud","p < 0.05","1","0",,"0","0",
+"sound_yamnet_majority_traffic","Wu 2025","TC ~ high-sound x UTCI | sound_yamnet_majority_traffic utci_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"sound_yamnet_majority_traffic","Wu 2025","TC ~ high-sound x UTCI | sound_yamnet_majority_traffic loud:utci_z","p < 0.05","1","0",,"0","0",
+"wind_proportion","Wu 2025","TC ~ high-sound x UTCI | wind_proportion loud","p < 0.05","1","0",,"0","0",
+"wind_proportion","Wu 2025","TC ~ high-sound x UTCI | wind_proportion utci_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"wind_proportion","Wu 2025","TC ~ high-sound x UTCI | wind_proportion loud:utci_z","p < 0.05","1","0",,"0","0",
+"rural_natural_proportion","Wu 2025","TC ~ high-sound x UTCI | rural_natural_proportion loud","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"rural_natural_proportion","Wu 2025","TC ~ high-sound x UTCI | rural_natural_proportion utci_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"rural_natural_proportion","Wu 2025","TC ~ high-sound x UTCI | rural_natural_proportion loud:utci_z","p < 0.05","1","0",,"0","0",
+"vehicle_proportion","Wu 2025","TC ~ high-sound x UTCI | vehicle_proportion loud","p < 0.05","1","0",,"0","0",
+"vehicle_proportion","Wu 2025","TC ~ high-sound x UTCI | vehicle_proportion utci_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"vehicle_proportion","Wu 2025","TC ~ high-sound x UTCI | vehicle_proportion loud:utci_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_neutral_proportion","Wu 2025","TC ~ high-sound x UTCI | urban_manmade_neutral_proportion loud","p < 0.05","1","0",,"0","0",
+"urban_manmade_neutral_proportion","Wu 2025","TC ~ high-sound x UTCI | urban_manmade_neutral_proportion utci_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"urban_manmade_neutral_proportion","Wu 2025","TC ~ high-sound x UTCI | urban_manmade_neutral_proportion loud:utci_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_positive_proportion","Wu 2025","TC ~ high-sound x UTCI | urban_manmade_positive_proportion loud","p < 0.05","1","0",,"0","0",
+"urban_manmade_positive_proportion","Wu 2025","TC ~ high-sound x UTCI | urban_manmade_positive_proportion utci_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_positive_proportion","Wu 2025","TC ~ high-sound x UTCI | urban_manmade_positive_proportion loud:utci_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_negative_proportion","Wu 2025","TC ~ high-sound x UTCI | urban_manmade_negative_proportion loud","p < 0.05","1","0",,"0","0",
+"urban_manmade_negative_proportion","Wu 2025","TC ~ high-sound x UTCI | urban_manmade_negative_proportion utci_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"urban_manmade_negative_proportion","Wu 2025","TC ~ high-sound x UTCI | urban_manmade_negative_proportion loud:utci_z","p < 0.05","1","0",,"0","0",
+"mechanisms_proportion","Wu 2025","TC ~ high-sound x UTCI | mechanisms_proportion loud","p < 0.05","1","0",,"0","0",
+"mechanisms_proportion","Wu 2025","TC ~ high-sound x UTCI | mechanisms_proportion utci_z","p < 0.05","1","0",,"0","0",
+"mechanisms_proportion","Wu 2025","TC ~ high-sound x UTCI | mechanisms_proportion loud:utci_z","p < 0.05","1","0",,"0","0",
+"unidentify_proportion","Wu 2025","TC ~ high-sound x UTCI | unidentify_proportion loud","p < 0.05","1","0",,"0","0",
+"unidentify_proportion","Wu 2025","TC ~ high-sound x UTCI | unidentify_proportion utci_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"unidentify_proportion","Wu 2025","TC ~ high-sound x UTCI | unidentify_proportion loud:utci_z","p < 0.05","1","0",,"0","0",
+"dba","Xu 2026","linear AC ~ sound | dba sound_z","p < 0.05","1","1","acoustic_comfort","1","1","acoustic_comfort"
+"sound_corridor_urban","Xu 2026","linear AC ~ sound | sound_corridor_urban sound_z","p < 0.05","1","1","acoustic_comfort","1","1","acoustic_comfort"
+"sound_yamnet_majority_traffic","Xu 2026","linear AC ~ sound | sound_yamnet_majority_traffic sound_z","p < 0.05","1","0",,"0","0",
+"wind_proportion","Xu 2026","linear AC ~ sound | wind_proportion sound_z","p < 0.05","1","0",,"0","0",
+"rural_natural_proportion","Xu 2026","linear AC ~ sound | rural_natural_proportion sound_z","p < 0.05","1","1","acoustic_comfort","1","1","acoustic_comfort"
+"vehicle_proportion","Xu 2026","linear AC ~ sound | vehicle_proportion sound_z","p < 0.05","1","0",,"0","0",
+"urban_manmade_neutral_proportion","Xu 2026","linear AC ~ sound | urban_manmade_neutral_proportion sound_z","p < 0.05","1","1","acoustic_comfort","1","1","acoustic_comfort"
+"urban_manmade_positive_proportion","Xu 2026","linear AC ~ sound | urban_manmade_positive_proportion sound_z","p < 0.05","1","1","acoustic_comfort","1","1","acoustic_comfort"
+"urban_manmade_negative_proportion","Xu 2026","linear AC ~ sound | urban_manmade_negative_proportion sound_z","p < 0.05","1","0",,"0","0",
+"mechanisms_proportion","Xu 2026","linear AC ~ sound | mechanisms_proportion sound_z","p < 0.05","1","0",,"0","0",
+"unidentify_proportion","Xu 2026","linear AC ~ sound | unidentify_proportion sound_z","p < 0.05","1","1","acoustic_comfort","1","1","acoustic_comfort"
+"dba","Zhen 2025","TC ~ UTCI x sound | dba utci","p < 0.05","1","0",,"0","0",
+"dba","Zhen 2025","TC ~ UTCI x sound | dba dba","p < 0.05","1","0",,"0","0",
+"dba","Zhen 2025","TC ~ UTCI x sound | dba utci:dba","p < 0.05","1","0",,"0","0",
+"comfort-domain association (perceived AC x thermal)","Zhang 2026 SciRep","TC ~ AC x UTCI ac_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"comfort-domain association (perceived AC x thermal)","Zhang 2026 SciRep","TC ~ AC x UTCI utci_z","p < 0.05","1","0",,"0","0",
+"comfort-domain association (perceived AC x thermal)","Zhang 2026 SciRep","TC ~ AC x UTCI ac_z:utci_z","p < 0.05","1","1","thermal_comfort","1","1","thermal_comfort"
+"dba","Zhang 2026 BSim","Spearman thermal_comfort vs dBA, phase BikeG","p < 0.05","1","0",,"0","0",
+"dba","Zhang 2026 BSim","Spearman acoustic_comfort vs dBA, phase BikeG","p < 0.05","1","0",,"0","0",
+"dba","Zhang 2026 BSim","Spearman overall_comfort vs dBA, phase BikeG","p < 0.05","1","0",,"0","0",
+"dba","Zhang 2026 BSim","Spearman thermal_comfort vs dBA, phase BikeU","p < 0.05","1","0",,"0","0",
+"dba","Zhang 2026 BSim","Spearman acoustic_comfort vs dBA, phase BikeU","p < 0.05","1","0",,"0","0",
+"dba","Zhang 2026 BSim","Spearman overall_comfort vs dBA, phase BikeU","p < 0.05","1","0",,"0","0",
+"dba","Zhang 2026 BSim","Spearman thermal_comfort vs dBA, phase WalkG","p < 0.05","1","0",,"0","0",
+"dba","Zhang 2026 BSim","Spearman acoustic_comfort vs dBA, phase WalkG","p < 0.05","1","0",,"0","0",
+"dba","Zhang 2026 BSim","Spearman overall_comfort vs dBA, phase WalkG","p < 0.05","1","0",,"0","0",
+"dba","Zhang 2026 BSim","Spearman thermal_comfort vs dBA, phase WalkU","p < 0.05","1","0",,"0","0",
+"dba","Zhang 2026 BSim","Spearman acoustic_comfort vs dBA, phase WalkU","p < 0.05","1","0",,"0","0",
+"dba","Zhang 2026 BSim","Spearman overall_comfort vs dBA, phase WalkU","p < 0.05","1","0",,"0","0",

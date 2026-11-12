@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paper 3 — S-O-R Architecture Figures Suite (Overview Figure 3D)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0F172A;
+      --bg-surface: #1E293B;
+      --bg-card: #27354A;
+      --accent-green: #22C55E;
+      --accent-orange: #F97316;
+      --accent-blue: #38BDF8;
+      --accent-purple: #A855F7;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-color: #334155;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+    header {
+      background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+      border-bottom: 1px solid var(--border-color);
+      padding: 40px 24px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-blue);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    p.lead {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 900px;
+      margin-bottom: 20px;
+    }
+    /* Marker Legend Bar */
+    .legend-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 18px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      font-size: 0.85rem;
+    }
+    .legend-title {
+      font-weight: 600;
+      color: var(--text-main);
+      margin-right: 8px;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .marker-sq-green {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-color: #2E7D32;
+      border-radius: 2px;
+    }
+    .marker-tri-green {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 13px solid #2E7D32;
+    }
+    .marker-sq-orange {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-color: #E65100;
+      border-radius: 2px;
+    }
+    .marker-tri-orange {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 13px solid #E65100;
+    }
+    .nav-pills {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .nav-pill {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-pill:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--accent-blue);
+    }
+    /* Main Content */
+    main {
+      max-width: 1400px;
+      margin: 36px auto 0;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .figure-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      scroll-margin-top: 240px;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .card-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-purple);
+      margin-bottom: 4px;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+    .card-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .btn-group {
+      display: flex;
+      gap: 8px;
+    }
+    .btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+    }
+    .btn-primary {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: var(--accent-blue);
+    }
+    .btn-primary:hover {
+      background: rgba(56, 189, 248, 0.28);
+    }
+    .stats-pill {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--accent-green);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+    }
+    .img-wrapper {
+      background: #FFFFFF;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 18px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-in;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+    }
+    .img-wrapper img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      transition: transform 0.2s ease;
+    }
+    .img-wrapper:hover img {
+      transform: scale(1.008);
+    }
+    .card-caption {
+      font-size: 0.88rem;
+      color: #CBD5E1;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 14px 18px;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent-blue);
+    }
+    /* Modal Zoom View */
+    #zoom-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.94);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    #zoom-modal img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+      background: #FFFFFF;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <span class="badge">Paper 3 &bull; Empirical S-O-R Architecture</span>
+      <h1>Stimulus-Organism-Response (S-O-R) Figures Suite</h1>
+      <p class="lead">
+        Dedicated visualization gallery for the Stimulus-Organism-Response multi-modal architecture.
+        Maps physical urban exposures (S: UTCI, Sound Leq, BVF, TVF) to objective organismic biometrics (O: 13 Autonomic + 13 Ocular)
+        and subjective experiential comfort (R: 21 Psychological & Affective Scales) across 2,112 matched 10 s rows (N = 11).
+      </p>
+
+      <div class="legend-bar">
+        <span class="legend-title">Factorial Marker Encoding:</span>
+        <div class="legend-item"><span class="marker-sq-green"></span> <strong>WalkG</strong>: Park Walking (Green Square)</div>
+        <div class="legend-item"><span class="marker-tri-green"></span> <strong>BikeG</strong>: Park Cycling (Green Triangle)</div>
+        <div class="legend-item"><span class="marker-sq-orange"></span> <strong>WalkU</strong>: Urban Walking (Orange Square)</div>
+        <div class="legend-item"><span class="marker-tri-orange"></span> <strong>BikeU</strong>: Urban Cycling (Orange Triangle)</div>
+        <div class="legend-item" style="color:var(--text-muted);font-size:0.8rem;">*Marker sizes identical across all plots</div>
+      </div>
+
+      <nav class="nav-pills">
+        <a class="nav-pill" href="#sor-5a">SOR-5A</a><a class="nav-pill" href="#sor-5b">SOR-5B</a><a class="nav-pill" href="#sor-5c">SOR-5C</a><a class="nav-pill" href="#sor-1">SOR-1</a><a class="nav-pill" href="#sor-4">SOR-4</a><a class="nav-pill" href="#sor-2">SOR-2</a><a class="nav-pill" href="#sor-3">SOR-3</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="figure-card" id="sor-5a">
+      <div class="card-header">
+        <div>
+          <div class="card-category">Empirical S-O-R Ground Truth Suite</div>
+          <h2 class="card-title">SOR-5A: Objective Organismic Battery (26 Physiological & Ocular Outcomes)</h2>
+          <div class="card-subtitle">13 Autonomic (Empatica E4) + 13 Ocular (Pupil Core 200 Hz) vs. Standardized Compounded Environmental Stress Index (Z)</div>
+          <div class="stats-pill">N = 11 participants, 2,112 active 10 s matched rows. 22 / 26 parameters significant (p < 0.05).</div>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="sor_fig5a_physiological_ocular_26.png" target="_blank">🔍 High-Res PNG (300 DPI)</a>
+          <a class="btn" href="sor_fig5a_physiological_ocular_26.svg" target="_blank">📐 Vector SVG</a>
+        </div>
+      </div>
+
+      <div class="img-wrapper" onclick="openZoom('sor_fig5a_physiological_ocular_26.png')">
+        <img src="sor_fig5a_physiological_ocular_26.png" alt="SOR-5A: Objective Organismic Battery (26 Physiological & Ocular Outcomes)" loading="lazy">
+      </div>
+
+      <div class="card-caption">
+        <strong>Academic Interpretation:</strong> Empirical regressions for all 26 canonical objective biometrics used across H1–H5. Shows robust autonomic arousal (Skin Temp β = +1.43 °C/SD, p < 10⁻¹¹²; Tonic EDA β = +3.04 μS/SD, p < 10⁻⁴²; RMSSD β = -7.45 ms/SD, p < 10⁻⁴) and ocular hypervigilance (Pupil Diameter β = -0.50 mm/SD, p < 10⁻¹⁸⁴; Gaze Velocity β = +220 °/s/SD, p < 10⁻⁴²; Blink Duration β = +0.009 s/SD, p < 10⁻¹⁸). Points: Green Square = WalkG, Green Triangle = BikeG, Orange Square = WalkU, Orange Triangle = BikeU.
+      </div>
+    </section>
+
+    <section class="figure-card" id="sor-5b">
+      <div class="card-header">
+        <div>
+          <div class="card-category">Empirical S-O-R Ground Truth Suite</div>
+          <h2 class="card-title">SOR-5B: Subjective Psychological Battery (21 Comfort, Anxiety & Restorativeness Scales)</h2>
+          <div class="card-subtitle">5 Environmental Comfort Dimensions + 3 Spatial Scales + 6 STAI-6 Items + 4 PRS-11 Subscales + 3 Composites vs. Compounded Stress (Z)</div>
+          <div class="stats-pill">N = 11 participants, 2,112 active 10 s matched rows. 20 / 21 scales significant (p < 0.05).</div>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="sor_fig5b_psychological_comfort_21.png" target="_blank">🔍 High-Res PNG (300 DPI)</a>
+          <a class="btn" href="sor_fig5b_psychological_comfort_21.svg" target="_blank">📐 Vector SVG</a>
+        </div>
+      </div>
+
+      <div class="img-wrapper" onclick="openZoom('sor_fig5b_psychological_comfort_21.png')">
+        <img src="sor_fig5b_psychological_comfort_21.png" alt="SOR-5B: Subjective Psychological Battery (21 Comfort, Anxiety & Restorativeness Scales)" loading="lazy">
+      </div>
+
+      <div class="card-caption">
+        <strong>Academic Interpretation:</strong> Empirical regressions for all 21 perceptual constructs across H1–H5. Compounded environmental stress steeply suppresses perceived restorativeness (PRS-11 Total r = -0.62, β = -0.64/SD, p < 10⁻²²¹; Being Away r = -0.62, p < 10⁻²¹⁹; Fascination r = -0.50, p < 10⁻¹³⁴) and multi-sensory comfort (Composite Comfort r = -0.54, p < 10⁻¹⁶²; Thermal r = -0.52; Visual r = -0.53; Acoustic r = -0.45; Air Quality r = -0.52), while elevating state anxiety (STAI Calm reversed r = +0.47, p < 10⁻¹¹⁵; STAI Relaxed reversed r = +0.36; STAI-6 Total r = +0.29, p < 10⁻⁴¹).
+      </div>
+    </section>
+
+    <section class="figure-card" id="sor-5c">
+      <div class="card-header">
+        <div>
+          <div class="card-category">Empirical S-O-R Ground Truth Suite</div>
+          <h2 class="card-title">SOR-5C: Master Ground Truth Matrix (All 47 Outcomes Across H1–H5)</h2>
+          <div class="card-subtitle">Comprehensive 7 × 7 Unified Matrix: Autonomic Nervous System + Eye-Tracking Biometrics + Psychometric Scales</div>
+          <div class="stats-pill">N = 11 participants, 2,112 active 10 s matched rows. 40 / 47 total outcomes significant (p < 0.05).</div>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="sor_fig5c_master_all47_groundtruth.png" target="_blank">🔍 High-Res PNG (300 DPI)</a>
+          <a class="btn" href="sor_fig5c_master_all47_groundtruth.svg" target="_blank">📐 Vector SVG</a>
+        </div>
+      </div>
+
+      <div class="img-wrapper" onclick="openZoom('sor_fig5c_master_all47_groundtruth.png')">
+        <img src="sor_fig5c_master_all47_groundtruth.png" alt="SOR-5C: Master Ground Truth Matrix (All 47 Outcomes Across H1–H5)" loading="lazy">
+      </div>
+
+      <div class="card-caption">
+        <strong>Academic Interpretation:</strong> The complete 47-parameter empirical spectrum demonstrating total multisystem coupling in response to the compounded urban environmental stress index (Z = [Z_UTCI + Z_SND + Z_BVF - Z_TVF] / 4). High-resolution publication plate integrating all autonomic, ocular, and subjective responses across the 2 × 2 factorial mobility design.
+      </div>
+    </section>
+
+    <section class="figure-card" id="sor-1">
+      <div class="card-header">
+        <div>
+          <div class="card-category">S-O-R Structural Architecture</div>
+          <h2 class="card-title">SOR-1: Multi-System Stimulus-Organism-Response Network Architecture</h2>
+          <div class="card-subtitle">Empirical Structural Network Mapping Urban Stimuli (S) to Internal State (O) and Experiential Comfort (R)</div>
+          <div class="stats-pill">Benjamini-Hochberg FDR corrected (q < 0.05). Non-significant links filtered.</div>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="literature_fig2_multisystem_network.png" target="_blank">🔍 High-Res PNG (300 DPI)</a>
+          <a class="btn" href="literature_fig2_multisystem_network.svg" target="_blank">📐 Vector SVG</a>
+        </div>
+      </div>
+
+      <div class="img-wrapper" onclick="openZoom('literature_fig2_multisystem_network.png')">
+        <img src="literature_fig2_multisystem_network.png" alt="SOR-1: Multi-System Stimulus-Organism-Response Network Architecture" loading="lazy">
+      </div>
+
+      <div class="card-caption">
+        <strong>Academic Interpretation:</strong> Visualizes the three-tier S-O-R framework: Physical Environmental Stimuli (UTCI, Sound Leq, BVF, TVF, SVF) driving Organismic mediators (Autonomic tone, skin temperature, pupillometry, saccadic dynamics), which subsequently determine the behavioural Response (Psychological comfort, attention restoration, state anxiety). Solid green lines denote restorative pathways (r > 0), solid red lines denote stress pathways (r > 0), dashed lines indicate inverse relationships.
+      </div>
+    </section>
+
+    <section class="figure-card" id="sor-4">
+      <div class="card-header">
+        <div>
+          <div class="card-category">Attention Restoration & Visual Cognition</div>
+          <h2 class="card-title">SOR-4: Visual Attention Allocation & Attention Restoration Theory (ART)</h2>
+          <div class="card-subtitle">Empirical Eye-Tracking Dynamics: Tree Canopy Buffering, Street Canyon Saccades, and Pupillometry</div>
+          <div class="stats-pill">4-panel multi-scale experimental design (Panels a, b, c, d).</div>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="literature_fig4_visual_attention_art.png" target="_blank">🔍 High-Res PNG (300 DPI)</a>
+          <a class="btn" href="literature_fig4_visual_attention_art.svg" target="_blank">📐 Vector SVG</a>
+        </div>
+      </div>
+
+      <div class="img-wrapper" onclick="openZoom('literature_fig4_visual_attention_art.png')">
+        <img src="literature_fig4_visual_attention_art.png" alt="SOR-4: Visual Attention Allocation & Attention Restoration Theory (ART)" loading="lazy">
+      </div>
+
+      <div class="card-caption">
+        <strong>Academic Interpretation:</strong> Four-panel evidence for Kaplan’s Attention Restoration Theory (ART) and Ulrich’s Stress Recovery Theory: (a) Tree View Factor (TVF) induces soft fascination via prolonged, effortless fixations (β = +138.4 ms/TVF, r = +0.27, p < 0.001); (b) Building View Factor (BVF) drives hypervigilant visual agitation with elevated saccadic velocities (β = +712 °/s/BVF, r = +0.17, p < 0.001); (c) Modal contrasts in fixation duration across walking and cycling; (d) Pupillometric constriction under compounded environmental load.
+      </div>
+    </section>
+
+    <section class="figure-card" id="sor-2">
+      <div class="card-header">
+        <div>
+          <div class="card-category">Spatial Microclimate & Exposure Transects</div>
+          <h2 class="card-title">SOR-2: Spatial Microclimate Transect & Exposure Architecture</h2>
+          <div class="card-subtitle">Continuous Mobile Transect Across Brussels: Microclimate Variations, Acoustic Leq, and Organismic Sync</div>
+          <div class="stats-pill">Continuous 1-second and 10-second temporal-spatial trajectory profiles.</div>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="literature_fig1_spatial_transect.png" target="_blank">🔍 High-Res PNG (300 DPI)</a>
+          <a class="btn" href="literature_fig1_spatial_transect.svg" target="_blank">📐 Vector SVG</a>
+        </div>
+      </div>
+
+      <div class="img-wrapper" onclick="openZoom('literature_fig1_spatial_transect.png')">
+        <img src="literature_fig1_spatial_transect.png" alt="SOR-2: Spatial Microclimate Transect & Exposure Architecture" loading="lazy">
+      </div>
+
+      <div class="card-caption">
+        <strong>Academic Interpretation:</strong> Continuous spatial transects along Brussels urban and green routes, linking microclimate thermal loading (UTCI), sound pressure level (dBA), canopy density (TVF), and continuous autonomic responses (Heart Rate and Pupillometry) across active mobility bouts.
+      </div>
+    </section>
+
+    <section class="figure-card" id="sor-3">
+      <div class="card-header">
+        <div>
+          <div class="card-category">Multi-Stressor Interaction & Exposure Space</div>
+          <h2 class="card-title">SOR-3: Bivariate Microclimate Co-Exposure Matrix</h2>
+          <div class="card-subtitle">Joint Distribution of Thermal Stress (UTCI) and Acoustic Energy (dBA) Across Modes and Environments</div>
+          <div class="stats-pill">Bivariate kernel density distributions and co-exposure risk regimes.</div>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="literature_fig3_bivariate_coexposure.png" target="_blank">🔍 High-Res PNG (300 DPI)</a>
+          <a class="btn" href="literature_fig3_bivariate_coexposure.svg" target="_blank">📐 Vector SVG</a>
+        </div>
+      </div>
+
+      <div class="img-wrapper" onclick="openZoom('literature_fig3_bivariate_coexposure.png')">
+        <img src="literature_fig3_bivariate_coexposure.png" alt="SOR-3: Bivariate Microclimate Co-Exposure Matrix" loading="lazy">
+      </div>
+
+      <div class="card-caption">
+        <strong>Academic Interpretation:</strong> Detailed co-exposure matrices demonstrating the interactive multi-stressor space experienced by urban pedestrians and cyclists. Highlights non-linear hotspots where elevated acoustic noise (LAeq ≥ 70 dBA) co-occurs with extreme heat stress (UTCI ≥ 32 °C).
+      </div>
+    </section>
+
+  </main>
+
+  <div id="zoom-modal" onclick="closeZoom()">
+    <img id="modal-img" src="" alt="Enlarged figure">
+  </div>
+
+  <script>
+    function openZoom(src) {
+      const modal = document.getElementById('zoom-modal');
+      const img = document.getElementById('modal-img');
+      img.src = src;
+      modal.style.display = 'flex';
+    }
+    function closeZoom() {
+      document.getElementById('zoom-modal').style.display = 'none';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeZoom();
+    });
+  </script>
+
+</body>
+</html>

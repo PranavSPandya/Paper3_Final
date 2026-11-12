@@ -4,6 +4,10 @@ This document lives in `Paper3_Final/Brain`. Resolve its relative paths from thi
 
 **Canonical repository root (this laptop, after move from `D:\Pranav\docker\Paper3_Final`):** `C:\Users\sanga\Desktop\Pranav Paper3_Final`. Git work path and push workflow: `./PUSH_WORKFLOW.md` (branch `Final`). Treat repo-relative paths (`../output`, `../Experiment papers`, `../scripts`) from Brain as under that root. An older copy may still exist at `D:\Pranav\docker\Paper3_Final`; do not treat it as canonical unless the user explicitly says to work there.
 
+## Paper3_outline_readable.md — author line lock
+
+When Pranav says **“I am at line *N*”**, he has finished checking **lines 1 through *N*−1** (inclusive). The agent **must not edit** those lines unless he explicitly says to reopen them. Help only from **line *N*** downward (or only the span he names). Do not “fix”, shorten, or sync earlier sections while he is drafting forward.
+
 ## Where edits are allowed
 
 Campaign dates for Paper 3 are **3 July to 27 August 2025**. Do not shorten this to August only. Inclusion age is **18–60 years**. Do not flag analysed ages inside that range. Route wording: **randomization of route order was planned**. Do not write that routes were counterbalanced.
@@ -55,14 +59,45 @@ Always, always give me full path of each and every file u read and used for maki
 it makes me so mad how carefree and careless ur attitude is... pls update in gemini.md write a promise that u will never ever be tolerant, u will be critical about every detail. Promise me that u will never take anything for granted and will always check every detail and will never be careless or accepting, until it is critically checked. u need to always keep note of previous literature for supporting everyhitng we are doing. `../Experiment papers` (`C:\Users\sanga\Desktop\Pranav Paper3_Final\Experiment papers`) is the canonical peer-reviewed PDF library; searchable `.md` exports for some sound methods live alongside those PDFs in the same folder (no separate `_md` tree). Every method must be supported by literature tracked there.
 
 
-## Paper 3 hypotheses confirmed by the user on 2026-10-13
+## OneDrive and ethics form (this laptop)
 
-Source: `./source_documents/Paper3_outline_ml.docx` (hypothesis wording only; older methods/results are not authoritative).
+Canonical OneDrive root: `D:\OneDrive - UCL` (also mounted at `C:\Users\sanga\OneDrive - UCL`). Do **not** use `C:\Users\pandya\OneDrive - UCL` here; that path is missing.
 
-- H1: Participants will show better physiological and perceived comfort in green than in impervious areas.
-- H2: Physiological and perceived responses will be concordant (i.e., they correlate in direction).
-- H3: Psychophysiological comfort will be more compromised during cycling than during walking.
-- H4: The presence of noise and traffic will amplify thermal discomfort.
+Canonical ethics PDF: `D:\OneDrive - UCL\Pranav PhD\01_Admin & Docs\Ethics for Experiment\Formulaire Commission éthique_ABCD_27May25_signed.pdf` (checked 2026-11-11, 10,004,206 bytes).
+
+Repo copies exist and are **not** byte-identical to OneDrive (use OneDrive as source of truth):
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\Formulaire Commission éthique_ABCD_27May25_signed.pdf`
+- `C:\Users\sanga\Desktop\Pranav Paper3_Final\Brain\source_documents\Formulaire Commission éthique_ABCD_27May25_signed.pdf`
+
+Field data: `D:\OneDrive - UCL\Field experiment raw data\Complete Participantwise data`
+Older Paper 3 processing package: `D:\OneDrive - UCL\Pranav PhD\Paper 3\Data Processing_05May`
+
+## Ethics-registered hypotheses (read from that PDF, §1.3 page 4)
+
+Exact wording:
+
+1. Participants will show improved physiological and psychological well-being in green vs. impervious areas.
+2. Acclimatization time will be estimated for green and impervious spaces.
+3. Physiological and psychological responses will align.
+4. Noise & activity will amplify thermal discomfort.
+
+Appendix A (page 21) repeats 1, 3 and 4; item 2 there is: “Acclimatization takes longer after green and air-conditioned settings due to greater heat stress contrasts.” The power paragraph (page 22) then calls the noise-amplification test “Hypothesis 5” and marks it exploratory (no a priori power). That numbering is internal to the form; §1.3 and Appendix A number noise as 4.
+
+## Current paper H1–H5 (`documents/Paper3_outline_readable.md` §1.2)
+
+These are the analysis hypotheses in the outline. They are **not** a 1-to-1 copy of the ethics list. Exact paper H1–H3 (updated 2026-11-11):
+
+- H1: Participants will show better physiological and perceived comfort in green than in impervious areas. (≈ ethics 1)
+- H2: Physiological and perceived responses will be concordant (i.e., they correlate in direction). (≈ ethics 3)
+- H3: Psychophysiological comfort will be more compromised during cycling than during walking. (not a numbered ethics hypothesis)
+- Old H4: The presence of noise will amplify thermal discomfort. (product; report only)
+- Paper H4: The presence of noise will increase thermal discomfort. User-fixed wording (2026-11-11). Old H4 used amplify (product). Operational close (2026-11-12): Peng `thermal_comfort ~ dBA_z + (1|participant)` (or `L_low_z`); Zhen Spearman (thermal, dBA); predicted sign, nominal p < 0.05, 22 walking bouts. Do **not** use `Y ~ dBA_z + UTCI_z + (1|participant)` as the H4 formula: no screened thermal-vote source estimated that; Peng used separate one-predictor models; Rodrigues used separate blocks. Grapas Rome 2026 excluded (2026-11-12): physiology (HR/EDA vs environment), not thermal-vote H4. Chiucchiù 2026 excluded (2026-11-12): NEXT.ROOM indoor chamber (hand search); Cureau 2022 (outdoor Perugia parks) stays. Cycling is not an H4 extension; tram is not in H4; coupled ratings are context, not H4. Updated H4 is supported (Peng thermal~dBA p=0.0037; L_low p=0.006; Zhen p=0.002).
+- H5: Additive models describe adjusted associations of co-occurring thermal, acoustic, radiative, pollution, and route-context terms with physiological responses. Complementary (line 44); Hamra independent-effects; 26 physiological outcomes, not votes; not “each will retain a relationship.”
+- Ethics 2 (acclimatization) is not a current paper hypothesis.
+
+Do not silently overwrite paper H4 with ethics 4. Ethics 4 stays the registered protocol wording; the outline tests the updated H4 sentence.
+
+Older user-confirmed draft (2026-10-13, `./source_documents/Paper3_outline_ml.docx`) used: H1 better comfort in green; H2 concordant physio/perceived; H3 cycling more compromised than walking; H4 noise and traffic amplify thermal discomfort. That H4 matches ethics 4, not the current outline.
 
 H4 workflow: Step 3 defines measurement domains; Step 4 assesses redundancy within domains; Step 5 forms and evaluates equations. PCA and LASSO are not compulsory. Do not force a variable to survive selection merely to retain its domain, and do not adopt stale outline methods without checking the current scientific question.
 
@@ -103,8 +138,8 @@ Second, dont make multiple files... i am flooded with your files all of the time
 
 These are agent skills - C:\Users\pandya\Documents\AI Skills\skills-main\skills, when I ask you to use skills, check these skills and tell me what you would use.
 I will ask you to use "code-simplifier.md" which is for code simplifier, when I am struggling with too much code that is written inefficiently. When I ask please make code shorter by being efficient and precise and asking me if there are any redundant lines you can remove. 
-My Project Data is here C:\Users\pandya\OneDrive - UCL\Field experiment raw data\Complete Participantwise data, in folders P2 to P18 each for one ParticipantID - number from 1 to 18. Each participant did 7 Phase of Experiment - BikeU, WalkU, BikeG, WalkG, Tram are most important phase and Indoor, Reststop are to fill gaps between Phase. Each ParticipantID P2 to P18 has these 5 important phase folder. 
-I used 5 different sensors - Empatica Embrace Plus, Pupil labs Neon eye tracker, LYS button (1 and 2 where LYS1 was on pariticpant and LYS2 was on researcher), Atmotube (Atmotube_left and Atmotube_right) these are on both sides of researcher, giving idea of air pollution based on direction of researcher, ucm Hepia backpack (for environemntal sensing). I also did Psychological surveys (STAI, PRS) the details of all this you will find here - "./source_documents/Formulaire Commission éthique_ABCD_27May25_signed.pdf" and the acronymn for each column names are "C:\Users\pandya\OneDrive - UCL\Field experiment raw data\Experiment material\Parameters acronym experiment data manual.docx".
+My Project Data is here `D:\OneDrive - UCL\Field experiment raw data\Complete Participantwise data`, in folders P2 to P18 each for one ParticipantID - number from 1 to 18. Each participant did 7 Phase of Experiment - BikeU, WalkU, BikeG, WalkG, Tram are most important phase and Indoor, Reststop are to fill gaps between Phase. Each ParticipantID P2 to P18 has these 5 important phase folder. 
+I used 5 different sensors - Empatica Embrace Plus, Pupil labs Neon eye tracker, LYS button (1 and 2 where LYS1 was on pariticpant and LYS2 was on researcher), Atmotube (Atmotube_left and Atmotube_right) these are on both sides of researcher, giving idea of air pollution based on direction of researcher, ucm Hepia backpack (for environemntal sensing). I also did Psychological surveys (STAI, PRS) the details of all this you will find here - `D:\OneDrive - UCL\Pranav PhD\01_Admin & Docs\Ethics for Experiment\Formulaire Commission éthique_ABCD_27May25_signed.pdf`. The old acronyms path `C:\Users\pandya\OneDrive - UCL\Field experiment raw data\Experiment material\Parameters acronym experiment data manual.docx` is not on this laptop; `D:\OneDrive - UCL\Field experiment raw data\Experiment material` has no file with that name.
 This is paper on ucm backapck - "./source_documents/Cityfeel ucm backpack paper.pdf"
 Other sensors papers: `../Experiment papers` (`C:\Users\sanga\Desktop\Pranav Paper3_Final\Experiment papers`). H4 supplementary **high sound** exploratory cut (`ucm_SND_dBA >= 70`) is documented in `C:\Users\sanga\Desktop\Pranav Paper3_Final\output\statistical_analysis\results\H4_exploratory_sound_utci\H4_sound_utci_thresholds.txt` — justify with local annoyance/comfort PDFs plus WHO/EU long-term limits (Lden), not as a universal discomfort onset constant.
 For the selected questionnaires find documentation here "./source_documents/Collected Questionnaire"  
@@ -245,7 +280,7 @@ When helping with any project folder (papers, data, scripts), enforce this struc
    - Move figures/plots → `outputs/<sensor>/figures/` or appropriate subfolder
    - Rename active file to `*_FINAL.*` if not already named clearly
 
-The older deliverable package at `C:\Users\pandya\OneDrive - UCL\Pranav PhD\Paper 3\Data Processing_05May` is no longer the main active pipeline location. For current work, use this live layout:
+The older deliverable package at `D:\OneDrive - UCL\Pranav PhD\Paper 3\Data Processing_05May` is no longer the main active pipeline location. For current work, use this live layout:
 
 ```
 ExpData/

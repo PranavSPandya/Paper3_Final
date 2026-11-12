@@ -1,14 +1,338 @@
-# Eyetracker - Trefzger et al 2018 - Visual comparison gaze pedestrians cyclists
+| A Visual | Comparison  | of  | Gaze Behavior | from |
+| -------- | ----------- | --- | ------------- | ---- |
+|          | Pedestrians | and | Cyclists      |      |
+Mathias Trefzger, Tanja Blascheck, Michael Raschke, Sarah Hausmann,
+Thomas Schlegel
+| To cite this version: |     |     |     |     |
+| --------------------- | --- | --- | --- | --- |
+Mathias Trefzger, Tanja Blascheck, Michael Raschke, Sarah Hausmann, Thomas Schlegel. A Visual
+Comparison of Gaze Behavior from Pedestrians and Cyclists. ETRA 2018 - Symposium on Eye
+Tracking Research and Applications, Jun 2018, Warsaw, Poland. ￿10.1145/3204493.3204553￿. ￿hal-
+01766815￿
+|     | HAL Id: | hal-01766815 |     |     |
+| --- | ------- | ------------ | --- | --- |
+https://hal.inria.fr/hal-01766815
+|     | Submitted | on 14 Apr | 2018 |     |
+| --- | --------- | --------- | ---- | --- |
+HAL is a multi-disciplinary open access L’archive ouverte pluridisciplinaire HAL, est
+archive for the deposit and dissemination of sci- destinée au dépôt et à la diffusion de documents
+entific research documents, whether they are pub- scientifiques de niveau recherche, publiés ou non,
+lished or not. The documents may come from émanant des établissements d’enseignement et de
+teaching and research institutions in France or recherche français ou étrangers, des laboratoires
+abroad, or from public or private research centers. publics ou privés.
 
-## Document Metadata
-- **Source PDF:** [Eyetracker - Trefzger et al 2018 - Visual comparison gaze pedestrians cyclists.pdf](file:///C:/Users/pandya/Documents/Github/docker/Paper3_Github/Experiment papers/Eyetracker - Trefzger et al 2018 - Visual comparison gaze pedestrians cyclists.pdf)
-- **Extracted Title:** A Visual Comparison of Gaze Behavior from Pedestrians and Cyclists
-- **Author(s):** Mathias Trefzger, Tanja Blascheck, Michael Raschke, Sarah Hausmann, Thomas Schlegel
-- **Pages:** 6
+A Visual Comparison of Gaze Behavior
+from Pedestrians and Cyclists
+MathiasTrefzger TanjaBlascheck MichaelRaschke SarahHausmann ThomasSchlegel
+KarlsruheUniversity InriaSaclay BlickshiftGmbH KarlsruheUniversity UniversityofApplied
+ofAppliedSciences tanja.blascheck@ michael.raschke@ ofAppliedSciences SciencesKarlsruhe
+mathias.trefzger@ inria.fr blickshift.de sarah.hausmann@ thomas.schlegel@
+outlook.com hs-karlsruhe.de hs-karlsruhe.de
+ABSTRACT injured,happenedinurbanregionsandwithincityvelocitylimits.
+Inthispaper,wecontributeaneyetrackingstudyconductedwith Therefore,pedestriansandcyclistsareofteninvolvedinaccidents.
+pedestriansandcyclists.Weapplyavisualanalytics-basedmethod Eyetrackingexperimentssupporttoanalyzeifdrivers,cyclists,
+toinspectpedestrians’andcyclists’gazebehavioraswellasvideo andpedestriansareawareofeachother.Whereasresearchershave
+recordingsandaccelerometerdata.Thismethodusingmulti-modal analyzedthevisualperceptionofcardriversinmanyeyetracking
+dataallowsustoexplorepatternsandextractcommoneyemove- experiments[Kapitaniaketal.2015],thereareonlyfewexperiments
+mentstrategies.Ourresultsarethatparticipantspaidmostattention performedwithpedestriansandcyclists.Inrecentyears,researchers
+tothepathitself;advertisementsdonotdistractparticipants;par- have published a growing number of eye tracking experiments
+ticipantsfocusmoreonpedestriansthanoncyclists;pedestrians analyzingpedestriansandcyclists(e.g.,[DavoudianandRaynham
+performmoreshoulderchecksthancyclistsdo;andweextracted 2012;Kieferetal.2012;Mantuanoetal.2016;Vansteenkisteetal.
+commongazesequences.Suchanexperimentinareal-worldtraffic 2014;Wenczeletal.2017]).Inthispaper,weapplyavisualanalytics-
+environmentallowsustounderstandrealisticbehaviorofpedestri- basedmethodtoanalyzegazebehaviorofpedestriansandcyclists
+ansandcyclistsbetter. inareal-worldeyetrackingexperiment.
+CCSCONCEPTS 2 RELATEDWORK
+•Human-centeredcomputing→Visualanalytics;Empirical Theuseofmobileeyetrackingsolutionsforanalyzingpedestri-
+studiesinubiquitousandmobilecomputing; ans and cyclists has been steadily increasing. In the beginning,
+researchers mainly used mobile eye trackers in controlled set-
+KEYWORDS tings, for example, in artificial laboratories simulating a traffic
+environment[Bocketal.2015;Igarietal.2008;Jägeretal.2015;
+eyetracking,pedestrians,cyclists,visualanalytics,real-worldenvi-
+Marigoldetal.2007;Zitoetal.2015]orperformingexperiments
+ronment,trafficsituations,multi-modeldata
+indoors[Jovancevic-MisicandHayhoe2009;Schnitzleretal.2016;
+ACMReferenceFormat: Vansteenkisteetal.2013].However,theseeyetrackingexperiments
+MathiasTrefzger,TanjaBlascheck,MichaelRaschke,SarahHausmann, donotreflecttherealisticbehaviorandsituationofpedestrians
+andThomasSchlegel.2018.AVisualComparisonofGazeBehaviorfrom andcyclistsintrafficenvironments.Therefore,researchersarenow
+PedestriansandCyclists.InETRA’18:2018SymposiumonEyeTracking
+executingagrowingnumberofexperimentsinreal-worldenvi-
+ResearchandApplications,June14–17,2018,Warsaw,Poland.ACM,New
+ronments.Multipleeyetrackingexperimentsexistthatanalyze
+York,NY,USA,5pages.https://doi.org/10.1145/3204493.3204553
+pedestrians’[Brüggeretal.2018;DavoudianandRaynham2012;
+Fotiosetal.2015a,b;Kieferetal.2014,2012;Wenczeletal.2017]
+1 INTRODUCTION
+orcyclists’behavior[Mantuanoetal.2016;SchmidtandvonStülp-
+In recent years, the number of injured pedestrians in Germany nagel2018;Vansteenkisteetal.2014].Incontrasttoexistingworks,
+hasincreasedfrom33.499in2013to34.050in2016andthenum- we are presenting a visual analytics-based approach to explore
+berofinjuredcyclistshasrisenfrom77.439in2013to87.992in patterns,extractcommoneyemovementstrategies,andenablea
+20161.Mostoftheregisteredaccidents,duringwhichpeoplewere combinedanalysisofthemulti-modaldata.
+Inoureyetrackingstudy,weuseavisualanalysismethodto
+1https://www.destatis.de/ analyzeourdata.Multipleexamplesforusingavisualanalyticsap-
+proachareavailableintheeyetrackingliterature[Andrienkoetal.
+Permissiontomakedigitalorhardcopiesofallorpartofthisworkforpersonalor 2012;Blaschecketal.2016c;Kurzhalsetal.2014,2016;Kurzhalsand
+classroomuseisgrantedwithoutfeeprovidedthatcopiesarenotmadeordistributed Weiskopf2013;Raschkeetal.2014].Intheirstate-of-the-artreport,
+forprofitorcommercialadvantageandthatcopiesbearthisnoticeandthefullcitation
+onthefirstpage.Copyrightsforcomponentsofthisworkownedbyothersthanthe Blaschecketal.[2017]havecollectedmanydifferentvisualization
+author(s)mustbehonored.Abstractingwithcreditispermitted.Tocopyotherwise,or techniquesforeyemovementdata.
+republish,topostonserversortoredistributetolists,requirespriorspecificpermission
+Inaddition,acombinationofmultipledatasourcesisbeneficial.
+and/orafee.Requestpermissionsfrompermissions@acm.org.
+ETRA’18,June14–17,2018,Warsaw,Poland Previousworkgivesexamplesofvisualizationtechniquesincor-
+©2018Copyrightheldbytheowner/author(s).Publicationrightslicensedtothe porating multiple data sources for analyzing eye tracking data.
+AssociationforComputingMachinery. Forexample,acombinationofeyemovementdataandinterac-
+ACMISBN978-1-4503-5706-7/18/06...$15.00
+https://doi.org/10.1145/3204493.3204553 tionlogs[CroweandNarayanan2000];eyemovementdataand
 
-## Summary & Abstract
-A Visual Comparison of Gaze Behavior from Pedestrians and Cyclists Mathias Trefzger Karlsruhe University of Applied Sciences mathias.trefzger@ outlook.com Tanja Blascheck Inria Saclay tanja.blascheck@ inria.fr Michael Raschke Blickshift GmbH michael.raschke@ blickshift.de Sarah Hausmann Karlsruhe University of Applied Sciences sarah.hausmann@ hs-karlsruhe.de Thomas Schlegel University of Applied Sciences Karlsruhe thomas.schlegel@ hs-karlsruhe.de ABSTRACT In this paper, we contribute an eye tracking study conducted with pedestrians and cyclists. We apply a visual analytics-based method to inspect pedestrians’ and cyclists’ gaze behavior as well as video recordings and accelerometer data. This method using multi-modal data allows us to explore patterns and extract common eye move- ment strategies. Our results are that participants paid most attention to the path itself; advertisements do not distract participants; par- ticipants focus more on pedestrians than on cyclists; pedestrians perform more shoulder checks than cyclists do; and we extracted common gaze sequences. Such an experiment in a real-world traffic environment allows us to understand realistic behavior of pedestri- ans 
+ETRA’18,June14–17,2018,Warsaw,Poland M.Trefzger,T.Blascheck,M.Raschke,S.Hausmann,T.Schlegel
+Figure 1: Segment of the route divided into three sub-
+Figure 2: Example of the abstract reference image of the
+segments:1)straightpavementwherecyclingisallowed,2)
+21AOIsforsegmentS1.
+non-trafficregulatedcrossing,and3)crosswalk.
+Maplegend:bicyclelane(blueline);pedestrianlane(black (3females;age:M=27.9±8.69).Allparticipantshadnormalor
+line); parking lines (dark gray rectangles), grassed areas corrected-to-normalvision.
+(green rectangles); houses (light orange rectangles); shoul-
+dercheckpositions(purplecircles). 3.3 ExperimentalProcedure
+Weaskedparticipantstowalkorcyclethepredefinedroute.We
+think-aloudprotocols[Franchaketal.2010];eyemovementdata, counter-balancedtheorderofparticipantswalkingorcyclingto
+videodata,andpapernotes[Fouseetal.2011;Weibeletal.2012]; avoidlearningeffectswhenperformingtherouteasecondtime.At
+or eye movement data, interaction logs, and think-aloud proto- thebeginningofeachtrial,weaskedparticipantstosignaconsent
+cols[Blaschecketal.2016a,b,c]. formandfilloutademographicquestionnaire.WeusedtheTobii
+Pro Glasses 2 to record the data and we performed the 1-point
+3 VISUALANALYSISOFPEDESTRIANAND calibrationproceduretocalibratetheeyetracker.Afterwards,we
+CYCLISTBEHAVIOR checkedthecalibrationbyaskingparticipantstofocusondifferent
+points.Wedidthecalibrationindoorstoensureaccuracy.
+Inthefollowingsection,wepresentaneyetrackingexperiment
+Becausethegoaloftheexperimentwastounderstandbehaviorof
+conductedinareal-worldtrafficenvironmentwithcyclistsand
+pedestriansandcyclists,wedidnotgiveparticipantsaspecifictask.
+pedestrians.Weanalyzethedatausingavisualmethod,whichwe
+Weonlyinstructedthemtowalkorcyclethegivenroute.However,
+shortlyintroduce.Then,wediscussexemplaryresultsandexperi-
+wegaveparticipantsthreeinstructionsbeforetheystartedtheir
+encesgainedduringtheexperiment.
+trip,toensureasavetravelwithinthetrafficenvironment:
+3.1 ExperimentDesignandQuestions (1) Byfootandwhilecyclingtheparticipantsshouldcoverthe
+routeontherightsideofthestreet.
+Toinvestigatebehaviorofpedestriansandcyclists,weconducted
+(2) Whilecyclingtheparticipantsshouldonlyrideonpaths
+anexperiment,inwhichparticipantshadtofollowapredefined
+allowedforcycling.
+routeinanurbanareaofatowninGermany.Participantshadto
+(3) Participantsshouldexactlyfollowthegivenroute.
+cycleandwalktheroute.
+Withthecollecteddata,wewanttoanswermultiplequestions:
+3.4 Multi-modelVisualAnalysisApproach
+• Whichobjectsaswellasobstaclesarefocusedonmostand
+Weapplyavisualanalysisapproach,whichcombinesmulti-modal
+howdistractingareadvertisementsatthesideoftheroad
+datacollectedduringoureyetrackingexperimentwithpedestrians
+(Section3.5.1)?
+andcyclists.Theappliedmethodconsistsofthethreesteps:
+• Whatcommongazesequencesdopedestriansandcyclists
+(1) Datacollection
+performandhowdoestheirbehaviordiffer(Section3.5.2)?
+• Howlongandwhendopedestriansandcyclistsperform (2) AOIMapping
+(3) DataAnalysis
+shoulderchecks,especiallyifenteringapotentiallydanger-
+oustrafficsituation(Section3.5.3)? 3.4.1 DataCollection. Werecordedtheeyemovementdatawith
+Inthispaper,weonlyanalyzeapart(160m)ofalongerroute theTobiiProGlasses2at50Hz.Theeyetrackingglassesalsorecord
+(1.5km)participantshadtocycleandwalk.Wesub-dividedthis theaccelerometerdataandavideoofthefieldofview.Participants
+partoftherouteintothreesub-segments(cf.Figure1). woretheglasses,whichfeaturearecordingunit.Weconductedthe
+experimentoutsideduringdifferentweatherconditions.Therefore,
+3.2 Participants wehadtoexcludesomedataofparticipantswithaprecisionlower
+than80%.
+Weperformedtheexperimentwith27participantsintotal.How-
+ever,duetodifficultieswiththeeyetrackingequipment,wewere 3.4.2 AOIMapping. Becauseofthecomplextrafficenvironment,
+onlyabletouseeyemovementdatawithsufficientaccuracyof13 weuseanabstractreferenceimageofthescenetodefineAOIsand
+pedestrians(2females;age:M=27.8years±8.86)and14cyclists mapfixationstothem(cf.Figure2).Theeyemovementdatais
 
-## Relevance to Paper 3
-- Category: Eyetracker
-- Relevant for multi-sensor wearable validation, psychophysiological assessment, environmental exposures, and statistical justification in outdoor urban mobility contexts.
+AVisualComparisonofGazeBehaviorfromPedestriansandCyclists ETRA’18,June14–17,2018,Warsaw,Poland
+Figure3:AOIvisitdurationofpedestrians(top)andcyclists(bottom)fordifferentAOIsforsegmentS2.1.
+Figure4:ParallelscanpathvisualizationshowingthefiveAOIlonggazesequencejunctionright–shouldercheckleft–junction
+right–pavementfar–parkinglineforthreeparticipantscoloredinred,green,andblue.
+Figure5:Linegraphshowingdataoftheaccelerometer:a)x-direction,b)y-direction,whichrepresentsgravity,c)z-direction,
+andd)aframefromthevideorecording.Theredhighlightshowsthetimewhenthecyclistperformedashouldercheck.
+
+ETRA’18,June14–17,2018,Warsaw,Poland M.Trefzger,T.Blascheck,M.Raschke,S.Hausmann,T.Schlegel
+mappedframe-by-frameontotheabstractreferenceimage.Wealso paidtothepathitself(redAOIs),forcyclistsmorethanforpedestri-
+definedistractorAOIs[Devillezetal.2017]tocaptureotherroad ans.Anotherobservationisthatbothpedestriansandcyclistsfocus
+users(i.e.,cardrivers,cyclists,pedestrians)andthedirectionin onpedestrians(darkgreenandpurpleAOIs)longerthanoncyclists
+whichtheywereheading.Thisallowsustoanswerthequestion (lightgreenandpurpleAOIs).Advertisements(lightyellowAOI)
+howotherroadusersinfluenceattention.Intotal,foreachsub- attractedtheattentionofpedestriansaswellascyclists,however,
+segmentwedefinedAOIs:S1has21AOIs(cf.Figure2),S2has onlyminimally.
+27AOIs,andS3has16AOIs.
+3.5.2 SegmentS2–GazeSequences. Withtheparallelscanpath
+3.4.3 DataAnalysis. AftermappingfixationstoAOIs,thenext technique[Raschkeetal.2012,2014],wefoundthelongestsequence
+stepisanannotationofinterestingsituationsandanexplorative withfiveAOIsintheeyemovementdataofthepedestrians:junction
+visualanalysis.Forannotatingandanalyzingthedata,weusea right–shouldercheckleft–junctionright–pavementfar–parking
+parallelvisualizationofvideorecordings,eyemovementandsensor line. Figure 4 shows this sequence. It represents a specific gaze
+data.Thereby,wecancomplementthedifferentdatastreamsifdata behavior,whichweclassifyasagazesequenceforsafetraveling,
+pointsaremissingorhardtointerpret.Thisallowsustoreceive because it increases the probability that participants perceived
+moredetailedandaccuratedata.Additionally,weusetheparallel thesituationinitsentirety.WealsofoundshortercommonAOI
+scanpathvisualizationbyRaschkeetal.[2012;2014]tosearchfor sequencesforpedestrians,suchaspavementnear–pavementfar
+commonsequencesintheeyemovementdata. as well as pavement far – pavement near. For cyclists common
+AOIsequenceswereparkingline–sidewalknear –parkingline,
+Annotation. Intraffic,performingshoulderchecksbeforeswitch-
+pavementnear–pavementfar–pavementnear,orpavementnear–
+inglanesorturningisimportanttoavoidaccidents.Becausesuch
+advertisement–street(right).
+eye movements occur fast fixations are missing. Therefore, we
+semi-automaticallyannotatetheinstanceswhenparticipantslook 3.5.3 SegmentS3–ShoulderChecks. Onegoaloftheexperiment
+backwards.Figure5showsaplotoftheaccelerometerdata.Figure5 wastomeasureandanalyzeifparticipantsperformedshoulder
+(a)depictsthex-directionoftheaccelerometersensor,(b)they- checks at important positions on the road. To analyze this, we
+direction(representinggravity),and(c)representsthez-direction. definedfourpositionsinthesegment(cf.Figure1,purplecircles).
+Figure5(d)showsthecurrentframeofthevideorecording.Aspike Asdescribedabove,wemanuallyannotatedshoulderchecksusing
+inthesegraphsindicatesarapidchangeoftheacceleration.Wecan theaccelerometerdataandvideorecordingofparticipants.
+labeleachinstanceofashouldercheck,inwhichthex-directionis Overall,cyclistsperformlessshoulderchecksandtheaverage
+≤0andthez-directionis≥0. durationofshoulderchecktimesareshorterthanforpedestrians.
+TheonlyexceptionisshouldercheckSC3beforecyclistscross
+VisualAnalysis. Additionally,weanalyzecommonsequencesof
+thecrosswalk.Anotherobservationisthatcyclistsdidnotperform
+AOIsusingtheparallelscanpathmethod[Raschkeetal.2012,2014].
+shoulder check SC 2; however, this could also be, because here
+Thisparallelvisualizationofvideorecordingsandeyemovement
+pedestrianshadtocrossthebicyclelane.Whilethemissingshoulder
+dataallowsustoidentifyinterestingsectionsfordifferenttraffic
+checksarelikelytohaveanegativeimpactonthesafety,webelieve
+situationsvisually.Usingavisualanalytics-basedpatternsearch
+theshortershoulderchecksofcyclistsareanecessity,becauseof
+algorithmsbasedontheLevenshteindistance[Levenshtein1966],
+thehigherspeed,whichleadstolongerdistancesinblindflight
+wefindcommoneyemovementstrategies,respectivelycommon
+thatcanbedangerous.
+behavioroftheparticipants.
+4 CONCLUSIONANDDISCUSSION
+3.5 AnalysisandResults
+Inthispaper,weanalyzedandcomparedgazebehaviorofpedestri-
+Inthefollowingsections,wediscussdifferentobservationstoshow
+ansandcyclistsusingavisualanalysisapproachofmulti-modal
+howtoanalyzethecollectedmulti-modaldata.Basedontheques-
+data.Wecollectedeyemovementandaccelerometerdataaswell
+tionsinSection3.1,wefirstinvestigatesegmentS1(cf.Section3.5.1)
+asavideorecordingtoenableaholisticanalysisofpedestrians
+tounderstandwhichobjectsandobstaclesarefocusedonmostand
+andcyclists’behavior.Wheninvestigatingeyemovementdatain
+howdistractingadvertisementsareatthesideoftheroad.Next,
+real-worldtrafficsituations,wehadtodefineahighnumberof
+we analyze segment S2 (cf. Section 3.5.2) to find common gaze
+AOIs.Therefore,weuseanabstractreferenceimageformapping
+sequencesofpedestriansandcyclistsandinvestigatehowtheir
+eyemovementdataontoAOIs.Fortheanalysisoftherecorded
+behaviordiffers.Last,weexploresegmentS3(cf.Section3.5.3)to
+multi-modaldata,weuseavisualapproachforadetailedanalysis
+understandhowlongandwhenpedestriansandcyclistsperform
+andcomparisonofthedata.Thevisualanalysisshowedthatthe
+shoulderchecks.
+explorativeanalysiswithmultipledatastreamsleadstoaneffi-
+3.5.1 SegmentS1–FocusonObstacles. Ourfirstquestion(cf. cientoverviewofthecollecteddata.Weexemplaryanalyzeddata
+Section3.1)isaboutunderstanding,whichobjectsandobstacles fromarealworldeyetrackingexperiment.Ourmainresultsofthe
+participantsfocusonmost.Inaddition,weexplorehowdistracting analysisarethatparticipantspaidmostattentiontothepathitself;
+advertisementsareatthesideoftheroad.Therefore,weanalyze advertisementsdonotdistractpedestriansandcyclistsmuch;and
+theeyemovementdatabasedontheAOIsdefinedinFigure2for participantsfocusmoreonpedestriansthanoncyclists.Wewere
+segmentS1.Figure3showsanoverviewofhowmuchattention alsoabletoextractcommongazesequences,andweanalyzedhow
+pedestriansandcyclistspaidtoindividualAOIs.Mostattentionwas oftenpedestriansandcyclistsperformshoulderchecks.
+
+AVisualComparisonofGazeBehaviorfromPedestriansandCyclists ETRA’18,June14–17,2018,Warsaw,Poland
+REFERENCES
+CaseStudiesonTransportPolicy5,2(2016),408–416.
+GennadyAndrienko,NataliaAndrienko,MichaelBurch,andDanielWeiskopf.2012. DanielMarigold,VivianWeerdesteyn,AftabPatla,andJacquesDuysens.2007.Keep
+VisualAnalyticsMethodologyforEyeMovementStudies. IEEETransactionson lookingahead?Re-directionofvisualfixationdoesnotalwaysoccurduringan
+VisualizationandComputerGraphics18,12(2012),2889–2898. unpredictableobstacleavoidancetask.ExperimentalBrainResearch176,1(2007),
+TanjaBlascheck,FabianBeck,SebastianBaltes,ThomasErtl,andDanielWeiskopf. 32–42.
+2016a.VisualAnalysisandCodingofData-RichUserBehavior.InProceedingsof MichaelRaschke,XuemeiChen,andThomasErtl.2012.Parallelscan-pathvisualization.
+theIEEEConferenceonVisualAnalyticsScienceandTechnology.IEEEComputer InProceedingsoftheSymposiumonEyeTrackingResearch&Applications.ACM,
+SocietyPress,141–150. 165–168.
+TanjaBlascheck,MarkusJohn,SteffenKoch,LeonardBruder,andThomasErtl.2016b. MichaelRaschke,DominikHerr,TanjaBlascheck,MichaelBurch,MichaelSchrauf,
+TriangulatingUserBehaviorUsingEyeMovement,Interaction,andThinkAloud SvenWillmann,andThomasErtl.2014.AVisualApproachforScanPathCom-
+Data.InProceedingsoftheSymposiumonEyeTrackingResearch&Applications. parison.InProceedingsoftheSymposiumonEyeTrackingResearch&Applications.
+ACM,175–182. ACM,135–142.
+TanjaBlascheck,MarkusJohn,KunoKurzhals,SteffenKoch,andThomasErtl.2016c. SonjaSchmidtandRulvonStülpnagel.2018.RiskPerceptionandGazeBehaviorduring
+VA2:AVisualAnalyticsApproachforEvaluatingVisualAnalyticsApplications. UrbanCycling–AFieldStudy.InEyeTrackingforSpatialResearch,Proceedingsof
+the3rdInternationalWorkshop.ETHZurich,34–39.
+IEEETransactionsonVisualizationandComputerGraphics22,1(2016),61–70.
+VerenaSchnitzler,IoannisGiannopoulos,ChristophHölscher,andIvaBarisic.2016.
+TanjaBlascheck,KunoKurzhals,MichaelRaschke,MichaelBurch,DanielWeiskopf,
+TheInterplayofPedestrianNavigation,WayfindingDevices,andEnvironmental
+andThomasErtl.2017. VisualizationofEyeTrackingData:ATaxonomyand
+FeaturesinIndoorSettings.InProceedingsoftheSymposiumonEyeTracking
+Survey.ComputerGraphicsForum36,8(2017),260–284.
+Research&Applications.ACM,85–93.
+OtmarBock,PaoloRiccardoBrustio,andStelianaBorisova.2015. Age-RelatedDif-
+PieterVansteenkiste,GreetCardon,EvaDâĂŹHondt,RenaatPhilippaerts,andM.
+ferencesoftheGazePatterninaRealisticPedestrianTrafficTask.International
+Lenoir.2013.Thevisualcontrolofbicyclesteering:Theeffectsofspeedandpath
+JournalofAppliedPsychology5,1(2015),13–19.
+AnninaBrügger,Kai-FlorianRichter,andSaraFabrikant.2018. Whichegocentric
+width.AccidentAnalysis&Prevention51(2013),222–227.
+PieterVansteenkiste,LinusZeuwts,GreetCardon,RenaatPhilippaerts,andMatthieu
+directionsuffersfromvisualattentionduringaidedwayfinding?.InEyeTracking
+Lenoir.2014. Theimplicationsoflowqualitybicyclepathsongazebehaviorof
+forSpatialResearch,Proceedingsofthe3rdInternationalWorkshop.ETHZurich,
+22–27.
+cyclists:Afieldtest.TransportationresearchpartF:trafficpsychologyandbehaviour
+23(2014),81–87.
+EricCroweandHariNarayanan.2000.Comparinginterfacesbasedonwhatuserswatch
+NadirWeibel,AdamFouse,ColleenEmmenegger,SaraKimmich,andEdwinHutchins.
+anddo.InProceedingsoftheSymposiumonEyeTrackingResearch&Applications.
+2012.Let’slookattheCockpit:ExploringMobileEye-TrackingforObservational
+ACM,29–36.
+NDavoudianandPRaynham.2012.Whatdopedestrianslookatatnight?Lighting
+ResearchontheFlightDeck.InProceedingsoftheSymposiumonEyeTracking
+Research&Technology44,4(2012),438–448.
+Research&Applications.ACM,107–114.
+FloraWenczel,LisaHepperle,andRulvonStülpnagel.2017.Gazebehaviorduring
+HélèneDevillez,AnneGuérin-Dugué,andNathalieGuyader.2017. Howadistrac-
+torinfluencesfixationsduringtheexplorationofnaturalscenes. JournalofEye
+incidentalandintentionalnavigationinanoutdoorenvironment.SpatialCognition
+MovementResearch10,2(2017),1–13.
+&Computation17,1–2(2017),121–142.
+GiuseppeAngeloZito,DarioCazzoli,LoreenScheffler,MichaelJäger,RenéMartin
+SteveFotios,JimUttley,andBYang.2015a. Usingeye-trackingtoidentifypedes-
+Müri,UrsPeterMosimann,ThomasNyffeler,FWMast,andTobiasNef.2015.Street
+triansâĂŹcriticalvisualtasks,Part1.Dualtaskapproach. LightingResearch&
+crossingbehaviorinyoungerandolderpedestrians:aneye-andhead-tracking
+Technology47,2(2015),164–173.
+study.BMCGeriatrics15,1(2015),1–10.
+SteveFotios,JimUttley,andBYang.2015b.Usingeye-trackingtoidentifypedestri-
+ansâĂŹcriticalvisualtasks,Part2.Fixationonpedestrians.LightingResearch&
+Technology47,2(2015),149–160.
+AdamFouse,NadirWeibel,EdwinHutchins,andJamesHollan.2011.ChronoViz:A
+systemforsupportingnavigationoftime-codeddata.InCHIExtendedAbstractson
+HumanFactorsinComputingSystems.ACM,299–304.
+JohnFranchak,KariKretch,KaseySoska,JasonBabcock,andKarenAdolph.2010.
+Head-mountedeye-trackingofinfants’naturalinteractions:Anewmethod.In
+ProceedingsoftheSymposiumonEyeTrackingResearch&Applications.ACM,21–27.
+DIgari,MShimizu,andRFukuda.2008. Eyemovementsofelderlypeoplewhile
+ridingbicycles.InProceedingsofthe6thInternationalConferenceoftheInternational
+SocietyforGerontechnology.1–4.
+MichaelJäger,ThomasNyffeler,RMüri,UrsPeterMosimann,andTobiasNef.2015.
+AdaptingadrivingsimulatortostudypedestriansâĂŹstreet-crossingdecisions:a
+feasibilitystudy.AssistiveTechnology27,1(2015),1–8.
+JelenaJovancevic-MisicandMaryHayhoe.2009. Adaptivegazecontrolinnatural
+environments.JournalofNeuroscience29,19(2009),6234–6238.
+BronislawKapitaniak,MartaWalczak,MarcinKosobudzki,ZbigniewJozwiak,and
+AlicjaBorkiewicz.2015.Applicationofeye-trackinginthetestingofdrivers:are-
+viewofresearch.InternationalJournalofOccupationalMedicineandEnvironmental
+Health28,6(2015),941–954.
+PeterKiefer,IoannisGiannopoulos,andMartinRaubal.2014.WhereamI?Investigat-
+ingmapmatchingduringself-localizationwithmobileeyetrackinginanurban
+environment.TransactionsinGIS18,5(2014),660–686.
+PeterKiefer,FlorianStraub,andMartinRaubal.2012.TowardsLocation-awareMo-
+bileEyeTracking.InProceedingsoftheSymposiumonEyeTrackingResearchand
+Applications.ACM,313–316.
+KunoKurzhals,FlorianHeimerl,andDanielWeiskopf.2014.ISeeCube:VisualAnalysis
+ofGazeDataforVideo.InProceedingsoftheSymposiumonEyeTrackingResearch
+&Applications.ACM,43–50.
+KunoKurzhals,MarcelHlawatsch,FlorianHeimerl,MichaelBurch,ThomasErtl,and
+DanielWeiskopf.2016.GazeStripes:Image-BasedVisualizationofEyeTracking
+Data.IEEETransactionsonVisualizationandComputerGraphics22,1(2016),1005–
+1014.
+KunoKurzhalsandDanielWeiskopf.2013.Space-Timevisualanalyticsofeye-tracking
+datafordynamicstimuli.IEEETransactionsonVisualizationandComputerGraphics
+19,12(2013),2129–2138.
+VladimirLevenshtein.1966.Binarycodescapableofcorrectingdeletions,insertions
+andreversals.SovietPhysics-Doklady10,8(1966),565–572.
+AlessandraMantuano,SilviaBernardi,andFedericoRupi.2016.Cyclistgazebehavior
+inurbanspace:Aneye-trackingexperimentonthebicyclenetworkofBologna.

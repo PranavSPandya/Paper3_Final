@@ -1,0 +1,11 @@
+Step,Terms_included,Latest_term,Max_VIF,Highest_VIF_term
+1,1,freq_proportion_20_to_200Hz,1.0,freq_proportion_20_to_200Hz
+2,2,octave_proportion_8000_0_Hz,1.033837457585676,freq_proportion_20_to_200Hz
+3,3,urban_manmade_negative_proportion,1.0379538097309298,freq_proportion_20_to_200Hz
+4,4,octave_proportion_125_0_Hz,1.1210540930029032,freq_proportion_20_to_200Hz
+5,5,ucm_SND_dBA,1.1210592901630327,freq_proportion_20_to_200Hz
+6,6,dominant_frequency_Hz,1.2823317910164846,freq_proportion_20_to_200Hz
+7,7,mechanisms_proportion,1.3040928141548092,freq_proportion_20_to_200Hz
+8,8,octave_proportion_250_0_Hz,2.0625023961955042,freq_proportion_20_to_200Hz
+9,9,rural_natural_proportion,2.1557983072491993,freq_proportion_20_to_200Hz
+10,10,urban_manmade_neutral_proportion,2.1697753039567322,freq_proportion_20_to_200Hz

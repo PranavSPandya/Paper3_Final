@@ -1,0 +1,123 @@
+FILE: 08 Zhen2025 - highlighted.pdf
+PAGES: 19
+CHARS: 81237
+
+===== PAGE 1 ===== Outdoor thermal comfort of urban plaza space under thermoacoustic interactions –Taking Datang Everbright City as an example Meng Zhen a, Xinyi
+---
+PAGE 1 ===== Outdoor thermal comfort of urban plaza space under thermoacoustic interactions –Taking Datang Everbright City as an example Meng Zhen a, Xinyi Yuan b, Liqiang Gao b, Weijie Xia c, Kai Nan d,*, Ming
+---
+ersity, Xi’an 710054, Shaanxi, PR China A R T I C L E I N F O Keywords: Outdoor thermal comfort Acoustic comfort Universal thermal climate index Cold region A B S T R A C T The comfort of urban square environments i
+---
+hermal perception of active crowds. Using the Universal Thermal Climate Index (UTCI) as a thermal benchmark, the study compares the interaction between thermal conditions and acoustic environments. Resu
+---
+al Thermal Climate Index (UTCI) as a thermal benchmark, the study compares the interaction between thermal conditions and acoustic environments. Results indicate that the neutral UTCI in Xi’an urban squares is
+---
+hermal conditions and acoustic environments. Results indicate that the neutral UTCI in Xi’an urban squares is 14.9 ◦C, with a neutral UTCI range of 10.8~19.0 ◦C and a preferred temperature of 17.1 ◦C. P
+---
+dicate that the neutral UTCI in Xi’an urban squares is 14.9 ◦C, with a neutral UTCI range of 10.8~19.0 ◦C and a preferred temperature of 17.1 ◦C. Positive types of sounds moderately reduce thermal sensa
+---
+a preferred temperature of 17.1 ◦C. Positive types of sounds moderately reduce thermal sensation. Moderate environmental sounds alleviate thermal discomfort to some extent among re­ spondents. In environments such as
+---
+such as birdsong and flowing water, people prefer higher temperatures, thereby increasing thermal tolerance. Conversely, in noise from traffic or construction, individuals prefer lower tem­ peratures, reduc
+---
+efer higher temperatures, thereby increasing thermal tolerance. Conversely, in noise from traffic or construction, individuals prefer lower tem­ peratures, reducing their thermal tolerance. In environment
+---
+from the National Bureau of Statistics in 2022, China’s urbanization rate has increased dramatically from 17.9 % in 1978 to 64.72 % in 2021 [2], and the urban resident population has grown from 170 milli
+---
+ronmental issues resulting from rapid urbanization. Modern cities have seen an increasing number of buildings and structures that absorb significant amounts of solar radiation during the day and release t
+---
+radiation during the day and release this heat at night, causing a noticeable increase in temperatures in urban centers. Additionally, the urban heat island effect exacerbates temperature differences with
+---
+residents, such as heatstroke and respiratory diffi­ culties, but also lead to increased energy consumption, particularly due to the higher use of air conditioning. Therefore, mitigating the urban heat isl
+---
+nce, Negar et al. [5] used measurements and ques­ tionnaires to explore outdoor thermal comfort dimensions on acoustic comfort, emphasizing plant communities in urban parks, to derive metrics of thermal comfort in
+---
+c comfort, emphasizing plant communities in urban parks, to derive metrics of thermal comfort in relation to landscape quality. Li et al. [6] * Corresponding authors. E-mail addresses: drnankai@xjtu.edu.cn (K. Na
+---
+ustic environments. Ali et al. [9] investigated gender differences in acoustic-thermal comfort and cogni­ tive performance in several simulated work environments with load levels, and showed that gender difference
+---
+environments with load levels, and showed that gender differences in acoustic-thermal comfort and performance were nearly significant, emphasizing the importance of considering gender differences when designing
+---
+Yin et al. [12] explored the impact of background music on human comfort and work efficiency, concluding that changes in environmental parameters can affect psychological emotions and physiological parameters,
+---
+al and acoustic design of office building spaces. Yang et al. [15] studied the interaction of thermal and acoustic environments on indoor thermal comfort at Terminal 3 of Xi’an Xia­ nyang Airport and proposed
+---
+l. [15] studied the interaction of thermal and acoustic environments on indoor thermal comfort at Terminal 3 of Xi’an Xia­ nyang Airport and proposed optimization strategies. Zhen et al. [16] researched campus spa
+---
+strating that in most locations, thermal evaluation is primarily influenced by PET, while acoustic evaluation is mainly affected by LAeq. The interaction of thermal and acoustic environments affects p
+---
+s primarily influenced by PET, while acoustic evaluation is mainly affected by LAeq. The interaction of thermal and acoustic environments affects people’s overall comfort, however, focusing on thermal
+---
+y influenced by PET, while acoustic evaluation is mainly affected by LAeq. The interaction of thermal and acoustic environments affects people’s overall comfort, however, focusing on thermal environments alon
+---
+alone does not provide a compre­ hensive picture of human comfort levels. Multifactorial comfort studies under composite conditions have gradually emerged in recent years. Zhang et al. [17] explored the eff
+---
+communication, spatial sense and dynamics. Most current research focuses on the interaction of various comfort factors in laboratory, indoor, or semi-open spaces, The results show that under thermoacoustic int
+---
+atory, indoor, or semi-open spaces, The results show that under thermoacoustic interaction conditions, factors such as sound can significantly affect human sensitivity to the thermal environment; however, exi
+---
+affect human sensitivity to the thermal environment; however, existing indoor thermal comfort studies tend to measure under stable thermoacoustic conditions, where the thermoacoustic parameters are relatively st
+---
+rately integrate a wide range of parameters. Meanwhile, outdoor thermoacoustic interaction study sites have complex thermoa­ coustic conditions, and existing studies are less likely to quantify the type of aco
+---
+ies have shown that improving the layout and facilities of the plaza space can increase people’s thermal-acoustic comfort to a certain extent [18]. This study investigated the interac­ tion between human a
+---
+ure Space OS Open Square PS Pedestrian Street SS Space under Shadow OTC Outdoor thermal comfort Ta Air temperature RH Relative humidity Va Wind speed Tg Globe temperature Tmrt Mean radiant temperature G Global radia
+---
+ind speed Tg Globe temperature Tmrt Mean radiant temperature G Global radiation TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote MTCV Mean thermal comfort vote UTCI Un
+---
+speed Tg Globe temperature Tmrt Mean radiant temperature G Global radiation TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote MTCV Mean thermal comfort vote UTCI Universal thermal cl
+---
+re Tmrt Mean radiant temperature G Global radiation TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote MTCV Mean thermal comfort vote UTCI Universal thermal climate inde
+---
+ean radiant temperature G Global radiation TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote MTCV Mean thermal comfort vote UTCI Universal thermal climate index NUTCI Neutral univers
+---
+G Global radiation TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote MTCV Mean thermal comfort vote UTCI Universal thermal climate index NUTCI Neutral universal therma
+---
+lobal radiation TSV Thermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote MTCV Mean thermal comfort vote UTCI Universal thermal climate index NUTCI Neutral universal thermal climate index
+---
+ermal sensation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote MTCV Mean thermal comfort vote UTCI Universal thermal climate index NUTCI Neutral universal thermal climate index NUTCIR Neu
+---
+sation vote MTSV Mean thermal sensation vote TCV Thermal comfort vote MTCV Mean thermal comfort vote UTCI Universal thermal climate index NUTCI Neutral universal thermal climate index NUTCIR Neutral universal therma
+---
+thermal sensation vote TCV Thermal comfort vote MTCV Mean thermal comfort vote UTCI Universal thermal climate index NUTCI Neutral universal thermal climate index NUTCIR Neutral universal thermal climate
+---
+mfort vote MTCV Mean thermal comfort vote UTCI Universal thermal climate index NUTCI Neutral universal thermal climate index NUTCIR Neutral universal thermal climate index range PPD Predicted percentage o
+---
+Universal thermal climate index NUTCI Neutral universal thermal climate index NUTCIR Neutral universal thermal climate index range PPD Predicted percentage of dissatisfied ASV Acoustic sensation vote MAS
+---
+oustic sensation vote ACV Acoustic comfort vote MACV Mean acoustic comfort vote SPL Sound pressure level M. Zhen et al.
+---
+of small shrubs. 2.2. Experimental design The comprehensive evaluation of human thermal comfort in varying environmental conditions is influenced by multiple meteorological pa­ rameters [21]. In this experiment con
+---
+xperiment conducted outdoors, all meteorolog­ ical parameters relevant to human thermal sensation were measured. The research period for this study lasted from September 2022 to September 2023, a one-year period cov
+---
+pondents’ questionnaire sessions to minimize the error caused by instantaneous noise. Additionally, the surveyors noted the type of sound present at the time: traffic, con­ struction, birdsong, music, br
+---
+tions of the thermal and acoustic environment in public open spaces, including Thermal Sensation Vote (TSV), Thermal Comfort Vote (TCV), thermal preference, thermal acceptability, Acoustic Sensation Vote (ASV), Aco
+---
+acoustic environment in public open spaces, including Thermal Sensation Vote (TSV), Thermal Comfort Vote (TCV), thermal preference, thermal acceptability, Acoustic Sensation Vote (ASV), Acoustic Comf
+---
+tic environment in public open spaces, including Thermal Sensation Vote (TSV), Thermal Comfort Vote (TCV), thermal preference, thermal acceptability, Acoustic Sensation Vote (ASV), Acoustic Comfort Vote (ACV), ac
+---
+lic open spaces, including Thermal Sensation Vote (TSV), Thermal Comfort Vote (TCV), thermal preference, thermal acceptability, Acoustic Sensation Vote (ASV), Acoustic Comfort Vote (ACV), acoustic pre
+---
+e ASHRAE definition, a 7-point Likert scale was used in the ques­ tionnaire for thermal sensation (−3, cold; −2, cool; −1, slightly cool; 0, Fig. 2. (a) Installation of measuring instruments (b)Research methodology.
+---
+5) 112327 4 ===== PAGE 5 ===== neutral; 1, slightly warm; 2, warm; 3, hot), thermal comfort (–3, very discomfort; –2, discomfort; –1, slightly discomfort; 0, neutral; +1, slightly comfort; +2, comfort; +3, ver
+---
+ical factors, a 3-point scale was used (−1, decrease/weaker; 0, un­ changed; 1, increase/stronger). Additionally, respondents’ cooling measures adopted during the summer were surveyed to determine their th
+---
+valid. 2.2.3. Thermal index In this study, the Universal Thermal Climate Index (UTCI) was selected as the thermal index. This index was developed by the Inter­ national Society of Biometeorology (ISB) ba
+---
+a multi-node thermoregulation model and the adaptive clothing model [23]. The UTCI is a comprehensive thermal comfort evaluation index widely used in existing research. It takes into account human meta
+---
+lation model and the adaptive clothing model [23]. The UTCI is a comprehensive thermal comfort evaluation index widely used in existing research. It takes into account human metabolic processes, heat accumulation
+---
+ing it the most thoroughly considered and deeply calculated thermal index. The UTCI can be used for thermal comfort model predictions across different climate zones, environmental characteristics, and
+---
+ghly considered and deeply calculated thermal index. The UTCI can be used for thermal comfort model predictions across different climate zones, environmental characteristics, and populations of different races. T
+---
+the highest air humidity (58.9 %) likely due to a nearby water feature causing increased relative humidity through evaporation. The LS site showed significantly higher average temperatures and black globe
+---
+intained a high level. Among the four points, the OS site recorded the highest noise pressure level and maximum average Table 2 Personal information of respondents in surveys. Location Total LS OS PS SS

@@ -1,0 +1,123 @@
+FILE: 02 Chen2023 - highlighted.pdf
+PAGES: 21
+CHARS: 69637
+
+tal assessment). The results reveal that: (1) a higher temperature signiﬁcantly increases the sensation of heat and lowers thermal comfort, heat acceptance, and overall thermal environment evaluation scores.
+---
+1) a higher temperature signiﬁcantly increases the sensation of heat and lowers thermal comfort, heat acceptance, and overall thermal environment evaluation scores. The type of sound source has a signiﬁcant positive
+---
+r, coordination, and overall sound- scape evaluation. Additionally, temperature increases tend to result in more negative harshness, intensity, and coordination ratings. The interaction between temperature a
+---
+to result in more negative harshness, intensity, and coordination ratings. The interaction between temperature and sound pressure level also signiﬁcantly affects subjective loudness, harshness, and intensity. (
+---
+ity. (3) Overall environmental evaluation is also affected by temperature, with increasing temperatures leading to decreased comfort and satisfaction while increasing irritation. High sound pressure environm
+---
+ith increasing temperatures leading to decreased comfort and satisfaction while increasing irritation. High sound pressure environments result in worse overall irritation ratings, while positive sound source
+---
+enhance overall comfort, irritation, and satisfaction ratings. Furthermore, the interaction between temperature and sound pressure level signiﬁcantly impacts overall irritation and satisfaction ratings. These ﬁn
+---
+,2], industrial and community waste [3], soil pollution [4], population density increase [5], noise discom- fort [6,7], and climate change [8,9]. In this regard, outdoor noise exposure impacts human health,
+---
+l and community waste [3], soil pollution [4], population density increase [5], noise discom- fort [6,7], and climate change [8,9]. In this regard, outdoor noise exposure impacts human health, such as hear
+---
+5], noise discom- fort [6,7], and climate change [8,9]. In this regard, outdoor noise exposure impacts human health, such as hearing loss, sleep disruption, and cardiovascular and mental health disor- ders
+---
+an parks can improve physical and mental health by reducing exposure to air and noise pollution and extreme heat and providing psychological relaxation and stress relief [17]. Despite extensive research on
+---
+ner. He emphasizes the potential of the soundscape to effectively tackle common noise issues in residential areas [28]. Extensive research has been conducted by scholars from both domestic and internationa
+---
+ments in creating a comprehensive and effective multimedia experience. With the increase in urban scenery, auditory experiences have become even more complicated. However, research has found that integrating
+---
+evaluation of road trafﬁc environments, demonstrating its potential to regulate noise and visual landscape perception in speciﬁc contexts [36]. Ba and Kang (2019) demonstrated that the presence of smell ha
+---
+thermal acoustics. Zhou et al. (2021) discovered that exposure to temperature, noise, and vibration can signiﬁcantly affect the overall satisfaction of study participants [38]. Regarding the impact of a t
+---
+fort, Pellerin Nicolas et al. (2003) found that although the combined effect of noise and temperature does not affect physiological data, their research results indicate that noise may alter ther- mal comf
+---
+rature does not affect physiological data, their research results indicate that noise may alter ther- mal comfort under warm conditions [39]. Moreover, various factors, such as temperature and noise, have
+---
+under warm conditions [39]. Moreover, various factors, such as temperature and noise, have been studied by scholars for their impact on human comfort. Wu et al. discovered that temperature has a signiﬁcan
+---
+research has found that ===== PAGE 3 ===== Forests 2023, 14, 1161 3 of 21 the interaction between color temperature and the temperature has a signiﬁcant effect on several evaluation parameters [40]. Li et al.
+---
+evaluation parameters [40]. Li et al. (2012) suggest that both temperature and noise satisfaction hold veto power over overall indoor environmental satisfaction, signiﬁcantly outweighing the importance of
+---
+urban parks are located around urban arterials and are often affected by trafﬁc noise at their boundaries. Additionally, the diverse spatial types within the park and the signiﬁcant differences in thermal
+---
+relative humidity, average wind speed (Va), equivalent continuous sound level (LAeq), as well as dominant sound sources will be collected through monitoring devices to comprehensively understand the park
+---
+to the disconti- nuity of sound in the park area, this study has opted for the LAeq (weighted equivalent continuous sound level) as the primary evaluation indicator. Moreover, given the variety of sound
+---
+mal envi- ronment, this study has selected the Universal Thermal Climate Index (UTCI) to evaluate the thermal physiological effects of the thermal environment. The UTCI represents the equivalent environme
+---
+) to evaluate the thermal physiological effects of the thermal environment. The UTCI represents the equivalent environmental temperature of the reference environment and provides the same physiological re
+---
+parameters while considering the human body’s thermal adaptability [50–53]. The UTCI value is derived from the thermal environmental parameters gathered in the questionnaire survey. Once data on radiation
+---
+rature, relative humidity, wind speed, and global temperature are prepared, the UTCI can be calculated using either the BioKlima2.6 software or the Fortran program available on the ofﬁcial website (http:/
+---
+.6 software or the Fortran program available on the ofﬁcial website (http://www.utci.org, accessed on 1 December 2022). The deviation of UTCI from air temperature is determined by actual air temperature (
+---
+al website (http://www.utci.org, accessed on 1 December 2022). The deviation of UTCI from air temperature is determined by actual air temperature (Ta), mean radiant temperature (Tmrt), wind speed (Va), an
+---
+peed (Va), and relative humidity (Rh). This can be expressed by a formula [54]. UTCI = Ta + Offset (Ta, Tmrt, Va, Rh) = f (Ta, Tmrt, Va, Rh) (1) In the formula, Ta represents the temperature of a 2 m air
+---
+throughout the entire walking route to explore the pattern of acoustic-thermal interaction under different spatial environment conditions. The core of the Sensory Walk is to listen and feel the entire environme
+---
+er vote (ADV) [58], overall acoustic vote (OAV) [59], thermal sen- sation vote (TSV), thermal comfort vote (TCV), thermal acceptance vote (TAV), overall thermal vote (OTV) [60], overall comfort vote (OCV
+---
+e (ADV) [58], overall acoustic vote (OAV) [59], thermal sen- sation vote (TSV), thermal comfort vote (TCV), thermal acceptance vote (TAV), overall thermal vote (OTV) [60], overall comfort vote (OCV), overall annoyan
+---
+acoustic vote (OAV) [59], thermal sen- sation vote (TSV), thermal comfort vote (TCV), thermal acceptance vote (TAV), overall thermal vote (OTV) [60], overall comfort vote (OCV), overall annoyance vote (O
+---
+14, 1161 6 of 21 Table 1. Subjective evaluations of the questionnaire surveys (TSV, TCV, TAV, OTV). Scores Thermal Sensation Thermal Comfort Thermal Acceptance Overall Thermal 1 Cold Uncomfortable unacc
+---
+1161 6 of 21 Table 1. Subjective evaluations of the questionnaire surveys (TSV, TCV, TAV, OTV). Scores Thermal Sensation Thermal Comfort Thermal Acceptance Overall Thermal 1 Cold Uncomfortable unacceptab
+---
+ubjective evaluations of the questionnaire surveys (TSV, TCV, TAV, OTV). Scores Thermal Sensation Thermal Comfort Thermal Acceptance Overall Thermal 1 Cold Uncomfortable unacceptable Bad 2 cool Slightly Uncomfortable
+---
+ons of the questionnaire surveys (TSV, TCV, TAV, OTV). Scores Thermal Sensation Thermal Comfort Thermal Acceptance Overall Thermal 1 Cold Uncomfortable unacceptable Bad 2 cool Slightly Uncomfortable Slightly unaccep
+---
+midity logger was employed to measure air temperature and humidity. The BSWA801 noise and vibration analyzer was utilized to record sound pressure levels in the park environment. All instruments were calib
+---
+temperature −30 ◦C~50 ◦C ±0.5 ◦C And humidity recorder 0%~99% RH ±3% RH BSWA801 noise 19 dB(A)~137 dB(A) <0.7dB (A) vibration analyser ===== PAGE 7 ===== Forests 2023, 14, 1161 7 of 21 2.5. Subjects The
+---
+iment, the participants were not allowed to speak, eat or drink to reduce human noise. Finally, they walked through each designated sensory walking area along a speciﬁed route. The group stopped at each si
+---
+data, including temperature, global temperature, humidity, wind speed, and the LAeq (a weighted equivalent continuous sound level), for a continuous period of 5 min [64]. Figure 2. Experimental process.
+---
+results is often inﬂuenced by multiple factors with varying degrees of impact. ANOVA, a statistical method, infers whether one or more factors have a signiﬁcant impact on the experimental results when the
+---
+ze subjective perception data of the environment. The variance analysis method (ANOVA) was employed to explore the differences in the impact of thermal-acoustic elements on subjective perception, and the M
+---
+rmal-acoustic environment situation. Plot Ta (◦C) Ts (◦C) Humidity (%) Va (m/s) UTCI (◦C) LAeq (dB) Source Type 1 30.30 30.50 57.50 0.00 31.35 53.90 2 (bird song) 2 31.10 31.20 54.40 0.40 32.16 64.60 5 (c
+---
+tic environment situation. Plot Ta (◦C) Ts (◦C) Humidity (%) Va (m/s) UTCI (◦C) LAeq (dB) Source Type 1 30.30 30.50 57.50 0.00 31.35 53.90 2 (bird song) 2 31.10 31.20 54.40 0.40 32.16 64.60 5 (conversatio
+---
+.10 38.26 63.50 1 (water) 12 34.80 36.80 61.00 0.60 38.92 77.80 6 (Construction noise) 3.2. Comprehensive Impact of Thermal Acoustic Environment on Thermal Assessment The impact of the thermal and acoustic
+---
+thermal and acoustic environment on thermal assessment includes the effects on TSV, TCV, TAV, and OTV. Table 6 demonstrates the signiﬁcance of the indi- cators under main effects and interaction effects
+---
+mal and acoustic environment on thermal assessment includes the effects on TSV, TCV, TAV, and OTV. Table 6 demonstrates the signiﬁcance of the indi- cators under main effects and interaction effects (TSV
+---
+V, TAV, and OTV. Table 6 demonstrates the signiﬁcance of the indi- cators under main effects and interaction effects (TSV, TCV, TAV, and OTV). The analysis of variance (ANOVA) indicates that the main effects of
+---
+Table 6 demonstrates the signiﬁcance of the indi- cators under main effects and interaction effects (TSV, TCV, TAV, and OTV). The analysis of variance (ANOVA) indicates that the main effects of UTCI signiﬁcantly
+---
+the signiﬁcance of the indi- cators under main effects and interaction effects (TSV, TCV, TAV, and OTV). The analysis of variance (ANOVA) indicates that the main effects of UTCI signiﬁcantly inﬂuence TSV
+---
+igniﬁcance of the indi- cators under main effects and interaction effects (TSV, TCV, TAV, and OTV). The analysis of variance (ANOVA) indicates that the main effects of UTCI signiﬁcantly inﬂuence TSV (p <
+---
+cts and interaction effects (TSV, TCV, TAV, and OTV). The analysis of variance (ANOVA) indicates that the main effects of UTCI signiﬁcantly inﬂuence TSV (p < 0.01), TCV (p < 0.05), TAV (p < 0.05), and OTV
+---
+s (TSV, TCV, TAV, and OTV). The analysis of variance (ANOVA) indicates that the main effects of UTCI signiﬁcantly inﬂuence TSV (p < 0.01), TCV (p < 0.05), TAV (p < 0.05), and OTV (p < 0.1). On the other hand, th
+---
+, and OTV). The analysis of variance (ANOVA) indicates that the main effects of UTCI signiﬁcantly inﬂuence TSV (p < 0.01), TCV (p < 0.05), TAV (p < 0.05), and OTV (p < 0.1). On the other hand, the interac
+---
+variance (ANOVA) indicates that the main effects of UTCI signiﬁcantly inﬂuence TSV (p < 0.01), TCV (p < 0.05), TAV (p < 0.05), and OTV (p < 0.1). On the other hand, the interaction effect between LAeqUT
+---
+) indicates that the main effects of UTCI signiﬁcantly inﬂuence TSV (p < 0.01), TCV (p < 0.05), TAV (p < 0.05), and OTV (p < 0.1). On the other hand, the interaction effect between LAeqUTCI and LAeq has
+---
+.01), TCV (p < 0.05), TAV (p < 0.05), and OTV (p < 0.1). On the other hand, the interaction effect between LAeqUTCI and LAeq has no signiﬁcant impact on all thermal assessments (p > 0.1), while the main effects
+---
+p < 0.05), and OTV (p < 0.1). On the other hand, the interaction effect between LAeqUTCI and LAeq has no signiﬁcant impact on all thermal assessments (p > 0.1), while the main effects of TP signiﬁcantly i

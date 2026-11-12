@@ -1,0 +1,19 @@
+10 s sound tests (not H4; not questionnaire).
+A phase-level BH q<0.05: 22 of 32
+B high-dBA BH q<0.05: 0 of 4
+C YAMNet-share BH q<0.05: 0 of 12
+D env ~ dBA_z BH q<0.05: 1 of 5 tested (planned 8)
+D2 env ~ vehicle_z BH q<0.05: 1 of 5 tested (planned 8)
+E physio ~ dBA_z BH q<0.05: 0 of 24 tested (planned 26; phase held, other env not held; H5 10 s already holds env and found 0 BH for dBA)
+
+Quoted A phase-level claims vs q_FDR<0.05 (Comparison minus Reference):
+  quieter on BikeG vs BikeU (ucm_SND_dBA): YES BH  beta=-1.504  q=4.345e-15
+  quieter on WalkG vs WalkU (ucm_SND_dBA): YES BH  beta=-0.8545  q=2.854e-09
+  more rural/natural on BikeG vs BikeU: YES BH  beta=0.9464  q=2.419e-06
+  more rural/natural on WalkG vs WalkU: YES BH  beta=0.6356  q=4.424e-04
+  less wind on BikeG vs BikeU: YES BH  beta=-0.6488  q=3.282e-06
+  less urban-negative on BikeG vs BikeU: YES BH  beta=-0.4934  q=2.326e-05
+  WalkG higher centroid than WalkU: YES BH  beta=0.4112  q=4.777e-04
+  WalkG less low-frequency than WalkU: YES BH  beta=-0.3451  q=3.837e-03
+  vehicle share drops BikeG vs BikeU: YES BH  beta=-0.2895  q=5.094e-03
+  vehicle share does NOT drop WalkG vs WalkU (claimed null): YES (q>=0.05)  beta=0.1248  q=2.113e-01

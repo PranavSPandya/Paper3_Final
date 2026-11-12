@@ -1,0 +1,5 @@
+"analysis","term","n_tests","n_p_lt_05","n_q_lt_05","n_retained_Rodrigues_rule"
+"C Rodrigues 2026, Noise block + temp max/min covariates","noise_max_z",26,2,0,2
+"C Rodrigues 2026, Noise block + temp max/min covariates","noise_mean_z",26,3,2,2
+"C Rodrigues 2026, Noise block + temp max/min covariates","noise_min_z",26,1,0,1
+"C Rodrigues 2026, Noise block + temp max/min covariates","noise_sd_z",26,2,0,1

@@ -1,0 +1,1995 @@
+
+
+===== PAGE 1 =====
+Comprehensive effects of thermal and acoustic environments on overall 
+comfort in urban parks of cold regions in China
+Xin Wu , Chaopu Yuan , Haoran Xue , Yang Yan *
+School of Architecture and Art, Hebei University of Architecture, Zhangjiakou 075000 Hebei, China
+A R T I C L E I N F O
+Keywords:
+Outdoor thermal comfort
+Acoustic comfort
+Overall comfort
+Cold regions
+Urban parks
+A B S T R A C T
+Urban parks play a crucial role in enhancing residents’ quality of life; however, research on the combined effects 
+of thermal and acoustic environments on subjective evaluation remains limited. This study explores these in­
+teractions in cold-region urban parks, focusing on People’s Park in Zhangjiakou, China. A combination of field 
+measurements and questionnaire surveys was conducted across three representative spaces characterized by 
+three common sound types: human-generated, artificial, and natural sounds. The results indicate that, in terms of 
+thermal perception, natural sounds significantly reduce heat stress by lowering the thermal sensation vote and 
+improving thermal comfort, whereas artificial sounds exacerbate it. Additionally, high sound pressure levels 
+(LAeq ≥60 dB(A)) exacerbate thermal discomfort, making individuals feel hotter in summer and colder in winter, 
+thereby reducing thermal comfort. Regarding acoustic perception, a thermally comfortable environment en­
+hances the acoustic sensation vote and improves acoustic comfort. For overall comfort, during summer and 
+transitional seasons, the overall comfort vote is negatively correlated with both the Universal Thermal Climate 
+Index (UTCI) and sound pressure levels, while in winter, overall comfort vote is positively correlated with UTCI 
+but negatively correlated with sound pressure levels. The analysis of equivalent overall comfort vote further 
+reveals that in summer and transitional seasons, rising temperatures under extreme heat conditions (UTCI ≥
+35◦C) have a more pronounced negative impact on overall comfort vote than decreasing temperatures in winter. 
+Conversely, in winter, variations in sound pressure levels exert a stronger influence on overall comfort vote 
+compared to those in summer and transitional seasons. This study addresses a research gap in understanding the 
+interaction between thermal and acoustic environments in cold-region urban parks and provides valuable in­
+sights for the future planning and optimization of urban green spaces in such climates.
+1. Introduction
+Throughout human history, outdoor spaces have played an indis­
+pensable role in enhancing quality of life, improving residential comfort, 
+and fostering social interactions [1]. High-quality outdoor environments 
+not only provide opportunities for contact with nature and physical and 
+mental relaxation but also help alleviate psychological stress and 
+physical fatigue, thereby reducing the risk of related health issues [2]. 
+However, the comfort of outdoor environments is influenced by a 
+complex interplay of multiple environmental factors, which often 
+interact in dynamic and sometimes contradictory ways [3]. A change in 
+any single factor can trigger cascading effects that ultimately impact 
+overall environmental comfort [4]. Key environmental components that 
+influence comfort include, but are not limited to, thermal conditions 
+[5,6], acoustic environments [7,8], lighting [9,10], and air quality 
+[11,12]. Among these, thermal and acoustic environments have 
+received particular attention due to their frequent and pervasive dis­
+turbances. Thermal discomfort is widely recognized as a major 
+constraint on individuals’ willingness to engage in outdoor activities 
+[13]. Adverse thermal conditions can impair thermoregulation, induce 
+heat stress, and significantly reduce the desire for outdoor participation, 
+thereby negatively affecting quality of life [14]. In the context of 
+intensifying urban heat island effects [15], improving thermal comfort 
+in outdoor spaces has become increasingly critical. Similarly, an unfa­
+vorable acoustic environment not only causes direct harm to the audi­
+tory system but also triggers stress responses and affects emotional 
+states, leading to long-term negative impacts on physical and mental 
+health [16,17]. Studies have shown that sound satisfaction is a crucial 
+component of overall satisfaction with outdoor spaces [18]. Compared 
+to factors such as lighting and air quality, acoustic discomfort has a more 
+immediate and pronounced negative impact on overall comfort [19]. In 
+* Corresponding author.
+E-mail address: 33878216@qq.com (Y. Yan). 
+Contents lists available at ScienceDirect
+Energy & Buildings
+journal homepage: www.elsevier.com/locate/enb
+https://doi.org/10.1016/j.enbuild.2025.116329
+Received 10 March 2025; Received in revised form 13 August 2025; Accepted 19 August 2025  
+Energy & Buildings 347 (2025) 116329 
+Available online 22 August 2025 
+0378-7788/© 2025 Elsevier B.V. All rights are reserved, including those for text and data mining, AI training, and similar technologies. 
+
+
+===== PAGE 2 =====
+recent years, with rapid urbanization and the rise in traffic and social 
+activity noise, optimizing the acoustic environment has become a crit­
+ical aspect of improving outdoor space quality [20,21]. Therefore, 
+investigating the combined effects of thermal and acoustic environments 
+on outdoor space comfort, as well as their impact on human behavior 
+and health, is of great significance. Such research not only contributes to 
+increased outdoor space utilization but also provides a scientific basis 
+for future urban planning and environmental management.
+Extensive research has been conducted on the individual effects of 
+thermal and acoustic environments in outdoor spaces, leading to the 
+establishment of relevant building thermal environment standards, 
+acoustic technical indices, and design guidelines [22,23]. These studies 
+and standards provide a scientific basis for improving comfort related to 
+specific environmental factors. However, in real-life settings, the envi­
+ronment is a complex system influenced by multiple interacting factors 
+rather than isolated elements acting independently [24–28]. Despite 
+significant progress in understanding thermal and acoustic environ­
+ments separately, research on environmental evaluation under multi- 
+factor interactions remains insufficient.
+In recent years, increasing attention has been given to the study of 
+thermal-acoustic interactions, with various environmental contexts 
+explored to understand their underlying mechanisms, as summarized in 
+Table 1. However, a review of the existing literature reveals significant 
+research gaps in this field. First, most studies have focused on temperate 
+and tropical regions, while research on cold regions remains limited. 
+This gap hinders a comprehensive understanding of the unique char­
+acteristics of thermal-acoustic interactions under extreme climatic 
+conditions. Second, previous studies have predominantly examined 
+urban functional areas such as plazas and campuses, whereas limited 
+attention has been given to urban parks in cold regions, which serve as 
+essential spaces for both ecological conservation and recreational ac­
+tivities. Furthermore, existing research primarily investigates the inde­
+pendent effects of thermal and acoustic environments on comfort, with 
+relatively superficial discussions on the interaction mechanisms be­
+tween these factors. Moreover, existing studies have predominantly 
+focused on the independent effects of either thermal or acoustic envi­
+ronments on comfort, while research on the interactive mechanisms 
+between the two remains relatively limited. Although recent studies 
+have begun to address thermal perceptions under dynamic environ­
+mental conditions [29], comprehensive investigations that incorporate 
+both dynamic variability and seasonal differences across broader pop­
+ulations and diverse outdoor settings are still limited. Urban parks in 
+cold regions of China exhibit unique environmental complexities due to 
+distinct seasonal variations and frequent extreme winter weather events. 
+The impact of thermal-acoustic environments on human behavior and 
+psychological comfort under low-temperature and snow-covered con­
+ditions remains an underexplored yet critical research area. Addition­
+ally, current studies tend to focus on single sensory dimensions, such as 
+thermal or acoustic comfort, while overlooking the multisensory in­
+teractions among thermal, acoustic, and visual environments. This 
+limitation restricts the ability to identify key factors influencing overall 
+human comfort in outdoor spaces.
+Against the backdrop of China’s “dual carbon” goals and the push for 
+green urban development, urban parks in cold regions play a crucial role 
+as public spaces, offering opportunities for relaxation, recreation, and 
+physical activity [30]. These parks significantly contribute to improving 
+public health and overall well-being. A deeper investigation into the 
+thermal-acoustic interactions in urban parks in cold regions can not only 
+bridge existing research gaps but also provide scientific insights for 
+enhancing environmental comfort, increasing the attractiveness of out­
+door spaces during winter, and supporting the sustainable development 
+of cold-region cities [31]. Therefore, studying the interaction mecha­
+nisms of thermal-acoustic environments in urban parks in cold regions is 
+of great theoretical significance and urgent practical value.
+This study focuses on an urban park in Zhangjiakou, a representative 
+cold-region city in China, selecting three typical open spaces with 
+distinct soundscape characteristics to comprehensively investigate the 
+combined effects of thermal and acoustic environments on human 
+perception and comfort under different seasonal conditions. By inte­
+grating field measurements with questionnaire surveys, this research 
+aims to reveal the mechanisms through which thermal-acoustic envi­
+ronments influence multisensory experiences in urban parks in cold 
+regions. The specific objectives of this study are as follows: (1) To 
+analyze the effects of various thermal and acoustic conditions in open 
+spaces within urban parks in cold regions on thermal and acoustic 
+comfort. This will help identify patterns of thermal and acoustic 
+perception across different environmental conditions, providing funda­
+mental data to support improvements in outdoor comfort in cold re­
+gions. (2) To investigate the interaction between thermal and acoustic 
+perception in open spaces of urban parks in cold regions. This includes 
+analyzing the dynamic relationships between thermal and acoustic 
+comfort, as well as their mutual regulatory effects. By clarifying the 
+synergistic or inhibitory mechanisms in complex environmental set­
+tings, this study aims to establish a theoretical foundation for 
+multisensory-integrated environmental design. (3) To quantify the in­
+fluence of thermal perception, acoustic perception, and their in­
+teractions on subjective human experiences from an overall comfort 
+perspective. This will enable the exploration of the integrative effects of 
+multidimensional environmental perception in cold-region urban parks 
+and inform specific strategies for optimizing thermal-acoustic 
+environments.
+The ultimate goal of this study is to develop a scientifically grounded 
+thermal-acoustic interaction model based on the unique climatic and 
+soundscape characteristics of cold regions. This model will provide 
+theoretical support and technical guidance for creating comfortable 
+environments under combined thermal-acoustic effects in open spaces of 
+urban parks in cold regions. By addressing existing research gaps, this 
+study will also offer valuable insights for the planning and optimization 
+of green spaces in cold-region cities.
+2. Methods
+2.1. Study area
+Zhangjiakou experiences a temperate continental monsoon climate 
+characterized by four distinct seasons: long and cold winters, dry and 
+windy springs with frequent sandstorms, short and hot summers with 
+concentrated precipitation, and clear, mild autumns. Over the past 
+decade (2013–2022), the average annual temperature in Zhangjiakou 
+was 9.2 ℃, with an average temperature of −7.8 ℃ in January and 24.2 
+℃ in July. The city has an annual average precipitation of 357 mm and 
+Nomenclature
+UTCI
+Universal Thermal Climate Index
+LAeq
+Equivalent continuous sound level (dB(A))
+SPL
+Sound pressure level
+Ta
+Air Temperature (℃)
+RH
+Relative Humidity (%)
+Tg
+Globe Temperature (℃)
+Va
+Wind Speed (m/s)
+TSV
+Thermal Sensation Vote
+TCV
+Thermal Comfort Vote
+ASV
+Acoustic Sensation Vote
+ACV
+Acoustic Comfort Vote
+OCV
+Overall Comfort Vote
+P1
+Fitness Activity Area
+P2
+Ecological Recreation Area
+P3
+Central Waterscape Area
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+2 
+
+
+===== PAGE 3 =====
+an average wind speed of 2.8 m/s [44].
+This study was conducted in People’s Park, Zhangjiakou 
+(114◦53′24″E, 40◦49′33″N), where meteorological measurements and 
+questionnaire surveys were carried out. Covering an area of 104,300 m2, 
+the park features diverse landscape elements, convenient accessibility, 
+and is primarily frequented by local residents, making it an ideal site for 
+investigating the interaction between thermal and acoustic comfort in 
+urban parks of cold regions.
+Urban sounds can be broadly categorized into three types based on 
+their sources: natural sounds, human-generated sounds, and artificial 
+sounds [45]. Considering the diversity of landscape features and 
+thermal-acoustic environments, three representative spaces within the 
+park were selected: the fitness activity area (P1), the ecological recrea­
+tion area (P2), and the central waterscape area (P3). These areas exhibit 
+distinct environmental characteristics. The ecological recreation area 
+(P2) is predominantly shaded by trees, with natural sounds such as 
+birdsong and insect chirping being the dominant auditory elements. The 
+central waterscape area (P3) contains extensive water bodies with some 
+vegetation and is located near urban roads, where artificial sounds such 
+as traffic noise and construction machinery are prominent. In contrast, 
+the fitness activity area (P1) has minimal tree cover, and the primary 
+environmental sounds include human-generated noises such as con­
+versation and exercise-related activities. Details of these selected spaces 
+are presented in Fig. 1. These three areas reflect the typical spatial and 
+acoustic heterogeneity of urban parks, providing a suitable basis for 
+examining the interplay between thermal and acoustic environments 
+and their impact on public perception and comfort.
+2.2. Experimental design
+2.2.1. Meteorological measurements
+Field measurements were conducted in People’s Park, Zhangjiakou, 
+across three representative functional zones (P1, P2, P3) during three 
+different periods: July (9th–10th), September (5th and 10th), and 
+Table 1 
+Review on Studies Related to Outdoor Thermal-Acoustic Interactive Environments.
+Authors
+Year
+Research Region
+Acoustic Environment
+Thermal Environment
+Main Findings
+Y. Jin, et al. [32]
+2020
+Simulated urban 
+public space
+Birdsong, dog bark, conversation, 
+traffic, slow/fast music; 
+SPL: 41.8–63.4 dB(A)
+Winter (0◦C), transitional seasons 
+(20◦C), summer (30◦C)
+Birdsong and slow music improved comfort 
+in summer; loud or unpleasant sounds 
+reduced comfort; low levels helped across 
+seasons.
+Y. Geng, et al. [33]
+2022
+Campus open 
+spaces
+Music, birdsong, water, wind/insects, 
+crowd, machines (60–70 dB(A))
+UTCI: Strong (>41.9◦C), 
+Moderate (22.2–41.9◦C), None 
+(12.3–22.2◦C); seasonal: Summer 
+27.1◦C, Winter 0.5◦C
+Music and natural sounds improved thermal 
+comfort in cooler conditions; machine and 
+crowd noise worsened perception in heat; 
+lighting and visual comfort also influenced 
+thermal responses.
+Y. Chen, et al. [34]
+2023
+Urban park 
+Six sound types: water, birds, leaves, 
+music, voices, construction; SPL: 
+52.9–77.8 dB(A)
+UTCI: 31.35–38.92◦C
+High temperature and noise lowered comfort; 
+natural sounds improved acoustic and 
+thermal acceptance; sound-heat interaction 
+intensified discomfort.
+H. Chen, et al. [35] 
+2022
+Campus open 
+spaces in cold 
+regions 
+Five sound types: music, water & 
+birdsong, wind & insects, crowd, 
+machinery; SPL: 60–70 dB(A)
+Autumn: 10.4–20.1◦C; Winter: 
+−0.2–11.2◦C
+Pleasant sounds improved both thermal and 
+acoustic comfort; neutral PET varied with 
+sound type; thermal and acoustic comfort 
+were positively related.
+Y. Yin, et al. [3] 
+2022
+Campus open 
+spaces
+SPL: 40–75 dB(A); sound sources: 
+conversation, fountain, insects, wind, 
+leaves
+Autumn: 13.15–28.29◦C; Winter: 
+10.10–47.28◦C 
+Acoustic comfort matters most in extreme 
+thermal conditions; moderate noise (60–70 
+dB(A)) yields best comfort; thermal factors 
+dominate overall comfort.
+M. Zhen, et al. [36]
+2023
+Outdoor campus 
+spaces
+SPL: 40–65 dB(A)
+PET ranging from 8.2◦C to 27.6◦C 
+(cool to slightly warm conditions)
+Thermal comfort was influenced by PET; 
+acoustic comfort by LAeq. Interaction effects 
+varied by site. Best overall comfort at PET 
+18–23◦C and LAeq ~ 50 dB(A).
+K.K.-L. Lau, C.Y. 
+Choi. [37] 
+2021
+Urban open 
+spaces
+Dominated by traffic noise 
+Summer temperatures typically >
+31◦C, average ~27.8◦C; 
+evaluated using UTCI
+Better acoustic and aesthetic quality 
+improves outdoor thermal comfort and 
+tolerance.
+M. Du, et al. [38] 
+2023 
+Residential 
+outdoor spaces
+Five sound types: birdsong, music, 
+opera, conversations, traffic; SPL: 
+60–80 dB(A)
+PET: 13.80–46.16◦C (neutral: 
+13.80–29.98◦C)
+High PET and traffic noise caused discomfort; 
+thermal comfort dominated in summer, 
+acoustic comfort in spring; comfort model 
+had 84.7 % accuracy.
+N. Mohammadzadeh, 
+et al. [39]
+2023 
+Urban parks
+Measured SPL (LAeq 
+approximately 40–60 dB(A)); 
+soundscape included natural 
+(vegetation), human, and traffic 
+sounds
+PET 
+~26.6◦C average 
+Higher thermal discomfort reduces acoustic 
+comfort; vegetation helps alleviate this 
+combined discomfort. 
+M. Zhen, et al. [40] 
+2024
+Urban plazas
+SPL: 40.7–77.6 dB(A)
+UTCI: 8.5–45.7◦C
+Natural sounds increased preferred 
+temperature; traffic noise decreased it. Quiet 
+environments made people more sensitive to 
+heat, and vice versa.
+W. Li, et al. [41] 
+2024 
+Urban pocket 
+parks
+SPL: 50.7–77.3 dB(A); sounds include 
+birdsong, wind, traffic, voices
+Air temperature: −5 ◦C to 27.8◦C
+Water-feature parks had highest comfort. 
+High noise (>56 dB(A)) reduced thermal 
+influence. Thermal, acoustic, and air quality 
+effects interacted.
+D. Lin, et al. [42] 
+2023 
+Outdoor public 
+spaces
+SPL: 30.0–81.7 dB(A); sources 
+include traffic, voices, natural sounds
+PET: 19.0–36.7◦C; spring neutral 
+PET ≈18.7◦C
+High noise reduced thermal comfort. PET 
+affected sound sensitivity (~30◦C optimal). 
+Pleasant, low-stress settings improved overall 
+comfort.
+Y. Chen, et al. [43] 
+2024 
+Laboratory- 
+simulated 
+environments
+bird calls, flowing water, human 
+voices, light music, traffic noise, lawn 
+mowing; each with 3 vol levels; SPL 
+approximately 40–60 dB(A)
+Simulated temperatures: 20◦C 
+(cool), 25◦C (neutral), 30◦C (hot)
+Temperature and sound interact; moderate 
+natural sounds enhance comfort; high 
+temperature increases annoyance.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+3 
+
+
+===== PAGE 4 =====
+December (24th–25th) of 2023. Measurements were carried out daily 
+from 09:00 to 17:00 to capture the main hours of public outdoor activity, 
+and all surveys were conducted under typical sunny weather conditions 
+to minimize the influence of extreme meteorological events.
+To ensure temporal synchronization and data comparability across 
+different sites, identical sets of meteorological and acoustic monitoring 
+instruments were installed at each measurement point (see Table 2). The 
+equipment was fixed in place throughout the measurement period and 
+used to continuously record key environmental parameters, including 
+air temperature (Ta), relative humidity (RH), wind speed (Va), globe 
+temperature (Tg), and sound pressure level (SPL).
+Thermal environmental parameters were collected at one-minute 
+intervals, while acoustic data were sampled every 10 s and summa­
+rized in 10-minute intervals as a full measurement cycle. To enhance the 
+alignment between subjective evaluations and objective measurements, 
+questionnaire surveys were conducted shortly before or after each 
+hourly acoustic sampling cycle (e.g., 10:30, 11:30, etc.). Respondents 
+were positioned within 2 m of the monitoring equipment to ensure 
+consistency between their perceived thermal-acoustic environment and 
+the measured data. Each questionnaire included precise time and 
+location stamps, allowing for accurate matching of subjective responses 
+with the corresponding microclimatic and acoustic conditions for sub­
+sequent model analysis.
+2.2.2. Questionnaire survey
+This study conducted on-site surveys in three representative func­
+tional zones (P1, P2, and P3) of People’s Park in Zhangjiakou. To ensure 
+the consistency between subjective survey data and objective environ­
+mental measurements, all questionnaires were distributed and collected 
+within the immediate vicinity of each monitoring site, with respondents 
+positioned no more than 2 m from the instruments. Investigators 
+approached passersby near the equipment and invited them to complete 
+the questionnaires through face-to-face interaction. This approach 
+ensured that participants’ subjective evaluations reflected the same 
+microclimatic and acoustic conditions being measured by the moni­
+toring devices, thereby strengthening the reliability and explanatory 
+power of the relationship between environmental variables and human 
+perception.
+As summarized in Table 3, the questionnaire consisted of the 
+following components: (1) demographic and personal information, 
+including gender, age, height, weight, clothing details (upper garment, 
+lower garment, footwear), current activity status (e.g., sitting, standing, 
+walking, exercising), and length of time spent at the survey location; (2) 
+subjective environmental assessments, including thermal sensation vote 
+(TSV, 9-point scale from −4 to +4), acoustic sensation vote (ASV), 
+acoustic comfort vote (ACV), overall comfort vote (OCV), thermal 
+comfort vote (TCV) (on a 7-point scale from −3 to +3 [46]). The surveys 
+were 
+conducted 
+across 
+three 
+typical 
+climatic 
+conditions 
+in 
+2023—summer, transitional season, and winter—resulting in a total of 
+798 valid responses (262 in summer, 335 in the transitional season, and 
+201 in winter). All data collection was carried out on a voluntary basis 
+and did not involve any commercial use. The original questionnaire has 
+been included in Appendix X to enhance the transparency and repro­
+ducibility of the research.
+2.3. Environmental evaluation indicators
+2.3.1. Thermal environment evaluation indicators
+The Universal Thermal Climate Index (UTCI) was adopted in this 
+study as the primary metric for evaluating outdoor thermal conditions 
+[48]. Developed by the International Society of Biometeorology (ISB), 
+the UTCI integrates multiple meteorological variables—including air 
+temperature, relative humidity, wind speed, and mean radiant temper­
+ature—alongside individual physiological characteristics such as age, 
+gender, height, weight, clothing insulation, and metabolic rate, to 
+simulate the human body’s comprehensive thermal stress response to 
+outdoor environments.
+To ensure temporal and spatial alignment between environmental 
+conditions and subjective thermal perception, the date, exact time, and 
+geographic coordinates of each questionnaire response were recorded 
+during the survey. These inputs, along with the respondents’ individual 
+characteristics and real-time meteorological data (including air tem­
+perature, relative humidity, wind speed, and mean radiant tempera­
+ture), were used as inputs for the Rayman model [49] to calculate the 
+UTCI corresponding to each respondent’s microclimatic exposure at the 
+time of survey completion. This method enabled precise matching be­
+tween objective environmental data and subjective thermal responses, 
+thereby improving the accuracy and scientific validity of the model 
+analysis.
+Based on field measurements and model calculations, annual UTCI 
+values ranged from −27.8 ◦C to 42.2 ◦C. Notably, no values within the 
+0 ◦C to 9 ◦C range were recorded, resulting in the representation of seven 
+distinct thermal stress levels throughout the year, as summarized in 
+Table 4. According to Table 5, no UTCI values were observed within the 
+−40 ◦C to −27 ◦C range at sites P1 and P2, while no values between 9 ◦C 
+and 26 ◦C were recorded at site P3. Specifically, the UTCI ranged from 
+Fig. 1. Locations of the study and site configurations.
+Table 2 
+Instrument information.
+Measurement
+Instrument
+Detectable 
+Range
+Resolution
+Temperature
+Yigu FT-SQ5 Handheld 
+Weather Monitor
+−40–85 ℃
+±0.3 ℃
+Relative 
+humidity
+0–100 %RH
+±3%RH
+Air velocity
+0–30 m/s
+±0.3 m/s
+Black-bulb 
+temperature
+Jianda Renke RS-HQ black 
+sphere thermometer
+−40–120 ℃
+±0.1 ℃
+Sound pressure 
+level
+BSWA309 multifunctional 
+sound level meter
+22 dBA–146 
+dBA 
+20 Hz–12.5 k 
+Hz
+±0.6–0.8 
+dBA
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+4 
+
+
+===== PAGE 5 =====
+26.5 ◦C to 42.2 ◦C in summer, 24.5 ◦C to 41.5 ◦C in the transitional 
+season, and −27.8 ◦C to −0.1 ◦C in winter.
+2.3.2. Acoustic environment evaluation indicators
+Given the discontinuous nature of sound sources at the measurement 
+sites, this study utilized the equivalent continuous sound level (LAeq) as 
+the primary acoustic environment evaluation metric. The daytime LAeq 
+levels in the urban park ranged from 44.4 dB(A) to 71.2 dB(A) 
+throughout the year. These values were classified into four categories in 
+10 dB increments: 40 dB(A)–50 dB(A), 50 dB(A)–60 dB(A), 60 dB(A)–70 
+dB(A), and above 70 dB(A).
+2.3.3. Overall environmental evaluation indicators
+Common indicators for overall environmental assessment include 
+satisfaction level, annoyance level, and overall comfort. In this study, 
+overall comfort was selected as the primary evaluation metric. A ques­
+tionnaire survey was conducted among urban park users to assess their 
+perceptions of overall comfort in the park environment.
+2.4. Statistical analysis
+Data preprocessing, including counting, classification, and cleaning, 
+was conducted using Microsoft Excel. Subsequent statistical analyses 
+were carried out using SPSS Statistics 27 (IBM), MATLAB, and Origin. A 
+combination of correlation analysis, analysis of variance (ANOVA), and 
+multiple regression analysis was applied to integrate and interpret both 
+field measurements and questionnaire data.
+Multiple linear regression models were developed to investigate the 
+relationship between OCV and environmental variables across three 
+seasonal contexts: summer, transitional seasons, and winter. The 
+selected independent variables included the UTCI, equivalent contin­
+uous sound level (LAeq), TCV, and ACV. Model performance was assessed 
+using the coefficient of determination (R2), and multicollinearity di­
+agnostics were conducted prior to regression modeling to ensure the 
+validity of assumptions.
+To assess the robustness and generalizability of the models, 10-fold 
+cross-validation was performed. For each seasonal dataset, the data 
+were randomly partitioned into 10 subsets. In each iteration, one subset 
+was used for validation and the remaining nine for training. This process 
+was repeated 10 times, and the mean and standard deviation of R2 across 
+the folds were computed to evaluate model stability.
+3. Results
+3.1. Descriptive analysis
+3.1.1. Participant information
+A total of 798 valid questionnaires were collected during the mea­
+surement periods, covering three representative climatic phases: sum­
+mer (262 responses), the transitional season (335 responses), and winter 
+(201 responses). Table 6 summarizes the demographic characteristics of 
+respondents and their seasonal distribution. Among all participants, 465 
+were male (58.3 %) and 333 were female (41.7 %). The majority of 
+respondents fell into two main age groups: 25–42 years (36.5 %) and 
+over 60 years (32.8 %). Most participants (91.6 %) had lived in 
+Zhangjiakou for more than one year, indicating a high degree of famil­
+iarity with the local outdoor environment.
+In terms of spatial distribution, the number of questionnaires was 
+relatively balanced across the three monitoring sites: 276 at site P1, 263 
+at site P2, and 259 at site P3. Each location was surveyed during all three 
+seasonal periods to ensure a representative dataset that reflects varying 
+thermal and acoustic environments across both time and space. Efforts 
+were made to maintain balance in the number of questionnaires across 
+different seasons and sites, while also achieving a sufficient total sample 
+Table 3 
+Subjective evaluations of the questionnaire survey.
+−4
+−3
+−2
+−1
+0
++1
++2
++3
++4
+TSV
+Very cold
+Cold
+Cool
+Slightly cool
+Neutral
+Slightly warm
+Warm
+Hot
+Very warm
+​
+−3
+−2
+−1
+0
++1
++2
++3
+ASV
+Very noisy
+Noisy
+Slightly noisy
+Neutral
+Slightly quiet
+quiet
+Very quiet
+TCV
+Very uncomfortable
+uncomfortable
+Slightly uncomfortable
+Neutral
+Slightly comfortable
+Comfortable
+Very comfortable
+ACV
+Very uncomfortable
+uncomfortable
+Slightly uncomfortable
+Neutral
+Slightly comfortable
+Comfortable
+Very comfortable
+OCV
+Very uncomfortable
+uncomfortable
+Slightly uncomfortable
+Neutral
+Slightly comfortable
+Comfortable
+Very comfortable
+Table 4 
+UTCI ranges corresponding to different levels of heat stress [47].
+Stress category
+UCTI/℃
+Stress category
+UCTI/℃
+Very strong heat stress
+38–46
+Slightly cold stress
+0–9
+Strong heat stress
+32–38
+Moderate cold stress
+−13–0
+Moderate heat stress
+26–32
+Strong cold stress
+−27–13
+No thermal stress
+9–26
+Very strong cold stress
+−40–27
+Table 5 
+UTCI classification.
+Stress category
+Summer
+Transitional season
+Winter
+Range/℃
+Average/℃
+Range/℃
+Average/℃
+Range/℃
+Average/℃
+Very strong heat stress
+38.4–42.2
+39.3
+39.3–41.5
+40
+​
+​
+Strong heat stress
+32.1–37.7
+34.2
+33.1–37.8
+35.9
+​
+​
+Moderate heat stress
+26.5–32.0
+30.6
+26.5–31.9
+29.4
+​
+​
+No thermal stress
+​
+​
+24.5–25.5
+25.1
+​
+​
+Moderate cold stress
+​
+​
+​
+​
+−0.1–12.9
+−8.4
+Strong cold stress
+​
+​
+​
+​
+−14.2–26.2
+−20.3
+Very strong cold stress
+​
+​
+​
+​
+−27.8
+−27.8
+Table 6 
+Basic information for the respondents.
+Information
+Classification
+Frequency
+Percentage
+Gender
+Male
+465
+58.3 %
+​
+Female
+333
+41.7 %
+Age
+≤25 years
+82
+10.3 %
+​
+25–42 years
+291
+36.5 %
+​
+43–60 years
+163
+20.4 %
+​
+≥60 years
+262
+32.8 %
+Native of Zhangjiakou
+Tourist
+17
+2.1 %
+​
+Less than 1 year
+50
+6.3 %
+​
+More than 1 year
+731
+91.6 %
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+5 
+
+
+===== PAGE 6 =====
+size. This strategy was intended to support reliable statistical analyses 
+and spatial comparisons of subjective perception indices such as TSV, 
+TCV, ASV, and ACV.
+3.1.2. Thermal sensation vote (TSV) and thermal comfort vote (TCV)
+As illustrated in Fig. 2(a), the distribution of TSV across the mea­
+surement points exhibits similar seasonal trends. During the transitional 
+seasons, Point P2 recorded the highest proportion of neutral thermal 
+sensation (TSV = 0) at 66.97 %, significantly exceeding that of P1 
+(48.21 %) and P3 (55.26 %), indicating that P2 provided a more ther­
+mally neutral environment during these periods. In summer, P2 also 
+showed the lowest proportion of high-temperature sensations, with only 
+6.67 % of TSV = 2 and 15.56 % of TSV = 3, and no occurrences of TSV =
+4. In contrast, the proportion of TSV = 3 at P1 and P3 reached 24.21 % 
+and 22.08 %, respectively, suggesting that P2 offered relatively better 
+thermal comfort under hot conditions. In winter, cold sensations were 
+most pronounced at P1, where TSV = −3 and TSV = −4 accounted for 
+27.54 % and 4.35 %, respectively—higher than those observed at P3 and 
+P2—indicating that P1 was more prone to inducing cold discomfort in 
+colder seasons.
+Fig. 2(b) presents the seasonal distribution of TCV. During the 
+transitional seasons, Point P3 demonstrated the highest thermal comfort 
+ratings, with 21.05 % of respondents selecting “comfortable” (TCV = 2) 
+and 3.51 % selecting “very comfortable” (TCV = 3), significantly out­
+performing P1 (3.57 %) and P2 (8.26 %). This suggests that P3 provided 
+a more satisfactory thermal environment during these periods. In sum­
+mer, P2 had the lowest proportion of discomfort votes, with only 2.22 % 
+for TCV = −2 and no occurrences of TCV = −3. In contrast, both P1 and 
+P3 showed higher proportions in these categories, indicating that P2 was 
+more conducive to maintaining thermal comfort under hot conditions. 
+In winter, a different trend emerged: P3 recorded the highest proportion 
+of “very uncomfortable” votes (TCV = −3) at 14.71 %, compared to 
+5.80 % for P1 and 3.13 % for P2, reflecting reduced thermal comfort at 
+P3 under cold conditions.
+3.1.3. Acoustic sensation vote (ASV) and acoustic comfort vote (ACV)
+As shown in Fig. 3(a), during the transitional seasons, Point P1 had 
+the highest proportion of “noisy” perceptions (ASV = –2) at 27.68 %, 
+whereas P2 recorded the greatest proportion of “neutral” acoustic sen­
+sations (ASV = 0) at 52.39 %. This indicates that the acoustic environ­
+ment at P1 was relatively poor during these periods, while P2 offered a 
+quieter setting. In summer, the proportion of neutral acoustic sensation 
+at P2 increased to 62.22 %, significantly higher than that at P1 (30.53 
+%) and P3 (46.75 %). P1 and P3 exhibited similar levels of negative 
+acoustic perception, with comparable proportions for “noisy” (ASV =
+–2) and “very noisy” (ASV = –3), while P2 showed no reports of either. 
+These findings suggest that P2 provided a more pleasant acoustic envi­
+ronment in hot weather. In winter, however, the trend reversed: P3 had 
+the highest proportions of “quiet” (ASV = 2) and “very quiet” (ASV = 3), 
+at 7.35 % and 2.94 %, respectively, indicating that P3 offered the qui­
+etest acoustic environment during colder conditions.
+Fig. 3(b) further illustrates the distribution of ACV. During the 
+transitional seasons, Point P1 exhibited the highest proportion of par­
+ticipants reporting acoustic discomfort (ACV = –2) at 16.07 %, indi­
+cating a pronounced level of dissatisfaction with the acoustic 
+environment. In comparison, the corresponding values for P2 and P3 
+were notably lower, at 9.17 % and 9.65 %, respectively. In summer, P2 
+recorded the highest percentage of neutral acoustic comfort (ACV = 0) 
+at 63.33 %, surpassing P3 (40.26 %) and P1 (32.63 %), reinforcing the 
+observation that P2 provided a more favorable acoustic environment 
+Fig. 2. Distribution of the TSV (a) and TCV (b) among different sites.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+6 
+
+
+===== PAGE 7 =====
+during hot weather. In winter, P3 achieved the highest ratings for 
+acoustic comfort, with 22.06 % of respondents selecting “comfortable” 
+(ACV = 2) and 1.47 % selecting “very comfortable” (ACV = 3), sub­
+stantially exceeding the values observed at P1 and P2. These results 
+suggest that P3 offered the best acoustic comfort under cold seasonal 
+conditions.
+3.1.4. Overall comfort votes (OCV)
+As shown in Fig. 4, during the transitional seasons, the three mea­
+surement points exhibited relatively similar proportions of discomfort 
+perception (OCV = –1 and –2), ranging between 22 % and 28 %. Point 
+P2 recorded the highest proportion of “neutral” responses (62.39 %), 
+while P3 had the greatest combined share of “slightly comfortable” and 
+“comfortable” votes (OCV = 1 and 2), totaling 30.70 %. These findings 
+suggest that P3 offered the most favorable overall environmental con­
+ditions during transitional periods.
+In summer, P2 again stood out with the highest proportion of 
+“neutral” evaluations (74.44 %), significantly exceeding those of P1 
+(30.53 %) and P3 (48.05 %), indicating a more balanced integration of 
+thermal and acoustic environments at this location. However, P1 had the 
+highest proportion of positive comfort responses (36.84 % for OCV = 1 
+and 2), suggesting that its environment was perceived as more ideal 
+during hot conditions. In contrast, P3 received the highest level of 
+discomfort evaluations (OCV = –1 and –2), accounting for 38.96 %.
+Fig. 3. Distribution of the ASV (a) and ACV (b) among different sites.
+Fig. 4. Distribution of the OCV among different sites.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+7 
+
+
+===== PAGE 8 =====
+In winter, P1 registered the highest combined proportion of “un­
+comfortable” responses (56.53 %), indicating that it provided the least 
+favorable environmental conditions during cold weather. Conversely, 
+P3 had the highest share of “slightly comfortable” and “comfortable” 
+evaluations, totaling 32.35 %, suggesting superior overall comfort at this 
+location in winter. The proportion of “neutral” responses was relatively 
+similar across all three points, ranging from 32 % to 42 %, reflecting a 
+more dispersed pattern of environmental perception in the colder 
+season.
+3.2. Interaction between UTCI and sound types
+3.2.1. Effects of thermo-acoustic interaction on thermal perception
+As shown in Fig. 5(a), TSV generally increased with rising UTCI 
+across all sound types. At each UTCI level, sound type had a significant 
+effect on TSV. Under both cold and heat stress conditions, artificial 
+sounds significantly elevated individuals’ thermal sensation. Specif­
+ically, in cold stress conditions, artificial sounds resulted in TSV values 
+that were 0.71–0.975 higher than those associated with other sound 
+types; under heat stress, this difference ranged from 0.21 to 0.52. These 
+findings indicate that artificial sounds can intensify thermal perception 
+in hot environments while mitigating cold perception in low- 
+temperature settings, with the cold perception mitigation effect being 
+more pronounced than the enhancement of heat perception. Under 
+moderate heat stress, the TSV associated with artificial sounds was 0.36 
+higher than that of natural sounds, and under strong heat stress, the 
+difference increased to 0.57. This suggests that natural sounds may help 
+alleviate thermal discomfort in hot environments, with their moderating 
+effect becoming more evident as temperature rises.
+As illustrated in Fig. 5(b), under moderate and strong heat stress, the 
+TCV associated with artificial sounds was approximately 0.4 lower than 
+that of natural sounds, indicating that artificial sounds significantly 
+reduce subjective thermal comfort in hot conditions. In contrast, natural 
+sounds significantly improved TCV under moderate, strong, and very 
+strong heat stress, with corresponding TCV values of 0.39, −0.09, and 
+0.43, respectively. These results highlight the potential of natural 
+sounds to enhance thermal comfort in hot environments. In cold con­
+ditions, human-generated sounds had a negative impact on TCV, with 
+values of −1.64 and −0.64 under moderate and strong cold stress, 
+respectively, indicating that such sounds may reduce thermal comfort in 
+cold environments.
+As shown in Table 7(a), the correlations between thermal variables 
+Fig. 5. Relationship between mean TSV and UTCI (a), TCV and UTCI (b) among sound types.
+Table 7a 
+Correlation Analysis between TSV and ACV, and between TCV and ACV across 
+Seasons.
+Season
+Summer
+Transitional season
+Winter
+TSV
+TCV
+TSV
+TCV
+TSV
+TCV
+ACV
+0.094
+−0.093
+0.257**
+¡0.215**
+0.109
+0.050
+Note: **p < 0.01, *p < 0.05 represents statistically significant difference.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+8 
+
+
+===== PAGE 9 =====
+(TSV, TCV) and ACV were weak and statistically insignificant in both 
+summer and winter, with coefficients close to zero. Although these near- 
+zero results indicate the absence of a measurable relationship under 
+extreme hot or cold conditions, they are still valuable in defining the 
+boundary conditions of thermal–acoustic interactions—suggesting that 
+when thermal stress dominates perception, the acoustic environment 
+plays only a secondary role. In contrast, in the transitional season, TCV 
+was significantly and negatively correlated with ACV, while TSV showed 
+a significant positive correlation, indicating that under milder thermal 
+conditions, a favorable acoustic environment is more closely linked to 
+improved thermal perception. The following section examines how TSV 
+and TCV respond to changes in ACV under different UTCI-based thermal 
+stress levels, providing a cross-season perspective beyond the seasonal 
+grouping shown in Table 7(a).
+As shown in Fig. 6(a), when ACV remains constant, TSV increases 
+significantly with rising UTCI, indicating a strong effect of environ­
+mental heat stress on thermal sensation. For instance, when ACV = 0, 
+TSV increases progressively from −2.9 under very strong cold stress to 
+1.02 under strong heat stress, showing a clear linear upward trend. 
+Under the same UTCI level, the influence of ACV on TSV varies 
+depending on the degree of thermal stress. Under moderate heat stress, 
+TSV reaches its minimum value (0.05) at ACV = 3, which is 0.69 lower 
+than the maximum TSV (0.72) observed at the same thermal level. This 
+suggests that a comfortable acoustic environment can help mitigate 
+thermal discomfort. However, under strong heat stress, the response of 
+TSV to ACV becomes less pronounced, with a narrower variation range 
+(1.02 to 1.44), indicating that in extreme heat, the regulatory effect of 
+sound on thermal perception diminishes.
+As shown in Fig. 6(b), TCV reaches its highest value under no thermal 
+stress and decreases as the environment becomes either colder or hotter. 
+Across all levels of thermal stress, significant differences in TCV are 
+observed under different ACV levels, indicating that the acoustic envi­
+ronment plays a crucial role in thermal comfort perception. When ACV 
+= 2, the corresponding TCV values under strong cold stress, moderate 
+cold stress, no thermal stress, moderate heat stress, and strong heat 
+stress are 0.18, 1.57, 2.00, 1.89, and 0.75, respectively. These values are 
+higher than the lowest TCV observed under each respective thermal 
+condition by 2.18, 3.21, 1.95, 2.08, and 1.42, respectively. This dem­
+onstrates that a favorable perception of the acoustic environment can 
+enhance thermal comfort, regardless of whether the thermal environ­
+ment is cold or hot. Moreover, the range of TCV variation under cold 
+conditions (e.g., moderate and strong cold stress) is considerably larger 
+than that under hot conditions (e.g., moderate and strong heat stress), 
+suggesting that individuals are more sensitive to acoustic environments 
+in colder settings.
+3.2.2. Effects of thermo-acoustic interaction on acoustic perception
+As shown in Fig. 7(a), sound type has a significant effect on ASV. 
+Fig. 6. Relationship between mean TSV and UTCI (a), TCV and UTCI (b) among ACV levels.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+9 
+
+
+===== PAGE 10 =====
+Overall, across all UTCI levels, natural sounds produced the highest 
+mean ASV (0.01), significantly outperforming both human-generated 
+sounds (−0.46) and artificial sounds (−0.48). Under moderate and 
+strong cold stress, the ASV for natural sounds reached 0.42 and 0.23, 
+respectively—substantially higher than those for the other sound types. 
+This suggests that in cold environments, individuals exhibit greater 
+acceptance of natural sounds, while showing stronger aversion to arti­
+ficial and human-generated sounds. As thermal stress increased, the ASV 
+differences among the three sound types gradually diminished, indi­
+cating a reduced influence of sound type on subjective noise acceptance 
+in hotter conditions. From a broader perspective, ASV for all sound types 
+exhibited a decreasing trend from very strong cold stress to very strong 
+heat stress. Simultaneously, the inter-type differences in ASV narrowed, 
+indicating that as ambient temperature rises, individuals’ tolerance for 
+sound generally declines, and ASV becomes more susceptible to thermal 
+environmental influences.
+As shown in Fig. 7(b), ACV was primarily influenced by sound type. 
+The average ACV values from highest to lowest were: natural sounds 
+(0.40), artificial sounds (−0.29), and human-generated sounds (−0.30). 
+Natural sounds resulted in the highest ACV under no thermal stress and 
+moderate heat stress, both exceeding 1.08. However, under extreme 
+thermal stress—such as strong cold stress and strong heat stress—ACV 
+values for natural sounds dropped notably to 0.27 and −0.27, respec­
+tively. This indicates that natural sounds are more likely to be perceived 
+as comfortable in thermally favorable environments, but their positive 
+effects diminish when the thermal environment deviates significantly 
+from neutrality. Although sound type was the dominant factor affecting 
+ACV, thermal stress also introduced noticeable fluctuations, suggesting 
+that the thermal environment plays a regulatory role in subjective 
+perception of the acoustic environment.
+As shown in Table 7(b), the correlations between TCV and either ASV 
+or ACV were weak and statistically insignificant in both summer and 
+winter, with coefficients close to zero. Although these near-zero results 
+indicate the absence of measurable associations under extreme thermal 
+conditions, they remain informative for defining the limits of thermal­
+–acoustic interactions, suggesting that when heat or cold stress strongly 
+dominates human perception, the influence of acoustic factors on ther­
+mal comfort is minimal. In the transitional season, however, TCV 
+showed a significant negative correlation with both ASV and ACV, 
+implying that in milder thermal environments, better acoustic evalua­
+tions are linked to higher thermal comfort. The following section ex­
+plores how ASV and ACV vary with TCV under different sound types, 
+offering further insight into the interaction between thermal and 
+acoustic perceptions.
+As shown in Fig. 8(a), in environments with human-generated 
+sounds and artificial sounds, ASV generally increased with rising TCV, 
+indicating a trend in which higher thermal comfort is associated with 
+greater subjective acceptance of the acoustic environment. For example, 
+under artificial sound conditions, ASV decreased from 0.5 to −0.73 as 
+TCV dropped from 3 to −3, suggesting that participants evaluated the 
+surrounding soundscape more positively when they felt thermally 
+comfortable. In contrast, under natural sound conditions, a clear 
+threshold pattern was observed in the relationship between ASV and 
+TCV: when TCV > 0, ASV was positive; when TCV ≤0, ASV became 
+negative. This indicates a strong alignment between thermal and 
+acoustic comfort in the presence of natural sounds—when thermal 
+comfort improves, individuals are more likely to perceive the acoustic 
+environment as quiet or pleasant, whereas thermal discomfort tends to 
+coincide with perceptions of noisiness.
+Fig. 8(b) further supports this association. In the presence of natural 
+sounds, ACV increased with TCV, particularly under higher thermal 
+comfort levels. When TCV equaled 1, 2, and 3, ACV reached 0.85, 1.31, 
+and 1.90, respectively—substantially higher than those observed under 
+other thermal sensation conditions. In contrast, when TCV ≤0, ACV 
+values for all sound types remained below 0 and exhibited limited 
+variability. This pattern indicates that under thermally uncomfortable 
+conditions, perceived acoustic comfort tends to be uniformly low, 
+highlighting the positive regulatory role of thermal comfort in shaping 
+subjective evaluations of the acoustic environment.
+3.3. Interaction between UTCI and sound pressure level
+3.3.1. Influence of thermal-acoustic interaction on thermal perception
+Analysis of variance (ANOVA) revealed significant main and inter­
+action effects. Specifically, as shown in Table 8(a), both UTCI and LAeq 
+significantly influenced TSV across all three seasons (p < 0.01).
+As illustrated in Fig. 9(a), TSV demonstrates a clear seasonal trend in 
+response to changes in UTCI. In summer, TSV values predominantly 
+range from 0 to 4.0. When UTCI exceeds 39.3 ◦C, thermal sensation 
+shifts toward hot; within the 30.6–39.3 ◦C range, sensations are warm, 
+and approach neutrality near 30.6 ◦C. During the transitional seasons, 
+TSV values span from −1.5 to 3.5, indicating a shift from neutral to 
+slightly warm or hot sensations. In contrast, TSV in winter ranges mainly 
+from −4.0 to 1.0, with cold sensations occurring when UTCI drops below 
+−20.3 ◦C and cool sensations between −8.4 ◦C and −20.3 ◦C. Under the 
+Fig. 7. Relationship between mean ASV and sound types (a), ACV and sound 
+types (b) among UTCI classes.
+Table 7b 
+Correlation Analysis between ASV and TCV, and between ACV and TCV across 
+Seasons.
+Season
+Summer
+Transitional season
+Winter
+ASV
+ACV
+ASV
+ACV
+ASV
+ACV
+TCV
+−0.070
+−0.093
+¡0.133*
+¡0.215**
+0.063
+0.050
+Note: **p < 0.01, *p < 0.05 represents statistically significant difference.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+10 
+
+
+===== PAGE 11 =====
+same acoustic environment (LAeq), TSV consistently increases with UTCI 
+across all seasons, highlighting the dominant role of thermal conditions 
+in determining thermal sensation. The average TSV range (the difference 
+between the maximum and minimum) across seasons is 2.6 in summer, 
+4.8 in the transitional seasons, and 2.6 in winter, indicating that thermal 
+sensitivity is highest during transitional periods. In terms of the acoustic 
+environment, seasonal variations are observed in response to LAeq. In 
+summer, at constant UTCI levels, TSV increases slightly with rising LAeq; 
+for example, when noise levels rise from 40–60 dB(A) to 60–70 dB(A), 
+TSV increases by approximately 0.5 on average. In contrast, under the 
+same sound levels in winter, TSV decreases by about 0.6, suggesting that 
+noise may amplify cold sensations. These findings indicate that sound 
+does not only affect acoustic comfort but can also intensify thermal 
+discomfort caused by extreme heat or cold, with amplification effects 
+more pronounced in summer and winter.
+According to Table 8(a), ANOVA revealed that both UTCI and LAeq 
+had a statistically significant effect on TCV in all three seasons (p <
+0.01).
+As shown in Fig. 9(b), the impact of different thermo-acoustic en­
+vironments on TCV varies significantly across seasons. In summer, TCV 
+mainly ranges from −3.0 to 0.5, with thermal comfort decreasing as 
+UTCI increases. Specifically, when UTCI exceeds 39.3 ◦C, participants 
+report feeling very uncomfortable; at 34.2 ◦C, they feel slightly un­
+comfortable; and at 30.6 ◦C, they experience slightly comfortable con­
+ditions. During the transitional seasons, TCV spans a wider range (from 
+−2.0 to 2.0), indicating varying degrees of comfort. Participants report 
+feeling comfortable within the 25.1–29.4 ◦C range, slightly uncomfort­
+able from 29.4–35.9 ◦C, and very uncomfortable when UTCI exceeds 
+35.9 ◦C. In winter, TCV is concentrated between −3.0 and −1.0; the 
+strongest discomfort occurs when UTCI falls below −20.3 ◦C, and 
+slightly uncomfortable conditions are observed around −8.4 ◦C. The 
+effect of thermal conditions on TCV also exhibits distinct seasonal 
+trends. In both summer and the transitional seasons, TCV declines with 
+increasing UTCI, with average ranges of 2.9 and 4.0, respectively, 
+indicating that high temperatures significantly reduce thermal comfort. 
+In contrast, during winter, TCV slightly increases with rising UTCI, with 
+an average range of 1.7, suggesting that a reduction in cold stress im­
+proves comfort perception. Acoustic conditions further modulate TCV 
+under the same thermal environment. In summer, TCV is lowest when 
+LAeq is within 60–70  dB(A), with an average range of 0.4. During the 
+transitional seasons, the lowest TCV occurs at 40–50  dB(A), with an 
+average range of 0.8. In winter, TCV increases as LAeq decreases, with an 
+average range of 0.4. These findings suggest that both excessively high 
+and low sound levels may undermine thermal comfort perception. 
+Therefore, optimizing the acoustic environment plays a crucial role in 
+enhancing overall thermal comfort.
+3.3.2. Influence of Thermal-Acoustic interaction on acoustic perception
+The ANOVA results (Table 8b) demonstrated that acoustic condi­
+tions, as measured by LAeq, significantly affected ASV in all three seasons 
+(p < 0.01). In contrast, thermal conditions represented by UTCI had a 
+significant impact on ASV only in summer (p < 0.01), with no statisti­
+cally significant effects observed during the transitional season or winter 
+(p > 0.05).
+As shown in Fig. 10(a), the impact of the acoustic environment on 
+ASV is pronounced across all seasons. Overall, ASV significantly de­
+creases with increasing LAeq, indicating that higher noise levels lead to a 
+greater perception of noisiness. The average range of ASV variation is 
+2.3 in summer, 3.0 in the transitional seasons, and 2.9 in winter, 
+underscoring the strong influence of sound levels on subjective acoustic 
+comfort regardless of season. The effect of thermal conditions on ASV is 
+particularly evident in summer. At the same LAeq levels, ASV in summer 
+fluctuates markedly with changes in UTCI. The lowest ASV occurs at a 
+UTCI of 30.6 ◦C, with an average range of 0.7, suggesting heightened 
+auditory sensitivity under mild heat stress. In contrast, during transi­
+tional seasons and winter, the ASV response to UTCI variation is mini­
+mal, with average ranges of only 0.1 and 0.2, respectively. This indicates 
+that individuals’ subjective evaluations of the acoustic environment 
+remain relatively stable under these conditions, with ASV values pri­
+marily distributed between −2.0 and 2.5.
+According to Table 8(b), ANOVA results for ACV revealed that LAeq 
+Fig. 8. Relationship between mean ASV and sound types (a), ACV and sound 
+types (b) among TCV levels.
+Table 8a 
+Results of ANOVA for the Effects of UTCI and LAeq on TSV and TCV in Different Seasons.
+Summer
+Transitional season
+Winter
+UTCI
+LAeq
+UTCI
+LAeq
+UTCI
+LAeq
+TSV
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+TCV
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+Note: *** indicates statistical dependence significant at the 0.001 level; ** at the 0.01 level; and * at the 0.05 level.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+11 
+
+
+===== PAGE 12 =====
+had a significant main effect across all three seasons (p < 0.01), while 
+UTCI significantly influenced ACV in both summer and winter (p <
+0.01).
+As depicted in Fig. 10(b), the influence of the acoustic environment 
+on ACV is also significant in all seasons. In general, ACV decreases as 
+LAeq increases, demonstrating that higher noise levels reduce perceived 
+Fig. 9. The values of TSV(a), TCV(b) under different conditions of the thermal-acoustic environment.
+Table 8b 
+Results of ANOVA for the Effects of UTCI and LAeq on ASV, and ACV in Different Seasons.
+Summer
+Transitional season
+Winter
+UTCI
+LAeq
+UTCI
+LAeq
+UTCI
+LAeq
+ASV
+0.008**
+<0.001***
+0.886
+<0.001***
+0.066
+<0.001***
+ACV
+<0.001***
+<0.001***
+0.993
+<0.001***
+<0.001***
+<0.001***
+Note: *** indicates statistical dependence significant at the 0.001 level; ** at the 0.01 level; and * at the 0.05 level.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+12 
+
+
+===== PAGE 13 =====
+acoustic comfort. The average range of ACV is 2.5 in summer, 3.7 in the 
+transitional seasons, and 3.6 in winter, reflecting notable seasonal 
+variability. However, it is worth noting that when LAeq exceeds 60  dB 
+(A), ACV tends to stabilize, and further increases in noise level do not 
+result in a significant decline in acoustic comfort. The regulatory effect 
+of thermal conditions on ACV is most evident in summer and winter. In 
+summer, under constant sound levels, ACV increases with rising 
+UTCI—from 30.6 ◦C to 39.3 ◦C, the difference reaches 0.7—indicating 
+that mild heat stress amplifies sensitivity to sound and enhances 
+discomfort. A similar trend is observed in winter, where ACV increases 
+by 0.5 as UTCI rises from −27.8 ◦C to −8.4 ◦C, suggesting that intense 
+cold stress may also exacerbate auditory discomfort. In contrast, during 
+transitional seasons, ACV shows minimal variation under different UTCI 
+conditions, implying a relatively stable perception of the acoustic 
+environment under thermally neutral conditions.
+3.4. Influence of thermal-acoustic interaction on overall comfort
+As shown in Table 8(c), ANOVA revealed statistically significant 
+main and interaction effects of UTCI and LAeq on OCV across all three 
+seasons (p < 0.01).
+As shown in Fig. 11, OCV is influenced by both thermal and acoustic 
+environments. Regarding thermal conditions, in summer and transi­
+tional seasons, OCV decreases as UTCI increases, indicating that 
+elevated temperatures reduce overall comfort. In contrast, during 
+winter, OCV increases with rising UTCI (i.e., decreasing cold stress), 
+suggesting improved thermal comfort under milder cold conditions. 
+With respect to the acoustic environment, OCV consistently declines 
+with increasing LAeq at the same UTCI level. The average range of OCV 
+variation across seasons is 1.7 in summer, 1.6 in the transitional seasons, 
+and 1.8 in winter, demonstrating that elevated sound levels have a 
+significant adverse effect on overall comfort. However, once LAeq ex­
+ceeds 60  dB(A), OCV tends to stabilize, indicating a diminishing mar­
+ginal effect of sound intensity on perceived comfort.
+In terms of thermal-acoustic interaction, seasonal differences are 
+evident. In summer and transitional seasons, the difference in OCV 
+across UTCI levels narrows as LAeq increases. For instance, in summer, 
+the average OCV range decreases from 0.8 at 50–60  dB(A) to 0.4 at 
+60–70  dB(A); similarly, in transitional seasons, the average range re­
+duces progressively from 1.0 at 40–50  dB(A) to 0.5 above 70  dB(A). 
+This trend suggests that high noise levels may mask the differential 
+impact of thermal stress on overall comfort during warmer periods. 
+Conversely, in winter, the opposite pattern is observed. As LAeq in­
+creases, the influence of UTCI on OCV becomes more pronounced, with 
+the average range expanding from 0.2 to 1.2. This indicates that under 
+cold conditions, elevated noise levels may exacerbate thermal discom­
+fort, highlighting a stronger amplification effect of noise on thermal 
+perception during winter.
+Fig. 10. The values of ASV (a), ACV (b) under different conditions of the thermal-acoustic environment.
+Table 8c 
+Results of ANOVA for the Effects of UTCI, LAeq, and Their Interaction on OCV in Different Seasons.
+Summer
+Transitional season
+Winter
+UTCI
+LAeq
+UTCI*LAeq
+UTCI
+LAeq
+UTCI*LAeq
+UTCI
+LAeq
+UTCI*LAeq
+OCV
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+<0.001***
+Note: *** Dependence is significant at 0.001 level. ** Dependence is significant at 0.01 level. * Dependence is significant at 0.05 level.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+13 
+
+
+===== PAGE 14 =====
+4. Discussion
+4.1. Combined effects of temperature and sound type
+Our study found that sound type significantly influenced TSV and 
+TCV. Artificial sounds intensified subjective TSV in hot environments 
+while mitigating the perception of cold in cold environments, consistent 
+with previous findings [33]. In hot conditions, natural sounds alleviated 
+subjective TSV and enhanced thermal comfort. Jin et al. [32] observed 
+that bird songs significantly reduced TSV in hot environments, which 
+aligns with our results. Sound type also had a significant impact on TCV. 
+In hot environments, artificial sounds decreased subjective TCV, exac­
+erbating thermal discomfort, whereas natural sounds increased subjec­
+tive TCV, alleviating thermal discomfort. These findings are consistent 
+with those of Jin et al. [32,50], possibly because artificial sounds are 
+often associated with noisy, heat-intensive work environments, ampli­
+fying discomfort, whereas natural sounds evoke images of cooling 
+breezes, thereby reducing thermal distress.
+ACV significantly affected subjective TSV and TCV. In both warm 
+and hot environments, a comfortable soundscape reduced TSV. 
+Regardless of thermal conditions, a comfortable sound environment 
+significantly enhanced TCV. This effect may stem from the psychological 
+benefits of an acoustically pleasant environment, which fosters a more 
+positive mental state and increases tolerance to external conditions. TCV 
+represents a complex perceptual experience that depends not only on 
+physiological factors such as thermoregulation and skin sensation but 
+also on psychological influences. These psychological effects are shaped 
+by multisensory stimuli, individual preferences, and a range of cognitive 
+mechanisms [51]. Psychological factors, in turn, can affect human 
+behavior and interactions with the surrounding environment [52].
+ASV and ACV were primarily influenced by the acoustic environ­
+ment, but certain sound types were also affected by thermal conditions, 
+in line with previous research [53–55]. Under natural sound exposure, 
+ASV decreased as temperature increased, indicating that higher tem­
+peratures made the environment feel noisier. This phenomenon may be 
+attributed to the fact that excessive heat induces irritability, leading to a 
+more negative psychological state toward the surroundings. A similar 
+trend was observed for ACV in natural sound environments, where ACV 
+was highest under neutral or moderate thermal stress, but declined as 
+thermal conditions became either excessively hot or cold. This is 
+consistent with Jin et al.’s findings that both high and low temperatures 
+exacerbate acoustic discomfort [50].
+In the transitional season, TCV significantly influenced subjective 
+ASV and ACV. Across artificial, natural, and mechanical sound envi­
+ronments, higher TCV corresponded to higher ASV, suggesting that in­
+dividuals who felt more thermally comfortable perceived their 
+surroundings as quieter, whereas those experiencing thermal discomfort 
+found their environment noisier. This may be because tolerance to noise 
+decreases as thermal discomfort increases. In natural sound environ­
+ments, ACV increased with TCV, indicating that individuals who felt 
+thermally comfortable also perceived their sound environment as more 
+pleasant. However, when TCV ≤0, ACV remained at a low level, 
+implying that individuals who experienced thermal discomfort also 
+perceived greater acoustic discomfort. Chinazzo [56] posited that 
+human sensory perception is inherently multimodal, meaning that 
+environmental perception is influenced by multiple sensory inputs 
+simultaneously, a conclusion that aligns with the findings of this study. 
+However, the correlations between thermal and acoustic perception 
+were noticeably weaker in summer and winter. Under such extreme 
+thermal conditions, perception tends to be dominated by thermal 
+sensation itself, leaving limited room for the acoustic environment to 
+modulate TSV, TCV, ASV, or ACV.
+4.2. Combined effects of temperature and sound pressure level
+Our study demonstrated that SPL significantly influenced TSV and 
+TCV across all three seasons. In hot environments, TSV increased with 
+rising SPL, whereas in cold environments, TSV decreased as SPL 
+increased. This suggests that loud sounds amplify the perception of heat 
+in summer and cold in autumn and winter. In contrast, Guan [57] found 
+that TSV remained unchanged despite variations in SPL, likely because 
+their experiment was conducted within a near-comfort thermal range. In 
+summer, TCV was lowest when SPL ranged from 60 to 70 dB(A), with an 
+average range of 0.4. In winter, TCV increased as SPL decreased, indi­
+cating that excessive SPL reduces thermal comfort, a finding consistent 
+with Yang et al. [58].
+UTCI significantly influenced ASV in summer and ACV in both 
+summer and winter. Nagano and Horikoshi [59] reported that thermal- 
+acoustic interactions significantly affect auditory perception, aligning 
+with our results. Specifically, in summer, when heat stress levels were 
+Fig. 11. The values of OCV under different conditions of the thermal-acoustic environment.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+14 
+
+
+===== PAGE 15 =====
+relatively mild (26.5◦C–32.0◦C), individuals exhibited increased sensi­
+tivity to sound, amplifying auditory discomfort—an observation 
+consistent with Wu et al. [60]. Regardless of the season, ACV exhibited 
+an increasing trend with UTCI, indicating that colder conditions inten­
+sified auditory discomfort. Jin et al. [50] reported that rising UTCI 
+increased ACV in winter but decreased it in summer, a result that differs 
+from our findings, likely due to variations in the types of sounds used in 
+the experiments.
+The interaction between thermal and acoustic environments signif­
+icantly influenced OCV across all three seasons. Our findings indicate 
+that in summer and transitional seasons, as SPL increased, the differ­
+ences in overall comfort across temperature levels diminished. 
+Conversely, in winter, rising SPL led to greater disparities in overall 
+comfort across different temperature levels. In both summer and tran­
+sitional seasons, OCV remained consistently low at higher SPLs, 
+regardless of temperature variations. In winter, when SPL was low, OCV 
+remained high across all UTCI levels, a pattern consistent with Jin et al. 
+[50].
+4.3. Evaluation of equivalent OCV under different conditions
+Our findings indicate that thermal, acoustic, and combined thermal- 
+acoustic environments significantly influence OCV, consistent with 
+previous studies [42,61]. In the study by Nagano and Horikoshi [62], 
+OCV decreased as ambient temperature increased within the range of 
+27◦C to 39◦C, while within the range of 19◦C to 28◦C, OCV increased 
+accordingly. Furthermore, when either the thermal or acoustic envi­
+ronment reached extreme conditions, OCV remained in an uncomfort­
+able state regardless of variations in other environmental factors. To 
+process the OCV data, we applied Kriging interpolation, a surrogate 
+modeling technique that interpolates limited data points to simulate 
+results across a global domain [63,64].
+Fig. 12 illustrates the equivalent comfort zones for overall comfort 
+throughout the year in a park setting. The contour lines were densest in 
+summer, indicating heightened sensitivity to thermal variations, while 
+the contours were sparsest in winter, suggesting reduced sensitivity in 
+colder environments. The distribution in transitional seasons was 
+moderate compared to summer and winter.
+As shown in Fig. 12, seasonal variations in the thermal-acoustic 
+environment had a significant impact on OCV. In summer, when UTCI 
+ranged from 26◦C to 44◦C and LAeq ranged from 45 dB(A) to 70 dB(A), 
+OCV varied between −3.0 and 3.0. The highest OCV, classified as “very 
+comfortable,” occurred when UTCI was below 28◦C and LAeq was below 
+53 dB(A). When UTCI was below 30◦C, OCV remained at or above 
+“moderate” regardless of SPL variations, whereas when UTCI exceeded 
+42◦C, OCV remained below “moderate” regardless of SPL. Notably, 
+when UTCI exceeded 33◦C and LAeq surpassed the environmental noise 
+threshold of 60 dB(A), discomfort was consistently reported. For UTCI 
+below 38◦C, each 1.0◦C change corresponded to an OCV variation of 0.5, 
+whereas above 38◦C, a 0.7◦C change resulted in the same OCV variation, 
+suggesting that SPL had a comparatively less significant effect. When 
+LAeq ranged between 56 dB(A) and 66 dB(A), OCV fluctuated by 0.5, but 
+for LAeq levels exceeding 68 dB(A) or below 56 dB(A), overall comfort 
+remained unchanged.
+During the transitional season, when UTCI ranged from 24◦C to 40◦C 
+and LAeq ranged from 45 dB(A) to 75 dB(A), OCV varied between −3.0 
+and 3.0. The highest OCV, categorized as “very comfortable,” was 
+observed when UTCI was below 25◦C and LAeq was below 50 dB(A). 
+When UTCI was below 27◦C, OCV remained at or above “moderate” 
+regardless of SPL variations, whereas for UTCI above 38◦C, OCV 
+consistently fell below “moderate” regardless of SPL. If UTCI exceeded 
+30◦C and LAeq surpassed 60 dB(A), discomfort was reported. For UTCI 
+below 35◦C, each 6.0◦C variation resulted in an OCV change of 0.5, 
+while above 35◦C, each 1.0◦C-1.5◦C change corresponded to an OCV 
+Fig. 12. Equivalent OCV under different conditions of the thermal-acoustic environment.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+15 
+
+
+===== PAGE 16 =====
+variation of 0.5. Simultaneously, for every 10 dB(A) change in LAeq, OCV 
+varied by 0.5.
+In winter, when UTCI ranged from −28◦C to −6 ◦C and LAeq ranged 
+from 40 dB(A) to 70 dB(A), OCV varied between −3.0 and 1.0, with 
+lower values compared to other seasons. When UTCI dropped below 
+–22◦C, OCV remained below “moderate” regardless of SPL, and when 
+LAeq exceeded 63 dB(A), OCV was consistently below “moderate” 
+regardless of temperature variations. Additionally, if UTCI was below 
+−9 ◦C and LAeq exceeded 60 dB(A), discomfort was reported. The highest 
+OCV, classified as “slightly comfortable,” was observed when UTCI 
+exceeded −12◦C and LAeq remained below 61 dB(A). In winter, each 
+4.0◦C variation in UTCI corresponded to an OCV change of 0.5, while 
+each 6 dB(A) change in LAeq resulted in an OCV variation of 0.5.
+4.4. OCV model
+To accurately quantify the relationships between different environ­
+mental factors and overall comfort, mathematical models and evalua­
+tion formulas can be utilized. In this study, a comprehensive dataset was 
+obtained through field measurements and questionnaire surveys, 
+enabling the construction of an environmental comfort evaluation 
+model using regression analysis. The model was developed to assess 
+overall comfort by integrating both objective environmental parameters 
+and subjective perceptions reported by participants.
+Evaluation Model Based on Objective Thermal-Acoustic Parameters: 
+Summer : OCV = 23.051 −0.339UTCI −0.199LAeq(R2 = 0.730)
+(1) 
+Transitionalseason : OCV
+= 15.213 −0.230UTCI −0.137LAeq(R2 = 0.722)
+(2) 
+Winter : OCV = 4.750 + 0.136UTCI −0.066 LAeq(R2 = 0.768)
+(3) 
+The regression models reflect the strength and direction of the in­
+fluence of thermal and acoustic environments on OCV under three 
+distinct climatic conditions.
+Effect of the thermal environment (UTCI): In both summer and the 
+transitional season, OCV was negatively correlated with UTCI, indi­
+cating that rising thermal stress significantly decreased participants’ 
+comfort levels. This effect was most pronounced in summer, where an 
+increase of 1 ◦C in UTCI led to a 0.339-unit reduction in OCV. 
+Conversely, in winter, UTCI exhibited a positive correlation with OCV, 
+suggesting that higher temperatures improved comfort perceptions 
+(with a 1 ◦C increase resulting in a 0.136-unit rise in OCV), which aligns 
+with people’s preference for warmer conditions in cold climates.
+Effect of the acoustic environment (LAeq): Across all three seasons, 
+LAeq showed a consistent negative correlation with OCV, demonstrating 
+that increased noise levels reduced perceived overall comfort regardless 
+of climate conditions. The magnitude of this effect varied seasonally, 
+with the strongest impact observed in summer (a 1  dB(A) increase in 
+LAeq resulted in a 0.199-unit decline in OCV) and the weakest in winter 
+(a 0.066-unit decline). Together, these models confirm the co-regulatory 
+effects of thermal and acoustic environments on subjective comfort, 
+with their relative influence varying by season.
+To evaluate the robustness and generalization capability of the 
+regression models across different seasons, we performed 10-fold cross- 
+validation for each of the models developed for summer, autumn, and 
+winter datasets. The R2 values from each fold were recorded to assess 
+predictive performance and stability. The summer model achieved a 
+mean R2 of 0.711 with a standard deviation of 0.044, indicating stable 
+performance. The autumn model yielded a mean R2 of 0.706 and a 
+standard deviation of 0.106, suggesting good overall performance with 
+some variability between folds. The winter model produced R2 values 
+ranging from 0.377 to 0.882, with a mean R2 of 0.744 and a standard 
+deviation of 0.140, closely aligning with the training R2 of 0.770. This 
+indicates that the model generalizes well to new data. In conclusion, the 
+models exhibited stable and consistent performance across seasonal 
+datasets, supporting their effectiveness and strong generalization 
+capabilities.
+Evaluation Model Based on Subjective Perception of the Thermal- 
+Acoustic Environment: 
+Summer : OCV = 0.445 + 0.879TCV + 0.603ACV(R2 = 0.708)
+(4) 
+Transitionalseason : OCV = −0.157 + 0.669TCV + 0.4479ACV(R2
+= 0.728)
+(5) 
+Winter : OCV = 0.646 + 0.781TCV + 0.314ACV(R2 = 0.751)
+(6) 
+In all three seasons, OCV was significantly and positively correlated 
+with both TCV and ACV. This indicates that participants who reported 
+higher levels of thermal or acoustic comfort also tended to rate the 
+overall environmental comfort more favorably, confirming the direct 
+enhancing effects of thermal and acoustic perceptions on overall envi­
+ronmental satisfaction. Among the two, TCV consistently exhibited a 
+stronger influence on OCV across all seasons, highlighting the dominant 
+role of thermal perception in shaping overall comfort evaluations. This 
+dominance was particularly pronounced in summer, where the regres­
+sion coefficient for TCV reached 0.879. In contrast, the effect of ACV was 
+relatively weaker, especially in winter (coefficient = 0.314), suggesting 
+that under cold conditions, the influence of the acoustic environment on 
+perceived comfort diminishes as individuals become more sensitive to 
+thermal conditions.
+To evaluate the robustness and generalization ability of the regres­
+sion models across different seasons, we performed 10-fold cross- 
+validation for each seasonal dataset. The R2 values from each fold 
+were recorded and summarized. The results indicate that all three sea­
+sonal models demonstrate good predictive performance and consistency 
+across folds. The average R2 for the summer model was 0.696 (SD =
+0.082), for the autumn model 0.694 (SD = 0.102), and for the winter 
+model 0.735 (SD = 0.104). Despite some variability, the models 
+remained stable across folds, suggesting strong generalization 
+performance.
+4.5. Limitations
+Although this study systematically examined the impact of thermal- 
+acoustic environments on overall comfort in cold-region urban parks 
+and classified sounds into natural, human-induced, and artificial types, 
+several limitations remain:
+First, spatial representativeness is limited. While 798 valid ques­
+tionnaires were collected across three seasons with balanced gender and 
+age distributions, most data came from Zhangjiakou, with over 90 % of 
+participants being local residents, limiting geographic and cultural 
+diversity.
+Second, comfort perception is highly subjective and context- 
+dependent, influenced by activity type, psychological expectations, 
+and social settings. Although objective indicators such as UTCI and LAeq 
+were introduced and survey periods controlled, external variability 
+could not be fully eliminated.
+Third, environmental variables such as lighting and air quality were 
+not included, and the current sound classification is coarse, limiting the 
+ability to capture the complexity of park soundscapes. Moreover, the 
+distribution of different sound types across specific sound pressure levels 
+(e.g., 40–50 dB, 60–70 dB) was not analyzed. Due to the use of overall 
+LAeq measurements without source recognition systems, quantitative 
+associations between sound types and sound levels could not be 
+established.
+Future research will: (1) expand the sample scope to include diverse 
+urban spaces across different climates and cultural contexts to improve 
+model generalizability; (2) incorporate more refined sound classifica­
+tions and additional environmental parameters (e.g., lighting, air 
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+16 
+
+
+===== PAGE 17 =====
+quality) to enhance modeling accuracy; and (3) apply source recogni­
+tion, longitudinal tracking, behavioral observation, and psychological 
+assessment to dynamically explore comfort perception and better un­
+derstand human–environment interactions.
+5. Conclusions
+In this study, three representative spaces within an urban park in 
+Zhangjiakou, a cold-region city in China, were selected to investigate 
+people’s subjective perception of the thermal-acoustic environment. By 
+integrating on-site meteorological measurements with questionnaire 
+surveys, this study explored the combined effects of the thermal-acoustic 
+interactive environment on subjective evaluations in urban parks 
+located in cold regions of China. The key findings are as follows: 
+1. Thermal Perception: Sound type and sound pressure level had sig­
+nificant effects on TSV and TCV. In hot environments, exposure to 
+natural sounds significantly reduced subjective TSV and improved 
+TCV. High sound pressure levels (LAeq ≥60 dB(A)) increased TSV in 
+summer but decreased it in winter while reducing TCV. Additionally, 
+the more extreme the thermal environment, the greater the impact of 
+sound pressure level on TSV.
+2. Acoustic Perception: The influence of UTCI on ASV was significant 
+only in summer, where ASV increased with UTCI. The effect of UTCI 
+on ACV was significant in both summer and winter, with ACV 
+increasing as UTCI rose. In a natural sound environment, ASV 
+decreased as temperature increased, while both extremely low and 
+high temperatures led to higher acoustic discomfort. A thermally 
+comfortable environment contributed to higher ASV and increased 
+ACV.
+3. Overall Comfort: Both thermal and acoustic environments had sig­
+nificant effects on OCV. In summer and transitional seasons, OCV 
+exhibited a negative correlation with both UTCI and sound pressure 
+level. In winter, OCV was positively correlated with UTCI but 
+negatively correlated with sound pressure level.
+4. Thermal-Acoustic Effects in Cold-Region Urban Parks: The impact of 
+high-temperature environments (UTCI ≥35◦C) on OCV during 
+summer and transitional seasons was greater than that of low tem­
+peratures in winter. Conversely, variations in sound pressure level 
+had a more pronounced effect on OCV in winter than in summer and 
+transitional seasons. Specifically, in summer, when UTCI exceeded 
+42◦C, OCV remained below the “moderate” level regardless of sound 
+level variations. During transitional seasons, when UTCI exceeded 
+38◦C, OCV remained below “moderate” irrespective of park noise 
+levels. In winter, when UTCI fell below –22◦C or LAeq exceeded 63 dB 
+(A), OCV remained below “moderate” regardless of other environ­
+mental conditions.
+CRediT authorship contribution statement
+Xin Wu: Writing – review & editing, Methodology, Conceptualiza­
+tion. Chaopu Yuan: Writing – review & editing, Writing – original draft, 
+Methodology, Data curation. Haoran Xue: Software, Project adminis­
+tration, Investigation. Yang Yan: Writing – review & editing, 
+Methodology.
+Funding
+No specific funding was received for this research.
+Declaration of competing interest
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper.
+Appendix X 
+Questionnaire on Subjective Evaluation of Urban Park Environment
+Survey Point:________Time of Completion:________
+Dear participant,
+This is a questionnaire survey regarding the subjective evaluation of urban park environments. We sincerely appreciate your participation and 
+kindly ask you to answer based on your actual experience. Your responses will greatly contribute to our research on urban park environmental quality. 
+This survey is strictly for academic purposes, with no commercial intent, and all responses will be kept confidential. Thank you for your cooperation!
+Part I: Basic Information 
+• Gender: [A] Male [B] Female
+• Age:________years
+• Height:________cm Weight:________kg
+• Clothing:
+• Upper body:________Lower body:________Footwear:________Other:________
+• Current activity status:
+• [A] Sitting [B] Standing [C] Walking [D] Exercising
+• Duration of residence in Zhangjiakou:
+• [A] Tourist [B] Less than 1 year [C]________years
+Part II: Subjective Environmental Perception and Comfort Evaluation
+1 Please evaluate your current subjective sensations and comfort levels:
+Scale
+¡4
+¡3
+¡2
+¡1
+0
+1
+2
+3
+4
+Thermal Sensation
+Very Cold
+Cold
+Cool
+Slightly Cool
+Neutral
+Slightly Warm
+Warm
+Hot
+Very Hot
+Scale
+¡3
+¡2
+¡1
+0
+1
+2
+3
+Acoustic Sensation
+Very Noisy
+Noisy
+Slightly Noisy
+Neutral
+Slightly Quiet
+Quiet
+Very Quiet
+Thermal Comfort
+Very Uncomfortable
+Uncomfortable
+Slightly Uncomfortable
+Neutral
+Slightly Comfortable
+Comfortable
+Very Comfortable
+Acoustic Comfort
+Very Uncomfortable
+Uncomfortable
+Slightly Uncomfortable
+Neutral
+Slightly Comfortable
+Comfortable
+Very Comfortable
+Overall Comfort
+Very Uncomfortable
+Uncomfortable
+Slightly Uncomfortable
+Neutral
+Slightly Comfortable
+Comfortable
+Very Comfortable
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+17 
+
+
+===== PAGE 18 =====
+Data availability
+Data will be made available on request.
+References
+[1] J. Gehl, Life Between Buildings: Using Public Space, Van Nostrand Reinhold, New 
+York, 1987.
+[2] M. Mears, P. Brindley, A. Jorgensen, E. Ersoy, R. Maheswaran, Greenspace spatial 
+characteristics and human health in an urban environment: an epidemiological 
+study using landscape metrics in Sheffield, UK, Ecol. Indic. 106 (2019) 105464, 
+https://doi.org/10.1016/j.ecolind.2019.105464.
+[3] Y. Yin, D. Zhang, M. Zhen, W. Jing, W. Luo, W. Feng, Combined effects of the 
+thermal-acoustic environment on subjective evaluations in outdoor public spaces, 
+Sustain. Cities Soc. 77 (2022) 103522, https://doi.org/10.3390/f14061161.
+[4] T. Tang, X. Zhou, Y. Zhang, X. Feng, W. Liu, Z. Fang, Z. Zheng, Investigation into 
+the thermal comfort and physiological adaptability of outdoor physical training in 
+college students, Sci. Total Environ. 839 (2022) 155979, https://doi.org/10.1016/ 
+j.scitotenv.2022.155979.
+[5] W. Liu, Y. Zhang, Q. Deng, The effects of urban microclimate on outdoor thermal 
+sensation and neutral temperature in hot-summer and cold-winter climate, Energ. 
+Buildings 128 (2016) 190–197, https://doi.org/10.1016/j.enbuild.2016.06.086.
+[6] D. Lai, D. Guo, Y. Hou, C. Lin, Q. Chen, Studies of outdoor thermal comfort in 
+northern China, Build. Environ. 77 (2014) 110–118, https://doi.org/10.1016/j. 
+buildenv.2014.03.026.
+[7] X. Zhang, M. Ba, J. Kang, Q. Meng, Effect of soundscape dimensions on acoustic 
+comfort in urban open public spaces, Appl. Acoust. 133 (2018) 73–81, https://doi. 
+org/10.1016/j.apacoust.2017.11.024.
+[8] C. Tarlao, J. Steffens, C. Guastavino, Investigating contextual influences on urban 
+soundscape evaluations with structural equation modeling, Build. Environ. 188 
+(2021) 107490, https://doi.org/10.1016/j.buildenv.2020.107490.
+[9] S. Ning, W. Jing, Z. Ge, Sunlight perception and outdoor thermal comfort in college 
+campuses: a new perspective, Sci. Rep. 13 (1) (2023) 16112, https://doi.org/ 
+10.1038/s41598-023-43077-y.
+[10] G. Chinazzo, L. Pastore, J. Wienold, M. Andersen, A field study investigation on the 
+influence of light level on subjective thermal perception in different seasons, 
+Proceedings of the tenth Windsor Conference, 2018, pp. 12–15.
+[11] C. Miao, P. Li, Y. Huang, Y. Sun, W. Chen, S. Yu, Coupling outdoor air quality with 
+thermal comfort in the presence of street trees: a pilot investigation in Shenyang, 
+Northeast China, J. For. Res. 34 (3) (2023) 831–839, https://doi.org/10.1007/ 
+s11676-022-01497-y.
+[12] G. Bian, X. Gao, Q. Zou, Q. Cheng, T. Sun, S. Sha, M. Zhen, Effects of thermal 
+environment and air quality on outdoor thermal comfort in urban parks of Tianjin, 
+China, Environ. Sci. Pollut. Res. 30 (43) (2023) 97363–97376, https://doi.org/ 
+10.1007/s11356-023-29130-3.
+[13] D. Lai, C. Zhou, J. Huang, Y. Jiang, Z. Long, Q. Chen, Outdoor space quality: a field 
+study in an urban residential community in central China, Energ. Build. 68 (2014) 
+713–720, https://doi.org/10.1016/j.enbuild.2013.02.051.
+[14] W. Yang, H.J. Moon, Combined effects of acoustic, thermal, and illumination 
+conditions on the comfort of discrete senses and overall indoor environment, Build. 
+Environ. 148 (2019) 623–633, https://doi.org/10.1016/j.buildenv.2018.11.040.
+[15] J. Ren, K. Shi, Z. Li, X. Kong, H. Zhou, A review on the impacts of urban heat 
+islands on outdoor thermal comfort, Buildings 13 (6) (2023) 1368, https://doi.org/ 
+10.3390/buildings13061368.
+[16] M. Basner, W. Babisch, A. Davis, M. Brink, C. Clark, S. Janssen, S. Stansfeld, 
+Auditory and non-auditory effects of noise on health, Lancet 383 (9925) (2014) 
+1325–1332, https://doi.org/10.1016/S0140-6736(13)61613-X.
+[17] W. Babisch, The noise/stress concept, risk assessment and research needs, Noise 
+and Health 4 (16) (2002) 1–11. https://pubmed.ncbi.nlm.nih.gov/12537836/.
+[18] J.Y. Jeon, J.K. Ryu, P.J. Lee, A quantification model of overall dissatisfaction with 
+indoor noise environment in residential buildings, Appl. Acoust. 71 (10) (2010) 
+914–921, https://doi.org/10.1016/j.apacoust.2010.06.001.
+[19] F. Aletta, J. Kang, A. Astolfi, S. Fuda, Differences in soundscape appreciation of 
+walking sounds from different footpath materials in urban parks, Sustain. Cities 
+Soc. 27 (2016) 367–376, https://doi.org/10.1016/j.scs.2016.03.002.
+[20] E. ¨Ohrstr¨om, A. Skånberg, H. Svensson, A. Gidl¨of-Gunnarsson, Effects of road 
+traffic noise and the benefit of access to quietness, J. Sound Vib. 295 (1–2) (2006) 
+40–59, https://doi.org/10.1016/j.jsv.2005.11.034.
+[21] R. Guski, D. Schreckenberg, R. Schuemer, WHO environmental noise guidelines for 
+the European region: a systematic review on environmental noise and annoyance, 
+Int. J. Environ. Res. Public Health 14 (12) (2017) 1539, https://doi.org/10.3390/ 
+ijerph14121539.
+[22] A. Handbook, Ashrae handbook-hvac applications (si), ASHRAE Inc., Atlanta, GA, 
+2011.
+[23] A. Standard, Thermal environmental conditions for human occupancy, ANSI/ 
+ASHRAE, 55 5 (1992) , https://www.ashrae.org/.
+[24] G. Chinazzo, J. Wienold, M. Andersen, Daylight affects human thermal perception, 
+Sci. Rep. 9 (1) (2019) 13690, https://doi.org/10.1038/s41598-019-48963-y.
+[25] T. Tang, Y. Zhang, Z. Zheng, X. Zhou, Z. Fang, W. Liu, Detailed thermal indicators 
+analysis based on outdoor thermal comfort indices in construction sites in South 
+China, Build. Environ. 205 (2021) 108191, https://doi.org/10.1016/j. 
+buildenv.2021.108191.
+[26] M. te Kulve, L. Schellen, L. Schlangen, W. van Marken Lichtenbelt, The influence of 
+light on thermal responses, Acta Physiol., 216(2) (2016) 163-185, 10.1111/ 
+apha.12552.
+[27] M. Frontczak, P. Wargocki, Literature survey on how different factors influence 
+human comfort in indoor environments, Build. Environ. 46 (4) (2011) 922–937, 
+https://doi.org/10.1016/j.buildenv.2010.10.021.
+[28] V. Candas, A. Dufour, Thermal comfort: multisensory interactions? J. Physiol. 
+Anthropol. Appl. Human Sci. 24 (1) (2005) 33–36, https://doi.org/10.2114/ 
+jpa.24.33.
+[29] T. Lipecki, I. Szer, J. Szer, Temporal and spatial changes in thermal sensations of 
+workers on construction scaffolding, Energ. Buildings 335 (2025) 115543, https:// 
+doi.org/10.1016/j.enbuild.2025.115543.
+[30] L. Chen, Y. Wen, L. Zhang, W.-N. Xiang, Studies of thermal comfort and space use 
+in an urban park square in cool and cold seasons in Shanghai, Build. Environ. 94 
+(2015) 644–653, https://doi.org/10.1016/j.buildenv.2015.10.020.
+[31] W. Klemm, B.G. Heusinkveld, S. Lenzholzer, B. van Hove, Street greenery and its 
+physical and psychological impact on thermal comfort, Landsc. Urban Plan. 138 
+(2015) 87–98, https://doi.org/10.1016/j.landurbplan.2015.02.009.
+[32] Y. Jin, H. Jin, J. Kang, Effects of sound types and sound levels on subjective 
+environmental evaluations in different seasons, Build. Environ. 183 (2020) 
+107215, https://doi.org/10.1016/j.buildenv.2020.107215.
+[33] Y. Geng, B. Hong, M. Du, T. Yuan, Y. Wang, Combined effects of visual-acoustic- 
+thermal comfort in campus open spaces: a pilot study in China’s cold region, Build. 
+Environ. 209 (2022) 108658, https://doi.org/10.1016/j.buildenv.2021.108658.
+[34] Y. Chen, F. Liu, X. Lin, J. Liu, Z. Chen, K. Shi, J. Li, J. Dong, Combined effects of the 
+thermal-acoustic environment on subjective evaluations in urban park based on 
+sensory-walking, Forests 14 (6) (2023) 1161, https://doi.org/10.3390/f14061161.
+[35] H. Chen, B. Hong, H. Qu, Y. Geng, M. Su, Effects of acoustic perception on outdoor 
+thermal comfort in campus open spaces in China’s Cold Region, Buildings 12 (10) 
+(2022) 1518, https://doi.org/10.2139/ssrn.4178115.
+[36] M. Zhen, Z. Chen, Q. Zou, Combined effects of thermal and acoustic environments 
+on outdoor human comfort in university campus, Urban Clim. 49 (2023) 101566, 
+https://doi.org/10.1016/j.uclim.2023.101566.
+[37] K.-K.-L. Lau, C.Y. Choi, The influence of perceived aesthetic and acoustic quality on 
+outdoor thermal comfort in urban environment, Build. Environ. 206 (2021) 
+108333, https://doi.org/10.1016/j.buildenv.2021.108333.
+[38] M. Du, B. Hong, C. Gu, Y. Li, Y. Wang, Multiple effects of visual-acoustic-thermal 
+perceptions on the overall comfort of elderly adults in residential outdoor 
+environments, Energ. Build. 283 (2023) 112813, https://doi.org/10.1016/j. 
+enbuild.2023.112813.
+[39] N. Mohammadzadeh, A. Karimi, R.D. Brown, The influence of outdoor thermal 
+comfort on acoustic comfort of urban parks based on plant communities, Build. 
+Environ. 228 (2023) 109884, https://doi.org/10.1016/j.buildenv.2022.109884.
+[40] M. Zhen, X. Yuan, L. Gao, W. Xia, K. Nan, M. Zhang, Outdoor thermal comfort of 
+urban plaza space under thermoacoustic interactions–Taking Datang Everbright 
+City as an example, Build. Environ. (2024) 112327, https://doi.org/10.1016/j. 
+buildenv.2024.112327.
+[41] W. Li, L. Tian, X. Jin, Z. Liao, Y. Tao, P. Peng, Effect of thermal-acoustic-air quality 
+composite environments on overall comfort of urban pocket parks considering 
+different landscape types, Energ. Buildings (2024) 115167, https://doi.org/ 
+10.1016/j.enbuild.2024.115167.
+[42] D. Lin, T. Li, Z. Chen, L. Li, Effects of interactions between thermal and acoustic 
+environments on subjective comfort evaluations in outdoor public spaces, J. Asian 
+Archit. Build. Eng. (2023) 1–16, https://doi.org/10.1080/ 
+13467581.2023.2292069.
+[43] Y. Chen, T. Li, S. Chen, H. Chen, Y. Lan, Thermal–acoustic interaction effects on 
+physiological and psychological measures in urban forests: a laboratory study, 
+Forests 15 (8) (2024) 1373, https://doi.org/10.3390/f15081373.
+[44] China Meteorological Administration (CMA). http://data.cma.cn/.
+[45] F. Aletta, J. Kang, ¨O. Axelsson, Soundscape descriptors and a conceptual 
+framework for developing predictive soundscape models, Landsc. Urban Plan. 149 
+(2016) 65–74, https://doi.org/10.1016/j.landurbplan.2016.02.001.
+[46] K. Velt, H. Daanen, Thermal sensation and thermal comfort in changing 
+environments, J. Build. Eng. 10 (2017) 42–46, https://doi.org/10.1016/j. 
+jobe.2017.02.004.
+[47] P. Brode, € D. Fiala, K. Blazejczyk, et al., Calculating UTCI equivalent 
+temperatures. http://www.utci.org/utci_poster.pdf, 2009.
+[48] D. Fiala, G. Havenith, P. Br¨ode, B. Kampmann, G. Jendritzky, UTCI-Fiala multi- 
+node model of human heat transfer and temperature regulation, Int. J. 
+Biometeorol. 56 (2012) 429–441, https://doi.org/10.1007/s00484-011-0424-7.
+[49] A. Matzarakis, F. Rutz, H. Mayer, Modelling radiation fluxes in simple and complex 
+environments: basics of the RayMan model, Int. J. Biometeorol. 54 (2010) 
+131–139, https://doi.org/10.1007/s00484-009-0261-0.
+[50] Y. Jin, H. Jin, J. Kang, Combined effects of the thermal-acoustic environment on 
+subjective evaluations in urban squares, Build. Environ. 168 (2020) 106517, 
+https://doi.org/10.3390/f14061161.
+[51] H. Frederick, J. Rohles, Temperature and temperament. A psychologist looks at 
+comfort, Ashrae J. 49 (2007) 14–22.
+[52] W. O’Brien, A. Wagner, M. Schweiker, A. Mahdavi, J. Day, M.B. Kjærgaard, 
+S. Carlucci, B. Dong, F. Tahmasebi, D. Yan, Introducing IEA EBC annex 79: Key 
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+18 
+
+
+===== PAGE 19 =====
+challenges and opportunities in the field of occupant-centric building design and 
+operation, Build. Environ. 178 (2020) 106738, https://doi.org/10.1016/j. 
+buildenv.2020.106738.
+[53] N. Pellerin, V. Candas, Effects of steady-state noise and temperature conditions on 
+environmental perception and acceptability, Indoor Air 14 (2) (2004), https://doi. 
+org/10.1046/j.1600-0668.2003.00221.x.
+[54] K.-T. Tsai, Y.-H. Lin, Identification of urban park activity intensity at different 
+thermal environments and visible sky by using sound levels, Int. J. Biometeorol. 62 
+(2018) 1987–1994, https://doi.org/10.1007/s00484-018-1603-6.
+[55] W. Yang, H.J. Moon, M.-J. Kim, Combined effects of short-term noise exposure and 
+hygrothermal conditions on indoor environmental perceptions, Indoor Built 
+Environ. 27 (8) (2018) 1119–1133, https://doi.org/10.1177/1420326X17703774.
+[56] G. Chinazzo, R.K. Andersen, E. Azar, V.M. Barthelmes, C. Becchio, L. Belussi, 
+C. Berger, S. Carlucci, S.P. Corgnati, S. Crosby, Quality criteria for multi-domain 
+studies in the indoor environment: critical review towards research guidelines and 
+recommendations, Build. Environ. 226 (2022) 109719, https://doi.org/10.1016/j. 
+buildenv.2022.109719.
+[57] H. Guan, S. Hu, M. Lu, M. He, Z. Mao, G. Liu, People’s subjective and physiological 
+responses to the combined thermal-acoustic environments, Build. Environ. 172 
+(2020) 106709, https://doi.org/10.1016/j.buildenv.2020.106709.
+[58] W. Yang, H.J. Moon, Cross-modal effects of noise and thermal conditions on indoor 
+environmental perception and speech recognition, Appl. Acoust. 141 (2018) 1–8, 
+https://doi.org/10.1016/j.apacoust.2018.06.019.
+[59] K. Nagano, T. Horikoshi, New index of combined effect of temperature and noise 
+on human comfort: summer experiments on hot ambient temperature and traffic 
+noise, Arch. Complex Environ. Stud. 13 (3–4) (2001).
+[60] H. Wu, X. Sun, Y. Wu, Investigation of the relationships between thermal, acoustic, 
+illuminous environments and human perceptions, J. Build. Eng. 32 (2020) 101839, 
+https://doi.org/10.1016/j.jobe.2020.101839.
+[61] X. Wen, Q. Meng, D. Yang, M. Li, Effect of thermal-acoustic composite 
+environments on comfort perceptions considering different office activities, Energ. 
+Buildings 305 (2024) 113887, https://doi.org/10.1016/j.enbuild.2024.113887.
+[62] K. Nagano, T. Horikoshi, New comfort index during combined conditions of 
+moderate low ambient temperature and traffic noise, Energ. Buildings 37 (3) 
+(2005) 287–294, https://doi.org/10.1016/j.enbuild.2004.08.001.
+[63] J.P. Kleijnen, Kriging metamodeling in simulation: a review, Eur. J. Oper. Res. 192 
+(3) (2009) 707–716, https://doi.org/10.2139/ssrn.980063.
+[64] J.D. Martin, T.W. Simpson, Use of kriging models to approximate deterministic 
+computer models, AIAA J. 43 (4) (2005) 853–863, https://doi.org/10.2514/ 
+1.8650.
+X. Wu et al.                                                                                                                                                                                                                                      
+Energy & Buildings 347 (2025) 116329 
+19 

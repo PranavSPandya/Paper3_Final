@@ -1,0 +1,770 @@
+<!DOCTYPE html><html xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink">
+<head><script async defer src="//hypothes.is/embed.js"></script>
+
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta content="width=device-width, initial-scale=1 user-scalable=no" name="viewport">
+<title>FACTORES AMBIENTALES QUE INFLUYEN EN EL USO DEL ESPACIO PÚBLICO PARA LAS PERSONAS MAYORES EN MADRID[1]</title>
+<meta lang="es" name="keywords" content="adultos mayores, uso del espacio público, confort térmico, confort acústico, factores ambientales">
+<meta name="Content-Language" content="es">
+<meta name="author" content="María Teresa Baquero Larriva">
+<meta name="author" content="Ester Higueras García">
+<meta name="description" lang="es" content="Las políticas internacionales tienen el reto de crear entornos urbanos que fomenten un envejecimiento activo y saludable. Este estudio busca determinar los f...">
+<meta name="description" lang="en" content="International policies are challenged to create urban environments that foster active and healthy aging. This study seeks to determine the environmental and ...">
+<meta content="index,follow" name="robots">
+<meta name="citation_title" content="FACTORES AMBIENTALES QUE INFLUYEN EN EL USO DEL ESPACIO PÚBLICO PARA LAS PERSONAS MAYORES EN MADRID[1]">
+<meta name="citation_author" content="María Teresa Baquero Larriva">
+<meta name="citation_author" content="Ester Higueras García">
+<meta name="citation_journal_title" content="Urbano">
+<meta name="citation_volume" content="22">
+<meta name="citation_issue" content="40">
+<meta name="citation_firstpage" content="108">
+<meta name="citation_lastpage" content="126">
+<meta name="citation_reference" content="citation_title=Atlas Climático Ibérico. Temperatura del Aire y Precipitación (1971-2000).; citation_author=Agencia Estatal de Metereología (AEMET); citation_publication_date=2011">
+<meta name="citation_reference" content="citation_title=Shaping Ageing Cities: 10 European case studies; citation_author=Arup; citation_author=Help Age International; citation_author=Intel; citation_author=Systematica; citation_publication_date=2015">
+<meta name="citation_reference" content="citation_title=Thermal environmental conditions for human occupancy; citation_author=ASHRAE; citation_publication_date=1992">
+<meta name="citation_reference" content="citation_journal_title=Archives of Internal Medicine; citation_title=Neighborhood Resources for Physical Activity and Healthy Foods and Incidence of Type 2 Diabetes Mellitus; citation_author=Auchincloss A.H.; citation_author=Diez A.; citation_author=Mahasin M.; citation_author=Shen M.; citation_author=Bertoni A.; citation_author=Carnethon M.; citation_volume=169; citation_issue=18; citation_publication_date=2009; citation_firstpage=1698; citation_lastpage=1704; citation_doi=10.1001/archinternmed.2009.302">
+<meta name="citation_reference" content="citation_title=Madrid Ciudad Amigable con las Personas Mayores; citation_author=Ayuntamiento de Madrid; citation_publication_date=2015; citation_publisher=Área de Equidad, Derechos Sociales y Empleo, Ayuntamiento de Madrid">
+<meta name="citation_reference" content="citation_title=Percepción de confort térmico y acústico de adultos mayores en el espacio público de madrid; citation_author=Baquero Larriva M.T.; citation_author=Higueras García E.; citation_publication_date=2018; citation_conference_title=Congreso Nacional del Medio Ambiente CONAMA">
+<meta name="citation_reference" content="citation_journal_title=Revista Española de Geriatría y Gerontología; citation_title=Confort térmico de adultos mayores: una revisión sistemática de la literatura científica; citation_author=Baquero Larriva M.T.; citation_author=Higueras García E.; citation_volume=54; citation_issue=5; citation_publication_date=2019; citation_firstpage=280; citation_lastpage=295; citation_doi=10.1016/j. regg.2019.01.006">
+<meta name="citation_reference" content="citation_journal_title=American Journal of Public Health; citation_title=Neighborhood characteristics and change in depressive symptoms among older residents of New York City; citation_author=Beard J.R.; citation_author=Cerdá M.; citation_author=Blaney S.; citation_author=Ahern J.; citation_author=Vlahov D.; citation_author=Galea S.; citation_volume=99; citation_issue=7; citation_publication_date=2009; citation_firstpage=1308; citation_lastpage=1314; citation_doi=10.2105/AJPH.2007.125104">
+<meta name="citation_reference" content="citation_journal_title=Gerontology; citation_title=Age-dependent changes in temperature regulation - A mini review; citation_author=Blatteis C.M.; citation_volume=58; citation_issue=4; citation_publication_date=2012; citation_firstpage=289; citation_lastpage=295; citation_doi=10.1159/000333148">
+<meta name="citation_reference" content="citation_journal_title=Applied Acoustics; citation_title=The effects of expectation on the perception of soundscapes; citation_author=Bruce N.S.; citation_author=Davies W.J.; citation_volume=85; citation_publication_date=2014; citation_firstpage=1; citation_lastpage=11; citation_doi=10.1016/j.apacoust.2014.03.016">
+<meta name="citation_reference" content="citation_journal_title=American Journal of Preventive Medicine; citation_title=The stanford healthy neighborhood discovery tool: A computerized tool to assess active living environments; citation_author=Buman M.P.; citation_author=Winter S.J.; citation_author=Sheats J.L.; citation_author=Hekler E.B.; citation_author=Otten J.J.; citation_author=Grieco L.A.; citation_author=King A.C.; citation_volume=44; citation_issue=4; citation_publication_date=2013; citation_firstpage=e41; citation_lastpage=e47; citation_doi=10.1016/j.amepre.2012.11.028">
+<meta name="citation_reference" content="citation_journal_title=BMC Public Health; citation_title=Correlates associated with participation in physical activity among adults: A systematic review of reviews and update; citation_author=Choi J.; citation_author=Lee M.; citation_author=Lee J.K.; citation_author=Kang D.; citation_author=Choi J.Y.; citation_volume=17; citation_issue=1; citation_publication_date=2017; citation_firstpage=1; citation_lastpage=13; citation_doi=10.1186/s12889-017-4255-2">
+<meta name="citation_reference" content="citation_title=Ciudad, urbanismo y salud. Criterios generales de diseño urbano para alcanzar los objetivos de una ciudad saludable. Envejecimiento activo; citation_author=Fariña J.; citation_author=Higueras E.; citation_author=Román E.; citation_publication_date=2018; citation_publisher=Instituto Juan de Herrera">
+<meta name="citation_reference" content="citation_journal_title=Journal of Environmental Psychology; citation_title=Applying the methods of image evaluation and spatial analysis to study the sound environment of urban street areas; citation_author=Ge J.; citation_author=Hokao K.; citation_volume=25; citation_issue=4; citation_publication_date=2005; citation_firstpage=455; citation_lastpage=466; citation_doi=10.1016/j.jenvp.2005.10.003">
+<meta name="citation_reference" content="citation_title=Life Between Buildings. Using public space; citation_author=Gehl J.; citation_publication_date=2001; citation_publisher=Island press">
+<meta name="citation_reference" content="citation_journal_title=Revista Española de Geriatría y Gerontología; citation_title=Envejecimiento activo: un marco político; citation_author=Grupo Orgánico de Enfermedades No Transmisibles y Salud Mental; citation_volume=37; citation_issue=52; citation_publication_date=2002; citation_firstpage=74; citation_lastpage=105">
+<meta name="citation_reference" content="citation_journal_title=Ageing Research Reviews; citation_title=Thermal sensitivity in the elderly: A review; citation_author=Guergova S.; citation_author=Dufour A.; citation_volume=10; citation_issue=1; citation_publication_date=2011; citation_firstpage=80; citation_lastpage=92; citation_doi=10.1016/j.arr.2010.04.009">
+<meta name="citation_reference" content="citation_journal_title=Health Psychology; citation_title=The CHOICE study: A «taste-test» of utilitarian vs. leisure walking among older adults; citation_author=Hekler E.B.; citation_author=Castro C.M.; citation_author=Buman M.P.; citation_author=King A.C.; citation_volume=31; citation_issue=1; citation_publication_date=2012; citation_firstpage=126; citation_lastpage=129; citation_doi=10.1037/a0025567">
+<meta name="citation_reference" content="citation_title=Urbanismo Bioclimático; citation_author=Higueras E.; citation_publication_date=2006; citation_publisher=Editorial Gustavo Gili">
+<meta name="citation_reference" content="citation_title=Newletter No1. Situación General de la Red de Ciudades y Comunidades Amigables en España; citation_author=IMSERSO; citation_publication_date=2017">
+<meta name="citation_reference" content="citation_title=Ley 37/2003, del Ruido. BOE-A-2003-20976.276; citation_author=Jefatura del Estado; citation_publication_date=2003">
+<meta name="citation_reference" content="citation_title=Behaviour of people in open spaces in dependence of thermal comfort conditions; citation_author=Katzschner L.; citation_author=Bosch U.; citation_author=Röttgen M.; citation_publication_date=2006; citation_conference_title=Proceedings of 23rd Conference on Passive and Low Energy Architecture">
+<meta name="citation_reference" content="citation_journal_title=Journal of Planning Literature; citation_title=The Role of the Built Environment in Healthy Aging: Community Design, Physical Activity and Health among Older Adults; citation_author=Kerr J.; citation_author=Rosenberg D.; citation_author=Frank L.; citation_volume=27; citation_issue=1; citation_publication_date=2012; citation_firstpage=43; citation_lastpage=60; citation_doi=10.1177/0885412211415283">
+<meta name="citation_reference" content="citation_journal_title=Energy &amp; Buildings; citation_title=Outdoor space quality : A field study in an urban residential community in central China; citation_author=Lai D.; citation_author=Zhou C.; citation_author=Huang J.; citation_author=Jiang Y.; citation_volume=68; citation_publication_date=2014; citation_firstpage=713; citation_lastpage=720; citation_doi=10.1016/j.enbuild.2013.02.051">
+<meta name="citation_reference" content="citation_journal_title=Environment and Behavior; citation_title=The Elderly in context. Envrionment and Behavior; citation_author=Lawton M.P.; citation_volume=17; citation_issue=4; citation_publication_date=1985; citation_firstpage=501; citation_lastpage=519; citation_doi=10.1177/0013916585174005">
+<meta name="citation_reference" content="citation_inbook_title=Handbook of the Psychology of Aging; citation_title=Quality of life and the end of life; citation_author=Lawton M.P.; citation_publication_date=2001; citation_firstpage=593; citation_lastpage=616">
+<meta name="citation_reference" content="citation_inbook_title=The psychology of adult development and aging; citation_title=Ecology and the aging process; citation_author=Lawton M.; citation_author=Powell Nahemow L.; citation_publication_date=1973; citation_firstpage=619; citation_lastpage=674; citation_publisher=American Psychological Association">
+<meta name="citation_reference" content="citation_title=La imagen de la ciudad; citation_author=Lynch K.; citation_publication_date=1998; citation_publisher=Editorial Gustavo Gili">
+<meta name="citation_reference" content="citation_journal_title=Health &amp; Place; citation_title=Social contacts as a possible mechanism behind the relation between green space and health; citation_author=Maas J.; citation_author=Van Dillen S.; citation_author=Verheij R.; citation_author=Groenewegen P.; citation_volume=15; citation_issue=2; citation_publication_date=2009; citation_firstpage=586; citation_lastpage=595">
+<meta name="citation_reference" content="citation_journal_title=The Journal of the Acoustical Society of America; citation_title=Demographic and attitudinal factors that modify annoyance from transportation noise; citation_author=Miedema H.M.E.; citation_author=Vos H.; citation_volume=105; citation_issue=6; citation_publication_date=1999; citation_firstpage=3336; citation_lastpage=3344; citation_doi=10.1121/1.424662">
+<meta name="citation_reference" content="citation_title=Declaración Política y Plan de Acción Internacional de Madrid Sobre el Envejecimiento. Segunda Asamblea Mundial sobre el Envejecimiento; citation_author=Naciones Unidas; citation_publication_date=2002; citation_technical_report_institution=Segunda Asamblea Mundial sobre el Envejecimiento">
+<meta name="citation_reference" content="citation_journal_title=Building and Environment; citation_title=Use of outdoor spaces and microclimate in a Mediterranean urban area; citation_author=Nikolopoulou M.; citation_author=Lykoudis S.; citation_volume=42; citation_issue=10; citation_publication_date=2007; citation_firstpage=3691; citation_lastpage=3707; citation_doi=10.1016/j.buildenv.2006.09.008">
+<meta name="citation_reference" content="citation_title=Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud; citation_author=Organización Mundial de la Salud (OMS); citation_publication_date=2001; citation_publisher=Grafo S.A">
+<meta name="citation_reference" content="citation_title=Ciudades Globales Amigables con los mayores : una Guía; citation_author=Organización Mundial de la Salud (OMS); citation_publication_date=2007; citation_publisher=Ediciones de la OMS">
+<meta name="citation_reference" content="citation_title=Informe mundial sobre el envejecimiento y la salud; citation_author=Organización Mundial de la Salud (OMS); citation_publication_date=2015">
+<meta name="citation_reference" content="citation_title=El espacio público de las ciudades españolas para el envejecimiento activo desde la perspectiva del diseño bioclimático; citation_author=Pozo Menéndez E.; citation_publication_date=2019; citation_dissertation_institution=Universidad Politécnica de Madrid">
+<meta name="citation_reference" content="citation_journal_title=Health Psychology; citation_title=Perceived Environmental Predictors of Physical Activity Over 6 Months in Adults: Activity Counseling Trial; citation_author=Sallis J.F.; citation_author=King A.C.; citation_author=Sirard J.R.; citation_author=Albright C.L.; citation_volume=26; citation_issue=6; citation_publication_date=2007; citation_firstpage=701; citation_lastpage=709; citation_doi=10.1037/0278-6133.26.6.701">
+<meta name="citation_reference" content="citation_inbook_title=Espacio Urbano, Reconstrucción y Reconfiguración Territorial; citation_title=Prisioneros del espacio urbano. Retos de planificar ciudades amigables para las personas adultas mayores; citation_author=Sánchez-González D.; citation_publication_date=2013; citation_firstpage=101; citation_lastpage=118; citation_publisher=Universidad Autónoma de Nuevo León y Universidad Autónoma del Estado de México, Universidad del Bío-Bío">
+<meta name="citation_reference" content="citation_journal_title=Boletín de la Asociación de Geógrafos Españoles; citation_title=Paisaje natural y envejecimiento saludable en el lugar : el caso del Parque Nacional Cumbres de Monterrey (México); citation_author=Sánchez-González D.; citation_author=Rivera Adame L.M.; citation_author=Rodríguez-Rodríguez V.; citation_volume=76; citation_publication_date=2018; citation_firstpage=20; citation_lastpage=51; citation_doi=10.21138/bage.2514">
+<meta name="citation_reference" content="citation_title=Mobility and Transportation in the Elderly; citation_author=Schaie K.; citation_author=Pietrucha M.; citation_publication_date=2000; citation_publisher=Springer Publishing Company">
+<meta name="citation_reference" content="citation_journal_title=Current Environmental Health Reports; citation_title=Thermal Control, Weather, and Aging; citation_author=Schneider A.; citation_author=Rückerl R.; citation_author=Breitner S.; citation_author=Wolf K.; citation_author=Peters A.; citation_volume=4; citation_issue=1; citation_publication_date=2017; citation_firstpage=21; citation_lastpage=29; citation_doi=10.1007/s40572-017-0129-0">
+<meta name="citation_reference" content="citation_journal_title=Environment and Behavior; citation_title=Place Attachment and Social Support at Continuing Care Retirement Communities; citation_author=Sugihara S.; citation_author=Evans G.; citation_volume=32; citation_issue=3; citation_publication_date=2000; citation_firstpage=400; citation_lastpage=409">
+<meta name="citation_reference" content="citation_journal_title=Journal of Epidemiology Community Health; citation_title=Urban residential environments and senior citizens’ longevity in megacity areas: the importance of walkable green spaces; citation_author=Takano T.; citation_author=Nakamura K.; citation_author=Watanabe M.; citation_issue=56; citation_publication_date=2002; citation_firstpage=913; citation_lastpage=918; citation_doi=10.1136/jech.56.12.913">
+<meta name="citation_reference" content="citation_journal_title=Revista Territorios en Formación; citation_title=Clima , diseño y diversidad urbana en el uso de tres plazas de Madrid; citation_author=Urrutia del Campo N.; citation_volume=1; citation_publication_date=2001; citation_firstpage=161; citation_lastpage=178">
+<meta name="citation_reference" content="citation_journal_title=Anuario de Psicología; citation_title=The appropriation of space: A theorical proposal to understand the bond between the persons and the places; citation_author=Vidal T.; citation_author=Pol E.; citation_volume=36; citation_issue=3; citation_publication_date=2005; citation_firstpage=281; citation_lastpage=297">
+<meta name="citation_reference" content="citation_title=The social life of small urban spaces; citation_author=Whyte W.H.; citation_publication_date=1980; citation_publisher=Project for public spaces">
+<meta name="citation_reference" content="citation_journal_title=The Journal of the Acoustical Society of America; citation_title=Effects of social, demographical and behavioral factors on the sound level evaluation in urban open spaces; citation_author=Yu L.; citation_author=Kang J.; citation_volume=123; citation_issue=2; citation_publication_date=2008; citation_firstpage=772; citation_lastpage=783; citation_doi=10.1121/1.2821955">
+<link href="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26962/htmlLigero.css" type="text/css" rel="stylesheet">
+<style type="text/css">
+    				@font-face {
+					    font-family: OpenSans-Regular; 
+					    src: url('../../../css/fonts/OpenSans-Regular.eot');
+					    src: url('../../../css/fonts/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
+					         url('../../../css/fonts/OpenSans-Regular.woff') format('woff'),
+					         url('../../../css/fonts/OpenSans-Regular.ttf') format('truetype'),
+					         local('Helvetica');
+					}
+					
+					@font-face {
+					    font-family: titillium-web-bold; 
+					     src: url('../../../css/fonts/titillium-web-bold.eot');
+					    src: url('../../../css/fonts/titillium-web-bold.eot?#iefix') format('embedded-opentype'),
+					         url('../../../css/fonts/titillium-web-bold.woff') format('woff'),
+					         url('../../../css/fonts/titillium-web-bold.ttf') format('truetype');
+					         local('Helvetica');
+					}
+    			</style>
+<meta name="citation_title" content="FACTORES AMBIENTALES QUE INFLUYEN EN EL USO DEL ESPACIO PÚBLICO PARA LAS PERSONAS MAYORES EN MADRID[1]">
+<meta name="citation_language" content="es">
+<script type="text/x-mathjax-config">
+					MathJax.Hub.Config({
+			  			MathML: {
+							extensions: ["content-mathml.js"]
+						},
+						MathMenu:{
+							showLocale: false,
+							showMathPlayer: false,
+							showRenderer: false
+						},						
+						menuSettings: {
+						    zoom: "Hover",
+						    zscale: "200%",
+						},
+						MathZoom: {
+							delay: 5000
+						}
+					});
+					MathJax.Hub.Queue(["setRenderer",MathJax.Hub,"SVG"]);
+					MathJax.Hub.Queue(["Rerender",MathJax.Hub]);
+					
+				</script><script src="http://marcalyc.redalyc.org/jatsRepo/math/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><script type="text/javascript">
+	                var _gaq = _gaq || [];
+	                _gaq.push(['_setAccount', 'UA-3153272-1']);
+	                _gaq.push(['_trackPageview']);
+	                         (function() {
+	                                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	                                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	                                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	                })();
+                </script>
+</head>
+<body>
+<div id="visor-cabecera">
+<div class="herramientas">
+<div id="logo-r" class="herramienta h-t">
+<img src="http://marcalyc.redalyc.org/img/institucion/UniversidaddelBioBio_11868.jpg"></div>
+<div style="background-image: url('http://marcalyc.redalyc.org/img/revista/movil/revista/rva198.png');" class="redalyc-s"></div>
+</div>
+</div>
+<div id="articulo">
+<div id="front">
+<div id="articulo-categoria">
+<p>Artículos</p>
+</div>
+<div id="articulo-meta">
+<p class="articulo-titulo">FACTORES AMBIENTALES QUE INFLUYEN EN EL USO DEL ESPACIO PÚBLICO PARA LAS PERSONAS MAYORES EN MADRID<a href="#fn7">[1]</a>
+</p>
+<p class="articulo-titulo-traduccion">ENVIRONMENTAL FACTORS INFLUENCING THE ELDERLY’S USE OF PUBLIC SPACES IN MADRID</p>
+</div>
+<div id="articulo-acerca">
+<div id="ficha-general">
+<div id="autores-articulo">
+<div class="autor western">
+<div class="nombre-completo">
+<a class="cssToolTip" target="_blank" href="http://orcid.org/0000-0001-5127-5440"><img style="width:14px; height:14px;" src=""><span>http://orcid.org/0000-0001-5127-5440</span></a>  <span class="nombre">María Teresa</span> <span class="apellidos">Baquero Larriva</span> <span class="collab"></span><span class="email"> maitebaquero7@gmail.com</span>
+</div>
+<div>
+<span class="institucion">Universidad Politécnica de Madrid</span>, <span class="pais">España</span>
+</div>
+</div>
+<div class="autor western">
+<div class="nombre-completo">
+<a class="cssToolTip" target="_blank" href="http://orcid.org/0000-0002-0182-8884"><img style="width:14px; height:14px;" src=""><span>http://orcid.org/0000-0002-0182-8884</span></a>  <span class="nombre">Ester</span> <span class="apellidos">Higueras García</span> <span class="collab"></span><span class="email"> ester.higueras@upm.es</span>
+</div>
+<div>
+<span class="institucion">Universidad Politécnica de Madrid</span>, <span class="pais">España</span>
+</div>
+</div>
+</div>
+<div class="ficha">
+<p class="art-title">FACTORES AMBIENTALES QUE INFLUYEN EN EL USO DEL ESPACIO PÚBLICO PARA LAS PERSONAS MAYORES EN MADRID<a href="#fn7">[1]</a>
+</p>
+<p class="numero">
+<span class="journal">Urbano</span>, <span class="issue"><span class="volume">vol.  22</span>, núm.  40</span>, <span class="year">  2019</span>
+</p>
+<p class="publisher">Universidad del Bío Bío</p>
+</div>
+<div class="creative">
+<div></div>
+<div>
+<a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">Esta obra está bajo una Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional.</a>
+</div>
+</div>
+<div id="articulo-product"></div>
+<div class="fechas-h">
+<p class="recepcion">
+<span class="word-black">Recepción: </span> 14 Junio  2019</p>
+<p class="aprobacion">
+<span class="word-black">Aprobación: </span> 28 Octubre  2019</p>
+</div>
+<div class="url-r">
+<p>
+<span class="doi">DOI: </span><a class="doi-value" href="https://doi.org/10.22320/07183607.2019.22.40.06" target="_blank">https://doi.org/10.22320/07183607.2019.22.40.06</a>
+</p>
+</div>
+<div class="financiamientos-r"></div>
+</div>
+<p class="articulo-resumen">
+<span class="resumen negrita">Resumen:
+							                           </span><span class="capital">Las políticas internacionales tienen el reto de crear entornos urbanos que fomenten un envejecimiento activo y saludable. Este estudio busca determinar los factores ambientales y de diseño que determinan el uso de los espacios públicos por parte de los adultos mayores, mediante una metodología mixta que incluye mediciones de los parámetros ambientales, observaciones y entrevistas a 200 personas mayores durante el año 2018 en tres espacios públicos del barrio Arapiles en Madrid. Para el análisis estadístico se han aplicado distintas pruebas de correlación entre las variables como la de Pearson, Spearman, U de Mann Whitney, H Kruskal Wallis y chi-cuadrado. Adicionalmente, se realiza un análisis estadístico multivariado con el fin de determinar el grado en que los factores ambientales condicionan el uso de los espacios públicos por parte de los adultos mayores. Los resultados evidencian que los mayores representan el 21% de los usuarios de estos espacios, su permanencia se ve influenciada por factores ambientales como temperatura, humedad, velocidad del viento y ruido, sin embargo, solamente la velocidad del viento resulta determinante dentro de un modelo de regresión. Existen otros elementos del diseño que también lo condicionan significativamente, como son bancos, fuentes de agua y juegos infantiles, que coinciden con las zonas de preferencia y mayor afluencia de personas mayores. El análisis de contextos exteriores es complejo debido al gran número de variables que intervienen, no obstante, se destaca la importancia de las variables ambientales y su control por medio de un diseño adecuado que propicie el bienestar general y fomente el uso de los espacios públicos por parte de los adultos mayores. Se abren importantes líneas de investigación ante los retos de las ciudades del siglo XXI, para adaptarse al cambio demográfico, garantizando la salud, el confort y calidad de vida de todos los ciudadanos.</span>
+</p>
+<p class="articulo-palabras">
+<span class="resumen negrita">Palabras clave: </span>adultos mayores, uso del espacio público, confort térmico, confort acústico, factores ambientales.
+		                         </p>
+<p class="articulo-resumen-traduccion">
+<span class="resumen negrita">Abstract:
+						                           </span><span class="capital">International policies are challenged to create urban environments that foster active and healthy aging. This study seeks to determine the environmental and design factors that determine the use of public spaces by the elderly, using a mixed methodology that includes measurements of environmental parameters, observations and interviews with 200 elderly people during 2018 in three public spaces in the Arapiles neighborhood in Madrid. For the statistical analysis, different correlation tests have been applied between variables such as Pearson, Spearman, Mann Whitney U, Kruskal Wallis H, and chi-square. Besides, a multivariate statistical analysis is carried out to determine the degree to which environmental factors condition the use of public spaces by the elderly. The results show that the elderly represent 21% of the users of these spaces, their permanence is influenced by environmental factors such as temperature, humidity, wind speed and noise, however, only wind speed is determinant within a regression model. Besides, some elements of the design also significantly influence it, such as benches, water fountains and children’s playgrounds, which coincide with the areas of preference and greater influx of elderly people. The analysis of external contexts is complex due to a large number of variables involved; however, the importance of environmental variables is highlighted and their control through an adequate design that promotes the general welfare and encourages the use of public spaces by the elderly. Important lines of research are being opened to face the challenges of 21st-century cities, to adapt to demographic change, guaranteeing the health, comfort, and quality of life of all citizens.</span>
+</p>
+<p class="articulo-palabras-traduccion">
+<span class="resumen negrita">Keywords: </span>elderly, use of public space, thermal comfort, acoustic comfort, environmental factors.
+                                </p>
+</div>
+</div>
+<div id="articulo-body">
+<p class="negrita seccion">
+<span class="negrita">INTRODUCCIÓN</span>
+</p>
+<p class="sangria">El envejecimiento de la población, entendido como un proceso heterogéneo de acumulación de daños moleculares y celulares que llevan a un descenso gradual de las capacidades físicas y mentales (<a href="#redalyc_19864321007_ref35">Organización Mundial de la Salud (OMS), 2015</a>), depende de diversos factores como los sociales, económicos, el estilo de vida, predisposición genética y el entorno (<a href="#redalyc_19864321007_ref33">OMS, 2001</a>), y constituye un reto de las ciudades del siglo XXI.</p>
+<p class="sangria">Del Plan de Acción Internacional de Madrid sobre el Envejecimiento emana el concepto de “envejecimiento activo”, como “el proceso de optimización de las oportunidades de salud, participación y seguridad con el fin de mejorar la calidad de vida de las personas mayores” (<a href="#redalyc_19864321007_ref31">Naciones Unidas, 2002</a>). Uno de sus determinantes es el entorno físico, pues espacios adaptados a las necesidades de las personas mayores pueden influir en el nivel de dependencia, aislamiento social, problemas de movilidad y sedentarismo (<a href="#redalyc_19864321007_ref16">Grupo Orgánico de Enfermedades No Transmisibles y Salud Mental, 2002</a>). En ese contexto, a partir del año 2010 surge la Red Mundial de Ciudades y Comunidades Amigables con las Personas Mayores, cuyo principal objetivo es crear entornos urbanos integradores, seguros y accesibles (<a href="#redalyc_19864321007_ref20">IMSERSO, 2017</a>).</p>
+<p class="sangria">Las principales causas de morbilidad en los mayores están relacionadas con las enfermedades cardiovasculares, siendo el sedentarismo y el estrés algunos de los factores de riesgo vinculados a ellas. En este sentido, ciertos autores han comprobado que la infraestructura para realizar actividad física en los barrios está asociada a una reducción del 38% de diabetes tipo dos (<a href="#redalyc_19864321007_ref4">Auchincloss et al., 2009</a>), como también que las características de inseguridad del barrio inciden en los niveles de estrés, provocando además que las personas mayores restrinjan sus movimientos y se aíslen (<a href="#redalyc_19864321007_ref8">Beard et al., 2009</a>). Para muchas de estas personas el espacio público cumple una función importante a la hora de sobrellevar la soledad y el aislamiento (<a href="#redalyc_19864321007_ref2">Arup, Help Age International, Intel y Systematica, 2015</a>).</p>
+<p class="sangria">En busca de contribuir al envejecimiento activo y saludable, el objetivo de esta investigación es identificar los factores ambientales y de diseño que influyen en el uso del espacio público por parte de los mayores, mediante una metodología cuantitativa-cualitativa que combina variables ambientales, de diseño y la percepción de las personas mayores.</p>
+<p class="sangria">Este trabajo forma parte del estudio “Percepción de confort térmico y acústico de adultos mayores en el espacio público de Madrid<a href="#fn8">[2]</a>”, del cual se han publicado algunos resultados preliminares en el 14° Congreso Nacional del Medio Ambiente (<a href="#redalyc_19864321007_ref6">Baquero Larriva e Higueras García, 2018</a>).</p>
+<p class="negrita seccion">
+<span class="negrita">MARCO TEÓRICO</span>
+</p>
+<p class="sangria">En términos históricos, ya en 1960, <a href="#redalyc_19864321007_ref28">Lynch (1998)</a> declaraba que ningún elemento de la ciudad se experimenta por sí mismo, sino que siempre está en relación a su entorno y, en 1971, <a href="#redalyc_19864321007_ref15">Gehl (2001)</a> recalcaba la necesidad de entender la fisiología humana para crear ambientes urbanos que se acoplen a sus necesidades. Alrededor de 1970 surgen los primeros estudios de gerontología ambiental que analizan la influencia de las interacciones entre las personas mayores y el entorno (<a href="#redalyc_19864321007_ref27">Lawton y Powell Nahemow, 1973</a>; <a href="#redalyc_19864321007_ref25">Lawton, 1985</a>).</p>
+<p class="sangria">
+<a href="#redalyc_19864321007_ref46">Whyte (1980)</a>, por su parte, utilizó la observación directa mediante fotografías, videos y anotaciones para describir el uso y comportamiento en plazas urbanas de Nueva York. Otros autores han empleado esta metodología adicionando mediciones de parámetros ambientales y encuestas para analizar el uso de espacios públicos, como <a href="#redalyc_19864321007_ref32">Nikolopoulou y Lykoudis (2007)</a>, en cuyo trabajo, abocado a dos espacios públicos de Atenas donde el 15% de los usuarios eran personas mayores, se demostró una fuerte relación entre el microclima y el uso de estos espacios. Igualmente, <a href="#redalyc_19864321007_ref44">Urrutia del Campo (2001)</a> analizó las características físicas, funcionales y climáticas de tres plazas de Madrid, encontrando una relación entre las condiciones físicas y ambientales con el modo de uso del espacio público (los usuarios mayores representaban el 11%). Mientras, <a href="#redalyc_19864321007_ref24">Lai, Zhou, Huang y Jiang (2014)</a> estudiaron una plaza y un parque de Wuhan, China, donde los mayores representaban el porcentaje más alto de usuarios, para enfatizar la necesidad de diseñar estos espacios pensando en sus necesidades, y concluyeron que el confort térmico era el factor más influyente en el uso de estos.</p>
+<p class="sangria">Por otro lado, <a href="#redalyc_19864321007_ref39">Sánchez-González, Rivera Adame y Rodríguez- Rodríguez (2018)</a> han establecido que la proximidad y la frecuencia de visita a entornos naturales y espacios públicos fomentan las relaciones sociales entre los mayores, manteniéndolos más activos y capaces, ya que generan un sentido de conectividad, pertenencia e identidad ambiental, determinada por la interacción, exposición y percepción del entorno, favoreciéndose con ello el envejecimiento activo y saludable en el lugar (<a href="#redalyc_19864321007_ref45">Vidal y Pol, 2005</a>; <a href="#redalyc_19864321007_ref29">Maas, Van Dillen, Verheij y Groenewegen, 2009</a>; <a href="#redalyc_19864321007_ref42">Sugihara y Evans, 2000</a>). En este contexto, es importante identificar cuáles son los factores que influyen en el uso de los espacios públicos por parte de los adultos mayores y cómo un buen diseño urbano bioclimático puede fomentar el envejecimiento activo mediante espacios adaptados a sus necesidades.</p>
+<p class="negrita seccion">
+<span class="negrita">METODOLOGÍA</span>
+</p>
+<p class="sangria">Se ha aplicado una metodología mixta que incluye mediciones de parámetros ambientales, observaciones y entrevistas. El trabajo de campo se realizó una vez al mes, de mayo a diciembre de 2018, en tres puntos distintos dentro de cada espacio público, durante quince minutos en cada uno, dos veces al día, entre las 10h00 y 18h00, por ser las horas de mayor ocupación.</p>
+<p class="sangria">Con el fin de llevar a cabo la medición del nivel del sonido, se usó un sonómetro PCE-322 A, de frecuencia 31,5-8 Hz, medición 30-130 dB y precisión de ±1,4 dB. Respecto a la humedad y temperatura, se utilizó un termohigrómetro data- logger HOBO UX100, con precisión de ±0,21°C de temperatura y ±2,5% de humedad relativa. Y para medir la velocidad del viento se empleó el anemómetro digital Proster MS6252A. En tanto, el Sky View Factor (SVF) o factor de visibilidad del cielo se calculó mediante fotografías de ojo de pez (180°) y el software Rayman 1.2.</p>
+<p class="sangria">En las entrevistas se aplicó un cuestionario elaborado en base a la revisión bibliográfica (<a href="#gt1">Tabla 1</a>) y a un periodo de prueba (noviembre 2017 - abril 2018), enfocado en el entorno físico como uno de los determinantes del envejecimiento activo.</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt1">
+<div>
+<span class="label">Tabla 1</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Ficha de encuesta.</span>
+</div>
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26975/19864321007_gt2.png" class="image" alt="Ficha de encuesta."><br>
+<span class="caption"><span class="attrib">Baquero Larriva e Higueras García, 2018, p. 9.</span></span>
+</div>
+</p>
+<p class="sangria">Adicionalmente, se registró a las personas presentes en cada punto durante cada medición, tanto las de estancia como las de paso, mediante observación directa y registros fotográficos (<a href="#redalyc_19864321007_ref46">Whyte, 1980</a>; <a href="#redalyc_19864321007_ref44">Urrutia del Campo, 2001</a>; <a href="#redalyc_19864321007_ref22">Katzschner, Bosch y Röttgen, 2006</a>; <a href="#redalyc_19864321007_ref32">Nikolopoulou y Lykoudis, 2007</a>).</p>
+<p class="sangria">Finalmente, el análisis estadístico con grado de significancia de 5%, se efectuó tras pruebas de normalidad de datos (Kolmogorov-Smirnov), seleccionando las pruebas correspondientes: la correlación de Pearson, para medir el grado de relación entre la estancia (número de personas) y las variables ambientales (Ta, HR, dB, Velocidad del viento, SVF); el coeficiente de correlación de Spearman, para establecer la relación entre la estancia y la percepción ambiental (sensación térmica, preferencia térmica, percepción de humedad, viento, nivel de ruido y molestia por ruido); la prueba no paramétrica U de Mann Whitney, para identificar relaciones entre la estancia y el momento del día (mañana/tarde), género y elementos del diseño; la prueba no paramétrica de H Kruskal Wallis, para conocer la relación entre la estancia con el sitio, punto de medición y estación del año; la prueba paramétrica de chi-cuadrado, para definir la asociación entre el género del encuestado y la actividad, frecuencia, tiempo y preferencia. Como último paso, se realizó un análisis estadístico multivariado mediante regresión múltiple con el propósito de determinar el grado en que los factores ambientales condicionan el uso de los espacios públicos por parte de los adultos mayores.</p>
+<p class="negrita seccion">
+<span class="negrita">CASO DE ESTUDIO ARAPILES (MADRID)</span>
+</p>
+<p class="sangria">Madrid se localiza a una altura de 667 msnm y su clima mediterráneo se distingue por veranos secos y calurosos, con temperaturas medias entre 6°C en invierno y los 24°C en verano, alcanzando picos superiores a 30°C (<a href="#redalyc_19864321007_ref1">Agencia Estatal de Metereología (AEMET), 2011</a>). Allí se seleccionó el barrio Arapiles del distrito Chamberí por sus características de envejecimiento (24.19%), sobreenvejecimiento (37.89%) y densidad (418 hab./ha), que son de las más altas de la ciudad. Dentro del barrio, se identificaron tres espacios públicos de diferentes características (<a href="#gf1">Figura 1</a>): un parque, una plaza y una calle, teniendo en cuenta su cercanía a equipamientos como centros de adultos mayores, colegios y centros de salud (<a href="#gt2">Tabla 2</a>).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf1">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26963/19864321007_gf2.png" class="image" alt="Ubicación de Madrid y los sitios de estudio: a) Madrid; b) Distrito Chamberí, barrio Arapiles y espacios públicos seleccionados."><br>Figura 1<br>
+<span class="captionS">Ubicación de Madrid y los sitios de estudio: a) Madrid; b) Distrito Chamberí, barrio Arapiles y espacios públicos seleccionados.</span>
+<br>
+<span class="caption"><span class="attrib"><a href="#redalyc_19864321007_ref6">Baquero Larriva e Higueras García, 2018</a>, p. 7.</span></span>
+</div>
+</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt2">
+<div>
+<span class="label">Tabla 2</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Características de los espacios públicos analizados.</span>
+</div>
+<div class="contenedor-tabla">
+<table style="border-collapse:  collapse;border:none" id="gt3-526564616c7963">
+<tbody>
+<tr style="height:25.1pt">
+<td style="background-color: #00A86F; border:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:25.1pt">Sitio</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Tipo</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">N</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Area (Ha)</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">N° pisos</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Equipamiento cercano</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Función</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Fuentes de ruido</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Vegetación</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Superficie de suelo</td>
+</tr>
+<tr style="height:47.1pt">
+<td style="border:solid #231F20 1.0pt;border-top:none;padding:0cm 0cm 0cm 0cm;   height:47.1pt">Conde  del Valle del Súchill (PCVS)</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">Plaza</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">84</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">0,68</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">5 a 10</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">Escuela, hospital</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">Residencial, juegos infantiles</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">Tráfico, fuente de agua, perros, niños jugando, gente</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">40% (97 u)</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">76% piedra, concreto. 24% arena</td>
+</tr>
+<tr style="height:56.75pt">
+<td style="border:solid #231F20 1.0pt;border-top:none;padding:0cm 0cm 0cm 0cm;   height:56.75pt">José Luis Sampedro (PTG)</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">Parque</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">74</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">0,33</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">5 a 9</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">Escuela, hospital, centro de mayores</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">Residencial, juegos infantiles</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">Tráfico, fuente de agua, perros, niños jugando, gente, obras</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">43% (42 u)</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">65% piedra, concreto. 35% arena</td>
+</tr>
+<tr style="height:36.1pt">
+<td style="border:solid #231F20 1.0pt;border-top:none;padding:0cm 0cm 0cm 0cm;   height:36.1pt">Vallehermoso (CVH)</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">Calle</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">42</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">0,072</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">2 a 10</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">Escuela, Mercado</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">Residencial, comercio, ocio</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">Tráfico, actividades de ocio y bares</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">35 u</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">100% concreto y baldosa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<span class="caption"><span class="attrib">Elaboración de las autoras.</span></span>
+</div>
+</p>
+<p class="negrita seccion">
+<span class="negrita">RESULTADOS Y DISCUSIÓN</span>
+</p>
+<p class="sangria">Se entrevistó a 200 personas mayores, de las cuales el 54% fueron mujeres. En la <a href="#gt3">Tabla 3</a> se puede ver un resumen de los parámetros ambientales medidos, mientras que en la <a href="#gf2">Figura 2</a> se presenta la ubicación espacial de cada uno de los tres puntos de medición dentro de cada sitio, zonificación, además de un ejemplo de su factor de nubosidad (SVF).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt3">
+<div>
+<span class="label">Tabla 3</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Resumen de variables ambientales medidas en las diferentes estaciones en el año 2018 en el barrio Arapiles, Madrid.</span>
+</div>
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26977/19864321007_gt4.png" class="image" alt="Resumen de variables ambientales medidas en las diferentes estaciones en el año 2018 en el barrio Arapiles, Madrid."><br>
+<span class="caption"><span class="attrib">Elaboración de las autoras a partir de mediciones realizadas in situ.</span></span>
+</div>
+</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf2">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26964/19864321007_gf3.png" class="image" alt="Puntos de medición y zonificación de cada espacio público y factor de nubosidad medido (SVF). a) Plaza Conde del Valle de Súchill (PCVS); b) Parque José Luis Sampedro (PTG); c) Calle Vallehermoso (CVH)."><br>Figura 2<br>
+<span class="captionS">Puntos de medición y zonificación de cada espacio público y factor de nubosidad medido (SVF). a) Plaza Conde del Valle de Súchill (PCVS); b) Parque José Luis Sampedro (PTG); c) Calle Vallehermoso (CVH).</span>
+<br>
+<span class="caption"><span class="attrib"><a href="#redalyc_19864321007_ref6">Baquero Larriva e Higueras García, 2018</a>, p. 10.</span></span>
+</div>
+</p>
+<p class="sangria">Se ha analizado la presencia de adultos mayores, contabilizando tanto los que se quedaban en el sitio (estancias), como los de paso. Del total de usuarios registrados en estos espacios, el 21% corresponde a adultos mayores y, a la vez, estos representaban el 18.66% de las estancias (<a href="#gf3">Figura 3</a>), teniendo en cuenta que el resto corresponde a adultos, niños y adolescentes.</p>
+<p class="subtitulo italica">
+<span class="negrita">FACTORES AMBIENTALES</span>
+</p>
+<p class="sangria">No se han encontrado diferencias significativas en cuanto a la estancia y al momento del día (mañana/tarde), aunque tanto en verano como en invierno, es en horas de la tarde cuando menor porcentaje de mayores se presenta (<a href="#gf3">Figura 3</a>), coincidiendo con las horas de mayor y menor temperatura respectivamente; sin embargo, tampoco se advirtieron diferencias significativas (p&gt;0.05) relacionadas con las estaciones. Mientras que entre la estancia y las variables ambientales (<a href="#gt4">Tabla 4</a>), se halló, en un primer análisis, una correlación positiva débil con la temperatura media, mínima y máxima; negativa débil con la humedad relativa media y mínima; y positiva débil con la velocidad máxima del viento (p&lt;0.01), lo que puede explicar lo anterior. La mayor cantidad de estancias se dan en un rango de temperatura entre 19.31°C y 29.98°C (<a href="#gf4">Figura 4a</a>), siendo la temperatura media de 28.94°C la que mayor presencia registra; en tanto, la mínima presencia se dio cuando las temperaturas mínimas estaban bajo 16.94°C. Asimismo, las estancias son más frecuentes a partir de 51.35% de humedad relativa (<a href="#gf4">Figura 4b</a>) y disminuyen cuando el viento supera la velocidad máxima de 1.86 m/s (<a href="#gf4">Figura 4c</a>).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf3">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26965/19864321007_gf5.png" class="image" alt="Estancia de adultos mayores en los diferentes sitios: a) Plaza Conde del Valle de Súchil (PCVS; b) Parque José Luis Sampedro (PTG); c) Calle Vallehermoso (CVH)."><br>Figura 3<br>
+<span class="captionS">Estancia de adultos mayores en los diferentes sitios: a) Plaza Conde del Valle de Súchil (PCVS; b) Parque José Luis Sampedro (PTG); c) Calle Vallehermoso (CVH).</span>
+<br>
+<span class="caption"><span class="attrib">Elaboración de las autoras a partir de trabajo de campo y Google Earth.</span></span>
+</div>
+</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt4">
+<div>
+<span class="label">Tabla 4</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Pruebas estadísticas, relación entre variables y diferencias.</span>
+</div>
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26978/19864321007_gt5.png" class="image" alt="Pruebas estadísticas, relación entre variables y diferencias."><br>
+<span class="caption"><span class="attrib">Elaboración de las autoras.</span></span>
+</div>
+</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf4">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26966/19864321007_gf6.png" class="image" alt="Estancia de adultos mayores en función de: a) temperatura media del aire b) humedad relativa media c) velocidad máxima del viento."><br>Figura 4<br>
+<span class="captionS">Estancia de adultos mayores en función de: a) temperatura media del aire b) humedad relativa media c) velocidad máxima del viento.</span>
+<br>
+<span class="caption"><span class="attrib">Elaboración de las autoras a partir de mediciones in situ.</span></span>
+</div>
+</p>
+<p class="sangria">Estos resultados coinciden con el estudio de <a href="#redalyc_19864321007_ref32">Nikolopoulou y Lykoudis (2007)</a> que demostró una fuerte relación entre el microclima y el uso de espacios abiertos, y que además enfatizó la diferencia de sensibilidad térmica de los mayores de 65 años, pues en verano se reducía significativamente su presencia. Otros estudios también han concluido que la percepción de confort general se relaciona con la actividad en espacios públicos (<a href="#redalyc_19864321007_ref37">Sallis, King, Sirard y Albright, 2007</a>; <a href="#redalyc_19864321007_ref24">Lai et al., 2014</a>; <a href="#redalyc_19864321007_ref45">Vidal y Pol, 2005</a>; <a href="#redalyc_19864321007_ref29">Maas et al., 2009</a>; <a href="#redalyc_19864321007_ref42">Sugihara y Evans, 2000</a>).</p>
+<p class="sangria">Posteriormente, se efectuó un análisis de regresión lineal múltiple para establecer el grado en que estos factores podrían predecir la estancia de los adultos mayores en el sitio, y se descubrió que el único factor significativo es la velocidad máxima del viento, con un coeficiente de determinación bajo de R2=7%, mediante el siguiente modelo: Estancia=0.175+1.64 (Vv m/s).</p>
+<p class="sangria">En cuanto a la frecuencia de visita, el 46% acude diariamente, mientras un 24.5% lo hace varias veces a la semana. El 39% solamente pasa por ahí de camino hacia otro destino, mientras el 25.5% se queda aproximadamente 15 minutos, el 21% lo hace por 30 minutos y 14.5% por más de una hora. Las actividades que más realizan las personas mayores en estos espacios son caminar (40%) y descansar (28%). Para un análisis más detallado, se las clasificó en tres tipos (<a href="#gf5">Figura 5</a>), de las cuales el 50% corresponde a actividad física, el 48.5% a actividades pasivas y el 1.5% a actividades sociales. Sin embargo, se debe tener en cuenta que la mayoría de las personas entrevistadas estaban acompañadas, por lo que, si bien su actividad principal no era la social, esta estaría combinada con las otras, lo que evidencia lo enunciado por varios autores sobre la importancia de los entornos urbanos adecuados y agradables para aumentar las oportunidades de realizar actividad física y social logrando propiciar la participación e integración en la vejez (<a href="#redalyc_19864321007_ref38">Sánchez-González, 2013</a>; <a href="#redalyc_19864321007_ref40">Schaie y Pietrucha, 2000</a>; <a href="#redalyc_19864321007_ref26">Lawton, 2001</a>).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf5">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26967/19864321007_gf7.png" class="image" alt="Tipo de actividades realizadas por los adultos mayores en el espacio público."><br>Figura 5<br>
+<span class="captionS">Tipo de actividades realizadas por los adultos mayores en el espacio público.</span>
+<br>
+<span class="caption"><span class="attrib">Elaboración de las autoras a partir de entrevistas.</span></span>
+</div>
+</p>
+<p class="sangria">Respecto a la sensación y preferencia térmica, el 74.5% de los entrevistados se encuentra dentro de lo que se considera zona de confort (<a href="#redalyc_19864321007_ref3">ASHRAE, 1992</a>), lo que se podría mejorar a través del control microclimático mediante técnicas de acondicionamiento pasivo urbano (<a href="#redalyc_19864321007_ref19">Higueras, 2006</a>). Muchos estudios concuerdan que con la edad la sensibilidad térmica disminuye, siendo este uno de los factores que hacen de los mayores un grupo vulnerable frente a los extremos térmicos (<a href="#redalyc_19864321007_ref17">Guergova y Dufour 2011</a>; <a href="#redalyc_19864321007_ref9">Blatteis 2012</a>; <a href="#redalyc_19864321007_ref7">Baquero Larriva y Higueras García, 2019</a>; <a href="#redalyc_19864321007_ref41">Schneider, Rückerl, Breitner, Wolf y Peters, 2017</a>).</p>
+<p class="sangria">En relación a la percepción del paisaje sonoro, el 77.6% de los entrevistados lo considera agradable, al 16% le resulta placentero el sonido de los pájaros y al 10%, el sonido de la fuente de agua (este último corresponde al sitio donde mayor presencia de mayores se registró) (<a href="#gt5">Tabla 5</a>). Contrariamente, el 36% identifica el sonido del tráfico como desagradable, siendo la calle donde menor estancia se da. Por otro lado, resulta interesante señalar, que a pesar de que se han registrado niveles de ruido promedio de hasta 77 dB (A) y máximos de hasta 108 dB (A), superiores al límite de 65 dB permitido para zonas residenciales y considerados perjudiciales para la salud (<a href="#redalyc_19864321007_ref21">Jefatura del Estado, 2003</a>), al 70.5% no le molestaba el ruido. La baja molestia por ruido es atribuida por algunos estudios a la disminución de la sensibilidad auditiva, lo que hace a los mayores más tolerantes (<a href="#redalyc_19864321007_ref30">Miedema y Vos, 1999</a>; <a href="#redalyc_19864321007_ref47">Yu y Kang, 2008</a>). Otros lo explican mediante el factor psicológico de la expectativa que aminora la molestia causada por los sonidos que se espera estén presentes en determinado sitio, como en este caso la calle de una ciudad como Madrid (<a href="#redalyc_19864321007_ref14">Ge y Hokao, 2005</a>; <a href="#redalyc_19864321007_ref10">Bruce y Davies, 2014</a>).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt5">
+<div>
+<span class="label">Tabla 5</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Características de diseño, resultados de estancia y confort en cada punto de medición.</span>
+</div>
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26979/19864321007_gt6.png" class="image" alt="Características de diseño, resultados de estancia y confort en cada punto de medición."><br>
+<span class="caption"><span class="attrib">Elaboración de las autoras.</span></span>
+</div>
+</p>
+<p class="subtitulo italica">
+<span class="negrita">ELEMENTOS DE DISEÑO DEL ESPACIO PÚBLICO</span>
+</p>
+<p class="sangria">Los espacios exteriores son contextos complejos de analizar, pues es imposible separar del todo una de las diversas variables que los conforman (<a href="#redalyc_19864321007_ref28">Lynch, 1998</a>) para establecer causa y efecto del uso de estos espacios por parte de los adultos mayores. Por tal razón también se ha analizado estos espacios en cuanto a criterios de diseño (<a href="#gt5">Tabla 5</a>) y su capacidad de adaptarse a las necesidades de las personas mayores (<a href="#redalyc_19864321007_ref5">Ayuntamiento de Madrid, 2015</a>; <a href="#redalyc_19864321007_ref36">Pozo Menéndez, 2019</a>; <a href="#redalyc_19864321007_ref13">Fariña, Higueras y Román, 2018</a>; <a href="#redalyc_19864321007_ref34">OMS, 2007</a>), tanto estadísticamente (<a href="#gt6">Tabla 6</a>) como en términos de la percepción de la calidad de estos espacios (<a href="#gf6">Figura 6</a>).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt6">
+<div>
+<span class="label">Tabla 6</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Pruebas estadísticas, relación entre elementos físicos de diseño y estancia.</span>
+</div>
+<div class="contenedor-tabla">
+<table style="border-collapse:  collapse;border:none" id="gt7-526564616c7963">
+<tbody>
+<tr style="height:16.75pt">
+<td style="background-color: #00A86F; width:219.7pt;border:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:16.75pt" colspan="5">Prueba U Mann Wilman</td>
+</tr>
+<tr style="height:16.75pt">
+<td style="width:219.7pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:16.75pt" colspan="5">Elementos físicos de diseño/ Estancia</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Sitio</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">PCVS</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">PTG</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">CVH</td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">General</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Bancas</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,356</td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.001**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Fuente de agua</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.001**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Fuente agua potable</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.003**</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,307</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Arboles</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.010*</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,483</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Sombra</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.010*</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,483</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Superficie permeable</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.010*</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.042*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Señalética</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.010*</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.013*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,640</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Seguridad</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.042*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,503</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Mantenimiento</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,058</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Ejercicios mayores</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.028*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Zona perros</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.003**</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.028*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,427</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Juegos infantiles</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.042*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Terraza-bar</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,138</td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,102</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Colegio</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,046</td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Parada de bus</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,356</td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.001**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:219.7pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt" colspan="5">Las diferencias son significativas en el nivel *0,05 (2 colas); **0,01 (2 colas)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<span class="caption"><span class="attrib">Elaboración de las autoras.</span></span>
+</div>
+</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf6">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26968/19864321007_gf8.png" class="image" alt="Percepción general del espacio: a) factores considerados desagradables para las personas mayores; b) factores considerados agradables para las personas mayores."><br>Figura 6<br>
+<span class="captionS">Percepción general del espacio: a) factores considerados desagradables para las personas mayores; b) factores considerados agradables para las personas mayores.</span>
+<br>
+<span class="caption"><span class="attrib">Elaboración de las autoras a partir de entrevistas.</span></span>
+</div>
+</p>
+<p class="sangria">El análisis estadístico muestra diferencias significativas (p&lt;0.05) en cuanto a la estancia entre los espacios públicos analizados, sobre todo entre la plaza, que es la de mayor afluencia, y los otros dos espacios (<a href="#gt4">Tabla 4</a>). De igual forma, tanto en el parque PTG como en la plaza PCVS se presentan diferencias significativas (p&lt;0.05) entre los puntos y, físicamente, se evidencian según los elementos que los conforman (<a href="#gt5">Tabla 5</a>), mientras que en la calle no existen diferencias significativas en ninguno de sus puntos (p&gt;0.05). Se advirtió que los elementos físicos más determinantes (<a href="#gt6">Tabla 6</a>) son bancos, superficies permeables, zonas de ejercicios para mayores y juegos infantiles, los cuales coinciden con algunos resultados de evaluaciones de ciudades amigables (<a href="#redalyc_19864321007_ref2">Arup et al., 2015</a>; <a href="#redalyc_19864321007_ref5">Ayuntamiento de Madrid, 2015</a>). Cabe añadir que en todos los espacios estudiados existe vegetación.</p>
+<p class="sangria">Consecuentemente, las zonas con más elementos y diversidad de usos corresponden a los puntos con mayor número de personas en estancia, siendo el punto 2 de la plaza PCVS el de mayor afluencia, donde existen todos estos elementos (<a href="#gt5">Tabla 5</a>). Estas coinciden con las zonas de preferencia, pues el 74% de los adultos mayores prefirió aquellas donde había bancos para sentarse; el 6.8%, las zonas infantiles; y el 4.9%, las zonas de ejercicios para mayores. Todo lo cual se ve reflejado también en la distribución de estos usuarios (<a href="#gt5">Tabla 5</a> y <a href="#gf3">Figura 3</a>), ya que los juegos infantiles constituyen zonas de mayor presencia de adultos mayores, tal como se dio en el estudio de <a href="#redalyc_19864321007_ref24">Lai et al. (2014)</a> y en el de <a href="#redalyc_19864321007_ref44">Urrutia del Campo (2001)</a>, donde las zonas con mayor posibilidad de actividades resultaron ser las más concurridas.</p>
+<p class="sangria">Por otro lado, la falta de limpieza (29.5%) es considerado el aspecto más desagradable (<a href="#gf6">Figura 6a</a>); además el 9.5% tiene sensación de inseguridad, sobre todo en el punto 2 del parque PTG (gente bebiendo); mientras que al 12% opina que faltan instalaciones como áreas verdes. Referente a lo que les agrada (<a href="#gf6">Figura 6b</a>), la percepción de un entorno agradable y limpio (<a href="#redalyc_19864321007_ref8">Beard et al., 2009</a>) resulta el factor más destacado, el cual se asocia en 27.5% a la presencia de vegetación. Ello respalda los resultados de algunos estudios que identifican las zonas verdes (<a href="#redalyc_19864321007_ref45">Vidal y Pol, 2005</a>; <a href="#redalyc_19864321007_ref29">Maas et al., 2009</a>; <a href="#redalyc_19864321007_ref42">Sugihara y Evans, 2000</a>; <a href="#redalyc_19864321007_ref39">Sánchez-González et al., 2018</a>; <a href="#redalyc_19864321007_ref43">Takano, Nakamura y Watanabe, 2002</a>), la estética, la accesibilidad a zonas para caminar, los parques, las zonas de juegos infantiles, la seguridad y el mantenimiento como elementos que influencian la actividad física en los espacios públicos (<a href="#redalyc_19864321007_ref18">Hekler, Castro, Buman y King, 2012</a>; <a href="#redalyc_19864321007_ref11">Buman et al., 2013</a>; <a href="#redalyc_19864321007_ref12">Choi, Lee, Lee, Kang y Choi, 2017</a>; <a href="#redalyc_19864321007_ref23">Kerr, Rosenberg y Frank, 2012</a>)</p>
+<p class="sangria">Finalmente, desde la perspectiva del género, solo se encontró correlación significativa con la percepción de humedad del sitio (<a href="#gt4">Tabla 4</a>). Sin embargo, este estudio observó que las mujeres permanecen más tiempo en cada espacio público y caminan más que los hombres, quienes tienden a descansar más tiempo (<a href="#gf6">Figura 6</a>). De igual manera, a las mujeres les agrada en mayor medida la vegetación, mientras los hombres aprecian más la tranquilidad del barrio (<a href="#gf6">Figura 6</a>).</p>
+<p class="negrita seccion">
+<span class="negrita">CONCLUSIONES</span>
+</p>
+<p class="sangria">Esta investigación analizó los factores del ambiente físico que influyen en el uso por parte de adultos mayores de tres espacios públicos de Madrid. Así, se evidenció que los mayores representan el 21% de los usuarios, el 18.66% de las estancias, que la mayoría de ellos visita el sitio diariamente y que el 50% realiza actividades físicas como caminar. Respecto al género, no se encontraron diferencias significativas en ninguna de las variables, no obstante, como se señaló más arriba, se constató que las mujeres tienden a permanecer más tiempo en estos espacios y a caminar más que los varones.</p>
+<p class="sangria">Los factores ambientales como la temperatura, la humedad relativa y la velocidad del viento, así como la molestia por ruido son factores que afectan la estancia de adultos mayores en el espacio público, pero solamente la velocidad del viento resulta significativa dentro de un modelo de regresión. Se puede considerar como rango de temperatura de preferencia entre los 19.31°C y los 29.98°C, donde se dio el mayor porcentaje de estancia y en el cual el 74.5% de los entrevistados se encontraba en confort.</p>
+<p class="sangria">La estancia de los mayores presenta diferencias significativas entre los espacios: se advirtió que los elementos del diseño más determinantes son bancos, superficies permeables, fuente de agua, zonas de ejercicios para mayores y juegos infantiles, siendo esta última una de los sectores con mayor presencia de adultos mayores tanto en la plaza como en el parque, lo cual contribuye al intercambio social intergeneracional y coincide con lo recomendado por varios estudios previos.</p>
+<p class="sangria">Analizar los espacios exteriores es una tarea compleja debido al gran número de variables que intervienen, sin embargo, este estudio evidencia que los espacios públicos potencian la vitalidad en la edad avanzada de las personas, como sitios de desarrollo físico y social, indispensables para mejorar su calidad de vida, promoviendo un envejecimiento activo y saludable. Destaca, en este sentido, la importancia de las variables ambientales y su control por medio de un diseño adecuado, para el cual se debe tener en cuenta los cambios fisiológicos propios de la edad que pueden afectar la sensibilidad térmica y auditiva, haciendo de los mayores más o menos tolerantes a ciertos parámetros ambientales y aumentar su vulnerabilidad a los efectos de estos en la salud. Por último, cabe indicar que se abren importantes líneas de trabajo ante los retos de las ciudades del siglo XXI para adaptar sus espacios al cambio demográfico.</p>
+<p class="negrita seccion">INTRODUCTION</p>
+<p class="sangria">The aging of the population, understood as a heterogenous process with the accumulation of molecular and cellular damage that leads to the gradual reduction of physical and mental capacities (<a href="#redalyc_19864321007_ref35">World Health Organization, 2015</a>) is a challenge for XXI century cities. It depends on a serious of factors, be these social, economic, lifestyle, genetic predisposition or the environment (<a href="#redalyc_19864321007_ref33">World Health Organization, 2001</a>).</p>
+<p class="sangria">The concept of active aging is “the process of optimizing opportunities for health, participation and security in order to enhance the quality of life as people age” (<a href="#redalyc_19864321007_ref31">United Nations, 2002</a>) emerged from the “Madrid International Action Plan on Aging”. One of its determining factors is the physical environment, since spaces which are adapted to meet the needs of the elderly can affect their level of dependence, social isolation, mobility issues and sedentarism (<a href="#redalyc_19864321007_ref16">Noncommunicable Diseases and Mental Health Cluster - NMH, 2002</a>). In this context, the “Global Network for Age-Friendly Communities and Cities” appeared in 2010, whose main goal is the creation of integrating, safe and accessible urban environments (<a href="#redalyc_19864321007_ref20">IMSERSO, 2017</a>).</p>
+<p class="sangria">The main causes of morbidity among the elderly are related with cardiovascular diseases with sedentarism and stress included among the risk factors. Some authors have proven that infrastructure in neighborhoods to do physical activities is associated to a 38% reduction of type two diabetes (<a href="#redalyc_19864321007_ref4">Auchincloss, 2009</a>), while the lack of security in the neighborhood affects stress, leading to the elderly restricting their movements and isolating themselves (<a href="#redalyc_19864321007_ref8">Beard et al., 2009</a>). For many elderly people, public spaces play an important role in overcoming loneliness and isolation (<a href="#redalyc_19864321007_ref2">Arup et al., 2015</a>).</p>
+<p class="sangria">The goal of this research, while seeking to contribute towards active and healthy aging, is identifying environmental and design factors that affect the elderly’s use of the public space, using a quantitative-qualitative method which combines environmental and design variables along with the perception of the elderly.</p>
+<p class="sangria">This work is part of the “Thermal and Acoustic Comfort Perception of the Elderly in the Public Space of Madrid” study, from which some preliminary results were published during the 14th National Environment Congress (<a href="#redalyc_19864321007_ref6">Baquero Larriva &amp; Higueras García, 2018</a>).</p>
+<p class="negrita seccion">THEORETICAL FRAMEWORK</p>
+<p class="sangria">In 1960, <a href="#redalyc_19864321007_ref28">Lynch (1998)</a> stated that no element of the city is experienced by itself, but rather this occurs with regard to its surroundings, while in 1971, <a href="#redalyc_19864321007_ref15">Gehl (2001)</a> emphasized the need of understanding human physiology to create urban environments that matched their needs. The first environmental gerontology studies appeared around 1970, analyzing the influence of interactions between the elderly and their surroundings (<a href="#redalyc_19864321007_ref27">Lawton &amp; Powell Nahemow, 1973</a>; <a href="#redalyc_19864321007_ref25">Lawton, 1985</a>).</p>
+<p class="sangria">
+<a href="#redalyc_19864321007_ref46">Whyte (1980)</a> used direct observation through photographs, videos and notes to describe the use and behavior of New York’s urban squares. Other authors have used this methodology adding measurements of environmental parameters and surveys to analyze the use of public spaces. <a href="#redalyc_19864321007_ref32">Nikolopoulou &amp; Lykoudis (2007)</a>, for instance, studied two public spaces in Athens, where 15% of the users were elderly people, and a strong relationship between the microclimate and the use of these spaces was proven. Likewise, <a href="#redalyc_19864321007_ref44">Urrutia del Campo (2001)</a> analyzed the physical, functional and climatic characteristics of three Madrid squares, finding a relationship between physical and environmental conditions and the way the public space is used. In this case, the elderly represented 11%. Meanwhile, <a href="#redalyc_19864321007_ref24">Lai et al. (2014)</a> analyzed a square and a park in Wuhan, China, where the elderly represented the highest percentage of users, emphasizing the need of designing these spaces considering their needs. In this case, they found that thermal comfort was the most influential factor in the use of these.</p>
+<p class="sangria">On the other hand, <a href="#redalyc_19864321007_ref39">Sánchez-González et al (2018)</a> establish that proximity and the frequency of visits to natural settings and public spaces build social relationships among the elderly, keeping them more active and capable, as these generate a sense of connectivity, belonging and environmental identity, determined by the interaction, exposure and perception of the environment, favoring active and healthy aging in the place (<a href="#redalyc_19864321007_ref45">Vidal &amp; Pol, 2005</a>; <a href="#redalyc_19864321007_ref29">Maas et al., 2009</a>; <a href="#redalyc_19864321007_ref42">Sugihara &amp; Evans, 2000</a>). In this context, it is important to identify which factors affect the use of public spaces by the elderly and how a good bioclimatic urban design can foster active aging using spaces that meet their needs.</p>
+<p class="negrita seccion">METHODOLOGY</p>
+<p class="sangria">A mixed methodology has been used that includes measurements of environmental parameters, observations and interviews. Fieldwork was done once a month, from May to December 2018 at three different points within each public space. It was carried out for fifteen minutes for each one, twice a day between 10am and 6pm since these are the busiest times.</p>
+<p class="sangria">A PCE-322 A sound-level meter has been used to measure noise levels. It had a frequency of 31.5-8 Hz, measurement of 30-130 dB and a precision of ±1.4 dB. A HOBO UX100 datalogger thermo-hygrometer was used for temperature and humidity, with a precision of ±0.21°C for temperature and of ±2.5% for relative humidity. A Proster MS625A digital anemometer has been used to measure the wind speed, while the Sky View Factor (SVF) has been calculated using fisheye (180°) photography and Rayman 1.2 software.</p>
+<p class="sangria">A questionnaire prepared based on a revision of the bibliography (<a href="#gt7">Table 1</a>) was used for the interviews and a test period (November 2017 to April 2018), focused on the physical environment as one of the determining factors of active aging. In addition, the people present at each point during each measurement have been recorded, both those who stay there and those passing through. This was done by direct observation and using photographic records (<a href="#redalyc_19864321007_ref46">Whyte, 1980</a>; <a href="#redalyc_19864321007_ref44">Urrutia del Campo, 2001</a>; <a href="#redalyc_19864321007_ref22">Katzschner, Bosch &amp; Röttgen, 2006</a>; <a href="#redalyc_19864321007_ref32">Nikolopoulou &amp; Lykoudis, 2007</a>).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt7">
+<div>
+<span class="label">Table 1</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Survey form.</span>
+</div>
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26981/19864321007_gt8.png" class="image" alt="Survey form."><br>
+<span class="caption"><span class="attrib">(<a href="#redalyc_19864321007_ref6">Baquero Larriva &amp; Higueras García, 2018</a>).</span></span>
+</div>
+</p>
+<p class="sangria">Finally, the statistical analysis with a 5% degree of significance has been made using (Kolmogoroy-Smirnov) data normality tests, choosing the corresponding tests as the Pearson correlation to measure the degree of relation between those who stay (number of people) and the environmental variables (Ta, HR, dB, wind speed, SVF); meanwhile, the Spearman correlation coefficient was used to establish the relation between those staying and the environmental perception (thermal sensation, thermal preference, humidity perception, wind, noise level and noise discomfort); the Mann Whitney U non-parametric test was used to identify relations between those who stay and the time of day (morning/afternoon), the gender and the design elements; the Kruskal Wallis H non- parametric test was used to identify the relation between those staying and the site, point of measurement and season of the year; the chi-squared parametric test was used to define the association between the gender of the interviewee and the activity, frequency, time and preference. Finally, a multivariate statistical analysis was made via multiple regression to determine the degree in which the environmental factors condition the use of public space by the elderly.</p>
+<p class="negrita seccion">CASE STUDY: ARAPILE NEIGHBORBOOD (MADRID)</p>
+<p class="sangria">Madrid is located at 667 masl, and its Mediterranean climate is characterized by dry hot summers, with mean temperaturas between 6°C in winter and 24°C in summer, reaching peaks of over 30°C (<a href="#redalyc_19864321007_ref1">AEMET, 2011</a>). The Arapiles neighborhood in the Chamberi district was chosen because of its aging (24.19%), over-aging (37.89%) and density (418 inhab/Ha), which are the highest in the city. Finally, three public spaces with different characteristics were identified in the neighborhood (<a href="#gf7">Figure 1</a>), a park, a square and a street, bearing in mind their proximity to old-people’s homes, schools and health centers (<a href="#gt8">Table 2</a>).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf7">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26969/19864321007_gf9.png" class="image" alt="Location of Madrid and the studied sites: a) Madrid; b) Chamberi district, Arapiles neighborhood and the chosen public spaces."><br>Figure 1<br>
+<span class="captionS">Location of Madrid and the studied sites: a) Madrid; b) Chamberi district, Arapiles neighborhood and the chosen public spaces.</span>
+<br>
+<span class="caption"><span class="attrib">(Baquero Larriva &amp; Higueras García, 2018).</span></span>
+</div>
+</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt8">
+<div>
+<span class="label">Table 2</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Characteristics of the analyzed public spaces.</span>
+</div>
+<div class="contenedor-tabla">
+<table style="border-collapse:  collapse;border:none" id="gt9-526564616c7963">
+<tbody>
+<tr style="height:25.1pt">
+<td style="background-color: #00A86F; border:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:25.1pt">Sitio</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Tipo</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">N</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Area (Ha)</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">N° pisos</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Equipamiento cercano</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Función</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Fuentes de ruido</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Vegetación</td><td style="background-color: #00A86F; border:solid #231F20 1.0pt;border-left:none;padding:0cm 0cm 0cm 0cm;height:25.1pt">Superficie de suelo</td>
+</tr>
+<tr style="height:47.1pt">
+<td style="border:solid #231F20 1.0pt;border-top:none;padding:0cm 0cm 0cm 0cm;   height:47.1pt">Conde  del Valle del Súchill (PCVS)</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">Plaza</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">84</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">0,68</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">5 a 10</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">Escuela, hospital</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">Residencial, juegos infantiles</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">Tráfico, fuente de agua, perros, niños jugando, gente</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">40% (97 u)</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:47.1pt">76% piedra, concreto. 24% arena</td>
+</tr>
+<tr style="height:56.75pt">
+<td style="border:solid #231F20 1.0pt;border-top:none;padding:0cm 0cm 0cm 0cm;   height:56.75pt">José Luis Sampedro (PTG)</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">Parque</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">74</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">0,33</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">5 a 9</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">Escuela, hospital, centro de mayores</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">Residencial, juegos infantiles</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">Tráfico, fuente de agua, perros, niños jugando, gente, obras</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">43% (42 u)</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:56.75pt">65% piedra, concreto. 35% arena</td>
+</tr>
+<tr style="height:36.1pt">
+<td style="border:solid #231F20 1.0pt;border-top:none;padding:0cm 0cm 0cm 0cm;   height:36.1pt">Vallehermoso (CVH)</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">Calle</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">42</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">0,072</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">2 a 10</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">Escuela, Mercado</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">Residencial, comercio, ocio</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">Tráfico, actividades de ocio y bares</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">35 u</td><td style="border-top:none;border-left:none;border-bottom:solid #231F20 1.0pt;   border-right:solid #231F20 1.0pt;padding:0cm 0cm 0cm 0cm;height:36.1pt">100% concreto y baldosa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<span class="caption"><span class="attrib">Own preparation.</span></span>
+</div>
+</p>
+<p class="negrita seccion">RESULTS AND DISCUSSION</p>
+<p class="sangria">200 old people were interviewed, 54% of which were women. A summary of the environmental parameters measured can been seen in <a href="#gt9">Table 3</a>, while <a href="#gf8">Figure 2</a> presents the spatial location of each one of the three measuring points within each site, the zoning, as well as an example of their sky view factor (SVF).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt9">
+<div>
+<span class="label">Table 3</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Summary of the environmental variables measured in the different seasons of 2018 in the Arapiles neighborhood, Madrid.</span>
+</div>
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26983/19864321007_gt10.png" class="image" alt="Summary of the environmental variables measured in the different seasons of 2018 in the Arapiles neighborhood, Madrid."><br>
+<span class="caption"><span class="attrib">Own preparation using onsite measurements.</span></span>
+</div>
+</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf8">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26970/19864321007_gf10.png" class="image" alt="Measuring and zoning points of each public space and sky view factor (SVF). a) Conde del Valle de Súchill Square (PCVS); b) José Luis Sampedro Park (PTG); c) Vallehermoso Street (CVH)."><br>Figure 2<br>
+<span class="captionS">Measuring and zoning points of each public space and sky view factor (SVF). a) Conde del Valle de Súchill Square (PCVS); b) José Luis Sampedro Park (PTG); c) Vallehermoso Street (CVH).</span>
+<br>
+<span class="caption"><span class="attrib">(<a href="#redalyc_19864321007_ref6">Baquero Larriva &amp; Higueras García, 2018</a>).</span></span>
+</div>
+</p>
+<p class="sangria">The presence of elderly people has been analyzed, counting both those who stayed onsite (stays) and those passing through. From all the users recorded in these spaces, 21% were elderly and they represented 18.66% of the stays (<a href="#gf9">Figure 3</a>), while the rest were adults, children and adolescents.</p>
+<p class="subtitulo italica">ENVIRONMENTAL FACTORS</p>
+<p class="sangria">No significant differences have been found considering the stays and the time of day (morning/afternoon), although the afternoons in both summer and winter had the lowest percentage of elderly people (<a href="#gf9">Figure 3</a>), coinciding with the times with the highest and lowest temperatures, respectively; however, there were no significant differences (p&gt;0.05) related to the seasons.</p>
+<p class="sangria">While, in a first analysis between the stays and the environmental variables (<a href="#gt11">Table 4</a>), a weak positive correlation was found with the mean, minimum and maximum temperature; a weak negative with the mean and minimum relative humidity, as well as a weak positive with the wind speed (p&lt;0.01), which would explain the former. The highest number of stays is seen within a temperature range of between 19.31°C and 29.98°C (<a href="#gf10">Figure 4a</a>), where a mean temperature of 28.94°C had the highest presence while the lowest presence was seen when the minimum temperatures were below 16.94°C. Stays meanwhile, are more frequent with a relative humidity of 51.35% upwards (<a href="#gf10">Figure 4b</a>) and drop when the wind exceeds a maximum speed of 1.86 m/s (<a href="#gf10">Figure 4c</a>).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf9">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26971/19864321007_gf11.png" class="image" alt="Stays of elderly people at the different sites: a) Conde del Valle de Súchil Square (PCVS; b) José Luis Sampedro Park (PTG); c) Vallehermoso Street (CVH)."><br>Figure 3<br>
+<span class="captionS">Stays of elderly people at the different sites: a) Conde del Valle de Súchil Square (PCVS; b) José Luis Sampedro Park (PTG); c) Vallehermoso Street (CVH).</span>
+<br>
+<span class="caption"><span class="attrib">Own preparation using fieldwork and Google Earth.</span></span>
+</div>
+</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt11">
+<div>
+<span class="label">Table 4</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Statistical tests, relation between variables and differences.</span>
+</div>
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26984/19864321007_gt13.png" class="image" alt="Statistical tests, relation between variables and differences."><br>
+<span class="caption"><span class="attrib">Own preparation.</span></span>
+</div>
+</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf10">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26972/19864321007_gf12.png" class="image" alt="Stays of elderly people depending on: a) mean air temperature, b) mean relative humidity, c) maximum wind speed."><br>Figure 4<br>
+<span class="captionS">Stays of elderly people depending on: a) mean air temperature, b) mean relative humidity, c) maximum wind speed.</span>
+<br>
+<span class="caption"><span class="attrib">Own preparation using onsite measurements.</span></span>
+</div>
+</p>
+<p class="sangria">These results coincide with the study of <a href="#redalyc_19864321007_ref32">Nikolopoulou &amp; Lykoudis (2007)</a> who demonstrated a strong relation between the microclimate and the use of open spaces; they also emphasized the difference of the thermal sensitivity of the elderly as their presence fell significantly in summer. Other studies have also found that the perception of general comfort is related with the activity in public spaces (<a href="#redalyc_19864321007_ref37">Sallis et al. 2007</a>; <a href="#redalyc_19864321007_ref24">Lai et al. 2014</a>; <a href="#redalyc_19864321007_ref45">Vidal &amp; Pol 2005</a>; <a href="#redalyc_19864321007_ref29">Maas et al. 2009</a>; <a href="#redalyc_19864321007_ref42">Sugihara &amp; Evans 2000</a>).</p>
+<p class="sangria">A multiple linear regression analysis has been conducted to establish the degree in which these factors could predict the stays of the elderly onsite. It was found that the only significant factor is the maximum wind speed, with a low determinant coefficient of R2=7%, using the following model: Stays=0.175+1.64 (Vv m/s).</p>
+<p class="sangria">As for the frequency of the visits, 46% go daily, while 24.5% do so several times a week. Only 39% pass through to head to another destination, while 25.5% stay for around 15 minutes, 21% for 30 minutes and 14.5% for more than an hour. The most common activity of the elderly in these spaces is walking (40%) and resting (28%). To provide a better analysis, this has been divided into three activities (<a href="#gf11">Figure 5</a>), where 50% corresponds to physical activity, 48.5% to passive activities and 1.5% to social activities. However, it must be considered that most of the people interviewed were accompanied, thus, although their main activity was not social, this would be combined with others, which highlights what has been said by several authors about the importance of suitable friendly urban environments to increase the opportunities for physical and social activity, managing to promote the participation and integration in old age (<a href="#redalyc_19864321007_ref38">Sánchez- González, 2013</a>; <a href="#redalyc_19864321007_ref40">Schaie &amp; Pietrucha, 2000</a>; <a href="#redalyc_19864321007_ref26">Lawton, 2001</a>).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf11">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26973/19864321007_gf13.png" class="image" alt="Type of activities performed by the elderly in public spaces."><br>Figure 5<br>
+<span class="captionS">Type of activities performed by the elderly in public spaces.</span>
+<br>
+<span class="caption"><span class="attrib">Own preparation from interviews.</span></span>
+</div>
+</p>
+<p class="sangria">With regard to the thermal preference and sensation, 74.5% of those interviewed were within what is known as the comfort zone (<a href="#redalyc_19864321007_ref3">ASHRAE, 1992</a>), which could be improved by microclimatic control, using urban passive conditioning techniques (<a href="#redalyc_19864321007_ref19">Higueras, 2006</a>). Many studies agree that thermal sensitivity reduces with age, with this being one of the factors that makes the elderly vulnerable to thermal extremes (<a href="#redalyc_19864321007_ref17">Guergova &amp; Dufour 2011</a>; <a href="#redalyc_19864321007_ref9">Blatteis 2012</a>; <a href="#redalyc_19864321007_ref7">Baquero Larriva &amp; Higueras García 2019</a>,<a href="#redalyc_19864321007_ref41">Schneider et al. 2017</a>). In terms of the perception of the noise landscape, 77.6% of those interviewed considered it was pleasant, 16% found the birdsong pleasurable and 10% felt the same for the water fountain. The latter was the location where the highest number of elderly people was recorded (<a href="#gt13">Table 5</a>). Meanwhile, 36% highlighted the sound of the traffic as unpleasant, with the street recording the lowest presence. On the other hand, it is interesting to point out that, despite mean noise levels of up to 77 dB (A) and maximum levels of up to 108 dB (A) being recorded, over the limit of 65 dB allowed for residential areas and levels which are considered harmful for the health (<a href="#redalyc_19864321007_ref21">Head of State, 2003</a>), 70.5% were not bothered by the noise. The limited discomfort caused by the noise, in some studies is attributed to the loss of hearing sensitivity which makes the elderly more tolerant to it (<a href="#redalyc_19864321007_ref30">Miedema &amp; Vos, 1999</a>; <a href="#redalyc_19864321007_ref47">Yu &amp; Kang, 2008</a>). Others explain this through the psychological factor of expectation, which reduces the discomfort caused by noise that is expected to be present in a given place, like is the case of the street in a city like Madrid (<a href="#redalyc_19864321007_ref14">Ge &amp; Hokao, 2005</a>; <a href="#redalyc_19864321007_ref10">Bruce &amp; Davies, 2014</a>).</p>
+<p class="subtitulo italica">DESIGN ELEMENTS OF THE PUBLIC SPACE</p>
+<p class="sangria">Outdoor spaces are difficult contexts to analyze, as it is impossi- ble to completely separate one of the diverse variables they are comprised by (<a href="#redalyc_19864321007_ref28">Lynch, 1998</a>), to establish a cause and effect of the use of these spaces by the elderly. For this reason, these spaces have also been analyzed regarding design criteria (<a href="#gt13">Table 5</a>) which fit the needs of the elderly (<a href="#redalyc_19864321007_ref5">Ayuntamiento de Madrid, 2015</a>; <a href="#redalyc_19864321007_ref36">Pozo Menéndez, 2019</a>; <a href="#redalyc_19864321007_ref13">Fariña, Higueras &amp; Román, 2018</a>; <a href="#redalyc_19864321007_ref34">World Health Organization, 2007</a>), both statistically (<a href="#gt12">Table 6</a>) and as a perception of the quality of these spaces (<a href="#gf12">Figure 6</a>).</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt12">
+<div>
+<span class="label">Table 6</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Statistical tests, relationship between physical elements of design and room.</span>
+</div>
+<div class="contenedor-tabla">
+<table style="border-collapse:  collapse;border:none" id="gt14-526564616c7963">
+<tbody>
+<tr style="height:16.75pt">
+<td style="background-color: #00A86F; width:219.7pt;border:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:16.75pt" colspan="5">Prueba U Mann Wilman</td>
+</tr>
+<tr style="height:16.75pt">
+<td style="width:219.7pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:16.75pt" colspan="5">Elementos físicos de diseño/ Estancia</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Sitio</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">PCVS</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">PTG</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">CVH</td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">General</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Bancas</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,356</td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.001**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Fuente de agua</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.001**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Fuente agua potable</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.003**</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,307</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Arboles</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.010*</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,483</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Sombra</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.010*</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,483</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Superficie permeable</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.010*</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.042*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Señalética</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.010*</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.013*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,640</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Seguridad</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.042*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,503</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Mantenimiento</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,058</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Ejercicios mayores</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.028*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Zona perros</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.003**</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.028*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,427</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Juegos infantiles</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.042*</td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Terraza-bar</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,138</td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,102</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Colegio</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,046</td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.000**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:73.6pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt">Parada de bus</td><td style="width:41.15pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:35.5pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt"></td><td style="width:27.7pt;border-top:none;border-left:none;   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0,356</td><td style="width:41.75pt;border-top:none;border-left:   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;   padding:0cm 0cm 0cm 0cm;height:13.9pt">0.001**</td>
+</tr>
+<tr style="height:13.9pt">
+<td style="width:219.7pt;border:solid #231F20 1.0pt;   border-top:none;padding:0cm 0cm 0cm 0cm;height:13.9pt" colspan="5">Las diferencias son significativas en el nivel *0,05 (2 colas); **0,01 (2 colas)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<span class="caption"><span class="attrib">Own preparation.</span></span>
+</div>
+</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gf12">
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26974/19864321007_gf14.png" class="image" alt="General perception of the space: a) factors considered as unpleasant for the elderly; b) factors considered as pleasant for the elderly."><br>Figura 6<br>
+<span class="captionS">General perception of the space: a) factors considered as unpleasant for the elderly; b) factors considered as pleasant for the elderly.</span>
+<br>
+<span class="caption"><span class="attrib">Own preparation from interviews.</span></span>
+</div>
+</p>
+<p class="sangria">The statistical analysis shows significant differences (p&lt;0.05) regarding the stays between the analyzed public spaces, especially between the square which has the highest affluence and the other two spaces (<a href="#gt11">Table 4</a>). Likewise, there are significant differences (p&lt;0.05) both in the PTG park and at the PCVS square between the points and these are physically shown considering the elements these comprise (<a href="#gt13">Table 5</a>), while, in the street there are no significant differences in any of its points (p&gt;0.05). It was found that the most determining physical elements (<a href="#gt12">Table 6</a>) are benches, water features, exercise areas for the elderly and the children’s playground, some matching the results of evaluations of friendly cities (<a href="#redalyc_19864321007_ref2">Arup et al., 2015</a>; <a href="#redalyc_19864321007_ref5">Ayuntamiento de Madrid, 2015</a>). It must also be highlighted that there is vegetation in all the studied spaces.</p>
+<p class="sangria">
+<div class="imagen cuadro" id="gt13">
+<div>
+<span class="label">Table 5</span>
+</div>
+<div class="captionS">
+<span class="caption-title">Design characteristics, stay and comfort results in each point of measurement.</span>
+</div>
+<img width="500px" src="https://revistas.ubiobio.cl/index.php/RU/es/article/download/3650/version/966/3937/26986/19864321007_gt15.png" class="image" alt="Design characteristics, stay and comfort results in each point of measurement."><br>
+<span class="caption"><span class="attrib">Own preparation.</span></span>
+</div>
+</p>
+<p class="sangria">As a result, the areas with more elements and a greater diversity in use are the points with the highest number of people staying, with point 2 of the PCVS square, which has all these elements (<a href="#gt13">Table 5</a>) and which coincides with the preference areas, having the highest affluence. 74% of the elderly preferred areas where there were benches to sit on, 6.8% where there were playgrounds and 4.9% with exercise areas for them, also reflected in the distribution of these users (<a href="#gt13">Table 5</a>, <a href="#gf9">Figure 3</a>), as the playgrounds are areas with a higher presence of elderly just as seen in the study of <a href="#redalyc_19864321007_ref24">Lai et al. (2014)</a>, and <a href="#redalyc_19864321007_ref44">Urrutia del Campo (2001)</a>, where the areas with a greater range of activities had the highest presence.</p>
+<p class="sangria">On the other hand, the lack of cleanliness (29.5%) is considered as the most unpleasant aspect (<a href="#gf12">Figure 6a</a>). Meanwhile, 9.5% have a sense of insecurity, above all in point 2 of the PTG park (people drinking), while 12% feel that there is a lack of green areas. With regard to pleasing aspects (<a href="#gf12">Figure 6b</a>), the perception of a pleasant and clean environment (<a href="#redalyc_19864321007_ref8">Beard et al., 2009</a>) stands out. Vegetation with 27.5% falls within this. This is backed by the results of some studies which identify green areas (<a href="#redalyc_19864321007_ref45">Vidal &amp; Pol, 2005</a>; <a href="#redalyc_19864321007_ref29">Maas et al., 2009</a>; <a href="#redalyc_19864321007_ref42">Sugihara &amp; Evans, 2000</a>; <a href="#redalyc_19864321007_ref39">Sánchez- González, Rivera Adame &amp; Rodríguez-Rodríguez, 2018</a>; <a href="#redalyc_19864321007_ref43">Takano, Nakamura &amp; Watanabe, 2002</a>), aesthetics, access to areas to walk in, parks, playgrounds, safety, upkeep as factors which affect physical activity in the public spaces (<a href="#redalyc_19864321007_ref18">Hekler et al., 2012</a>; <a href="#redalyc_19864321007_ref11">Buman et al., 2013</a>; <a href="#redalyc_19864321007_ref12">Choi et al., 2017</a>; <a href="#redalyc_19864321007_ref23">Kerr, Rosenberg &amp; Frank, 2012</a>).</p>
+<p class="sangria">Finally, in terms of gender, a significant correlation was only found with the perception of the site’s humidity (<a href="#gt11">Table 4</a>). However, in this study, women stayed longer in each public space, walked more and the men rested more (<a href="#gf12">Figure 6</a>). Likewise, women liked having more vegetation, while men valued the tranquility of the neighborhood more (<a href="#gf12">Figure 6</a>).</p>
+<p class="negrita seccion">CONCLUSIONS</p>
+<p class="sangria">This study has analyzed the factors of the physical environment that affect the use by the elderly of three public spaces in Madrid. It was found that the elderly represents 21% of the users, 18.66% of the stays, that most visit the site daily and 50% do physical activities like walking. In terms of gender, no significant differences were found in any of the variables; however, women stayed longer and walked more in these spaces.</p>
+<p class="sangria">The environmental factors like temperature, relative humidity and wind speed, as well as the discomfort caused by noise, are factors which affect the stays of the elderly in public spaces; however, only the wind speed is significant within a regression model. A temperature preference range of between 19.31°C and 29.98°C can be considered. This provided the highest percentage of the stays, where 74.5% of the interviewees felt comfortable.</p>
+<p class="sangria">The stays of the elderly have significant differences between the spaces. It was found that the most determining design elements are benches, water features, water fountains, exercise areas for the elderly and playgrounds, with the latter one of the areas having the highest presence of the elderly both in the square and in the park, which contributes to the intergenerational social exchange and matches what has been recommended by several prior studies.</p>
+<p class="sangria">Analyzing outdoor spaces is a complex task due to the great number of variables involved; however, this study shows that public spaces foster vitality in old age as locations for physical and social development, which are essential for improving their quality of life, promoting an active and healthy aging. The importance of the environmental variables and their control by means of a suitable design stands out, having to bear in mind the physiological changes related to aging that can affect thermal and hearing sensitivity, making the elderly more or less tolerant to certain environmental parameters and increase their vulnerability to the effects these have on their health. Finally, important lines of work are opened to face the challenges of cities in the XXI century to adapt their spaces to the demographic change.</p>
+<p class="negrita seccion">ACKNOWLEDGMENTS</p>
+<p class="sangria">This work has been financed by the Ecuadorian Institute of the Secretariat of Higher Education, Science, Technology and Innovation of the Government of Ecuador (SENESCYT),</p>
+<p class="sangria">Traducido por Kevin Wright/ Translated by Kevin Wright</p>
+</div>
+<div id="back">
+<p class="negrita seccion">Agradecimientos</p>
+<p>Este trabajo ha sido financiado por el Instituto Ecuatoriano de la Secretaría de Educación Superior, Ciencia, Tecnología e Innovación del Gobierno del Ecuador (SENESCYT).</p>
+<p class="negrita seccion">
+<span class="negrita">REFERENCIAS BIBLIOGRÁFICAS</span>
+</p>
+<p class="bibliografia" id="redalyc_19864321007_ref1">Agencia Estatal de Metereología (AEMET) (2011). Atlas Climático Ibérico. Temperatura del Aire y Precipitación (1971-2000). Recuperado de <a target="_blank" href="http://www.aemet.es/documentos/es/conocermas/publicaciones/Atlas-climatologico/Atlas.pdf">http://www.aemet.es/documentos/es/conocermas/publicaciones/Atlas-climatologico/Atlas.pdf</a>.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref2">Arup, Help Age International, Intel y Systematica (2015). Shaping Ageing Cities: 10 European case studies. Recuperado de <a target="_blank" href="https://www.dataplan.info/img_upload/5c84ed46aa0abfec4ac40610dde11285/shaping-ageing-cities_a4_web.pdf">https://www.dataplan.info/img_upload/5c84ed46aa0abfec4ac40610dde11285/shaping-ageing-cities_a4_web.pdf</a>.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref3">ASHRAE (1992). Thermal environmental conditions for human occupancy. Atlanta.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref4">Auchincloss, A.H., Diez, A., Mahasin, M., Shen M., Bertoni, A. y Carnethon, M. (2009). Neighborhood Resources for Physical Activity and Healthy Foods and Incidence of Type 2 Diabetes Mellitus. Archives of Internal Medicine, 169(18), 1698-1704. DOI 10.1001/archinternmed.2009.302.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref5">Ayuntamiento de Madrid (2015). Madrid Ciudad Amigable con las Personas Mayores. Madrid: Área de Equidad, Derechos Sociales y Empleo, Ayuntamiento de Madrid.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref6">Baquero Larriva, M.T. e Higueras García, E. (2018). Percepción de confort térmico y acústico de adultos mayores en el espacio público de madrid. Presentado en Congreso Nacional del Medio Ambiente CONAMA, Madrid. Recuperado de <a target="_blank" href="http://www.conama11.vsf.es/conama10/download/files/conama2018/CT2018/222224215.pdf">http://www.conama11.vsf.es/conama10/download/files/conama2018/CT2018/222224215.pdf</a>.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref7">Baquero Larriva, M.T. e Higueras García, E. (2019). Confort térmico de adultos mayores: una revisión sistemática de la literatura científica. Revista Española de Geriatría y Gerontología, 54(5), 280-295. DOI <a target="_blank" href="https://doi.org/10.1016/j">https://doi.org/10.1016/j</a>. regg.2019.01.006.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref8">Beard, J.R., Cerdá, M., Blaney, S., Ahern, J., Vlahov, D. y Galea, S. (2009). Neighborhood characteristics and change in depressive symptoms among older residents of New York City. American Journal of Public Health, 99 (7), 1308- 1314. DOI 10.2105/AJPH.2007.125104.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref9">Blatteis, C.M. (2012). Age-dependent changes in temperature regulation - A mini review. Gerontology, 58(4), 289-295. DOI 10.1159/000333148.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref10">Bruce, N.S. y Davies, W.J. (2014). The effects of expectation on the perception of soundscapes. Applied Acoustics, 85, 1-11. DOI 10.1016/j.apacoust.2014.03.016.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref11">Buman, M.P., Winter, S.J., Sheats, J.L., Hekler, E.B., Otten, J.J., Grieco, L.A. y King, A.C. (2013). The stanford healthy neighborhood discovery tool: A computerized tool to assess active living environments. American Journal of Preventive Medicine, 44(4), e41-e47. DOI 10.1016/j.amepre.2012.11.028.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref12">Choi, J., Lee, M., Lee, J.K., Kang, D. y Choi, J.Y. (2017). Correlates associated with participation in physical activity among adults: A systematic review of reviews and update. BMC Public Health, 17(1), 1-13. DOI 10.1186/s12889-017-4255-2.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref13">Fariña, J., Higueras, E. y Román, E. (2018). Ciudad, urbanismo y salud. Criterios generales de diseño urbano para alcanzar los objetivos de una ciudad saludable. Envejecimiento activo. Madrid: Instituto Juan de Herrera. (No publicado).</p>
+<p class="bibliografia" id="redalyc_19864321007_ref14">Ge, J. y Hokao, K. (2005). Applying the methods of image evaluation and spatial analysis to study the sound environment of urban street areas. Journal of Environmental Psychology, 25(4), 455-466. DOI 10.1016/j.jenvp.2005.10.003.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref15">Gehl, J. (2001). Life Between Buildings. Using public space. Washington: Island press.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref16">Grupo Orgánico de Enfermedades No Transmisibles y Salud Mental (2002). Envejecimiento activo: un marco político. Revista Española de Geriatría y Gerontología, 37(52), 74-105. Recuperado de <a target="_blank" href="http://envejecimiento.csic.es/documentos/documentos/oms-envejecimiento-01.pdf">http://envejecimiento.csic.es/documentos/documentos/oms-envejecimiento-01.pdf</a>.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref17">Guergova, S. y Dufour, A. (2011). Thermal sensitivity in the elderly: A review. Ageing Research Reviews, 10(1), 80-92. DOI 10.1016/j.arr.2010.04.009.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref18">Hekler, E.B., Castro, C.M., Buman, M.P. y King, A.C. (2012). The CHOICE study: A «taste-test» of utilitarian vs. leisure walking among older adults. Health Psychology, 31(1), 126-129. DOI 10.1037/a0025567.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref19">Higueras, E. (2006). Urbanismo Bioclimático. Barcelona: Editorial Gustavo Gili.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref20">IMSERSO (2017). Newletter No1. Situación General de la Red de Ciudades y Comunidades Amigables en España. Madrid.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref21">Jefatura del Estado (2003). Ley 37/2003, del Ruido. BOE-A-2003-20976.276. Madrid.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref22">Katzschner, L., Bosch, U. y Röttgen, M. (2006). Behaviour of people in open spaces in dependence of thermal comfort conditions. En Proceedings of 23rd Conference on Passive and Low Energy Architecture, Ginebra, Suiza.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref23">Kerr, J., Rosenberg, D. y Frank, L. (2012). The Role of the Built Environment in Healthy Aging: Community Design, Physical Activity and Health among Older Adults. Journal of Planning Literature, 27(1), 43-60. DOI 10.1177/0885412211415283.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref24">Lai, D., Zhou, C., Huang, J. y Jiang, Y. Outdoor space quality : A field study in an urban residential community in central China. Energy &amp; Buildings. 2014, vol. 68, pp. 713-720. DOI 10.1016/j.enbuild.2013.02.051.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref25">Lawton, M.P. (1985). The Elderly in context. Envrionment and Behavior. Environment and Behavior, 17(4), 501-519. DOI 10.1177/0013916585174005.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref26">Lawton, M.P. (2001). Quality of life and the end of life. Handbook of the Psychology of Aging, 5, 593-616.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref27">Lawton, M. y Powell Nahemow, L. (1973). Ecology and the aging process. En: C. Eisdorfer y M. P. Lawton (Eds.), The psychology of adult development and aging (pp. 619-674). Washington, DC, US: American Psychological Association. DOI: <a target="_blank" href="http://dx.doi.org/10.1037/10044-020">http://dx.doi.org/10.1037/10044-020</a>
+</p>
+<p class="bibliografia" id="redalyc_19864321007_ref28">Lynch, K. (1998). La imagen de la ciudad. (3era ed.). Barcelona: Editorial Gustavo Gili.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref29">Maas, J., Van Dillen, S., Verheij, R. y Groenewegen, P. (2009). Social contacts as a possible mechanism behind the relation between green space and health. Health &amp; Place, 15(2), 586-595.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref30">Miedema, H.M.E. y Vos, H. (1999). Demographic and attitudinal factors that modify annoyance from transportation noise. The Journal of the Acoustical Society of America, 105(6), 3336-3344. DOI 10.1121/1.424662.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref31">Naciones Unidas (2002). Declaración Política y Plan de Acción Internacional de Madrid Sobre el Envejecimiento. Segunda Asamblea Mundial sobre el Envejecimiento. Madrid.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref32">Nikolopoulou, M. y Lykoudis, S. (2007). Use of outdoor spaces and microclimate in a Mediterranean urban area. Building and Environment, 42(10), 3691-3707. DOI 10.1016/j.buildenv.2006.09.008.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref33">Organización Mundial de la Salud (OMS) (2001). Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud. Madrid: Grafo S.A. Recuperado de <a target="_blank" href="http://www.imserso.es/InterPresent2/groups/imserso/documents/binario/435cif.pdf">http://www.imserso.es/InterPresent2/groups/imserso/documents/binario/435cif.pdf</a>. 2001.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref34">Organización Mundial de la Salud (OMS) (2007). Ciudades Globales Amigables con los mayores : una Guía. Ginebra, Suiza: Ediciones de la OMS.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref35">Organización Mundial de la Salud (OMS) (2015). Informe mundial sobre el envejecimiento y la salud. Recuperado de <a target="_blank" href="https://www.who.int/ageing/publications/world-report-2015/es">https://www.who.int/ageing/publications/world-report-2015/es</a>/.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref36">Pozo Menéndez, E. (2019). El espacio público de las ciudades españolas para el envejecimiento activo desde la perspectiva del diseño bioclimático. Trabajo de fin de Máster en Medio Ambiente y Arquitectura Bioclimátuca. Universidad Politécnica de Madrid.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref37">Sallis, J.F., King, A.C., Sirard, J.R. y Albright, C.L. (2007). Perceived Environmental Predictors of Physical Activity Over 6 Months in Adults: Activity Counseling Trial. Health Psychology, 26(6), 701-709. DOI 10.1037/0278-6133.26.6.701.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref38">Sánchez-González, D. (2013). Prisioneros del espacio urbano. Retos de planificar ciudades amigables para las personas adultas mayores. En: A.P. Barra, E.S. González y E.C. Vargas (Eds.), Espacio Urbano, Reconstrucción y Reconfiguración Territorial (pp. 101-118). México: Universidad Autónoma de Nuevo León y Universidad Autónoma del Estado de México; Chile: Universidad del Bío-Bío.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref39">Sánchez-González, D., Rivera Adame, L.M. y Rodríguez-Rodríguez, V. (2018). Paisaje natural y envejecimiento saludable en el lugar : el caso del Parque Nacional Cumbres de Monterrey (México). Boletín de la Asociación de Geógrafos Españoles, 76, 20-51. DOI 10.21138/bage.2514.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref40">Schaie, K. y Pietrucha, M. (2000). Mobility and Transportation in the Elderly. New York: Springer Publishing Company.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref41">Schneider, A., Rückerl, R., Breitner, S., Wolf, K. y Peters, A. (2017). Thermal Control, Weather, and Aging. Current Environmental Health Reports, 4(1), 21-29. DOI 10.1007/s40572-017-0129-0.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref42">Sugihara, S. y Evans, G. (2000). Place Attachment and Social Support at Continuing Care Retirement Communities. Environment and Behavior, 32(3), 400-409.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref43">Takano, T., Nakamura, K. y Watanabe, M. (2002). Urban residential environments and senior citizens’ longevity in megacity areas: the importance of walkable green spaces. Journal of Epidemiology Community Health, (56), 913-918. DOI 10.1136/jech.56.12.913.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref44">Urrutia del Campo, N. (2001). Clima , diseño y diversidad urbana en el uso de tres plazas de Madrid. Revista Territorios en Formación, 1, 161-178. Recuperado de <a target="_blank" href="http://polired.upm.es/index.php/territoriosenformacion/article/view/1292/1516">http://polired.upm.es/index.php/territoriosenformacion/article/view/1292/1516</a>.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref45">Vidal, T. y Pol, E. (2005). The appropriation of space: A theorical proposal to understand the bond between the persons and the places. Anuario de Psicología, 36(3), 281-297.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref46">Whyte, W.H. (1980). The social life of small urban spaces. Washington, D.C.: Project for public spaces.</p>
+<p class="bibliografia" id="redalyc_19864321007_ref47">Yu, L. y Kang, J. (2008). Effects of social, demographical and behavioral factors on the sound level evaluation in urban open spaces. The Journal of the Acoustical Society of America, 123(2), 772-783. DOI 10.1121/1.2821955.</p>
+<p class="negrita seccion">Notas</p>
+<div class="nota" id="fn7">
+<span class="label">[1]</span> Este trabajo ha sido financiado por el Instituto Ecuatoriano de la Secretaría de Educación Superior, Ciencia, Tecnología e Innovación del Gobierno del Ecuador (SENESCYT).</div>
+<div class="nota" id="fn8">
+<span class="label">[2]</span> Tesis doctoral en desarrollo (Programa de Doctorado en Regeneración Urbana y Sostenibilidad de la Universidad Politécnica de Madrid).</div>
+</div>
+</div>
+<div id="creditos">
+<span class="creditos-text">HTML generado a partir de XML-JATS4R por</span><span class="creditos-logo"></span>
+</div>
+</body>
+</html>

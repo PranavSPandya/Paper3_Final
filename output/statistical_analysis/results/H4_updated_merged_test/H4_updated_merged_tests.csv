@@ -1,0 +1,10 @@
+"block","scope","outcome","term","estimate","p","n","note","std_error","df","ci_lower","ci_upper"
+"measured_joint","walk","thermal_comfort","dba_z",-0.563906648173469,0.0313818967596197,22,"Y ~ dBA_z + UTCI_z + (1|participant)",0.221456478810997,9,-1.06487600796383,-0.0629372883831044
+"measured_joint","walk","thermal_comfort","utci_z",-0.0490575624571055,0.837957007952351,22,"Y ~ dBA_z + UTCI_z + (1|participant)",0.233039392613565,9,-0.576229293672025,0.478114168757814
+"measured_joint","walk","acoustic_comfort","dba_z",-0.563690340626997,0.0811046835022539,22,"Y ~ dBA_z + UTCI_z + (1|participant)",0.28699297651905,9,-1.21291355813234,0.0855328768783491
+"measured_joint","walk","acoustic_comfort","utci_z",-0.012391830229285,0.967915295093937,22,"Y ~ dBA_z + UTCI_z + (1|participant)",0.299640611388519,9,-0.690225985547058,0.665442325088488
+"measured_joint","walk","overall_comfort","dba_z",-0.367103607650356,0.245053037247209,22,"Y ~ dBA_z + UTCI_z + (1|participant)",0.295187189881705,9,-1.03486342360753,0.300656208306818
+"measured_joint","walk","overall_comfort","utci_z",0.13250930050493,0.699342909827356,22,"Y ~ dBA_z + UTCI_z + (1|participant)",0.332276921319653,9,-0.619153317090859,0.88417191810072
+"vote_coupling","walk","thermal_comfort ~ acoustic_comfort","spearman",0.712704985127283,0.0138359142168454,11,"Spearman on 11 person-means (Chiucchiù / Peng TSV~ASV)",NA,NA,NA,NA
+"cureau_votes","walk","overall_comfort","thermal_comfort",0.153669241670931,0.490899358855736,22,"overall_comfort ~ thermal_comfort + acoustic_comfort + (1|participant)",NA,NA,NA,NA
+"cureau_votes","walk","overall_comfort","acoustic_comfort",0.376107544586568,0.087662514331848,22,"overall_comfort ~ thermal_comfort + acoustic_comfort + (1|participant)",NA,NA,NA,NA

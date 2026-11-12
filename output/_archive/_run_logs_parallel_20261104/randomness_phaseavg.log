@@ -1,0 +1,103 @@
+Randomness sequence check saved to: C:/Users/sanga/Desktop/Pranav Paper3_Final/output/statistical_analysis/results/randomness_phaseavg/randomness_sequence_check_summary.csv
+
+=== Randomness Sequence Audit Summary ===
+Total outcomes tested: 47
+Significant raw p < 0.05: 3
+Significant FDR q < 0.05: 0
+
+   Variable_Type                                     Variable Estimate_per_bout
+1  Physiological                          empatica_heart_rate     -6.562798e-01
+2  Physiological                           empatica_eda_tonic     -1.178777e-01
+3  Physiological                          empatica_eda_phasic     -1.920629e-04
+4  Physiological                    empatica_skin_temperature      2.389619e-03
+5  Physiological                         empatica_hrv_td_sdnn      4.241146e+00
+6  Physiological                        empatica_hrv_td_rmssd      2.262106e+00
+7  Physiological                           empatica_hrv_fd_lf      5.496462e+02
+8  Physiological                           empatica_hrv_fd_hf      4.673409e+02
+9  Physiological                  empatica_hrv_fd_lf_hf_ratio      8.527090e-04
+10 Physiological                         empatica_hrv_fd_lfnu      4.804161e-01
+11 Physiological                         empatica_hrv_fd_hfnu     -4.804161e-01
+12 Physiological                          empatica_hrv_fd_vlf      1.957932e+02
+13 Physiological                  empatica_hrv_fd_total_power      1.190383e+03
+14 Physiological                eyetracker_pupil_diameter_avg     -1.045092e-01
+15 Physiological                 eyetracker_pupil_change_rate      1.815330e-04
+16 Physiological                  eyetracker_blink_duration_s      1.273876e-03
+17 Physiological               eyetracker_fixation_duration_s     -1.102183e-03
+18 Physiological                     eyetracker_fixation_rate     -5.388130e-02
+19 Physiological                eyetracker_saccade_duration_s     -1.291075e-03
+20 Physiological                 eyetracker_saccade_amplitude     -4.622563e-01
+21 Physiological             eyetracker_saccade_peak_velocity     -5.139512e+01
+22 Physiological                     eyetracker_gaze_velocity      7.967961e+01
+23 Physiological                   eyetracker_gaze_dispersion      2.695657e-03
+24 Physiological              eyetracker_distance_from_center     -3.748172e+00
+25 Physiological                   eyetracker_gaze_centrality      3.639758e-03
+26 Physiological               eyetracker_eyelid_aperture_avg      3.721538e-02
+27 Questionnaire            questionnaire_current_comfort_1_7     -8.181818e-02
+28 Questionnaire          questionnaire_space_familiarity_1_5      1.545455e-01
+29 Questionnaire               questionnaire_pleasantness_1_5     -1.363636e-01
+30 Questionnaire            questionnaire_thermal_comfort_1_5     -1.909091e-01
+31 Questionnaire           questionnaire_acoustic_comfort_1_5     -3.090909e-01
+32 Questionnaire             questionnaire_visual_comfort_1_5     -9.090909e-02
+33 Questionnaire        questionnaire_air_quality_comfort_1_5     -3.090909e-01
+34 Questionnaire               questionnaire_odor_comfort_1_5     -2.727273e-01
+35 Questionnaire questionnaire_environmental_comfort_mean_1_5     -2.345455e-01
+36 Questionnaire                 questionnaire_stai6_mean_1_5      5.606061e-02
+37 Questionnaire              questionnaire_stai_calm_rev_1_5      1.272727e-01
+38 Questionnaire                 questionnaire_stai_tense_1_5      1.454545e-01
+39 Questionnaire                 questionnaire_stai_upset_1_5      1.818182e-02
+40 Questionnaire           questionnaire_stai_relaxed_rev_1_5      8.181818e-02
+41 Questionnaire           questionnaire_stai_content_rev_1_5      2.727273e-02
+42 Questionnaire               questionnaire_stai_worried_1_5     -6.363636e-02
+43 Questionnaire     questionnaire_prs11_fascination_mean_1_5     -3.333333e-02
+44 Questionnaire      questionnaire_prs11_being_away_mean_1_5     -1.848485e-01
+45 Questionnaire       questionnaire_prs11_coherence_mean_1_5      1.121212e-01
+46 Questionnaire           questionnaire_prs11_scope_mean_1_5     -1.590909e-01
+47 Questionnaire           questionnaire_prs11_total_mean_1_5     -5.785124e-02
+             SE DF     t_value    p_value N_obs N_participants     q_FDR
+1  8.700367e-01 32 -0.75431277 0.45617683    44             11 0.7386019
+2  3.620877e-01 32 -0.32555025 0.74688388    44             11 0.8431369
+3  2.088139e-04 32 -0.91978033 0.36456950    44             11 0.7386019
+4  1.557707e-01 32  0.01534062 0.98785569    44             11 0.9878557
+5  2.684836e+00 32  1.57966661 0.12401863    44             11 0.7386019
+6  3.429792e+00 32  0.65954605 0.51426422    44             11 0.7386019
+7  5.985295e+02 32  0.91832754 0.36531777    44             11 0.7386019
+8  5.165653e+02 32  0.90470833 0.37238120    44             11 0.7386019
+9  3.535801e-02 32  0.02411643 0.98090950    44             11 0.9878557
+10 7.561539e-01 32  0.63534171 0.52972301    44             11 0.7386019
+11 7.561539e-01 32 -0.63534171 0.52972301    44             11 0.7386019
+12 6.895415e+02 32  0.28394697 0.77828024    44             11 0.8431369
+13 1.407315e+03 32  0.84585402 0.40391504    44             11 0.7386019
+14 6.827568e-02 28 -1.53069405 0.13706600    39             10 0.7386019
+15 1.404404e-04 28  1.29259847 0.20671534    39             10 0.7386019
+16 1.304184e-03 28  0.97676133 0.33705142    39             10 0.7386019
+17 3.250650e-03 28 -0.33906561 0.73709016    39             10 0.8431369
+18 4.951001e-02 28 -1.08829095 0.28574576    39             10 0.7386019
+19 1.368381e-03 28 -0.94350560 0.35349293    39             10 0.7386019
+20 4.926793e-01 28 -0.93824992 0.35613948    39             10 0.7386019
+21 8.278758e+01 28 -0.62080715 0.53974755    39             10 0.7386019
+22 4.880887e+01 28  1.63248227 0.11377513    39             10 0.7386019
+23 1.396612e-03 28  1.93014058 0.06377588    39             10 0.7386019
+24 4.777570e+00 28 -0.78453516 0.43931361    39             10 0.7386019
+25 7.974788e-03 28  0.45640819 0.65161720    39             10 0.8431369
+26 1.051982e-01 28  0.35376437 0.72616548    39             10 0.8431369
+27 1.437757e-01 32 -0.56906829 0.57328272    44             11 0.6796409
+28 9.953404e-02 32  1.55268949 0.13033268    44             11 0.4227528
+29 1.424766e-01 32 -0.95709484 0.34569486    44             11 0.6049660
+30 1.032028e-01 32 -1.84984336 0.07358995    44             11 0.3090778
+31 1.374389e-01 32 -2.24893258 0.03153141    44             11 0.2496076
+32 1.122206e-01 32 -0.81009259 0.42387054    44             11 0.6258900
+33 1.374389e-01 32 -2.24893254 0.03153141    44             11 0.2496076
+34 1.356991e-01 32 -2.00979374 0.05294771    44             11 0.2779755
+35 1.069313e-01 32 -2.19342248 0.03565822    44             11 0.2496076
+36 6.788974e-02 32  0.82575968 0.41505463    44             11 0.6258900
+37 1.095162e-01 32  1.16213638 0.25377460    44             11 0.5455297
+38 9.634307e-02 32  1.50975620 0.14091760    44             11 0.4227528
+39 4.447815e-02 32  0.40878090 0.68542338    44             11 0.7575732
+40 1.062850e-01 32  0.76979998 0.44706427    44             11 0.6258900
+41 1.071561e-01 32  0.25451391 0.80072706    44             11 0.8007271
+42 9.085225e-02 32 -0.70043791 0.48871569    44             11 0.6414393
+43 1.268051e-01 32 -0.26287051 0.79433552    44             11 0.8007271
+44 1.684698e-01 32 -1.09722000 0.28073348    44             11 0.5455297
+45 9.266924e-02 32  1.20990752 0.23517668    44             11 0.5455297
+46 1.465424e-01 32 -1.08563024 0.28575363    44             11 0.5455297
+47 1.041797e-01 32 -0.55530244 0.58254933    44             11 0.6796409

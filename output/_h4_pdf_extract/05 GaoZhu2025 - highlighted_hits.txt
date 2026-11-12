@@ -1,0 +1,123 @@
+FILE: 05 GaoZhu2025 - highlighted.pdf
+PAGES: 11
+CHARS: 64284
+
+heat: Unraveling the effects of thermal-acoustic environments on psychological restoration in urban greenways Ming Gao a,b, Xun Zhu a,* a School of Architecture and Design, Harbin Institute of Technology; Key
+---
+e 117566, Singapore A R T I C L E I N F O Keywords: Outdoor space Psychological restoration Thermal comfort Soundscape Urban greenway A B S T R A C T As environmental pressures from high-density urbanization inc
+---
+ngapore A R T I C L E I N F O Keywords: Outdoor space Psychological restoration Thermal comfort Soundscape Urban greenway A B S T R A C T As environmental pressures from high-density urbanization increase, the comfo
+---
+enway A B S T R A C T As environmental pressures from high-density urbanization increase, the comfort of outdoor spaces and their restorative benefits for urban residents have become increasingly important.
+---
+outdoor spaces and their restorative benefits for urban residents have become increasingly important. Although thermal and acoustic environments are key factors influencing outdoor comfort, evidence linki
+---
+in different types of greenways can be targeted for improvement. Secondly, the interaction between thermal and acoustic environments influences restorative benefits. At the same sound pressure levels, restorat
+---
+levels, restorative benefits decrease as the Universal Thermal Climate Index (UTCI) increases. However, on sparsely vegetated greenways, under conditions of 70–75 dB(A), the increase in UTCI does not s
+---
+s, restorative benefits decrease as the Universal Thermal Climate Index (UTCI) increases. However, on sparsely vegetated greenways, under conditions of 70–75 dB(A), the increase in UTCI does not significan
+---
+However, on sparsely vegetated greenways, under conditions of 70–75 dB(A), the increase in UTCI does not significantly affect restoration. Finally, to identify the factors hindering psycho­ logical restorat
+---
+sparsely vegetated greenways, under conditions of 70–75 dB(A), the increase in UTCI does not significantly affect restoration. Finally, to identify the factors hindering psycho­ logical restoration, the
+---
+conditions of 70–75 dB(A), the increase in UTCI does not significantly affect restoration. Finally, to identify the factors hindering psycho­ logical restoration, the study compares the veto power of thermal-a
+---
+affect restoration. Finally, to identify the factors hindering psycho­ logical restoration, the study compares the veto power of thermal-acoustic comfort voting (TCV, ACV). This veto power varies according to
+---
+toration, the study compares the veto power of thermal-acoustic comfort voting (TCV, ACV). This veto power varies according to greenway type. In densely vegetated greenways, ACV has greater veto power t
+---
+greenway type. In densely vegetated greenways, ACV has greater veto power than TCV, while in sparsely vegetated greenways, the reverse is true. The findings offer valuable insights for urban planners a
+---
+d environmental pres­ sures on residents living in high-density cities, such as noise pollution and heatwaves [1,2], contributing to increased rates of anxiety and cardiovascular diseases [3]. Consequent
+---
+h-density cities, such as noise pollution and heatwaves [1,2], contributing to increased rates of anxiety and cardiovascular diseases [3]. Consequently, the renewal and redevelop­ ment of urban outdoor spa
+---
+Consequently, the renewal and redevelop­ ment of urban outdoor spaces have been increasingly employed to address the challenges posed by highly fragmented spatial patterns, gradually becoming a central iss
+---
+worldwide [4]. The comfort of these spaces not only affects the psychological restoration of outdoor users but also contributes to the livability and sustainability of cities [5,6]. Among various environ­ men
+---
+an green spaces, as an indispensable component of outdoor spaces, are becoming increasingly important and urgent due to their restorative benefits. On one hand, exposure to nature in cities can alle­ viate
+---
+ifunctionality [11]. They provide multidimensional benefits to cities, such as increasing the density of green areas within strict spatial constraints, offering public spaces for leisure and sports activi
+---
+cal regions, the poten­ tial role of urban greenways in promoting environmental restoration * Corresponding author. E-mail addresses: 22B334014@stu.hit.edu.cn (M. Gao), zhuxun@hit.edu.cn (X. Zhu). Contents lis
+---
+rmal and acoustic environments of urban greenways may impact the psychological restoration of users [13]. As a result, urban planners and policymakers around the world are increas­ ingly focused on maximizing
+---
+users [13]. As a result, urban planners and policymakers around the world are increas­ ingly focused on maximizing the comfort of outdoor spaces with limited resources, whether through greenway planning o
+---
+identify the key environmental comfort attributes that influence environmental restoration. This study employs linear regression models and variance analysis applied to field data collected from urban greenway
+---
+Question 2 (RQ2): How do thermal-acoustic environments influence psychological restoration across these two greenway spaces? • Research Question 3 (RQ3): Do thermal and acoustic environments exert equal influ
+---
+): Do thermal and acoustic environments exert equal influence on psychological restoration in these greenway spaces? This research makes threefold contributions to the literature on urban greenway planning an
+---
+explores the relationship between thermal-acoustic comfort and psychological restoration from a sensory interaction perspective. This perspective highlights how specific sensory conditions can disproportiona
+---
+between thermal-acoustic comfort and psychological restoration from a sensory interaction perspective. This perspective highlights how specific sensory conditions can disproportionately in­ fluence users’ ove
+---
+l modifications. By explicitly connecting sensory experiences to psychological restoration, the results offer practical guidance for planners and policymakers seeking to enhance urban sustainability and impro
+---
+tive environments is largely anchored in two theoretical frameworks: Attention Restoration Theory (ART) and Stress Reduction Theory (SRT) [17,18]. According to SRT, exposure to natural settings helps alleviat
+---
+ity urban areas [11]. 2.2. The impact of environmental comfort on psychological restoration The comfort of outdoor environments has a positive influence on psychological well-being and restoration, a relationsh
+---
+outdoor environments has a positive influence on psychological well-being and restoration, a relationship that also in­ forms urban design efforts [5,21]. However, much of the existing research on urban outdo
+---
+g contexts [24]. This narrow focus can also underestimate the role of sensory interaction [25,26]; by contrast, a multisensory experience is considered an effective intervention to enhance restorative outcome
+---
+er a composite effect that operates holistically [28]. For example, in summer, thermal comfort and acoustic comfort can interact, where high temperatures exacerbate acoustic discomfort, collectively influencing o
+---
+her­ mal comfort is often evaluated using the Universal Thermal Climate Index (UTCI) [30], owing to its robust accuracy and applicability in complex urban microclimates [31]. Meanwhile, the comfort of o
+---
+nvironment [32]. Specifically, the A-weighted equivalent sound pressure level (LAeq) is employed to characterize the intensity of ambient sound, and measures of acoustic comfort and preference are used
+---
+l and acoustic perspectives. Although environmental comfort under multisensory interaction has been investigated [34], its relationship with psychological restoration in outdoor spaces remains largely unexplo
+---
+ry interaction has been investigated [34], its relationship with psychological restoration in outdoor spaces remains largely unexplored. In addition, while acoustic comfort may enhance restorative benefits [3
+---
+in acoustic type and loudness under the same temperature conditions can shift thermal comfort evaluations [36,37]. These insights underscore the interactive effects of thermal and acoustic environments, but often
+---
+er—a situation in which a single severely negative stimulus, such as excessive noise or extreme heat, can override otherwise favorable conditions and sub­ stantially reduce overall satisfaction [25], pro
+---
+ffect exists in the thermal-acoustic environment with respect to psychological restoration. Moreover, current research on thermal-acoustic comfort predominantly takes place in laboratory set­ tings [37], poten
+---
+ch may obscure potential links between environmental comfort and psychological restoration. M. Gao and X. Zhu
+---
+the relationship between outdoor thermal-acoustic comfort and psycho­ logical restoration. In selecting specific greenways, we relied on the Shenzhen Greenway Atlas published by the Shenzhen Municipal Adminis
+---
+ipants reported their evaluations of comfort (Section 3.3.1) and psychological restoration (Section 3.3.2) while on the greenways. Simultaneously, thermal and acoustic parameters were measured (Section 3.3.3)
+---
+effect of heat stress on other sensory perceptions. For thermal assessment, the UTCI was adopted to evaluate the physiological effects of the thermal environment [6,29]. Owing to UTCI’s wide acceptance
+---
+valuate the physiological effects of the thermal environment [6,29]. Owing to UTCI’s wide acceptance and robust methodology in previous studies, it was used to represent thermal comfort [38], with corr
+---
+cceptance and robust methodology in previous studies, it was used to represent thermal comfort [38], with corresponding stress categories based on specific UTCI ranges [39]. The thermal stress cate­ gories used in
+---
+t thermal comfort [38], with corresponding stress categories based on specific UTCI ranges [39]. The thermal stress cate­ gories used in this study—very strong heat stress (+38 to +46 ◦C), strong heat s
+---
+), and moderate heat stress (+26 to +32 ◦C)— follow internationally recognized UTCI thresholds. These classifications have been widely applied in both cold and subtropical climates [6,38]. As for the a
+---
+or the acoustic environment, the A-weighted equivalent continuous sound level (LAeq) was selected to account for the intermittent nature of traffic noise, thereby serving as a suitable metric for assess
+---
+nd level (LAeq) was selected to account for the intermittent nature of traffic noise, thereby serving as a suitable metric for assessing the greenway sound environment. Following the categories used in p
+---
+eenway sound environment. Following the categories used in prior studies [29], LAeq was classified into four ranges: 55–60 dB(A), 60–65 dB(A), 65–70 dB(A), and 70–75 dB(A). Field observations confirmed
+---
+es at this site were urban traffic, human ac­ tivity, and occasional mechanical noise, with intermittent natural sounds such as wind in the vegetation and birdsong. No sea-related sounds were perceptible
+---
+to 5 min, the semi-structured interviews explored participants’ perceptions of thermal comfort and acoustic disturbance, with questions including, for example, “what would make this greenway feel more comfortable
+---
+d acoustic environments [25,29]. Spe­ cifically, the questionnaire included the Thermal Sensation Vote (TSV), the Thermal Comfort Vote (TCV), the Acoustic Sensation Vote (ASV), and the Acoustic Comfort Vote (ACV) (A
+---
+[25,29]. Spe­ cifically, the questionnaire included the Thermal Sensation Vote (TSV), the Thermal Comfort Vote (TCV), the Acoustic Sensation Vote (ASV), and the Acoustic Comfort Vote (ACV) (Appendix A)
+---
+e­ cifically, the questionnaire included the Thermal Sensation Vote (TSV), the Thermal Comfort Vote (TCV), the Acoustic Sensation Vote (ASV), and the Acoustic Comfort Vote (ACV) (Appendix A). TSV captures conscio
+---
+tionnaire included the Thermal Sensation Vote (TSV), the Thermal Comfort Vote (TCV), the Acoustic Sensation Vote (ASV), and the Acoustic Comfort Vote (ACV) (Appendix A). TSV captures consciously perce
+---
+oustic Sensation Vote (ASV), and the Acoustic Comfort Vote (ACV) (Appendix A). TSV captures consciously perceived thermal sensation, while ASV measures perceived loudness. TCV and ACV reflect satisfac
+---
+e Acoustic Comfort Vote (ACV) (Appendix A). TSV captures consciously perceived thermal sensation, while ASV measures perceived loudness. TCV and ACV reflect satisfaction with the thermal and acoustic conditions, re

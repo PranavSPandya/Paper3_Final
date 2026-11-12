@@ -1,6 +1,6 @@
 # Shared code for H1-H3: phase-mean contrasts, H2 rmcorr and temporal AR(1) models; sourced by H1_H3_phaseavg.R and H1_H3_timeseries.R.
 
-# End-of-phase questionnaire items (H2 rmcorr; H1/H3 questionnaire contrasts; shared with Analysis Eq8).
+# End-of-phase questionnaire items (H2 rmcorr; H1/H3 questionnaire contrasts; shared with H5 combined-exposure models).
 PSYCH_OUTCOMES <- paper3_psych_questionnaire_outcomes()
 
 SENSOR_OUTCOMES <- study_wide_spec$physiological_outcome_names

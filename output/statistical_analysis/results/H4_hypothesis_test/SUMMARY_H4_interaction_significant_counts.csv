@@ -1,0 +1,4 @@
+"analysis","grain","thermal_measure","nominal_lt_0.05","fdr_lt_0.05"
+"confirmatory_comfort","phase_mean","thermal_discomfort_abs_tc_minus_3",0,0
+"confirmatory_comfort","phase_mean","ucm_UTCI_bout_mean",0,0
+"confirmatory_physio","phase_mean","ucm_UTCI_within_person_phase_z",1,0

@@ -1,0 +1,23 @@
+By Authority Of
+THE UNITED STATES OF AMERICA
+Legally Binding Document
+
+By the Authority Vested By Part 5 of the United States Code § 552(a) and
+Part 1 of the Code of Regulations § 51 the attached document has been duly
+INCORPORATED  BY  REFERENCE  and  shall  be  considered  legally
+binding upon  all  citizens  and  residents  of  the  United  States  of  America.
+HEED THIS NOTICE: Criminal penalties may apply for noncompliance.
+
+e
+
+Document Name:
+
+CFR Section(s):
+
+Standards Body:
+
+Official Incorporator:
+THE EXECUTIVE DIRECTOR
+OFFICE OF THE FEDERAL REGISTER
+WASHINGTON, D.C.
+

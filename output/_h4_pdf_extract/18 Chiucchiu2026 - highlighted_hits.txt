@@ -1,0 +1,123 @@
+FILE: 18 Chiucchiu2026 - highlighted.pdf
+PAGES: 11
+CHARS: 67659
+
+tal role in this process, as their comfort and well-being are shaped by complex interactions across multiple environmental domains. This study investigates cross-domain effects between thermal and acoustic env
+---
+actions across multiple environmental domains. This study investigates cross-domain effects between thermal and acoustic environments, with a specific focus on how personality traits modulate perceptual respon
+---
+ot be understood through single-domain analyses alone. Integrating cross-domain interactions and personality-driven variability into adaptive comfort models and occupant-centric design strategies is essential t
+---
+als’ characteristics, such as psychological and personality fac­ tors, that are increasingly recognized as central to human perception [3]. In this framework, the theory of multi-domain comfort has recently
+---
+ese in­ consistencies highlight the need for a deeper understanding of cross-domain effects and their interaction with human factors. Beyond environmental variables, psychological and physiological characteris
+---
+ighlight the need for a deeper understanding of cross-domain effects and their interaction with human factors. Beyond environmental variables, psychological and physiological characteristics are increasingly r
+---
+d environmental variables, psychological and physiological characteristics are increasingly recognized as determinants of IEQ perception [20,21]. Most existing studies have examined correlations between o
+---
+se. Current research predominantly examines the impact of IEQ on psychological restoration, mood and mental health, rather than exploring how individual psychological traits influence environmental perception
+---
+s have demonstrated the effects of each environ­ mental domain on psychological restoration, mood, and minimization of mental health problems [26–29], despite these stable individual char­ acteristics can help
+---
+open-plan offices [31], whereas highly extroverted workers may also experience increased stress under certain IEQ conditions [32]. These findings underscore how personality modulates the individuals’ perc
+---
+]. Concerning indoor environments, while most research studies have focused on noise reduction in workplaces and learning environments, recent approaches emphasize perception-based acoustic design to en
+---
+in another, depending on personality profiles [36]. Thus, understanding these interactions may allow for more accurate predictions of behavioural, psychological, energy-related [37], and health outcomes in r
+---
+ngly, this study aims to investigate the cross-modal influence of acoustic and thermal comfort on occupants’ perception of the indoor environment, considering indi­ vidual personality traits. Specifically, it exam
+---
+eriment procedure was designed and conducted within a test room to capture the interaction between thermal and acoustic domains and psychological traits. Subsequently, statistical analyses were con­ ducted to
+---
+matically characterized in a previous study to map and quantify the background noise levels in several positions within the NEXT.ROOM. In addition, NEXT.ROOM is equipped with an extensive sensing system
+---
+stem, acoustic stimuli, during the experimental session, were provided through noise-cancelling head­ phones (model WH-1000XM4, by Sony). 2.2. Experimental procedure The experimental campaign was conducte
+---
+[44] and equipped with the two wearable devices: a multi-sensor wristband and noise-cancelling headphones. In this acclimation phase, lasting at least 20 min [45], the researcher outlined the study prot
+---
+sheet, obtained informed consent, and assisted participants in calibrating the noise-cancelling headphones. The EEG monitoring headband was used only in the earliest sessions, as the headphones consiste
+---
+y a 30-minute transition phase, during which the indoor tem­ perature gradually increased to 23 ◦C, via the NEXT.ROOM mechanical ventilation system. During this phase, participants completed the Big Five p
+---
+ired differences. Subsequently, given the non-normality of most variables, the Spearman’s rank correlation coefficients were computed to explore potential associations between subjective perceptual data and
+---
+4 Air Quality Perception Votes −0.26 0.25 −0.07 0.42 0.56 Fig. 5. PMV index and thermal sensation votes across phase C0 and C1 with “*” p < 0.05. A. Chiucchiù et al.
+---
+from the four main domains were continuously monitored at 1-minute intervals. Noise level, illuminance and CO2 concentration remained substantially con­ stant and were analysed to provide a reliable cha
+---
+ted by Vittori et al. [42] following the construction of NEXT.ROOM. Background noise was 39.7 dB in both phases C0 and C1, corresponding to a medium fan speed setting of the mechanical ventilation system
+---
+nding to a medium fan speed setting of the mechanical ventilation system, and increased to 58.1 dB during the transitional phase due to the higher fan speed required to raise the temperature. Illuminance
+---
+the target of 23 ◦C was not consistently achieved. Average operative Fig. 6. Thermal sensation votes for phase C0 and C1 divided by clusters with “*” p < 0.05. Table 5 Delta values between C0 and C1 for each descr
+---
+lf- control, emotional stability, and openness to new experiences and so­ cial interactions. Conversely, Cluster B subjects exhibit pronounced tendencies towards neuroticism, emotional volatility and reduced
+---
+physiological in­ dicators [52,53]. In the present study, skin temperature (ST) increased by 0.76 ◦C (p < 0.00, d = 1.9), whereas both tonic electrodermal activity (EDAt) and heart rate (HR) decreased, res
+---
+o reported a positive correlation between HR and temperature in children, with increase of 8.7 bpm to 13.7 bpm per 1 ◦C raise, the present results showed a different cardio­ vascular response (i.e., decrea
+---
+ate. In contrast, the analysis of participants’ subjective ratings in terms of thermal sensation, as illustrated in Fig. 5, reveals a different pattern when compared to the PMV index. In fact, the thermal sensation
+---
+g. 5, reveals a different pattern when compared to the PMV index. In fact, the thermal sensation ratings remained mostly similar between the two configurations, with average values equal to 0.40 ± 0.79 and 0.20 ± 0
+---
+ions. In general, cluster B reports a warmer sensation than cluster A, but the thermal sensation expressed by cluster B remains almost constant between the two phases. Concurrently, cluster A shows a neutral stance
+---
+erted individuals are more sensitive to the environmental stimuli, Cluster A displayed a different mean thermal sensation compared to Cluster B. 3.4.2. Influence of thermal discomfort on soundscapes ev
+---
+ecline was evident in the evaluation of the descriptor "Chaotic", alongside an increase in non-characteristic descriptors such as ’’Pleasant’’ and ’’Calm’’. Here the effect of applying a temperature variat
+---
+luster A exhibits a decline in ratings for C1, while cluster B demonstrates an increase. Despite these contradictory trends, both clusters demonstrate a convergence of ratings in C1. With regard to the ev
+---
+iptors by cluster A remain relatively stable. By contrast, cluster B’s ratings increase in C1, except for the vibrant descriptor, which decreases. It is evident that the rating assigned to monotonous desc
+---
+previous study, the neuroticism traits have a strong positive correlation with noise envi­ ronment [55], and people higher in neurotic have a greater sensitivity to noise environment [56].Conversely, Clu
+---
+nvi­ ronment [55], and people higher in neurotic have a greater sensitivity to noise environment [56].Conversely, Cluster A, defined by greater openness to experience and higher emotional stability, was
+---
+h thermal phases. At this stage, they were not exposed to soundscapes and wore noise-cancelling headphones; the only audible source was the HVAC system fan oper­ ating at a constant medium level. Ratings
+---
+um level. Ratings were based on a scale negative values denoted a sensation of noise and positive values denoted a sensation of silence. The two clusters displayed distinct perceptual patterns: Cluster
+---
+f noise and positive values denoted a sensation of silence. The two clusters displayed distinct perceptual patterns: Cluster A consistently reported a stronger perception of scores were −0.57 ± 0.94 a
+---
+eing while minimizing energy consumption, research on environmental comfort is increasingly shifting toward an individual- centred approach. Within this context, emerging studies focus on the development
+---
+iverse physiological, psycho­ logical and preferential responses, shaped by the interaction between environmental conditions, contextual factors, personal characteristics and past experiences [58]. These diffe
+---
+ions, often unaccounted for during the design or simulation phase, can lead to increased energy consumption. The find­ ings of this study may provide a basis for the formulation of strategies to mitigate d
+---
+discomfort caused by environmental factors through the implementation of post-occupancy strategies, such as Personal Envi­ ronmental Comfort Systems (PECS) to create more tailored and occupant-centric envir
+---
+ogenic components. This methodology allowed the inves­ tigation of cross-domain interactions, specifically whether certain thermal conditions influence the perception of soundscapes, potentially the salience o
+---
+ter B reported a partial reduction of negative evaluations, with corresponding increases in calmness and pleasantness. Taken together, these findings highlight both the cross-domain interaction between th
+---
+d pleasantness. Taken together, these findings highlight both the cross-domain interaction between thermal and acoustic comfort and the mediating role of personality traits in shaping individual environmental
+---
+cted in a test room, a controlled setting without contextual factors, and used noise-cancelling head­ phones, which may have created an artificial scenario in the partici­ pants’ acoustic domain. Future r
+---
+investigations to real environments, such as Living Labs, to assess cross- domain effects in real contexts. Furthermore, targeted use of sound­ scapes at specific frequencies, delivered via both headphones an
+---
+g and Environment 290 (2026) 114140 9 ===== PAGE 10 ===== Declaration of competing interest The authors declare that they have no known competing financial interests or personal relationships that c
+---
+eclaration of competing interest The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this pape
+---
+Soc. Sci. 74 (2021). [2] M. Ba, J. Kanga, A laboratory study of the sound-odour interaction in urban environments, Build. Environ. 147 (2019) 314–326. [3] P.M. Bluyssen, D. Zhang, S. Kurvers, M. Overtoom, M. Or
+---
+Horr, M. Arif, A. Kaushik, A. Mazroei, M. Katafygiotou, E. Elsarrag, Occupant productivity and office indoor environment quality: a review of the literature, Build. Environ. 105 (2016) 369–389. [5] G.A. Ganesh
+---
+e, P. Chigot, C.A. Hviidd, Thermo-active building systems and sound absorbers: thermal comfort under real operation conditions, Build. Environ. 128 (2018) 143–152. [12] Y. Zhao, D. Li, Multi-domain indoor environm
+---
+Li, Multi-domain indoor environmental quality in buildings: a review of their interaction and combined effects on occupant satisfaction, Build. Environ. 228 (2023). [13] S. Manu, A. Rysanek, Home as an office
+---
+Development of an automatic personal comfort system (APCS) based on real-time thermal sensation prediction, Build. Environ. 246 (2023). [19] M. Schweiker, E. Ampatzi, M.S. Andargie, R.K. Andersen, E. Azar, V.M. Bart
+---
+stics, social psychological and cultural factors on indoor environment quality productivity belief, Build. Environ. 185 (2020). [22] V.M. Gnecco, F. Vittori, A.L. Pisello, Digital twins for decoding human-build
+---
+M. Gnecco, F. Vittori, A.L. Pisello, Digital twins for decoding human-building interaction in multi-domain test-rooms for environmental comfort and energy saving via graph representation, Energy Build. 279 (20
+---
+, I. Pigliautile, M. Arnesano and A.L. Pisello, “A novel methodology for human thermal comfort decoding via physiological signals measurement and analysis,” vol. 222, 2022. [25] A. Pourghorban, V.W.C. Chang, J. Zh
+---
+H. Jin, Effects of visual, thermal, and acoustic comfort on the psychological restoration of the older people in a severe cold city, Build. Environ. 239 (2023). [27] S. Zhang, X. Zhao, Z. Zeng, X. Qiu, The inf

@@ -1,0 +1,119 @@
+FILE: 19 Cureau2022 - highlighted.pdf
+PAGES: 13
+CHARS: 66575
+
+.126 and 0.111 in Parks 1 and 2, respectively, whereas using the survey answers increased it up to 0.820 (Park 1) and 0.806 (Park 2). This study contributes to addressing the gap in multi-domain comfort stu
+---
+55% of the world’s population lives in cities, and this number is expected to increase to 68% by 2050 (United Nations Human Settle- ments Programme 2020). The rapid growth of urbaniza- tion intensified the
+---
+an extension of living spaces, being places for several activities and social interactions that have the potential to affect people’s health and well-being positively and contribute to urban liveability and
+---
+nstrated how air temperature, mean radiant tempera- ture, and wind speed affect thermal sensation (Peng et al. 2019; Zhang et al. 2021). Jamei and Rajagopalan (2019) investigated the effects of street design on phys
+---
+uld be investigated under the same conceptual framework. Studies investigating interactions and crossed effects of comfort domains in outdoor environments are still few. Lam et al. (2020) investigated the ass
+---
+con- cluded that improving visual comfort could simultaneously enhance outdoor thermal comfort perception. Lau and Choi (2021) studied the relations between perceived acoustics and thermal comfort in urban areas
+---
+on. Lau and Choi (2021) studied the relations between perceived acoustics and thermal comfort in urban areas and showed that ther- mal sensation had a negative association with acoustics vote. D’Alessandro et al.
+---
+outdoors, it has been identified that positive and negative emotions influence thermal sensation (Zhang et al. 2021). Ma et al. (2021) concluded that pedes- trian comfort is affected by environmental factors but als
+---
+o by people’s subjective perceptions, namely built environ- ment satisfaction, thermal sensation, perceived air quality, and perceived loudness. Other studies also related that air quality perception is influenced
+---
+et al. 2020; Li et al. 2020). Further- more, urban greenery also contributes to noise attenuation (Cohen et al. 2014). Jo and Jeon (2021a) studied the visual and acoustic perception in urban parks and co
+---
+de a city. Today, they should be more attractive and serve several purposes to increase their entertaining capacity (Matovnikov and Matovnikova 2016). In fact, environmental design affects comfort directl
+---
+s crossed by the elevated tracks of a public transportation system, which is a noise source that can be heard at some places in the park. The experiment The experiment consisted of a walk from one park t
+---
+. 2021)). Hence, the first walk of the day took place while the heat level was increasing and the other while it was reducing. Each walk was approxi- mately 1 km and lasted around 55 min. A smart wearable
+---
+(here named as local people) were also asked to respond to a similar survey to increase the number of answers and improve the analysis. Environmental data A wearable device equipped with several calibrated
+---
+ed by Lam et al. (2021). Concerning the acoustics, participants answered about noise perception, acoustic qual- ity perception, and whether they consider the sound environ- ment appropriate to the place.
+---
+llected through the wearable device and the surveys. Descriptive sta- tistics, hypothesis tests, and multinomial logistic regression were the main techniques used. This analysis was performed using the free
+---
+g only the periods when the walks were carried out, at 2 pm, the tem- perature increased in time, while relative humidity decreased (the only exception was the relative humidity measured on the ­15th at 2
+---
+ce ranges were larger in Park 2. Park 2 has more trees (Fig. 1d and e), which increases the availability of shaded areas. The sound pressure level was always higher (average dif- ference of 10 dB) in Park
+---
+questions related to the thermal domain, people gen- erally voted for “hot” in thermal sensation in Park 1 (62% of votes at 2 pm and 68% at 6 pm, Fig. B4a), but declared that 2038 International Journal of Biometeor
+---
+votes at 2 pm and 80% at 6 pm for these two options, Fig. B4d). In Park 2, the thermal sensation was also predominantly “hot” (63% of votes at 2 pm and 70% at 6 pm), but acceptability was mostly “neutral” and “acce
+---
+air temperature in Park 2 and the high- est wind speed in Park 1 on most walks. Thermal comfort votes differed among time (Fig. B4c): at 2 pm, the votes were distributed among “neutral” and “comfortable” (mean vo
+---
+s were divided between “neutral” (43%) and “comfortable” (37%), as it was for thermal comfort, suggesting a stronger relation between this domain and general comfort when compared to visual and acoustics. Survey
+---
+from “no changes”. Concerning acoustics, no elderly voted in the extremes for noise perception (“very silent” or “very noisy”), and all their votes were neutral or positive for acoustic quality percept
+---
+re thermal acceptability, visual comfort, and visual acceptability. In Park 2, thermal sensation, visual preference, and noise perception did not present a depend- ence relation with any other variable. The more evi
+---
+and visual acceptability. In Park 2, thermal sensation, visual preference, and noise perception did not present a depend- ence relation with any other variable. The more evident dependence between comfort
+---
+by apply- ing this test for the overall comfort question. In Park 1, only the noise perception was not related to overall com- fort (p = 0.101). Conversely, in Park 2, thermal sensation (p = 0.075), vis
+---
+eption was not related to overall com- fort (p = 0.101). Conversely, in Park 2, thermal sensation (p = 0.075), visual sensation (p = 0.168), visual perception (p = 0.160), and any question about acoustics (noise per
+---
+(p = 0.168), visual perception (p = 0.160), and any question about acoustics (noise percep- tion p = 0.291, acoustic quality p = 0.083, and acoustic envi- ronment appropriate to the place p = 0.419) were
+---
+presents how the overall comfort level is related to the responses concerning thermal sensation, visual sensa- tion, and acoustic quality for Parks 1 and 2. In Fig. 3a, b, and 3c, the variation in votes among diffe
+---
+bserved by the Fisher’s exact test that resulted in p values lower than 0.05 (thermal sensation p = 0.045, visual sensation p = 0.016, and acoustic quality p < 0.001). The differences are less notable in Park 2 (F
+---
+dic- tion accuracy to those using environmental data, which again supports the hypothesis that factors other than environmental parameters also affect overall comfort. In Park 1, the model based on acoustic
+---
+e was significant (5% significance level) in models 1 and 2. In model 3, only thermal comfort was significant (p = 0.001); in model 4, visual comfort (p = 0.002) and visual acceptabil- ity (p = 0.006); and in mod
+---
+estions were sig- nificant, with exception of visual sensation (p = 0.838) and noise perception (p = 0.197). These variables were also not significant for models 4 (only visual questions) and 5 (only ac
+---
+y acoustic questions) for this park. In contrast, in model 6 for Park 2, only thermal comfort (p = 0.005) was significant. Discussions Parks are important places within the urban context as other studies have alr
+---
+PAGE 9 ===== 1 3 Fig. 3 Percentage for overall comfort vote according to (a) thermal sensation in Park 1; (b) visual sensation in Park 1; (c) acoustic quality in Park 1; (d) thermal sensation in Park 2; (e) visual
+---
+in Park 1; (b) visual sensation in Park 1; (c) acoustic quality in Park 1; (d) thermal sensation in Park 2; (e) visual sensation in Park 2; and (f) acoustic quality in Park 2 Indeed, Park 1, which was perceived as no
+---
+le’s well- being and make them more tolerant of thermal conditions. In detail, noise perception and acoustic quality votes were related to thermal comfort and acceptability in Park 1, while they were no
+---
+tions. In detail, noise perception and acoustic quality votes were related to thermal comfort and acceptability in Park 1, while they were not related in Park 2. Alternatively, the better ther- mal conditions in
+---
+this place and higher than national requirements for public leisure places. A hypothesis to justify this outcome is the quality of site-specific sound sources in the two parks. A sound can be louder but mor
+---
+tified in the two parks, but they are more evident in Park 1 than in Park 2. A hypothesis is that the different park designs can explain this variation. This result confirms the importance of investigating m
+---
+ersità degli Studi di Perugia within the CRUI-CARE Agreement. Declarations Competing interests The authors declare no competing interest. Open Access This article is licensed under a Creative Commons
+---
+UI-CARE Agreement. Declarations Competing interests The authors declare no competing interest. Open Access This article is licensed under a Creative Commons Attri- bution 4.0 International License, wh
+---
+he time of global warming: evaluating the impact of the urban parks on outdoor thermal comfort. Environ Sci Eur 32:117. https://​doi.​org/​10.​1186/​s12302-​020-​00393-8 Bavaresco M V., D’Oca S, Ghisi E, Lamberts
+---
+s://​doi.​org/​10.​ 1016/J.​ENBUI​LD.​2018.​08.​020 Chen L, Ng E (2012) Outdoor thermal comfort and outdoor activi- ties: A review of research in the past decade. Cities 29:118–125. https://​doi.​org/​10.​1016/J.​C
+---
+Potchter O, Schnell I (2014) The impact of an urban park on air pollution and noise levels in the Mediterranean city of Tel-Aviv, Israel. Environ Pollut 195:73–83. https://​doi.​org/​10.​ 1016/J.​ENVPOL
+---
+Zhu Y (2017) The impact of thermal envi- ronment on occupant IEQ perception and productivity. Build Environ 121:158–167. https://​doi.​org/​10.​1016/J.​BUILD​ENV.​ 2017.​05.​022 Giannaros TM, Lagouvardos K, Kotr
+---
+5267.​html Jamei E, Rajagopalan P (2019) Effect of street design on pedestrian thermal comfort. Archit Sci Rev 62:92–111. https://​doi.​org/​10.​ 1080/​00038​628.​2018.​15372​36 Jamrozik A, Ramos C, Zhao J et al (2
+---
+2021b) Overall environmental assessment in urban parks: Modelling audio-visual interaction with a structural equation model based on soundscape and landscape indices. Build Environ 204:108166. https://​doi.​o
+---
+Kousis I, Pisello AL (2020) For the mitigation of urban heat island and urban noise island: two simultaneous sides of urban discomfort. Environ Res Lett 15. https://​doi.​org/​10.​1088/​1748-​9326/​abaa
+---
+(2021) Influence of acclimatization and short-term thermal history on outdoor thermal comfort in sub- tropical South China. Energy Build 231:110541. https://​doi.​org/​ 10.​1016/J.​ENBUI​LD.​2020.​110541 Lam CKC,
+---
+CY (2021) The influence of perceived aesthetic and acoustic quality on outdoor thermal comfort in urban environ- ment. Build Environ 206. https://​doi.​org/​10.​1016/J.​BUILD​ENV.​ 2021.​108333 Lau KKL, Shi Y, Ng E
+---
+ni S, Mascolo A, Graziuso G, Guarnaccia C (2021) Soundwalk, Questionnaires and Noise Measurements in a University Campus: A Soundscape Study. Sustainability 13. https://​doi.​org/​10.​3390/​ su130​20841
+---
+er C, Rink T (2018) Wireless Sensor Networks for Long-Term Monitoring of Urban Noise. Sensors 18(9). https://​ doi.​org/​10.​3390/​s1809​3161 Peng Y, Feng T, Timmermans H (2019) A path analysis of outdoor
+---
+ed 15 Dec 2021 Rodríguez Algeciras JA, Coch H, De la Paz PG et al (2016) Human thermal comfort conditions and urban planning in hot-humid climates—The case of Cuba. Int J Biometeorol 60:1151–1164. https://​doi.​o
+---
+ents Programme (UN-Habitat), Nairobi Vasilikou C, Nikolopoulou M (2020) Outdoor thermal comfort for pedestrians in movement: thermal walks in complex urban mor- phology. Int J Biometeorol 64:277–291. https://​doi.​
+---
+9 Yang W, Kim M-J, Moon HJ (2018) Effects of indoor temperature and background noise on floor impact noise perception. Indoor Built Environ 28:454–469. https://​doi.​org/​10.​1177/​14203​26X17​753708 Yan
+---
+n HJ (2018) Effects of indoor temperature and background noise on floor impact noise perception. Indoor Built Environ 28:454–469. https://​doi.​org/​10.​1177/​14203​26X17​753708 Yang W, Moon HJ (2019) Co
+---
+​ org/​10.​1016/J.​BUILD​ENV.​2018.​11.​040 Zhang T, Su M, Hong B, et al (2021) Interaction of emotional regula- tion and outdoor thermal perception: A pilot study in a cold region of China. Build Environ 198.

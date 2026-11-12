@@ -1,0 +1,8 @@
+"Script","Parallel","Exit","Seconds","ResultsSubfolder","ErrorSnippet"
+"Analysis_combined_phaseavg.R","True","0","67.5","Analysis_combined_phaseavg",""
+"Analysis_combined_timeseries.R","True","0","516.3","Analysis_combined_timeseries",""
+"H1_H3_phaseavg.R","True","0","516.2","H1_H3_phaseavg",""
+"H1_H3_timeseries.R","True","0","516.2","H1_H3_timeseries",""
+"H4_sound_literature_test.R","True","0","516.2","H4_sound_literature_test",""
+"randomness_phaseavg.R","True","0","516.2","randomness_phaseavg",""
+"Merge_statistical_outputs.R","False","1","0.6","output/merged (not under results/)","Error in `[[<-.data.frame`(`*tmp*`, column_name, value = NA_character_) :  |   replacement has 1 row, data has 0 | Calls: lapply -> FUN -> [[<- -> [[<-.data.frame | Execution halted"
